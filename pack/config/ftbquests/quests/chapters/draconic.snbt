@@ -2,34 +2,63 @@
 	default_hide_dependency_lines: false
 	default_quest_shape: ""
 	filename: "draconic"
-	group: ""
+	group: "3B451255BC331CA7"
 	icon: {
-		id: "draconicevolution:draconium_ingot"
+		id: "draconicevolution:awakened_core"
 	}
-	id: "8D85E3583FB3C59B"
+	id: "1D85E3583FB3C59B"
 	images: [ ]
-	order_index: 7
-	quest_links: [ ]
+	order_index: 17
+	quest_links: [
+		{
+			id: "501D7441BBBD7FC3"
+			linked_quest: "158910F703716CDC"
+			shape: "rsquare"
+			size: 1.0d
+			x: -2.0d
+			y: 0.0d
+		}
+		{
+			id: "5953770E98D925EF"
+			linked_quest: "5A044730D3704EC3"
+			shape: "rsquare"
+			size: 1.0d
+			x: 6.0d
+			y: -1.5d
+		}
+		{
+			id: "78A571C77B433A86"
+			linked_quest: "1669D8493EE34097"
+			shape: "rsquare"
+			size: 1.0d
+			x: 10.0d
+			y: -1.5d
+		}
+	]
 	quests: [
 		{
-			id: "21CB178E6AF636A3"
+			dependencies: [
+				"158910F703716CDC"
+			]
+			id: "5EC0505F1B78AF0F"
 			rewards: [
 				{
-					id: "8B70F044035E2020"
+					id: "1311A2339D1502CD"
 					type: "xp_levels"
 					xp_levels: 2
 				}
 			]
+			shape: "gear"
 			size: 1.5d
 			tasks: [
 				{
-					id: "5A6964F196A82D66"
+					count: 8L
+					id: "5B54FC27CD181830"
 					item: {
 						count: 1
-						id: "draconicevolution:draconium_ingot"
+						id: "draconicevolution:draconium_dust"
 					}
 					type: "item"
-					count: 16
 				}
 			]
 			x: 0.0d
@@ -37,18 +66,96 @@
 		}
 		{
 			dependencies: [
-				"21CB178E6AF636A3"
+				"5EC0505F1B78AF0F"
 			]
-			id: "D16522DF93B7D6D9"
+			id: "537444F0AE80D61C"
 			rewards: [
 				{
-					id: "6DDA09494BF6E8B8"
+					id: "13CFFBBA9746CD5D"
 					type: "xp_levels"
 					xp_levels: 1
 				}
 			]
 			tasks: [
 				{
+					count: 16L
+					id: "14AAD05E75F696FC"
+					item: {
+						count: 1
+						id: "draconicevolution:draconium_ingot"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"5EC0505F1B78AF0F"
+			]
+			id: "3ECDA126A0A76789"
+			rewards: [
+				{
+					id: "1B2DCBCA9E3C02C7"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "31857FA43BA37B87"
+					item: {
+						count: 1
+						id: "draconicevolution:dislocator"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"3ECDA126A0A76789"
+				"537444F0AE80D61C"
+			]
+			id: "567DE26F709106CF"
+			rewards: [
+				{
+					id: "362EAFA7D2B891CA"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "7FF9BF902CB8DD2D"
+					item: {
+						count: 1
+						id: "draconicevolution:magnet"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"537444F0AE80D61C"
+			]
+			id: "516522DF93B7D6D9"
+			rewards: [
+				{
+					id: "7DDA09494BF6E8B8"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					count: 4L
 					id: "7D47CAF1CA83F3F2"
 					item: {
 						count: 1
@@ -57,24 +164,24 @@
 					type: "item"
 				}
 			]
-			x: 2.0d
-			y: -0.75d
+			x: 4.0d
+			y: 0.0d
 		}
 		{
 			dependencies: [
-				"D16522DF93B7D6D9"
+				"516522DF93B7D6D9"
 			]
 			id: "5B4C4D10866B3555"
 			rewards: [
 				{
-					id: "E50AD239A5104441"
+					id: "750AD239A5104441"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 2
 				}
 			]
 			tasks: [
 				{
-					id: "24BFF8B7E3486DB3"
+					id: "34BFF8B7E3486DB3"
 					item: {
 						count: 1
 						id: "draconicevolution:generator"
@@ -82,148 +189,80 @@
 					type: "item"
 				}
 			]
-			x: 4.0d
-			y: -2.25d
+			x: 6.0d
+			y: -3.0d
 		}
 		{
 			dependencies: [
-				"D16522DF93B7D6D9"
+				"516522DF93B7D6D9"
 			]
-			id: "99337D87017071E3"
-			optional: true
+			id: "7AEE025CA84AEA71"
 			rewards: [
 				{
-					id: "CB237C7A0157BCB0"
+					id: "71EA3D45A0FF333B"
 					type: "xp_levels"
 					xp_levels: 1
 				}
 			]
 			tasks: [
 				{
-					id: "E80E10EC9122D791"
+					id: "5A141B78A5FA623C"
 					item: {
 						count: 1
-						id: "draconicevolution:grinder"
-					}
-					type: "item"
-				}
-			]
-			x: 4.0d
-			y: -0.75d
-		}
-		{
-			dependencies: [
-				"D16522DF93B7D6D9"
-			]
-			id: "A1752EFBBC592B5B"
-			rewards: [
-				{
-					id: "817B1CFA9DB5279F"
-					type: "xp_levels"
-					xp_levels: 1
-				}
-			]
-			tasks: [
-				{
-					id: "DFF7631DB7CB3A04"
-					item: {
-						count: 1
-						id: "draconicevolution:dislocator"
-					}
-					type: "item"
-				}
-			]
-			x: 4.0d
-			y: 0.75d
-		}
-		{
-			dependencies: [
-				"21CB178E6AF636A3"
-			]
-			id: "AC5F900984C9BD9F"
-			rewards: [
-				{
-					id: "F64E20C9C122A4A9"
-					type: "xp_levels"
-					xp_levels: 4
-				}
-			]
-			shape: "hexagon"
-			tasks: [
-				{
-					entity: "minecraft:ender_dragon"
-					id: "96F319C8B8BF966F"
-					type: "kill"
-					value: 1
-				}
-			]
-			x: 2.0d
-			y: 0.75d
-		}
-		{
-			dependencies: [
-				"AC5F900984C9BD9F"
-			]
-			id: "67B7A496E93DE8F9"
-			rewards: [
-				{
-					id: "F6FB11ACCFDFCD77"
-					type: "xp_levels"
-					xp_levels: 1
-				}
-			]
-			tasks: [
-				{
-					id: "56997868EEC7A009"
-					item: {
-						count: 1
-						id: "draconicevolution:dragon_heart"
-					}
-					type: "item"
-				}
-			]
-			x: 4.0d
-			y: 2.25d
-		}
-		{
-			dependencies: [
-				"D16522DF93B7D6D9"
-				"67B7A496E93DE8F9"
-			]
-			id: "3359AF0E45AA507D"
-			rewards: [
-				{
-					id: "B3114A60E6C4BF6A"
-					type: "xp_levels"
-					xp_levels: 3
-				}
-			]
-			tasks: [
-				{
-					id: "ABBF5131BD476294"
-					item: {
-						count: 1
-						id: "draconicevolution:wyvern_core"
+						id: "draconicevolution:crystal_binder"
 					}
 					type: "item"
 				}
 			]
 			x: 6.0d
-			y: 0.0d
+			y: 4.5d
 		}
 		{
 			dependencies: [
-				"3359AF0E45AA507D"
+				"516522DF93B7D6D9"
 			]
-			id: "92CC94D9B77E7152"
+			id: "7E83AD26C177EF57"
 			rewards: [
 				{
-					id: "2C47514C69CC417E"
+					id: "5953340D1A226394"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 2
 				}
 			]
-			size: 1.5d
+			tasks: [
+				{
+					id: "533A7A34DBB4D89A"
+					item: {
+						count: 1
+						id: "draconicevolution:module_core"
+					}
+					type: "item"
+				}
+				{
+					id: "5ADF2A31F91B35AF"
+					item: {
+						count: 1
+						id: "draconicevolution:item_draconium_energy"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: -4.5d
+		}
+		{
+			dependencies: [
+				"516522DF93B7D6D9"
+			]
+			id: "12CC94D9B77E7152"
+			rewards: [
+				{
+					id: "3C47514C69CC417E"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
 			tasks: [
 				{
 					id: "3491A514CD8C4BAF"
@@ -234,33 +273,145 @@
 					type: "item"
 				}
 				{
-					id: "F65F04DCBB0C9C52"
+					count: 4L
+					id: "765F04DCBB0C9C52"
 					item: {
 						count: 1
 						id: "draconicevolution:basic_crafting_injector"
 					}
 					type: "item"
-					count: 4
 				}
 			]
-			x: 8.0d
-			y: -0.75d
+			x: 6.0d
+			y: 0.0d
 		}
 		{
 			dependencies: [
-				"3359AF0E45AA507D"
+				"12CC94D9B77E7152"
+				"5A044730D3704EC3"
 			]
-			id: "AEA582ECEB7CA600"
+			id: "5D23892372AF6C97"
 			rewards: [
 				{
-					id: "167920177F8D4A8B"
+					id: "7C539D4C9CD9EAB0"
 					type: "xp_levels"
-					xp_levels: 4
+					xp_levels: 3
 				}
 			]
 			tasks: [
 				{
-					id: "6CAB56D8DFC03848"
+					id: "1DA21D40523FE35B"
+					item: {
+						count: 1
+						id: "draconicevolution:wyvern_core"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"516522DF93B7D6D9"
+			]
+			id: "7ECFAA5FFB5678CB"
+			rewards: [
+				{
+					id: "361D7B7B77782798"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					count: 2L
+					id: "3F12730801C9DC8E"
+					item: {
+						count: 1
+						id: "draconicevolution:wyvern_energy_core"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"7ECFAA5FFB5678CB"
+				"7AEE025CA84AEA71"
+			]
+			id: "75FFB5081D3EAF14"
+			rewards: [
+				{
+					id: "13E35A7614AD7A34"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "576C46E66C0B1538"
+					item: {
+						count: 1
+						id: "draconicevolution:basic_relay_crystal"
+					}
+					type: "item"
+				}
+				{
+					id: "5B8E0ED345194987"
+					item: {
+						count: 1
+						id: "draconicevolution:basic_io_crystal"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 4.5d
+		}
+		{
+			dependencies: [
+				"7ECFAA5FFB5678CB"
+			]
+			id: "19337D87017071E3"
+			rewards: [
+				{
+					id: "5B237C7A0157BCB0"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "780E10EC9122D791"
+					item: {
+						count: 1
+						id: "draconicevolution:grinder"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"5D23892372AF6C97"
+				"7ECFAA5FFB5678CB"
+			]
+			id: "3EA582ECEB7CA600"
+			rewards: [
+				{
+					id: "167920177F8D4A8B"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					id: "7CAB56D8DFC03848"
 					item: {
 						count: 1
 						id: "draconicevolution:energy_core"
@@ -268,16 +419,33 @@
 					type: "item"
 				}
 				{
-					id: "EC73255FB677834C"
+					count: 4L
+					id: "7C73255FB677834C"
 					item: {
 						count: 1
 						id: "draconicevolution:energy_core_stabilizer"
 					}
 					type: "item"
-					count: 4
 				}
+			]
+			x: 10.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"3EA582ECEB7CA600"
+			]
+			id: "140DD6EC92430E36"
+			rewards: [
 				{
-					id: "D8F0AC2922D16B09"
+					id: "18326E06E1745822"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "1FEFB60C0B166277"
 					item: {
 						count: 1
 						id: "draconicevolution:energy_pylon"
@@ -285,24 +453,52 @@
 					type: "item"
 				}
 			]
-			x: 8.0d
-			y: 0.75d
+			x: 12.0d
+			y: 3.0d
 		}
 		{
 			dependencies: [
-				"92CC94D9B77E7152"
+				"5D23892372AF6C97"
 			]
-			id: "AA346189331E2E27"
+			id: "19F12DA719873012"
 			rewards: [
 				{
-					id: "801AFEDD1F152588"
+					id: "3E41468D41BAE1B1"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					count: 4L
+					id: "5AC2672B84B1FFA2"
+					item: {
+						count: 1
+						id: "draconicevolution:wyvern_crafting_injector"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"19F12DA719873012"
+				"75FFB5081D3EAF14"
+			]
+			id: "1583F458B3EB4243"
+			rewards: [
+				{
+					id: "7E21F925BA36D7BE"
 					type: "xp_levels"
-					xp_levels: 4
+					xp_levels: 2
 				}
 			]
 			tasks: [
 				{
-					id: "7CBB9BF073E5E8ED"
+					id: "3F1AF67948C831E3"
 					item: {
 						count: 1
 						id: "draconicevolution:wyvern_pickaxe"
@@ -310,7 +506,33 @@
 					type: "item"
 				}
 				{
-					id: "4C4AE3AA2CB34AE7"
+					id: "5B997232CF6A886A"
+					item: {
+						count: 1
+						id: "draconicevolution:wyvern_sword"
+					}
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: 4.5d
+		}
+		{
+			dependencies: [
+				"19F12DA719873012"
+				"75FFB5081D3EAF14"
+			]
+			id: "12923C57B8CDF6EA"
+			rewards: [
+				{
+					id: "5AF6D80E07A9A03B"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "7F90BBE46B4B4E70"
 					item: {
 						count: 1
 						id: "draconicevolution:wyvern_chestpiece"
@@ -318,53 +540,116 @@
 					type: "item"
 				}
 			]
-			x: 10.0d
-			y: -0.75d
+			x: 12.0d
+			y: 6.0d
 		}
 		{
 			dependencies: [
-				"92CC94D9B77E7152"
+				"19F12DA719873012"
+				"7ECFAA5FFB5678CB"
+			]
+			id: "7A3D513D6D40C877"
+			rewards: [
+				{
+					id: "1534D9AD9359D94E"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "7EC03A7589EA85C1"
+					item: {
+						count: 1
+						id: "draconicevolution:wyvern_capacitor"
+					}
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"7E83AD26C177EF57"
+				"5D23892372AF6C97"
+			]
+			id: "536CB221B0973737"
+			rewards: [
+				{
+					id: "38B0910641E70395"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "5393040B2688ACBF"
+					item: {
+						count: 1
+						id: "draconicevolution:item_wyvern_energy"
+					}
+					type: "item"
+				}
+				{
+					id: "1B5EE1A3EDCA859A"
+					item: {
+						count: 1
+						id: "draconicevolution:item_wyvern_shield_capacity"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: -4.5d
+		}
+		{
+			dependencies: [
+				"19F12DA719873012"
+				"3ECDA126A0A76789"
+			]
+			id: "3C41F6DB7195AC5A"
+			rewards: [
+				{
+					id: "3D3B562DE49F8A98"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "1555A213AADE31E5"
+					item: {
+						count: 1
+						id: "draconicevolution:advanced_dislocator"
+					}
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"19F12DA719873012"
+				"1669D8493EE34097"
 			]
 			id: "7051B3593A22F472"
 			rewards: [
 				{
-					id: "AA7561329650742C"
-					type: "xp_levels"
-					xp_levels: 3
+					id: "3A7561329650742C"
+					table_id: 6783561722415423100L
+					type: "loot"
 				}
 			]
+			shape: "hexagon"
 			tasks: [
 				{
-					id: "D17331D096E1506A"
+					count: 4L
+					id: "517331D096E1506A"
 					item: {
 						count: 1
 						id: "draconicevolution:awakened_draconium_ingot"
-					}
-					type: "item"
-					count: 4
-				}
-			]
-			x: 10.0d
-			y: 0.75d
-		}
-		{
-			dependencies: [
-				"7051B3593A22F472"
-			]
-			id: "BB03D34CF7E2CF7B"
-			rewards: [
-				{
-					id: "515041D1C7112959"
-					type: "xp_levels"
-					xp_levels: 1
-				}
-			]
-			tasks: [
-				{
-					id: "A30451F0E8830DDF"
-					item: {
-						count: 1
-						id: "draconicevolution:awakened_core"
 					}
 					type: "item"
 				}
@@ -374,57 +659,77 @@
 		}
 		{
 			dependencies: [
-				"BB03D34CF7E2CF7B"
+				"7051B3593A22F472"
 			]
-			id: "6A69E6EFCEB18976"
+			id: "5AB8E54C08E79DDE"
 			rewards: [
 				{
-					id: "D671BFE9FEE9972F"
+					id: "16ADC5DFBE80B497"
 					type: "xp_levels"
-					xp_levels: 5
+					xp_levels: 3
 				}
 			]
 			tasks: [
 				{
-					id: "F143B260B6BACA16"
+					id: "1D6C42C1C5F5EA6F"
 					item: {
 						count: 1
-						id: "draconicevolution:draconic_pickaxe"
-					}
-					type: "item"
-				}
-				{
-					id: "FCB3E53EB67F7D93"
-					item: {
-						count: 1
-						id: "draconicevolution:draconic_chestpiece"
+						id: "draconicevolution:awakened_core"
 					}
 					type: "item"
 				}
 			]
 			x: 14.0d
-			y: -0.75d
+			y: 0.0d
 		}
 		{
 			dependencies: [
-				"6A69E6EFCEB18976"
+				"7051B3593A22F472"
+				"7ECFAA5FFB5678CB"
 			]
-			id: "FBE80932AE35A2B5"
+			id: "3F00796294373357"
 			rewards: [
 				{
-					id: "95D8575F08113BA8"
+					id: "1951678284046619"
 					type: "xp_levels"
-					xp_levels: 8
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "7D96D7BD433A014D"
+					item: {
+						count: 1
+						id: "draconicevolution:draconic_energy_core"
+					}
+					type: "item"
+				}
+			]
+			x: 14.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"5AB8E54C08E79DDE"
+			]
+			id: "77EB2A78FA4E6BF5"
+			rewards: [
+				{
+					id: "162C00B3DA59B0E2"
+					table_id: 6783561722415423100L
+					type: "loot"
 				}
 			]
 			shape: "hexagon"
-			size: 1.5d
 			tasks: [
 				{
-					entity: "draconicevolution:draconic_guardian"
-					id: "AD397C3FB58B78BC"
-					type: "kill"
-					value: 1
+					count: 4L
+					id: "7B5A83697279F3FC"
+					item: {
+						count: 1
+						id: "draconicevolution:awakened_crafting_injector"
+					}
+					type: "item"
 				}
 			]
 			x: 16.0d
@@ -432,19 +737,116 @@
 		}
 		{
 			dependencies: [
-				"FBE80932AE35A2B5"
+				"77EB2A78FA4E6BF5"
+				"3F00796294373357"
+				"1583F458B3EB4243"
 			]
-			id: "B9E0F2CBDD628166"
+			id: "1DE0998C17BA806E"
 			rewards: [
 				{
-					id: "5BF4E4F80E694B4B"
-					type: "xp_levels"
-					xp_levels: 4
+					id: "56F88AF7F27F7C01"
+					table_id: 6783561722415423100L
+					type: "loot"
 				}
 			]
 			tasks: [
 				{
-					id: "F10E9C70D7BA7F23"
+					id: "5B5F71E8FFD7C9F3"
+					item: {
+						count: 1
+						id: "draconicevolution:draconic_pickaxe"
+					}
+					type: "item"
+				}
+				{
+					id: "7C69ACFAED68BA30"
+					item: {
+						count: 1
+						id: "draconicevolution:draconic_sword"
+					}
+					type: "item"
+				}
+			]
+			x: 18.0d
+			y: 4.5d
+		}
+		{
+			dependencies: [
+				"77EB2A78FA4E6BF5"
+				"3F00796294373357"
+				"12923C57B8CDF6EA"
+			]
+			id: "534BDCAE13F52BC7"
+			rewards: [
+				{
+					id: "3715325B782F7711"
+					table_id: 6783561722415423100L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					id: "1C0F422FBD59CF3E"
+					item: {
+						count: 1
+						id: "draconicevolution:draconic_chestpiece"
+					}
+					type: "item"
+				}
+			]
+			x: 18.0d
+			y: 6.0d
+		}
+		{
+			dependencies: [
+				"77EB2A78FA4E6BF5"
+				"536CB221B0973737"
+			]
+			id: "5F75304C6523BDC6"
+			rewards: [
+				{
+					id: "3AA1DF2AFB2D9585"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "3394CEA6BD42D14B"
+					item: {
+						count: 1
+						id: "draconicevolution:item_draconic_flight"
+					}
+					type: "item"
+				}
+			]
+			x: 18.0d
+			y: -4.5d
+		}
+		{
+			dependencies: [
+				"77EB2A78FA4E6BF5"
+			]
+			id: "7BE80932AE35A2B5"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "15D8575F08113BA8"
+					table_id: 3797459037597754809L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					entity: "draconicevolution:draconic_guardian"
+					id: "1D397C3FB58B78BC"
+					type: "kill"
+					value: 1L
+				}
+				{
+					count: 2L
+					id: "7A92374410EAB162"
 					item: {
 						count: 1
 						id: "draconicevolution:chaos_shard"
@@ -457,19 +859,19 @@
 		}
 		{
 			dependencies: [
-				"B9E0F2CBDD628166"
+				"7BE80932AE35A2B5"
 			]
-			id: "DDB08530E6047FAF"
+			id: "5A5741A4439AE871"
 			rewards: [
 				{
-					id: "C6C96F0F68DBED95"
+					id: "7E4496632572572A"
 					type: "xp_levels"
-					xp_levels: 6
+					xp_levels: 3
 				}
 			]
 			tasks: [
 				{
-					id: "16D8681E7621540B"
+					id: "3EF73B1619DC2BAF"
 					item: {
 						count: 1
 						id: "draconicevolution:chaotic_core"
@@ -482,21 +884,129 @@
 		}
 		{
 			dependencies: [
-				"BB03D34CF7E2CF7B"
-				"AEA582ECEB7CA600"
+				"7BE80932AE35A2B5"
+				"3F00796294373357"
 			]
-			id: "112CCF40315A2D03"
+			id: "7A8608CC68BB59F2"
 			rewards: [
 				{
-					id: "3799766CEF8A64C3"
+					id: "12EC7B676A909781"
 					type: "xp_levels"
-					xp_levels: 6
+					xp_levels: 1
 				}
 			]
+			tasks: [
+				{
+					id: "15D477F6B4193B2A"
+					item: {
+						count: 1
+						id: "draconicevolution:chaotic_energy_core"
+					}
+					type: "item"
+				}
+			]
+			x: 20.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"5A5741A4439AE871"
+			]
+			id: "15414B3C734DA7CB"
+			rewards: [
+				{
+					id: "5D820BA8061C498E"
+					table_id: 6783561722415423100L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					count: 4L
+					id: "1372C5A9E9907ABD"
+					item: {
+						count: 1
+						id: "draconicevolution:chaotic_crafting_injector"
+					}
+					type: "item"
+				}
+			]
+			x: 22.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"15414B3C734DA7CB"
+				"7A8608CC68BB59F2"
+				"1DE0998C17BA806E"
+			]
+			id: "7EA766940A29B5FA"
+			rewards: [
+				{
+					id: "1C85FC562469545C"
+					table_id: 3797459037597754809L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					id: "76E71ADA86970B3D"
+					item: {
+						count: 1
+						id: "draconicevolution:chaotic_sword"
+					}
+					type: "item"
+				}
+			]
+			x: 24.0d
+			y: 4.5d
+		}
+		{
+			dependencies: [
+				"15414B3C734DA7CB"
+				"7A8608CC68BB59F2"
+				"534BDCAE13F52BC7"
+			]
+			id: "54325F6FE566120E"
+			rewards: [
+				{
+					id: "3069B289D51618EC"
+					table_id: 3797459037597754809L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					id: "383248F8E40E3CF2"
+					item: {
+						count: 1
+						id: "draconicevolution:chaotic_chestpiece"
+					}
+					type: "item"
+				}
+			]
+			x: 24.0d
+			y: 6.0d
+		}
+		{
+			dependencies: [
+				"15414B3C734DA7CB"
+				"3F00796294373357"
+			]
+			id: "3A0CDE4A0211BF92"
+			rewards: [
+				{
+					id: "1D41B49F0D2E6522"
+					table_id: 3797459037597754809L
+					type: "loot"
+				}
+			]
+			shape: "star"
 			size: 1.5d
 			tasks: [
 				{
-					id: "D213BAD3D8550348"
+					id: "5DEF851A2FE617A1"
 					item: {
 						count: 1
 						id: "draconicevolution:reactor_core"
@@ -504,16 +1014,16 @@
 					type: "item"
 				}
 				{
-					id: "9B94DA7F2F0F66E4"
+					count: 4L
+					id: "72A0022FCDFFF7D1"
 					item: {
 						count: 1
 						id: "draconicevolution:reactor_stabilizer"
 					}
 					type: "item"
-					count: 4
 				}
 				{
-					id: "9973C6A44662A373"
+					id: "3B224AF947C3AF70"
 					item: {
 						count: 1
 						id: "draconicevolution:reactor_injector"
@@ -521,8 +1031,91 @@
 					type: "item"
 				}
 			]
-			x: 14.0d
-			y: 0.75d
+			x: 24.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"5D23892372AF6C97"
+				"1669D8493EE34097"
+			]
+			id: "3F6463A66507FE48"
+			optional: true
+			rewards: [
+				{
+					id: "5C4DA951E768BF37"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "1111F47A952133D2"
+					item: {
+						count: 1
+						id: "draconicevolution:celestial_manipulator"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"12CC94D9B77E7152"
+			]
+			id: "18B55C1D03088783"
+			optional: true
+			rewards: [
+				{
+					id: "336EA2D214C9A605"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "57A3BAB91980713C"
+					item: {
+						count: 1
+						id: "draconicevolution:draconium_chest"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"537444F0AE80D61C"
+			]
+			id: "14D31A5B54A54E79"
+			optional: true
+			rewards: [
+				{
+					id: "56E815F4EDE0EA07"
+					table_id: 6783561722415423100L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					consume_items: true
+					count: 64L
+					id: "196C685B5A3A1AC1"
+					item: {
+						count: 1
+						id: "draconicevolution:draconium_ingot"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 1.5d
 		}
 	]
 }

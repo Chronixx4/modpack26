@@ -332,7 +332,7 @@ kapitel('ars_addons', '&dArs Addons', AE + 'fire_focus', 'Elemental, Technica, A
     # --- Ars Ocultas ---
     Q('altar', 'Opferaltar', 'ars_ocultas:altar',
       '&eArs Ocultas&r verbindet Ars mit Occultism. Der Altar braucht Silber und eine goldene Opferschale aus Occultism.',
-      nach=['start'], belohnung=2),
+      nach=['start', 'occultism/schalen'], belohnung=2),
 ], AD_POS))
 
 # ---------------------------------------------------------------------------

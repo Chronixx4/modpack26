@@ -2,643 +2,1461 @@
 	default_hide_dependency_lines: false
 	default_quest_shape: ""
 	filename: "bosse"
-	group: ""
+	group: "78E8109A2807F0AD"
 	icon: {
 		id: "minecraft:wither_skeleton_skull"
 	}
-	id: "A34AD7612381CA43"
+	id: "134AD7612381CA43"
 	images: [ ]
-	order_index: 9
-	quest_links: [ ]
+	order_index: 29
+	quest_links: [
+		{
+			id: "75449FE08D0E357A"
+			linked_quest: "58B2439153283A9D"
+			shape: "rsquare"
+			size: 1.0d
+			x: -2.0d
+			y: 0.0d
+		}
+		{
+			id: "53452766B503EB24"
+			linked_quest: "1EC196EC8629D11F"
+			shape: "rsquare"
+			size: 1.0d
+			x: 4.0d
+			y: -7.5d
+		}
+		{
+			id: "1D876C2E77E8678C"
+			linked_quest: "158910F703716CDC"
+			shape: "rsquare"
+			size: 1.0d
+			x: 6.0d
+			y: -6.0d
+		}
+	]
 	quests: [
 		{
-			id: "3D574AB529453D80"
+			dependencies: [
+				"58B2439153283A9D"
+			]
+			id: "3432B4B441E30C57"
 			rewards: [
 				{
-					id: "A2B41EE5EF3AA6D2"
-					type: "xp_levels"
-					xp_levels: 3
+					id: "52ED8D3999715973"
+					table_id: 8873071041503571705L
+					type: "loot"
 				}
 			]
+			shape: "gear"
+			size: 1.5d
 			tasks: [
 				{
-					entity: "twilightforest:naga"
-					id: "90AA7A3E65114E6C"
-					type: "kill"
-					value: 1
+					id: "1025A8E057458518"
+					type: "checkmark"
 				}
 			]
 			x: 0.0d
-			y: -3.75d
+			y: 0.0d
 		}
 		{
 			dependencies: [
-				"3D574AB529453D80"
+				"3432B4B441E30C57"
 			]
-			id: "FE372C6085F1F2B7"
+			id: "3E3D573F7C12ED85"
+			progression_mode: "flexible"
 			rewards: [
 				{
-					id: "897FF1291A0200B1"
-					type: "xp_levels"
-					xp_levels: 3
+					id: "764BE8CCC50A627F"
+					table_id: 8873071041503571705L
+					type: "loot"
 				}
 			]
+			shape: "hexagon"
 			tasks: [
 				{
-					entity: "twilightforest:lich"
-					id: "B688B95D284C8B44"
+					entity: "mowziesmobs:ferrous_wroughtnaut"
+					id: "1A1AEB673510FB9D"
 					type: "kill"
-					value: 1
+					value: 1L
 				}
 			]
 			x: 2.0d
-			y: -5.25d
+			y: 0.0d
 		}
 		{
 			dependencies: [
-				"FE372C6085F1F2B7"
+				"3E3D573F7C12ED85"
 			]
-			id: "CA9CB3E5DD91B775"
+			id: "1B72E9BA80BD5B97"
+			progression_mode: "flexible"
 			rewards: [
 				{
-					id: "A43961F1A45AF0BF"
+					id: "339F1397592BB45B"
 					type: "xp_levels"
-					xp_levels: 4
+					xp_levels: 2
 				}
 			]
 			tasks: [
 				{
-					entity: "twilightforest:minoshroom"
-					id: "4EF5305A45600411"
+					entity: "minecraft:elder_guardian"
+					id: "52AEA34F9D4071B9"
 					type: "kill"
-					value: 1
+					value: 1L
 				}
 			]
 			x: 4.0d
-			y: -3.75d
+			y: 0.0d
 		}
 		{
 			dependencies: [
-				"CA9CB3E5DD91B775"
+				"1B72E9BA80BD5B97"
+				"1EC196EC8629D11F"
 			]
-			id: "1B0A734023FA31FE"
-			rewards: [
-				{
-					id: "CB0EA2C3927DC173"
-					type: "xp_levels"
-					xp_levels: 5
-				}
-			]
-			tasks: [
-				{
-					entity: "twilightforest:hydra"
-					id: "9B30AA4CC69FAE5D"
-					type: "kill"
-					value: 1
-				}
-			]
-			x: 6.0d
-			y: -3.75d
-		}
-		{
-			dependencies: [
-				"CA9CB3E5DD91B775"
-			]
-			id: "F1990BB511B9CDFE"
-			rewards: [
-				{
-					id: "B7ECD050CDB41B4B"
-					type: "xp_levels"
-					xp_levels: 5
-				}
-			]
-			tasks: [
-				{
-					entity: "twilightforest:knight_phantom"
-					id: "EF22BB7DC59A3232"
-					type: "kill"
-					value: 1
-				}
-			]
-			x: 6.0d
-			y: -2.25d
-		}
-		{
-			dependencies: [
-				"F1990BB511B9CDFE"
-			]
-			id: "3ED51695CE0304B2"
-			rewards: [
-				{
-					id: "5C39818F08598CA2"
-					type: "xp_levels"
-					xp_levels: 5
-				}
-			]
-			tasks: [
-				{
-					entity: "twilightforest:ur_ghast"
-					id: "EE113C36062333BE"
-					type: "kill"
-					value: 1
-				}
-			]
-			x: 8.0d
-			y: -0.75d
-		}
-		{
-			dependencies: [
-				"FE372C6085F1F2B7"
-			]
-			id: "9D4EDA9A6320E181"
-			rewards: [
-				{
-					id: "48647F90601EA3F0"
-					type: "xp_levels"
-					xp_levels: 4
-				}
-			]
-			tasks: [
-				{
-					entity: "twilightforest:alpha_yeti"
-					id: "85CED81FF7CBE6CC"
-					type: "kill"
-					value: 1
-				}
-			]
-			x: 4.0d
-			y: -2.25d
-		}
-		{
-			dependencies: [
-				"9D4EDA9A6320E181"
-			]
-			id: "2DC52600B201EFBD"
-			rewards: [
-				{
-					id: "57821AF06E57D6C4"
-					type: "xp_levels"
-					xp_levels: 5
-				}
-			]
-			tasks: [
-				{
-					entity: "twilightforest:snow_queen"
-					id: "CD7CB2F2CDC05BFA"
-					type: "kill"
-					value: 1
-				}
-			]
-			x: 6.0d
-			y: -0.75d
-		}
-		{
-			id: "4A044730D3704EC3"
+			id: "5A044730D3704EC3"
+			progression_mode: "flexible"
 			rewards: [
 				{
 					id: "3FDBE1F7B1080FB9"
-					type: "xp_levels"
-					xp_levels: 4
+					table_id: 1753254771712731614L
+					type: "loot"
 				}
 			]
 			shape: "hexagon"
+			size: 1.5d
 			tasks: [
 				{
 					entity: "minecraft:wither"
-					id: "2590409D2F7FDB56"
+					id: "3590409D2F7FDB56"
 					type: "kill"
-					value: 1
+					value: 1L
 				}
 			]
-			x: 0.0d
-			y: -2.25d
+			x: 6.0d
+			y: 0.0d
 		}
 		{
+			dependencies: [
+				"5A044730D3704EC3"
+				"158910F703716CDC"
+			]
 			id: "1669D8493EE34097"
+			progression_mode: "flexible"
 			rewards: [
 				{
 					id: "5823016A3173D626"
-					type: "xp_levels"
-					xp_levels: 4
+					table_id: 6783561722415423100L
+					type: "loot"
 				}
 			]
 			shape: "hexagon"
+			size: 1.5d
 			tasks: [
 				{
 					entity: "minecraft:ender_dragon"
 					id: "1F74A7D6E70424AD"
 					type: "kill"
-					value: 1
+					value: 1L
 				}
 			]
-			x: 0.0d
-			y: -0.75d
-		}
-		{
-			id: "B44320C1FBB7D6C5"
-			optional: true
-			rewards: [
-				{
-					id: "D7BCC3F4CCF427DB"
-					type: "xp_levels"
-					xp_levels: 4
-				}
-			]
-			tasks: [
-				{
-					entity: "minecraft:warden"
-					id: "ECA9B7AAE8E955A0"
-					type: "kill"
-					value: 1
-				}
-			]
-			x: 0.0d
-			y: 0.75d
-		}
-		{
-			id: "BE3D573F7C12ED85"
-			rewards: [
-				{
-					id: "664BE8CCC50A627F"
-					type: "xp_levels"
-					xp_levels: 3
-				}
-			]
-			tasks: [
-				{
-					entity: "mowziesmobs:ferrous_wroughtnaut"
-					id: "AA1AEB673510FB9D"
-					type: "kill"
-					value: 1
-				}
-			]
-			x: 0.0d
-			y: 2.25d
-		}
-		{
-			dependencies: [
-				"BE3D573F7C12ED85"
-			]
-			id: "B08A985C28677FE7"
-			rewards: [
-				{
-					id: "1C3BE1BF761047D1"
-					type: "xp_levels"
-					xp_levels: 4
-				}
-			]
-			tasks: [
-				{
-					entity: "mowziesmobs:frostmaw"
-					id: "20973C67BE66FA0F"
-					type: "kill"
-					value: 1
-				}
-			]
-			x: 2.0d
-			y: -3.75d
-		}
-		{
-			dependencies: [
-				"BE3D573F7C12ED85"
-			]
-			id: "AEE283F027BBD1FE"
-			rewards: [
-				{
-					id: "8624059FB6658ECA"
-					type: "xp_levels"
-					xp_levels: 4
-				}
-			]
-			tasks: [
-				{
-					entity: "mowziesmobs:umvuthi"
-					id: "C06782E8D2BEB34B"
-					type: "kill"
-					value: 1
-				}
-			]
-			x: 2.0d
-			y: -2.25d
-		}
-		{
-			dependencies: [
-				"B08A985C28677FE7"
-			]
-			id: "B1D1D372986491E1"
-			rewards: [
-				{
-					id: "85E7669EC6D916B7"
-					type: "xp_levels"
-					xp_levels: 5
-				}
-			]
-			tasks: [
-				{
-					entity: "mowziesmobs:sculptor"
-					id: "ADD58C6CB4623B31"
-					type: "kill"
-					value: 1
-				}
-			]
-			x: 4.0d
-			y: -0.75d
+			x: 8.0d
+			y: 0.0d
 		}
 		{
 			dependencies: [
 				"1669D8493EE34097"
+				"16524B0976ED00B7"
 			]
-			id: "A0190966F7122D37"
+			id: "3888BFD9EFCB6AB4"
+			progression_mode: "flexible"
 			rewards: [
 				{
-					id: "7CDAE62A24A2CA30"
-					type: "xp_levels"
-					xp_levels: 5
+					id: "3EBD2CB8554F53FE"
+					table_id: 6783561722415423100L
+					type: "loot"
 				}
 			]
-			tasks: [
-				{
-					entity: "cataclysm:ender_guardian"
-					id: "48F9D4D0B5A2024C"
-					type: "kill"
-					value: 1
-				}
-			]
-			x: 2.0d
-			y: -0.75d
-		}
-		{
-			dependencies: [
-				"4A044730D3704EC3"
-			]
-			id: "2CBA21DFFA584AC7"
-			rewards: [
-				{
-					id: "640654C8FD3E8242"
-					type: "xp_levels"
-					xp_levels: 5
-				}
-			]
+			shape: "hexagon"
 			tasks: [
 				{
 					entity: "cataclysm:netherite_monstrosity"
-					id: "114974F6E896902A"
+					id: "71DC959C701C5FE5"
 					type: "kill"
-					value: 1
+					value: 1L
 				}
 			]
-			x: 2.0d
-			y: 0.75d
+			x: 12.0d
+			y: 0.0d
 		}
 		{
 			dependencies: [
-				"2CBA21DFFA584AC7"
+				"3888BFD9EFCB6AB4"
 			]
 			id: "5424D10A69C591E1"
+			progression_mode: "flexible"
 			rewards: [
 				{
-					id: "A8490E8F2F3A77D3"
-					type: "xp_levels"
-					xp_levels: 6
+					id: "38490E8F2F3A77D3"
+					table_id: 6783561722415423100L
+					type: "loot"
 				}
 			]
+			shape: "hexagon"
 			tasks: [
 				{
 					entity: "cataclysm:ignis"
-					id: "6AEDEA7D4D7F2251"
+					id: "7AEDEA7D4D7F2251"
 					type: "kill"
-					value: 1
+					value: 1L
 				}
 			]
-			x: 4.0d
-			y: 0.75d
-		}
-		{
-			dependencies: [
-				"2CBA21DFFA584AC7"
-			]
-			id: "8EF8BE6697CB5F01"
-			rewards: [
-				{
-					id: "3465892EAB5D5567"
-					type: "xp_levels"
-					xp_levels: 6
-				}
-			]
-			tasks: [
-				{
-					entity: "cataclysm:the_harbinger"
-					id: "EFE5F9A710A9B1D5"
-					type: "kill"
-					value: 1
-				}
-			]
-			x: 4.0d
-			y: 2.25d
-		}
-		{
-			dependencies: [
-				"8EF8BE6697CB5F01"
-			]
-			id: "5DFB83C82E8BD14F"
-			rewards: [
-				{
-					id: "8DE0F5AE5C47AD33"
-					type: "xp_levels"
-					xp_levels: 6
-				}
-			]
-			tasks: [
-				{
-					entity: "cataclysm:the_leviathan"
-					id: "BA8DF5C3FF881F14"
-					type: "kill"
-					value: 1
-				}
-			]
-			x: 6.0d
-			y: 0.75d
-		}
-		{
-			dependencies: [
-				"8EF8BE6697CB5F01"
-			]
-			id: "806244E877438AB3"
-			rewards: [
-				{
-					id: "536B29F42B3540C9"
-					type: "xp_levels"
-					xp_levels: 6
-				}
-			]
-			tasks: [
-				{
-					entity: "cataclysm:ancient_remnant"
-					id: "B7AD58ABCDC1312F"
-					type: "kill"
-					value: 1
-				}
-			]
-			x: 6.0d
-			y: 2.25d
+			x: 14.0d
+			y: 0.0d
 		}
 		{
 			dependencies: [
 				"5424D10A69C591E1"
 			]
-			id: "85F09ED7AC553F4A"
+			id: "1EF8BE6697CB5F01"
+			progression_mode: "flexible"
 			rewards: [
 				{
-					id: "45BD9FFBE672ECA4"
-					type: "xp_levels"
-					xp_levels: 7
+					id: "3465892EAB5D5567"
+					table_id: 6783561722415423100L
+					type: "loot"
 				}
 			]
+			shape: "hexagon"
 			tasks: [
 				{
-					entity: "cataclysm:maledictus"
-					id: "83D252AA600FE240"
+					entity: "cataclysm:the_harbinger"
+					id: "7FE5F9A710A9B1D5"
 					type: "kill"
-					value: 1
+					value: 1L
 				}
 			]
-			x: 6.0d
-			y: 3.75d
+			x: 16.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"1EF8BE6697CB5F01"
+			]
+			id: "5DFB83C82E8BD14F"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "1DE0F5AE5C47AD33"
+					table_id: 3797459037597754809L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					entity: "cataclysm:the_leviathan"
+					id: "3A8DF5C3FF881F14"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 18.0d
+			y: 0.0d
 		}
 		{
 			dependencies: [
 				"5DFB83C82E8BD14F"
+				"141667D8349427F7"
 			]
-			id: "141667D8349427F7"
+			id: "7EF384820706F4D1"
 			rewards: [
 				{
-					id: "9ED041635ECC3064"
-					type: "xp_levels"
-					xp_levels: 7
+					id: "1C53962B35171AD8"
+					table_id: 3797459037597754809L
+					type: "loot"
 				}
 			]
+			shape: "star"
+			size: 1.5d
 			tasks: [
 				{
-					entity: "cataclysm:scylla"
-					id: "1C323F909262EA39"
-					type: "kill"
-					value: 1
+					id: "7B5BDB11163F4DBB"
+					type: "checkmark"
 				}
 			]
-			x: 8.0d
-			y: 0.75d
+			x: 22.0d
+			y: 0.0d
 		}
 		{
 			dependencies: [
-				"4A044730D3704EC3"
+				"3E3D573F7C12ED85"
 			]
-			id: "E77BA16A9F495E84"
+			id: "58570FE37A79A715"
+			optional: true
 			rewards: [
 				{
-					id: "E278EC652F9F20C8"
+					id: "3C00C6EB478225E7"
 					type: "xp_levels"
-					xp_levels: 6
+					xp_levels: 2
 				}
 			]
+			shape: "heart"
 			tasks: [
 				{
-					entity: "iceandfire:fire_dragon"
-					id: "E987D00F7DE75860"
-					type: "kill"
-					value: 1
+					id: "54B8AB74797612EF"
+					item: {
+						count: 1
+						id: "mowziesmobs:wrought_axe"
+					}
+					type: "item"
 				}
 			]
-			x: 2.0d
-			y: 2.25d
+			x: 4.0d
+			y: 1.5d
 		}
 		{
 			dependencies: [
-				"4A044730D3704EC3"
+				"3E3D573F7C12ED85"
 			]
-			id: "155D6EE638883874"
+			id: "308A985C28677FE7"
+			progression_mode: "flexible"
 			rewards: [
 				{
-					id: "967EC68073DA2B76"
+					id: "1C3BE1BF761047D1"
 					type: "xp_levels"
-					xp_levels: 6
+					xp_levels: 2
 				}
 			]
 			tasks: [
 				{
-					entity: "iceandfire:ice_dragon"
-					id: "EE4A51B2593F7193"
+					entity: "mowziesmobs:frostmaw"
+					id: "30973C67BE66FA0F"
 					type: "kill"
-					value: 1
+					value: 1L
 				}
 			]
-			x: 2.0d
-			y: 3.75d
+			x: 4.0d
+			y: -1.5d
 		}
 		{
-			id: "FA662B376EA6BA68"
+			dependencies: [
+				"308A985C28677FE7"
+			]
+			id: "3EE283F027BBD1FE"
+			progression_mode: "flexible"
 			rewards: [
 				{
-					id: "685C0CD7129177D8"
+					id: "1624059FB6658ECA"
 					type: "xp_levels"
 					xp_levels: 3
 				}
 			]
 			tasks: [
 				{
-					entity: "aether:slider"
-					id: "291C93F14B17D958"
+					entity: "mowziesmobs:umvuthi"
+					id: "506782E8D2BEB34B"
 					type: "kill"
-					value: 1
+					value: 1L
 				}
 			]
-			x: 0.0d
-			y: 3.75d
+			x: 6.0d
+			y: -1.5d
 		}
 		{
 			dependencies: [
-				"FA662B376EA6BA68"
+				"3EE283F027BBD1FE"
 			]
-			id: "7230E89A7FC46EE6"
+			id: "31D1D372986491E1"
+			progression_mode: "flexible"
 			rewards: [
 				{
-					id: "CCC494866256B5CB"
+					id: "15E7669EC6D916B7"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					entity: "mowziesmobs:sculptor"
+					id: "1DD58C6CB4623B31"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 8.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"3432B4B441E30C57"
+			]
+			id: "7E52BB6A690764D2"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "130AF649E0647103"
 					type: "xp_levels"
-					xp_levels: 4
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					entity: "born_in_chaos_v1:dire_hound_leader"
+					id: "74A4D709FED7DB8D"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 2.0d
+			y: -4.5d
+		}
+		{
+			dependencies: [
+				"7E52BB6A690764D2"
+			]
+			id: "5B9A9B737B3D52B9"
+			rewards: [
+				{
+					id: "1A5DD4021997E536"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "32FA971D7001171A"
+					item: {
+						count: 1
+						id: "born_in_chaos_v1:dark_metal_ingot"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: -6.0d
+		}
+		{
+			dependencies: [
+				"7E52BB6A690764D2"
+			]
+			id: "1D2236EF868ED48C"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "385A4FBC3D2B8422"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					entity: "born_in_chaos_v1:supreme_bonescaller"
+					id: "3D3C771DE175558B"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 4.0d
+			y: -4.5d
+		}
+		{
+			dependencies: [
+				"1D2236EF868ED48C"
+			]
+			id: "1EF97AFEAA13474C"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "1D816E99E29BEF2B"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					entity: "born_in_chaos_v1:mother_spider"
+					id: "1000959B5E7287FD"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 6.0d
+			y: -4.5d
+		}
+		{
+			dependencies: [
+				"1EF97AFEAA13474C"
+			]
+			id: "358A7FF47A1314DE"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "56C6F9C4F078D85E"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					entity: "born_in_chaos_v1:sir_pumpkinhead"
+					id: "1C38CD5CB1997CB9"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 8.0d
+			y: -4.5d
+		}
+		{
+			dependencies: [
+				"358A7FF47A1314DE"
+			]
+			id: "31ECFB556A1AB8A0"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "758864E299653C07"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					entity: "born_in_chaos_v1:lord_pumpkinhead"
+					id: "1CC8DD9CF78202A9"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 10.0d
+			y: -4.5d
+		}
+		{
+			dependencies: [
+				"31ECFB556A1AB8A0"
+			]
+			id: "13DDC6C482CB2709"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "3EDE0B8E34409D44"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					entity: "born_in_chaos_v1:fallen_chaos_knight"
+					id: "170B3F2C0D3C6845"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 12.0d
+			y: -4.5d
+		}
+		{
+			dependencies: [
+				"3432B4B441E30C57"
+			]
+			id: "363FCF5B50A65FF6"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "5958E5F7DD1A67F5"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					entity: "friendsandfoes:iceologer"
+					id: "311D4E18AB07C02A"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 2.0d
+			y: 9.0d
+		}
+		{
+			dependencies: [
+				"363FCF5B50A65FF6"
+			]
+			id: "1DC15E4D98B9576B"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "76A4D25992C0B8D2"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					entity: "illagerinvasion:invoker"
+					id: "50019CB3A5A80123"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 4.0d
+			y: 9.0d
+		}
+		{
+			dependencies: [
+				"1DC15E4D98B9576B"
+				"1EC196EC8629D11F"
+			]
+			id: "16C5E1CA4D1BFEEB"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "3F8881243A9BECDE"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					entity: "friendsandfoes:wildfire"
+					id: "1A33177F7574C1A2"
+					type: "kill"
+					value: 1L
+				}
+				{
+					id: "54E3963B1E94CF70"
+					item: {
+						count: 1
+						id: "friendsandfoes:wildfire_crown_fragment"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 9.0d
+		}
+		{
+			dependencies: [
+				"3432B4B441E30C57"
+			]
+			id: "1697E44735604F50"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "5A6BCD744BB9AF9F"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					entity: "mutantmonsters:mutant_zombie"
+					id: "7E4F12BF1337675B"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 2.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"1697E44735604F50"
+			]
+			id: "74F47EBA9AFFC99A"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "13500BD89511A2E6"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					entity: "mutantmonsters:mutant_skeleton"
+					id: "3FCB35FD5DAC9585"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 4.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"74F47EBA9AFFC99A"
+			]
+			id: "513B6021C17F65C4"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "5EE692698A00D6E2"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					entity: "mutantmonsters:mutant_creeper"
+					id: "7EFCBDA90BA8A1AA"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 6.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"513B6021C17F65C4"
+			]
+			id: "3944FA102C49DD02"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "5B693F69D6DDCBA4"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					entity: "mutantmonsters:mutant_enderman"
+					id: "5F7FC92D687113D8"
+					type: "kill"
+					value: 1L
+				}
+				{
+					id: "7B37DC12EF178529"
+					item: {
+						count: 1
+						id: "mutantmonsters:endersoul_hand"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"1B72E9BA80BD5B97"
+			]
+			id: "344320C1FBB7D6C5"
+			optional: true
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "57BCC3F4CCF427DB"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					entity: "minecraft:warden"
+					id: "7CA9B7AAE8E955A0"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 6.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"1B72E9BA80BD5B97"
+			]
+			id: "39EE5E23CC207EC9"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "57C6D6A73493A145"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					entity: "aquamirae:eel"
+					id: "33AA6FFE3D507588"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 6.0d
+			y: 6.0d
+		}
+		{
+			dependencies: [
+				"39EE5E23CC207EC9"
+			]
+			id: "53743B61F7C8A1BE"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "59343C1DDA516661"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					entity: "aquamirae:maze_mother"
+					id: "5AD766AACF55D94A"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 8.0d
+			y: 6.0d
+		}
+		{
+			dependencies: [
+				"53743B61F7C8A1BE"
+			]
+			id: "306D141C17CAB9C6"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "5C8391D9FAC486B0"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					entity: "aquamirae:captain_cornelia"
+					id: "3E4A7F3FF3EEA560"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 10.0d
+			y: 6.0d
+		}
+		{
+			dependencies: [
+				"3E3D573F7C12ED85"
+			]
+			id: "7A662B376EA6BA68"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "785C0CD7129177D8"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					entity: "aether:slider"
+					id: "391C93F14B17D958"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 4.0d
+			y: 7.5d
+		}
+		{
+			dependencies: [
+				"7A662B376EA6BA68"
+			]
+			id: "32156F811470D344"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "3DA9C55A3B6F549D"
+					type: "xp_levels"
+					xp_levels: 3
 				}
 			]
 			tasks: [
 				{
 					entity: "aether:valkyrie_queen"
-					id: "C3183A755EA44F17"
+					id: "101ED7A9A2F36BA2"
 					type: "kill"
-					value: 1
+					value: 1L
 				}
 			]
-			x: 2.0d
-			y: 5.25d
+			x: 6.0d
+			y: 7.5d
 		}
 		{
 			dependencies: [
-				"7230E89A7FC46EE6"
+				"32156F811470D344"
 			]
 			id: "7737AE9AC6F36984"
+			progression_mode: "flexible"
 			rewards: [
 				{
-					id: "6425B3F7CDFE1538"
+					id: "7425B3F7CDFE1538"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					entity: "aether:sun_spirit"
+					id: "1BD5324712F5617D"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 8.0d
+			y: 7.5d
+		}
+		{
+			dependencies: [
+				"1669D8493EE34097"
+			]
+			id: "5AE482777D3CE561"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "37F9D1083D0D0426"
 					type: "xp_levels"
-					xp_levels: 5
+					xp_levels: 2
 				}
 			]
 			tasks: [
 				{
-					entity: "aether:sun_spirit"
-					id: "8BD5324712F5617D"
+					entity: "block_factorys_bosses:yeti"
+					id: "1A761CDCAC3835D8"
 					type: "kill"
-					value: 1
+					value: 1L
 				}
 			]
-			x: 4.0d
-			y: 3.75d
+			x: 10.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"5AE482777D3CE561"
+			]
+			id: "3F50936509DD62AD"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "77C409D54DB4DECB"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					entity: "block_factorys_bosses:sandworm"
+					id: "1982E41E82D2EC40"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 12.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"3F50936509DD62AD"
+			]
+			id: "16D0E23B91F6F34A"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "1327CA9AD1541CAA"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					entity: "block_factorys_bosses:pirate_captain"
+					id: "11200A25FC2356D2"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 14.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"16D0E23B91F6F34A"
+			]
+			id: "5216BF7A7ADDF655"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "5F6276BA9C5E5E71"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					entity: "block_factorys_bosses:kraken"
+					id: "5ADD106136E40755"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 16.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"5216BF7A7ADDF655"
+			]
+			id: "333E70C6F5E82EEC"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "71EFC0E3728C382E"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					entity: "block_factorys_bosses:underworld_knight"
+					id: "58BB7EED36FD142D"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 18.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"333E70C6F5E82EEC"
+			]
+			id: "54C39A5283D2D0BA"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "336C85C66B1DE668"
+					table_id: 6783561722415423100L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					entity: "block_factorys_bosses:infernal_dragon"
+					id: "1E9AA2D486D1D190"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 20.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"5A044730D3704EC3"
+			]
+			id: "3A48E312FE17C7BE"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "5FBAFF7CD80B2769"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					entity: "iceandfire:cyclops"
+					id: "5D789A564D1D241A"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 8.0d
+			y: 4.5d
+		}
+		{
+			dependencies: [
+				"3A48E312FE17C7BE"
+			]
+			id: "7C1CE74E3607E132"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "3A22ABF6B7F073CC"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					entity: "iceandfire:gorgon"
+					id: "527ED00DBC127457"
+					type: "kill"
+					value: 1L
+				}
+				{
+					id: "71C0FD0E9AF9D954"
+					item: {
+						count: 1
+						id: "iceandfire:gorgon_head"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 4.5d
+		}
+		{
+			dependencies: [
+				"7C1CE74E3607E132"
+			]
+			id: "1B0A734023FA31FE"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "5B0EA2C3927DC173"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					entity: "iceandfire:hydra"
+					id: "1B30AA4CC69FAE5D"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 12.0d
+			y: 4.5d
+		}
+		{
+			dependencies: [
+				"1669D8493EE34097"
+			]
+			id: "777BA16A9F495E84"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "7278EC652F9F20C8"
+					table_id: 6783561722415423100L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					entity: "iceandfire:fire_dragon"
+					id: "7987D00F7DE75860"
+					type: "kill"
+					value: 1L
+				}
+				{
+					id: "3ED03D5A862F9AAF"
+					item: {
+						count: 1
+						id: "iceandfire:fire_dragon_heart"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"777BA16A9F495E84"
+			]
+			id: "155D6EE638883874"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "167EC68073DA2B76"
+					table_id: 6783561722415423100L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					entity: "iceandfire:ice_dragon"
+					id: "7E4A51B2593F7193"
+					type: "kill"
+					value: 1L
+				}
+				{
+					id: "1B995F9B62D4F80C"
+					item: {
+						count: 1
+						id: "iceandfire:ice_dragon_heart"
+					}
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"155D6EE638883874"
+			]
+			id: "3B4DAD7E75DA8E73"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "7F61378FF20ABEEB"
+					table_id: 6783561722415423100L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					entity: "iceandfire:lightning_dragon"
+					id: "135300C481E2E51A"
+					type: "kill"
+					value: 1L
+				}
+				{
+					id: "70ADCA2980B61733"
+					item: {
+						count: 1
+						id: "iceandfire:lightning_dragon_heart"
+					}
+					type: "item"
+				}
+			]
+			x: 14.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"1669D8493EE34097"
+			]
+			id: "16524B0976ED00B7"
+			rewards: [
+				{
+					id: "36EB5508AF107760"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "1A616E615D600132"
+					item: {
+						count: 1
+						id: "cataclysm:monstrous_eye"
+					}
+					type: "item"
+				}
+				{
+					id: "13ABF7C72946EA73"
+					item: {
+						count: 1
+						id: "cataclysm:void_eye"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"16524B0976ED00B7"
+			]
+			id: "717D43283A7C701F"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "1265B9D347381D2C"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					entity: "cataclysm:ender_golem"
+					id: "1327439FB8AF449C"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 12.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"717D43283A7C701F"
+			]
+			id: "105258EF3732EE78"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "169ED6DAEDB82A51"
+					table_id: 6783561722415423100L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					entity: "cataclysm:ender_guardian"
+					id: "77C677A08FE423C2"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 14.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"5424D10A69C591E1"
+			]
+			id: "7B941B77210E9405"
+			rewards: [
+				{
+					id: "1355020720D2B1D5"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					count: 4L
+					id: "3109C51DFBF850C7"
+					item: {
+						count: 1
+						id: "cataclysm:ignitium_ingot"
+					}
+					type: "item"
+				}
+			]
+			x: 16.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"1EF8BE6697CB5F01"
+			]
+			id: "775537CC0E722B0D"
+			rewards: [
+				{
+					id: "5C7586C8C3E7D3A7"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "39DAA670D8992A59"
+					item: {
+						count: 1
+						id: "cataclysm:witherite_ingot"
+					}
+					type: "item"
+				}
+			]
+			x: 18.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"5424D10A69C591E1"
+			]
+			id: "15AD6B56EDB6EDF2"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "1710A48C4CB60AFA"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					entity: "cataclysm:ancient_remnant"
+					id: "398F2FF7A8A8186F"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 16.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"15AD6B56EDB6EDF2"
+			]
+			id: "15F09ED7AC553F4A"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "55BD9FFBE672ECA4"
+					table_id: 6783561722415423100L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					entity: "cataclysm:maledictus"
+					id: "13D252AA600FE240"
+					type: "kill"
+					value: 1L
+				}
+				{
+					id: "12B999BEB2C589CA"
+					item: {
+						count: 1
+						id: "cataclysm:cursium_ingot"
+					}
+					type: "item"
+				}
+			]
+			x: 18.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"15F09ED7AC553F4A"
+			]
+			id: "141667D8349427F7"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "1ED041635ECC3064"
+					table_id: 3797459037597754809L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					entity: "cataclysm:scylla"
+					id: "1C323F909262EA39"
+					type: "kill"
+					value: 1L
+				}
+				{
+					id: "5AB2808BE64B79F6"
+					item: {
+						count: 1
+						id: "cataclysm:essence_of_the_storm"
+					}
+					type: "item"
+				}
+			]
+			x: 20.0d
+			y: 3.0d
 		}
 	]
 }

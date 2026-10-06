@@ -1,0 +1,755 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "industrial_foregoing"
+	group: "3B451255BC331CA7"
+	icon: {
+		id: "industrialforegoing:machine_frame_simple"
+	}
+	id: "51889BAF265E2B41"
+	images: [ ]
+	order_index: 12
+	quest_links: [
+		{
+			id: "50604EE5A00FEB71"
+			linked_quest: "50E8691B34B8D316"
+			shape: "rsquare"
+			size: 1.0d
+			x: -2.0d
+			y: 0.0d
+		}
+	]
+	quests: [
+		{
+			dependencies: [
+				"50E8691B34B8D316"
+			]
+			id: "560D1EA0B060B764"
+			rewards: [
+				{
+					id: "1BE15D769FA7FCD3"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			shape: "gear"
+			size: 1.5d
+			tasks: [
+				{
+					id: "368F803158D29286"
+					item: {
+						count: 1
+						id: "industrialforegoing:machine_frame_pity"
+					}
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"560D1EA0B060B764"
+			]
+			id: "57DE92569CC9C130"
+			rewards: [
+				{
+					id: "5F7A94235A719F0B"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "194024A257737AFE"
+					item: {
+						count: 1
+						id: "industrialforegoing:iron_gear"
+					}
+					type: "item"
+				}
+				{
+					id: "5DE501F6ADE2A4FA"
+					item: {
+						count: 1
+						id: "industrialforegoing:gold_gear"
+					}
+					type: "item"
+				}
+				{
+					id: "5B9B2FF22F5A91F2"
+					item: {
+						count: 1
+						id: "industrialforegoing:diamond_gear"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"560D1EA0B060B764"
+			]
+			id: "13D2537BFCAE09C0"
+			rewards: [
+				{
+					id: "5F4A037C734BAEF5"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "13831FB5A8375313"
+					item: {
+						count: 1
+						id: "industrialforegoing:pitiful_generator"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"57DE92569CC9C130"
+			]
+			id: "7D7E15F9193E7E55"
+			rewards: [
+				{
+					id: "3CC2B822A3CF720E"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "17CE6E16554CBF34"
+					item: {
+						count: 1
+						id: "industrialforegoing:fluid_extractor"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"7D7E15F9193E7E55"
+			]
+			id: "76CF8FAB836EE64C"
+			rewards: [
+				{
+					id: "1822F28548B127FC"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "5F1209122778187C"
+					item: {
+						count: 1
+						id: "industrialforegoing:latex_processing_unit"
+					}
+					type: "item"
+				}
+				{
+					count: 8L
+					id: "3CAF26D4FD5F282E"
+					item: {
+						count: 1
+						id: "industrialforegoing:dryrubber"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"76CF8FAB836EE64C"
+			]
+			id: "153DB2682CEC39D5"
+			rewards: [
+				{
+					id: "12C8A482AF2298D3"
+					table_id: 8873071041503571705L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					count: 16L
+					id: "5388A97563103A66"
+					item: {
+						count: 1
+						id: "industrialforegoing:plastic"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"153DB2682CEC39D5"
+			]
+			id: "1D7F87AEDA928296"
+			optional: true
+			rewards: [
+				{
+					id: "58C923F0541638F6"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					consume_items: true
+					count: 64L
+					id: "129C79B3CDBEEC22"
+					item: {
+						count: 1
+						id: "industrialforegoing:plastic"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"153DB2682CEC39D5"
+				"13D2537BFCAE09C0"
+			]
+			id: "325D75ECEDF5C763"
+			rewards: [
+				{
+					id: "763479F9A85021C7"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "76DBC5DC1332BD9B"
+					item: {
+						count: 1
+						id: "industrialforegoing:bioreactor"
+					}
+					type: "item"
+				}
+				{
+					id: "7F8F031163FA3E96"
+					item: {
+						count: 1
+						id: "industrialforegoing:biofuel_generator"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"153DB2682CEC39D5"
+			]
+			id: "19902A07A3EDB892"
+			rewards: [
+				{
+					id: "34161282AF99CD13"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "78D6F530741403C1"
+					item: {
+						count: 1
+						id: "industrialforegoing:plant_sower"
+					}
+					type: "item"
+				}
+				{
+					id: "1739D0BFF36B74EE"
+					item: {
+						count: 1
+						id: "industrialforegoing:plant_gatherer"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"19902A07A3EDB892"
+			]
+			id: "73DFEB47082A7C15"
+			rewards: [
+				{
+					id: "5E05BB1986CE73F2"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "134B980A415C9D8A"
+					item: {
+						count: 1
+						id: "industrialforegoing:animal_rancher"
+					}
+					type: "item"
+				}
+				{
+					id: "7F068138BB576793"
+					item: {
+						count: 1
+						id: "industrialforegoing:animal_feeder"
+					}
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"57DE92569CC9C130"
+			]
+			id: "14113B6F624B27CB"
+			rewards: [
+				{
+					id: "5B763CF0D011CFD6"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "3910FB6A342067E4"
+					item: {
+						count: 1
+						id: "industrialforegoing:range_addon_tier_1"
+					}
+					type: "item"
+				}
+				{
+					id: "1E8169D3909D42F2"
+					item: {
+						count: 1
+						id: "industrialforegoing:speed_addon_tier_1"
+					}
+					type: "item"
+				}
+				{
+					id: "5DCDF24B4F18A0B4"
+					item: {
+						count: 1
+						id: "industrialforegoing:efficiency_addon_tier_1"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"153DB2682CEC39D5"
+			]
+			id: "19686DBACEAA8E6C"
+			rewards: [
+				{
+					id: "3464CE8E2CD4333F"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "3AFD33861DEDDD15"
+					item: {
+						count: 1
+						id: "industrialforegoing:dissolution_chamber"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"19686DBACEAA8E6C"
+			]
+			id: "5B118AEDF8570D24"
+			rewards: [
+				{
+					id: "1DF1EDABAF809E52"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					id: "31EFC3C5375CDBF5"
+					item: {
+						count: 1
+						id: "industrialforegoing:machine_frame_simple"
+					}
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"5B118AEDF8570D24"
+			]
+			id: "197EDF81309AF84A"
+			rewards: [
+				{
+					id: "5D644FC9B0A23DD3"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "3E4665083B6BCA5F"
+					item: {
+						count: 1
+						id: "industrialforegoing:fermentation_station"
+					}
+					type: "item"
+				}
+			]
+			x: 14.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"153DB2682CEC39D5"
+			]
+			id: "38AB2AA07CA866F0"
+			rewards: [
+				{
+					id: "301BC8E69A6537DB"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "3C358FB5D49FA1B6"
+					item: {
+						count: 1
+						id: "industrialforegoing:mob_slaughter_factory"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"38AB2AA07CA866F0"
+				"19686DBACEAA8E6C"
+			]
+			id: "7B4B7E30B3B56FA3"
+			rewards: [
+				{
+					id: "1AC2B7519355FDC4"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "11337886C430439F"
+					item: {
+						count: 1
+						id: "industrialforegoing:pink_slime_bucket"
+					}
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"5B118AEDF8570D24"
+				"7B4B7E30B3B56FA3"
+			]
+			id: "5481C6F79B78ABC3"
+			rewards: [
+				{
+					id: "5BB02815B6A4FA28"
+					table_id: 6783561722415423100L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					id: "714A6247ADC76049"
+					item: {
+						count: 1
+						id: "industrialforegoing:machine_frame_advanced"
+					}
+					type: "item"
+				}
+			]
+			x: 14.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"5481C6F79B78ABC3"
+			]
+			id: "5A0F6819AD8F90AC"
+			rewards: [
+				{
+					id: "749EEB1958D40686"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "5FB0A3F285630445"
+					item: {
+						count: 1
+						id: "industrialforegoing:mob_imprisonment_tool"
+					}
+					type: "item"
+				}
+				{
+					id: "14F70F27ECFCF25A"
+					item: {
+						count: 1
+						id: "industrialforegoing:mob_crusher"
+					}
+					type: "item"
+				}
+			]
+			x: 16.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"5A0F6819AD8F90AC"
+			]
+			id: "14F297D9620D5A74"
+			rewards: [
+				{
+					id: "7C58937BE285DC0A"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "35455B5BDB035C1C"
+					item: {
+						count: 1
+						id: "industrialforegoing:mob_duplicator"
+					}
+					type: "item"
+				}
+			]
+			x: 18.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"5481C6F79B78ABC3"
+			]
+			id: "3A3C54B5EDE6D6DB"
+			rewards: [
+				{
+					id: "51EE0BF0BC768895"
+					table_id: 6783561722415423100L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					id: "5E14FFE490093041"
+					item: {
+						count: 1
+						id: "industrialforegoing:ore_laser_base"
+					}
+					type: "item"
+				}
+				{
+					count: 2L
+					id: "5F9FC12FD84DE517"
+					item: {
+						count: 1
+						id: "industrialforegoing:laser_drill"
+					}
+					type: "item"
+				}
+			]
+			x: 16.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"3A3C54B5EDE6D6DB"
+			]
+			id: "185AFA590FE6C3F7"
+			rewards: [
+				{
+					id: "528BEF643BFFAA75"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "37E5173A93B319A8"
+					item: {
+						count: 1
+						id: "industrialforegoing:red_laser_lens"
+					}
+					type: "item"
+				}
+				{
+					id: "3CD3C29F361831EB"
+					item: {
+						count: 1
+						id: "industrialforegoing:yellow_laser_lens"
+					}
+					type: "item"
+				}
+				{
+					id: "3141B8CC1CC05D15"
+					item: {
+						count: 1
+						id: "industrialforegoing:light_blue_laser_lens"
+					}
+					type: "item"
+				}
+			]
+			x: 18.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"3A3C54B5EDE6D6DB"
+			]
+			id: "5EECCCA78341CB28"
+			rewards: [
+				{
+					id: "3AA55D6089F8AFC8"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "3328BB74A9145C18"
+					item: {
+						count: 1
+						id: "industrialforegoing:machine_frame_supreme"
+					}
+					type: "item"
+				}
+			]
+			x: 18.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"5EECCCA78341CB28"
+			]
+			id: "745B1FDCD23332F0"
+			rewards: [
+				{
+					id: "342E287274D13525"
+					table_id: 3797459037597754809L
+					type: "loot"
+				}
+			]
+			shape: "star"
+			size: 1.5d
+			tasks: [
+				{
+					id: "397341BC5A2FC309"
+					item: {
+						count: 1
+						id: "industrialforegoing:infinity_charger"
+					}
+					type: "item"
+				}
+				{
+					id: "1393F318CFA08E67"
+					item: {
+						count: 1
+						id: "industrialforegoing:infinity_drill"
+					}
+					type: "item"
+				}
+			]
+			x: 20.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"745B1FDCD23332F0"
+			]
+			id: "76A79F09E9D39C54"
+			optional: true
+			rewards: [
+				{
+					id: "5ACC18C3E47C38DF"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "1BC0F40F7D685E56"
+					item: {
+						count: 1
+						id: "industrialforegoing:infinity_saw"
+					}
+					type: "item"
+				}
+				{
+					id: "7D3F756DFB23630D"
+					item: {
+						count: 1
+						id: "industrialforegoing:infinity_hammer"
+					}
+					type: "item"
+				}
+			]
+			x: 22.0d
+			y: -1.5d
+		}
+	]
+}

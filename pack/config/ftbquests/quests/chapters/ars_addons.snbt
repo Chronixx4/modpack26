@@ -1,0 +1,839 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "ars_addons"
+	group: "1A4AF5F0953E77C6"
+	icon: {
+		id: "ars_elemental:fire_focus"
+	}
+	id: "1B850C264D8E76A6"
+	images: [ ]
+	order_index: 19
+	quest_links: [
+		{
+			id: "197286BCB1444DBE"
+			linked_quest: "599E1CFB476A39FF"
+			shape: "rsquare"
+			size: 1.0d
+			x: -2.0d
+			y: 0.0d
+		}
+		{
+			id: "5AD6C632F7F5103A"
+			linked_quest: "76117789BAA94D97"
+			shape: "rsquare"
+			size: 1.0d
+			x: 0.0d
+			y: -1.5d
+		}
+		{
+			id: "73D7635FDD1C4AD9"
+			linked_quest: "392F8A297D909754"
+			shape: "rsquare"
+			size: 1.0d
+			x: 2.0d
+			y: -1.5d
+		}
+		{
+			id: "1AD66653E5A8B241"
+			linked_quest: "10E94F9577609EF6"
+			shape: "rsquare"
+			size: 1.0d
+			x: 6.0d
+			y: -3.0d
+		}
+		{
+			id: "17697D9E7352D972"
+			linked_quest: "114311F7649CA2A1"
+			shape: "rsquare"
+			size: 1.0d
+			x: 6.0d
+			y: -4.5d
+		}
+		{
+			id: "33E9BCB4AF92AD7B"
+			linked_quest: "1DF98BD3858BF0B7"
+			shape: "rsquare"
+			size: 1.0d
+			x: 8.0d
+			y: -3.0d
+		}
+		{
+			id: "77F4AA08FA264D5C"
+			linked_quest: "1627C6612AB7AE3D"
+			shape: "rsquare"
+			size: 1.0d
+			x: 8.0d
+			y: 1.5d
+		}
+		{
+			id: "55E41C22241CE876"
+			linked_quest: "158910F703716CDC"
+			shape: "rsquare"
+			size: 1.0d
+			x: 8.0d
+			y: -4.5d
+		}
+		{
+			id: "5905CF216993D54F"
+			linked_quest: "17CA5FE18CA0C5E4"
+			shape: "rsquare"
+			size: 1.0d
+			x: 0.0d
+			y: -6.0d
+		}
+		{
+			id: "5917D26A2727C14E"
+			linked_quest: "7031B172ED438FB9"
+			shape: "rsquare"
+			size: 1.0d
+			x: 0.0d
+			y: -7.5d
+		}
+		{
+			id: "11D1D20C03B6256C"
+			linked_quest: "3801F5F81ADF81F8"
+			shape: "rsquare"
+			size: 1.0d
+			x: 0.0d
+			y: 1.5d
+		}
+		{
+			id: "5DAF39B99F3D917B"
+			linked_quest: "19ADA048D98D80EE"
+			shape: "rsquare"
+			size: 1.0d
+			x: 2.0d
+			y: -7.5d
+		}
+		{
+			id: "75CD402450E70442"
+			linked_quest: "53853B92B6039F45"
+			shape: "rsquare"
+			size: 1.0d
+			x: 0.0d
+			y: 6.0d
+		}
+		{
+			id: "1A6A89E86BEA9E0B"
+			linked_quest: "15E63FFE4C9CBD64"
+			shape: "rsquare"
+			size: 1.0d
+			x: 2.0d
+			y: 4.5d
+		}
+		{
+			id: "57FE49E406394582"
+			linked_quest: "34B77B5110F93758"
+			shape: "rsquare"
+			size: 1.0d
+			x: 0.0d
+			y: -4.5d
+		}
+	]
+	quests: [
+		{
+			dependencies: [
+				"599E1CFB476A39FF"
+			]
+			id: "3F3A438B6BAD74DA"
+			rewards: [
+				{
+					id: "5458B7BC7E706E36"
+					table_id: 8873071041503571705L
+					type: "loot"
+				}
+				{
+					id: "5F30D95AD17AD1BD"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			shape: "gear"
+			size: 1.5d
+			tasks: [
+				{
+					id: "1ACD746832E939CD"
+					item: {
+						count: 1
+						id: "ars_elemental:curio_bag"
+					}
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"3F3A438B6BAD74DA"
+				"76117789BAA94D97"
+			]
+			id: "10F18168FD9E5B8D"
+			rewards: [
+				{
+					id: "33A6476190693881"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "59442E53DA261F83"
+					item: {
+						count: 1
+						id: "ars_elemental:lesser_fire_focus"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"10F18168FD9E5B8D"
+				"392F8A297D909754"
+			]
+			id: "5F367F416130822E"
+			rewards: [
+				{
+					id: "399FFC9E5DEC00F0"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "3ECB33A452E8F1EF"
+					item: {
+						count: 1
+						id: "ars_elemental:caster_bag"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"5F367F416130822E"
+			]
+			id: "1BBD56043151838D"
+			rewards: [
+				{
+					id: "38C4E50EA2BD558C"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "54D193A24CCE03FF"
+					item: {
+						count: 1
+						id: "sauce:anima_essence"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"1BBD56043151838D"
+				"10E94F9577609EF6"
+				"114311F7649CA2A1"
+			]
+			id: "7DBB256EA5C0F681"
+			rewards: [
+				{
+					id: "383E4EF401377151"
+					table_id: 6783561722415423100L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					id: "16035AC218F4398D"
+					item: {
+						count: 1
+						id: "ars_elemental:mark_of_mastery"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"7DBB256EA5C0F681"
+				"1DF98BD3858BF0B7"
+			]
+			id: "77EBE0ECB68949C1"
+			rewards: [
+				{
+					id: "561355457188CC91"
+					table_id: 3797459037597754809L
+					type: "loot"
+				}
+			]
+			shape: "star"
+			size: 1.5d
+			tasks: [
+				{
+					id: "1EADBD6B3B4DF46F"
+					item: {
+						count: 1
+						id: "ars_technica:technomancer_chestplate"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"10F18168FD9E5B8D"
+			]
+			id: "35F277BF013F02F4"
+			rewards: [
+				{
+					id: "1CBEA98FB1775C6B"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "39F03E9A43FBA7B1"
+					item: {
+						count: 1
+						id: "ars_elemental:lesser_water_focus"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"35F277BF013F02F4"
+			]
+			id: "1038DA911CD7B60F"
+			rewards: [
+				{
+					id: "7054CBC72137E2A3"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "3915B7A646EBF01C"
+					item: {
+						count: 1
+						id: "ars_elemental:lesser_earth_focus"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"1038DA911CD7B60F"
+				"114311F7649CA2A1"
+			]
+			id: "7F81B6D507A9A84A"
+			rewards: [
+				{
+					id: "7B0581B357984ACC"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "7E1C28617F3B0CCE"
+					item: {
+						count: 1
+						id: "ars_elemental:lesser_air_focus"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"7DBB256EA5C0F681"
+			]
+			id: "5460162DB1C3C268"
+			rewards: [
+				{
+					id: "70F6BEF241CB70F6"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "7A0A9244F315CC9F"
+					type: "checkmark"
+				}
+			]
+			x: 10.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"7DBB256EA5C0F681"
+				"1627C6612AB7AE3D"
+				"158910F703716CDC"
+			]
+			id: "769809318A856B1F"
+			rewards: [
+				{
+					id: "7933055DC93AEC65"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "53EBF5232398B3CB"
+					item: {
+						count: 1
+						id: "ars_elemental:base_bangle"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"3F3A438B6BAD74DA"
+			]
+			id: "710D00F679A63C7D"
+			rewards: [
+				{
+					id: "1325CA8AFEF5571B"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "7E64E31C3B15D79F"
+					item: {
+						count: 1
+						id: "ars_elemental:siren_charm"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"710D00F679A63C7D"
+			]
+			id: "5DB9DB297C2BE157"
+			optional: true
+			rewards: [
+				{
+					id: "1AD6DAFD3880AE5D"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "534C128D229DDEA1"
+					item: {
+						count: 1
+						id: "ars_elemental:everfull_urn"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"710D00F679A63C7D"
+				"114311F7649CA2A1"
+			]
+			id: "12F2DE19074140D3"
+			rewards: [
+				{
+					id: "39BA99FAD8CB4281"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "1FF58334EDD3E9E4"
+					item: {
+						count: 1
+						id: "ars_elemental:flashjack_charm"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: -4.5d
+		}
+		{
+			dependencies: [
+				"3F3A438B6BAD74DA"
+				"17CA5FE18CA0C5E4"
+				"7031B172ED438FB9"
+			]
+			id: "1FDF9CAE6A7FC3AC"
+			rewards: [
+				{
+					id: "1109584DCC221A2C"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "35EBEBB01C6C3067"
+					item: {
+						count: 1
+						id: "ars_creo:starbuncle_wheel"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -6.0d
+		}
+		{
+			dependencies: [
+				"3F3A438B6BAD74DA"
+				"3801F5F81ADF81F8"
+			]
+			id: "365E676BD0617FBC"
+			rewards: [
+				{
+					id: "59E305C7E6AF9BBB"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "38E9B8EB4EDCF5D9"
+					item: {
+						count: 1
+						id: "ars_technica:calibrated_precision_mechanism"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"365E676BD0617FBC"
+				"19ADA048D98D80EE"
+			]
+			id: "168E8EE94652ECC5"
+			rewards: [
+				{
+					id: "77A8B5950CAA5E17"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "7F8F4BCC0CE09777"
+					item: {
+						count: 1
+						id: "ars_technica:source_motor"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"365E676BD0617FBC"
+				"10E94F9577609EF6"
+			]
+			id: "77E07F477656283B"
+			rewards: [
+				{
+					id: "55DEB27B9FC7D953"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "1E203C82EA7424E5"
+					item: {
+						count: 1
+						id: "ars_technica:mark_of_technomancy"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"365E676BD0617FBC"
+			]
+			id: "10C282A93513E701"
+			rewards: [
+				{
+					id: "778287A2F8C98832"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "1F987DCD68BF53C3"
+					item: {
+						count: 1
+						id: "ars_technica:transmutation_focus"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 4.5d
+		}
+		{
+			dependencies: [
+				"3F3A438B6BAD74DA"
+				"53853B92B6039F45"
+			]
+			id: "1F8F5E949755C93F"
+			rewards: [
+				{
+					id: "50778D68013DB789"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "1272B405D0D49CF9"
+					item: {
+						count: 1
+						id: "ars_additions:ender_source_jar"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 6.0d
+		}
+		{
+			dependencies: [
+				"1F8F5E949755C93F"
+				"15E63FFE4C9CBD64"
+			]
+			id: "118F073D484295F0"
+			rewards: [
+				{
+					id: "3C41FC01FB43D82F"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "518F73226CDAD321"
+					item: {
+						count: 1
+						id: "ars_additions:advanced_dominion_wand"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 6.0d
+		}
+		{
+			dependencies: [
+				"118F073D484295F0"
+			]
+			id: "121410DBECB18B17"
+			optional: true
+			rewards: [
+				{
+					id: "31102AA5AA3CAA41"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "7F400991A0ABF748"
+					item: {
+						count: 1
+						id: "ars_additions:undying_charm"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 6.0d
+		}
+		{
+			dependencies: [
+				"3F3A438B6BAD74DA"
+			]
+			id: "3495740D288CDA80"
+			rewards: [
+				{
+					id: "5F8324592B1A34CA"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "51949A3EEAE6F7D3"
+					item: {
+						count: 1
+						id: "not_enough_glyphs:spell_binder"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 7.5d
+		}
+		{
+			dependencies: [
+				"3495740D288CDA80"
+				"392F8A297D909754"
+			]
+			id: "334B3D9ABA76E4E3"
+			rewards: [
+				{
+					id: "5103E41BD5512EFA"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "1DE6B36BF6C58FEA"
+					item: {
+						count: 1
+						id: "not_enough_glyphs:glyph_contingency_fall"
+					}
+					type: "item"
+				}
+				{
+					id: "7B9A3B17D9A1B48E"
+					item: {
+						count: 1
+						id: "not_enough_glyphs:glyph_plow"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 7.5d
+		}
+		{
+			dependencies: [
+				"334B3D9ABA76E4E3"
+				"114311F7649CA2A1"
+			]
+			id: "13AC657D686AED12"
+			rewards: [
+				{
+					id: "3C4ED74F37188F1C"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "35EC1ACF4393A179"
+					item: {
+						count: 1
+						id: "toomanyglyphs:glyph_ray"
+					}
+					type: "item"
+				}
+				{
+					id: "5122229AB7035C9D"
+					item: {
+						count: 1
+						id: "arsomega:glyph_missile"
+					}
+					type: "item"
+				}
+				{
+					id: "7076E528F634C5A0"
+					item: {
+						count: 1
+						id: "ars_scalaes:glyph_resize"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 7.5d
+		}
+		{
+			dependencies: [
+				"3F3A438B6BAD74DA"
+				"34B77B5110F93758"
+			]
+			id: "723B195D28A35401"
+			rewards: [
+				{
+					id: "7217CFD93FADA430"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "1BE760F141D1D5E6"
+					item: {
+						count: 1
+						id: "ars_ocultas:altar"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -4.5d
+		}
+	]
+}

@@ -9,7 +9,7 @@ $ProgressPreference = 'SilentlyContinue'
 $MC      = '1.21.1'
 $LOADER  = 'neoforge'
 $PACK    = 'Unser Modpack'
-$PACKVER = '0.9.7'
+$PACKVER = '0.9.8'
 $RAM     = '8G'
 $TIMEOUT_MIN = 20
 

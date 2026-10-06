@@ -1,5 +1,7 @@
 # Questbuch 2.0: Plan
 
+> **Umgesetzt in 0.9.8, alles auf einmal:** 6 Gruppen, 33 Kapitel, 1178 Quests. Entscheidungen: gesperrt (linear), Team teilt Fortschritt, Abgabe-Quests ja, Umfang wie geplant. Regeln und Anker: `AUTOREN.md`.
+
 Ziel: ein richtiges, durchgehendes Questbuch im ATM-Stil. Rund **950 Quests in 33 Kapiteln, aufgeteilt in 6 Gruppen.** Jede Kette folgt den echten Rezepten, und keine Quest bleibt ohne Namen.
 
 ## 0. Was in 0.9.7 kaputt war (Ursache gefunden)

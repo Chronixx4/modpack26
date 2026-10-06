@@ -1,0 +1,155 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "1854CFECFCB229DE"
+	loot_crate: {
+		color: 5635925
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "loot2"
+	}
+	loot_size: 1
+	order_index: 1
+	rewards: [
+		{
+			count: 3
+			id: "343C5AC59ED3E8E1"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 6.0f
+		}
+		{
+			count: 6
+			id: "3DB8C9BC339F1EA3"
+			item: {
+				count: 1
+				id: "minecraft:emerald"
+			}
+			weight: 6.0f
+		}
+		{
+			count: 12
+			id: "37423D5B9BA75533"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 8.0f
+		}
+		{
+			count: 4
+			id: "7CF0A68DA2B0BA88"
+			item: {
+				count: 1
+				id: "minecraft:iron_block"
+			}
+			weight: 8.0f
+		}
+		{
+			count: 16
+			id: "340FFEC9DF052CD9"
+			item: {
+				count: 1
+				id: "create:brass_ingot"
+			}
+			weight: 6.0f
+		}
+		{
+			count: 8
+			id: "17E31C6DF89A41D2"
+			item: {
+				count: 1
+				id: "minecraft:ender_pearl"
+			}
+			weight: 6.0f
+		}
+		{
+			count: 16
+			id: "38831A889F04615F"
+			item: {
+				count: 1
+				id: "minecraft:golden_carrot"
+			}
+			weight: 6.0f
+		}
+		{
+			count: 16
+			id: "17B925EF52BB4276"
+			item: {
+				count: 1
+				id: "minecraft:experience_bottle"
+			}
+			weight: 6.0f
+		}
+		{
+			count: 2
+			id: "1758F134A2A419AB"
+			item: {
+				count: 1
+				id: "minecraft:name_tag"
+			}
+			weight: 3.0f
+		}
+		{
+			count: 16
+			id: "1243D62C22669CCC"
+			item: {
+				count: 1
+				id: "mekanism:ingot_osmium"
+			}
+			weight: 6.0f
+		}
+		{
+			count: 16
+			id: "70B7A781DBFF85FD"
+			item: {
+				count: 1
+				id: "ae2:certus_quartz_crystal"
+			}
+			weight: 6.0f
+		}
+		{
+			count: 16
+			id: "394C007247616300"
+			item: {
+				count: 1
+				id: "minecraft:obsidian"
+			}
+			weight: 5.0f
+		}
+		{
+			count: 32
+			id: "765729CD9E2E86ED"
+			item: {
+				count: 1
+				id: "mysticalagriculture:inferium_essence"
+			}
+			weight: 6.0f
+		}
+		{
+			count: 8
+			id: "1E1F4DC7385CCFD8"
+			item: {
+				count: 1
+				id: "ars_nouveau:source_gem"
+			}
+			weight: 5.0f
+		}
+		{
+			id: "7093ABA3BE138C03"
+			item: {
+				count: 1
+				id: "minecraft:saddle"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

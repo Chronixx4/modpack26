@@ -1,0 +1,977 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "powah_reaktoren"
+	group: "3B451255BC331CA7"
+	icon: {
+		id: "powah:energizing_orb"
+	}
+	id: "7CCF8B2E5EBC6564"
+	images: [ ]
+	order_index: 11
+	quest_links: [
+		{
+			id: "3F6CCC6E62B447F7"
+			linked_quest: "50E8691B34B8D316"
+			shape: "rsquare"
+			size: 1.0d
+			x: -2.0d
+			y: 0.0d
+		}
+	]
+	quests: [
+		{
+			dependencies: [
+				"50E8691B34B8D316"
+			]
+			id: "7E9104D55AD7EB97"
+			rewards: [
+				{
+					id: "34C09810C69003B0"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			shape: "gear"
+			size: 1.5d
+			tasks: [
+				{
+					count: 8L
+					id: "35A477C8D0A0FB51"
+					item: {
+						count: 1
+						id: "powah:dielectric_paste"
+					}
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"7E9104D55AD7EB97"
+			]
+			id: "548A32AAD28AB0FC"
+			rewards: [
+				{
+					id: "1D6D4BD305B8A30D"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "3CA23919D996CB1D"
+					item: {
+						count: 1
+						id: "powah:book"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"7E9104D55AD7EB97"
+			]
+			id: "35DFCB25040E354C"
+			rewards: [
+				{
+					id: "5764BF8D43F69029"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "513C605A943EC63D"
+					item: {
+						count: 1
+						id: "powah:dielectric_rod"
+					}
+					type: "item"
+				}
+				{
+					id: "1BA805805DB1A218"
+					item: {
+						count: 1
+						id: "powah:dielectric_casing"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"35DFCB25040E354C"
+			]
+			id: "5121871558184D56"
+			rewards: [
+				{
+					id: "3CAA6347CBA0F100"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "3420F7BFCC0495F8"
+					item: {
+						count: 1
+						id: "powah:capacitor_basic"
+					}
+					type: "item"
+				}
+				{
+					id: "1939D66929A9B7F4"
+					item: {
+						count: 1
+						id: "powah:capacitor_basic_tiny"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"5121871558184D56"
+			]
+			id: "736F8A72717BDDA2"
+			rewards: [
+				{
+					id: "1E5B98D258B99FCA"
+					table_id: 8873071041503571705L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					id: "30996AF572BDE846"
+					item: {
+						count: 1
+						id: "powah:energizing_orb"
+					}
+					type: "item"
+				}
+				{
+					id: "5CDE17400FE4C7EE"
+					item: {
+						count: 1
+						id: "powah:energizing_rod_starter"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"5121871558184D56"
+			]
+			id: "1D2EAD14940A49AD"
+			rewards: [
+				{
+					id: "32987CA9347AA38C"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "3A579D1AA72DBAE8"
+					item: {
+						count: 1
+						id: "powah:furnator_starter"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"1D2EAD14940A49AD"
+			]
+			id: "3FCA9D21D5317F28"
+			rewards: [
+				{
+					id: "5512B1E4475F1BBC"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "52E18E067A4F845E"
+					item: {
+						count: 1
+						id: "powah:magmator_starter"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"3FCA9D21D5317F28"
+			]
+			id: "7039A4C4C36ED18F"
+			rewards: [
+				{
+					id: "12AF5FBC73F6E01C"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "124437310AB56D99"
+					item: {
+						count: 1
+						id: "powah:thermo_generator_starter"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"5121871558184D56"
+			]
+			id: "534F744EBD8EB6DC"
+			rewards: [
+				{
+					id: "5F2773D4A3922C95"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "18CBC13D5D1C291A"
+					item: {
+						count: 1
+						id: "powah:photoelectric_pane"
+					}
+					type: "item"
+				}
+				{
+					id: "1908A2C8EEFF7F41"
+					item: {
+						count: 1
+						id: "powah:solar_panel_starter"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"5121871558184D56"
+			]
+			id: "5A0488ECA027EE8C"
+			rewards: [
+				{
+					id: "725DA9CE9F9F83EA"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "51C326AEE85C54AA"
+					item: {
+						count: 1
+						id: "powah:energy_cell_starter"
+					}
+					type: "item"
+				}
+				{
+					count: 8L
+					id: "5502048A917C9D78"
+					item: {
+						count: 1
+						id: "powah:energy_cable_starter"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"7E9104D55AD7EB97"
+			]
+			id: "3C70BEFB8CC31396"
+			rewards: [
+				{
+					id: "3DBF19D74604A9EB"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					count: 8L
+					id: "72EA76ECB2CD4E14"
+					item: {
+						count: 1
+						id: "powah:uraninite"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 4.5d
+		}
+		{
+			dependencies: [
+				"3C70BEFB8CC31396"
+				"5121871558184D56"
+			]
+			id: "3798A8DF9E773CF1"
+			rewards: [
+				{
+					id: "3B1DCFB738D65E5C"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "5F2F5867E6FF6C9E"
+					item: {
+						count: 1
+						id: "powah:reactor_starter"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 4.5d
+		}
+		{
+			dependencies: [
+				"5A0488ECA027EE8C"
+			]
+			id: "361D3B5F14C6969A"
+			rewards: [
+				{
+					id: "50599C72BBDC92F6"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "5CF501F34D867E6A"
+					item: {
+						count: 1
+						id: "powah:aerial_pearl"
+					}
+					type: "item"
+				}
+				{
+					id: "3B829ADCC9F89F7B"
+					item: {
+						count: 1
+						id: "powah:player_transmitter_starter"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: -4.5d
+		}
+		{
+			dependencies: [
+				"5A0488ECA027EE8C"
+			]
+			id: "57B9E61DA276EDB0"
+			rewards: [
+				{
+					id: "5036F75E9E5AFC8B"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "195535D216428742"
+					item: {
+						count: 1
+						id: "powah:ender_core"
+					}
+					type: "item"
+				}
+				{
+					id: "1EA5D3ABEA8E8D0C"
+					item: {
+						count: 1
+						id: "powah:ender_cell_starter"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"736F8A72717BDDA2"
+			]
+			id: "5E61E19A4F1B9DEE"
+			rewards: [
+				{
+					id: "1B86AE0AD3927D64"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					count: 8L
+					id: "1DBCBB156A0CEA73"
+					item: {
+						count: 1
+						id: "powah:steel_energized"
+					}
+					type: "item"
+				}
+				{
+					id: "3656C12E8BF13270"
+					item: {
+						count: 1
+						id: "powah:capacitor_hardened"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"5E61E19A4F1B9DEE"
+				"5A0488ECA027EE8C"
+			]
+			id: "56734AB9ED4111D8"
+			rewards: [
+				{
+					id: "77426F5192D1FF0E"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "5AA853B93BB0973C"
+					item: {
+						count: 1
+						id: "powah:energy_cell_hardened"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"5E61E19A4F1B9DEE"
+			]
+			id: "32C2E5FB45DD0417"
+			rewards: [
+				{
+					id: "79A4EDA86DC5F7DF"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					count: 8L
+					id: "1301F6D3984CF388"
+					item: {
+						count: 1
+						id: "powah:crystal_blazing"
+					}
+					type: "item"
+				}
+				{
+					id: "7694114B673D74C8"
+					item: {
+						count: 1
+						id: "powah:capacitor_blazing"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"32C2E5FB45DD0417"
+			]
+			id: "76866FFECBDCF896"
+			rewards: [
+				{
+					id: "16049F18BDD46147"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					count: 8L
+					id: "1695DD7B926797AC"
+					item: {
+						count: 1
+						id: "powah:crystal_niotic"
+					}
+					type: "item"
+				}
+				{
+					id: "3B48E2A0B2230848"
+					item: {
+						count: 1
+						id: "powah:capacitor_niotic"
+					}
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"76866FFECBDCF896"
+			]
+			id: "1CC1D6A8C9DBFAF2"
+			rewards: [
+				{
+					id: "7DEC2EDB63093EF6"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					count: 8L
+					id: "369E7B8F8B558B7A"
+					item: {
+						count: 1
+						id: "powah:crystal_spirited"
+					}
+					type: "item"
+				}
+				{
+					id: "7FCFDE0B4FEFA89B"
+					item: {
+						count: 1
+						id: "powah:capacitor_spirited"
+					}
+					type: "item"
+				}
+			]
+			x: 14.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"1CC1D6A8C9DBFAF2"
+			]
+			id: "16E15FD85A75E6A0"
+			rewards: [
+				{
+					id: "1EF8D884AB37DFEF"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "5E566D4795D85140"
+					item: {
+						count: 1
+						id: "powah:energizing_rod_spirited"
+					}
+					type: "item"
+				}
+			]
+			x: 16.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"1CC1D6A8C9DBFAF2"
+			]
+			id: "1A464377E86A977C"
+			rewards: [
+				{
+					id: "57F6A111D9215890"
+					table_id: 3797459037597754809L
+					type: "loot"
+				}
+			]
+			shape: "star"
+			size: 1.5d
+			tasks: [
+				{
+					id: "18D4A69824E25415"
+					item: {
+						count: 1
+						id: "powah:crystal_nitro"
+					}
+					type: "item"
+				}
+				{
+					id: "5C391B6199EA8093"
+					item: {
+						count: 1
+						id: "powah:capacitor_nitro"
+					}
+					type: "item"
+				}
+			]
+			x: 16.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"7E9104D55AD7EB97"
+			]
+			id: "118768C4116BF1D1"
+			rewards: [
+				{
+					id: "12DCF065DD507A83"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					count: 8L
+					id: "36C57FD8F0EFF9AE"
+					item: {
+						count: 1
+						id: "bigreactors:yellorium_ingot"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 7.5d
+		}
+		{
+			dependencies: [
+				"118768C4116BF1D1"
+			]
+			id: "505F78FCC8CB2681"
+			optional: true
+			rewards: [
+				{
+					id: "3FF57F9460F84593"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					consume_items: true
+					count: 32L
+					id: "7F4E55F242BB2E8D"
+					item: {
+						count: 1
+						id: "bigreactors:yellorium_ingot"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 6.0d
+		}
+		{
+			dependencies: [
+				"7E9104D55AD7EB97"
+			]
+			id: "19C176FBD3F3532D"
+			rewards: [
+				{
+					id: "791381FC4F3BAB45"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					count: 16L
+					id: "5A21FDB160AF3A39"
+					item: {
+						count: 1
+						id: "bigreactors:graphite_ingot"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 9.0d
+		}
+		{
+			dependencies: [
+				"19C176FBD3F3532D"
+			]
+			id: "71E3B0DD4DE8E73D"
+			rewards: [
+				{
+					id: "54107245C9A754F8"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					count: 16L
+					id: "3FB11781E576BE3B"
+					item: {
+						count: 1
+						id: "bigreactors:basic_reactorcasing"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 9.0d
+		}
+		{
+			dependencies: [
+				"71E3B0DD4DE8E73D"
+				"118768C4116BF1D1"
+			]
+			id: "1110650C9EF6CFE2"
+			rewards: [
+				{
+					id: "3ADECDFFF1F431AB"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					id: "37C2C21A3A175E6F"
+					item: {
+						count: 1
+						id: "bigreactors:basic_reactorcontroller"
+					}
+					type: "item"
+				}
+				{
+					id: "30D2F11EA35A1D97"
+					item: {
+						count: 1
+						id: "bigreactors:basic_reactorfuelrod"
+					}
+					type: "item"
+				}
+				{
+					id: "127F0E99F6707782"
+					item: {
+						count: 1
+						id: "bigreactors:basic_reactorcontrolrod"
+					}
+					type: "item"
+				}
+				{
+					id: "78C8B170017D1BDE"
+					item: {
+						count: 1
+						id: "bigreactors:basic_reactorpowertapfe_passive"
+					}
+					type: "item"
+				}
+				{
+					id: "1F4480D190617886"
+					item: {
+						count: 1
+						id: "bigreactors:basic_reactorsolidaccessport"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 7.5d
+		}
+		{
+			dependencies: [
+				"1110650C9EF6CFE2"
+			]
+			id: "1CB33146E5529A24"
+			rewards: [
+				{
+					id: "5BA5170E7F0E3FA2"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					count: 8L
+					id: "1756D91E8EA95F19"
+					item: {
+						count: 1
+						id: "bigreactors:cyanite_ingot"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 7.5d
+		}
+		{
+			dependencies: [
+				"1CB33146E5529A24"
+			]
+			id: "3C4457914CC4BDD2"
+			rewards: [
+				{
+					id: "316125264B426722"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "506E3E97712250F8"
+					item: {
+						count: 1
+						id: "bigreactors:reprocessorcasing"
+					}
+					type: "item"
+				}
+				{
+					id: "38BB009E8B624815"
+					item: {
+						count: 1
+						id: "bigreactors:reprocessorcontroller"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 6.0d
+		}
+		{
+			dependencies: [
+				"1110650C9EF6CFE2"
+			]
+			id: "599733B31D2BA79D"
+			rewards: [
+				{
+					id: "148543ABDA82CE78"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "36037D8BB599D296"
+					item: {
+						count: 1
+						id: "bigreactors:reinforced_reactorcasing"
+					}
+					type: "item"
+				}
+				{
+					id: "54F298A9C720533A"
+					item: {
+						count: 1
+						id: "bigreactors:reinforced_reactorcontroller"
+					}
+					type: "item"
+				}
+				{
+					id: "367F117C0EC978E4"
+					item: {
+						count: 1
+						id: "bigreactors:reinforced_reactorfluidport_forge_passive"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 9.0d
+		}
+		{
+			dependencies: [
+				"599733B31D2BA79D"
+				"1CB33146E5529A24"
+			]
+			id: "1BC0CF46A3721848"
+			rewards: [
+				{
+					id: "37B631D58DD1593B"
+					table_id: 6783561722415423100L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					id: "1B89ED82D5E78369"
+					item: {
+						count: 1
+						id: "bigreactors:basic_turbinecontroller"
+					}
+					type: "item"
+				}
+				{
+					id: "3F8939C7DAB457F8"
+					item: {
+						count: 1
+						id: "bigreactors:basic_turbinerotorbearing"
+					}
+					type: "item"
+				}
+				{
+					id: "1D351B3CE1B68B3C"
+					item: {
+						count: 1
+						id: "bigreactors:basic_turbinerotorshaft"
+					}
+					type: "item"
+				}
+				{
+					count: 4L
+					id: "3D5E04941DF0A0A2"
+					item: {
+						count: 1
+						id: "bigreactors:basic_turbinerotorblade"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 7.5d
+		}
+	]
+}
