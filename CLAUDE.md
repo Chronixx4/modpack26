@@ -25,7 +25,7 @@ Kommunikation mit dem Nutzer: Deutsch, locker, kurz.
   - Pull Request: bauen + Servertest. Push auf `main` mit neuer `versionId` in `pack/modrinth.index.json`: zusaetzlich Release `v<Version>` mit allen Dateien. Gibt es das Release schon, passiert nichts. Tags kann Claude aus der Cloud-Umgebung nicht pushen.
   - Lokal testbar: `bash .github/scripts/pakete-bauen.sh dist && bash .github/scripts/servertest.sh dist/Unser-Modpack-<ver>-Server.zip`
 - CurseForge-Jars holt das Skript automatisch aus `%USERPROFILE%\Downloads` (Dateinamen-Muster in `$cfPatterns`).
-- Aktuelle Version: **PACKVER 0.9.5**. Bei jeder Änderung `$PACKVER` hochzählen.
+- Aktuelle Version: **PACKVER 0.9.6**. Bei jeder Änderung `$PACKVER` hochzählen.
 
 ## Mods, die nur auf CurseForge sind (liegen in curseforge-mods\ bzw. Downloads)
 Alle für 1.21.1 NeoForge. Download-URL-Schema: `https://www.curseforge.com/minecraft/mc-mods/<slug>/download/<fileId>`
@@ -72,6 +72,9 @@ CurseForge blockt Downloads per Skript, auch über die interne `/api/v1`. Diese 
 - 0.9.3: 15 neue Mods (Create: Bits 'n' Bobs, Diesel Generators, Interiors, Train Utilities, Railways Navigator, Metallurgy, Mechanical Spawner, Mekanism, Applied Mekanistics, Productive Bees, Ars Ocultas, Mystical Agriculture, Carry On, Traveler's Backpack, Alex's Caves (Unofficial Port, per Projekt-ID `kSsLSjEt`)). Servertest: 206 Dateien im Pack, 194 Modrinth- plus 9 CF-Mods auf dem Server, Start OK, Chunks in Overworld (inkl. Magnetic Caves von Alex's Caves), Nether, End, Twilight generiert, kein Crash. Client noch nicht getestet.
 - Fehlende Abhaengigkeit `cC0JkO8i` (Ars Creo, Not Enough Glyphs) in ERGEBNIS.txt: Projekt ist auf Modrinth geloescht, die Mods laden trotzdem, ignorieren.
 - 0.9.4: AllTheModium 3.1.1 (offizielle CF-Version, thevortex) in curseforge-mods. Das Modrinth-Projekt `allthemodium` ist ein fremder Reupload (jpaulmasonry, ARR, ohne Quellcode) und wird bewusst NICHT benutzt. Servertest 0.9.4: Start OK, Chunks in Mining Dimension, The Other, The Beyond, Nether, End, Overworld generiert, keine neuen Fehler.
+
+- 0.9.5: Client-Test durch Marvin: einwandfrei.
+- 0.9.6: Technik-Paket (Draconic Evolution (Beta), Industrial Foregoing, PneumaticCraft, Immersive Engineering, Extreme Reactors, Oritech, Ender IO (Beta), Iron Jetpacks, Actually Additions, Integrated Dynamics). Camera Overhaul und AmbientSounds entfernt (soll jeder selbst entscheiden).
 
 ## Offene Aufgaben
 1. v9 bauen, `Unser-Modpack-0.9.0.mrpack` importieren, eine Testwelt anlegen, ins Nether und End gehen, `latest.log` prüfen.

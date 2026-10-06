@@ -9,7 +9,7 @@ $ProgressPreference = 'SilentlyContinue'
 $MC      = '1.21.1'
 $LOADER  = 'neoforge'
 $PACK    = 'Unser Modpack'
-$PACKVER = '0.9.5'
+$PACKVER = '0.9.6'
 $RAM     = '8G'
 $TIMEOUT_MIN = 20
 
@@ -126,9 +126,7 @@ controlling|Controlling
 better-advancements|Better Advancements
 default-options|Default Options
 polymorph|Polymorph
-cameraoverhaul|Camera Overhaul
 sound-physics-remastered|Sound Physics Remastered
-ambientsounds|AmbientSounds
 visual-workbench|Visual Workbench
 easy-anvils|Easy Anvils
 grind-enchantments|Grind Enchantments
@@ -219,6 +217,16 @@ merequester|ME Requester
 mekanism-generators|Mekanism Generators
 mekanism-tools|Mekanism Tools
 mekanism-additions|Mekanism Additions
+draconic-evolution|Draconic Evolution
+industrial-foregoing|Industrial Foregoing
+pneumaticcraft-repressurized|PneumaticCraft: Repressurized
+immersiveengineering|Immersive Engineering
+extreme-reactors|Extreme Reactors
+oritech|Oritech
+enderio|Ender IO
+iron-jetpacks|Iron Jetpacks
+actually-additions|Actually Additions
+integrated-dynamics|Integrated Dynamics
 # Ressourcen und Landwirtschaft
 mystical-agriculture|Mystical Agriculture
 productivebees|Productive Bees
