@@ -9,7 +9,7 @@ $ProgressPreference = 'SilentlyContinue'
 $MC      = '1.21.1'
 $LOADER  = 'neoforge'
 $PACK    = 'Unser Modpack'
-$PACKVER = '0.9.3'
+$PACKVER = '0.9.4'
 $RAM     = '8G'
 $TIMEOUT_MIN = 20
 
@@ -25,7 +25,7 @@ New-Item -ItemType Directory -Force -Path $Work, $Cache, $CfDir | Out-Null
 # CurseForge-Mods automatisch aus dem Download-Ordner holen (falls dort vorhanden)
 $dl = Join-Path $env:USERPROFILE 'Downloads'
 $cfPatterns = @('*twilightforest*1.21.1*.jar','ExtendedAE-1.21-*neoforge*.jar','ars_elemental-1.21.1-*.jar','ars_technica-1.21.1-*.jar',
-                '*ftb*quests*2101*.jar','*ftb*library*2101*.jar','*ftb*teams*2101*.jar','*ftbbackups2*neoforge*.jar','AE2NetworkAnalyzer-1.21-*neoforge*.jar')
+                '*ftb*quests*2101*.jar','*ftb*library*2101*.jar','*ftb*teams*2101*.jar','*ftbbackups2*neoforge*.jar','AE2NetworkAnalyzer-1.21-*neoforge*.jar','allthemodium-*_mc_1.21.1.jar')
 if (Test-Path $dl) {
   foreach ($pat in $cfPatterns) {
     $hit = Get-ChildItem -Path $dl -Filter $pat -ErrorAction SilentlyContinue | Where-Object { $_.Name -notmatch 'fabric' } | Sort-Object LastWriteTime | Select-Object -Last 1
