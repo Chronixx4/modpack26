@@ -1,0 +1,59 @@
+# Baut aus pack/modrinth.index.json und curseforge-mods/*.jar das .mrpack
+# und legt ein GitHub-Release an.
+# Ausloesen: Tag pushen (z. B. v0.9.4) oder unter "Actions" -> "Release" -> "Run workflow".
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Version lesen
+        id: ver
+        run: |
+          VER=$(jq -r .versionId pack/modrinth.index.json)
+          TAG="v$VER"
+          if [ "$GITHUB_REF_TYPE" = "tag" ] && [ "$GITHUB_REF_NAME" != "$TAG" ]; then
+            echo "Tag $GITHUB_REF_NAME passt nicht zu versionId $VER in pack/modrinth.index.json" >&2
+            exit 1
+          fi
+          echo "ver=$VER" >> "$GITHUB_OUTPUT"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+
+      - name: .mrpack bauen
+        run: |
+          mkdir -p build/overrides/mods
+          cp pack/modrinth.index.json build/
+          cp curseforge-mods/*.jar build/overrides/mods/
+          cd build
+          zip -r "../Unser-Modpack-${{ steps.ver.outputs.ver }}.mrpack" modrinth.index.json overrides
+          cd ..
+          unzip -l "Unser-Modpack-${{ steps.ver.outputs.ver }}.mrpack" | tail -1
+
+      - name: Release anlegen
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          {
+            echo "Minecraft 1.21.1 / NeoForge. Nur fuer uns, bitte nicht oeffentlich weitergeben (Mod-Lizenzen)."
+            echo
+            echo "**Installieren:** Modrinth App -> \"+\" (Instanz hinzufuegen) -> \"Aus Datei importieren\" -> die .mrpack-Datei waehlen."
+            echo
+            echo '```'
+            sed '1s/^\xEF\xBB\xBF//' MODLISTE.txt
+            echo '```'
+          } > notes.md
+          gh release create "${{ steps.ver.outputs.tag }}" \
+            "Unser-Modpack-${{ steps.ver.outputs.ver }}.mrpack" MODLISTE.txt \
+            --target "$GITHUB_SHA" \
+            --title "Unser Modpack ${{ steps.ver.outputs.ver }}" \
+            --notes-file notes.md

@@ -394,6 +394,47 @@ Remove-Item -Force $mrpack -ErrorAction SilentlyContinue
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 [IO.Compression.ZipFile]::CreateFromDirectory($packDir, $mrpack)
 Say "  Pack erstellt: $mrpack  ($($files.Count) Dateien)"
+# Pack-Definition fuers Repo (daraus baut der GitHub-Release-Workflow das .mrpack)
+$packOut = Join-Path $Root 'pack'
+New-Item -ItemType Directory -Force -Path $packOut | Out-Null
+Copy-Item -LiteralPath (Join-Path $packDir 'modrinth.index.json') (Join-Path $packOut 'modrinth.index.json') -Force
+
+# MODLISTE.txt: alle Mods nach Kategorie (Kategorien von Modrinth)
+$catMap = [ordered]@{
+  'optimization' = 'Performance'; 'magic' = 'Magie'; 'technology' = 'Technik und Create'
+  'worldgen' = 'Welt und Dimensionen'; 'adventure' = 'Abenteuer und Strukturen'; 'mobs' = 'Mobs und Bosse'
+  'equipment' = 'Waffen und Ausruestung'; 'decoration' = 'Deko und Bauen'; 'storage' = 'Lagerung'
+  'food' = 'Essen und Landwirtschaft'; 'transportation' = 'Transport'; 'utility' = 'Komfort und Werkzeuge'
+  'game-mechanics' = 'Komfort und Werkzeuge'; 'social' = 'Multiplayer'; 'management' = 'Komfort und Werkzeuge'
+}
+$groups = @{}
+foreach ($e in $picked.Values) {
+  $cats = @($e.project.categories)
+  $g = $null
+  if ($e.reason -like 'Abhaengigkeit*' -or $cats -contains 'library') { $g = 'Bibliotheken (werden automatisch gebraucht)' }
+  else { foreach ($k in $catMap.Keys) { if ($cats -contains $k) { $g = $catMap[$k]; break } } }
+  if (-not $g) { $g = 'Sonstiges' }
+  $note = ''
+  if ($e.project.server_side -eq 'unsupported') { $note = '  (nur Client)' }
+  if (-not $groups.ContainsKey($g)) { $groups[$g] = New-Object System.Collections.Generic.List[string] }
+  $groups[$g].Add(("  {0,-48} {1}{2}" -f $e.project.title, $e.version.version_number, $note))
+}
+$ml = New-Object System.Collections.Generic.List[string]
+$total = $picked.Count + $cfJars.Count
+$ml.Add("$PACK $PACKVER - Modliste")
+$ml.Add("Minecraft $MC, NeoForge $nf   |   $total Mods inkl. Bibliotheken   |   Stand $(Get-Date -Format 'yyyy-MM-dd')")
+$order = @($catMap.Values | Select-Object -Unique) + @('Sonstiges', 'Bibliotheken (werden automatisch gebraucht)')
+foreach ($g in $order) {
+  if (-not $groups.ContainsKey($g)) { continue }
+  $ml.Add(""); $ml.Add("== $g ($($groups[$g].Count)) ==")
+  $groups[$g] | Sort-Object | ForEach-Object { $ml.Add($_) }
+}
+if ($cfJars.Count) {
+  $ml.Add(""); $ml.Add("== Von CurseForge, im Pack enthalten ($($cfJars.Count)) ==")
+  $cfJars | Sort-Object Name | ForEach-Object { $ml.Add("  " + [IO.Path]::GetFileNameWithoutExtension($_.Name)) }
+}
+[IO.File]::WriteAllLines((Join-Path $Root 'MODLISTE.txt'), $ml.ToArray(), (New-Object Text.UTF8Encoding $true))
+Say "  Modliste geschrieben: MODLISTE.txt"
 $latest = $null
 Write-Report "noch nicht getestet" 0 0
 Say "  Bericht geschrieben: $Report (wird nach dem Servertest aktualisiert)"
