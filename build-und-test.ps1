@@ -101,52 +101,67 @@ $out = New-Object System.Collections.Generic.List[string]
 
 # ---------------------------------------------------------------------------
 # Mod-Liste: slug-Vorschlag | Name  (passt der slug nicht, wird nach dem Namen gesucht)
+# Zeilen mit '# ' sind Kategorien fuer MODLISTE.txt
 # ---------------------------------------------------------------------------
-$ModList = @'
+$ModListRaw = @'
+# Performance und Grafik
 sodium|Sodium
 modernfix|ModernFix
 ferrite-core|FerriteCore
 lithium|Lithium
 immediatelyfast|ImmediatelyFast
 entityculling|Entity Culling
-spark|Spark
 distanthorizons|Distant Horizons
 clumps|Clumps
-sound-physics-remastered|Sound Physics Remastered
-ambientsounds|AmbientSounds
-cameraoverhaul|Camera Overhaul
+# Komfort und Oberflaeche
 emi|EMI
 jade|Jade
 xaeros-minimap|Xaero's Minimap
 xaeros-world-map|Xaero's World Map
-open-parties-and-claims|Open Parties and Claims
-waystones|Waystones
-sophisticated-backpacks|Sophisticated Backpacks
-sophisticated-storage|Sophisticated Storage
 appleskin|AppleSkin
 mouse-tweaks|Mouse Tweaks
 controlling|Controlling
-corpse|Corpse
+better-advancements|Better Advancements
+default-options|Default Options
 polymorph|Polymorph
-torchmaster|Torchmaster
+cameraoverhaul|Camera Overhaul
+sound-physics-remastered|Sound Physics Remastered
+ambientsounds|AmbientSounds
+visual-workbench|Visual Workbench
+easy-anvils|Easy Anvils
+grind-enchantments|Grind Enchantments
+carry-on|Carry On
+corpse|Corpse
 comforts|Comforts
+torchmaster|Torchmaster
+explorers-compass|Explorer's Compass
+natures-compass|Nature's Compass
+spark|Spark
+# Multiplayer, Quests und Verwaltung
 ftb-quests|FTB Quests
 ftb-library|FTB Library
-kubejs|KubeJS
-simple-voice-chat|Simple Voice Chat
-better-advancements|Better Advancements
 ftb-backups-2|FTB Backups 2
-default-options|Default Options
+open-parties-and-claims|Open Parties and Claims
+simple-voice-chat|Simple Voice Chat
+kubejs|KubeJS
+# Lagerung und Rucksaecke
+sophisticated-backpacks|Sophisticated Backpacks
+sophisticated-storage|Sophisticated Storage
+storagedrawers|Storage Drawers
+travelersbackpack|Traveler's Backpack
+# Magie
 ars-nouveau|Ars Nouveau
 ars-additions|Ars Additions
 ars-elemental|Ars Elemental
 ars-creo|Ars Creo
 ars-energistique|Ars Energistique
 ars-technica|Ars Technica
+ars-ocultas|Ars Ocultas
 not-enough-glyphs|Not Enough Glyphs
 irons-spells-n-spellbooks|Iron's Spells 'n Spellbooks
 cataclysm-spellbooks|Cataclysm: Spellbooks
 occultism|Occultism
+# Create und Addons
 create|Create
 createaddition|Create Crafts & Additions
 create-steam-n-rails-1.21.1|Create: Steam 'n' Rails
@@ -171,6 +186,14 @@ create-stuff-additions|Create Stuff 'N Additions
 create_factory_logistics|Create Factory Logistics
 create-power-loader|Create: Power Loader
 create-ore-excavation|Create Ore Excavation
+create-bits-n-bobs|Create: Bits 'n' Bobs
+create-diesel-generators|Create: Diesel Generators
+interiors|Create: Interiors
+create-trainutilities|Create Train Utilities
+create-railways-navigator|Create Railways Navigator
+create-metallurgy|Create: Metallurgy
+create-mechanical-spawner|Create Mechanical Spawner
+# AE2 und Technik
 ae2|Applied Energistics 2
 applied-energistics-2-wireless-terminals|AE2 Wireless Terminals
 extendedae|ExtendedAE
@@ -178,7 +201,15 @@ advanced-ae|Advanced AE
 mega|MEGA Cells
 applied-flux|Applied Flux
 ae2-network-analyser|AE2 Network Analyser
+mekanism|Mekanism
+applied-mekanistics|Applied Mekanistics
 powah|Powah
+# Ressourcen und Landwirtschaft
+mystical-agriculture|Mystical Agriculture
+productivebees|Productive Bees
+farmers-delight|Farmer's Delight
+aquaculture|Aquaculture 2
+# Dimensionen
 the-twilight-forest|The Twilight Forest
 aether|The Aether
 deeper-and-darker|Deeper and Darker
@@ -186,10 +217,13 @@ the-undergarden|The Undergarden
 the-bumblezone|The Bumblezone
 betternether-neoforge|BetterNether Neoforge
 betterend-neoforge|BetterEnd Neoforge
+kSsLSjEt|Alex's Caves (Unofficial Port)
+# Weltgenerierung und Biome
 terralith|Terralith
 tectonic|Tectonic
 biomes-o-plenty|Biomes O' Plenty
 regions-unexplored|Regions Unexplored
+# Strukturen und Dungeons
 when-dungeons-arise|When Dungeons Arise
 when-dungeons-arise-seven-seas|When Dungeons Arise - Seven Seas
 repurposed-structures-forge|Repurposed Structures
@@ -203,8 +237,7 @@ yungs-better-jungle-temples|YUNG's Better Jungle Temples
 yungs-better-witch-huts|YUNG's Better Witch Huts
 yungs-bridges|YUNG's Bridges
 towns-and-towers|Towns and Towers
-explorers-compass|Explorer's Compass
-natures-compass|Nature's Compass
+# Mobs und Bosse
 l_enders-cataclysm|L_Ender's Cataclysm
 mowzies-mobs|Mowzie's Mobs
 integrated-mowzies-mobs|Integrated Mowzie's Mobs
@@ -215,18 +248,22 @@ illager-invasion|Illager Invasion
 friends-and-foes-forge|Friends&Foes
 mutant-monsters|Mutant Monsters
 aquamirae|Aquamirae
+# Waffen, Ruestung und Ausruestung
 simply-swords|Simply Swords
 simply-swords-cataclysm|Simply Swords: Cataclysm
 archers|Archers (RPG Series)
 archers-expansion|Archers Expansion
+rogues-and-warriors|Rogues & Warriors
 apotheosis|Apotheosis
 apothic-attributes|Apothic Attributes
 artifacts|Artifacts
 immersive-armors|Immersive Armors
-rogues-and-warriors|Rogues & Warriors
-farmers-delight|Farmer's Delight
+# Transport
+waystones|Waystones
+# Deko und Bauen
 supplementaries|Supplementaries
 amendments|Amendments
+quark|Quark
 macaws-bridges|Macaw's Bridges
 macaws-doors|Macaw's Doors
 macaws-windows|Macaw's Windows
@@ -236,34 +273,26 @@ macaws-lights-and-lamps|Macaw's Lights and Lamps
 chipped|Chipped
 handcrafted|Handcrafted
 framedblocks|FramedBlocks
-aquaculture|Aquaculture 2
-storagedrawers|Storage Drawers
-quark|Quark
-visual-workbench|Visual Workbench
-easy-anvils|Easy Anvils
-grind-enchantments|Grind Enchantments
-create-bits-n-bobs|Create: Bits 'n' Bobs
-create-diesel-generators|Create: Diesel Generators
-interiors|Create: Interiors
-create-trainutilities|Create Train Utilities
-create-railways-navigator|Create Railways Navigator
-create-metallurgy|Create: Metallurgy
-create-mechanical-spawner|Create Mechanical Spawner
-mekanism|Mekanism
-applied-mekanistics|Applied Mekanistics
-productivebees|Productive Bees
-ars-ocultas|Ars Ocultas
-mystical-agriculture|Mystical Agriculture
-carry-on|Carry On
-travelersbackpack|Traveler's Backpack
-kSsLSjEt|Alex's Caves (Unofficial Port)
+# Bibliotheken (fehlen auf Modrinth als Abhaengigkeit)
 irons-lib|Iron's Lib|^1\.21\.1-2
 bundle-api|Bundle API
 smartbrainlib|SmartBrainLib
 lithostitched|Lithostitched
 structure-pool-api|Structure Pool API
 polylib|PolyLib
-'@ -split "`r?`n" | Where-Object { $_ -match '\|' }
+'@
+$ModList = @($ModListRaw -split "`r?`n" | Where-Object { $_ -match '\|' })
+$catOf = [ordered]@{}   # Name aus der Liste -> Kategorie
+$curCat = 'Sonstiges'
+foreach ($l in ($ModListRaw -split "`r?`n")) {
+  if ($l -match '^#\s*(.+)$') { $curCat = $Matches[1].Trim() }
+  elseif ($l -match '\|') { $catOf[$l.Split('|')[1].Trim()] = $curCat }
+}
+# Kategorien der CurseForge-Jars (Dateiname -> Kategorie)
+$cfCat = [ordered]@{
+  'twilightforest' = 'Dimensionen'; 'ExtendedAE' = 'AE2 und Technik'; 'AE2NetworkAnalyzer' = 'AE2 und Technik'
+  'ars_' = 'Magie'; 'ftb' = 'Multiplayer, Quests und Verwaltung'; 'allthemodium' = 'Dimensionen'
+}
 
 $vq = '?loaders=' + [uri]::EscapeDataString('["neoforge"]') + '&game_versions=' + [uri]::EscapeDataString('["1.21.1"]')
 
@@ -399,39 +428,46 @@ $packOut = Join-Path $Root 'pack'
 New-Item -ItemType Directory -Force -Path $packOut | Out-Null
 Copy-Item -LiteralPath (Join-Path $packDir 'modrinth.index.json') (Join-Path $packOut 'modrinth.index.json') -Force
 
-# MODLISTE.txt: alle Mods nach Kategorie (Kategorien von Modrinth)
-$catMap = [ordered]@{
-  'optimization' = 'Performance'; 'magic' = 'Magie'; 'technology' = 'Technik und Create'
-  'worldgen' = 'Welt und Dimensionen'; 'adventure' = 'Abenteuer und Strukturen'; 'mobs' = 'Mobs und Bosse'
-  'equipment' = 'Waffen und Ausruestung'; 'decoration' = 'Deko und Bauen'; 'storage' = 'Lagerung'
-  'food' = 'Essen und Landwirtschaft'; 'transportation' = 'Transport'; 'utility' = 'Komfort und Werkzeuge'
-  'game-mechanics' = 'Komfort und Werkzeuge'; 'social' = 'Multiplayer'; 'management' = 'Komfort und Werkzeuge'
-}
-$groups = @{}
+# MODLISTE.txt: alle Mods nach Kategorie (Kategorien aus den '# '-Zeilen der Mod-Liste)
+$libCat = 'Bibliotheken (werden automatisch gebraucht)'
+$groups = [ordered]@{}
+foreach ($c in $catOf.Values) { if ($c -notlike 'Bibliotheken*' -and -not $groups.Contains($c)) { $groups[$c] = New-Object System.Collections.Generic.List[string] } }
+$groups['Sonstiges'] = New-Object System.Collections.Generic.List[string]
+$groups[$libCat] = New-Object System.Collections.Generic.List[string]
 foreach ($e in $picked.Values) {
-  $cats = @($e.project.categories)
-  $g = $null
-  if ($e.reason -like 'Abhaengigkeit*' -or $cats -contains 'library') { $g = 'Bibliotheken (werden automatisch gebraucht)' }
-  else { foreach ($k in $catMap.Keys) { if ($cats -contains $k) { $g = $catMap[$k]; break } } }
-  if (-not $g) { $g = 'Sonstiges' }
+  $g = $catOf[$e.reason]
+  if (-not $g -or $g -like 'Bibliotheken*') { $g = $libCat }
   $note = ''
   if ($e.project.server_side -eq 'unsupported') { $note = '  (nur Client)' }
-  if (-not $groups.ContainsKey($g)) { $groups[$g] = New-Object System.Collections.Generic.List[string] }
-  $groups[$g].Add(("  {0,-48} {1}{2}" -f $e.project.title, $e.version.version_number, $note))
+  $groups[$g].Add(("  {0,-46} {1}{2}" -f $e.project.title, $e.version.version_number, $note))
+}
+foreach ($j in $cfJars) {
+  $g = 'Sonstiges'
+  foreach ($k in $cfCat.Keys) { if ($j.Name -like "$k*") { $g = $cfCat[$k]; break } }
+  if (-not $groups.Contains($g)) { $groups[$g] = New-Object System.Collections.Generic.List[string] }
+  # Name und Version aus META-INF/neoforge.mods.toml in der Jar lesen
+  $title = [IO.Path]::GetFileNameWithoutExtension($j.Name); $ver = ''
+  try {
+    $zip = [IO.Compression.ZipFile]::OpenRead($j.FullName)
+    $ent = $zip.GetEntry('META-INF/neoforge.mods.toml')
+    if ($ent) {
+      $rd = New-Object IO.StreamReader($ent.Open()); $toml = $rd.ReadToEnd(); $rd.Close()
+      if ($toml -match '(?m)^\s*displayName\s*=\s*"([^"]+)"') { $title = $Matches[1] }
+      if ($toml -match '(?m)^\s*version\s*=\s*"([^"$]+)"') { $ver = $Matches[1] }
+    }
+    $zip.Dispose()
+  } catch {}
+  if (-not $ver) { $ver = [IO.Path]::GetFileNameWithoutExtension($j.Name) }
+  $groups[$g].Add(("  {0,-46} {1}  (CurseForge)" -f $title, $ver))
 }
 $ml = New-Object System.Collections.Generic.List[string]
 $total = $picked.Count + $cfJars.Count
 $ml.Add("$PACK $PACKVER - Modliste")
 $ml.Add("Minecraft $MC, NeoForge $nf   |   $total Mods inkl. Bibliotheken   |   Stand $(Get-Date -Format 'yyyy-MM-dd')")
-$order = @($catMap.Values | Select-Object -Unique) + @('Sonstiges', 'Bibliotheken (werden automatisch gebraucht)')
-foreach ($g in $order) {
-  if (-not $groups.ContainsKey($g)) { continue }
+foreach ($g in $groups.Keys) {
+  if ($groups[$g].Count -eq 0) { continue }
   $ml.Add(""); $ml.Add("== $g ($($groups[$g].Count)) ==")
   $groups[$g] | Sort-Object | ForEach-Object { $ml.Add($_) }
-}
-if ($cfJars.Count) {
-  $ml.Add(""); $ml.Add("== Von CurseForge, im Pack enthalten ($($cfJars.Count)) ==")
-  $cfJars | Sort-Object Name | ForEach-Object { $ml.Add("  " + [IO.Path]::GetFileNameWithoutExtension($_.Name)) }
 }
 [IO.File]::WriteAllLines((Join-Path $Root 'MODLISTE.txt'), $ml.ToArray(), (New-Object Text.UTF8Encoding $true))
 Say "  Modliste geschrieben: MODLISTE.txt"

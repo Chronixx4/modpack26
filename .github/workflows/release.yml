@@ -35,7 +35,7 @@ jobs:
           cp pack/modrinth.index.json build/
           cp curseforge-mods/*.jar build/overrides/mods/
           cd build
-          zip -r "../Unser-Modpack-${{ steps.ver.outputs.ver }}.mrpack" modrinth.index.json overrides
+          zip -r -D "../Unser-Modpack-${{ steps.ver.outputs.ver }}.mrpack" modrinth.index.json overrides
           cd ..
           unzip -l "Unser-Modpack-${{ steps.ver.outputs.ver }}.mrpack" | tail -1
 
