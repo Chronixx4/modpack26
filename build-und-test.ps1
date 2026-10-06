@@ -9,7 +9,7 @@ $ProgressPreference = 'SilentlyContinue'
 $MC      = '1.21.1'
 $LOADER  = 'neoforge'
 $PACK    = 'Unser Modpack'
-$PACKVER = '0.9.6'
+$PACKVER = '0.9.7'
 $RAM     = '8G'
 $TIMEOUT_MIN = 20
 
@@ -461,6 +461,14 @@ if ($cfJars.Count -gt 0) {
   foreach ($j in $cfJars) { Copy-Item -LiteralPath $j.FullName $ov -Force }
   Say "  $($cfJars.Count) CurseForge-Mods aus dem Ordner curseforge-mods mit eingepackt"
 }
+# Questbuch und andere Configs aus pack\config (FTB Quests: pack\quests\generator.py)
+$cfgSrc = Join-Path $Root 'pack\config'
+if (Test-Path -LiteralPath $cfgSrc) {
+  $ovRoot = Join-Path $packDir 'overrides'
+  New-Item -ItemType Directory -Force -Path $ovRoot | Out-Null
+  Copy-Item -LiteralPath $cfgSrc $ovRoot -Recurse -Force
+  Say "  Configs aus pack\config mit eingepackt (Questbuch)"
+}
 $mrpack = Join-Path $Root ("Unser-Modpack-" + $PACKVER + ".mrpack")
 Remove-Item -Force $mrpack -ErrorAction SilentlyContinue
 Add-Type -AssemblyName System.IO.Compression.FileSystem
@@ -569,6 +577,7 @@ foreach ($f in $files) {
 }
 Say "  $serverMods Mods im Testserver (reine Client-Mods wie Sodium oder Karten werden serverseitig ausgelassen)"
 foreach ($j in $cfJars) { Copy-Item -LiteralPath $j.FullName (Join-Path $Server 'mods') -Force; $serverMods++ }
+if (Test-Path -LiteralPath $cfgSrc) { Copy-Item -LiteralPath $cfgSrc $Server -Recurse -Force }
 Set-Content -Path (Join-Path $Server 'eula.txt') -Value 'eula=true'
 Set-Content -Path (Join-Path $Server 'user_jvm_args.txt') -Value "-Xms2G`n-Xmx$RAM"
 

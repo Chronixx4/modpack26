@@ -24,8 +24,9 @@ Kommunikation mit dem Nutzer: Deutsch, locker, kurz.
 - **Release:** `.github/workflows/release.yml` ruft `.github/scripts/pakete-bauen.sh` (baut `.mrpack`, `-Client.zip` mit mods-Ordner, `-Server.zip` mit Server-Mods, NeoForge-Installer, `start.sh`/`start.bat`, `user_jvm_args.txt` (12 GB), `server.properties`, `eula.txt`, LIES-MICH) und `.github/scripts/servertest.sh` (Server-ZIP entpacken, starten bis `Done (`). Vorlagen fuer die Server-/Client-Dateien liegen in `pack/server/` und `pack/client/` (Platzhalter `@VERSION@`, `@MC@`, `@NEOFORGE@`).
   - Pull Request: bauen + Servertest. Push auf `main` mit neuer `versionId` in `pack/modrinth.index.json`: zusaetzlich Release `v<Version>` mit allen Dateien. Gibt es das Release schon, passiert nichts. Tags kann Claude aus der Cloud-Umgebung nicht pushen.
   - Lokal testbar: `bash .github/scripts/pakete-bauen.sh dist && bash .github/scripts/servertest.sh dist/Unser-Modpack-<ver>-Server.zip`
+- **Questbuch (FTB Quests):** Inhalt in `pack/quests/kapitel.py` (Kapitel, Quests, Aufgaben, Texte auf Deutsch), `pack/quests/generator.py` schreibt daraus `pack/config/ftbquests/quests/` (data.snbt, chapters/*.snbt, lang/en_us.snbt; Texte stehen in en_us, damit sie in jeder Client-Sprache erscheinen). Quest-IDs sind Hashes aus Kapitel + Schluessel, also stabil: Schluessel nicht umbenennen, sonst geht Fortschritt verloren. Nach jeder Aenderung `python3 pack/quests/generator.py <ids.json>` laufen lassen und das Ergebnis mit committen. `ids.json` = Item-/Mob-IDs aus der echten Registry (KubeJS-Dump auf dem Testserver) plus Dimensionen/Strukturen/Biome aus den Jars; ohne Argument wird nicht geprueft. `pack/config/` landet in `overrides/config` (.mrpack) bzw. `config/` (beide ZIPs) und im lokalen Testserver. Der Servertest gibt die Zeile `Questbuch: Loaded ... quests` aus.
 - CurseForge-Jars holt das Skript automatisch aus `%USERPROFILE%\Downloads` (Dateinamen-Muster in `$cfPatterns`).
-- Aktuelle Version: **PACKVER 0.9.6**. Bei jeder Änderung `$PACKVER` hochzählen.
+- Aktuelle Version: **PACKVER 0.9.7**. Bei jeder Änderung `$PACKVER` hochzählen.
 
 ## Mods, die nur auf CurseForge sind (liegen in curseforge-mods\ bzw. Downloads)
 Alle für 1.21.1 NeoForge. Download-URL-Schema: `https://www.curseforge.com/minecraft/mc-mods/<slug>/download/<fileId>`
@@ -75,12 +76,13 @@ CurseForge blockt Downloads per Skript, auch über die interne `/api/v1`. Diese 
 
 - 0.9.5: Client-Test durch Marvin: einwandfrei.
 - 0.9.6: Technik-Paket (Draconic Evolution (Beta), Industrial Foregoing, PneumaticCraft, Immersive Engineering, Extreme Reactors, Oritech, Ender IO (Beta), Iron Jetpacks, Actually Additions, Integrated Dynamics). Camera Overhaul und AmbientSounds entfernt (soll jeder selbst entscheiden).
+- 0.9.7: Questbuch mit 12 Kapiteln und 233 Quests (Willkommen, Create, Ars Nouveau, Iron's Spells, AE2, Mekanism, Samen und Bienen, Draconic, Dimensionen, Bosse, Apotheosis, Energie und Technik). Alle IDs gegen die echte Registry geprueft, Servertest OK (`Loaded 12 chapters, 233 quests`). Aussehen im Spiel noch nicht geprueft.
 
 ## Offene Aufgaben
 1. v9 bauen, `Unser-Modpack-0.9.0.mrpack` importieren, eine Testwelt anlegen, ins Nether und End gehen, `latest.log` prüfen.
 2. ~~Integrated Mowzie's Mobs~~: wird auf Modrinth gefunden, erledigt.
 3. **Server auf dem Heimserver** einrichten: ZimaOS, Marvin hat dort schon ein eigenes Docker-Panel fuer mehrere Minecraft-Server (keine docker-compose noetig). Dafuer das `-Server.zip` aus dem Release nehmen (12 GB RAM, Java 21, Ports 25565/TCP und 24454/UDP fuer Voice Chat), danach mit Chunky vorgenerieren.
-4. Optional: FTB-Quests-Kapitel, die Magie, Create und AE2 verbinden.
+4. ~~FTB-Quests-Kapitel~~: erledigt in 0.9.7. Offen: im Spiel ansehen, Anordnung bei Bedarf im Editiermodus anpassen (dann die geaenderten .snbt-Dateien vom Server zurueck ins Repo holen oder `kapitel.py` anpassen).
 5. Optional: Shader wieder einbauen, sobald es eine Iris-Version gibt, die zu Sodium 0.8 passt.
 6. Erst danach die **richtige Welt** starten, damit Strukturen und Biome überall generiert werden.
 

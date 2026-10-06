@@ -27,6 +27,7 @@ echo "== $NAME (Minecraft $MC, NeoForge $NF)"
 rm -rf "$OUT/mrpack" && mkdir -p "$OUT/mrpack/overrides/mods"
 cp "$IDX" "$OUT/mrpack/"
 cp "$ROOT"/curseforge-mods/*.jar "$OUT/mrpack/overrides/mods/"
+[ -d "$ROOT/pack/config" ] && cp -r "$ROOT/pack/config" "$OUT/mrpack/overrides/"   # Questbuch
 rm -f "$OUT/$NAME.mrpack"
 (cd "$OUT/mrpack" && zip -q -r -D "$OUT/$NAME.mrpack" modrinth.index.json overrides)
 echo "  $NAME.mrpack"
@@ -55,6 +56,7 @@ jq -r '.files[] | select(.env.client != "unsupported") | .path' "$IDX" | while r
   cp "$CACHE/$(basename "$path")" "$C/mods/"
 done
 cp "$ROOT"/curseforge-mods/*.jar "$C/mods/"
+[ -d "$ROOT/pack/config" ] && cp -r "$ROOT/pack/config" "$C/"
 fill "$ROOT/pack/client/LIES-MICH.txt" "$C/LIES-MICH.txt"
 cp "$ROOT/MODLISTE.txt" "$C/"
 rm -f "$OUT/$NAME-Client.zip"
@@ -69,6 +71,7 @@ jq -r '.files[] | select(.env.server != "unsupported") | .path' "$IDX" | while r
   cp "$CACHE/$n" "$S/mods/"
 done
 cp "$ROOT"/curseforge-mods/*.jar "$S/mods/"
+[ -d "$ROOT/pack/config" ] && cp -r "$ROOT/pack/config" "$S/"
 INST="$CACHE/neoforge-$NF-installer.jar"
 [ -f "$INST" ] || curl -fsSL --retry 3 -o "$INST" \
   "https://maven.neoforged.net/releases/net/neoforged/neoforge/$NF/neoforge-$NF-installer.jar"
