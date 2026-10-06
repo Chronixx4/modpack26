@@ -1,0 +1,646 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "technik"
+	group: ""
+	icon: {
+		id: "powah:energizing_orb"
+	}
+	id: "195BA3FF47F7614E"
+	images: [ ]
+	order_index: 11
+	quest_links: [ ]
+	quests: [
+		{
+			id: "4432374105089087"
+			rewards: [
+				{
+					id: "F7E240E0890332CA"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			size: 1.5d
+			tasks: [
+				{
+					id: "BF3F2C0F313A35D1"
+					item: {
+						count: 1
+						id: "powah:energizing_orb"
+					}
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: -6.75d
+		}
+		{
+			dependencies: [
+				"4432374105089087"
+			]
+			id: "A67F2FFADC755BDF"
+			rewards: [
+				{
+					id: "86EC438938A85668"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "299C504ACD490DD6"
+					item: {
+						count: 1
+						id: "powah:furnator_starter"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -4.5d
+		}
+		{
+			dependencies: [
+				"4432374105089087"
+			]
+			id: "BC3BDCF91A1A6BB6"
+			rewards: [
+				{
+					id: "F8D37605E7FC6971"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "5F54BE83B6BBF3B0"
+					item: {
+						count: 1
+						id: "powah:energy_cell_starter"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"4432374105089087"
+			]
+			id: "C92FB595883352B0"
+			rewards: [
+				{
+					id: "CCFCA7CB7CC392FF"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "CAFCDD97A6BB96BE"
+					item: {
+						count: 1
+						id: "powah:solar_panel_starter"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"BC3BDCF91A1A6BB6"
+				"A67F2FFADC755BDF"
+			]
+			id: "F70B545F3FC2F0E7"
+			rewards: [
+				{
+					id: "E5FF0C83E93E7139"
+					type: "xp_levels"
+					xp_levels: 4
+				}
+			]
+			tasks: [
+				{
+					id: "9397EA8DEBFA2B6A"
+					item: {
+						count: 1
+						id: "powah:reactor_starter"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: -3.0d
+		}
+		{
+			id: "ECE12D1B5F16BCDB"
+			rewards: [
+				{
+					id: "D77CE617FCD20EA8"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			size: 1.5d
+			tasks: [
+				{
+					id: "437DD495B368306A"
+					item: {
+						count: 1
+						id: "immersiveengineering:hammer"
+					}
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: -5.25d
+		}
+		{
+			dependencies: [
+				"ECE12D1B5F16BCDB"
+			]
+			id: "3D4B2069CB0B6F87"
+			rewards: [
+				{
+					id: "CB867FBF6D5C534F"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "BACBF8160F53C088"
+					item: {
+						count: 1
+						id: "immersiveengineering:cokebrick"
+					}
+					type: "item"
+					count: 27
+				}
+			]
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"3D4B2069CB0B6F87"
+			]
+			id: "18F8CA3F847F2237"
+			rewards: [
+				{
+					id: "1ABD09511CADCD1B"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "232D81E1768A1FFA"
+					item: {
+						count: 1
+						id: "immersiveengineering:blastbrick"
+					}
+					type: "item"
+					count: 27
+				}
+			]
+			x: 4.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"18F8CA3F847F2237"
+			]
+			id: "1ACC7BF0AB3C2B96"
+			rewards: [
+				{
+					id: "1C57E14F306D79FA"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "A9EA9FBC1C2B5A9F"
+					item: {
+						count: 1
+						id: "immersiveengineering:wirecoil_copper"
+					}
+					type: "item"
+				}
+				{
+					id: "7C657422275208F0"
+					item: {
+						count: 1
+						id: "immersiveengineering:connector_lv"
+					}
+					type: "item"
+				}
+				{
+					id: "412BC41DA669F177"
+					item: {
+						count: 1
+						id: "immersiveengineering:capacitor_lv"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: -0.75d
+		}
+		{
+			id: "520E1A21DFDEF37F"
+			rewards: [
+				{
+					id: "DA15C868CF4E7215"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			size: 1.5d
+			tasks: [
+				{
+					id: "BD226574EC76D7BC"
+					item: {
+						count: 1
+						id: "industrialforegoing:machine_frame_pity"
+					}
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: -3.75d
+		}
+		{
+			dependencies: [
+				"520E1A21DFDEF37F"
+			]
+			id: "271B877B094EF0FA"
+			rewards: [
+				{
+					id: "2C526A54D6A8C856"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "4616F7A036DA7EDE"
+					item: {
+						count: 1
+						id: "industrialforegoing:plastic"
+					}
+					type: "item"
+					count: 8
+				}
+			]
+			x: 2.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"271B877B094EF0FA"
+			]
+			id: "63A705E7F04297E8"
+			rewards: [
+				{
+					id: "4605C83DF1DCE20D"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "6D028C94C3EF4054"
+					item: {
+						count: 1
+						id: "industrialforegoing:plant_gatherer"
+					}
+					type: "item"
+				}
+				{
+					id: "1463415CA22C7602"
+					item: {
+						count: 1
+						id: "industrialforegoing:plant_sower"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"271B877B094EF0FA"
+			]
+			id: "A84DCEAF0B942CAF"
+			rewards: [
+				{
+					id: "BC54D8BA44C38BBA"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "7C3E87DF5709AE1F"
+					item: {
+						count: 1
+						id: "industrialforegoing:mob_crusher"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"63A705E7F04297E8"
+				"A84DCEAF0B942CAF"
+			]
+			id: "8354F3A0BD9BA662"
+			rewards: [
+				{
+					id: "B8F789AC4A856082"
+					type: "xp_levels"
+					xp_levels: 4
+				}
+			]
+			tasks: [
+				{
+					id: "C69B2E1EFA5B542E"
+					item: {
+						count: 1
+						id: "industrialforegoing:ore_laser_base"
+					}
+					type: "item"
+				}
+				{
+					id: "A7598BF276907ED7"
+					item: {
+						count: 1
+						id: "industrialforegoing:laser_drill"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 0.75d
+		}
+		{
+			id: "7D5F7CC2890C1FEE"
+			rewards: [
+				{
+					id: "64D3AEA3AD3DD901"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "BC8BAB4C88DA9D81"
+					item: {
+						count: 1
+						id: "bigreactors:yellorium_ingot"
+					}
+					type: "item"
+					count: 16
+				}
+			]
+			x: 0.0d
+			y: -2.25d
+		}
+		{
+			dependencies: [
+				"7D5F7CC2890C1FEE"
+			]
+			id: "B3413A47FB0E3846"
+			rewards: [
+				{
+					id: "E946D5C33B113D51"
+					type: "xp_levels"
+					xp_levels: 4
+				}
+			]
+			tasks: [
+				{
+					id: "AAF542C2FC429935"
+					item: {
+						count: 1
+						id: "bigreactors:basic_reactorcontroller"
+					}
+					type: "item"
+				}
+				{
+					id: "231803811E1DFB76"
+					item: {
+						count: 1
+						id: "bigreactors:basic_reactorfuelrod"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 3.0d
+		}
+		{
+			id: "AC2DFA650AB52CE3"
+			rewards: [
+				{
+					id: "35DDB9C33A83C430"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "F03951F7D02F14C9"
+					item: {
+						count: 1
+						id: "pneumaticcraft:ingot_iron_compressed"
+					}
+					type: "item"
+					count: 8
+				}
+			]
+			x: 0.0d
+			y: -0.75d
+		}
+		{
+			dependencies: [
+				"AC2DFA650AB52CE3"
+			]
+			id: "41933506A7EF9FB7"
+			rewards: [
+				{
+					id: "F30160445D084EF3"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "CB6CADEE6529743E"
+					item: {
+						count: 1
+						id: "pneumaticcraft:air_compressor"
+					}
+					type: "item"
+				}
+				{
+					id: "A8CA33F82C0B9B61"
+					item: {
+						count: 1
+						id: "pneumaticcraft:pressure_tube"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 4.5d
+		}
+		{
+			dependencies: [
+				"41933506A7EF9FB7"
+			]
+			id: "4338708B4B686EFF"
+			rewards: [
+				{
+					id: "F31C2AEA4A64D65C"
+					type: "xp_levels"
+					xp_levels: 4
+				}
+			]
+			tasks: [
+				{
+					id: "BC60820CE1A568B4"
+					item: {
+						count: 1
+						id: "pneumaticcraft:drone"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 3.0d
+		}
+		{
+			id: "AB82EEC8A3F2DB6C"
+			rewards: [
+				{
+					id: "23C8F508424451E4"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "CC76A9B49A418EE8"
+					item: {
+						count: 1
+						id: "enderio:conduit_binder"
+					}
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 0.75d
+		}
+		{
+			id: "217ABDB656E24DB7"
+			optional: true
+			rewards: [
+				{
+					id: "558CA5CD4597E718"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "DDAB9CB77B887454"
+					item: {
+						count: 1
+						id: "oritech:pulverizer_block"
+					}
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 2.25d
+		}
+		{
+			id: "9073EC11AC7DB277"
+			rewards: [
+				{
+					id: "64A6F99349F3129E"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "AF3019DED2EDB5A1"
+					item: {
+						count: 1
+						id: "ironjetpacks:strap"
+					}
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 3.75d
+		}
+		{
+			id: "7EF8287E0E730898"
+			optional: true
+			rewards: [
+				{
+					id: "F50D55E7500CC1D6"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "D0F3200321FB3796"
+					item: {
+						count: 1
+						id: "actuallyadditions:empowered_restonia_crystal"
+					}
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 5.25d
+		}
+		{
+			id: "A672288BD0EF6456"
+			optional: true
+			rewards: [
+				{
+					id: "C2477AD57A0849D0"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "81D98EAF37A681CF"
+					item: {
+						count: 1
+						id: "integrateddynamics:logic_programmer"
+					}
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 6.75d
+		}
+	]
+}

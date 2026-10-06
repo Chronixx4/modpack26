@@ -38,6 +38,7 @@ kill "$KEEP" 2>/dev/null || true
 
 echo "== Servertest: $result nach $(( $(date +%s) - start )) s ($(ls mods | wc -l) Mods im mods-Ordner)"
 grep -m1 'Done (' console.log || true
+grep -m1 -E 'FTB Quests/\]: Loaded [0-9]+ chapter' logs/latest.log 2>/dev/null | sed 's/.*\]: /Questbuch: /' || true
 if [ -f logs/latest.log ]; then
   echo "== ERROR/FATAL (ohne bekannte harmlose Meldungen):"
   grep -E '/(ERROR|FATAL)\]' logs/latest.log \

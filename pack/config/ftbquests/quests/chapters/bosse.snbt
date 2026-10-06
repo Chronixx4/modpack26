@@ -1,0 +1,644 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "bosse"
+	group: ""
+	icon: {
+		id: "minecraft:wither_skeleton_skull"
+	}
+	id: "A34AD7612381CA43"
+	images: [ ]
+	order_index: 9
+	quest_links: [ ]
+	quests: [
+		{
+			id: "3D574AB529453D80"
+			rewards: [
+				{
+					id: "A2B41EE5EF3AA6D2"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					entity: "twilightforest:naga"
+					id: "90AA7A3E65114E6C"
+					type: "kill"
+					value: 1
+				}
+			]
+			x: 0.0d
+			y: -3.75d
+		}
+		{
+			dependencies: [
+				"3D574AB529453D80"
+			]
+			id: "FE372C6085F1F2B7"
+			rewards: [
+				{
+					id: "897FF1291A0200B1"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					entity: "twilightforest:lich"
+					id: "B688B95D284C8B44"
+					type: "kill"
+					value: 1
+				}
+			]
+			x: 2.0d
+			y: -5.25d
+		}
+		{
+			dependencies: [
+				"FE372C6085F1F2B7"
+			]
+			id: "CA9CB3E5DD91B775"
+			rewards: [
+				{
+					id: "A43961F1A45AF0BF"
+					type: "xp_levels"
+					xp_levels: 4
+				}
+			]
+			tasks: [
+				{
+					entity: "twilightforest:minoshroom"
+					id: "4EF5305A45600411"
+					type: "kill"
+					value: 1
+				}
+			]
+			x: 4.0d
+			y: -3.75d
+		}
+		{
+			dependencies: [
+				"CA9CB3E5DD91B775"
+			]
+			id: "1B0A734023FA31FE"
+			rewards: [
+				{
+					id: "CB0EA2C3927DC173"
+					type: "xp_levels"
+					xp_levels: 5
+				}
+			]
+			tasks: [
+				{
+					entity: "twilightforest:hydra"
+					id: "9B30AA4CC69FAE5D"
+					type: "kill"
+					value: 1
+				}
+			]
+			x: 6.0d
+			y: -3.75d
+		}
+		{
+			dependencies: [
+				"CA9CB3E5DD91B775"
+			]
+			id: "F1990BB511B9CDFE"
+			rewards: [
+				{
+					id: "B7ECD050CDB41B4B"
+					type: "xp_levels"
+					xp_levels: 5
+				}
+			]
+			tasks: [
+				{
+					entity: "twilightforest:knight_phantom"
+					id: "EF22BB7DC59A3232"
+					type: "kill"
+					value: 1
+				}
+			]
+			x: 6.0d
+			y: -2.25d
+		}
+		{
+			dependencies: [
+				"F1990BB511B9CDFE"
+			]
+			id: "3ED51695CE0304B2"
+			rewards: [
+				{
+					id: "5C39818F08598CA2"
+					type: "xp_levels"
+					xp_levels: 5
+				}
+			]
+			tasks: [
+				{
+					entity: "twilightforest:ur_ghast"
+					id: "EE113C36062333BE"
+					type: "kill"
+					value: 1
+				}
+			]
+			x: 8.0d
+			y: -0.75d
+		}
+		{
+			dependencies: [
+				"FE372C6085F1F2B7"
+			]
+			id: "9D4EDA9A6320E181"
+			rewards: [
+				{
+					id: "48647F90601EA3F0"
+					type: "xp_levels"
+					xp_levels: 4
+				}
+			]
+			tasks: [
+				{
+					entity: "twilightforest:alpha_yeti"
+					id: "85CED81FF7CBE6CC"
+					type: "kill"
+					value: 1
+				}
+			]
+			x: 4.0d
+			y: -2.25d
+		}
+		{
+			dependencies: [
+				"9D4EDA9A6320E181"
+			]
+			id: "2DC52600B201EFBD"
+			rewards: [
+				{
+					id: "57821AF06E57D6C4"
+					type: "xp_levels"
+					xp_levels: 5
+				}
+			]
+			tasks: [
+				{
+					entity: "twilightforest:snow_queen"
+					id: "CD7CB2F2CDC05BFA"
+					type: "kill"
+					value: 1
+				}
+			]
+			x: 6.0d
+			y: -0.75d
+		}
+		{
+			id: "4A044730D3704EC3"
+			rewards: [
+				{
+					id: "3FDBE1F7B1080FB9"
+					type: "xp_levels"
+					xp_levels: 4
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					entity: "minecraft:wither"
+					id: "2590409D2F7FDB56"
+					type: "kill"
+					value: 1
+				}
+			]
+			x: 0.0d
+			y: -2.25d
+		}
+		{
+			id: "1669D8493EE34097"
+			rewards: [
+				{
+					id: "5823016A3173D626"
+					type: "xp_levels"
+					xp_levels: 4
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					entity: "minecraft:ender_dragon"
+					id: "1F74A7D6E70424AD"
+					type: "kill"
+					value: 1
+				}
+			]
+			x: 0.0d
+			y: -0.75d
+		}
+		{
+			id: "B44320C1FBB7D6C5"
+			optional: true
+			rewards: [
+				{
+					id: "D7BCC3F4CCF427DB"
+					type: "xp_levels"
+					xp_levels: 4
+				}
+			]
+			tasks: [
+				{
+					entity: "minecraft:warden"
+					id: "ECA9B7AAE8E955A0"
+					type: "kill"
+					value: 1
+				}
+			]
+			x: 0.0d
+			y: 0.75d
+		}
+		{
+			id: "BE3D573F7C12ED85"
+			rewards: [
+				{
+					id: "664BE8CCC50A627F"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					entity: "mowziesmobs:ferrous_wroughtnaut"
+					id: "AA1AEB673510FB9D"
+					type: "kill"
+					value: 1
+				}
+			]
+			x: 0.0d
+			y: 2.25d
+		}
+		{
+			dependencies: [
+				"BE3D573F7C12ED85"
+			]
+			id: "B08A985C28677FE7"
+			rewards: [
+				{
+					id: "1C3BE1BF761047D1"
+					type: "xp_levels"
+					xp_levels: 4
+				}
+			]
+			tasks: [
+				{
+					entity: "mowziesmobs:frostmaw"
+					id: "20973C67BE66FA0F"
+					type: "kill"
+					value: 1
+				}
+			]
+			x: 2.0d
+			y: -3.75d
+		}
+		{
+			dependencies: [
+				"BE3D573F7C12ED85"
+			]
+			id: "AEE283F027BBD1FE"
+			rewards: [
+				{
+					id: "8624059FB6658ECA"
+					type: "xp_levels"
+					xp_levels: 4
+				}
+			]
+			tasks: [
+				{
+					entity: "mowziesmobs:umvuthi"
+					id: "C06782E8D2BEB34B"
+					type: "kill"
+					value: 1
+				}
+			]
+			x: 2.0d
+			y: -2.25d
+		}
+		{
+			dependencies: [
+				"B08A985C28677FE7"
+			]
+			id: "B1D1D372986491E1"
+			rewards: [
+				{
+					id: "85E7669EC6D916B7"
+					type: "xp_levels"
+					xp_levels: 5
+				}
+			]
+			tasks: [
+				{
+					entity: "mowziesmobs:sculptor"
+					id: "ADD58C6CB4623B31"
+					type: "kill"
+					value: 1
+				}
+			]
+			x: 4.0d
+			y: -0.75d
+		}
+		{
+			dependencies: [
+				"1669D8493EE34097"
+			]
+			id: "A0190966F7122D37"
+			rewards: [
+				{
+					id: "7CDAE62A24A2CA30"
+					type: "xp_levels"
+					xp_levels: 5
+				}
+			]
+			tasks: [
+				{
+					entity: "cataclysm:ender_guardian"
+					id: "48F9D4D0B5A2024C"
+					type: "kill"
+					value: 1
+				}
+			]
+			x: 2.0d
+			y: -0.75d
+		}
+		{
+			dependencies: [
+				"4A044730D3704EC3"
+			]
+			id: "2CBA21DFFA584AC7"
+			rewards: [
+				{
+					id: "640654C8FD3E8242"
+					type: "xp_levels"
+					xp_levels: 5
+				}
+			]
+			tasks: [
+				{
+					entity: "cataclysm:netherite_monstrosity"
+					id: "114974F6E896902A"
+					type: "kill"
+					value: 1
+				}
+			]
+			x: 2.0d
+			y: 0.75d
+		}
+		{
+			dependencies: [
+				"2CBA21DFFA584AC7"
+			]
+			id: "5424D10A69C591E1"
+			rewards: [
+				{
+					id: "A8490E8F2F3A77D3"
+					type: "xp_levels"
+					xp_levels: 6
+				}
+			]
+			tasks: [
+				{
+					entity: "cataclysm:ignis"
+					id: "6AEDEA7D4D7F2251"
+					type: "kill"
+					value: 1
+				}
+			]
+			x: 4.0d
+			y: 0.75d
+		}
+		{
+			dependencies: [
+				"2CBA21DFFA584AC7"
+			]
+			id: "8EF8BE6697CB5F01"
+			rewards: [
+				{
+					id: "3465892EAB5D5567"
+					type: "xp_levels"
+					xp_levels: 6
+				}
+			]
+			tasks: [
+				{
+					entity: "cataclysm:the_harbinger"
+					id: "EFE5F9A710A9B1D5"
+					type: "kill"
+					value: 1
+				}
+			]
+			x: 4.0d
+			y: 2.25d
+		}
+		{
+			dependencies: [
+				"8EF8BE6697CB5F01"
+			]
+			id: "5DFB83C82E8BD14F"
+			rewards: [
+				{
+					id: "8DE0F5AE5C47AD33"
+					type: "xp_levels"
+					xp_levels: 6
+				}
+			]
+			tasks: [
+				{
+					entity: "cataclysm:the_leviathan"
+					id: "BA8DF5C3FF881F14"
+					type: "kill"
+					value: 1
+				}
+			]
+			x: 6.0d
+			y: 0.75d
+		}
+		{
+			dependencies: [
+				"8EF8BE6697CB5F01"
+			]
+			id: "806244E877438AB3"
+			rewards: [
+				{
+					id: "536B29F42B3540C9"
+					type: "xp_levels"
+					xp_levels: 6
+				}
+			]
+			tasks: [
+				{
+					entity: "cataclysm:ancient_remnant"
+					id: "B7AD58ABCDC1312F"
+					type: "kill"
+					value: 1
+				}
+			]
+			x: 6.0d
+			y: 2.25d
+		}
+		{
+			dependencies: [
+				"5424D10A69C591E1"
+			]
+			id: "85F09ED7AC553F4A"
+			rewards: [
+				{
+					id: "45BD9FFBE672ECA4"
+					type: "xp_levels"
+					xp_levels: 7
+				}
+			]
+			tasks: [
+				{
+					entity: "cataclysm:maledictus"
+					id: "83D252AA600FE240"
+					type: "kill"
+					value: 1
+				}
+			]
+			x: 6.0d
+			y: 3.75d
+		}
+		{
+			dependencies: [
+				"5DFB83C82E8BD14F"
+			]
+			id: "141667D8349427F7"
+			rewards: [
+				{
+					id: "9ED041635ECC3064"
+					type: "xp_levels"
+					xp_levels: 7
+				}
+			]
+			tasks: [
+				{
+					entity: "cataclysm:scylla"
+					id: "1C323F909262EA39"
+					type: "kill"
+					value: 1
+				}
+			]
+			x: 8.0d
+			y: 0.75d
+		}
+		{
+			dependencies: [
+				"4A044730D3704EC3"
+			]
+			id: "E77BA16A9F495E84"
+			rewards: [
+				{
+					id: "E278EC652F9F20C8"
+					type: "xp_levels"
+					xp_levels: 6
+				}
+			]
+			tasks: [
+				{
+					entity: "iceandfire:fire_dragon"
+					id: "E987D00F7DE75860"
+					type: "kill"
+					value: 1
+				}
+			]
+			x: 2.0d
+			y: 2.25d
+		}
+		{
+			dependencies: [
+				"4A044730D3704EC3"
+			]
+			id: "155D6EE638883874"
+			rewards: [
+				{
+					id: "967EC68073DA2B76"
+					type: "xp_levels"
+					xp_levels: 6
+				}
+			]
+			tasks: [
+				{
+					entity: "iceandfire:ice_dragon"
+					id: "EE4A51B2593F7193"
+					type: "kill"
+					value: 1
+				}
+			]
+			x: 2.0d
+			y: 3.75d
+		}
+		{
+			id: "FA662B376EA6BA68"
+			rewards: [
+				{
+					id: "685C0CD7129177D8"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					entity: "aether:slider"
+					id: "291C93F14B17D958"
+					type: "kill"
+					value: 1
+				}
+			]
+			x: 0.0d
+			y: 3.75d
+		}
+		{
+			dependencies: [
+				"FA662B376EA6BA68"
+			]
+			id: "7230E89A7FC46EE6"
+			rewards: [
+				{
+					id: "CCC494866256B5CB"
+					type: "xp_levels"
+					xp_levels: 4
+				}
+			]
+			tasks: [
+				{
+					entity: "aether:valkyrie_queen"
+					id: "C3183A755EA44F17"
+					type: "kill"
+					value: 1
+				}
+			]
+			x: 2.0d
+			y: 5.25d
+		}
+		{
+			dependencies: [
+				"7230E89A7FC46EE6"
+			]
+			id: "7737AE9AC6F36984"
+			rewards: [
+				{
+					id: "6425B3F7CDFE1538"
+					type: "xp_levels"
+					xp_levels: 5
+				}
+			]
+			tasks: [
+				{
+					entity: "aether:sun_spirit"
+					id: "8BD5324712F5617D"
+					type: "kill"
+					value: 1
+				}
+			]
+			x: 4.0d
+			y: 3.75d
+		}
+	]
+}

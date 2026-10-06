@@ -1,0 +1,450 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "ars_nouveau"
+	group: ""
+	icon: {
+		id: "ars_nouveau:novice_spell_book"
+	}
+	id: "A672F92909E3864F"
+	images: [ ]
+	order_index: 2
+	quest_links: [ ]
+	quests: [
+		{
+			id: "7A0336D69DCE546C"
+			rewards: [
+				{
+					id: "3591FE7E4AF486E2"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			size: 1.5d
+			tasks: [
+				{
+					id: "EB0FE1B1FDDEE2E9"
+					item: {
+						count: 1
+						id: "ars_nouveau:novice_spell_book"
+					}
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"7A0336D69DCE546C"
+			]
+			id: "B3733C09E2E4855E"
+			optional: true
+			rewards: [
+				{
+					id: "D7D8AB2CE06F5464"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "D65E0BE6430CF532"
+					item: {
+						count: 1
+						id: "ars_nouveau:worn_notebook"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"7A0336D69DCE546C"
+			]
+			id: "B61C88793F85C32E"
+			rewards: [
+				{
+					id: "9445E62D1FA608BD"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "CFBD72370B81AEA2"
+					item: {
+						count: 1
+						id: "ars_nouveau:source_gem"
+					}
+					type: "item"
+					count: 8
+				}
+			]
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"7A0336D69DCE546C"
+			]
+			id: "5A32AF8CCFA3B535"
+			rewards: [
+				{
+					id: "EA0F355202A3C75B"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "A8F0BB6C368CFB29"
+					item: {
+						count: 1
+						id: "ars_nouveau:imbuement_chamber"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"B61C88793F85C32E"
+			]
+			id: "53853B92B6039F45"
+			rewards: [
+				{
+					id: "BA8D3DDD06011DA0"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "5240D9212CB1578C"
+					item: {
+						count: 1
+						id: "ars_nouveau:source_jar"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: -0.75d
+		}
+		{
+			dependencies: [
+				"53853B92B6039F45"
+			]
+			id: "425A71B70F54E6F4"
+			rewards: [
+				{
+					id: "A78CCA01F1515F6A"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "6BF7DBE2E78A6550"
+					item: {
+						count: 1
+						id: "ars_nouveau:agronomic_sourcelink"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"B61C88793F85C32E"
+			]
+			id: "6CC8F29FCD029FCC"
+			rewards: [
+				{
+					id: "20A64F6AAE09DCD5"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "D903986AB408C7FA"
+					item: {
+						count: 1
+						id: "ars_nouveau:scribes_table"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 0.75d
+		}
+		{
+			dependencies: [
+				"425A71B70F54E6F4"
+			]
+			id: "26406D66A049744E"
+			rewards: [
+				{
+					id: "E3C367D99DC5DC5B"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "5D04B3F47CD1906B"
+					item: {
+						count: 1
+						id: "ars_nouveau:enchanting_apparatus"
+					}
+					type: "item"
+				}
+				{
+					id: "39A709812583E9C7"
+					item: {
+						count: 1
+						id: "ars_nouveau:arcane_core"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"26406D66A049744E"
+			]
+			id: "E3A3CB3A69E5D177"
+			rewards: [
+				{
+					id: "5617F51A26D9BE4F"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "FAC2FFA42D63A14B"
+					item: {
+						count: 1
+						id: "ars_nouveau:apprentice_spell_book"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: -3.75d
+		}
+		{
+			dependencies: [
+				"26406D66A049744E"
+			]
+			id: "EBD663D8850EAB47"
+			optional: true
+			rewards: [
+				{
+					id: "C366BC56E68A62C5"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "7732CC68FCA54F4C"
+					item: {
+						count: 1
+						id: "ars_nouveau:sorcerer_robes"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: -2.25d
+		}
+		{
+			dependencies: [
+				"26406D66A049744E"
+			]
+			id: "97CA5FE18CA0C5E4"
+			rewards: [
+				{
+					id: "3D82891BCA318517"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "5E08055CBC1FC8FB"
+					item: {
+						count: 1
+						id: "ars_nouveau:starbuncle_charm"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: -0.75d
+		}
+		{
+			dependencies: [
+				"26406D66A049744E"
+			]
+			id: "B970EE61195CA2B4"
+			rewards: [
+				{
+					id: "A06BE57D6307608E"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "CFEB3B8DA0570542"
+					item: {
+						count: 1
+						id: "ars_nouveau:wixie_charm"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 0.75d
+		}
+		{
+			dependencies: [
+				"26406D66A049744E"
+			]
+			id: "5CC2FFCA701041C5"
+			rewards: [
+				{
+					id: "F4251E4609B31845"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "648EA50FE17F26C1"
+					item: {
+						count: 1
+						id: "ars_nouveau:drygmy_charm"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 2.25d
+		}
+		{
+			dependencies: [
+				"26406D66A049744E"
+			]
+			id: "FC1C150E4B835245"
+			rewards: [
+				{
+					id: "881A7E250236E664"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "6C883E92A72498E4"
+					item: {
+						count: 1
+						id: "ars_nouveau:ritual_brazier"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 3.75d
+		}
+		{
+			dependencies: [
+				"E3A3CB3A69E5D177"
+			]
+			id: "80E94F9577609EF6"
+			rewards: [
+				{
+					id: "A33F6C60A572EEC5"
+					type: "xp_levels"
+					xp_levels: 5
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					entity: "ars_nouveau:wilden_boss"
+					id: "7A5170C495529EB8"
+					type: "kill"
+					value: 1
+				}
+			]
+			x: 12.0d
+			y: -0.75d
+		}
+		{
+			dependencies: [
+				"80E94F9577609EF6"
+			]
+			id: "30F3D63CD3375582"
+			rewards: [
+				{
+					id: "D150C74AD4AFA521"
+					type: "xp_levels"
+					xp_levels: 5
+				}
+			]
+			size: 1.5d
+			tasks: [
+				{
+					id: "995D39C3ED3EDCF0"
+					item: {
+						count: 1
+						id: "ars_nouveau:archmage_spell_book"
+					}
+					type: "item"
+				}
+			]
+			x: 14.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"E3A3CB3A69E5D177"
+			]
+			id: "D3DE5E81A4BEC9AF"
+			optional: true
+			rewards: [
+				{
+					id: "BF50C186BB5221EF"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "724EE98F9B926C78"
+					item: {
+						count: 1
+						id: "ars_elemental:fire_focus"
+					}
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: 0.75d
+		}
+	]
+}

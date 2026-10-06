@@ -1,0 +1,487 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "dimensionen"
+	group: ""
+	icon: {
+		id: "minecraft:ender_eye"
+	}
+	id: "7A661EEA6014AAA1"
+	images: [ ]
+	order_index: 8
+	quest_links: [ ]
+	quests: [
+		{
+			id: "AEC196EC8629D11F"
+			rewards: [
+				{
+					id: "EF4CE04329047970"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			size: 1.5d
+			tasks: [
+				{
+					dimension: "minecraft:the_nether"
+					id: "85AD82390B03B139"
+					type: "dimension"
+				}
+			]
+			x: 0.0d
+			y: -3.75d
+		}
+		{
+			id: "75C192B636A80509"
+			rewards: [
+				{
+					id: "96F688ABA65C538A"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					dimension: "twilightforest:twilight_forest"
+					id: "E479CA67E2A99CDB"
+					type: "dimension"
+				}
+			]
+			x: 0.0d
+			y: -2.25d
+		}
+		{
+			id: "63F04C6F357FA1DC"
+			rewards: [
+				{
+					id: "A8DF5A9BB52DD2E6"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					dimension: "aether:the_aether"
+					id: "50A15BFD28FD8AB1"
+					type: "dimension"
+				}
+			]
+			x: 0.0d
+			y: -0.75d
+		}
+		{
+			id: "8254397AB2C01693"
+			rewards: [
+				{
+					id: "1BB3034C370A7BDD"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					dimension: "undergarden:undergarden"
+					id: "CA84D385CC7CDD9E"
+					type: "dimension"
+				}
+			]
+			x: 0.0d
+			y: 0.75d
+		}
+		{
+			id: "525DF83D3C7E1714"
+			rewards: [
+				{
+					id: "5193CA664A27D6FC"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					dimension: "the_bumblezone:the_bumblezone"
+					id: "C4911F49BE818600"
+					type: "dimension"
+				}
+			]
+			x: 0.0d
+			y: 2.25d
+		}
+		{
+			id: "D17BCF4639D82AC3"
+			rewards: [
+				{
+					id: "3FCAC843BFD528B8"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					biome: "alexscaves:magnetic_caves"
+					id: "D790489B6534CC64"
+					type: "biome"
+				}
+			]
+			x: 0.0d
+			y: 3.75d
+		}
+		{
+			dependencies: [
+				"AEC196EC8629D11F"
+			]
+			id: "158910F703716CDC"
+			rewards: [
+				{
+					id: "D486DAFD358EEF70"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					dimension: "minecraft:the_end"
+					id: "A62A6616CB8F7B66"
+					type: "dimension"
+				}
+			]
+			x: 2.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"AEC196EC8629D11F"
+			]
+			id: "4D73D581C13B7C38"
+			rewards: [
+				{
+					id: "2350ED3AD92F62AA"
+					type: "xp_levels"
+					xp_levels: 4
+				}
+			]
+			tasks: [
+				{
+					dimension: "deeperdarker:otherside"
+					id: "6ADAA568B9F423B0"
+					type: "dimension"
+				}
+			]
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"AEC196EC8629D11F"
+			]
+			id: "BAD805849B980BFA"
+			rewards: [
+				{
+					id: "2CE6070738938D88"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "68F5863F324E89C8"
+					item: {
+						count: 1
+						id: "allthemodium:allthemodium_ingot"
+					}
+					type: "item"
+					count: 4
+				}
+			]
+			x: 2.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"BAD805849B980BFA"
+			]
+			id: "9C565FC953DAA224"
+			rewards: [
+				{
+					id: "A3E2860565D7E3FD"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					dimension: "allthemodium:mining"
+					id: "E609BD005440ABCF"
+					type: "dimension"
+				}
+			]
+			x: 4.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"9C565FC953DAA224"
+			]
+			id: "7025689F190D105D"
+			rewards: [
+				{
+					id: "2E87BC9F0B0CA9D1"
+					type: "xp_levels"
+					xp_levels: 4
+				}
+			]
+			tasks: [
+				{
+					dimension: "allthemodium:the_other"
+					id: "8174892C3278F8F8"
+					type: "dimension"
+				}
+			]
+			x: 6.0d
+			y: -0.75d
+		}
+		{
+			dependencies: [
+				"7025689F190D105D"
+			]
+			id: "8CE485ABA64E0D00"
+			rewards: [
+				{
+					id: "5F410D8D960FFCB2"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "D752EBE9F757CCE5"
+					item: {
+						count: 1
+						id: "allthemodium:vibranium_ingot"
+					}
+					type: "item"
+					count: 4
+				}
+			]
+			x: 8.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"7025689F190D105D"
+			]
+			id: "2A9D499986333D25"
+			rewards: [
+				{
+					id: "D67101CDEE95650D"
+					type: "xp_levels"
+					xp_levels: 4
+				}
+			]
+			tasks: [
+				{
+					dimension: "allthemodium:the_beyond"
+					id: "670849AB1E349A0B"
+					type: "dimension"
+				}
+			]
+			x: 8.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"2A9D499986333D25"
+			]
+			id: "F6798C880CF91F62"
+			rewards: [
+				{
+					id: "59E925E508FCCFB0"
+					type: "xp_levels"
+					xp_levels: 5
+				}
+			]
+			tasks: [
+				{
+					id: "4F7EC1FA7709A44E"
+					item: {
+						count: 1
+						id: "allthemodium:unobtainium_ingot"
+					}
+					type: "item"
+					count: 4
+				}
+			]
+			x: 10.0d
+			y: -0.75d
+		}
+		{
+			dependencies: [
+				"158910F703716CDC"
+			]
+			id: "EDDA79EF77012AC5"
+			rewards: [
+				{
+					id: "9E38A224BABB3A54"
+					type: "xp_levels"
+					xp_levels: 4
+				}
+			]
+			size: 1.5d
+			tasks: [
+				{
+					id: "317C99F4B9CED218"
+					item: {
+						count: 1
+						id: "ad_astra:tier_1_rocket"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"158910F703716CDC"
+			]
+			id: "3FD9ED9CFE58EDDC"
+			rewards: [
+				{
+					id: "E913A65A02C075D7"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "A2EC61036CDB426F"
+					item: {
+						count: 1
+						id: "ad_astra:space_helmet"
+					}
+					type: "item"
+				}
+				{
+					id: "66B3C0455CA58370"
+					item: {
+						count: 1
+						id: "ad_astra:space_suit"
+					}
+					type: "item"
+				}
+				{
+					id: "A9A65CFF106CDC38"
+					item: {
+						count: 1
+						id: "ad_astra:space_pants"
+					}
+					type: "item"
+				}
+				{
+					id: "54BCDD5491AECE70"
+					item: {
+						count: 1
+						id: "ad_astra:space_boots"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"EDDA79EF77012AC5"
+				"3FD9ED9CFE58EDDC"
+			]
+			id: "83B5192D6C8A3F64"
+			rewards: [
+				{
+					id: "C6542E62EA4ED185"
+					type: "xp_levels"
+					xp_levels: 4
+				}
+			]
+			tasks: [
+				{
+					dimension: "ad_astra:moon"
+					id: "FEDE0EC691D447FB"
+					type: "dimension"
+				}
+			]
+			x: 6.0d
+			y: 0.75d
+		}
+		{
+			dependencies: [
+				"83B5192D6C8A3F64"
+			]
+			id: "D31CC9F8A021E657"
+			rewards: [
+				{
+					id: "D4C5F2B0018437C8"
+					type: "xp_levels"
+					xp_levels: 5
+				}
+			]
+			tasks: [
+				{
+					dimension: "ad_astra:mars"
+					id: "FF7D07C23DE92EF3"
+					type: "dimension"
+				}
+			]
+			x: 8.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"D31CC9F8A021E657"
+			]
+			id: "2439279C56C902B3"
+			rewards: [
+				{
+					id: "62CE6C49657C82A5"
+					type: "xp_levels"
+					xp_levels: 5
+				}
+			]
+			tasks: [
+				{
+					dimension: "ad_astra:venus"
+					id: "512692AE3A98010F"
+					type: "dimension"
+				}
+				{
+					dimension: "ad_astra:mercury"
+					id: "807FE61888550908"
+					type: "dimension"
+				}
+			]
+			x: 10.0d
+			y: 0.75d
+		}
+		{
+			dependencies: [
+				"2439279C56C902B3"
+			]
+			id: "BF0880B0626A3C95"
+			rewards: [
+				{
+					id: "D0FEEF3D398E8A77"
+					type: "xp_levels"
+					xp_levels: 6
+				}
+			]
+			tasks: [
+				{
+					dimension: "ad_astra:glacio"
+					id: "93AC8B02F836A6F5"
+					type: "dimension"
+				}
+			]
+			x: 12.0d
+			y: 0.0d
+		}
+	]
+}

@@ -1,4 +1,4 @@
-﻿Unser Modpack 0.9.6 - Modliste
+﻿Unser Modpack 0.9.7 - Modliste
 Minecraft 1.21.1, NeoForge 21.1.256   |   259 Mods inkl. Bibliotheken   |   Stand 2026-10-06
 
 == Performance und Grafik (10) ==

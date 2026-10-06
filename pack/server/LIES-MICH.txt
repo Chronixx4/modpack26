@@ -15,7 +15,7 @@ ERSTER START
 4. Warten bis "Done (...)" im Log steht. Der erste Start dauert ein paar Minuten.
 
 WENN DEIN DOCKER-PANEL NEOFORGE SELBST INSTALLIERT
-- Nur den Ordner "mods" (und gern server.properties) uebernehmen, NeoForge-Version @NEOFORGE@ waehlen.
+- Die Ordner "mods" und "config" (und gern server.properties) uebernehmen, NeoForge-Version @NEOFORGE@ waehlen.
 
 WELT VORGENERIEREN (empfohlen, bevor ihr spielt)
   chunky radius 3000
@@ -25,7 +25,9 @@ Das generiert die Welt 3000 Bloecke um den Spawn vor, dann ruckelt es spaeter ni
 UPDATE AUF EINE NEUE PACK-VERSION
 - Den Ordner "mods" komplett loeschen und durch den neuen ersetzen.
 - Bei neuer NeoForge-Version die neue Installer-Datei und start.sh/start.bat mit uebernehmen.
-- Welt (world) und config nicht loeschen. Vorher ein Backup machen (FTB Backups 2 ist dabei).
+- Den Ordner "config/ftbquests" durch den neuen ersetzen (Questbuch). Der Quest-Fortschritt
+  liegt in der Welt und bleibt erhalten.
+- Welt (world) und den Rest von config nicht loeschen. Vorher ein Backup machen (FTB Backups 2 ist dabei).
 
 NICHT IM SERVER-PAKET
 Reine Client-Mods (Sodium, Karten, Sound-Mods usw.) fehlen hier absichtlich.
