@@ -6,7 +6,7 @@ from dsl import gruppe, kapitel, Q
 kapitel('ae2', '&bApplied Energistics 2', 'ae2:controller', 'Alles in einem Netzwerk: Lagern, Suchen, Autocrafting', [
     Q('start', 'Certus-Quarz', 'ae2:certus_quartz_crystal',
       'Certus-Quarz ist die Grundlage von AE2. Du findest ihn in &eMeteoriten&r: Krater mit Himmelsstein und Certus-Knospen.\n\n'
-      'Ins Spiel kommst du mit der Anleitung (ae2:guide) oder dem Ponder-artigen Handbuch, das AE2 per Taste anzeigt.',
+      'Alles Wichtige erklärt dir die AE2-Anleitung im Spiel. Bau sie dir gleich als Erstes.',
       nach=['erste_schritte/eisen'], belohnung=['loot1', 2], form='gear', gross=True, haupt=True),
     Q('kompass', 'Meteoritenkompass', 'ae2:meteorite_compass',
       'Der Kompass zeigt auf den nächsten Meteoriten. Praktisch, wenn du mehrere Pressen-Sätze oder mehr Himmelsstein brauchst.',
@@ -39,7 +39,7 @@ kapitel('ae2', '&bApplied Energistics 2', 'ae2:controller', 'Alles in einem Netz
       nach=['fluix'], belohnung='loot2', abgabe=True, optional=True),
     Q('knospen', 'Certus züchten', 'ae2:damaged_budding_quartz',
       'Wirf einen Certus-Quarzblock mit geladenem Certus ins Wasser, dann bekommst du einen knospenden Block. '
-      'Daran wachsen neue Kristalle. Ab und zu verschlechtert er sich, also nicht abbauen ohne Behutsamkeit-Verzauberung.',
+      'Daran wachsen neue Kristalle. Abbauen verschlechtert den Block, also lass ihn am besten stehen.',
       nach=['fluix'], belohnung=2),
     Q('kabel', 'Erste Kabel', [('item', 'ae2:fluix_glass_cable', 16), 'ae2:quartz_fiber'],
       'ME-Glaskabel verbinden alles im Netzwerk. Die Quarzfaser leitet nur Strom, aber keine Daten.',
@@ -80,7 +80,7 @@ kapitel('ae2', '&bApplied Energistics 2', 'ae2:controller', 'Alles in einem Netz
       'Normale Kabel tragen 8 Kanäle, dichte Kabel 32. Schlaue Kabel zeigen dir die belegten Kanäle als Lichtstreifen an.',
       nach=['kabel'], belohnung=2, zeile=-1),
     Q('p2p', 'P2P-Tunnel', 'ae2:me_p2p_tunnel',
-      'Ein ME-P2P-Tunnel schickt bis zu 32 Kanäle über ein einziges Kabel. Mit dem Netzwerk-Speicher kannst du ihn auf Items, Flüssigkeiten oder FE umstellen.',
+      'Ein ME-P2P-Tunnel schickt bis zu 32 Kanäle über ein einziges Kabel. Daneben gibt es P2P-Tunnel für Items, Flüssigkeiten, Redstone und FE.',
       nach=['kanaele'], belohnung=2, zeile=-1),
     Q('laufwerk', 'Laufwerk und Zelle', ['ae2:drive', 'ae2:item_storage_cell_1k'],
       'Das ME-Laufwerk hält bis zu 10 Speicherzellen. Eine 1k-Zelle fasst 1024 Bytes, verteilt auf bis zu 63 verschiedene Items.',
@@ -405,9 +405,8 @@ kapitel('mekanism', '&7Mekanism', 'mekanism:metallurgic_infuser', 'Erzverarbeitu
     Q('digital_miner', 'Digitaler Bergarbeiter', 'mekanism:digital_miner',
       'Der Digital Miner baut gezielt Erze in einem großen Radius ab, ohne dass du graben musst. Filter einstellen nicht vergessen.',
       nach=['teleporter'], belohnung='loot3', zeile=3),
-    Q('laser', 'Laser', ['mekanism:laser', 'mekanism:laser_amplifier'],
-      'Der Laser bündelt Strom zu einem Strahl. Er zündet den Fusionsreaktor und steckt in den Spulen des SPS. '
-      'Der Laserverstärker sammelt die Energie mehrerer Laser.',
+    Q('laser', 'Laser', 'mekanism:laser',
+      'Der Laser bündelt Strom zu einem Strahl. Er zündet den Fusionsreaktor und steckt in den Spulen des SPS.',
       nach=['ultimate'], belohnung=2, zeile=1, spalte=14),
     # --- Kernkraft (Hauptlinie) ---
     Q('uran', 'Uran', ['mekanism:raw_uranium', 'mekanism:yellow_cake_uranium'],
@@ -448,7 +447,7 @@ kapitel('mekanism', '&7Mekanism', 'mekanism:metallurgic_infuser', 'Erzverarbeitu
       nach=['mekasuit', 'disassembler'], belohnung=3, zeile=-3),
     Q('sps', 'Superkritischer Phasenwandler', ['mekanism:sps_casing', 'mekanism:sps_port', 'mekanism:supercharged_coil'],
       'Der SPS macht aus Polonium Antimaterie, braucht dafür aber extrem viel Strom. Spätestens jetzt lohnt sich der Fusionsreaktor.',
-      nach=['polonium', 'laser'], belohnung='loot3', haupt=True),
+      nach=['polonium', 'fusion'], belohnung='loot3', haupt=True),
     Q('ende', 'Antimaterie', 'mekanism:pellet_antimatter',
       'Das seltenste Material in Mekanism. Damit kannst du den Antiprotonischen Nukleosynthetisierer bauen.\n\n'
       'Du hast Mekanism durchgespielt!',
