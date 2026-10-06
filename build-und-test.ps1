@@ -9,7 +9,7 @@ $ProgressPreference = 'SilentlyContinue'
 $MC      = '1.21.1'
 $LOADER  = 'neoforge'
 $PACK    = 'Unser Modpack'
-$PACKVER = '0.9.2'
+$PACKVER = '0.9.3'
 $RAM     = '8G'
 $TIMEOUT_MIN = 20
 
@@ -242,6 +242,21 @@ quark|Quark
 visual-workbench|Visual Workbench
 easy-anvils|Easy Anvils
 grind-enchantments|Grind Enchantments
+create-bits-n-bobs|Create: Bits 'n' Bobs
+create-diesel-generators|Create: Diesel Generators
+interiors|Create: Interiors
+create-trainutilities|Create Train Utilities
+create-railways-navigator|Create Railways Navigator
+create-metallurgy|Create: Metallurgy
+create-mechanical-spawner|Create Mechanical Spawner
+mekanism|Mekanism
+applied-mekanistics|Applied Mekanistics
+productivebees|Productive Bees
+ars-ocultas|Ars Ocultas
+mystical-agriculture|Mystical Agriculture
+carry-on|Carry On
+travelersbackpack|Traveler's Backpack
+kSsLSjEt|Alex's Caves (Unofficial Port)
 irons-lib|Iron's Lib|^1\.21\.1-2
 bundle-api|Bundle API
 smartbrainlib|SmartBrainLib
