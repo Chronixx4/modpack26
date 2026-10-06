@@ -1,0 +1,2 @@
+Hier die .jar-Dateien von CurseForge reinlegen (Version 1.21.1, NeoForge).
+Das Skript packt sie automatisch mit ins Modpack.
