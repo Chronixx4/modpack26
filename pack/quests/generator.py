@@ -77,6 +77,7 @@ class Pruefer:
         if self.ok:
             d = json.load(open(path, encoding='utf-8'))
             self.sets = {k: set(d.get(k, [])) for k in ('items', 'entities', 'dimensions', 'structures', 'biomes')}
+            self.sets['structures'] |= {'#' + t for t in d.get('structure_tags', {})}
 
     def __call__(self, art, rid, wo):
         if self.ok and self.sets[art] and rid not in self.sets[art]:
@@ -417,6 +418,9 @@ def main():
             qn['id'] = qid
             if q.get('optional'):
                 qn['optional'] = True
+            # Kills, Dimensionen, Strukturen, Biome zaehlen sonst erst nach dem Freischalten
+            if any(isinstance(t, tuple) and t[0] in ('kill', 'dim', 'struct', 'biome') for t in tasks):
+                qn['progression_mode'] = 'flexible'
             qn['rewards'] = [reward_nbt(r, hid(k['datei'], q['key'], 'r', str(i)), chk, wo, tab_ids)
                              for i, r in enumerate(rewards)]
             if q.get('form'):

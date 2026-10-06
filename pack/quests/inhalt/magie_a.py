@@ -232,14 +232,26 @@ kapitel('ars_nouveau', '&dArs Nouveau', AN + 'novice_spell_book', 'Zauber selbst
 AE = 'ars_elemental:'
 AT = 'ars_technica:'
 AA = 'ars_additions:'
-kapitel('ars_addons', '&dArs Addons', AE + 'fire_focus', 'Elemental, Technica, Additions und mehr', [
-    # --- Hauptlinie ---
+AD_POS = {
+    'flashjack': (2, -3), 'rad': (1, -4),
+    'sirene': (1, -2), 'urne': (2, -2),
+    'klein_wasser': (2, -1), 'klein_erde': (3, -1), 'klein_luft': (4, -1), 'fokus_gross': (5, -1),
+    'kalibriert': (1, 1), 'motor': (2, 1), 'technomant': (2, 2), 'transmut': (2, 3), 'armreif': (5, 1),
+    'enderglas': (1, 4), 'domstab': (2, 4), 'charm': (3, 4),
+    'binder': (1, 5), 'neg': (2, 5), 'glyphen': (3, 5),
+    'altar': (1, -3),
+}
+kapitel('ars_addons', '&dArs Addons', AE + 'fire_focus', 'Elemental, Technica, Additions und mehr', platz([
+    # --- Hauptlinie: Ars Elemental ---
     Q('start', 'Ars Elemental', AE + 'curio_bag',
       'Ars Elemental bringt Elementar-Fokusse, neue Rüstungen und Wesen. Fang mit dem &eSchmuckbeutel&r an: Er hält deine Ringe und Amulette.',
       nach=['ars_nouveau/faser'], belohnung=['loot1', 2], form='gear', gross=True, haupt=True),
+    Q('kleinfokus', 'Feuer-Fokus', AE + 'lesser_fire_focus',
+      'Ein Fokus (Curio) verstärkt alle Zauber eines Elements. Feuer: Entzünden, Flamme und Co. werden stärker. Du kannst nur einen Fokus tragen.',
+      nach=['start', 'ars_nouveau/essenz'], belohnung=2, haupt=True),
     Q('zauberbeutel', 'Zauberbeutel', AE + 'caster_bag',
       'Der Zauberbeutel nimmt Zauberrollen und Caster-Tomes auf.',
-      nach=['start', 'ars_nouveau/essenz2'], belohnung=2, haupt=True),
+      nach=['kleinfokus', 'ars_nouveau/essenz2'], belohnung=2, haupt=True),
     Q('anima', 'Anima-Essenz', 'sauce:anima_essence',
       'Die Anima-Essenz braucht einen Witherskelett-Schädel. Sie ist eine Zutat für das Meisterzeichen.',
       nach=['zauberbeutel'], belohnung=2, haupt=True),
@@ -250,75 +262,63 @@ kapitel('ars_addons', '&dArs Addons', AE + 'fire_focus', 'Elemental, Technica, A
       'Die Robe aus Ars Technica: Arkanisten-Robe, Netherit, Messing und ein Meister- oder Technomantie-Zeichen.',
       nach=['meister', 'erste_schritte/netherit'], belohnung='loot4', form='star', gross=True, haupt=True),
 
-    # --- Elementar-Fokusse ---
-    Q('klein_feuer', 'Feuer-Fokus', AE + 'lesser_fire_focus',
-      'Ein Fokus (Curio) verstärkt alle Zauber eines Elements. Feuer: Entzünden, Flamme und Co. werden stärker.',
-      nach=['start', 'ars_nouveau/essenz'], belohnung=2),
+    # --- Fokusse ---
     Q('klein_wasser', 'Wasser-Fokus', AE + 'lesser_water_focus',
       'Verstärkt Wasser- und Frostzauber.',
-      nach=['start', 'ars_nouveau/essenz'], belohnung=2),
+      nach=['kleinfokus'], belohnung=2),
     Q('klein_erde', 'Erd-Fokus', AE + 'lesser_earth_focus',
       'Verstärkt Erdzauber wie Wachstum und Zerquetschen.',
-      nach=['start', 'ars_nouveau/essenz'], belohnung=2),
+      nach=['klein_wasser'], belohnung=2),
     Q('klein_luft', 'Luft-Fokus', AE + 'lesser_air_focus',
       'Verstärkt Luft- und Blitzzauber.',
-      nach=['start', 'ars_nouveau/essenz3'], belohnung=2),
+      nach=['klein_erde', 'ars_nouveau/essenz3'], belohnung=2),
     Q('fokus_gross', 'Großer Fokus', 'check',
       'Kleiner Fokus plus Meisterzeichen ergibt den großen Fokus deines Elements. Hak ab, wenn du einen hast.',
       nach=['meister'], belohnung=3),
     Q('armreif', 'Zauberer-Armreif', AE + 'base_bangle',
       'Ein Armreif, der sich mit Essenzen auf ein Element ausrichten lässt. Braucht einen Endkristall.',
-      nach=['start', 'dimensionen/end'], belohnung=3),
+      nach=['meister', 'ars_nouveau/schmuck', 'dimensionen/end'], belohnung=3),
 
-    # --- Wesen / Extras ---
+    # --- Wesen ---
     Q('sirene', 'Sirene', AE + 'siren_charm',
-      'Sirenen leben am Meer. Gebunden helfen sie dir beim Fischen und Tauchen.',
+      'Sirenen leben am Meer. Mit dem Amulett holst du dir eine nach Hause.',
       nach=['start'], belohnung=2),
-    Q('flashjack', 'Flashjack', AE + 'flashjack_charm',
-      'Ein kleines Luftwesen aus den Blitz-Archwood-Wäldern.',
-      nach=['start', 'ars_nouveau/essenz3'], belohnung=2),
-    Q('gelbholz', 'Blitz-Archwood', AE + 'yellow_archwood_sapling',
-      'Die fünfte Archwood-Art. Sie wächst in den Wäldern von Ars Elemental.',
-      nach=['start'], belohnung=1, optional=True, form='heart'),
     Q('urne', 'Endlose Urne', AE + 'everfull_urn',
       'Füllt Behälter neben sich ständig mit Wasser.',
-      nach=['start'], belohnung=2, optional=True, form='heart'),
+      nach=['sirene'], belohnung=2, optional=True, form='heart'),
+    Q('flashjack', 'Flashjack', AE + 'flashjack_charm',
+      'Ein kleines Luftwesen aus den Blitz-Archwood-Wäldern von Ars Elemental.',
+      nach=['sirene', 'ars_nouveau/essenz3'], belohnung=2),
+    Q('rad', 'Starbuncle-Rad', 'ars_creo:starbuncle_wheel',
+      '&eArs Creo&r: Ein Starbuncle rennt im Rad und treibt so Create-Maschinen an.',
+      nach=['start', 'ars_nouveau/starby', 'create_1/start'], belohnung=2),
 
     # --- Ars Technica ---
     Q('kalibriert', 'Kalibrierter Mechanismus', AT + 'calibrated_precision_mechanism',
-      'Ars Technica verbindet Ars mit Create. Alles beginnt mit dem Präzisionsmechanismus, aufgeladen mit Quelljuwel und Amethyst.',
+      '&eArs Technica&r verbindet Ars mit Create. Alles beginnt mit dem Präzisionsmechanismus, aufgeladen mit Quelljuwel und Amethyst.',
       nach=['start', 'create_2/praezision'], belohnung=3),
     Q('motor', 'Quellmotor', AT + 'source_motor',
       'Ein Create-Motor, der mit Quelle läuft statt mit Strom.',
       nach=['kalibriert', 'create_1/messing'], belohnung=3),
-    Q('monokel', 'Spionage-Monokel', AT + 'spy_monocle',
-      'Ein Monokel mit Fernglas-Funktion.',
-      nach=['kalibriert'], belohnung=2, optional=True, form='heart'),
-    Q('transmut', 'Fokus der Verwandlung', AT + 'transmutation_focus',
-      'Ein Fokus, der Blöcke mit Zaubern verwandeln kann. Was genau, steht im Handbuch.',
-      nach=['kalibriert'], belohnung=3),
     Q('technomant', 'Technomantie-Zeichen', AT + 'mark_of_technomancy',
       'Die Technica-Version des Meisterzeichens. Braucht ebenfalls den Wilden-Tribut.',
       nach=['kalibriert', 'ars_nouveau/chimera'], belohnung=3),
+    Q('transmut', 'Fokus der Verwandlung', AT + 'transmutation_focus',
+      'Ein Fokus, mit dem Zauber Blöcke verwandeln. Was genau geht, steht im Handbuch.',
+      nach=['kalibriert'], belohnung=3),
 
     # --- Ars Additions ---
     Q('enderglas', 'Ender-Quellglas', AA + 'ender_source_jar',
-      'Ein Quellglas, das mit anderen Ender-Quellgläsern verbunden ist.',
+      '&eArs Additions&r: Ein Quellglas, das mit anderen Ender-Quellgläsern verbunden ist.',
       nach=['start', 'ars_nouveau/glas'], belohnung=2),
     Q('domstab', 'Besserer Dominion-Stab', AA + 'advanced_dominion_wand',
       'Verbindet viele Relais oder Wesen auf einmal.',
-      nach=['start', 'ars_nouveau/stab'], belohnung=2),
+      nach=['enderglas', 'ars_nouveau/stab'], belohnung=2),
     Q('charm', 'Zweiter Atem', AA + 'undying_charm',
-      'Ein Talisman aus Ars Additions, der wie ein Totem wirkt. Es gibt noch viele weitere, z. B. gegen Feuer oder Ertrinken.',
-      nach=['start'], belohnung=2, optional=True, form='heart'),
+      'Ein Talisman, der wie ein Totem wirkt. Es gibt noch viele weitere, z. B. gegen Feuer oder Ertrinken.',
+      nach=['domstab'], belohnung=2, optional=True, form='heart'),
 
-    # --- Kleine Addons ---
-    Q('rad', 'Starbuncle-Rad', 'ars_creo:starbuncle_wheel',
-      '&eArs Creo&r: Ein Starbuncle rennt im Rad und treibt so Create-Maschinen an.',
-      nach=['start', 'ars_nouveau/starby', 'create_1/start'], belohnung=2),
-    Q('altar', 'Opferaltar', 'ars_ocultas:altar',
-      '&eArs Ocultas&r verbindet Ars mit Occultism. Der Altar braucht Silber und eine goldene Opferschale aus Occultism.',
-      nach=['start'], belohnung=2),
+    # --- Glyphen-Addons ---
     Q('binder', 'Zauber-Mappe', 'not_enough_glyphs:spell_binder',
       '&eNot Enough Glyphs&r: Die Mappe speichert weitere Zauber-Seiten für dein Buch.',
       nach=['start'], belohnung=2),
@@ -328,7 +328,12 @@ kapitel('ars_addons', '&dArs Addons', AE + 'fire_focus', 'Elemental, Technica, A
     Q('glyphen', 'Noch mehr Glyphen', ['toomanyglyphs:glyph_ray', 'arsomega:glyph_missile', 'ars_scalaes:glyph_resize'],
       'Weitere Glyphen-Addons: &eStrahl&r (Too Many Glyphs), &eRakete&r (Ars Omega) und &eGröße ändern&r (Ars Scalaes).',
       nach=['neg', 'ars_nouveau/essenz3'], belohnung=3),
-])
+
+    # --- Ars Ocultas ---
+    Q('altar', 'Opferaltar', 'ars_ocultas:altar',
+      '&eArs Ocultas&r verbindet Ars mit Occultism. Der Altar braucht Silber und eine goldene Opferschale aus Occultism.',
+      nach=['start'], belohnung=2),
+], AD_POS))
 
 # ---------------------------------------------------------------------------
 # Iron's Spells 'n Spellbooks
@@ -336,7 +341,24 @@ kapitel('ars_addons', '&dArs Addons', AE + 'fire_focus', 'Elemental, Technica, A
 IS = 'irons_spellbooks:'
 CS = 'cataclysm_spellbooks:'
 IJ = 'irons_jewelry:'
-kapitel('irons_spells', "&5Iron's Spells", IS + 'iron_spell_book', 'Zauberbücher und Schriftrollen', [
+IS_POS = {
+    # oben: Material, Runen, Roben
+    'leder': (3, -1), 'slot': (4, -1), 'r_netherit': (5, -1), 'ringe': (7, -1), 'amulett': (8, -1),
+    'drachenbuch': (10, -1), 'necro': (11, -1),
+    'stoff': (3, -2), 'robe': (4, -2), 'r_element': (6, -2), 'orbs': (9, -2),
+    'runenstein': (3, -3), 'blitz': (4, -3), 'runen1': (5, -3), 'r_licht': (6, -3),
+    'runen2': (4, -4),
+    'runen3': (4, -5), 'r_dunkel': (6, -5),
+    'eldritch': (5, -6),
+    # unten: Schriftrollen, Gegner, Tinte, Schmuck, Cataclysm
+    'rolle': (2, 1), 'abgabe': (3, 1), 'b_turm': (4, 1), 'b_magier': (5, 1), 'b_spinne': (6, 1), 'eisbuch': (7, 1),
+    'ring': (8, 1), 'b_tyros': (11, 1),
+    'b_fort': (6, 2), 'abgabe2': (7, 2), 'c_bloom': (10, 2), 'c_ignis': (11, 2), 'c_abyss': (11, 3),
+    'glut': (3, 3), 'kessel': (4, 3), 'tinte': (5, 3), 'tinte2': (6, 3), 'tinte3': (7, 3),
+    'schmiede': (6, 4),
+    'j_station': (1, 5), 'j_steine': (2, 5), 'j_schmuck': (3, 5),
+}
+kapitel('irons_spells', "&5Iron's Spells", IS + 'iron_spell_book', 'Zauberbücher und Schriftrollen', platz([
     # --- Hauptlinie ---
     Q('start', 'Das erste Notizbuch', IS + 'copper_spell_book',
       "Iron's Spells arbeitet mit &eSchriftrollen&r, die du in Zauberbücher einträgst. Das einfachste Buch ist das Notizbuch aus Kupfer, Papier und Faden.\n\n"
@@ -425,16 +447,13 @@ kapitel('irons_spells', "&5Iron's Spells", IS + 'iron_spell_book', 'Zauberbüche
       'Die Eldritch-Schule lernst du nicht über Schriftrollen, sondern über diese Manuskripte. Halt in alten, düsteren Orten Ausschau.',
       nach=['runen3'], belohnung=3),
     Q('blitz', 'Blitz in der Flasche', IS + 'lightning_bottle',
-      'Fokus-Item der Blitz-Schule. Wie man es bekommt, zeigt EMI.',
-      nach=['essenz'], belohnung=2),
+      'Das Fokus-Item der Blitz-Schule. Du brauchst es für die Blitz-Rune und den Antiken Kodex. Wie man es bekommt, zeigt EMI.',
+      nach=['runenstein'], belohnung=2),
     Q('orbs', 'Upgrade-Kugeln', [IS + 'mana_upgrade_orb', IS + 'fire_upgrade_orb'],
       'Kugel plus Rune ergibt eine Upgrade-Kugel. Am Arkanen Amboss setzt du sie in Rüstung ein: mehr Mana oder mehr Kraft für eine Schule.',
       nach=['orb', 'runen1', 'runen3'], belohnung=3),
 
     # --- Rüstung ---
-    Q('wanderer', 'Wandernder Magier', IS + 'wandering_magician_chestplate',
-      'Eine leichte Einsteiger-Robe: Lederrüstung plus Arkane Essenz.',
-      nach=['essenz'], belohnung=1, optional=True, form='heart'),
     Q('robe', 'Zaubererrobe', IS + 'wizard_chestplate',
       'Die Grundrobe aus Arkanem Tuch. Mit einer Rune wird daraus die Rüstung einer Schule.',
       nach=['stoff'], belohnung=2),
@@ -495,12 +514,9 @@ kapitel('irons_spells', "&5Iron's Spells", IS + 'iron_spell_book', 'Zauberbüche
     Q('c_ignis', 'Ignis-Zauberbuch', CS + 'ignis_spell_book',
       'Aus dem Blaze-Handbuch, Ignitium und der Ignitium-Schmiedevorlage. Das Ignitium bekommst du vom Cataclysm-Boss Ignis.',
       nach=['c_bloom'], belohnung=3),
-    Q('c_ruestung', 'Ignis-Magierrobe', CS + 'ignis_chestplate',
-      'Die Netherit-Kampfmagierrobe, mit Ignitium aufgewertet.',
-      nach=['c_ignis', 'r_netherit'], belohnung=3),
-    Q('c_abyss', 'Abgrund-Rune', [CS + 'abyss_spell_book', CS + 'abyssal_rune'],
-      'Zauber aus der Tiefsee: das Buch o\' R\'lyeh und die Abgrund-Rune für eine neue Schule.',
-      nach=['c_bloom', 'runenstein'], belohnung=3),
+    Q('c_abyss', "Buch o' R'lyeh", CS + 'abyss_spell_book',
+      'Ein Zauberbuch für die Abgrund-Schule aus der Tiefsee. Dazu gibt es eine eigene Abgrund-Rune und Upgrade-Kugel.',
+      nach=['c_bloom'], belohnung=3),
 
     # --- Iron's Gems 'n Jewelry ---
     Q('j_station', 'Juwelier-Tisch', [IJ + 'jewelcrafting_station', IJ + 'jewelcrafting_guide'],
@@ -520,4 +536,4 @@ kapitel('irons_spells', "&5Iron's Spells", IS + 'iron_spell_book', 'Zauberbüche
     Q('abgabe2', 'Abgabe: Mithril', ('item', IS + 'mithril_scrap', 16),
       'Gib 16 Mithril-Schrott ab.',
       nach=['mithril'], belohnung='loot3', abgabe=True, optional=True),
-])
+], IS_POS))

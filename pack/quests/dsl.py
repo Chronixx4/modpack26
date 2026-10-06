@@ -8,7 +8,7 @@ aufgaben:   'mod:item'                    Item haben (1x)
             ('item', 'mod:item', n)       n Stueck haben
             ('kill', 'mod:mob', n)        Mob toeten
             ('dim', 'mod:dimension')      Dimension betreten
-            ('struct', 'mod:struktur')    Struktur betreten
+            ('struct', 'mod:struktur')    Struktur betreten ('#mod:tag' = eine aus dem Struktur-Tag)
             ('biome', 'mod:biom')         Biom betreten
             'check'                       zum Abhaken
             Liste davon = alle muessen erfuellt sein

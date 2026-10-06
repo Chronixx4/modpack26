@@ -70,10 +70,10 @@ kapitel('dimensionen', '&2Dimensionen', 'minecraft:obsidian', 'Neue Welten entde
       'Eine verlassene Stadt aus Netherziegeln. Selten, aber groß. Hier lohnt sich das Plündern.',
       nach=['nb_biome2'], belohnung='loot2', optional=True, zeile=-1),
     Q('cincinnasit', 'Cincinnasit', 'betternether:cincinnasite_ingot',
-      'Goldgelbes Erz im Nether. Daraus baust du die Cincinnasit-Schmiede, einen Ofen, der Erze besonders schnell schmilzt.',
+      'Goldgelbes Erz im Nether. Mit Netherziegeln wird daraus die Cincinnasit-Schmiede, ein Ofen aus BetterNether.',
       nach=['nether'], belohnung=2, zeile=-2),
     Q('rubin', 'Nether-Rubin', 'betternether:nether_ruby',
-      'Selten, aber stark: Rubin-Werkzeuge und -Rüstung liegen ungefähr auf Diamant-Niveau. Das Erz sitzt tief im Netherstein.',
+      'Selten und wertvoll: Aus Nether-Rubin baust du Werkzeuge und Rüstung.',
       nach=['cincinnasit'], belohnung=3, zeile=-2),
 
     # ---- End (BetterEnd) ----
@@ -91,7 +91,7 @@ kapitel('dimensionen', '&2Dimensionen', 'minecraft:obsidian', 'Neue Welten entde
       'Enderstaub (aus Endererz) plus Eisenbarren ergibt Terminit. Daraus baust du gute Werkzeuge und Rüstung.',
       nach=['end'], belohnung=2, zeile=-2),
     Q('aeternium', 'Aeternium', 'betterend:aeternium_ingot',
-      'Terminit plus Netheritbarren: Aeternium ist das stärkste Material aus BetterEnd.',
+      'Terminit plus Netheritbarren: Aeternium ist eines der stärksten Materialien aus BetterEnd.',
       nach=['terminit', 'erste_schritte/netherit'], belohnung='loot3', zeile=-2),
 
     # ---- Aether ----
@@ -120,19 +120,19 @@ kapitel('dimensionen', '&2Dimensionen', 'minecraft:obsidian', 'Neue Welten entde
 
     # ---- Allthemodium ----
     Q('atm_erz', 'Allthemodium', 'allthemodium:allthemodium_ingot',
-      'Das erste Allthemodium-Metall. Das Erz liegt sehr tief und braucht eine &eNetherit-Spitzhacke&r. Wo genau, zeigt dir EMI.',
+      'Allthemodium-Erz steckt in Wänden und Decken der Höhlen im Tiefen Dunkel. Abbauen nur von Hand und mit &eNetherit-Spitzhacke&r.',
       nach=['erste_schritte/netherit'], belohnung=3, zeile=-5, spalte=4),
     Q('atm_pad', 'Teleport-Pad', 'allthemodium:teleport_pad',
-      'Das Teleport-Pad bringt dich in die Allthemodium-Welten. Wo du es benutzt, entscheidet über das Ziel: Overworld, Nether oder End.',
+      'Das Teleport-Pad bringt dich in die Allthemodium-Welten: &eSchleichen + Rechtsklick mit leeren Händen&r. Wo es steht, entscheidet über das Ziel: Overworld, Nether oder End.',
       nach=['atm_erz'], belohnung=2, zeile=-5),
     Q('atm_mining', 'Mining-Dimension', ('dim', 'allthemodium:mining'),
-      'Pad in der Overworld benutzen: Eine Welt nur zum Abbauen, voller Erze. Bau hier nichts Wichtiges, sie kann zurückgesetzt werden.',
+      'Pad in der Overworld benutzen: Die Mining-Dimension ist flach und ideal für Steinbrüche und zum Testen.',
       nach=['atm_pad'], belohnung='loot2', zeile=-5),
     Q('atm_other', 'The Other', [('dim', 'allthemodium:the_other'), 'allthemodium:vibranium_ingot'],
-      'Pad im Nether benutzen: The Other ist eine gefährliche Nether-Welt. Hier gibt es Vibranium (abbauen mit Allthemodium-Spitzhacke).',
+      'Pad im Nether benutzen: The Other ist sehr feindselig, mit unterirdischen Städten und Pyramiden. Vibranium liegt hier zwischen Y 0 und 40 (abbauen mit Allthemodium-Spitzhacke).',
       nach=['atm_mining'], belohnung=3, zeile=-5),
     Q('atm_beyond', 'The Beyond', [('dim', 'allthemodium:the_beyond'), 'allthemodium:unobtainium_ingot'],
-      'Pad im End benutzen: The Beyond. Hier liegt Unobtainium, das stärkste Metall (abbauen mit Vibranium-Spitzhacke).',
+      'Pad im End benutzen: The Beyond. Unobtainium, das stärkste Metall, findest du in den End-Hochländern (abbauen mit Vibranium-Spitzhacke).',
       nach=['atm_other'], belohnung='loot3', zeile=-5),
 
     # ---- Twilight Forest (eigenes Kapitel) ----
@@ -158,7 +158,7 @@ kapitel('dimensionen', '&2Dimensionen', 'minecraft:obsidian', 'Neue Welten entde
       'Rote Kristalle, besonders stark gegen die Rotlinge (die Untoten des Undergarden).',
       nach=['froststahl'], belohnung=2, zeile=2),
     Q('regalium', 'Regalium', 'undergarden:regalium_crystal',
-      'Das seltenste Erz des Undergarden. Damit wertest du Ausrüstung auf. Rezepte in EMI.',
+      'Ein seltenes Erz des Undergarden. Wofür du es brauchst, zeigt dir EMI.',
       nach=['utherium'], belohnung='loot2', zeile=2),
 
     # ---- Deeper and Darker ----
@@ -178,10 +178,10 @@ kapitel('dimensionen', '&2Dimensionen', 'minecraft:obsidian', 'Neue Welten entde
       'Die Bienen dort werden schnell wütend, also kein Honig klauen, ohne aufzupassen.',
       nach=['start'], belohnung='loot1', zeile=4),
     Q('honigkristall', 'Honigkristalle', ('item', 'the_bumblezone:honey_crystal_shards', 8),
-      'Honigkristalle wachsen an den Wänden der Bumblezone. Daraus baust du z. B. einen Honigkristall-Schild.',
+      'Honigkristalle findest du überall in der Bumblezone. Aus den Splittern baust du z. B. einen Honigkristall-Schild.',
       nach=['bumblezone'], belohnung=2, zeile=4),
     Q('gelee', 'Gelée Royale', 'the_bumblezone:royal_jelly_bottle',
-      'Gelée Royale ist selten und wertvoll. Schau in den Bienenwaben-Strukturen nach.',
+      'Gelée Royale ist selten und wertvoll. Erkunde die Bumblezone gründlich.',
       nach=['honigkristall'], belohnung=3, optional=True, zeile=4),
 
     # ---- Alex's Caves ----
@@ -211,7 +211,7 @@ kapitel('dimensionen', '&2Dimensionen', 'minecraft:obsidian', 'Neue Welten entde
       'Für Ad Astra brauchst du viel Stahl, z. B. aus dem Etrionischen Hochofen (Eisen plus Kohle). Andere Stahlquellen gehen auch.',
       nach=['start'], belohnung=2, zeile=6),
     Q('aa_werkbank', 'NASA-Werkbank', 'ad_astra:nasa_workbench',
-      'An der NASA-Werkbank baust du Raketen und Rover.',
+      'An der NASA-Werkbank baust du Raketen und Rover. Stahlplatten presst du im Kompressor.',
       nach=['aa_stahl'], belohnung=2, zeile=6),
     Q('aa_treibstoff', 'Treibstoff', ['ad_astra:fuel_refinery', 'ad_astra:fuel_bucket'],
       'Öl findest du an Ölquellen. Die Raffinerie macht daraus Raketentreibstoff (braucht Strom).',
@@ -287,7 +287,7 @@ kapitel('twilight', '&2Twilight Forest', 'twilightforest:twilight_oak_sapling', 
       'Sechs Phantomritter in der Ritterfestung im Dunklen Wald. Vorher musst du den Weg dorthin freikämpfen.',
       nach=['hydra'], belohnung='loot3', form='hexagon', haupt=True),
     Q('urghast', 'Der Ur-Ghast', [('kill', 'twilightforest:ur_ghast', 1), 'twilightforest:ur_ghast_trophy'],
-      'Ganz oben im Dunklen Turm. Zerstöre die Karminit-Reaktoren, die ihn heilen, sonst wird es ein langer Kampf.',
+      'Ganz oben im Dunklen Turm. Der Kampf hat eine eigene Mechanik, ein Blick ins Wiki lohnt sich.',
       nach=['ritter'], belohnung='loot3', form='hexagon', haupt=True),
     Q('yeti', 'Der Alpha-Yeti', [('kill', 'twilightforest:alpha_yeti', 1), 'twilightforest:alpha_yeti_trophy'],
       'In der Yetihöhle im Schneewald. Er wirft Eisbrocken, also immer in Bewegung bleiben.',
@@ -298,10 +298,10 @@ kapitel('twilight', '&2Twilight Forest', 'twilightforest:twilight_oak_sapling', 
 
     # Ausruestung und Zwischenschritte
     Q('stahlblatt', 'Stahlblatt', ('item', 'twilightforest:steeleaf_ingot', 8),
-      'Stahlblatt wächst an speziellen Blättern. Werkzeuge daraus sind etwa auf Eisen-Niveau.',
+      'Stahlblatt findest du beim Erkunden des Twilight Forest. Daraus gibt es Werkzeuge und Rüstung.',
       nach=['dimension'], belohnung=1, zeile=1),
     Q('eisenholz', 'Eisenholz', ('item', 'twilightforest:ironwood_ingot', 8),
-      'Aus Rohem Eisenholz geschmolzen. Werkzeuge daraus sind robuster als Eisen.',
+      'Lebenswurzel, Rohes Eisen und Goldklumpen ergeben Rohes Eisenholz, im Ofen wird es zum Barren.',
       nach=['dimension'], belohnung=1, zeile=-1),
     Q('karte', 'Magische Karte', 'twilightforest:magic_map',
       'Rabenfeder, Fackelbeeren und Glowstone ergeben den Kartenfokus, mit Papier die Magische Karte. Sie zeigt Biome und Boss-Strukturen.',
@@ -340,7 +340,7 @@ kapitel('twilight', '&2Twilight Forest', 'twilightforest:twilight_oak_sapling', 
       'Aus Alpha-Yetifell wird eine Rüstung, die Gegner einfrieren kann.',
       nach=['yeti'], belohnung=2, optional=True, zeile=1),
     Q('abgabe_stahlblatt', 'Abgabe: Stahlblatt', ('item', 'twilightforest:steeleaf_ingot', 32),
-      'Sammel fleißig Stahlblatt-Blätter und gib 32 Stahlblatt ab.',
+      'Gib 32 Stahlblatt ab.',
       nach=['stahlblatt'], belohnung='loot2', abgabe=True, optional=True, zeile=1),
 ])
 
