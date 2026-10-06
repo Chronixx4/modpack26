@@ -20,9 +20,12 @@ Kommunikation mit dem Nutzer: Deutsch, locker, kurz.
   3. `modrinth.index.json` schreiben. CurseForge-Jars aus `curseforge-mods\` kommen nach `overrides/mods`. Daraus entsteht `Unser-Modpack-<PACKVER>.mrpack`. Danach wird sofort `ERGEBNIS.txt` geschrieben.
   4. Einen NeoForge-Testserver aufsetzen und starten, bis `Done (` im Log steht. Danach wird `ERGEBNIS.txt` aktualisiert.
 - Das Skript schreibt ausserdem `MODLISTE.txt` (alle Mods nach Kategorie; Kategorien = `# `-Zeilen in `$ModList`, CF-Jars ueber `$cfCat`) und `pack/modrinth.index.json`. Beide nach jedem Build mit committen.
-- **Release:** `.github/workflows/release.yml` baut aus `pack/modrinth.index.json` + `curseforge-mods/*.jar` das .mrpack und legt ein GitHub-Release an automatisch, sobald `pack/modrinth.index.json` mit neuer `versionId` auf `main` landet (alternativ Actions -> Release -> Run workflow). Gibt es das Release schon, passiert nichts. Tags kann Claude aus der Cloud-Umgebung nicht pushen.
+- **Ausschlusslisten:** `pack/server-ausschluss.txt` und `pack/client-ausschluss.txt` (Dateinamen-Muster). Das Skript setzt dafuer `env.server`/`env.client` auf `unsupported` im .mrpack. Aktuell: Chunky nur Server, Distant Horizons/Xaero/Sound Physics nur Client.
+- **Release:** `.github/workflows/release.yml` ruft `.github/scripts/pakete-bauen.sh` (baut `.mrpack`, `-Client.zip` mit mods-Ordner, `-Server.zip` mit Server-Mods, NeoForge-Installer, `start.sh`/`start.bat`, `user_jvm_args.txt` (12 GB), `server.properties`, `eula.txt`, LIES-MICH) und `.github/scripts/servertest.sh` (Server-ZIP entpacken, starten bis `Done (`). Vorlagen fuer die Server-/Client-Dateien liegen in `pack/server/` und `pack/client/` (Platzhalter `@VERSION@`, `@MC@`, `@NEOFORGE@`).
+  - Pull Request: bauen + Servertest. Push auf `main` mit neuer `versionId` in `pack/modrinth.index.json`: zusaetzlich Release `v<Version>` mit allen Dateien. Gibt es das Release schon, passiert nichts. Tags kann Claude aus der Cloud-Umgebung nicht pushen.
+  - Lokal testbar: `bash .github/scripts/pakete-bauen.sh dist && bash .github/scripts/servertest.sh dist/Unser-Modpack-<ver>-Server.zip`
 - CurseForge-Jars holt das Skript automatisch aus `%USERPROFILE%\Downloads` (Dateinamen-Muster in `$cfPatterns`).
-- Aktuelle Version: **PACKVER 0.9.4**. Bei jeder Änderung `$PACKVER` hochzählen.
+- Aktuelle Version: **PACKVER 0.9.5**. Bei jeder Änderung `$PACKVER` hochzählen.
 
 ## Mods, die nur auf CurseForge sind (liegen in curseforge-mods\ bzw. Downloads)
 Alle für 1.21.1 NeoForge. Download-URL-Schema: `https://www.curseforge.com/minecraft/mc-mods/<slug>/download/<fileId>`
@@ -45,7 +48,8 @@ CurseForge blockt Downloads per Skript, auch über die interne `/api/v1`. Diese 
 ## Was schon schiefging (nicht wiederholen)
 - **Unscharfe Suche** hat falsche Mods eingebaut (Tensura, ExtendedAE Plus, Ars Elemancy, Antimagick, FTB Quests Optimizer). Deshalb gilt jetzt: nur exakte Treffer.
 - **Rate-Limit**: Modrinth erlaubt etwa 300 Anfragen pro Minute. Das Skript wartet 350 ms zwischen Anfragen und bei 429 jeweils 20 s, mit bis zu 10 Versuchen.
-- **Bibliotheken**, die Modrinth nicht als Abhängigkeit einträgt, stehen explizit in der Liste: Iron's Lib (`^1\.21\.1-2`), Bundle API, SmartBrainLib, Lithostitched, Structure Pool API und PolyLib.
+- **Bibliotheken**, die Modrinth nicht als Abhängigkeit einträgt, stehen explizit in der Liste: Iron's Lib (`^1\.21\.1-2`), Bundle API, SmartBrainLib, Lithostitched, Structure Pool API, PolyLib, Atlas Api (fuer Iron's Gems 'n Jewelry) und RunicLib (fuer Dungeon's Delight).
+- **Chunky + Distant Horizons** zusammen crashen (`IllegalStateException: Chunky is not loaded` aus DHs ChunkyAccessor beim ersten Chunk), auch im Einzelspieler. Deshalb Chunky nur Server, DH nur Client.
 - **env client**: Viele Bibliotheken sind auf Modrinth als „nur Server“ markiert, werden im Client aber trotzdem gebraucht. Deshalb steht `client = 'required'` immer.
 - **Iris entfernt**: Iris 1.8.12 passt nicht zu Sodium 0.8.13 (Fehler `SodiumGameOptions$PerformanceSettings` ClassNotFound) und hat beim Betreten der Welt den Absturz ausgelöst.
 - **Relics entfernt**: braucht OctoLib, das es nicht auf Modrinth gibt.
@@ -72,7 +76,7 @@ CurseForge blockt Downloads per Skript, auch über die interne `/api/v1`. Diese 
 ## Offene Aufgaben
 1. v9 bauen, `Unser-Modpack-0.9.0.mrpack` importieren, eine Testwelt anlegen, ins Nether und End gehen, `latest.log` prüfen.
 2. ~~Integrated Mowzie's Mobs~~: wird auf Modrinth gefunden, erledigt.
-3. **Server auf dem Heimserver** einrichten: selbstgebaut, ZimaOS, dort läuft schon ein Satisfactory-Server. Am besten per Docker, z. B. `itzg/minecraft-server` mit `TYPE=NEOFORGE` und dem .mrpack bzw. dem Mod-Ordner. Der Server bekommt keine Client-Mods (Sodium, Xaero, EMI-Client und Ähnliches über env `server: unsupported`).
+3. **Server auf dem Heimserver** einrichten: ZimaOS, Marvin hat dort schon ein eigenes Docker-Panel fuer mehrere Minecraft-Server (keine docker-compose noetig). Dafuer das `-Server.zip` aus dem Release nehmen (12 GB RAM, Java 21, Ports 25565/TCP und 24454/UDP fuer Voice Chat), danach mit Chunky vorgenerieren.
 4. Optional: FTB-Quests-Kapitel, die Magie, Create und AE2 verbinden.
 5. Optional: Shader wieder einbauen, sobald es eine Iris-Version gibt, die zu Sodium 0.8 passt.
 6. Erst danach die **richtige Welt** starten, damit Strukturen und Biome überall generiert werden.
