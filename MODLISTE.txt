@@ -1,5 +1,5 @@
 ﻿Unser Modpack 0.9.5 - Modliste
-Minecraft 1.21.1, NeoForge 21.1.256   |   244 Mods inkl. Bibliotheken   |   Stand 2026-10-06
+Minecraft 1.21.1, NeoForge 21.1.256   |   246 Mods inkl. Bibliotheken   |   Stand 2026-10-06
 
 == Performance und Grafik (10) ==
   Chunky                                         1.4.23
@@ -208,13 +208,14 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   244 Mods inkl. Bibliotheken   |   Stan
   Quark                                          4.1-487
   Supplementaries                                1.21.1-3.9.9
 
-== Bibliotheken (werden automatisch gebraucht) (67) ==
+== Bibliotheken (werden automatisch gebraucht) (69) ==
   Ace's Spell Utils                              1.2.7.3-1.21.1
   Apothic-Enchanting                             1.21.1-1.6.3
   Apothic-Spawners                               1.21.1-1.4.0
   Architectury API                               13.0.11+neoforge
   Armor Model API                                1.1.0+1.21.1-neoforge
   Athena                                         4.0.6  (nur Client)
+  Atlas Api                                      1.21.1-1.2.0
   Azimuth API                                    1.4.10
   AzureLib                                       3.1.16
   Balm                                           21.0.66+neoforge-1.21.1
@@ -259,6 +260,7 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   244 Mods inkl. Bibliotheken   |   Stan
   Resourceful Lib                                3.0.12
   Rhino                                          2101.2.7-build.85+Rhino-1.21
   Ritchie's Projectile Library                   2.1.2
+  RunicLib                                       5.0.7
   Searchables                                    1.0.2  (nur Client)
   Simply Tooltips                                0.1.5  (nur Client)
   SmartBrainLib                                  1.16.11
