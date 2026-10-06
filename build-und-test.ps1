@@ -9,7 +9,7 @@ $ProgressPreference = 'SilentlyContinue'
 $MC      = '1.21.1'
 $LOADER  = 'neoforge'
 $PACK    = 'Unser Modpack'
-$PACKVER = '0.9.1'
+$PACKVER = '0.9.2'
 $RAM     = '8G'
 $TIMEOUT_MIN = 20
 
@@ -149,7 +149,7 @@ cataclysm-spellbooks|Cataclysm: Spellbooks
 occultism|Occultism
 create|Create
 createaddition|Create Crafts & Additions
-create-steam-n-rails|Create: Steam 'n' Rails
+create-steam-n-rails-1.21.1|Create: Steam 'n' Rails
 create-enchantment-industry|Create Enchantment Industry
 create-new-age|Create: New Age
 slice-and-dice|Create Slice & Dice
