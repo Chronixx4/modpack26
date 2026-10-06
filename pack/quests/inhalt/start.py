@@ -1,14 +1,444 @@
 from dsl import gruppe, kapitel, Q
+
 gruppe('start', '&eStart', 'minecraft:writable_book')
-kapitel('willkommen', '&eWillkommen', 'minecraft:writable_book', 'Test', [
-    Q('start', 'Willkommen!', 'check', 'Hallo', belohnung='loot1', haupt=True, form='gear', gross=True),
-    Q('a', 'A', 'minecraft:iron_ingot', 'x', nach=['start'], haupt=True),
-    Q('b', 'B', 'minecraft:iron_block', 'x', nach=['start']),
-    Q('c', 'C', 'minecraft:iron_pickaxe', 'x', nach=['start']),
+
+# ---------------------------------------------------------------------------
+# Willkommen: Bedienung, alles Checkmark-Quests
+# ---------------------------------------------------------------------------
+kapitel('willkommen', '&eWillkommen', 'minecraft:writable_book', 'Erst mal ankommen: so bedienst du das Pack', [
+    Q('start', 'Willkommen!', 'check', [
+        'Schön, dass du da bist! Dieses Buch führt dich durch das Pack: Create, Magie, Technik, Dimensionen und Bosse.',
+        'Klick auf das Häkchen, um die Quest abzuschließen, und hol dir unten rechts die Belohnung ab.',
+    ], belohnung='loot1', haupt=True, form='gear', gross=True),
+    Q('questbuch', 'So geht das Questbuch', 'check', [
+        'Quests sind gesperrt, bis ihre Vorgänger erledigt sind. Die Linien zeigen, was wovon abhängt.',
+        'Items werden automatisch erkannt, sobald du sie im Inventar hast. Belohnungen musst du selbst anklicken.',
+    ], nach=['start'], haupt=True),
+    Q('abgabe', 'Abgabe-Quests', 'check', [
+        'Quests mit "Abgabe:" im Titel &cverbrauchen&r die Items. Klick dafür auf die Aufgabe, dann werden sie aus dem Inventar genommen.',
+        'Sie sind alle optional und geben eine bessere Kiste als Belohnung.',
+    ], nach=['questbuch'], belohnung=2),
+    Q('lootkisten', 'Loot-Kisten', 'check', [
+        'Manche Quests belohnen dich mit einer Loot-Kiste. Nimm sie in die Hand und mach Rechtsklick, um sie zu öffnen.',
+        'Es gibt vier Stufen: &fGewöhnlich&r, &aSelten&r, &5Episch&r und &6Legendär&r.',
+    ], nach=['abgabe'], belohnung='loot1'),
+    Q('emi', 'EMI: Rezepte finden', 'check', [
+        'Rechts im Inventar siehst du die Item-Liste von EMI. Fahr mit der Maus über ein Item und drück &eR&r für Rezepte oder &eU&r für Verwendungen.',
+        'Unten gibt es ein Suchfeld. Mit &e@modname&r filterst du nach Mods.',
+    ], nach=['questbuch'], haupt=True),
+    Q('jade', 'Jade: Was ist das?', 'check',
+      'Schau einen Block oder ein Tier an: Oben am Bildschirm zeigt Jade Name, Mod und z. B. den Fortschritt einer Maschine.',
+      nach=['emi']),
+    Q('appleskin', 'AppleSkin: Sättigung', 'check', [
+        'AppleSkin zeigt in der Hungerleiste, wie satt du wirklich bist (Sättigung). Im Tooltip von Essen siehst du, wie viel es bringt.',
+        '&eTipp:&r Gerichte mit hoher Sättigung halten viel länger vor als rohes Zeug.',
+    ], nach=['jade']),
+    Q('inventar', 'Inventar sortieren', 'check', [
+        'Inventory Profiles Next fügt Sortier-Knöpfe an Inventar und Kisten hinzu.',
+        'Mouse Tweaks: Mit gedrückter Maustaste über Slots ziehen verteilt Items, Shift + Ziehen verschiebt viele Stacks auf einmal, das Mausrad schiebt einzelne Items.',
+    ], nach=['emi']),
+    Q('muell', 'Mülleimer', 'check',
+      'Trash Cans: Die Item-Abfalltonne löscht alles, was hineinkommt. Es gibt auch Tonnen für Flüssigkeiten und Energie. Praktisch am Ende einer Farm.',
+      nach=['inventar']),
+    Q('polymorph', 'Polymorph: Rezeptkonflikte', 'check',
+      'Wenn zwei Mods dasselbe Rezept nutzen, erscheint an der Werkbank ein kleiner Knopf. Damit wählst du aus, welches Ergebnis du willst.',
+      nach=['emi']),
+    Q('karte', 'Minimap und Weltkarte', 'check', [
+        'Oben rechts ist die Xaero-Minimap. Mit &eM&r öffnest du die große Weltkarte, mit &eB&r setzt du einen Wegpunkt.',
+        'Wenn du stirbst, wird automatisch ein Todes-Wegpunkt gesetzt.',
+    ], nach=['emi'], haupt=True),
+    Q('tod', 'Gestorben? Kein Drama', 'check', [
+        'Dank Corpse bleibt bei deinem Tod ein Leichnam mit all deinen Items liegen. Rechtsklick darauf öffnet ihn.',
+        'Lauf einfach zum Todes-Wegpunkt auf der Karte zurück.',
+    ], nach=['karte']),
+    Q('team', 'Ein Team gründen', 'check', [
+        'Mit FTB Teams spielt ihr als Team: &e/ftbteams party create <Name>&r, dann lädst du andere mit &e/ftbteams party invite <Spieler>&r ein.',
+        'Das Team teilt sich den Quest-Fortschritt. Was einer erledigt, ist für alle erledigt.',
+    ], nach=['karte'], haupt=True),
+    Q('voice', 'Voice Chat', 'check', [
+        'Simple Voice Chat: Mit &eV&r öffnest du das Menü, dort stellst du Mikrofon und Lautstärke ein. Standardmäßig sprichst du mit gedrückter Push-to-Talk-Taste (Feststelltaste).',
+        'Wer weiter weg ist, hört dich leiser. In Gruppen hören sich alle überall.',
+    ], nach=['team']),
+    Q('claims', 'Grundstück sichern', 'check', [
+        'Open Parties and Claims schützt deine Chunks vor Fremden und Mobs-Griefing. Chunks beanspruchst du direkt auf der Xaero-Weltkarte (Rechtsklick) oder im Claims-Menü.',
+        'Dein Team darf in deinen Chunks bauen, andere nicht.',
+    ], nach=['team'], haupt=True),
+    Q('backups', 'Backups', 'check',
+      'FTB Backups 2 sichert die Welt automatisch in regelmäßigen Abständen. Falls doch mal etwas kaputtgeht, lässt sich ein Stand wiederherstellen.',
+      nach=['claims']),
+    Q('ende', 'Bereit fürs Abenteuer', 'check', [
+        'Du kennst jetzt die wichtigsten Werkzeuge. Weiter geht es im Kapitel &eErste Schritte&r.',
+        'Viel Spaß!',
+    ], nach=['claims'], belohnung='loot2', haupt=True, form='star', gross=True),
 ])
-gruppe('technik', '&6Technik', 'create:cogwheel')
-kapitel('test2', '&6Test2', 'create:cogwheel', 'Test', [
-    Q('x', 'X', 'create:cogwheel', 'x', nach=['willkommen/a'], belohnung=['loot4', ('item', 'minecraft:diamond', 2), 3], haupt=True),
-    Q('y', 'Y', ('item', 'minecraft:dirt', 64), 'abgabe', nach=['x'], abgabe=True),
-    Q('z', 'Z', ('kill', 'minecraft:zombie', 3), 'k', nach=['x', 'willkommen/b'], eine=True),
+
+# ---------------------------------------------------------------------------
+# Erste Schritte: Vanilla-Progression plus kleine Helfer
+# ---------------------------------------------------------------------------
+kapitel('erste_schritte', '&eErste Schritte', 'minecraft:crafting_table', 'Vom ersten Baum bis zum Netherit', [
+    Q('start', 'Holz hacken', ('item', 'minecraft:stick', 8), [
+        'Jeder fängt mal klein an: Hau einen Baum um, mach Bretter daraus und daraus Stöcke.',
+    ], nach=['willkommen/start'], belohnung=1, haupt=True, form='gear', gross=True),
+    Q('werkbank', 'Werkbank', 'minecraft:crafting_table', [
+        'Die Werkbank brauchst du für fast alles.',
+        'Dank Visual Workbench bleiben die Items liegen, wenn du sie verlässt, und du siehst sie oben auf dem Block.',
+    ], nach=['start'], haupt=True),
+    Q('carryon', 'Carry On', 'check', [
+        'Mit &eShift + Rechtsklick&r und leeren Händen kannst du Kisten samt Inhalt und auch Tiere hochheben und woanders hinstellen.',
+        'Sehr praktisch beim Umziehen!',
+    ], nach=['werkbank']),
+    Q('sack', 'Kleinkram', 'supplementaries:sack', [
+        'Supplementaries, Amendments und Quark bringen viele kleine Extras: Säcke, Seile, Gläser, Laternen an der Wand und mehr.',
+        'Stöber einfach mal in EMI.',
+    ], nach=['werkbank'], optional=True, form='heart'),
+    Q('seil', 'Seil', ('item', 'supplementaries:rope', 16),
+      'An Seilen aus Supplementaries kannst du hoch- und runterklettern. Gut für Schächte und Höhlen.',
+      nach=['sack'], optional=True, form='heart'),
+    Q('bett', 'Bett', 'check', [
+        'Ein Bett aus drei Wolle und drei Brettern lässt dich die Nacht überspringen und setzt deinen Spawnpunkt.',
+        'Wolle bekommst du von Schafen. Hak die Quest ab, sobald du eins hast.',
+    ], nach=['werkbank'], zeile=-2),
+    Q('stein', 'Steinzeit', ['minecraft:stone_pickaxe', 'minecraft:stone_axe', 'minecraft:stone_sword'],
+      'Mit einer Holzspitzhacke bekommst du Bruchstein. Daraus werden bessere Werkzeuge.',
+      nach=['werkbank'], haupt=True),
+    Q('fackeln', 'Kohle', ('item', 'minecraft:coal', 8), [
+        'Kohle findest du überall im Stein. Sie ist Brennstoff für den Ofen und wird zu Fackeln.',
+        'Fackeln halten Monster fern. Dunkle Stellen sind gefährlich. Notfalls tut es auch Holzkohle aus dem Ofen.',
+    ], nach=['stein']),
+    Q('ofen', 'Ofen', 'minecraft:furnace',
+      'Acht Bruchstein im Kreis ergeben einen Ofen. Damit schmilzt du Erze und brätst Essen.',
+      nach=['stein'], haupt=True),
+    Q('kupfer', 'Kupfer', 'minecraft:copper_ingot', [
+        'Kupfer findest du häufig in Höhlen. Mit der Steinspitzhacke abbauen und im Ofen schmelzen.',
+        'Viele Mods brauchen Kupfer, vor allem Create.',
+    ], nach=['ofen']),
+    Q('eisen', 'Eisenzeit', 'minecraft:iron_ingot', [
+        'Eisen ist das wichtigste Metall am Anfang. Rohes Eisen im Ofen schmelzen.',
+    ], nach=['ofen'], belohnung='loot1', haupt=True, form='hexagon'),
+    Q('ruestung', 'Eisenrüstung', ['minecraft:iron_helmet', 'minecraft:iron_chestplate', 'minecraft:iron_leggings', 'minecraft:iron_boots'],
+      'Eine volle Eisenrüstung macht dich deutlich robuster.',
+      nach=['eisen'], belohnung=2),
+    Q('schild', 'Schild', 'minecraft:shield',
+      'Mit dem Schild in der Zweithand blockst du Pfeile und Creeper-Explosionen.',
+      nach=['ruestung']),
+    Q('eimer', 'Eimer', 'minecraft:bucket',
+      'Für Wasser, Lava und Milch. Ein Wassereimer rettet dich auch bei Stürzen.',
+      nach=['eisen']),
+    Q('schlafsack', 'Schlafsack und Hängematte', 'comforts:rope_and_nail', [
+        'Comforts: Im Schlafsack schläfst du nachts, ohne deinen Spawnpunkt zu ändern. Ideal unterwegs.',
+        'Die Hängematte hängst du mit Seil und Nägeln zwischen zwei Blöcke. Darin schläfst du am Tag bis zur Nacht.',
+    ], nach=['eisen'], optional=True, form='heart'),
+    Q('eisenspitzhacke', 'Eisenspitzhacke', 'minecraft:iron_pickaxe',
+      'Ab jetzt kannst du Gold, Redstone und Diamanten abbauen.',
+      nach=['eisen'], haupt=True),
+    Q('gold', 'Gold', 'minecraft:gold_ingot',
+      'Gold liegt tiefer als Eisen, in Badlands-Biomen auch weiter oben. Im Nether gibt es Goldnuggets im Netherrack.',
+      nach=['eisenspitzhacke'], zeile=-2),
+    Q('redstone', 'Redstone', ('item', 'minecraft:redstone', 16), [
+        'Redstone findest du tief unten. Es ist der Strom von Minecraft und steckt in vielen Rezepten.',
+    ], nach=['eisenspitzhacke'], zeile=2),
+    Q('kompass', 'Kompass', 'minecraft:compass',
+      'Ein normaler Kompass ist die Grundlage für zwei viel bessere Kompasse.',
+      nach=['redstone']),
+    Q('naturkompass', 'Kompass der Natur', 'naturescompass:naturescompass',
+      'Wähle ein Biom aus der Liste und der Kompass zeigt dir den Weg dorthin.',
+      nach=['kompass']),
+    Q('entdeckerkompass', 'Kompass des Entdeckers', 'explorerscompass:explorerscompass',
+      'Wie der Naturkompass, nur für Strukturen: Dörfer, Dungeons, Tempel und alles, was die Mods mitbringen.',
+      nach=['naturkompass']),
+    Q('diamant', 'Diamanten!', 'minecraft:diamond', [
+        'Diamanten liegen ganz unten, am häufigsten knapp über dem Grundgestein.',
+        'Spar sie dir für Spitzhacke und Zaubertisch.',
+    ], nach=['eisenspitzhacke'], belohnung='loot1', haupt=True, form='hexagon'),
+    Q('diamantspitzhacke', 'Diamantspitzhacke', 'minecraft:diamond_pickaxe',
+      'Nur damit kannst du Obsidian abbauen.',
+      nach=['diamant'], haupt=True),
+    Q('megatorch', 'Megafackel', 'torchmaster:megatorch', [
+        'Die Megafackel von TorchMaster verhindert in einem großen Umkreis das Spawnen von Monstern.',
+        'Perfekt für die Basis.',
+    ], nach=['diamant', 'gold'], belohnung=2),
+    Q('pickarang', 'Pickarang', 'quark:pickarang',
+      'Eine Spitzhacke zum Werfen aus Quark. Baut Blöcke aus der Ferne ab und kommt zurück.',
+      nach=['diamant'], optional=True, form='heart'),
+    Q('obsidian', 'Obsidian', ('item', 'minecraft:obsidian', 14),
+      'Obsidian entsteht, wenn Wasser auf stehende Lava trifft. Für einen Zaubertisch und ein Netherportal brauchst du einiges davon.',
+      nach=['diamantspitzhacke'], haupt=True),
+    Q('verzaubern', 'Zaubertisch', 'minecraft:enchanting_table', [
+        'Mit Lapis und Erfahrungsleveln verzauberst du hier Werkzeuge und Rüstung.',
+        'Bücherregale drumherum (mit einem Block Abstand) machen die Verzauberungen stärker.',
+    ], nach=['obsidian'], belohnung='loot1', haupt=True, form='hexagon'),
+    Q('buecherregal', 'Bücherregale', ('item', 'minecraft:bookshelf', 15),
+      'Mit 15 Bücherregalen erreichst du die höchste Stufe am Zaubertisch.',
+      nach=['verzaubern'], belohnung=3),
+    Q('amboss', 'Amboss', 'minecraft:anvil', [
+        'Am Amboss kombinierst du Verzauberungen und reparierst Werkzeuge.',
+        'Dank Easy Anvils bleiben die Items darauf liegen, wenn du ihn verlässt.',
+    ], nach=['verzaubern']),
+    Q('schleifstein', 'Schleifstein', 'minecraft:grindstone', [
+        'Dank Grind Enchantments kannst du am Schleifstein Verzauberungen von einem Item auf ein leeres Buch übertragen.',
+        'So rettest du gute Verzauberungen von alten Werkzeugen.',
+    ], nach=['amboss']),
+    Q('wegstein', 'Wegsteine', 'waystones:waystone', [
+        'Mit Wegsteinen teleportierst du dich zwischen Orten, die du schon besucht hast. In Dörfern stehen oft schon welche.',
+        'Für den eigenen brauchst du einen Warpstein (Smaragd, Amethyst, Enderperle).',
+    ], nach=['obsidian'], belohnung=('item', 'waystones:warp_dust', 4)),
+    Q('rueckkehr', 'Rückkehr-Schriftrolle', 'waystones:return_scroll',
+      'Bringt dich einmalig zu deinem letzten aktivierten Wegstein zurück. Gut als Notfall-Ticket.',
+      nach=['wegstein'], optional=True, form='heart'),
+    Q('portal', 'Ab in den Nether', ['minecraft:flint_and_steel', ('item', 'minecraft:obsidian', 10)], [
+        'Bau einen Rahmen aus Obsidian (4 breit, 5 hoch) und zünde ihn mit dem Feuerzeug an.',
+        '&cVorsicht:&r Im Nether gibt es kein Wasser, und Betten explodieren. Nimm Essen, Blöcke und eine gute Rüstung mit.',
+    ], nach=['verzaubern'], belohnung='loot1', haupt=True),
+    Q('netherit', 'Netherit', 'minecraft:netherite_ingot', [
+        'Antiker Schrott liegt tief im Nether. Er widersteht Explosionen, Betten oder TNT helfen beim Suchen.',
+        'Vier Netheritplatten und vier Gold ergeben einen Barren. Die Schmiedevorlage findest du in Bastionen.',
+    ], nach=['portal'], belohnung='loot2', haupt=True, form='hexagon'),
+    Q('ende', 'Bestens ausgerüstet', ['minecraft:netherite_pickaxe', 'minecraft:netherite_chestplate'],
+      'Netherit-Werkzeug und -Rüstung halten fast alles aus und brennen nicht in Lava. Jetzt steht dir das ganze Pack offen!',
+      nach=['netherit'], belohnung='loot3', haupt=True, form='star', gross=True),
+    Q('abgabe_eisen', 'Abgabe: Eisen', ('item', 'minecraft:iron_ingot', 64),
+      'Gib 64 Eisenbarren ab und bekomm dafür eine seltene Kiste.',
+      nach=['eisen'], abgabe=True, optional=True, belohnung='loot2'),
+])
+
+# ---------------------------------------------------------------------------
+# Lager: Storage Drawers, Sophisticated Storage/Backpacks, Traveler's Backpack
+# ---------------------------------------------------------------------------
+kapitel('lager', '&eLager und Rucksäcke', 'sophisticatedstorage:chest', 'Ordnung ist das halbe Leben', [
+    # Hauptlinie: Sophisticated Storage
+    Q('start', 'Bessere Truhen', 'sophisticatedstorage:chest', [
+        'Sophisticated Storage: Truhen und Fässer, die sich aufwerten und mit Upgrades ausstatten lassen.',
+        'Eine normale Truhe (oder Bretter) plus Hebel ergibt die Holztruhe.',
+    ], nach=['erste_schritte/eisen'], belohnung=2, haupt=True, form='gear', gross=True),
+    Q('kupfertruhe', 'Kupfertruhe', 'sophisticatedstorage:copper_chest',
+      'Jede Stufe bringt mehr Platz und mehr Upgrade-Slots. Kupfer ist die erste.',
+      nach=['start', 'erste_schritte/kupfer'], haupt=True),
+    Q('eisentruhe', 'Eisentruhe', 'sophisticatedstorage:iron_chest',
+      'Noch mehr Platz. Ab hier lohnen sich Upgrades richtig.',
+      nach=['kupfertruhe'], belohnung='loot1', haupt=True, form='hexagon'),
+    Q('goldtruhe', 'Goldtruhe', 'sophisticatedstorage:gold_chest',
+      'Die Goldstufe für dein Hauptlager.',
+      nach=['eisentruhe', 'erste_schritte/gold'], haupt=True),
+    Q('diamanttruhe', 'Diamanttruhe', 'sophisticatedstorage:diamond_chest',
+      'Riesig, mit vielen Upgrade-Slots.',
+      nach=['goldtruhe', 'erste_schritte/diamant'], belohnung='loot2', haupt=True, form='hexagon'),
+    Q('ende', 'Netherittruhe', 'sophisticatedstorage:netherite_chest',
+      'Die höchste Stufe. Mehr passt in keine Truhe.',
+      nach=['diamanttruhe', 'erste_schritte/netherit'], belohnung='loot3', haupt=True, form='star', gross=True),
+    Q('stufenupgrade', 'Aufwerten vor Ort', 'sophisticatedstorage:basic_to_copper_tier_upgrade', [
+        'Mit Stufen-Upgrades wertest du eine schon platzierte Truhe auf, ohne sie auszuräumen. Einfach Rechtsklick auf die Truhe.',
+    ], nach=['kupfertruhe'], zeile=-1),
+    Q('packband', 'Packband', 'sophisticatedstorage:packing_tape',
+      'Rechtsklick mit Packband auf eine Truhe, dann kannst du sie samt Inhalt abbauen und mitnehmen.',
+      nach=['start'], zeile=-1),
+    Q('upgradebasis', 'Upgrade-Basis', 'sophisticatedstorage:upgrade_base',
+      'Die Grundlage für alle Truhen-Upgrades.',
+      nach=['eisentruhe'], zeile=-1),
+    Q('stapel', 'Stack-Upgrade', 'sophisticatedstorage:stack_upgrade_tier_1',
+      'Erhöht, wie viele Items in einen Slot passen. Höhere Stufen lassen sich daraus weiterbauen.',
+      nach=['upgradebasis']),
+    Q('trichter', 'Trichter-Upgrade', 'sophisticatedstorage:hopper_upgrade',
+      'Zieht Items aus dem Block darüber und schiebt sie in den Block darunter, mit Filter.',
+      nach=['upgradebasis', 'erste_schritte/redstone'], zeile=-2),
+    Q('lagerkern', 'Lagerkern', 'sophisticatedstorage:controller', [
+        'Der Lagerkern verbindet alle angrenzenden Truhen und Fässer zu einem Lager. Items, die du hineinschiebst, landen automatisch dort, wo schon dasselbe liegt.',
+        'Für den Komparator brauchst du Netherquarz.',
+    ], nach=['eisentruhe', 'erste_schritte/redstone'], zeile=1, belohnung=2),
+    Q('shulker', 'Shulker-Kiste', 'sophisticatedstorage:shulker_box',
+      'Behält beim Abbauen ihren Inhalt und lässt sich genauso aufwerten wie die Truhen. Shulkerschalen gibt es in den Endstädten.',
+      nach=['diamanttruhe', 'dimensionen/end'], zeile=1),
+
+    # Storage Drawers
+    Q('schublade', 'Schubladen', 'storagedrawers:oak_full_drawers_1', [
+        'Storage Drawers: Eine Schublade fasst viele Stacks von nur einer Sorte. Rechtsklick legt rein, Linksklick nimmt raus.',
+        'Doppelter Rechtsklick legt alle passenden Items aus dem Inventar hinein.',
+    ], nach=['start'], zeile=3),
+    Q('vorlage', 'Aufrüstungsvorlage', 'storagedrawers:upgrade_template',
+      'Die Vorlage ist die Basis für alle Schubladen-Upgrades.',
+      nach=['schublade'], zeile=3),
+    Q('sd_upgrade', 'Größere Schubladen', 'storagedrawers:iron_storage_upgrade',
+      'Lagererweiterungen vervielfachen den Platz einer Schublade. Je wertvoller das Material, desto mehr passt rein.',
+      nach=['vorlage'], zeile=3),
+    Q('sd_upgrade2', 'Noch größer', 'storagedrawers:diamond_storage_upgrade',
+      'Die Diamant-Erweiterung bringt richtig viel Platz. Darüber gibt es nur noch Netherit.',
+      nach=['sd_upgrade', 'erste_schritte/diamant'], zeile=3),
+    Q('verdichtung', 'Verdichtungsschublade', 'storagedrawers:compacting_drawers_3',
+      'Wandelt automatisch um: Nuggets, Barren und Blöcke liegen in einer Schublade und du nimmst raus, was du brauchst.',
+      nach=['schublade'], zeile=4),
+    Q('sd_controller', 'Netzwerkschublade', 'storagedrawers:controller', [
+        'Der Controller verbindet alle Schubladen in der Nähe. Was du hineinsteckst, landet in der passenden Schublade.',
+        'Für den Komparator brauchst du Netherquarz.',
+    ], nach=['verdichtung', 'erste_schritte/diamant'], belohnung=2, zeile=4),
+    Q('leere', 'Leerenerweiterung', 'storagedrawers:void_upgrade',
+      'Löscht alles, was nicht mehr in die volle Schublade passt. Ideal für Farmen, die zu viel liefern.',
+      nach=['vorlage'], optional=True, form='heart', zeile=5),
+
+    # Sophisticated Backpacks
+    Q('rucksack', 'Rucksack', 'sophisticatedbackpacks:backpack', [
+        'Sophisticated Backpacks: ein Rucksack mit eigenen Upgrade-Slots. Du kannst ihn tragen oder als Block abstellen.',
+        'Mit &eB&r öffnest du ihn, während du ihn trägst.',
+    ], nach=['start'], zeile=-3),
+    Q('kupferrucksack', 'Kupferrucksack', 'sophisticatedbackpacks:copper_backpack',
+      'Mehr Platz und ein Upgrade-Slot mehr.',
+      nach=['rucksack'], zeile=-3),
+    Q('eisenrucksack', 'Eisenrucksack', 'sophisticatedbackpacks:iron_backpack',
+      'Die nächste Stufe.',
+      nach=['kupferrucksack'], zeile=-3),
+    Q('goldrucksack', 'Goldrucksack', 'sophisticatedbackpacks:gold_backpack',
+      'Wieder mehr Platz und Slots.',
+      nach=['eisenrucksack', 'erste_schritte/gold'], zeile=-3),
+    Q('diamantrucksack', 'Diamantrucksack', 'sophisticatedbackpacks:diamond_backpack',
+      'Fast das Maximum. Netherit setzt du am Schmiedetisch obendrauf.',
+      nach=['goldrucksack', 'erste_schritte/diamant'], belohnung='loot2', zeile=-3),
+    Q('bp_basis', 'Rucksack-Upgrades', 'sophisticatedbackpacks:upgrade_base',
+      'Die Basis für alle Rucksack-Upgrades. Upgrades steckst du rechts im Rucksack-Fenster ein.',
+      nach=['rucksack'], zeile=-4),
+    Q('bp_pickup', 'Aufsammeln', 'sophisticatedbackpacks:pickup_upgrade',
+      'Der Rucksack sammelt Items vom Boden direkt selbst ein, auch mit Filter.',
+      nach=['bp_basis', 'erste_schritte/redstone'], zeile=-4),
+    Q('bp_magnet', 'Magnet', 'sophisticatedbackpacks:magnet_upgrade',
+      'Zieht Items und Erfahrung aus der Umgebung zu dir.',
+      nach=['bp_pickup'], zeile=-4),
+    Q('bp_futter', 'Futter-Upgrade', 'sophisticatedbackpacks:feeding_upgrade',
+      'Füttert dich automatisch mit Essen aus dem Rucksack, wenn du Hunger hast.',
+      nach=['bp_basis'], zeile=-5),
+
+    # Traveler's Backpack
+    Q('travelers', 'Reiserucksack', 'travelersbackpack:standard', [
+        "Traveler's Backpack: ein Rucksack mit zwei Flüssigkeitstanks und eingebautem Schlafsack.",
+        'Es gibt ihn in vielen Designs mit kleinen Spezialfähigkeiten. Schau in EMI.',
+    ], nach=['rucksack'], zeile=-2, optional=True, form='heart'),
+    Q('travelers_eisen', 'Reiserucksack aufwerten', 'travelersbackpack:iron_tier_upgrade',
+      'Mit Stufen-Upgrades bekommt der Reiserucksack mehr Platz und größere Tanks.',
+      nach=['travelers'], zeile=-2, optional=True, form='heart'),
+
+    Q('create_kisten', 'Truhen auf Contraptions', 'check',
+      'Mit Sophisticated Storage Create Integration funktionieren die Truhen und Fässer auch auf Create-Contraptions, z. B. auf Zügen.',
+      nach=['eisentruhe', 'create_1/start'], optional=True, form='heart', zeile=2),
+    Q('abgabe_stein', 'Abgabe: Bruchstein', ('item', 'minecraft:cobblestone', 256),
+      'Zu viel Bruchstein im Lager? Gib 256 Stück ab und bekomm dafür eine seltene Kiste.',
+      nach=['start'], abgabe=True, optional=True, belohnung='loot2', zeile=1),
+])
+
+# ---------------------------------------------------------------------------
+# Essen: Farmer's Delight, Aquaculture, Dungeon's Delight, Garnished
+# ---------------------------------------------------------------------------
+kapitel('essen', '&eEssen und Angeln', 'farmersdelight:cooking_pot', "Farmer's Delight, Aquaculture und mehr", [
+    # Farmer's Delight
+    Q('start', 'Küchenmesser', 'farmersdelight:flint_knife', [
+        "Farmer's Delight bringt eine richtige Küche. Alles beginnt mit dem Messer.",
+        'Mit dem Messer bekommst du von Tieren Extra-Zutaten und von hohem Gras Stroh.',
+    ], nach=['willkommen/start'], belohnung=1, haupt=True, form='gear', gross=True),
+    Q('wildpflanzen', 'Wilde Pflanzen', ['farmersdelight:cabbage', 'farmersdelight:tomato', 'farmersdelight:onion'], [
+        'Weißkohl, Tomaten und Zwiebeln wachsen wild in der Welt. Abbauen, Samen bzw. die Frucht selbst wieder einpflanzen.',
+    ], nach=['start'], haupt=True),
+    Q('schneidebrett', 'Schneidebrett', 'farmersdelight:cutting_board',
+      'Leg eine Zutat aufs Brett und mach Rechtsklick mit dem passenden Werkzeug, z. B. dem Messer.',
+      nach=['start'], zeile=-1),
+    Q('stroh', 'Stroh', ('item', 'farmersdelight:straw', 8),
+      'Hohes Gras und Weizen mit dem Messer abbauen gibt Stroh. Daraus werden Seile, Leinen und Kompost.',
+      nach=['start'], zeile=3),
+    Q('kompost', 'Organischer Kompost', 'farmersdelight:organic_compost',
+      'Platzierter Kompost wird mit der Zeit von selbst zu reichhaltiger Erde.',
+      nach=['stroh'], zeile=3),
+    Q('erde', 'Reichhaltige Erde', 'farmersdelight:rich_soil',
+      'Pflanzen wachsen darauf schneller. Pilze darauf werden zu Pilzkolonien.',
+      nach=['kompost'], zeile=3),
+    Q('reis', 'Reis', 'farmersdelight:rice',
+      'Wilder Reis wächst im flachen Wasser. Pflanz ihn in Wasser, das nur einen Block tief ist.',
+      nach=['wildpflanzen'], zeile=1),
+    Q('kochtopf', 'Kochtopf', 'farmersdelight:cooking_pot', [
+        'Das Herz der Küche. Stell ihn auf eine Hitzequelle (Herd, Lagerfeuer oder Feuer) und koche darin Suppen und Eintöpfe.',
+        'Manche Gerichte brauchen eine Schüssel als Behälter.',
+    ], nach=['wildpflanzen', 'erste_schritte/eisen'], belohnung='loot1', haupt=True, form='hexagon'),
+    Q('herd', 'Herd', 'farmersdelight:stove',
+      'Der Herd ist eine bequeme Hitzequelle für den Kochtopf. Oben drauf kannst du auch direkt Fleisch braten.',
+      nach=['kochtopf'], zeile=-1),
+    Q('pfanne', 'Bratpfanne', 'farmersdelight:skillet',
+      'In der Pfanne brätst du Essen auf einer Hitzequelle. Notfalls taugt sie auch als Waffe.',
+      nach=['kochtopf'], zeile=-2),
+    Q('eintopf', 'Erste Gerichte', ['farmersdelight:beef_stew', 'farmersdelight:cooked_rice'],
+      'Eintöpfe und Reisgerichte machen viel länger satt als rohes Essen. Viele Gerichte geben zusätzlich nützliche Effekte.',
+      nach=['kochtopf', 'reis'], haupt=True),
+    Q('burger', 'Hamburger', 'farmersdelight:hamburger',
+      'Hackfleisch machst du aus Rindfleisch mit dem Messer, daraus brätst du die Bulette.',
+      nach=['eintopf'], zeile=-1),
+    Q('pasta', 'Nudeln mit Fleischbällchen', 'farmersdelight:pasta_with_meatballs',
+      'Teig aus Weizen und Ei, mit dem Messer zu Nudeln geschnitten, dazu Hackfleisch und Tomatensauce aus dem Kochtopf.',
+      nach=['eintopf'], zeile=1),
+    Q('festmahl', 'Festmahl', 'farmersdelight:roast_chicken_block', [
+        'Ein Festmahl stellst du als Block auf den Tisch. Rechtsklick mit einer Schüssel nimmt dir eine Portion ab.',
+        'Perfekt, wenn mehrere Leute mitessen.',
+    ], nach=['eintopf'], belohnung=2, haupt=True),
+    Q('ende', 'Meisterkoch', 'farmersdelight:honey_glazed_ham_block',
+      'Honigglasierter Schinken: eines der aufwendigsten Gerichte. Du bist jetzt ein echter Koch!',
+      nach=['festmahl'], belohnung='loot3', haupt=True, form='star', gross=True),
+    Q('hundefutter', 'Hundefutter', 'farmersdelight:dog_food',
+      'Füttere es an einen zahmen Wolf. Das stärkt und heilt ihn.',
+      nach=['reis'], optional=True, form='heart', zeile=1),
+    Q('saettigung', 'Tipp: Sättigung', 'check', [
+        'Mit AppleSkin siehst du im Tooltip, wie viel Hunger und Sättigung ein Essen bringt. Gekochte Gerichte schlagen rohes Essen um Längen.',
+        'Viele Gerichte aus Farmer\'s Delight geben zusätzlich Effekte, die den Hunger länger fernhalten.',
+    ], nach=['start'], zeile=-2),
+    Q('abgabe_tomaten', 'Abgabe: Tomaten', ('item', 'farmersdelight:tomato', 64),
+      'Gib 64 Tomaten ab. Dafür gibt es eine seltene Kiste.',
+      nach=['wildpflanzen'], abgabe=True, optional=True, belohnung='loot2', zeile=2),
+
+    # Aquaculture
+    Q('angel', 'Eisen-Angel', 'aquaculture:iron_fishing_rod', [
+        'Aquaculture bringt viele neue Fische und bessere Angeln. Was du fängst, hängt vom Biom ab.',
+        'Haken, Köder und Angelschnur lassen sich in die Angel einsetzen. Schau in EMI.',
+    ], nach=['start', 'erste_schritte/eisen'], zeile=5),
+    Q('wurm', 'Würmer', 'aquaculture:worm',
+      'Würmer sind ein guter Köder. Du findest sie beim Graben in Erde und Gras oder züchtest sie in der Wurmfarm.',
+      nach=['angel'], zeile=6),
+    Q('filetmesser', 'Filetiermesser', 'aquaculture:iron_fillet_knife',
+      'Mit dem Filetiermesser zerlegst du Fische in der Werkbank zu Fischfilets.',
+      nach=['angel'], zeile=7),
+    Q('filet', 'Fischfilet', ['aquaculture:fish_fillet_raw', 'aquaculture:fish_fillet_cooked'],
+      'Fischfilet kannst du roh essen, gebraten ist es aber deutlich besser.',
+      nach=['filetmesser'], zeile=7),
+    Q('sushi', 'Sushi', 'aquaculture:sushi',
+      'Fischfilet und Seegras ergeben Sushi.',
+      nach=['filet'], optional=True, form='heart', zeile=7),
+    Q('goldangel', 'Goldene Angel', 'aquaculture:gold_fishing_rod',
+      'Bessere Angeln halten länger und fangen besser.',
+      nach=['angel', 'erste_schritte/gold'], zeile=5),
+    Q('diamantangel', 'Diamant-Angel', 'aquaculture:diamond_fishing_rod',
+      'Die Diamantstufe.',
+      nach=['goldangel', 'erste_schritte/diamant'], zeile=5),
+    Q('neptunium', 'Neptunium', 'aquaculture:neptunium_ingot', [
+        "Beim Angeln fängst du manchmal Neptune's Kopfgeld. Darin steckt Neptunium.",
+        'Daraus baust du die beste Angel und Werkzeuge, die unter Wasser stark sind.',
+    ], nach=['diamantangel'], belohnung='loot2', zeile=5),
+    Q('neptunangel', 'Neptunium-Angel', 'aquaculture:neptunium_fishing_rod',
+      'Die beste Angel von Aquaculture.',
+      nach=['neptunium'], zeile=5),
+
+    # Dungeon's Delight
+    Q('dd_hackbeil', 'Hackbeil', 'dungeonsdelight:iron_cleaver',
+      "Dungeon's Delight macht aus Monstern Zutaten. Das Hackbeil ist eine schwere Klinge aus dieser Mod, was es genau kann, steht im Tooltip und in EMI.",
+      nach=['start', 'erste_schritte/eisen'], zeile=-3),
+    Q('dd_spinne', 'Spinnenfleisch', 'dungeonsdelight:spider_meat',
+      'Besieg eine Spinne mit einem Messer in der Hand, dann lässt sie Spinnenfleisch fallen.',
+      nach=['dd_hackbeil'], zeile=-4),
+    Q('dd_schrott', 'Fleckiger Schrott', 'dungeonsdelight:stained_scrap',
+      'Bau einen Monster-Spawner ab, dann bekommst du fleckigen Schrott. Den brauchst du für die Monster-Küche.',
+      nach=['dd_hackbeil'], zeile=-3),
+    Q('dd_topf', 'Monstertopf', 'dungeonsdelight:monster_pot',
+      'Der Kochtopf für Monster-Gerichte. Rezepte findest du in EMI.',
+      nach=['dd_schrott', 'kochtopf'], zeile=-3),
+    Q('dd_herd', 'Dungeon-Herd', 'dungeonsdelight:dungeon_stove',
+      'Die passende Hitzequelle zum Monstertopf.',
+      nach=['dd_topf'], zeile=-3),
+
+    # Create-Anbindung
+    Q('kitchen', 'Küche automatisieren', 'check', [
+        "Create: Central Kitchen verbindet Create mit Farmer's Delight. Viele Kochtopf-Rezepte lassen sich mit Mixer und beheiztem Becken automatisieren.",
+        'Welche genau, zeigt dir EMI.',
+    ], nach=['eintopf', 'create_1/start'], zeile=2),
+    Q('nuesse', 'Nüsse', 'garnished:nut_mix', [
+        'Create: Garnished bringt Nussbäume in die Welt. Aus ihren Blättern fallen ungarnierte Nüsse.',
+        'Mit Create werden daraus garnierte Nüsse und viele Snacks. Wie genau, zeigt dir EMI.',
+    ], nach=['kitchen'], zeile=2),
 ])
