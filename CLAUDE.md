@@ -20,7 +20,7 @@ Kommunikation mit dem Nutzer: Deutsch, locker, kurz.
   3. `modrinth.index.json` schreiben. CurseForge-Jars aus `curseforge-mods\` kommen nach `overrides/mods`. Daraus entsteht `Unser-Modpack-<PACKVER>.mrpack`. Danach wird sofort `ERGEBNIS.txt` geschrieben.
   4. Einen NeoForge-Testserver aufsetzen und starten, bis `Done (` im Log steht. Danach wird `ERGEBNIS.txt` aktualisiert.
 - Das Skript schreibt ausserdem `MODLISTE.txt` (alle Mods nach Kategorie; Kategorien = `# `-Zeilen in `$ModList`, CF-Jars ueber `$cfCat`) und `pack/modrinth.index.json`. Beide nach jedem Build mit committen.
-- **Release:** `.github/workflows/release.yml` baut aus `pack/modrinth.index.json` + `curseforge-mods/*.jar` das .mrpack und legt ein GitHub-Release an (Tag `v<PACKVER>` pushen oder Actions -> Release -> Run workflow). Tag muss zu `versionId` passen.
+- **Release:** `.github/workflows/release.yml` baut aus `pack/modrinth.index.json` + `curseforge-mods/*.jar` das .mrpack und legt ein GitHub-Release an automatisch, sobald `pack/modrinth.index.json` mit neuer `versionId` auf `main` landet (alternativ Actions -> Release -> Run workflow). Gibt es das Release schon, passiert nichts. Tags kann Claude aus der Cloud-Umgebung nicht pushen.
 - CurseForge-Jars holt das Skript automatisch aus `%USERPROFILE%\Downloads` (Dateinamen-Muster in `$cfPatterns`).
 - Aktuelle Version: **PACKVER 0.9.4**. Bei jeder Änderung `$PACKVER` hochzählen.
 

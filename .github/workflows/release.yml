@@ -1,10 +1,14 @@
 # Baut aus pack/modrinth.index.json und curseforge-mods/*.jar das .mrpack
 # und legt ein GitHub-Release an.
-# Ausloesen: Tag pushen (z. B. v0.9.4) oder unter "Actions" -> "Release" -> "Run workflow".
+# Laeuft automatisch, wenn pack/modrinth.index.json auf main geaendert wird
+# (gibt es das Release zu der Version schon, passiert nichts).
+# Ausserdem: Tag pushen (z. B. v0.9.4) oder "Actions" -> "Release" -> "Run workflow".
 name: Release
 
 on:
   push:
+    branches: [main]
+    paths: ['pack/modrinth.index.json']
     tags: ['v*']
   workflow_dispatch:
 
@@ -19,6 +23,8 @@ jobs:
 
       - name: Version lesen
         id: ver
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           VER=$(jq -r .versionId pack/modrinth.index.json)
           TAG="v$VER"
@@ -28,8 +34,13 @@ jobs:
           fi
           echo "ver=$VER" >> "$GITHUB_OUTPUT"
           echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "Release $TAG gibt es schon, nichts zu tun."
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: .mrpack bauen
+        if: steps.ver.outputs.exists != 'true'
         run: |
           mkdir -p build/overrides/mods
           cp pack/modrinth.index.json build/
@@ -40,6 +51,7 @@ jobs:
           unzip -l "Unser-Modpack-${{ steps.ver.outputs.ver }}.mrpack" | tail -1
 
       - name: Release anlegen
+        if: steps.ver.outputs.exists != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
