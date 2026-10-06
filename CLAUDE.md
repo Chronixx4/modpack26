@@ -54,6 +54,7 @@ CurseForge blockt Downloads per Skript, auch über die interne `/api/v1`. Diese 
 - Sable: `Failed to apply tag physics properties. Unknown block: copycats:copycat_catwalk`
 - Bumblezone: `Trade result entry is set to required ...`
 - `Couldn't parse element ... loot_table]:railways:blocks/track_*` (ca. 200x), dazu `create_connected:` und `dndecor:`: Loot-Tables fuer Kompat-Bloecke von Mods, die nicht im Pack sind (BYG, TFC, Nature's Spirit ...)
+- `AbstractVillager: Failed to load offers: Unknown registry key ... croptopia:` bzw. `cyclic:`: vorgebaute Villager in Struktur-Dateien mit Handel fuer fehlende Mods
 - `Parsing error loading recipe` (ca. 55x, v. a. cataclysm_spellbooks, garnished, more_rpg_classes): optionale Kompat-Rezepte
 
 ## Stand
@@ -64,7 +65,7 @@ CurseForge blockt Downloads per Skript, auch über die interne `/api/v1`. Diese 
 - 0.9.2: Create: Steam 'n' Rails eingebaut. Offiziell gibt es die Mod nur bis 1.20.1, deshalb der inoffizielle Port `create-steam-n-rails-1.21.1` (das Skript nimmt die Release-Version 0.2.1, Create 6.0.10 passt). Servertest 0.9.2: Start OK, 173 Modrinth- plus 9 CF-Mods, AE2 Wireless Terminals wird jetzt gefunden.
 - 0.9.3: 15 neue Mods (Create: Bits 'n' Bobs, Diesel Generators, Interiors, Train Utilities, Railways Navigator, Metallurgy, Mechanical Spawner, Mekanism, Applied Mekanistics, Productive Bees, Ars Ocultas, Mystical Agriculture, Carry On, Traveler's Backpack, Alex's Caves (Unofficial Port, per Projekt-ID `kSsLSjEt`)). Servertest: 206 Dateien im Pack, 194 Modrinth- plus 9 CF-Mods auf dem Server, Start OK, Chunks in Overworld (inkl. Magnetic Caves von Alex's Caves), Nether, End, Twilight generiert, kein Crash. Client noch nicht getestet.
 - Fehlende Abhaengigkeit `cC0JkO8i` (Ars Creo, Not Enough Glyphs) in ERGEBNIS.txt: Projekt ist auf Modrinth geloescht, die Mods laden trotzdem, ignorieren.
-- 0.9.4: AllTheModium 3.1.1 (offizielle CF-Version, thevortex) in curseforge-mods. Das Modrinth-Projekt `allthemodium` ist ein fremder Reupload (jpaulmasonry, ARR, ohne Quellcode) und wird bewusst NICHT benutzt.
+- 0.9.4: AllTheModium 3.1.1 (offizielle CF-Version, thevortex) in curseforge-mods. Das Modrinth-Projekt `allthemodium` ist ein fremder Reupload (jpaulmasonry, ARR, ohne Quellcode) und wird bewusst NICHT benutzt. Servertest 0.9.4: Start OK, Chunks in Mining Dimension, The Other, The Beyond, Nether, End, Overworld generiert, keine neuen Fehler.
 
 ## Offene Aufgaben
 1. v9 bauen, `Unser-Modpack-0.9.0.mrpack` importieren, eine Testwelt anlegen, ins Nether und End gehen, `latest.log` prüfen.
