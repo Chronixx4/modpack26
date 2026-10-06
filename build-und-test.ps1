@@ -9,7 +9,7 @@ $ProgressPreference = 'SilentlyContinue'
 $MC      = '1.21.1'
 $LOADER  = 'neoforge'
 $PACK    = 'Unser Modpack'
-$PACKVER = '0.9.4'
+$PACKVER = '0.9.5'
 $RAM     = '8G'
 $TIMEOUT_MIN = 20
 
@@ -113,6 +113,8 @@ immediatelyfast|ImmediatelyFast
 entityculling|Entity Culling
 distanthorizons|Distant Horizons
 clumps|Clumps
+chunky|Chunky
+neruina|Neruina
 # Komfort und Oberflaeche
 emi|EMI
 jade|Jade
@@ -137,6 +139,8 @@ torchmaster|Torchmaster
 explorers-compass|Explorer's Compass
 natures-compass|Nature's Compass
 spark|Spark
+trash-cans|Trash Cans
+inventory-profiles-next|Inventory Profiles Next
 # Multiplayer, Quests und Verwaltung
 ftb-quests|FTB Quests
 ftb-library|FTB Library
@@ -149,6 +153,7 @@ sophisticated-backpacks|Sophisticated Backpacks
 sophisticated-storage|Sophisticated Storage
 storagedrawers|Storage Drawers
 travelersbackpack|Traveler's Backpack
+sophisticated-storage-create-integration|Sophisticated Storage Create Integration
 # Magie
 ars-nouveau|Ars Nouveau
 ars-additions|Ars Additions
@@ -161,6 +166,9 @@ not-enough-glyphs|Not Enough Glyphs
 irons-spells-n-spellbooks|Iron's Spells 'n Spellbooks
 cataclysm-spellbooks|Cataclysm: Spellbooks
 occultism|Occultism
+forbidden-arcanus|Forbidden and Arcanus
+hexerei|Hexerei
+irons-jewelry|Iron's Gems 'n Jewelry
 # Create und Addons
 create|Create
 createaddition|Create Crafts & Additions
@@ -193,6 +201,9 @@ create-trainutilities|Create Train Utilities
 create-railways-navigator|Create Railways Navigator
 create-metallurgy|Create: Metallurgy
 create-mechanical-spawner|Create Mechanical Spawner
+create-enchantable-machinery|Create: Enchantable Machinery
+create-encased|Create Encased
+create-teleporters|Create: Teleporters
 # AE2 und Technik
 ae2|Applied Energistics 2
 applied-energistics-2-wireless-terminals|AE2 Wireless Terminals
@@ -204,11 +215,17 @@ ae2-network-analyser|AE2 Network Analyser
 mekanism|Mekanism
 applied-mekanistics|Applied Mekanistics
 powah|Powah
+merequester|ME Requester
+mekanism-generators|Mekanism Generators
+mekanism-tools|Mekanism Tools
+mekanism-additions|Mekanism Additions
 # Ressourcen und Landwirtschaft
 mystical-agriculture|Mystical Agriculture
 productivebees|Productive Bees
 farmers-delight|Farmer's Delight
 aquaculture|Aquaculture 2
+mystical-agradditions|Mystical Agradditions
+dungeons_delight|Dungeon's Delight
 # Dimensionen
 the-twilight-forest|The Twilight Forest
 aether|The Aether
@@ -218,6 +235,7 @@ the-bumblezone|The Bumblezone
 betternether-neoforge|BetterNether Neoforge
 betterend-neoforge|BetterEnd Neoforge
 kSsLSjEt|Alex's Caves (Unofficial Port)
+ad-astra|Ad Astra
 # Weltgenerierung und Biome
 terralith|Terralith
 tectonic|Tectonic
@@ -237,6 +255,8 @@ yungs-better-jungle-temples|YUNG's Better Jungle Temples
 yungs-better-witch-huts|YUNG's Better Witch Huts
 yungs-bridges|YUNG's Bridges
 towns-and-towers|Towns and Towers
+dungeons-and-taverns|Dungeons and Taverns
+idas|Integrated Dungeons and Structures
 # Mobs und Bosse
 l_enders-cataclysm|L_Ender's Cataclysm
 mowzies-mobs|Mowzie's Mobs
@@ -248,6 +268,7 @@ illager-invasion|Illager Invasion
 friends-and-foes-forge|Friends&Foes
 mutant-monsters|Mutant Monsters
 aquamirae|Aquamirae
+bossesrise|Bosses'Rise
 # Waffen, Ruestung und Ausruestung
 simply-swords|Simply Swords
 simply-swords-cataclysm|Simply Swords: Cataclysm

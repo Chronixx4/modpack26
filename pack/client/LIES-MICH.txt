@@ -1,0 +1,14 @@
+Unser Modpack @VERSION@ - Client
+Minecraft @MC@, NeoForge @NEOFORGE@
+
+MODRINTH APP (empfohlen)
+Nimm statt dieser ZIP die Datei Unser-Modpack-@VERSION@.mrpack aus dem Release:
+Modrinth App -> "+" -> "Aus Datei importieren".
+
+ANDERE LAUNCHER (Prism, CurseForge-App, ATLauncher ...)
+1. Neue Instanz anlegen: Minecraft @MC@, Loader NeoForge @NEOFORGE@.
+2. Den Ordner "mods" aus dieser ZIP in den Instanz-Ordner kopieren
+   (vorhandenen mods-Ordner vorher leeren).
+3. In den Instanz-Einstellungen mindestens 8 GB RAM geben, besser 10 GB.
+
+Shader (Iris) sind absichtlich nicht dabei, die aktuelle Version vertraegt sich nicht mit Sodium.

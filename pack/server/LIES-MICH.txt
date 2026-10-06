@@ -1,0 +1,32 @@
+Unser Modpack @VERSION@ - Server
+Minecraft @MC@, NeoForge @NEOFORGE@
+
+VORAUSSETZUNGEN
+- Java 21 (z. B. Docker-Image mit Java 21 / Temurin 21)
+- 12 GB RAM fuer Minecraft (einstellbar in user_jvm_args.txt)
+- Ports: 25565/TCP (Minecraft) und 24454/UDP (Simple Voice Chat)
+
+ERSTER START
+1. Alles aus der ZIP in den Server-Ordner entpacken.
+2. In eula.txt "eula=false" auf "eula=true" aendern.
+3. Linux/Docker: start.sh ausfuehren (vorher evtl. chmod +x start.sh).
+   Windows: start.bat doppelklicken.
+   Beim ersten Start wird NeoForge installiert (laedt Minecraft von Mojang, braucht Internet).
+4. Warten bis "Done (...)" im Log steht. Der erste Start dauert ein paar Minuten.
+
+WENN DEIN DOCKER-PANEL NEOFORGE SELBST INSTALLIERT
+- Nur den Ordner "mods" (und gern server.properties) uebernehmen, NeoForge-Version @NEOFORGE@ waehlen.
+
+WELT VORGENERIEREN (empfohlen, bevor ihr spielt)
+  chunky radius 3000
+  chunky start
+Das generiert die Welt 3000 Bloecke um den Spawn vor, dann ruckelt es spaeter nicht.
+
+UPDATE AUF EINE NEUE PACK-VERSION
+- Den Ordner "mods" komplett loeschen und durch den neuen ersetzen.
+- Bei neuer NeoForge-Version die neue Installer-Datei und start.sh/start.bat mit uebernehmen.
+- Welt (world) und config nicht loeschen. Vorher ein Backup machen (FTB Backups 2 ist dabei).
+
+NICHT IM SERVER-PAKET
+Reine Client-Mods (Sodium, Karten, Sound-Mods usw.) fehlen hier absichtlich.
+Die Spieler brauchen das Client-Paket oder die .mrpack-Datei.

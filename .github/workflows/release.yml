@@ -1,8 +1,8 @@
-# Baut aus pack/modrinth.index.json und curseforge-mods/*.jar das .mrpack
-# und legt ein GitHub-Release an.
-# Laeuft automatisch, wenn pack/modrinth.index.json auf main geaendert wird
-# (gibt es das Release zu der Version schon, passiert nichts).
-# Ausserdem: Tag pushen (z. B. v0.9.4) oder "Actions" -> "Release" -> "Run workflow".
+# Baut .mrpack, Client-ZIP und Server-ZIP, testet den Server und legt das Release an.
+# - Pull Request: nur bauen + Servertest (kein Release)
+# - Push auf main mit neuer pack/modrinth.index.json: bauen + Servertest + Release
+#   (gibt es das Release zu der Version schon, passiert nichts)
+# - Tag v<Version> oder "Actions" -> "Release" -> "Run workflow": wie Push auf main
 name: Release
 
 on:
@@ -10,14 +10,21 @@ on:
     branches: [main]
     paths: ['pack/modrinth.index.json']
     tags: ['v*']
+  pull_request:
+    paths: ['pack/**', 'curseforge-mods/**', 'MODLISTE.txt', '.github/**']
   workflow_dispatch:
 
 permissions:
   contents: write
 
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   release:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
 
@@ -34,38 +41,65 @@ jobs:
           fi
           echo "ver=$VER" >> "$GITHUB_OUTPUT"
           echo "tag=$TAG" >> "$GITHUB_OUTPUT"
-          if gh release view "$TAG" >/dev/null 2>&1; then
+          if [ "$GITHUB_EVENT_NAME" != "pull_request" ] && gh release view "$TAG" >/dev/null 2>&1; then
             echo "Release $TAG gibt es schon, nichts zu tun."
             echo "exists=true" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: .mrpack bauen
+      - uses: actions/setup-java@v4
         if: steps.ver.outputs.exists != 'true'
-        run: |
-          mkdir -p build/overrides/mods
-          cp pack/modrinth.index.json build/
-          cp curseforge-mods/*.jar build/overrides/mods/
-          cd build
-          zip -r -D "../Unser-Modpack-${{ steps.ver.outputs.ver }}.mrpack" modrinth.index.json overrides
-          cd ..
-          unzip -l "Unser-Modpack-${{ steps.ver.outputs.ver }}.mrpack" | tail -1
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Pakete bauen
+        if: steps.ver.outputs.exists != 'true'
+        run: bash .github/scripts/pakete-bauen.sh dist
+
+      - name: Servertest
+        if: steps.ver.outputs.exists != 'true'
+        env:
+          TEST_RAM: 5G
+          TEST_TIMEOUT_MIN: 25
+        run: bash .github/scripts/servertest.sh "dist/Unser-Modpack-${{ steps.ver.outputs.ver }}-Server.zip" "$RUNNER_TEMP/servertest"
+
+      - name: Server-Log sichern
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: servertest-logs
+          path: |
+            ${{ runner.temp }}/servertest/logs/latest.log
+            ${{ runner.temp }}/servertest/crash-reports/
+            ${{ runner.temp }}/servertest/console.log
+          if-no-files-found: ignore
 
       - name: Release anlegen
-        if: steps.ver.outputs.exists != 'true'
+        if: steps.ver.outputs.exists != 'true' && github.event_name != 'pull_request'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          VER="${{ steps.ver.outputs.ver }}"
           {
             echo "Minecraft 1.21.1 / NeoForge. Nur fuer uns, bitte nicht oeffentlich weitergeben (Mod-Lizenzen)."
             echo
-            echo "**Installieren:** Modrinth App -> \"+\" (Instanz hinzufuegen) -> \"Aus Datei importieren\" -> die .mrpack-Datei waehlen."
+            echo "| Datei | Wofuer |"
+            echo "|---|---|"
+            echo "| \`Unser-Modpack-$VER.mrpack\` | **Modrinth App**: \"+\" -> \"Aus Datei importieren\" |"
+            echo "| \`Unser-Modpack-$VER-Client.zip\` | andere Launcher (Prism, CurseForge ...): mods-Ordner in die Instanz kopieren |"
+            echo "| \`Unser-Modpack-$VER-Server.zip\` | Server: entpacken, eula.txt bestaetigen, start.sh / start.bat (Java 21, 12 GB RAM) |"
+            echo
+            echo "Servertest im Workflow: bestanden."
             echo
             echo '```'
             sed '1s/^\xEF\xBB\xBF//' MODLISTE.txt
             echo '```'
           } > notes.md
           gh release create "${{ steps.ver.outputs.tag }}" \
-            "Unser-Modpack-${{ steps.ver.outputs.ver }}.mrpack" MODLISTE.txt \
+            "dist/Unser-Modpack-$VER.mrpack" \
+            "dist/Unser-Modpack-$VER-Client.zip" \
+            "dist/Unser-Modpack-$VER-Server.zip" \
+            MODLISTE.txt \
             --target "$GITHUB_SHA" \
-            --title "Unser Modpack ${{ steps.ver.outputs.ver }}" \
+            --title "Unser Modpack $VER" \
             --notes-file notes.md
