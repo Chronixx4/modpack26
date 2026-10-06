@@ -2,9 +2,9 @@
 Minecraft 1.21.1, NeoForge 21.1.256   |   246 Mods inkl. Bibliotheken   |   Stand 2026-10-06
 
 == Performance und Grafik (10) ==
-  Chunky                                         1.4.23
+  Chunky                                         1.4.23  (nur Server)
   Clumps                                         19.0.0.1
-  Distant Horizons                               3.3.3-1.21.1
+  Distant Horizons                               3.3.3-1.21.1  (nur Client)
   Entity Culling                                 1.11.2  (nur Client)
   FerriteCore                                    7.0.3-neoforge
   ImmediatelyFast                                1.6.14+1.21.1-neoforge  (nur Client)
@@ -32,13 +32,13 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   246 Mods inkl. Bibliotheken   |   Stan
   Mouse Tweaks                                   1.21-2.26.1-neoforge  (nur Client)
   Nature's Compass                               1.21.1-3.4.0-neoforge
   Polymorph                                      1.1.0+1.21.1
-  Sound Physics Remastered                       neoforge-1.21.1-1.5.1
+  Sound Physics Remastered                       neoforge-1.21.1-1.5.1  (nur Client)
   spark                                          1.10.124-neoforge-1.21.1
   TorchMaster                                    21.1.13-release
   Trash Cans                                     1.1.1-neoforge-mc1.21
   Visual Workbench                               21.1.2
-  Xaero's Minimap                                neoforge-1.21.1-26.6.0
-  Xaero's World Map                              neoforge-1.21.1-1.47.0
+  Xaero's Minimap                                neoforge-1.21.1-26.6.0  (nur Client)
+  Xaero's World Map                              neoforge-1.21.1-1.47.0  (nur Client)
 
 == Multiplayer, Quests und Verwaltung (7) ==
   FTB Backups 2                                  1.0.28  (CurseForge)
