@@ -1,0 +1,3 @@
+# Minecraft-EULA: https://aka.ms/MinecraftEULA
+# Zum Zustimmen auf eula=true aendern, sonst startet der Server nicht.
+eula=false

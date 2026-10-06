@@ -1,0 +1,3 @@
+# Arbeitsspeicher fuer den Server: Xms = Start, Xmx = Maximum
+-Xms4G
+-Xmx12G

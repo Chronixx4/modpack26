@@ -1,0 +1,8 @@
+# Mods, die NICHT ins Server-Paket kommen (Dateinamen-Muster, * = beliebig).
+# Mods mit "server: unsupported" auf Modrinth fliegen sowieso raus.
+# Hier stehen reine Client-Mods, die Modrinth trotzdem als "Server optional" fuehrt.
+xaerominimap-*
+xaeroworldmap-*
+sound-physics-remastered-*
+# Distant Horizons: auf dem Server nur optional und crasht zusammen mit Chunky
+DistantHorizons-*
