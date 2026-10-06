@@ -1,0 +1,686 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "waffen"
+	group: "78E8109A2807F0AD"
+	icon: {
+		id: "simplyswords:iron_longsword"
+	}
+	id: "35B9EF090F20DB49"
+	images: [ ]
+	order_index: 30
+	quest_links: [
+		{
+			id: "75E6ED2C644E70CC"
+			linked_quest: "58B2439153283A9D"
+			shape: "rsquare"
+			size: 1.0d
+			x: -2.0d
+			y: 0.0d
+		}
+		{
+			id: "196BE003C2D67AFF"
+			linked_quest: "783C45DB630387CD"
+			shape: "rsquare"
+			size: 1.0d
+			x: 2.0d
+			y: -1.5d
+		}
+		{
+			id: "5CEC4E6AAE36E02E"
+			linked_quest: "1DF98BD3858BF0B7"
+			shape: "rsquare"
+			size: 1.0d
+			x: 4.0d
+			y: -4.5d
+		}
+		{
+			id: "5EE76E94A968C17C"
+			linked_quest: "7B941B77210E9405"
+			shape: "rsquare"
+			size: 1.0d
+			x: 6.0d
+			y: -4.5d
+		}
+	]
+	quests: [
+		{
+			dependencies: [
+				"58B2439153283A9D"
+			]
+			id: "5FC8AC773525DC2D"
+			rewards: [
+				{
+					id: "754A0D9611739892"
+					table_id: 8873071041503571705L
+					type: "loot"
+				}
+			]
+			shape: "gear"
+			size: 1.5d
+			tasks: [
+				{
+					id: "3CD14ACD4426E6C2"
+					type: "checkmark"
+				}
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"5FC8AC773525DC2D"
+			]
+			id: "76908281938983FD"
+			rewards: [
+				{
+					id: "7587F6C2827FAC85"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "1D2E85AEDAB23C14"
+					item: {
+						count: 1
+						id: "simplyswords:iron_longsword"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"76908281938983FD"
+				"783C45DB630387CD"
+			]
+			id: "78CF1314DC9B7E87"
+			rewards: [
+				{
+					id: "7707005A01ED720B"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "570966B9F1A4CCF9"
+					item: {
+						count: 1
+						id: "simplyswords:diamond_longsword"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"78CF1314DC9B7E87"
+				"1DF98BD3858BF0B7"
+			]
+			id: "750F5EF7F3E1478F"
+			rewards: [
+				{
+					id: "76D3C82368F51EF9"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					id: "3441105CDA3D297B"
+					item: {
+						count: 1
+						id: "simplyswords:netherite_longsword"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"750F5EF7F3E1478F"
+				"7B941B77210E9405"
+			]
+			id: "3EEDEF3CD8C7C6F8"
+			rewards: [
+				{
+					id: "73E852CD1607FB06"
+					table_id: 6783561722415423100L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					id: "7A6AD3C1C7DAA938"
+					item: {
+						count: 1
+						id: "simplycataclysm:ignitium_longsword"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"3EEDEF3CD8C7C6F8"
+				"1FAC05C1DB64153C"
+			]
+			id: "7B61F149E77508B1"
+			rewards: [
+				{
+					id: "32C297230F2D8A1D"
+					table_id: 6783561722415423100L
+					type: "loot"
+				}
+			]
+			shape: "star"
+			size: 1.5d
+			tasks: [
+				{
+					id: "5CF12A3EE62C94F6"
+					type: "checkmark"
+				}
+			]
+			x: 10.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"78CF1314DC9B7E87"
+			]
+			id: "764AB106ACACE0A0"
+			optional: true
+			rewards: [
+				{
+					id: "32CF175E3AFCFD9D"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "3556038C4F1183A6"
+					item: {
+						count: 1
+						id: "simplyswords:runic_tablet"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"764AB106ACACE0A0"
+			]
+			id: "143F37F83EA1417E"
+			optional: true
+			rewards: [
+				{
+					id: "73E2478D353871B7"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "36C89CE6553290F6"
+					item: {
+						count: 1
+						id: "simplyswords:runic_longsword"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"76908281938983FD"
+			]
+			id: "136074C21A4820F9"
+			optional: true
+			rewards: [
+				{
+					id: "7330D3D480889691"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "3A3DFEFA352BBAA9"
+					item: {
+						count: 1
+						id: "simplyswords:emberblade"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"5FC8AC773525DC2D"
+			]
+			id: "3A68281AB0E6EA83"
+			rewards: [
+				{
+					id: "3215C58A2531BE7A"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "525C606D1D082C33"
+					item: {
+						count: 1
+						id: "archers:archers_workbench"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"3A68281AB0E6EA83"
+			]
+			id: "5FF6752CBC44B92C"
+			rewards: [
+				{
+					id: "5A718DD3C410890D"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "789B4578E28FF829"
+					item: {
+						count: 1
+						id: "archers:composite_longbow"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"5FF6752CBC44B92C"
+			]
+			id: "10A29809685B7E20"
+			rewards: [
+				{
+					id: "195A92826FD842AE"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "132F3F875D67FEEB"
+					item: {
+						count: 1
+						id: "archers:archer_armor_chest"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"10A29809685B7E20"
+			]
+			id: "5B4A3E17410B6885"
+			rewards: [
+				{
+					id: "19B769DF3F28EEB0"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "5747E2C958157851"
+					item: {
+						count: 1
+						id: "archers:royal_longbow"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"10A29809685B7E20"
+			]
+			id: "11221A1DC8316145"
+			rewards: [
+				{
+					id: "1120C50975AC2046"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "3E8C928EF2A28951"
+					item: {
+						count: 1
+						id: "archers_expansion:deadeye_chest"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: -4.5d
+		}
+		{
+			dependencies: [
+				"11221A1DC8316145"
+			]
+			id: "3E54C0C2B080EB27"
+			rewards: [
+				{
+					id: "59A05200872596A4"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "3D1F057D3FEE71C6"
+					item: {
+						count: 1
+						id: "archers_expansion:war_archer_chest"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: -4.5d
+		}
+		{
+			dependencies: [
+				"5FC8AC773525DC2D"
+			]
+			id: "3663A71FFF40DCCB"
+			rewards: [
+				{
+					id: "7DB5BA3B9A055C28"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "7B1D7298391A350B"
+					item: {
+						count: 1
+						id: "rogues:arms_workbench"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"3663A71FFF40DCCB"
+			]
+			id: "18AEC561A5B34AF6"
+			rewards: [
+				{
+					id: "7FC9A9756B283445"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "1B383D13B7031D00"
+					item: {
+						count: 1
+						id: "rogues:iron_dagger"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"18AEC561A5B34AF6"
+			]
+			id: "5837BAD6082D319B"
+			rewards: [
+				{
+					id: "3E06329C119A7C05"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "3E51843CAC1C446B"
+					item: {
+						count: 1
+						id: "rogues:rogue_armor_chest"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"18AEC561A5B34AF6"
+			]
+			id: "11F004B7D9CD0F2B"
+			rewards: [
+				{
+					id: "1A09463686498DA8"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "329B51FD24069410"
+					item: {
+						count: 1
+						id: "rogues:warrior_armor_chest"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"11F004B7D9CD0F2B"
+				"1DF98BD3858BF0B7"
+			]
+			id: "1FAC05C1DB64153C"
+			rewards: [
+				{
+					id: "7F59C628A6F76F83"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					id: "73B7CE842B6676B1"
+					item: {
+						count: 1
+						id: "rogues:netherite_berserker_armor_chest"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"5FC8AC773525DC2D"
+			]
+			id: "73905C48D054EEBF"
+			rewards: [
+				{
+					id: "1DBA79F2B7653C44"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "7143820628C7C454"
+					item: {
+						count: 1
+						id: "immersive_armors:heavy_chestplate"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -6.0d
+		}
+		{
+			dependencies: [
+				"73905C48D054EEBF"
+			]
+			id: "56C9AB415B67066B"
+			rewards: [
+				{
+					id: "1C0F7BEAF5C2BF69"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "5807DA3FE5FD1ACD"
+					item: {
+						count: 1
+						id: "immersive_armors:wither_chestplate"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: -6.0d
+		}
+		{
+			dependencies: [
+				"56C9AB415B67066B"
+			]
+			id: "57BBFF64A5C23FDA"
+			rewards: [
+				{
+					id: "7AE11A825959FD29"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "3BC0015BBB78E8A8"
+					item: {
+						count: 1
+						id: "immersive_armors:divine_chestplate"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: -6.0d
+		}
+		{
+			dependencies: [
+				"5FC8AC773525DC2D"
+			]
+			id: "19502274DB449EF9"
+			optional: true
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "39DDF5D5DF039328"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					entity: "artifacts:mimic"
+					id: "72E4A451822A4057"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 2.0d
+			y: 4.5d
+		}
+		{
+			dependencies: [
+				"19502274DB449EF9"
+			]
+			id: "174041CD05D1F964"
+			optional: true
+			rewards: [
+				{
+					id: "149F52B5B90E1B6E"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "7D3B37DABD4A7640"
+					item: {
+						count: 1
+						id: "artifacts:running_shoes"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 4.5d
+		}
+	]
+}

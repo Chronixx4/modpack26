@@ -1,0 +1,137 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "5E240D7218821E7C"
+	loot_crate: {
+		color: 11141375
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "loot3"
+	}
+	loot_size: 1
+	order_index: 2
+	rewards: [
+		{
+			count: 2
+			id: "3EEC01A1EF21127E"
+			item: {
+				count: 1
+				id: "minecraft:diamond_block"
+			}
+			weight: 6.0f
+		}
+		{
+			count: 2
+			id: "572E770C086C14F3"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 5.0f
+		}
+		{
+			count: 3
+			id: "319E4AAE47F4B457"
+			item: {
+				count: 1
+				id: "minecraft:emerald_block"
+			}
+			weight: 5.0f
+		}
+		{
+			count: 8
+			id: "76C64BFCFA6A638B"
+			item: {
+				count: 1
+				id: "minecraft:ender_eye"
+			}
+			weight: 5.0f
+		}
+		{
+			count: 4
+			id: "3B92CB3B50F0786A"
+			item: {
+				count: 1
+				id: "minecraft:golden_apple"
+			}
+			weight: 5.0f
+		}
+		{
+			count: 32
+			id: "1273376D565C6A41"
+			item: {
+				count: 1
+				id: "minecraft:experience_bottle"
+			}
+			weight: 6.0f
+		}
+		{
+			count: 4
+			id: "3E4531EA7BBE88A7"
+			item: {
+				count: 1
+				id: "minecraft:shulker_shell"
+			}
+			weight: 4.0f
+		}
+		{
+			count: 8
+			id: "7B7221AC5ADF278A"
+			item: {
+				count: 1
+				id: "minecraft:blaze_rod"
+			}
+			weight: 5.0f
+		}
+		{
+			count: 16
+			id: "56ED258908F8337E"
+			item: {
+				count: 1
+				id: "mekanism:alloy_infused"
+			}
+			weight: 5.0f
+		}
+		{
+			count: 16
+			id: "1D9ADA4FF675003D"
+			item: {
+				count: 1
+				id: "ae2:fluix_crystal"
+			}
+			weight: 5.0f
+		}
+		{
+			count: 32
+			id: "5C02A93D63BB7A5E"
+			item: {
+				count: 1
+				id: "mysticalagriculture:prudentium_essence"
+			}
+			weight: 5.0f
+		}
+		{
+			id: "5FF65279F7B4C6E0"
+			item: {
+				count: 1
+				id: "minecraft:totem_of_undying"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 4
+			id: "5FEC5669C0C2C521"
+			item: {
+				count: 1
+				id: "ars_nouveau:source_gem_block"
+			}
+			weight: 4.0f
+		}
+	]
+	use_title: true
+}

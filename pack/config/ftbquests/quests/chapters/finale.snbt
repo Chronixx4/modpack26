@@ -1,0 +1,560 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "finale"
+	group: "356CF29627B74618"
+	icon: {
+		id: "minecraft:dragon_egg"
+	}
+	id: "5C88D6531C448E2B"
+	images: [ ]
+	order_index: 32
+	quest_links: [
+		{
+			id: "5746BB4992D2F352"
+			linked_quest: "1669D8493EE34097"
+			shape: "rsquare"
+			size: 1.0d
+			x: -2.0d
+			y: 0.0d
+		}
+		{
+			id: "71434A57C160A894"
+			linked_quest: "7E78584C8E516BF3"
+			shape: "rsquare"
+			size: 1.0d
+			x: 0.0d
+			y: -1.5d
+		}
+		{
+			id: "513A6A5283FEC352"
+			linked_quest: "7D5471C31B97A495"
+			shape: "rsquare"
+			size: 1.0d
+			x: 2.0d
+			y: -4.5d
+		}
+		{
+			id: "3C4F582C60292FB0"
+			linked_quest: "36B129125051676C"
+			shape: "rsquare"
+			size: 1.0d
+			x: 4.0d
+			y: -1.5d
+		}
+		{
+			id: "5C9E80D84728A37F"
+			linked_quest: "3082E593D92C22AD"
+			shape: "rsquare"
+			size: 1.0d
+			x: 6.0d
+			y: -1.5d
+		}
+		{
+			id: "30AC69F9560CC307"
+			linked_quest: "1A464377E86A977C"
+			shape: "rsquare"
+			size: 1.0d
+			x: 8.0d
+			y: -1.5d
+		}
+		{
+			id: "32FD26FE9D957D92"
+			linked_quest: "3A0CDE4A0211BF92"
+			shape: "rsquare"
+			size: 1.0d
+			x: 10.0d
+			y: -1.5d
+		}
+		{
+			id: "5C43DAC436F3F9EF"
+			linked_quest: "566EE65F77EC43F1"
+			shape: "rsquare"
+			size: 1.0d
+			x: 0.0d
+			y: -3.0d
+		}
+		{
+			id: "3B332F3DFFA8EFC0"
+			linked_quest: "124E91D8000A6642"
+			shape: "rsquare"
+			size: 1.0d
+			x: 2.0d
+			y: -6.0d
+		}
+		{
+			id: "507B574EB4E87868"
+			linked_quest: "381BCC5138AB61E8"
+			shape: "rsquare"
+			size: 1.0d
+			x: 4.0d
+			y: -4.5d
+		}
+		{
+			id: "52ED14D94E3C7499"
+			linked_quest: "738A8835181888C5"
+			shape: "rsquare"
+			size: 1.0d
+			x: 6.0d
+			y: -4.5d
+		}
+		{
+			id: "3D18EA38D13EA626"
+			linked_quest: "7EF384820706F4D1"
+			shape: "rsquare"
+			size: 1.0d
+			x: 0.0d
+			y: 3.0d
+		}
+		{
+			id: "5191DDD4F6D09242"
+			linked_quest: "78F1E467E7B385AA"
+			shape: "rsquare"
+			size: 1.0d
+			x: 2.0d
+			y: 1.5d
+		}
+		{
+			id: "7170421B595C14D5"
+			linked_quest: "7498B3A2F0CA0C8E"
+			shape: "rsquare"
+			size: 1.0d
+			x: 4.0d
+			y: 1.5d
+		}
+		{
+			id: "5AEFC121562E9BCC"
+			linked_quest: "3BE179282E83BB4A"
+			shape: "rsquare"
+			size: 1.0d
+			x: 6.0d
+			y: 1.5d
+		}
+	]
+	quests: [
+		{
+			dependencies: [
+				"1669D8493EE34097"
+			]
+			id: "744908FBE18473ED"
+			rewards: [
+				{
+					id: "59067F5E2A4A96CC"
+					table_id: 6783561722415423100L
+					type: "loot"
+				}
+			]
+			shape: "gear"
+			size: 1.5d
+			tasks: [
+				{
+					id: "771E87AB442B22F9"
+					type: "checkmark"
+				}
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"744908FBE18473ED"
+				"7E78584C8E516BF3"
+			]
+			id: "3849C5225F5998CF"
+			rewards: [
+				{
+					id: "52234A578F0DE588"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "1DE23635332CFFEC"
+					type: "checkmark"
+				}
+			]
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"3849C5225F5998CF"
+				"7D5471C31B97A495"
+			]
+			id: "301C6DD472398C83"
+			rewards: [
+				{
+					id: "3477F478B562EA7A"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "54A85C607A1163C9"
+					item: {
+						count: 1
+						id: "megacells:cell_component_256m"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"301C6DD472398C83"
+				"36B129125051676C"
+			]
+			id: "7A03239EEEC0EDFB"
+			rewards: [
+				{
+					id: "51F1463A361F1FDC"
+					table_id: 6783561722415423100L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					id: "319E68B1A40E030F"
+					item: {
+						count: 1
+						id: "mekanism:pellet_antimatter"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"7A03239EEEC0EDFB"
+				"3082E593D92C22AD"
+			]
+			id: "76FB08086710BAC9"
+			rewards: [
+				{
+					id: "3135D3274EF20FFF"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "3BD5F3D40B266017"
+					item: {
+						count: 1
+						id: "immersiveengineering:railgun"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"76FB08086710BAC9"
+				"1A464377E86A977C"
+			]
+			id: "3EEAE7329C5B6421"
+			rewards: [
+				{
+					id: "78016CCB9ADCFF75"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "5ECE6DAD7A522070"
+					item: {
+						count: 1
+						id: "powah:reactor_nitro"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"3EEAE7329C5B6421"
+				"3A0CDE4A0211BF92"
+			]
+			id: "5CE435D1495C885B"
+			rewards: [
+				{
+					id: "1092C8BEBC349704"
+					table_id: 3797459037597754809L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					id: "5FCE8A9BB8039E24"
+					item: {
+						count: 1
+						id: "draconicevolution:chaotic_core"
+					}
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"744908FBE18473ED"
+				"566EE65F77EC43F1"
+			]
+			id: "735A6F339644AF18"
+			rewards: [
+				{
+					id: "59256CA6B08161B8"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "56AD34C6938098C1"
+					item: {
+						count: 1
+						id: "ars_nouveau:archmage_spell_book"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"735A6F339644AF18"
+				"124E91D8000A6642"
+			]
+			id: "31A8390F2C2D4039"
+			rewards: [
+				{
+					id: "378E1993E95FD1D8"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "3DDEAD25C14CCC20"
+					item: {
+						count: 1
+						id: "irons_spellbooks:legendary_ink"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"31A8390F2C2D4039"
+				"381BCC5138AB61E8"
+			]
+			id: "7BACE0D2E35CBB87"
+			rewards: [
+				{
+					id: "7AE889E1CE4D5F15"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "5F38712146C63A83"
+					type: "checkmark"
+				}
+			]
+			x: 6.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"7BACE0D2E35CBB87"
+				"738A8835181888C5"
+			]
+			id: "32A301062C41A82C"
+			rewards: [
+				{
+					id: "39E9BCA9602831D2"
+					table_id: 6783561722415423100L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					id: "37F48F466871B4FA"
+					item: {
+						count: 1
+						id: "mysticalagradditions:insanium_ingot"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"744908FBE18473ED"
+				"7EF384820706F4D1"
+			]
+			id: "73CDA466DC1DA3BF"
+			rewards: [
+				{
+					id: "17907B8CE2AD9AE5"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "7918256AF8C79AAE"
+					type: "checkmark"
+				}
+			]
+			x: 2.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"73CDA466DC1DA3BF"
+				"78F1E467E7B385AA"
+			]
+			id: "11735E4944746904"
+			rewards: [
+				{
+					id: "554958B0E8CFCE32"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "1E7BACC796108C84"
+					type: "checkmark"
+				}
+			]
+			x: 4.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"11735E4944746904"
+				"7498B3A2F0CA0C8E"
+			]
+			id: "171148D31F0DABDC"
+			rewards: [
+				{
+					id: "3B1A08DA4012DEB4"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "50F65B47D80C1175"
+					type: "checkmark"
+				}
+			]
+			x: 6.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"171148D31F0DABDC"
+				"3BE179282E83BB4A"
+			]
+			id: "5BC3E48821BB81B0"
+			rewards: [
+				{
+					id: "1B20C85AA4279D82"
+					table_id: 6783561722415423100L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					id: "10546EE7B8D968F4"
+					item: {
+						count: 1
+						id: "allthemodium:unobtainium_block"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"744908FBE18473ED"
+			]
+			id: "14E3A47EF66B58C0"
+			optional: true
+			rewards: [
+				{
+					id: "121E0A22CCFE5753"
+					table_id: 3797459037597754809L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					consume_items: true
+					count: 4L
+					id: "724EBE5843A44E46"
+					item: {
+						count: 1
+						id: "minecraft:nether_star"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"5CE435D1495C885B"
+				"32A301062C41A82C"
+				"5BC3E48821BB81B0"
+			]
+			id: "3DFDB1DEA868495B"
+			rewards: [
+				{
+					id: "1799F0F3E2E3B6CB"
+					table_id: 3797459037597754809L
+					type: "loot"
+				}
+			]
+			shape: "star"
+			size: 1.5d
+			tasks: [
+				{
+					id: "528AAECF1E161F61"
+					type: "checkmark"
+				}
+			]
+			x: 14.0d
+			y: 0.0d
+		}
+	]
+}

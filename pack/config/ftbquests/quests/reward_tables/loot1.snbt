@@ -1,0 +1,156 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "7B237B19C7A02EF9"
+	loot_crate: {
+		color: 11579568
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "loot1"
+	}
+	loot_size: 1
+	order_index: 0
+	rewards: [
+		{
+			count: 8
+			id: "37D99E54E429BDE7"
+			item: {
+				count: 1
+				id: "minecraft:iron_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "1A80BC78497F40C3"
+			item: {
+				count: 1
+				id: "minecraft:copper_ingot"
+			}
+			weight: 8.0f
+		}
+		{
+			count: 4
+			id: "198BBAA0FEC82F24"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 6.0f
+		}
+		{
+			count: 16
+			id: "1577B84677DC52C7"
+			item: {
+				count: 1
+				id: "minecraft:coal"
+			}
+			weight: 8.0f
+		}
+		{
+			count: 16
+			id: "179BCBADE8674C09"
+			item: {
+				count: 1
+				id: "minecraft:redstone"
+			}
+			weight: 8.0f
+		}
+		{
+			count: 8
+			id: "7DB10FF86E6C60C0"
+			item: {
+				count: 1
+				id: "minecraft:lapis_lazuli"
+			}
+			weight: 5.0f
+		}
+		{
+			count: 16
+			id: "14BD8C21D18A12BF"
+			item: {
+				count: 1
+				id: "minecraft:bread"
+			}
+			weight: 8.0f
+		}
+		{
+			count: 12
+			id: "7840F74623653B9F"
+			item: {
+				count: 1
+				id: "minecraft:cooked_beef"
+			}
+			weight: 6.0f
+		}
+		{
+			count: 32
+			id: "59E3C30FA67A253A"
+			item: {
+				count: 1
+				id: "minecraft:torch"
+			}
+			weight: 6.0f
+		}
+		{
+			count: 32
+			id: "5AFD9CF79ECAE2ED"
+			item: {
+				count: 1
+				id: "minecraft:oak_log"
+			}
+			weight: 6.0f
+		}
+		{
+			count: 32
+			id: "73DC9941DA8FFB33"
+			item: {
+				count: 1
+				id: "minecraft:arrow"
+			}
+			weight: 4.0f
+		}
+		{
+			count: 16
+			id: "11EAA1F7B778459D"
+			item: {
+				count: 1
+				id: "minecraft:bone_meal"
+			}
+			weight: 5.0f
+		}
+		{
+			count: 16
+			id: "71AEF351AE226119"
+			item: {
+				count: 1
+				id: "create:andesite_alloy"
+			}
+			weight: 6.0f
+		}
+		{
+			count: 8
+			id: "397328C5F5D6D240"
+			item: {
+				count: 1
+				id: "minecraft:experience_bottle"
+			}
+			weight: 4.0f
+		}
+		{
+			count: 4
+			id: "53E3053677E94ED5"
+			item: {
+				count: 1
+				id: "waystones:warp_dust"
+			}
+			weight: 3.0f
+		}
+	]
+	use_title: true
+}

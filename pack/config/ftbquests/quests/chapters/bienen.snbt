@@ -1,0 +1,773 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "bienen"
+	group: "39E459F9725474E2"
+	icon: {
+		id: "productivebees:advanced_oak_beehive"
+	}
+	id: "59AB3006383ED9FE"
+	images: [ ]
+	order_index: 25
+	quest_links: [
+		{
+			id: "5FEFD50A03B5C3DB"
+			linked_quest: "58B2439153283A9D"
+			shape: "rsquare"
+			size: 1.0d
+			x: -2.0d
+			y: 0.0d
+		}
+		{
+			id: "38B419AE6B9EE0DA"
+			linked_quest: "3BF041075C293E4B"
+			shape: "rsquare"
+			size: 1.0d
+			x: 6.0d
+			y: -4.5d
+		}
+		{
+			id: "166A864203A6FCF1"
+			linked_quest: "1669D8493EE34097"
+			shape: "rsquare"
+			size: 1.0d
+			x: 10.0d
+			y: -1.5d
+		}
+	]
+	quests: [
+		{
+			dependencies: [
+				"58B2439153283A9D"
+			]
+			id: "385C43D1D96BD901"
+			rewards: [
+				{
+					id: "3A3CFE33EF2B0FA7"
+					table_id: 8873071041503571705L
+					type: "loot"
+				}
+			]
+			shape: "gear"
+			size: 1.5d
+			tasks: [
+				{
+					id: "7B34ACB45B5AB195"
+					item: {
+						count: 1
+						id: "minecraft:honeycomb"
+					}
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"385C43D1D96BD901"
+			]
+			id: "33FF17E2C804695A"
+			rewards: [
+				{
+					id: "12C1CF99D393E024"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "33C290B1025529F7"
+					item: {
+						count: 1
+						id: "productivebees:bee_cage"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"385C43D1D96BD901"
+			]
+			id: "7518AA78B267E39E"
+			rewards: [
+				{
+					id: "14D135BB5D940909"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "3505C06E586046D2"
+					item: {
+						count: 1
+						id: "productivebees:nest_locator"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"33FF17E2C804695A"
+			]
+			id: "3B0C472DBEB4A89A"
+			rewards: [
+				{
+					id: "389479BD01A64A37"
+					table_id: 8873071041503571705L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					id: "326DB4C76317EAE5"
+					item: {
+						count: 1
+						id: "productivebees:advanced_oak_beehive"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"3B0C472DBEB4A89A"
+			]
+			id: "5D69A70FC646AB37"
+			rewards: [
+				{
+					id: "180CC087D920BB4C"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "59BB97415176269A"
+					item: {
+						count: 1
+						id: "productivebees:expansion_box_oak"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"3B0C472DBEB4A89A"
+			]
+			id: "5C01D1E40794CE76"
+			rewards: [
+				{
+					id: "7658051F49E30F38"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "5D652A398083BFF5"
+					item: {
+						count: 1
+						id: "productivebees:centrifuge"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"385C43D1D96BD901"
+			]
+			id: "16D507A9DBB21038"
+			rewards: [
+				{
+					id: "144B158A711381C7"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "10C4ECECEFB4C73E"
+					item: {
+						count: 1
+						id: "productivebees:honey_treat"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"16D507A9DBB21038"
+				"3B0C472DBEB4A89A"
+			]
+			id: "5E7C7971E6510BE7"
+			rewards: [
+				{
+					id: "34E006A23714302B"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "519B355B6C729213"
+					type: "checkmark"
+				}
+			]
+			x: 6.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"5E7C7971E6510BE7"
+			]
+			id: "5C4AB9C5E8DCE064"
+			rewards: [
+				{
+					id: "13C51EF92BE55A6B"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					id: "7960002E0E7AFFF0"
+					type: "checkmark"
+				}
+			]
+			x: 8.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"5C4AB9C5E8DCE064"
+			]
+			id: "79AC132265A61AE3"
+			rewards: [
+				{
+					id: "157E0AD79A5ADED4"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					id: "3B75F81B284AE8B2"
+					type: "checkmark"
+				}
+			]
+			x: 10.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"5C01D1E40794CE76"
+			]
+			id: "15080A8733FE8A21"
+			rewards: [
+				{
+					id: "3E617B2BADA0BF73"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "5D96848ACEFFA527"
+					item: {
+						count: 1
+						id: "productivebees:bottler"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: -4.5d
+		}
+		{
+			dependencies: [
+				"5E7C7971E6510BE7"
+			]
+			id: "1398A72816F20117"
+			rewards: [
+				{
+					id: "3EA64B297D495C59"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "75B101D91E75D71B"
+					item: {
+						count: 1
+						id: "productivebees:incubator"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"5E7C7971E6510BE7"
+			]
+			id: "53359954A9CCC95F"
+			rewards: [
+				{
+					id: "7399FBB9CE17D8B4"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "7F838B55DA6E313A"
+					item: {
+						count: 1
+						id: "productivebees:gene_indexer"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"16D507A9DBB21038"
+			]
+			id: "31B4707D831488AC"
+			rewards: [
+				{
+					id: "7E7E99CCDE7056C3"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "35B751A35728737C"
+					item: {
+						count: 1
+						id: "productivelib:upgrade_base"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 4.5d
+		}
+		{
+			dependencies: [
+				"31B4707D831488AC"
+			]
+			id: "58C985FEC0782440"
+			rewards: [
+				{
+					id: "3540EFAF0A240666"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "7CD84EDBB064FEAA"
+					item: {
+						count: 1
+						id: "productivelib:upgrade_time"
+					}
+					type: "item"
+				}
+				{
+					id: "53D60FC5B5677787"
+					item: {
+						count: 1
+						id: "productivelib:upgrade_child"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 4.5d
+		}
+		{
+			dependencies: [
+				"58C985FEC0782440"
+				"5E7C7971E6510BE7"
+			]
+			id: "1D3581A9F2F34D8D"
+			rewards: [
+				{
+					id: "542922AEAA265442"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "3393C3CD9DE2245E"
+					item: {
+						count: 1
+						id: "productivebees:breeding_chamber"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 4.5d
+		}
+		{
+			dependencies: [
+				"5C01D1E40794CE76"
+				"3BF041075C293E4B"
+			]
+			id: "11F7920096D09F96"
+			rewards: [
+				{
+					id: "5D1D8556BE9429CF"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "346D1F001EC1EB0C"
+					item: {
+						count: 1
+						id: "productivebees:powered_centrifuge"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"5C01D1E40794CE76"
+			]
+			id: "7DBE195BC92EAA01"
+			optional: true
+			rewards: [
+				{
+					id: "135333C67D7041FA"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "1BF8FF0EC2029AD4"
+					item: {
+						count: 1
+						id: "productivebees:honey_generator"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: -6.0d
+		}
+		{
+			dependencies: [
+				"11F7920096D09F96"
+				"58C985FEC0782440"
+				"79AC132265A61AE3"
+				"1669D8493EE34097"
+			]
+			id: "30067A579304F035"
+			rewards: [
+				{
+					id: "73795367671A834A"
+					table_id: 6783561722415423100L
+					type: "loot"
+				}
+			]
+			shape: "star"
+			size: 1.5d
+			tasks: [
+				{
+					id: "770D12A35629B961"
+					item: {
+						count: 1
+						id: "productivebees:heated_centrifuge"
+					}
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"3B0C472DBEB4A89A"
+			]
+			id: "17B82332255E603B"
+			optional: true
+			rewards: [
+				{
+					id: "313F8759C2CCD6BD"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					consume_items: true
+					count: 64L
+					id: "7A3926B3ACC8F8F3"
+					item: {
+						count: 1
+						id: "minecraft:honeycomb"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"385C43D1D96BD901"
+			]
+			id: "56611F476884C54B"
+			rewards: [
+				{
+					id: "1ECA7985DA7B3C8C"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "1E44CE04F8E2DAA9"
+					item: {
+						count: 1
+						id: "the_bumblezone:honey_crystal_shards"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 9.0d
+		}
+		{
+			dependencies: [
+				"56611F476884C54B"
+			]
+			id: "59C263E2311EDF79"
+			rewards: [
+				{
+					id: "34FDFE4E92B14924"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "5E858315264008BA"
+					item: {
+						count: 1
+						id: "the_bumblezone:pollen_puff"
+					}
+					type: "item"
+				}
+				{
+					id: "509D8068E01E1D50"
+					item: {
+						count: 1
+						id: "the_bumblezone:bee_bread"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 10.5d
+		}
+		{
+			dependencies: [
+				"56611F476884C54B"
+			]
+			id: "1B7F6F71FA73906B"
+			rewards: [
+				{
+					id: "1D5C71CC541F147C"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "5292AEF3F574C386"
+					item: {
+						count: 1
+						id: "the_bumblezone:bee_stinger"
+					}
+					type: "item"
+				}
+				{
+					id: "32155CBB483E391E"
+					item: {
+						count: 1
+						id: "the_bumblezone:stinger_spear"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 9.0d
+		}
+		{
+			dependencies: [
+				"56611F476884C54B"
+			]
+			id: "3C5F224823085623"
+			rewards: [
+				{
+					id: "391FA12AC0B14C8B"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "50F2EC7ED13C925F"
+					item: {
+						count: 1
+						id: "the_bumblezone:honey_crystal_shield"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 7.5d
+		}
+		{
+			dependencies: [
+				"56611F476884C54B"
+			]
+			id: "7EAECFB7A9C04365"
+			rewards: [
+				{
+					id: "12D052315EA40274"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "1DFEECA0FC94EC97"
+					item: {
+						count: 1
+						id: "the_bumblezone:bee_cannon"
+					}
+					type: "item"
+				}
+				{
+					id: "1D4D1606C2985CFF"
+					item: {
+						count: 1
+						id: "the_bumblezone:crystal_cannon"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 12.0d
+		}
+		{
+			dependencies: [
+				"59C263E2311EDF79"
+			]
+			id: "1AFEABA4FBBF9E24"
+			rewards: [
+				{
+					id: "3ED57354479BD595"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					id: "7893E60E78DFD8A7"
+					item: {
+						count: 1
+						id: "the_bumblezone:royal_jelly_bottle"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 10.5d
+		}
+		{
+			dependencies: [
+				"1AFEABA4FBBF9E24"
+			]
+			id: "54AB88392A129F40"
+			rewards: [
+				{
+					id: "3781EF19AEF57699"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "575FE6B60474D430"
+					type: "checkmark"
+				}
+			]
+			x: 8.0d
+			y: 10.5d
+		}
+		{
+			dependencies: [
+				"1AFEABA4FBBF9E24"
+			]
+			id: "78BAA5E34EDF0793"
+			rewards: [
+				{
+					id: "5E0919B4A6E2BE31"
+					table_id: 6783561722415423100L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					id: "1328A9749876864D"
+					item: {
+						count: 1
+						id: "the_bumblezone:essence_of_the_bees"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 12.0d
+		}
+	]
+}

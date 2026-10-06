@@ -1,0 +1,108 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "34B348DFF91C65B9"
+	loot_crate: {
+		color: 16755200
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "loot4"
+	}
+	loot_size: 1
+	order_index: 3
+	rewards: [
+		{
+			count: 2
+			id: "1C6B0CDF9CC2B3E5"
+			item: {
+				count: 1
+				id: "minecraft:netherite_ingot"
+			}
+			weight: 5.0f
+		}
+		{
+			id: "74E7CBB90B98CB6A"
+			item: {
+				count: 1
+				id: "minecraft:enchanted_golden_apple"
+			}
+			weight: 4.0f
+		}
+		{
+			id: "390892A0DD5151CC"
+			item: {
+				count: 1
+				id: "minecraft:nether_star"
+			}
+			weight: 3.0f
+		}
+		{
+			id: "18BB0B293146A12C"
+			item: {
+				count: 1
+				id: "minecraft:elytra"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 8
+			id: "7602A050B5311F59"
+			item: {
+				count: 1
+				id: "minecraft:diamond_block"
+			}
+			weight: 5.0f
+		}
+		{
+			count: 2
+			id: "5EA50AFDD9CD802F"
+			item: {
+				count: 1
+				id: "minecraft:totem_of_undying"
+			}
+			weight: 4.0f
+		}
+		{
+			count: 64
+			id: "59E5334731D973CD"
+			item: {
+				count: 1
+				id: "minecraft:experience_bottle"
+			}
+			weight: 5.0f
+		}
+		{
+			count: 8
+			id: "5E9AC519EB690380"
+			item: {
+				count: 1
+				id: "mekanism:alloy_atomic"
+			}
+			weight: 4.0f
+		}
+		{
+			count: 32
+			id: "16A507765DF7EDAA"
+			item: {
+				count: 1
+				id: "mysticalagriculture:imperium_essence"
+			}
+			weight: 4.0f
+		}
+		{
+			count: 8
+			id: "7585E91E13FAC1CB"
+			item: {
+				count: 1
+				id: "minecraft:dragon_breath"
+			}
+			weight: 3.0f
+		}
+	]
+	use_title: true
+}

@@ -1,0 +1,40 @@
+{
+	chapter_groups: [
+		{
+			icon: {
+				id: "minecraft:writable_book"
+			}
+			id: "59FEBAE9835E4ACD"
+		}
+		{
+			icon: {
+				id: "create:cogwheel"
+			}
+			id: "3B451255BC331CA7"
+		}
+		{
+			icon: {
+				id: "ars_nouveau:novice_spell_book"
+			}
+			id: "1A4AF5F0953E77C6"
+		}
+		{
+			icon: {
+				id: "mysticalagriculture:inferium_essence"
+			}
+			id: "39E459F9725474E2"
+		}
+		{
+			icon: {
+				id: "minecraft:filled_map"
+			}
+			id: "78E8109A2807F0AD"
+		}
+		{
+			icon: {
+				id: "minecraft:nether_star"
+			}
+			id: "356CF29627B74618"
+		}
+	]
+}

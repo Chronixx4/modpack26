@@ -2,63 +2,531 @@
 	default_hide_dependency_lines: false
 	default_quest_shape: ""
 	filename: "dimensionen"
-	group: ""
+	group: "78E8109A2807F0AD"
 	icon: {
-		id: "minecraft:ender_eye"
+		id: "minecraft:obsidian"
 	}
 	id: "7A661EEA6014AAA1"
 	images: [ ]
-	order_index: 8
-	quest_links: [ ]
+	order_index: 26
+	quest_links: [
+		{
+			id: "5F144634C3B5875C"
+			linked_quest: "783C45DB630387CD"
+			shape: "rsquare"
+			size: 1.0d
+			x: -2.0d
+			y: 0.0d
+		}
+		{
+			id: "390154D49B5CDD8E"
+			linked_quest: "1DF98BD3858BF0B7"
+			shape: "rsquare"
+			size: 1.0d
+			x: 14.0d
+			y: -6.0d
+		}
+	]
 	quests: [
 		{
-			id: "AEC196EC8629D11F"
+			dependencies: [
+				"783C45DB630387CD"
+			]
+			id: "58E01905C47F2844"
 			rewards: [
 				{
-					id: "EF4CE04329047970"
+					id: "1D6CBDE2D9FB7858"
+					item: {
+						count: 1
+						id: "minecraft:flint_and_steel"
+					}
+					type: "item"
+				}
+			]
+			shape: "gear"
+			size: 1.5d
+			tasks: [
+				{
+					count: 10L
+					id: "12EAC22EF15B2215"
+					item: {
+						count: 1
+						id: "minecraft:obsidian"
+					}
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"58E01905C47F2844"
+			]
+			id: "1EC196EC8629D11F"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "7F4CE04329047970"
+					table_id: 8873071041503571705L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					dimension: "minecraft:the_nether"
+					id: "15AD82390B03B139"
+					type: "dimension"
+				}
+			]
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"1EC196EC8629D11F"
+			]
+			id: "52131F74DCFDC6BC"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "12EC22636A1A49A3"
 					type: "xp_levels"
 					xp_levels: 2
 				}
 			]
+			tasks: [
+				{
+					id: "101F89BEF1A2ED0E"
+					structure: "betterfortresses:fortress"
+					type: "structure"
+				}
+			]
+			x: 4.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"52131F74DCFDC6BC"
+			]
+			id: "509B69003A10EB4E"
+			rewards: [
+				{
+					id: "1776DAB3BFC6F77F"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					count: 6L
+					id: "59EF728C24186282"
+					item: {
+						count: 1
+						id: "minecraft:blaze_rod"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"509B69003A10EB4E"
+			]
+			id: "52E0C3AF5E700AE5"
+			rewards: [
+				{
+					count: 4
+					id: "1D47477ED9731290"
+					item: {
+						count: 1
+						id: "minecraft:ender_pearl"
+					}
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					count: 12L
+					id: "1E6B127412761513"
+					item: {
+						count: 1
+						id: "minecraft:ender_eye"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"52E0C3AF5E700AE5"
+			]
+			id: "565E8956BF7D174D"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "5053FB5BC00EC41A"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "178C87D454DEAA47"
+					structure: "betterstrongholds:stronghold"
+					type: "structure"
+				}
+			]
+			x: 10.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"565E8956BF7D174D"
+			]
+			id: "158910F703716CDC"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "5486DAFD358EEF70"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
 			size: 1.5d
 			tasks: [
 				{
-					dimension: "minecraft:the_nether"
-					id: "85AD82390B03B139"
+					dimension: "minecraft:the_end"
+					id: "362A6616CB8F7B66"
 					type: "dimension"
 				}
 			]
-			x: 0.0d
-			y: -3.75d
+			x: 12.0d
+			y: 0.0d
 		}
 		{
-			id: "75C192B636A80509"
+			dependencies: [
+				"158910F703716CDC"
+			]
+			id: "7CB70728947BA2A5"
+			progression_mode: "flexible"
 			rewards: [
 				{
-					id: "96F688ABA65C538A"
+					id: "3E7A13A53A669D70"
 					type: "xp_levels"
 					xp_levels: 3
 				}
 			]
 			tasks: [
 				{
-					dimension: "twilightforest:twilight_forest"
-					id: "E479CA67E2A99CDB"
-					type: "dimension"
+					id: "7260207DBFADB88F"
+					structure: "minecraft:end_city"
+					type: "structure"
 				}
 			]
-			x: 0.0d
-			y: -2.25d
+			x: 14.0d
+			y: 0.0d
 		}
 		{
-			id: "63F04C6F357FA1DC"
+			dependencies: [
+				"7CB70728947BA2A5"
+			]
+			id: "74FB2DE10B6D7B9D"
 			rewards: [
 				{
-					id: "A8DF5A9BB52DD2E6"
+					id: "7286DEF781CC718D"
+					table_id: 6783561722415423100L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					id: "112D3B7535468758"
+					item: {
+						count: 1
+						id: "minecraft:elytra"
+					}
+					type: "item"
+				}
+			]
+			x: 16.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"74FB2DE10B6D7B9D"
+				"73F04C6F357FA1DC"
+				"1254397AB2C01693"
+				"5D73D581C13B7C38"
+				"525DF83D3C7E1714"
+				"75C192B636A80509"
+				"5E505728D4AEF23B"
+				"37AFEE843D6FE3F3"
+			]
+			id: "7498B3A2F0CA0C8E"
+			rewards: [
+				{
+					id: "1B9D544DFEF07C5A"
+					table_id: 3797459037597754809L
+					type: "loot"
+				}
+			]
+			shape: "star"
+			size: 1.5d
+			tasks: [
+				{
+					id: "56CBEAA68E4A83A1"
+					type: "checkmark"
+				}
+			]
+			x: 24.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"509B69003A10EB4E"
+			]
+			id: "30FF0BBA0CC059EE"
+			optional: true
+			rewards: [
+				{
+					id: "345DCA9AA88B90FF"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					consume_items: true
+					count: 16L
+					id: "7FD32819D7298C35"
+					item: {
+						count: 1
+						id: "minecraft:blaze_rod"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"1EC196EC8629D11F"
+			]
+			id: "7709305FD5C60622"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "5719B087C8E06943"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					biome: "betternether:nether_jungle"
+					id: "186BC7D8D4E0C753"
+					type: "biome"
+				}
+				{
+					biome: "betternether:gravel_desert"
+					id: "57BFC75608003183"
+					type: "biome"
+				}
+				{
+					biome: "betternether:soul_plain"
+					id: "3AC67E68288C27A2"
+					type: "biome"
+				}
+			]
+			x: 4.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"1EC196EC8629D11F"
+			]
+			id: "3E7F08C454BEF363"
+			rewards: [
+				{
+					id: "5CDB02260B162E2D"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "7CE21332B527142B"
+					item: {
+						count: 1
+						id: "betternether:cincinnasite_ingot"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"3E7F08C454BEF363"
+			]
+			id: "1690DC83E11ED26B"
+			rewards: [
+				{
+					id: "1FD282D09AABCB6B"
 					type: "xp_levels"
 					xp_levels: 3
 				}
 			]
+			tasks: [
+				{
+					id: "7BEC94DB15CAA9AE"
+					item: {
+						count: 1
+						id: "betternether:nether_ruby"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"158910F703716CDC"
+			]
+			id: "75A34509B82AA848"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "1EE53456A0C6F492"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					biome: "betterend:foggy_mushroomland"
+					id: "14CC220290195DF4"
+					type: "biome"
+				}
+				{
+					biome: "betterend:chorus_forest"
+					id: "7E754BBCD3E57468"
+					type: "biome"
+				}
+				{
+					biome: "betterend:crystal_mountains"
+					id: "731F12D8B78BDF74"
+					type: "biome"
+				}
+			]
+			x: 14.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"158910F703716CDC"
+			]
+			id: "335076F4716123BA"
+			rewards: [
+				{
+					id: "78328827A848D97E"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "357C2515AA79E940"
+					item: {
+						count: 1
+						id: "betterend:terminite_ingot"
+					}
+					type: "item"
+				}
+			]
+			x: 14.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"335076F4716123BA"
+				"1DF98BD3858BF0B7"
+			]
+			id: "1320A74A7EC0FE16"
+			rewards: [
+				{
+					id: "39496A29AF01D3CD"
+					table_id: 6783561722415423100L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					id: "5526BBADF0C3ABB6"
+					item: {
+						count: 1
+						id: "betterend:aeternium_ingot"
+					}
+					type: "item"
+				}
+			]
+			x: 16.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"1EC196EC8629D11F"
+			]
+			id: "1A83BF3C5955F39E"
+			rewards: [
+				{
+					id: "1573B0A1BEB3DE30"
+					item: {
+						count: 1
+						id: "minecraft:water_bucket"
+					}
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					count: 10L
+					id: "1565CF4DE172D325"
+					item: {
+						count: 1
+						id: "minecraft:glowstone"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: -4.5d
+		}
+		{
+			dependencies: [
+				"1A83BF3C5955F39E"
+			]
+			id: "73F04C6F357FA1DC"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "38DF5A9BB52DD2E6"
+					table_id: 8873071041503571705L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
 			tasks: [
 				{
 					dimension: "aether:the_aether"
@@ -66,131 +534,289 @@
 					type: "dimension"
 				}
 			]
-			x: 0.0d
-			y: -0.75d
-		}
-		{
-			id: "8254397AB2C01693"
-			rewards: [
-				{
-					id: "1BB3034C370A7BDD"
-					type: "xp_levels"
-					xp_levels: 3
-				}
-			]
-			tasks: [
-				{
-					dimension: "undergarden:undergarden"
-					id: "CA84D385CC7CDD9E"
-					type: "dimension"
-				}
-			]
-			x: 0.0d
-			y: 0.75d
-		}
-		{
-			id: "525DF83D3C7E1714"
-			rewards: [
-				{
-					id: "5193CA664A27D6FC"
-					type: "xp_levels"
-					xp_levels: 3
-				}
-			]
-			tasks: [
-				{
-					dimension: "the_bumblezone:the_bumblezone"
-					id: "C4911F49BE818600"
-					type: "dimension"
-				}
-			]
-			x: 0.0d
-			y: 2.25d
-		}
-		{
-			id: "D17BCF4639D82AC3"
-			rewards: [
-				{
-					id: "3FCAC843BFD528B8"
-					type: "xp_levels"
-					xp_levels: 3
-				}
-			]
-			tasks: [
-				{
-					biome: "alexscaves:magnetic_caves"
-					id: "D790489B6534CC64"
-					type: "biome"
-				}
-			]
-			x: 0.0d
-			y: 3.75d
+			x: 6.0d
+			y: -4.5d
 		}
 		{
 			dependencies: [
-				"AEC196EC8629D11F"
+				"73F04C6F357FA1DC"
 			]
-			id: "158910F703716CDC"
+			id: "7085DA41999ACC0C"
 			rewards: [
 				{
-					id: "D486DAFD358EEF70"
+					id: "7B80DCBA54609C89"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					count: 8L
+					id: "35A664818EF6DBF3"
+					item: {
+						count: 1
+						id: "aether:ambrosium_shard"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: -4.5d
+		}
+		{
+			dependencies: [
+				"7085DA41999ACC0C"
+			]
+			id: "5E9AE75D5E97AC5F"
+			rewards: [
+				{
+					id: "14A9A9E4CD85605D"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					count: 4L
+					id: "5B9C0B31F0799ED9"
+					item: {
+						count: 1
+						id: "aether:zanite_gemstone"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: -4.5d
+		}
+		{
+			dependencies: [
+				"5E9AE75D5E97AC5F"
+			]
+			id: "3AAE5319977106BC"
+			rewards: [
+				{
+					id: "3DB833EA72686B91"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "1C44C10E9A6098FE"
+					item: {
+						count: 1
+						id: "aether:altar"
+					}
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: -4.5d
+		}
+		{
+			dependencies: [
+				"3AAE5319977106BC"
+			]
+			id: "3F610A9137CB0820"
+			rewards: [
+				{
+					id: "74D9A392100E1A6C"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					count: 4L
+					id: "1F88394029F7FF28"
+					item: {
+						count: 1
+						id: "aether:enchanted_gravitite"
+					}
+					type: "item"
+				}
+			]
+			x: 14.0d
+			y: -4.5d
+		}
+		{
+			dependencies: [
+				"73F04C6F357FA1DC"
+			]
+			id: "57505C9E3760C4EA"
+			optional: true
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "33B731B7A2007667"
 					type: "xp_levels"
 					xp_levels: 3
 				}
 			]
 			tasks: [
 				{
-					dimension: "minecraft:the_end"
-					id: "A62A6616CB8F7B66"
-					type: "dimension"
+					id: "769E0FFABAD65431"
+					structure: "aether:bronze_dungeon"
+					type: "structure"
 				}
 			]
-			x: 2.0d
-			y: -1.5d
+			x: 8.0d
+			y: -6.0d
 		}
 		{
 			dependencies: [
-				"AEC196EC8629D11F"
+				"1DF98BD3858BF0B7"
 			]
-			id: "4D73D581C13B7C38"
+			id: "3AD805849B980BFA"
 			rewards: [
 				{
-					id: "2350ED3AD92F62AA"
-					type: "xp_levels"
-					xp_levels: 4
-				}
-			]
-			tasks: [
-				{
-					dimension: "deeperdarker:otherside"
-					id: "6ADAA568B9F423B0"
-					type: "dimension"
-				}
-			]
-			x: 2.0d
-			y: 0.0d
-		}
-		{
-			dependencies: [
-				"AEC196EC8629D11F"
-			]
-			id: "BAD805849B980BFA"
-			rewards: [
-				{
-					id: "2CE6070738938D88"
+					id: "3CE6070738938D88"
 					type: "xp_levels"
 					xp_levels: 3
 				}
 			]
 			tasks: [
 				{
-					id: "68F5863F324E89C8"
+					id: "78F5863F324E89C8"
 					item: {
 						count: 1
 						id: "allthemodium:allthemodium_ingot"
 					}
 					type: "item"
-					count: 4
+				}
+			]
+			x: 8.0d
+			y: -7.5d
+		}
+		{
+			dependencies: [
+				"3AD805849B980BFA"
+			]
+			id: "797AB693CAEC1BFF"
+			rewards: [
+				{
+					id: "563E56A1FE26E4C3"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "31FDD6BA1717F374"
+					item: {
+						count: 1
+						id: "allthemodium:teleport_pad"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: -7.5d
+		}
+		{
+			dependencies: [
+				"797AB693CAEC1BFF"
+			]
+			id: "73BD1BE78E4BA748"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "35FEE6C052E555A1"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					dimension: "allthemodium:mining"
+					id: "3C272ED11F12A559"
+					type: "dimension"
+				}
+			]
+			x: 12.0d
+			y: -7.5d
+		}
+		{
+			dependencies: [
+				"73BD1BE78E4BA748"
+			]
+			id: "7F0A6AFEE5B082EB"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "564585B8AE52E04F"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					dimension: "allthemodium:the_other"
+					id: "5340164BE734A6BE"
+					type: "dimension"
+				}
+				{
+					id: "395A81BEB07247CE"
+					item: {
+						count: 1
+						id: "allthemodium:vibranium_ingot"
+					}
+					type: "item"
+				}
+			]
+			x: 14.0d
+			y: -7.5d
+		}
+		{
+			dependencies: [
+				"7F0A6AFEE5B082EB"
+			]
+			id: "5E505728D4AEF23B"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "5F751D5CAA86BAC2"
+					table_id: 6783561722415423100L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					dimension: "allthemodium:the_beyond"
+					id: "5F5C32ECB237F0DE"
+					type: "dimension"
+				}
+				{
+					id: "3ED9E1F9538B4B74"
+					item: {
+						count: 1
+						id: "allthemodium:unobtainium_ingot"
+					}
+					type: "item"
+				}
+			]
+			x: 16.0d
+			y: -7.5d
+		}
+		{
+			dependencies: [
+				"58E01905C47F2844"
+			]
+			id: "75C192B636A80509"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "16F688ABA65C538A"
+					table_id: 8873071041503571705L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					dimension: "twilightforest:twilight_forest"
+					id: "7479CA67E2A99CDB"
+					type: "dimension"
 				}
 			]
 			x: 2.0d
@@ -198,163 +824,596 @@
 		}
 		{
 			dependencies: [
-				"BAD805849B980BFA"
+				"58E01905C47F2844"
 			]
-			id: "9C565FC953DAA224"
+			id: "10A17F7181107E91"
 			rewards: [
 				{
-					id: "A3E2860565D7E3FD"
-					type: "xp_levels"
-					xp_levels: 3
-				}
-			]
-			tasks: [
-				{
-					dimension: "allthemodium:mining"
-					id: "E609BD005440ABCF"
-					type: "dimension"
-				}
-			]
-			x: 4.0d
-			y: -1.5d
-		}
-		{
-			dependencies: [
-				"9C565FC953DAA224"
-			]
-			id: "7025689F190D105D"
-			rewards: [
-				{
-					id: "2E87BC9F0B0CA9D1"
-					type: "xp_levels"
-					xp_levels: 4
-				}
-			]
-			tasks: [
-				{
-					dimension: "allthemodium:the_other"
-					id: "8174892C3278F8F8"
-					type: "dimension"
-				}
-			]
-			x: 6.0d
-			y: -0.75d
-		}
-		{
-			dependencies: [
-				"7025689F190D105D"
-			]
-			id: "8CE485ABA64E0D00"
-			rewards: [
-				{
-					id: "5F410D8D960FFCB2"
-					type: "xp_levels"
-					xp_levels: 3
-				}
-			]
-			tasks: [
-				{
-					id: "D752EBE9F757CCE5"
-					item: {
-						count: 1
-						id: "allthemodium:vibranium_ingot"
-					}
-					type: "item"
-					count: 4
-				}
-			]
-			x: 8.0d
-			y: -1.5d
-		}
-		{
-			dependencies: [
-				"7025689F190D105D"
-			]
-			id: "2A9D499986333D25"
-			rewards: [
-				{
-					id: "D67101CDEE95650D"
-					type: "xp_levels"
-					xp_levels: 4
-				}
-			]
-			tasks: [
-				{
-					dimension: "allthemodium:the_beyond"
-					id: "670849AB1E349A0B"
-					type: "dimension"
-				}
-			]
-			x: 8.0d
-			y: 0.0d
-		}
-		{
-			dependencies: [
-				"2A9D499986333D25"
-			]
-			id: "F6798C880CF91F62"
-			rewards: [
-				{
-					id: "59E925E508FCCFB0"
-					type: "xp_levels"
-					xp_levels: 5
-				}
-			]
-			tasks: [
-				{
-					id: "4F7EC1FA7709A44E"
-					item: {
-						count: 1
-						id: "allthemodium:unobtainium_ingot"
-					}
-					type: "item"
-					count: 4
-				}
-			]
-			x: 10.0d
-			y: -0.75d
-		}
-		{
-			dependencies: [
-				"158910F703716CDC"
-			]
-			id: "EDDA79EF77012AC5"
-			rewards: [
-				{
-					id: "9E38A224BABB3A54"
-					type: "xp_levels"
-					xp_levels: 4
-				}
-			]
-			size: 1.5d
-			tasks: [
-				{
-					id: "317C99F4B9CED218"
-					item: {
-						count: 1
-						id: "ad_astra:tier_1_rocket"
-					}
-					type: "item"
-				}
-			]
-			x: 4.0d
-			y: 0.0d
-		}
-		{
-			dependencies: [
-				"158910F703716CDC"
-			]
-			id: "3FD9ED9CFE58EDDC"
-			rewards: [
-				{
-					id: "E913A65A02C075D7"
+					id: "723C3E7D03E940B0"
 					type: "xp_levels"
 					xp_levels: 1
 				}
 			]
 			tasks: [
 				{
-					id: "A2EC61036CDB426F"
+					id: "71AF4C7D5B6C70E3"
+					item: {
+						count: 1
+						id: "undergarden:catalyst"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 6.0d
+		}
+		{
+			dependencies: [
+				"10A17F7181107E91"
+			]
+			id: "1254397AB2C01693"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "1BB3034C370A7BDD"
+					table_id: 8873071041503571705L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					dimension: "undergarden:undergarden"
+					id: "5A84D385CC7CDD9E"
+					type: "dimension"
+				}
+			]
+			x: 4.0d
+			y: 6.0d
+		}
+		{
+			dependencies: [
+				"1254397AB2C01693"
+			]
+			id: "7B572E45F64E5BC0"
+			rewards: [
+				{
+					id: "78D69CEE33129E0F"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					count: 8L
+					id: "31E1A0FA56280D1F"
+					item: {
+						count: 1
+						id: "undergarden:cloggrum_ingot"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 6.0d
+		}
+		{
+			dependencies: [
+				"7B572E45F64E5BC0"
+			]
+			id: "33D2643CF538E698"
+			rewards: [
+				{
+					id: "3CD72222AF11A9B8"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "7689D51E5CEDA1CC"
+					item: {
+						count: 1
+						id: "undergarden:froststeel_ingot"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 6.0d
+		}
+		{
+			dependencies: [
+				"33D2643CF538E698"
+			]
+			id: "51E01F3C8CED2872"
+			rewards: [
+				{
+					id: "183E92FFEC13F922"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "381613E75BE412AF"
+					item: {
+						count: 1
+						id: "undergarden:utherium_crystal"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 6.0d
+		}
+		{
+			dependencies: [
+				"51E01F3C8CED2872"
+			]
+			id: "333283FDAAEDED0B"
+			rewards: [
+				{
+					id: "1C727DDFCDC2CC18"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					id: "72C686F536735FA2"
+					item: {
+						count: 1
+						id: "undergarden:regalium_crystal"
+					}
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: 6.0d
+		}
+		{
+			dependencies: [
+				"58E01905C47F2844"
+			]
+			id: "186CE55CF3A53C59"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "34C1658F65B82574"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "10F61921BD6D9473"
+					structure: "minecraft:ancient_city"
+					type: "structure"
+				}
+			]
+			x: 2.0d
+			y: 4.5d
+		}
+		{
+			dependencies: [
+				"186CE55CF3A53C59"
+			]
+			id: "3ACA3396E8E406D1"
+			rewards: [
+				{
+					id: "3FB6A0829A4ED548"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "1FFCA71EE05752D8"
+					item: {
+						count: 1
+						id: "deeperdarker:heart_of_the_deep"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 4.5d
+		}
+		{
+			dependencies: [
+				"3ACA3396E8E406D1"
+			]
+			id: "5D73D581C13B7C38"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "3350ED3AD92F62AA"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					dimension: "deeperdarker:otherside"
+					id: "7ADAA568B9F423B0"
+					type: "dimension"
+				}
+			]
+			x: 6.0d
+			y: 4.5d
+		}
+		{
+			dependencies: [
+				"58E01905C47F2844"
+			]
+			id: "525DF83D3C7E1714"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "5193CA664A27D6FC"
+					table_id: 8873071041503571705L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					dimension: "the_bumblezone:the_bumblezone"
+					id: "54911F49BE818600"
+					type: "dimension"
+				}
+			]
+			x: 2.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"525DF83D3C7E1714"
+			]
+			id: "57208C0C2C420D6C"
+			rewards: [
+				{
+					id: "3C59E19DD9A57B36"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					count: 8L
+					id: "54A1B360CCDB0FE9"
+					item: {
+						count: 1
+						id: "the_bumblezone:honey_crystal_shards"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"57208C0C2C420D6C"
+			]
+			id: "360952FC4E81F224"
+			optional: true
+			rewards: [
+				{
+					id: "56F39EA6D4900E6B"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "5B1CBE06D73E3ADB"
+					item: {
+						count: 1
+						id: "the_bumblezone:royal_jelly_bottle"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"58E01905C47F2844"
+			]
+			id: "106EB79AD830D19A"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "53B2AEED9B17DE1D"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					biome: "alexscaves:magnetic_caves"
+					id: "31EE79EEE5D16394"
+					type: "biome"
+				}
+				{
+					id: "15111CD484AD8C2D"
+					item: {
+						count: 1
+						id: "alexscaves:scarlet_neodymium_ingot"
+					}
+					type: "item"
+				}
+				{
+					id: "1BD639F4684C61BE"
+					item: {
+						count: 1
+						id: "alexscaves:azure_neodymium_ingot"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 12.0d
+		}
+		{
+			dependencies: [
+				"106EB79AD830D19A"
+			]
+			id: "7180357A290DAA08"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "7F470677AD1D3946"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					biome: "alexscaves:primordial_caves"
+					id: "7806B0F14EAF307C"
+					type: "biome"
+				}
+				{
+					id: "79CA24009EDE2E09"
+					item: {
+						count: 1
+						id: "alexscaves:amber"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 12.0d
+		}
+		{
+			dependencies: [
+				"7180357A290DAA08"
+			]
+			id: "5F29754F3F37D01B"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "1C8BF4D95D4AB2EC"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					biome: "alexscaves:toxic_caves"
+					id: "71FBF7D09677871B"
+					type: "biome"
+				}
+				{
+					id: "350C27F489072A17"
+					item: {
+						count: 1
+						id: "alexscaves:uranium_shard"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 12.0d
+		}
+		{
+			dependencies: [
+				"5F29754F3F37D01B"
+			]
+			id: "7D7361C6336E8A26"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "726FACBAF076B47D"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					biome: "alexscaves:abyssal_chasm"
+					id: "7C9FA8B32A6F462C"
+					type: "biome"
+				}
+				{
+					id: "11D16F4CFA239A3D"
+					item: {
+						count: 1
+						id: "alexscaves:sea_glass_shards"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 12.0d
+		}
+		{
+			dependencies: [
+				"7D7361C6336E8A26"
+			]
+			id: "7974981E19B01287"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "391FE5DC019701F1"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					biome: "alexscaves:forlorn_hollows"
+					id: "5D63C4FF1592C556"
+					type: "biome"
+				}
+				{
+					id: "72DD1EF3390B2418"
+					item: {
+						count: 1
+						id: "alexscaves:guano"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 12.0d
+		}
+		{
+			dependencies: [
+				"7974981E19B01287"
+			]
+			id: "522B1AB052C3313E"
+			optional: true
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "399440599854C02E"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					biome: "alexscaves:candy_cavity"
+					id: "57896CC368E834F1"
+					type: "biome"
+				}
+				{
+					id: "3FE2B1AF3043AB35"
+					item: {
+						count: 1
+						id: "alexscaves:caramel"
+					}
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: 12.0d
+		}
+		{
+			dependencies: [
+				"58E01905C47F2844"
+			]
+			id: "32B50C90FFB163B6"
+			rewards: [
+				{
+					id: "3E9441CB57FB1693"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					count: 16L
+					id: "58A78DCB383E733C"
+					item: {
+						count: 1
+						id: "ad_astra:steel_ingot"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 9.0d
+		}
+		{
+			dependencies: [
+				"32B50C90FFB163B6"
+			]
+			id: "3D18AD94830CA1AC"
+			rewards: [
+				{
+					id: "3DB1BA1AE93EC9D4"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "1689C926961E266B"
+					item: {
+						count: 1
+						id: "ad_astra:nasa_workbench"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 9.0d
+		}
+		{
+			dependencies: [
+				"32B50C90FFB163B6"
+			]
+			id: "16B52586AD106CEB"
+			rewards: [
+				{
+					id: "77884144A9B22193"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "570D3999934B43B7"
+					item: {
+						count: 1
+						id: "ad_astra:fuel_refinery"
+					}
+					type: "item"
+				}
+				{
+					id: "3AB41C56BA96B4C9"
+					item: {
+						count: 1
+						id: "ad_astra:fuel_bucket"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 7.5d
+		}
+		{
+			dependencies: [
+				"32B50C90FFB163B6"
+			]
+			id: "7C9248114790FDE0"
+			rewards: [
+				{
+					id: "5383348DC0992D35"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "711375D424D804C1"
 					item: {
 						count: 1
 						id: "ad_astra:space_helmet"
@@ -362,7 +1421,7 @@
 					type: "item"
 				}
 				{
-					id: "66B3C0455CA58370"
+					id: "523C9CA74019FE2E"
 					item: {
 						count: 1
 						id: "ad_astra:space_suit"
@@ -370,7 +1429,7 @@
 					type: "item"
 				}
 				{
-					id: "A9A65CFF106CDC38"
+					id: "1190FC7324E71A26"
 					item: {
 						count: 1
 						id: "ad_astra:space_pants"
@@ -378,7 +1437,7 @@
 					type: "item"
 				}
 				{
-					id: "54BCDD5491AECE70"
+					id: "5E458C378F34DD97"
 					item: {
 						count: 1
 						id: "ad_astra:space_boots"
@@ -386,102 +1445,328 @@
 					type: "item"
 				}
 			]
-			x: 4.0d
-			y: 1.5d
+			x: 6.0d
+			y: 10.5d
 		}
 		{
 			dependencies: [
-				"EDDA79EF77012AC5"
-				"3FD9ED9CFE58EDDC"
+				"3D18AD94830CA1AC"
+				"16B52586AD106CEB"
 			]
-			id: "83B5192D6C8A3F64"
+			id: "1595B634D0C3F8EC"
 			rewards: [
 				{
-					id: "C6542E62EA4ED185"
+					id: "5D2B39FFA2F6EFBA"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					id: "1CADD463C917D61F"
+					item: {
+						count: 1
+						id: "ad_astra:tier_1_rocket"
+					}
+					type: "item"
+				}
+				{
+					id: "5276A10BCB234AEB"
+					item: {
+						count: 1
+						id: "ad_astra:launch_pad"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 9.0d
+		}
+		{
+			dependencies: [
+				"1595B634D0C3F8EC"
+				"7C9248114790FDE0"
+			]
+			id: "5F76303CA5D13E31"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "14821F47B68153B6"
 					type: "xp_levels"
-					xp_levels: 4
+					xp_levels: 3
 				}
 			]
 			tasks: [
 				{
 					dimension: "ad_astra:moon"
-					id: "FEDE0EC691D447FB"
+					id: "7BBE0F77D1A0DBD2"
 					type: "dimension"
 				}
 			]
-			x: 6.0d
-			y: 0.75d
+			x: 8.0d
+			y: 9.0d
 		}
 		{
 			dependencies: [
-				"83B5192D6C8A3F64"
+				"5F76303CA5D13E31"
 			]
-			id: "D31CC9F8A021E657"
+			id: "166BB30A85C34D36"
 			rewards: [
 				{
-					id: "D4C5F2B0018437C8"
+					id: "5A6F686092707CEB"
 					type: "xp_levels"
-					xp_levels: 5
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					count: 8L
+					id: "13389AF50C3B14A6"
+					item: {
+						count: 1
+						id: "ad_astra:desh_ingot"
+					}
+					type: "item"
+				}
+				{
+					id: "1D687625405678AC"
+					item: {
+						count: 1
+						id: "ad_astra:tier_2_rocket"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 9.0d
+		}
+		{
+			dependencies: [
+				"166BB30A85C34D36"
+			]
+			id: "37AFEE843D6FE3F3"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "777FBF71A47B8B3A"
+					table_id: 1753254771712731614L
+					type: "loot"
 				}
 			]
 			tasks: [
 				{
 					dimension: "ad_astra:mars"
-					id: "FF7D07C23DE92EF3"
+					id: "195825DA16A0986B"
 					type: "dimension"
 				}
 			]
-			x: 8.0d
-			y: 1.5d
+			x: 12.0d
+			y: 9.0d
 		}
 		{
 			dependencies: [
-				"D31CC9F8A021E657"
+				"37AFEE843D6FE3F3"
 			]
-			id: "2439279C56C902B3"
+			id: "3F90BFD5E954802F"
 			rewards: [
 				{
-					id: "62CE6C49657C82A5"
+					id: "59EEFCDE7A5D763E"
 					type: "xp_levels"
-					xp_levels: 5
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					count: 8L
+					id: "5CC2EC01579CF942"
+					item: {
+						count: 1
+						id: "ad_astra:ostrum_ingot"
+					}
+					type: "item"
+				}
+				{
+					id: "76FD661EC946F660"
+					item: {
+						count: 1
+						id: "ad_astra:tier_3_rocket"
+					}
+					type: "item"
+				}
+			]
+			x: 14.0d
+			y: 9.0d
+		}
+		{
+			dependencies: [
+				"3F90BFD5E954802F"
+			]
+			id: "7CAEDCE1F8FCD8E1"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "71BF4D674FD1B2F6"
+					type: "xp_levels"
+					xp_levels: 3
 				}
 			]
 			tasks: [
 				{
 					dimension: "ad_astra:venus"
-					id: "512692AE3A98010F"
-					type: "dimension"
-				}
-				{
-					dimension: "ad_astra:mercury"
-					id: "807FE61888550908"
+					id: "7C46E20AA07141F3"
 					type: "dimension"
 				}
 			]
-			x: 10.0d
-			y: 0.75d
+			x: 16.0d
+			y: 9.0d
 		}
 		{
 			dependencies: [
-				"2439279C56C902B3"
+				"3F90BFD5E954802F"
 			]
-			id: "BF0880B0626A3C95"
+			id: "7C22E28BB6B7BDC6"
+			optional: true
+			progression_mode: "flexible"
 			rewards: [
 				{
-					id: "D0FEEF3D398E8A77"
+					id: "70F0C0ABE3EB09A8"
 					type: "xp_levels"
-					xp_levels: 6
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					dimension: "ad_astra:mercury"
+					id: "56507B4AE9C72838"
+					type: "dimension"
+				}
+			]
+			x: 16.0d
+			y: 10.5d
+		}
+		{
+			dependencies: [
+				"7CAEDCE1F8FCD8E1"
+			]
+			id: "3B932DE79459D26C"
+			rewards: [
+				{
+					id: "72EC72C1DE97199A"
+					table_id: 6783561722415423100L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					count: 8L
+					id: "31C2804DA70C00D9"
+					item: {
+						count: 1
+						id: "ad_astra:calorite_ingot"
+					}
+					type: "item"
+				}
+				{
+					id: "18BBF15C2B92302C"
+					item: {
+						count: 1
+						id: "ad_astra:tier_4_rocket"
+					}
+					type: "item"
+				}
+			]
+			x: 18.0d
+			y: 9.0d
+		}
+		{
+			dependencies: [
+				"3B932DE79459D26C"
+			]
+			id: "1FBF805FF643FE5E"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "1855892839A27195"
+					table_id: 6783561722415423100L
+					type: "loot"
 				}
 			]
 			tasks: [
 				{
 					dimension: "ad_astra:glacio"
-					id: "93AC8B02F836A6F5"
+					id: "1D5190885C1DBB5C"
 					type: "dimension"
 				}
 			]
-			x: 12.0d
-			y: 0.0d
+			x: 20.0d
+			y: 9.0d
+		}
+		{
+			dependencies: [
+				"58E01905C47F2844"
+			]
+			id: "5FB80ED347529826"
+			optional: true
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "31FD31F9DD43245A"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					biome: "terralith:yellowstone"
+					id: "54E9EEB0C3115665"
+					type: "biome"
+				}
+				{
+					biome: "terralith:volcanic_peaks"
+					id: "71116FC53344C1D4"
+					type: "biome"
+				}
+				{
+					biome: "terralith:sakura_valley"
+					id: "7AECD37372D821FB"
+					type: "biome"
+				}
+			]
+			x: 2.0d
+			y: 13.5d
+		}
+		{
+			dependencies: [
+				"5FB80ED347529826"
+			]
+			id: "125B109315F7AC3E"
+			optional: true
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "319C99BD486D66FA"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					biome: "biomesoplenty:redwood_forest"
+					id: "38CA8F348EC1B1E9"
+					type: "biome"
+				}
+				{
+					biome: "biomesoplenty:mystic_grove"
+					id: "56145281E40775C2"
+					type: "biome"
+				}
+			]
+			x: 4.0d
+			y: 13.5d
 		}
 	]
 }
