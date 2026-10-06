@@ -301,6 +301,8 @@ smartbrainlib|SmartBrainLib
 lithostitched|Lithostitched
 structure-pool-api|Structure Pool API
 polylib|PolyLib
+atlas-api|Atlas Api
+runiclib|RunicLib
 '@
 $ModList = @($ModListRaw -split "`r?`n" | Where-Object { $_ -match '\|' })
 $catOf = [ordered]@{}   # Name aus der Liste -> Kategorie

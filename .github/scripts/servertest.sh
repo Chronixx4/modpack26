@@ -35,10 +35,9 @@ if kill -0 "$PID" 2>/dev/null; then
 fi
 kill "$KEEP" 2>/dev/null || true
 
-echo "== Servertest: $result nach $(( $(date +%s) - start )) s"
+echo "== Servertest: $result nach $(( $(date +%s) - start )) s ($(ls mods | wc -l) Mods im mods-Ordner)"
 grep -m1 'Done (' console.log || true
 if [ -f logs/latest.log ]; then
-  echo "== Mods geladen: $(grep -oE 'Found [0-9]+ mods|Loading [0-9]+ mods' logs/latest.log | head -1)"
   echo "== ERROR/FATAL (ohne bekannte harmlose Meldungen):"
   grep -E '/(ERROR|FATAL)\]' logs/latest.log \
     | grep -vE 'Parsing error loading recipe|copycat_catwalk|Trade result entry|loot_table\]:(railways|create_connected|dndecor)|Yggdrasil|Couldn.t load advancements' \
