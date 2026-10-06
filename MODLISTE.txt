@@ -1,0 +1,250 @@
+﻿Unser Modpack 0.9.4 - Modliste
+Minecraft 1.21.1, NeoForge 21.1.256   |   216 Mods inkl. Bibliotheken   |   Stand 2026-10-06
+
+== Performance und Grafik (8) ==
+  Clumps                                         19.0.0.1
+  Distant Horizons                               3.3.3-1.21.1
+  Entity Culling                                 1.11.2  (nur Client)
+  FerriteCore                                    7.0.3-neoforge
+  ImmediatelyFast                                1.6.14+1.21.1-neoforge  (nur Client)
+  Lithium                                        mc1.21.1-0.15.4-neoforge
+  ModernFix                                      5.27.24+mc1.21.1
+  Sodium                                         mc1.21.1-0.8.13-neoforge  (nur Client)
+
+== Komfort und Oberflaeche (23) ==
+  AmbientSounds                                  6.3.9  (nur Client)
+  AppleSkin                                      3.0.9+mc1.21
+  Better Advancements                            0.4.3.21  (nur Client)
+  Camera Overhaul                                2.1.2-neoforge+mc.1.21-1.21.1  (nur Client)
+  Carry On                                       2.2.6
+  Comforts                                       9.0.5+1.21.1
+  Controlling                                    19.0.5  (nur Client)
+  Corpse                                         neoforge-1.21.1-1.1.13
+  Default Options                                21.1.8+neoforge-1.21.1  (nur Client)
+  Easy Anvils                                    v21.1.0-1.21.1-NeoForge
+  EMI                                            1.1.24+1.21.1+neoforge
+  Explorer's Compass                             1.21.1-3.4.0-neoforge
+  Grind enchantments                             4.0.1+neoforge-1.21.1
+  Jade 🔍                                        15.10.6+neoforge
+  Mouse Tweaks                                   1.21-2.26.1-neoforge  (nur Client)
+  Nature's Compass                               1.21.1-3.4.0-neoforge
+  Polymorph                                      1.1.0+1.21.1
+  Sound Physics Remastered                       neoforge-1.21.1-1.5.1
+  spark                                          1.10.124-neoforge-1.21.1
+  TorchMaster                                    21.1.13-release
+  Visual Workbench                               21.1.2
+  Xaero's Minimap                                neoforge-1.21.1-26.6.0
+  Xaero's World Map                              neoforge-1.21.1-1.47.0
+
+== Multiplayer, Quests und Verwaltung (7) ==
+  FTB Backups 2                                  1.0.28  (CurseForge)
+  FTB Library                                    2101.1.37  (CurseForge)
+  FTB Quests                                     2101.1.36  (CurseForge)
+  FTB Teams                                      2101.1.11  (CurseForge)
+  KubeJS                                         2101.7.2-build.377
+  Open Parties and Claims                        neoforge-1.21.1-0.32.7
+  Simple Voice Chat                              neoforge-1.21.1-2.6.22
+
+== Lagerung und Rucksaecke (4) ==
+  Sophisticated Backpacks                        1.21.1-3.26.8.2189
+  Sophisticated Storage                          1.21.1-1.6.2.2154
+  Storage Drawers                                1.21.1-13.11.4
+  Traveler's Backpack                            1.21.1-10.1.39
+
+== Magie (11) ==
+  Ars Additions                                  21.3.0
+  Ars Creo                                       5.4.0
+  Ars Elemental                                  ars_elemental-1.21.1-0.7.10.4  (CurseForge)
+  Ars Énergistique                               2.1.1-beta
+  Ars Nouveau                                    5.13.3
+  Ars Ocultas                                    1.21.1-2.6.1
+  Ars Technica                                   2.7.6  (CurseForge)
+  Cataclysm: Spellbooks                          1.1.11-1.21
+  Iron's Spells 'n Spellbooks                    1.21.1-3.16.3
+  Not Enough Glyphs                              4.6.2
+  Occultism                                      1.21.1-neoforge-1.224.4
+
+== Create und Addons (31) ==
+  Create                                         6.0.10+mc1.21.1
+  Create Aeronautics                             1.3.2+mc1.21.1
+  Create Big Cannons                             5.11.7
+  Create Big Cannons: Advanced Technologies      0.1.4c-1.21.1
+  Create Crafts & Additions                      neoforge-1.21.1-1.6.0
+  Create Deco                                    2.1.3
+  Create Factory Logistics                       1.6.1
+  Create Jetpack                                 5.2.1
+  Create Mechanical Spawner                      1.21.1-1.3.2-6.0.10
+  Create Ore Excavation                          1.21.1-1.6.8
+  Create Railways Navigator                      1.21.1-beta-0.10.0-C6
+  Create Slice & Dice                            4.3.4
+  Create Stuff 'N Additions                      2.1.4.b
+  Create Train Utilities (Create Train Doors)    3.1.0
+  Create: Bits 'n' Bobs                          2.3.5
+  Create: Central Kitchen                        2.6.2
+  Create: Connected                              1.3.3-mc1.21.1
+  Create: Copycats+                              3.0.9+mc.1.21.1-neoforge
+  Create: Design n' Decor                        2.2b
+  Create: Diesel Generators                      1.21.1-1.3.15
+  Create: Dreams & Desires                       2.3a-BETA
+  Create: Enchantment Industry                   2.4.2
+  Create: Garnished                              2.1.9.2+1.21.1-neoforged
+  Create: Interiors                              0.6.1
+  Create: Metallurgy                             1.0.3-1.21.1
+  Create: New Age                                1.2.0+mc1.21.1
+  Create: Power Loader                           2.0.5-mc1.21.1
+  Create: Transmission!                          1.2.2+neoforge-create6-1.21.1
+  Sable                                          2.0.6+mc1.21.1
+  Steam 'n' Rails Neoforge                       0.2.1+neoforge-mc1.21.1
+  Waystones: Sable (Create Aeronautics Addon)    1.0.7
+
+== AE2 und Technik (10) ==
+  AdvancedAE                                     1.6.12-1.21.1
+  AE2NetworkAnalyzer                             1.21-2.1.5-neoforge  (CurseForge)
+  Applied Energistics 2                          19.2.18
+  Applied Energistics 2 Wireless Terminals       19.5.1
+  Applied Flux                                   1.21-2.1.5-neoforge
+  Applied Mekanistics                            1.6.3
+  ExtendedAE                                     1.21-2.2.39-neoforge  (CurseForge)
+  MEGA Cells                                     4.11.0
+  Mekanism                                       10.7.19.85
+  Powah!                                         6.2.10-neoforge
+
+== Ressourcen und Landwirtschaft (4) ==
+  Aquaculture 2                                  2.7.21
+  Farmer's Delight                               1.21.1-1.3.4
+  Mystical Agriculture                           8.0.28
+  Productive Bees                                1.21.1-13.13.0
+
+== Dimensionen (9) ==
+  Alex's Caves (Unofficial Port)                 2.0.10
+  Allthemodium                                   3.1.1  (CurseForge)
+  BetterEnd: New Dawn                            21.0.35
+  BetterNether: New Dawn                         21.0.27
+  Deeper and Darker                              1.4.1-neoforge-1.21.1
+  The Aether                                     1.21.1-1.5.10-neoforge
+  The Bumblezone - NeoForge/Forge                7.16.1+1.21.1-neoforge
+  The Twilight Forest                            4.8.3345  (CurseForge)
+  The Undergarden                                0.9.6
+
+== Weltgenerierung und Biome (4) ==
+  Biomes O' Plenty                               21.1.0.14
+  Regions Unexplored                             0.6.2-neoforge-21.1
+  Tectonic                                       3.0.28-neoforge-21.1
+  Terralith                                      2.6.2
+
+== Strukturen und Dungeons (13) ==
+  Repurposed Structures - Neoforge/Forge         7.5.22+1.21.1-neoforge
+  Towns and Towers                               1.13.11
+  When Dungeons Arise                            2.1.68
+  When Dungeons Arise: Seven Seas                1.0.4
+  YUNG's Better Desert Temples                   1.21.1-NeoForge-4.1.5
+  YUNG's Better Dungeons                         1.21.1-NeoForge-5.1.4
+  YUNG's Better Jungle Temples                   1.21.1-NeoForge-3.1.2
+  YUNG's Better Mineshafts                       1.21.1-NeoForge-5.1.1
+  YUNG's Better Nether Fortresses                1.21.1-NeoForge-3.1.5
+  YUNG's Better Ocean Monuments                  1.21.1-NeoForge-4.1.2
+  YUNG's Better Strongholds                      1.21.1-NeoForge-5.1.3
+  YUNG's Better Witch Huts                       1.21.1-NeoForge-4.1.1
+  YUNG's Bridges                                 1.21.1-NeoForge-5.1.1
+
+== Mobs und Bosse (10) ==
+  Aquamirae                                      7.2.10
+  Born in Chaos                                  1.7.6
+  Eternal Hunts [Cataclysm & Mowzie's Mobs & Born in Chaos] 0.2.4-1.21.1
+  Friends&Foes (Forge/NeoForge)                  neoforge-4.0.27+mc1.21.1
+  IceAndFire Community Edition                   2.0
+  Illager Invasion                               v21.1.6-1.21.1-NeoForge
+  Integrated Mowzie's Mobs                       1.3.2
+  L_Ender's Cataclysm                            3.33
+  Mowzie's Mobs                                  1.8.2
+  Mutant Monsters                                v21.1.1-1.21.1-NeoForge
+
+== Waffen, Ruestung und Ausruestung (9) ==
+  Apotheosis                                     1.21.1-8.9.0
+  Apothic Attributes                             1.21.1-2.11.0
+  Archers (RPG Series)                           3.1.3+1.21.1-neoforge
+  Archers Expansion (RPG Series Plus)            2.1.1+1.21.1-neoforge
+  Artifacts                                      13.2.5
+  Immersive Armors                               1.7.6+1.21.1
+  Rogues & Warriors (RPG Series)                 3.1.3+1.21.1-neoforge
+  Simply Swords                                  1.70.2-1.21.1
+  Simply Swords: Cataclysm                       1.0.2+1.21.1+neoforge
+
+== Transport (1) ==
+  Waystones                                      21.1.46+neoforge-1.21.1
+
+== Deko und Bauen (12) ==
+  Amendments                                     1.21-2.1.10
+  Chipped                                        4.0.2
+  FramedBlocks                                   10.6.1
+  Handcrafted                                    4.0.3
+  Macaw's Bridges                                3.1.2
+  Macaw's Doors                                  1.1.5
+  Macaw's Furniture                              3.4.1
+  Macaw's Lights and Lamps                       1.1.5
+  Macaw's Roofs                                  2.3.2
+  Macaw's Windows                                2.4.2
+  Quark                                          4.1-487
+  Supplementaries                                1.21.1-3.9.9
+
+== Bibliotheken (werden automatisch gebraucht) (60) ==
+  Ace's Spell Utils                              1.2.7.3-1.21.1
+  Apothic-Enchanting                             1.21.1-1.6.3
+  Apothic-Spawners                               1.21.1-1.4.0
+  Architectury API                               13.0.11+neoforge
+  Armor Model API                                1.1.0+1.21.1-neoforge
+  Athena                                         4.0.6  (nur Client)
+  Azimuth API                                    1.4.10
+  AzureLib                                       3.1.16
+  Balm                                           21.0.66+neoforge-1.21.1
+  BCLib: New Dawn                                21.0.26
+  Better Advanced Tooltips                       2101.1.0-build.5
+  Bundle API                                     1.1.0-neoforge
+  Citadel (Unofficial Port)                      2.7.6
+  Cloth Config API                               15.0.140+neoforge
+  Create: Dragons Plus                           1.11.9
+  CreativeCore                                   2.13.50
+  Cristel Lib                                    neoforge-1.21.1-3.1.7
+  Cucumber Library                               8.0.16
+  Curios API                                     9.5.1+1.21.1
+  DragonLib                                      1.21.1-beta-3.0.28
+  Fragmentum                                     5.2.0
+  Fzzy Config                                    0.7.7+1.21+neoforge
+  Geckolib                                       4.9.3
+  GlitchCore                                     2.1.0.2
+  Glodium                                        1.21-2.2-neoforge
+  GuideME                                        21.1.19
+  Integrated API                                 1.8.2
+  Iron's Lib                                     1.21.1-2.2.0
+  Jupiter                                        2.3.7-1.21.1-neoforge
+  Kotlin for Forge                               5.12.0
+  Lionfish-API                                   3.1
+  Lithostitched                                  1.8.0-neoforge-21.1
+  Mechanicals Lib                                1.21.1-1.1.6
+  Modonomicon                                    1.21.1-1.120.7
+  Moonlight Lib                                  1.21.1-3.7.1
+  More RPG Library                               2.7.2+1.21.1-neoforge
+  oωo (owo-lib)                                  0.12.15.5-beta.1+1.21
+  Patchouli                                      1.21.1-93-neoforge
+  Placebo                                        1.21.1-9.9.3
+  playerAnimator                                 2.0.4+1.21.1-forge
+  PolyLib                                        2100.0.3-build.160
+  Puzzles Lib                                    21.1.62
+  Ranged Weapon API                              3.0.0+1.21.1-neoforge
+  Resourceful Lib                                3.0.12
+  Rhino                                          2101.2.7-build.85+Rhino-1.21
+  Ritchie's Projectile Library                   2.1.2
+  Searchables                                    1.0.2  (nur Client)
+  Simply Tooltips                                0.1.5  (nur Client)
+  SmartBrainLib                                  1.16.11
+  Sophisticated Core                             1.21.1-1.5.6.2374
+  Spell Engine                                   1.10.9+1.21.1-neoforge
+  Spell Power Attributes                         1.6.0+1.21.1-neoforge
+  Structure Pool API                             1.2.1+1.21.1-neoforge
+  Strut Your Stuff (Struts)                      1.3.1
+  TerraBlender                                   4.1.0.8
+  Uranus                                         2.4.1
+  WorldWeaver: New Dawn                          21.0.26
+  WunderLib: New Dawn                            21.0.10
+  YUNG's API                                     1.21.1-NeoForge-5.1.9
+  Zeta                                           1.1-40

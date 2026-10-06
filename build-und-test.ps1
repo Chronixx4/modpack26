@@ -9,7 +9,7 @@ $ProgressPreference = 'SilentlyContinue'
 $MC      = '1.21.1'
 $LOADER  = 'neoforge'
 $PACK    = 'Unser Modpack'
-$PACKVER = '0.9.0'
+$PACKVER = '0.9.4'
 $RAM     = '8G'
 $TIMEOUT_MIN = 20
 
@@ -25,12 +25,12 @@ New-Item -ItemType Directory -Force -Path $Work, $Cache, $CfDir | Out-Null
 # CurseForge-Mods automatisch aus dem Download-Ordner holen (falls dort vorhanden)
 $dl = Join-Path $env:USERPROFILE 'Downloads'
 $cfPatterns = @('*twilightforest*1.21.1*.jar','ExtendedAE-1.21-*neoforge*.jar','ars_elemental-1.21.1-*.jar','ars_technica-1.21.1-*.jar',
-                '*ftb*quests*2101*.jar','*ftb*library*2101*.jar','*ftb*teams*2101*.jar','*ftbbackups2*neoforge*.jar','AE2NetworkAnalyzer-1.21-*neoforge*.jar')
+                '*ftb*quests*2101*.jar','*ftb*library*2101*.jar','*ftb*teams*2101*.jar','*ftbbackups2*neoforge*.jar','AE2NetworkAnalyzer-1.21-*neoforge*.jar','allthemodium-*_mc_1.21.1.jar')
 if (Test-Path $dl) {
   foreach ($pat in $cfPatterns) {
     $hit = Get-ChildItem -Path $dl -Filter $pat -ErrorAction SilentlyContinue | Where-Object { $_.Name -notmatch 'fabric' } | Sort-Object LastWriteTime | Select-Object -Last 1
     if ($hit -and -not (Test-Path (Join-Path $CfDir $hit.Name))) {
-      Copy-Item $hit.FullName $CfDir -Force
+      Copy-Item -LiteralPath $hit.FullName $CfDir -Force
       Write-Host ("  aus Downloads uebernommen: " + $hit.Name)
     } elseif (-not $hit -and -not (Get-ChildItem -Path $CfDir -Filter $pat -ErrorAction SilentlyContinue)) {
       Write-Host ("  WARNUNG: nicht in Downloads gefunden: " + $pat) -ForegroundColor Yellow
@@ -101,55 +101,70 @@ $out = New-Object System.Collections.Generic.List[string]
 
 # ---------------------------------------------------------------------------
 # Mod-Liste: slug-Vorschlag | Name  (passt der slug nicht, wird nach dem Namen gesucht)
+# Zeilen mit '# ' sind Kategorien fuer MODLISTE.txt
 # ---------------------------------------------------------------------------
-$ModList = @'
+$ModListRaw = @'
+# Performance und Grafik
 sodium|Sodium
 modernfix|ModernFix
 ferrite-core|FerriteCore
 lithium|Lithium
 immediatelyfast|ImmediatelyFast
 entityculling|Entity Culling
-spark|Spark
 distanthorizons|Distant Horizons
 clumps|Clumps
-sound-physics-remastered|Sound Physics Remastered
-ambientsounds|AmbientSounds
-cameraoverhaul|Camera Overhaul
+# Komfort und Oberflaeche
 emi|EMI
 jade|Jade
 xaeros-minimap|Xaero's Minimap
 xaeros-world-map|Xaero's World Map
-open-parties-and-claims|Open Parties and Claims
-waystones|Waystones
-sophisticated-backpacks|Sophisticated Backpacks
-sophisticated-storage|Sophisticated Storage
 appleskin|AppleSkin
 mouse-tweaks|Mouse Tweaks
 controlling|Controlling
-corpse|Corpse
+better-advancements|Better Advancements
+default-options|Default Options
 polymorph|Polymorph
-torchmaster|Torchmaster
+cameraoverhaul|Camera Overhaul
+sound-physics-remastered|Sound Physics Remastered
+ambientsounds|AmbientSounds
+visual-workbench|Visual Workbench
+easy-anvils|Easy Anvils
+grind-enchantments|Grind Enchantments
+carry-on|Carry On
+corpse|Corpse
 comforts|Comforts
+torchmaster|Torchmaster
+explorers-compass|Explorer's Compass
+natures-compass|Nature's Compass
+spark|Spark
+# Multiplayer, Quests und Verwaltung
 ftb-quests|FTB Quests
 ftb-library|FTB Library
-kubejs|KubeJS
-simple-voice-chat|Simple Voice Chat
-better-advancements|Better Advancements
 ftb-backups-2|FTB Backups 2
-default-options|Default Options
+open-parties-and-claims|Open Parties and Claims
+simple-voice-chat|Simple Voice Chat
+kubejs|KubeJS
+# Lagerung und Rucksaecke
+sophisticated-backpacks|Sophisticated Backpacks
+sophisticated-storage|Sophisticated Storage
+storagedrawers|Storage Drawers
+travelersbackpack|Traveler's Backpack
+# Magie
 ars-nouveau|Ars Nouveau
 ars-additions|Ars Additions
 ars-elemental|Ars Elemental
 ars-creo|Ars Creo
 ars-energistique|Ars Energistique
 ars-technica|Ars Technica
+ars-ocultas|Ars Ocultas
 not-enough-glyphs|Not Enough Glyphs
 irons-spells-n-spellbooks|Iron's Spells 'n Spellbooks
 cataclysm-spellbooks|Cataclysm: Spellbooks
 occultism|Occultism
+# Create und Addons
 create|Create
 createaddition|Create Crafts & Additions
-create-steam-n-rails|Create: Steam 'n' Rails
+create-steam-n-rails-1.21.1|Create: Steam 'n' Rails
 create-enchantment-industry|Create Enchantment Industry
 create-new-age|Create: New Age
 slice-and-dice|Create Slice & Dice
@@ -171,14 +186,30 @@ create-stuff-additions|Create Stuff 'N Additions
 create_factory_logistics|Create Factory Logistics
 create-power-loader|Create: Power Loader
 create-ore-excavation|Create Ore Excavation
+create-bits-n-bobs|Create: Bits 'n' Bobs
+create-diesel-generators|Create: Diesel Generators
+interiors|Create: Interiors
+create-trainutilities|Create Train Utilities
+create-railways-navigator|Create Railways Navigator
+create-metallurgy|Create: Metallurgy
+create-mechanical-spawner|Create Mechanical Spawner
+# AE2 und Technik
 ae2|Applied Energistics 2
-ae2wtlib|AE2 Wireless Terminals
+applied-energistics-2-wireless-terminals|AE2 Wireless Terminals
 extendedae|ExtendedAE
 advanced-ae|Advanced AE
 mega|MEGA Cells
 applied-flux|Applied Flux
 ae2-network-analyser|AE2 Network Analyser
+mekanism|Mekanism
+applied-mekanistics|Applied Mekanistics
 powah|Powah
+# Ressourcen und Landwirtschaft
+mystical-agriculture|Mystical Agriculture
+productivebees|Productive Bees
+farmers-delight|Farmer's Delight
+aquaculture|Aquaculture 2
+# Dimensionen
 the-twilight-forest|The Twilight Forest
 aether|The Aether
 deeper-and-darker|Deeper and Darker
@@ -186,10 +217,13 @@ the-undergarden|The Undergarden
 the-bumblezone|The Bumblezone
 betternether-neoforge|BetterNether Neoforge
 betterend-neoforge|BetterEnd Neoforge
+kSsLSjEt|Alex's Caves (Unofficial Port)
+# Weltgenerierung und Biome
 terralith|Terralith
 tectonic|Tectonic
 biomes-o-plenty|Biomes O' Plenty
 regions-unexplored|Regions Unexplored
+# Strukturen und Dungeons
 when-dungeons-arise|When Dungeons Arise
 when-dungeons-arise-seven-seas|When Dungeons Arise - Seven Seas
 repurposed-structures-forge|Repurposed Structures
@@ -203,8 +237,7 @@ yungs-better-jungle-temples|YUNG's Better Jungle Temples
 yungs-better-witch-huts|YUNG's Better Witch Huts
 yungs-bridges|YUNG's Bridges
 towns-and-towers|Towns and Towers
-explorers-compass|Explorer's Compass
-natures-compass|Nature's Compass
+# Mobs und Bosse
 l_enders-cataclysm|L_Ender's Cataclysm
 mowzies-mobs|Mowzie's Mobs
 integrated-mowzies-mobs|Integrated Mowzie's Mobs
@@ -215,18 +248,22 @@ illager-invasion|Illager Invasion
 friends-and-foes-forge|Friends&Foes
 mutant-monsters|Mutant Monsters
 aquamirae|Aquamirae
+# Waffen, Ruestung und Ausruestung
 simply-swords|Simply Swords
 simply-swords-cataclysm|Simply Swords: Cataclysm
 archers|Archers (RPG Series)
 archers-expansion|Archers Expansion
+rogues-and-warriors|Rogues & Warriors
 apotheosis|Apotheosis
 apothic-attributes|Apothic Attributes
 artifacts|Artifacts
 immersive-armors|Immersive Armors
-rogues-and-warriors|Rogues & Warriors
-farmers-delight|Farmer's Delight
+# Transport
+waystones|Waystones
+# Deko und Bauen
 supplementaries|Supplementaries
 amendments|Amendments
+quark|Quark
 macaws-bridges|Macaw's Bridges
 macaws-doors|Macaw's Doors
 macaws-windows|Macaw's Windows
@@ -236,19 +273,26 @@ macaws-lights-and-lamps|Macaw's Lights and Lamps
 chipped|Chipped
 handcrafted|Handcrafted
 framedblocks|FramedBlocks
-aquaculture|Aquaculture 2
-storagedrawers|Storage Drawers
-quark|Quark
-visual-workbench|Visual Workbench
-easy-anvils|Easy Anvils
-grind-enchantments|Grind Enchantments
+# Bibliotheken (fehlen auf Modrinth als Abhaengigkeit)
 irons-lib|Iron's Lib|^1\.21\.1-2
 bundle-api|Bundle API
 smartbrainlib|SmartBrainLib
 lithostitched|Lithostitched
 structure-pool-api|Structure Pool API
 polylib|PolyLib
-'@ -split "`r?`n" | Where-Object { $_ -match '\|' }
+'@
+$ModList = @($ModListRaw -split "`r?`n" | Where-Object { $_ -match '\|' })
+$catOf = [ordered]@{}   # Name aus der Liste -> Kategorie
+$curCat = 'Sonstiges'
+foreach ($l in ($ModListRaw -split "`r?`n")) {
+  if ($l -match '^#\s*(.+)$') { $curCat = $Matches[1].Trim() }
+  elseif ($l -match '\|') { $catOf[$l.Split('|')[1].Trim()] = $curCat }
+}
+# Kategorien der CurseForge-Jars (Dateiname -> Kategorie)
+$cfCat = [ordered]@{
+  'twilightforest' = 'Dimensionen'; 'ExtendedAE' = 'AE2 und Technik'; 'AE2NetworkAnalyzer' = 'AE2 und Technik'
+  'ars_' = 'Magie'; 'ftb' = 'Multiplayer, Quests und Verwaltung'; 'allthemodium' = 'Dimensionen'
+}
 
 $vq = '?loaders=' + [uri]::EscapeDataString('["neoforge"]') + '&game_versions=' + [uri]::EscapeDataString('["1.21.1"]')
 
@@ -371,7 +415,7 @@ $json = $index | ConvertTo-Json -Depth 10
 if ($cfJars.Count -gt 0) {
   $ov = Join-Path $packDir 'overrides\mods'
   New-Item -ItemType Directory -Force -Path $ov | Out-Null
-  foreach ($j in $cfJars) { Copy-Item $j.FullName $ov -Force }
+  foreach ($j in $cfJars) { Copy-Item -LiteralPath $j.FullName $ov -Force }
   Say "  $($cfJars.Count) CurseForge-Mods aus dem Ordner curseforge-mods mit eingepackt"
 }
 $mrpack = Join-Path $Root ("Unser-Modpack-" + $PACKVER + ".mrpack")
@@ -379,6 +423,54 @@ Remove-Item -Force $mrpack -ErrorAction SilentlyContinue
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 [IO.Compression.ZipFile]::CreateFromDirectory($packDir, $mrpack)
 Say "  Pack erstellt: $mrpack  ($($files.Count) Dateien)"
+# Pack-Definition fuers Repo (daraus baut der GitHub-Release-Workflow das .mrpack)
+$packOut = Join-Path $Root 'pack'
+New-Item -ItemType Directory -Force -Path $packOut | Out-Null
+Copy-Item -LiteralPath (Join-Path $packDir 'modrinth.index.json') (Join-Path $packOut 'modrinth.index.json') -Force
+
+# MODLISTE.txt: alle Mods nach Kategorie (Kategorien aus den '# '-Zeilen der Mod-Liste)
+$libCat = 'Bibliotheken (werden automatisch gebraucht)'
+$groups = [ordered]@{}
+foreach ($c in $catOf.Values) { if ($c -notlike 'Bibliotheken*' -and -not $groups.Contains($c)) { $groups[$c] = New-Object System.Collections.Generic.List[string] } }
+$groups['Sonstiges'] = New-Object System.Collections.Generic.List[string]
+$groups[$libCat] = New-Object System.Collections.Generic.List[string]
+foreach ($e in $picked.Values) {
+  $g = $catOf[$e.reason]
+  if (-not $g -or $g -like 'Bibliotheken*') { $g = $libCat }
+  $note = ''
+  if ($e.project.server_side -eq 'unsupported') { $note = '  (nur Client)' }
+  $groups[$g].Add(("  {0,-46} {1}{2}" -f $e.project.title, $e.version.version_number, $note))
+}
+foreach ($j in $cfJars) {
+  $g = 'Sonstiges'
+  foreach ($k in $cfCat.Keys) { if ($j.Name -like "$k*") { $g = $cfCat[$k]; break } }
+  if (-not $groups.Contains($g)) { $groups[$g] = New-Object System.Collections.Generic.List[string] }
+  # Name und Version aus META-INF/neoforge.mods.toml in der Jar lesen
+  $title = [IO.Path]::GetFileNameWithoutExtension($j.Name); $ver = ''
+  try {
+    $zip = [IO.Compression.ZipFile]::OpenRead($j.FullName)
+    $ent = $zip.GetEntry('META-INF/neoforge.mods.toml')
+    if ($ent) {
+      $rd = New-Object IO.StreamReader($ent.Open()); $toml = $rd.ReadToEnd(); $rd.Close()
+      if ($toml -match '(?m)^\s*displayName\s*=\s*"([^"]+)"') { $title = $Matches[1] }
+      if ($toml -match '(?m)^\s*version\s*=\s*"([^"$]+)"') { $ver = $Matches[1] }
+    }
+    $zip.Dispose()
+  } catch {}
+  if (-not $ver) { $ver = [IO.Path]::GetFileNameWithoutExtension($j.Name) }
+  $groups[$g].Add(("  {0,-46} {1}  (CurseForge)" -f $title, $ver))
+}
+$ml = New-Object System.Collections.Generic.List[string]
+$total = $picked.Count + $cfJars.Count
+$ml.Add("$PACK $PACKVER - Modliste")
+$ml.Add("Minecraft $MC, NeoForge $nf   |   $total Mods inkl. Bibliotheken   |   Stand $(Get-Date -Format 'yyyy-MM-dd')")
+foreach ($g in $groups.Keys) {
+  if ($groups[$g].Count -eq 0) { continue }
+  $ml.Add(""); $ml.Add("== $g ($($groups[$g].Count)) ==")
+  $groups[$g] | Sort-Object | ForEach-Object { $ml.Add($_) }
+}
+[IO.File]::WriteAllLines((Join-Path $Root 'MODLISTE.txt'), $ml.ToArray(), (New-Object Text.UTF8Encoding $true))
+Say "  Modliste geschrieben: MODLISTE.txt"
 $latest = $null
 Write-Report "noch nicht getestet" 0 0
 Say "  Bericht geschrieben: $Report (wird nach dem Servertest aktualisiert)"
@@ -422,12 +514,17 @@ foreach ($f in $files) {
   if ($f.env.server -eq 'unsupported') { continue }
   $name = Split-Path $f.path -Leaf
   $c = Join-Path $Cache $name
-  if (-not (Test-Path $c)) { Invoke-WebRequest -UseBasicParsing -Uri $f.downloads[0] -OutFile $c }
-  Copy-Item $c (Join-Path $Server 'mods') -Force
+  # -LiteralPath: Dateinamen wie born_in_chaos_[Neoforge]_... enthalten eckige Klammern (sonst Platzhalter)
+  if (-not (Test-Path -LiteralPath $c)) {
+    $tmp = Join-Path $Cache 'download.tmp'
+    Invoke-WebRequest -UseBasicParsing -Uri $f.downloads[0] -OutFile $tmp
+    Move-Item -LiteralPath $tmp -Destination $c -Force
+  }
+  Copy-Item -LiteralPath $c (Join-Path $Server 'mods') -Force
   $serverMods++
 }
 Say "  $serverMods Mods im Testserver (reine Client-Mods wie Sodium oder Karten werden serverseitig ausgelassen)"
-foreach ($j in $cfJars) { Copy-Item $j.FullName (Join-Path $Server 'mods') -Force; $serverMods++ }
+foreach ($j in $cfJars) { Copy-Item -LiteralPath $j.FullName (Join-Path $Server 'mods') -Force; $serverMods++ }
 Set-Content -Path (Join-Path $Server 'eula.txt') -Value 'eula=true'
 Set-Content -Path (Join-Path $Server 'user_jvm_args.txt') -Value "-Xms2G`n-Xmx$RAM"
 
