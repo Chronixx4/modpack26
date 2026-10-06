@@ -1,5 +1,5 @@
-﻿Unser Modpack 0.9.5 - Modliste
-Minecraft 1.21.1, NeoForge 21.1.256   |   246 Mods inkl. Bibliotheken   |   Stand 2026-10-06
+﻿Unser Modpack 0.9.6 - Modliste
+Minecraft 1.21.1, NeoForge 21.1.256   |   259 Mods inkl. Bibliotheken   |   Stand 2026-10-06
 
 == Performance und Grafik (10) ==
   Chunky                                         1.4.23  (nur Server)
@@ -13,11 +13,9 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   246 Mods inkl. Bibliotheken   |   Stan
   Neruina - Ticking Entity Fixer                 3.3.3
   Sodium                                         mc1.21.1-0.8.13-neoforge  (nur Client)
 
-== Komfort und Oberflaeche (25) ==
-  AmbientSounds                                  6.3.9  (nur Client)
+== Komfort und Oberflaeche (23) ==
   AppleSkin                                      3.0.9+mc1.21
   Better Advancements                            0.4.3.21  (nur Client)
-  Camera Overhaul                                2.1.2-neoforge+mc.1.21-1.21.1  (nur Client)
   Carry On                                       2.2.6
   Comforts                                       9.0.5+1.21.1
   Controlling                                    19.0.5  (nur Client)
@@ -108,20 +106,30 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   246 Mods inkl. Bibliotheken   |   Stan
   Steam 'n' Rails Neoforge                       0.2.1+neoforge-mc1.21.1
   Waystones: Sable (Create Aeronautics Addon)    1.0.7
 
-== AE2 und Technik (14) ==
+== AE2 und Technik (24) ==
+  Actually Additions                             1.3.26
   AdvancedAE                                     1.6.12-1.21.1
   AE2NetworkAnalyzer                             1.21-2.1.5-neoforge  (CurseForge)
   Applied Energistics 2                          19.2.18
   Applied Energistics 2 Wireless Terminals       19.5.1
   Applied Flux                                   1.21-2.1.5-neoforge
   Applied Mekanistics                            1.6.3
+  Draconic Evolution                             3.1.4.633
+  Ender IO                                       v8.2.12-beta
   ExtendedAE                                     1.21-2.2.39-neoforge  (CurseForge)
+  Extreme Reactors                               1.21.1-2.4.9
+  Immersive Engineering                          12.4.2-194
+  Industrial Foregoing                           1.21-3.6.27
+  Integrated Dynamics                            1.21.1-1.38.0
+  Iron Jetpacks                                  8.0.11
   ME Requester                                   1.21.1-1.5.0+neoforge
   MEGA Cells                                     4.11.0
   Mekanism                                       10.7.19.85
   Mekanism Additions                             10.7.19.85
   Mekanism Generators                            10.7.19.85
   Mekanism Tools                                 10.7.19.85
+  Oritech                                        1.2.13
+  PneumaticCraft: Repressurized                  8.2.23
   Powah!                                         6.2.10-neoforge
 
 == Ressourcen und Landwirtschaft (6) ==
@@ -208,7 +216,7 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   246 Mods inkl. Bibliotheken   |   Stan
   Quark                                          4.1-487
   Supplementaries                                1.21.1-3.9.9
 
-== Bibliotheken (werden automatisch gebraucht) (69) ==
+== Bibliotheken (werden automatisch gebraucht) (74) ==
   Ace's Spell Utils                              1.2.7.3-1.21.1
   Apothic-Enchanting                             1.21.1-1.6.3
   Apothic-Spawners                               1.21.1-1.4.0
@@ -221,16 +229,19 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   246 Mods inkl. Bibliotheken   |   Stan
   Balm                                           21.0.66+neoforge-1.21.1
   BCLib: New Dawn                                21.0.26
   Better Advanced Tooltips                       2101.1.0-build.5
+  Brandons Core                                  3.2.1.309
   Bundle API                                     1.1.0-neoforge
   Citadel (Unofficial Port)                      2.7.6
   Cloth Config API                               15.0.140+neoforge
+  CodeChicken Lib                                4.6.1.529
+  Common Capabilities                            1.21.1-2.11.6
   Common Storage Lib                             0.0.10
   Configurable                                   3.5.2
   Create: Dragons Plus                           1.11.9
-  CreativeCore                                   2.13.50
   Cristel Lib                                    neoforge-1.21.1-3.1.7
   Cucumber Library                               8.0.16
   Curios API                                     9.5.1+1.21.1
+  Cyclops Core                                   1.21.1-1.30.0
   DragonLib                                      1.21.1-beta-3.0.28
   Fragmentum                                     5.2.0
   Fzzy Config                                    0.7.7+1.21+neoforge
@@ -272,9 +283,11 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   246 Mods inkl. Bibliotheken   |   Stan
   SuperMartijn642's Config Lib                   1.1.8-neoforge-mc1.21
   SuperMartijn642's Core Lib                     1.1.24b-neoforge-mc1.21
   TerraBlender                                   4.1.0.8
+  Titanium                                       1.21-4.0.50
   Uranus                                         2.4.1
   Valhelsia Core                                 1.1.4
   WorldWeaver: New Dawn                          21.0.26
   WunderLib: New Dawn                            21.0.10
   YUNG's API                                     1.21.1-NeoForge-5.1.9
+  ZeroCore                                       1.21.1-2.4.9
   Zeta                                           1.1-40
