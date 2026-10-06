@@ -43,17 +43,14 @@ kapitel('dimensionen', '&2Dimensionen', 'minecraft:obsidian', 'Neue Welten entde
     Q('elytra', 'Flügel', 'minecraft:elytra',
       'Manche Endstädte haben ein Schiff. Dort hängt eine Elytra im Rahmen. Mit Feuerwerksraketen fliegst du damit richtig weit.',
       nach=['endstadt'], belohnung='loot3', form='hexagon', haupt=True),
-    Q('ende', 'Weltenbummler', [
-        ('dim', 'aether:the_aether'), ('dim', 'undergarden:undergarden'),
-        ('dim', 'deeperdarker:otherside'), ('dim', 'the_bumblezone:the_bumblezone'),
-        ('dim', 'twilightforest:twilight_forest'), ('dim', 'allthemodium:the_beyond'),
-        ('dim', 'ad_astra:mars')],
-      'Zum Abschluss: Besuch alle großen Dimensionen (noch einmal), nachdem diese Quest freigeschaltet ist.\n\n'
-      'Wer das geschafft hat, hat wirklich alles gesehen.',
-      nach=['elytra'], belohnung='loot4', form='star', gross=True, haupt=True),
+    Q('ende', 'Weltenbummler', 'check',
+      'Aether, Undergarden, Otherside, Bumblezone, Twilight Forest, The Beyond und der Mars: Du warst überall.\n\n'
+      'Wer das geschafft hat, hat wirklich alles gesehen. Hak ab und hol dir die Belohnung.',
+      nach=['elytra', 'aether', 'undergarden', 'otherside', 'bumblezone', 'twilight', 'atm_beyond', 'aa_mars'],
+      belohnung='loot4', form='star', gross=True, haupt=True, spalte=12),
     Q('abgabe_lohe', 'Abgabe: Lohenruten', ('item', 'minecraft:blaze_rod', 16),
       'Du hast den Spawner gefunden? Dann farm ein bisschen und gib 16 Lohenruten ab.',
-      nach=['lohe'], belohnung='loot2', abgabe=True, optional=True, zeile=1),
+      nach=['lohe'], belohnung='loot2', abgabe=True, optional=True, zeile=-1),
 
     # ---- Nether (BetterNether) ----
     Q('nb_biome1', 'Nether-Biome', [('biome', 'betternether:nether_jungle'),
@@ -61,14 +58,6 @@ kapitel('dimensionen', '&2Dimensionen', 'minecraft:obsidian', 'Neue Welten entde
                                     ('biome', 'betternether:soul_plain')],
       'BetterNether bringt viele neue Biome. Finde den Nether-Dschungel, die Kieswüste und die Seelenebene.',
       nach=['nether'], belohnung=2, zeile=-1),
-    Q('nb_biome2', 'Noch mehr Nether', [('biome', 'betternether:upside_down_forest'),
-                                         ('biome', 'betternether:nether_mushroom_forest'),
-                                         ('biome', 'betternether:crimson_glowing_woods')],
-      'Der umgedrehte Wald hängt von der Decke, im Pilzwald wachsen riesige Nether-Pilze.',
-      nach=['nb_biome1'], belohnung=2, optional=True, zeile=-1),
-    Q('nb_stadt', 'Nether-Stadt', ('struct', 'betternether:nether_city'),
-      'Eine verlassene Stadt aus Netherziegeln. Selten, aber groß. Hier lohnt sich das Plündern.',
-      nach=['nb_biome2'], belohnung='loot2', optional=True, zeile=-1),
     Q('cincinnasit', 'Cincinnasit', 'betternether:cincinnasite_ingot',
       'Goldgelbes Erz im Nether. Mit Netherziegeln wird daraus die Cincinnasit-Schmiede, ein Ofen aus BetterNether.',
       nach=['nether'], belohnung=2, zeile=-2),
@@ -82,11 +71,6 @@ kapitel('dimensionen', '&2Dimensionen', 'minecraft:obsidian', 'Neue Welten entde
                                   ('biome', 'betterend:crystal_mountains')],
       'BetterEnd verwandelt die äußeren Inseln: neblige Pilzlande, Chorus-Wälder und Kristallberge.',
       nach=['end'], belohnung=2, zeile=-1),
-    Q('eb_biome2', 'Leuchtendes End', [('biome', 'betterend:glowing_grasslands'),
-                                        ('biome', 'betterend:shadow_forest'),
-                                        ('biome', 'betterend:megalake')],
-      'Leuchtende Wiesen, finsterer Schattenwald und ein riesiger See mitten im End.',
-      nach=['eb_biome1'], belohnung=2, optional=True, zeile=-1),
     Q('terminit', 'Terminit', 'betterend:terminite_ingot',
       'Enderstaub (aus Endererz) plus Eisenbarren ergibt Terminit. Daraus baust du gute Werkzeuge und Rüstung.',
       nach=['end'], belohnung=2, zeile=-2),
@@ -255,9 +239,6 @@ kapitel('dimensionen', '&2Dimensionen', 'minecraft:obsidian', 'Neue Welten entde
     Q('ow_bop', 'Biomes O\' Plenty', [('biome', 'biomesoplenty:redwood_forest'), ('biome', 'biomesoplenty:mystic_grove')],
       'Riesige Mammutbäume und der bunte, magische Hain.',
       nach=['ow_terralith'], belohnung=2, optional=True, form='heart', zeile=9),
-    Q('ow_ru', 'Regions Unexplored', [('biome', 'regions_unexplored:prismachasm'), ('biome', 'regions_unexplored:magnolia_woodland')],
-      'Die Prismaschlucht leuchtet in allen Farben, im Magnolienwald blüht es rosa.',
-      nach=['ow_bop'], belohnung=2, optional=True, form='heart', zeile=9),
 ])
 
 # ---------------------------------------------------------------------------
@@ -356,10 +337,10 @@ kapitel('strukturen', '&6Strukturen', 'explorerscompass:explorerscompass', 'Dung
       nach=['start'], belohnung=1, optional=True, zeile=-4, spalte=1),
 
     # ---- YUNG's ----
-    Q('yung', 'Bessere Dungeons', ('struct', 'betterdungeons:small_dungeon'),
+    Q('yung', 'Bessere Dungeons', ('struct', '#betterdungeons:better_dungeons'),
       'YUNG\'s Better Dungeons macht aus den kleinen Monsterräumen echte Dungeons, mit mehr Räumen und mehr Beute.',
       nach=['start'], belohnung=2, haupt=True),
-    Q('yung_mineshaft', 'Bessere Minen', ('struct', 'bettermineshafts:mineshaft_oak'),
+    Q('yung_mineshaft', 'Bessere Minen', ('struct', '#bettermineshafts:better_mineshafts'),
       'Die Minenschächte haben je nach Biom einen eigenen Stil und sind viel größer. Achte auf die Loren mit Kisten.',
       nach=['yung'], belohnung=1, zeile=-1),
     Q('yung_wueste', 'Wüstentempel', ('struct', 'betterdeserttemples:desert_temple'),
@@ -380,7 +361,7 @@ kapitel('strukturen', '&6Strukturen', 'explorerscompass:explorerscompass', 'Dung
 
     # ---- When Dungeons Arise ----
     Q('wda', 'When Dungeons Arise', ('struct', 'dungeons_arise:illager_windmill'),
-      'When Dungeons Arise baut riesige Dungeons. Die Windmühle der Illager ist ein guter Einstieg.',
+      'When Dungeons Arise baut riesige Dungeons. Gesucht ist hier die &eIllager-Windmühle&r (Illager Windmill) in den Ebenen, ein guter Einstieg.',
       nach=['yung'], belohnung=2, haupt=True),
     Q('wda_banditen', 'Banditentürme', ('struct', 'dungeons_arise:bandit_towers'),
       'Hohe Türme voller Banditen. Kämpf dich bis nach oben.',
@@ -399,8 +380,8 @@ kapitel('strukturen', '&6Strukturen', 'explorerscompass:explorerscompass', 'Dung
       nach=['wda_yacht'], belohnung='loot2', zeile=2),
 
     # ---- Dungeons and Taverns ----
-    Q('dnt_taverne', 'Taverne', ('struct', 'nova_structures:tavern_oak'),
-      'Dungeons and Taverns: In der Taverne kannst du dich ausruhen und handeln.',
+    Q('dnt_taverne', 'Taverne', ('struct', '#nova_structures:taverns'),
+      'Dungeons and Taverns stellt Tavernen in viele Biome. Jede davon zählt. Drinnen kannst du dich ausruhen und handeln.',
       nach=['start'], belohnung=1, zeile=-3),
     Q('dnt_gruft', 'Untote Gruft', ('struct', 'nova_structures:undead_crypt'),
       'Eine Gruft voller Untoter. Fackeln und Heiltränke einpacken.',
@@ -413,11 +394,11 @@ kapitel('strukturen', '&6Strukturen', 'explorerscompass:explorerscompass', 'Dung
       nach=['dnt_anwesen', 'dimensionen/end'], belohnung='loot3', optional=True, zeile=-3),
 
     # ---- Towns and Towers ----
-    Q('tnt_dorf', 'Neue Dörfer', ('struct', 'towns_and_towers:village_forest'),
-      'Towns and Towers bringt neue Dorfstile für fast jedes Biom, z. B. das Walddorf.',
+    Q('tnt_dorf', 'Neue Dörfer', ('struct', '#towns_and_towers:town'),
+      'Towns and Towers bringt neue Dorfstile für fast jedes Biom. Jedes Towns-and-Towers-Dorf zählt.',
       nach=['start'], belohnung=1, zeile=3),
-    Q('tnt_aussenposten', 'Außenposten', ('struct', 'towns_and_towers:pillager_outpost_forest'),
-      'Auch die Plünderer-Außenposten haben neue Stile. &cDas Banner bringt Unheil&r, wenn du den Hauptmann besiegst.',
+    Q('tnt_aussenposten', 'Außenposten', ('struct', '#minecraft:pillager_outpost'),
+      'Auch die Plünderer-Außenposten haben neue Stile, jeder Außenposten zählt. &cDas Banner bringt Unheil&r, wenn du den Hauptmann besiegst.',
       nach=['tnt_dorf'], belohnung=2, zeile=3),
     Q('abgabe_smaragd', 'Abgabe: Smaragde', ('item', 'minecraft:emerald', 32),
       'Dörfer, Händler und Tavernen: Gib 32 Smaragde ab.',
@@ -435,15 +416,15 @@ kapitel('strukturen', '&6Strukturen', 'explorerscompass:explorerscompass', 'Dung
       nach=['idas_magier'], belohnung='loot2', zeile=5),
 
     # ---- Repurposed Structures ----
-    Q('rs_dorf', 'Repurposed Structures', ('struct', 'repurposed_structures:village_birch'),
-      'Repurposed Structures bringt bekannte Strukturen in neuen Varianten, z. B. Dörfer im Birkenwald.',
+    Q('rs_dorf', 'Repurposed Structures', ('struct', '#repurposed_structures:collections/villages'),
+      'Repurposed Structures bringt bekannte Strukturen in neuen Varianten, z. B. Dörfer im Birken-, Dschungel- oder Kirschblütenstil. Jedes davon zählt.',
       nach=['start'], belohnung=1, zeile=6),
-    Q('rs_tempel', 'Nether-Tempel', ('struct', 'repurposed_structures:temple_nether_crimson'),
-      'Tempel gibt es auch im Nether, hier im Karmesinwald.',
-      nach=['rs_dorf', 'dimensionen/nether'], belohnung=2, zeile=6),
+    Q('rs_tempel', 'Neue Tempel', ('struct', '#repurposed_structures:collections/temples'),
+      'Tempel in der Taiga, im Ozean und in jedem Nether-Biom. Einer davon reicht.',
+      nach=['rs_dorf'], belohnung=2, zeile=6),
     Q('rs_stadt', 'Nether-Stadt', ('struct', 'repurposed_structures:city_nether'),
       'Eine ganze Stadt im Nether, gebaut wie eine Endstadt.',
-      nach=['rs_tempel'], belohnung='loot2', optional=True, zeile=6),
+      nach=['rs_tempel', 'dimensionen/nether'], belohnung='loot2', optional=True, zeile=6),
 
     # ---- Cataclysm ----
     Q('cata', 'Uralte Fabrik', ('struct', 'cataclysm:ancient_factory'),
