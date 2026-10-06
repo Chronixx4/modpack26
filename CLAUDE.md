@@ -20,7 +20,7 @@ Kommunikation mit dem Nutzer: Deutsch, locker, kurz.
   3. `modrinth.index.json` schreiben. CurseForge-Jars aus `curseforge-mods\` kommen nach `overrides/mods`. Daraus entsteht `Unser-Modpack-<PACKVER>.mrpack`. Danach wird sofort `ERGEBNIS.txt` geschrieben.
   4. Einen NeoForge-Testserver aufsetzen und starten, bis `Done (` im Log steht. Danach wird `ERGEBNIS.txt` aktualisiert.
 - CurseForge-Jars holt das Skript automatisch aus `%USERPROFILE%\Downloads` (Dateinamen-Muster in `$cfPatterns`).
-- Aktuelle Version: **v9 / PACKVER 0.9.0**. Bei jeder Änderung `$PACKVER` hochzählen.
+- Aktuelle Version: **PACKVER 0.9.1**. Bei jeder Änderung `$PACKVER` hochzählen.
 
 ## Mods, die nur auf CurseForge sind (liegen in curseforge-mods\ bzw. Downloads)
 Alle für 1.21.1 NeoForge. Download-URL-Schema: `https://www.curseforge.com/minecraft/mc-mods/<slug>/download/<fileId>`
@@ -55,11 +55,14 @@ CurseForge blockt Downloads per Skript, auch über die interne `/api/v1`. Diese 
 
 ## Stand
 - Profil 0.6.0 plus händisch PolyLib und die CF-Mods: **Spiel startet, die Welt lädt (unter 8 s), kein Crash.** Es sind 185 Mods inklusive Bibliotheken.
-- v9 baut das Pack inklusive Repurposed Structures, Better Nether und Better End. **Getestet ist v9 noch nicht.**
+- v9 (0.9.0) per Servertest in der Cloud geprueft (2026-10-06): 180 Mods auf dem Server, Start ohne Fehler; Chunks in Nether, End, Overworld, Twilight, Aether, Otherside, Undergarden, Bumblezone generiert, kein Crash. Better Nether/End- und Repurposed-Structures-Biome/Strukturen werden per `locate` gefunden. Rund 60 Rezept-Parsingfehler (optionale Kompat-Rezepte, v. a. Cataclysm Spellbooks, Garnished) sind harmlos. **Client noch nicht getestet.**
+- Bugfix im Skript: Dateinamen mit `[ ]` (z. B. Born in Chaos) wurden nicht in den Testserver kopiert (PowerShell-Platzhalter), jetzt `-LiteralPath`.
+- 0.9.1: Slug von AE2 Wireless Terminals korrigiert (`applied-energistics-2-wireless-terminals`, vorher nicht gefunden).
+- Create: Steam 'n' Rails gibt es offiziell nur bis 1.20.1. Fuer 1.21.1 existiert nur ein inoffizieller Port (`create-steam-n-rails-1.21.1`); aktuell nicht im Pack.
 
 ## Offene Aufgaben
 1. v9 bauen, `Unser-Modpack-0.9.0.mrpack` importieren, eine Testwelt anlegen, ins Nether und End gehen, `latest.log` prüfen.
-2. In `ERGEBNIS.txt` prüfen, ob Integrated Mowzie's Mobs gefunden wurde. Falls nicht, entweder weglassen oder von CurseForge holen.
+2. ~~Integrated Mowzie's Mobs~~: wird auf Modrinth gefunden, erledigt.
 3. **Server auf dem Heimserver** einrichten: selbstgebaut, ZimaOS, dort läuft schon ein Satisfactory-Server. Am besten per Docker, z. B. `itzg/minecraft-server` mit `TYPE=NEOFORGE` und dem .mrpack bzw. dem Mod-Ordner. Der Server bekommt keine Client-Mods (Sodium, Xaero, EMI-Client und Ähnliches über env `server: unsupported`).
 4. Optional: FTB-Quests-Kapitel, die Magie, Create und AE2 verbinden.
 5. Optional: Shader wieder einbauen, sobald es eine Iris-Version gibt, die zu Sodium 0.8 passt.

@@ -9,7 +9,7 @@ $ProgressPreference = 'SilentlyContinue'
 $MC      = '1.21.1'
 $LOADER  = 'neoforge'
 $PACK    = 'Unser Modpack'
-$PACKVER = '0.9.0'
+$PACKVER = '0.9.1'
 $RAM     = '8G'
 $TIMEOUT_MIN = 20
 
@@ -30,7 +30,7 @@ if (Test-Path $dl) {
   foreach ($pat in $cfPatterns) {
     $hit = Get-ChildItem -Path $dl -Filter $pat -ErrorAction SilentlyContinue | Where-Object { $_.Name -notmatch 'fabric' } | Sort-Object LastWriteTime | Select-Object -Last 1
     if ($hit -and -not (Test-Path (Join-Path $CfDir $hit.Name))) {
-      Copy-Item $hit.FullName $CfDir -Force
+      Copy-Item -LiteralPath $hit.FullName $CfDir -Force
       Write-Host ("  aus Downloads uebernommen: " + $hit.Name)
     } elseif (-not $hit -and -not (Get-ChildItem -Path $CfDir -Filter $pat -ErrorAction SilentlyContinue)) {
       Write-Host ("  WARNUNG: nicht in Downloads gefunden: " + $pat) -ForegroundColor Yellow
@@ -172,7 +172,7 @@ create_factory_logistics|Create Factory Logistics
 create-power-loader|Create: Power Loader
 create-ore-excavation|Create Ore Excavation
 ae2|Applied Energistics 2
-ae2wtlib|AE2 Wireless Terminals
+applied-energistics-2-wireless-terminals|AE2 Wireless Terminals
 extendedae|ExtendedAE
 advanced-ae|Advanced AE
 mega|MEGA Cells
@@ -371,7 +371,7 @@ $json = $index | ConvertTo-Json -Depth 10
 if ($cfJars.Count -gt 0) {
   $ov = Join-Path $packDir 'overrides\mods'
   New-Item -ItemType Directory -Force -Path $ov | Out-Null
-  foreach ($j in $cfJars) { Copy-Item $j.FullName $ov -Force }
+  foreach ($j in $cfJars) { Copy-Item -LiteralPath $j.FullName $ov -Force }
   Say "  $($cfJars.Count) CurseForge-Mods aus dem Ordner curseforge-mods mit eingepackt"
 }
 $mrpack = Join-Path $Root ("Unser-Modpack-" + $PACKVER + ".mrpack")
@@ -422,12 +422,17 @@ foreach ($f in $files) {
   if ($f.env.server -eq 'unsupported') { continue }
   $name = Split-Path $f.path -Leaf
   $c = Join-Path $Cache $name
-  if (-not (Test-Path $c)) { Invoke-WebRequest -UseBasicParsing -Uri $f.downloads[0] -OutFile $c }
-  Copy-Item $c (Join-Path $Server 'mods') -Force
+  # -LiteralPath: Dateinamen wie born_in_chaos_[Neoforge]_... enthalten eckige Klammern (sonst Platzhalter)
+  if (-not (Test-Path -LiteralPath $c)) {
+    $tmp = Join-Path $Cache 'download.tmp'
+    Invoke-WebRequest -UseBasicParsing -Uri $f.downloads[0] -OutFile $tmp
+    Move-Item -LiteralPath $tmp -Destination $c -Force
+  }
+  Copy-Item -LiteralPath $c (Join-Path $Server 'mods') -Force
   $serverMods++
 }
 Say "  $serverMods Mods im Testserver (reine Client-Mods wie Sodium oder Karten werden serverseitig ausgelassen)"
-foreach ($j in $cfJars) { Copy-Item $j.FullName (Join-Path $Server 'mods') -Force; $serverMods++ }
+foreach ($j in $cfJars) { Copy-Item -LiteralPath $j.FullName (Join-Path $Server 'mods') -Force; $serverMods++ }
 Set-Content -Path (Join-Path $Server 'eula.txt') -Value 'eula=true'
 Set-Content -Path (Join-Path $Server 'user_jvm_args.txt') -Value "-Xms2G`n-Xmx$RAM"
 
