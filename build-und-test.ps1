@@ -402,6 +402,16 @@ while ($queue.Count -gt 0) {
 }
 
 Say "== Schritt 3/4: Pack bauen (.mrpack) =="
+# Ausschlusslisten: pack/server-ausschluss.txt und pack/client-ausschluss.txt (Dateinamen-Muster)
+function Read-Patterns($file) {
+  $p = Join-Path $Root ('pack/' + $file)
+  if (-not (Test-Path -LiteralPath $p)) { return @() }
+  return @(Get-Content -LiteralPath $p | ForEach-Object { $_.Trim() } | Where-Object { $_ -and -not $_.StartsWith('#') })
+}
+function Test-Match($name, $pats) { foreach ($p in $pats) { if ($name -like $p) { return $true } }; return $false }
+$srvExcl = Read-Patterns 'server-ausschluss.txt'
+$cliExcl = Read-Patterns 'client-ausschluss.txt'
+$envOf = @{}   # project.id -> env (fuer MODLISTE.txt)
 $files = @()
 foreach ($e in $picked.Values) {
   $f = @($e.version.files | Where-Object { $_.primary })
@@ -412,12 +422,14 @@ foreach ($e in $picked.Values) {
     path = "mods/" + $f.filename
     hashes = [ordered]@{ sha1 = $f.hashes.sha1; sha512 = $f.hashes.sha512 }
     env = [ordered]@{
-      client = 'required'   # im Client alles installieren: viele Bibliotheken sind auf Modrinth als 'nur Server' markiert, werden aber trotzdem gebraucht
-      server = $(if ($ss -eq 'unsupported') { 'unsupported' } elseif ($ss -eq 'optional') { 'optional' } else { 'required' })
+      # im Client alles installieren: viele Bibliotheken sind auf Modrinth als 'nur Server' markiert, werden aber trotzdem gebraucht
+      client = $(if (Test-Match $f.filename $cliExcl) { 'unsupported' } else { 'required' })
+      server = $(if ($ss -eq 'unsupported' -or (Test-Match $f.filename $srvExcl)) { 'unsupported' } elseif ($ss -eq 'optional') { 'optional' } else { 'required' })
     }
     downloads = @($f.url)
     fileSize = $f.size
   }
+  $envOf[$e.project.id] = $files[-1].env
 }
 
 # NeoForge-Version ermitteln
@@ -461,7 +473,8 @@ foreach ($e in $picked.Values) {
   $g = $catOf[$e.reason]
   if (-not $g -or $g -like 'Bibliotheken*') { $g = $libCat }
   $note = ''
-  if ($e.project.server_side -eq 'unsupported') { $note = '  (nur Client)' }
+  if ($envOf[$e.project.id].client -eq 'unsupported') { $note = '  (nur Server)' }
+  elseif ($envOf[$e.project.id].server -eq 'unsupported') { $note = '  (nur Client)' }
   $groups[$g].Add(("  {0,-46} {1}{2}" -f $e.project.title, $e.version.version_number, $note))
 }
 foreach ($j in $cfJars) {

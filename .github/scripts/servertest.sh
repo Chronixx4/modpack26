@@ -26,6 +26,7 @@ while [ $(( $(date +%s) - start )) -lt "$TIMEOUT" ]; do
   sleep 5
   if grep -q 'Done (' console.log 2>/dev/null; then result=OK; break; fi
   if ! kill -0 "$PID" 2>/dev/null; then result=ABGESTUERZT; break; fi
+  if ls crash-reports/*.txt >/dev/null 2>&1; then result=ABGESTUERZT; sleep 5; break; fi
 done
 
 if kill -0 "$PID" 2>/dev/null; then

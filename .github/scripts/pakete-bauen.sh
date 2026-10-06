@@ -51,7 +51,9 @@ excluded() {
 
 # 3) Client-ZIP
 C="$OUT/client" && rm -rf "$C" && mkdir -p "$C/mods"
-jq -r '.files[].path' "$IDX" | while read -r path; do cp "$CACHE/$(basename "$path")" "$C/mods/"; done
+jq -r '.files[] | select(.env.client != "unsupported") | .path' "$IDX" | while read -r path; do
+  cp "$CACHE/$(basename "$path")" "$C/mods/"
+done
 cp "$ROOT"/curseforge-mods/*.jar "$C/mods/"
 fill "$ROOT/pack/client/LIES-MICH.txt" "$C/LIES-MICH.txt"
 cp "$ROOT/MODLISTE.txt" "$C/"

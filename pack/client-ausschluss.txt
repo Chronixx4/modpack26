@@ -1,0 +1,4 @@
+# Mods, die NICHT auf den Client kommen (Dateinamen-Muster, * = beliebig), also nur Server.
+# Chunky: crasht zusammen mit Distant Horizons (DH ruft Chunky auf, bevor es geladen ist),
+# auch im Einzelspieler. Vorgenerieren macht ihr auf dem Server.
+Chunky-*
