@@ -52,13 +52,15 @@ CurseForge blockt Downloads per Skript, auch über die interne `/api/v1`. Diese 
 ## Bekannte harmlose Log-Meldungen
 - Sable: `Failed to apply tag physics properties. Unknown block: copycats:copycat_catwalk`
 - Bumblezone: `Trade result entry is set to required ...`
+- `Couldn't parse element ... loot_table]:railways:blocks/track_*` (ca. 200x), dazu `create_connected:` und `dndecor:`: Loot-Tables fuer Kompat-Bloecke von Mods, die nicht im Pack sind (BYG, TFC, Nature's Spirit ...)
+- `Parsing error loading recipe` (ca. 55x, v. a. cataclysm_spellbooks, garnished, more_rpg_classes): optionale Kompat-Rezepte
 
 ## Stand
 - Profil 0.6.0 plus händisch PolyLib und die CF-Mods: **Spiel startet, die Welt lädt (unter 8 s), kein Crash.** Es sind 185 Mods inklusive Bibliotheken.
 - v9 (0.9.0) per Servertest in der Cloud geprueft (2026-10-06): 180 Mods auf dem Server, Start ohne Fehler; Chunks in Nether, End, Overworld, Twilight, Aether, Otherside, Undergarden, Bumblezone generiert, kein Crash. Better Nether/End- und Repurposed-Structures-Biome/Strukturen werden per `locate` gefunden. Rund 60 Rezept-Parsingfehler (optionale Kompat-Rezepte, v. a. Cataclysm Spellbooks, Garnished) sind harmlos. **Client noch nicht getestet.**
 - Bugfix im Skript: Dateinamen mit `[ ]` (z. B. Born in Chaos) wurden nicht in den Testserver kopiert (PowerShell-Platzhalter), jetzt `-LiteralPath`.
 - 0.9.1: Slug von AE2 Wireless Terminals korrigiert (`applied-energistics-2-wireless-terminals`, vorher nicht gefunden).
-- 0.9.2: Create: Steam 'n' Rails eingebaut. Offiziell gibt es die Mod nur bis 1.20.1, deshalb der inoffizielle Port `create-steam-n-rails-1.21.1` (Beta, braucht Create >= 6.0.7).
+- 0.9.2: Create: Steam 'n' Rails eingebaut. Offiziell gibt es die Mod nur bis 1.20.1, deshalb der inoffizielle Port `create-steam-n-rails-1.21.1` (das Skript nimmt die Release-Version 0.2.1, Create 6.0.10 passt). Servertest 0.9.2: Start OK, 173 Modrinth- plus 9 CF-Mods, AE2 Wireless Terminals wird jetzt gefunden.
 
 ## Offene Aufgaben
 1. v9 bauen, `Unser-Modpack-0.9.0.mrpack` importieren, eine Testwelt anlegen, ins Nether und End gehen, `latest.log` prüfen.
