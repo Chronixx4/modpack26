@@ -9,7 +9,7 @@ $ProgressPreference = 'SilentlyContinue'
 $MC      = '1.21.1'
 $LOADER  = 'neoforge'
 $PACK    = 'Unser Modpack'
-$PACKVER = '0.9.8'
+$PACKVER = '0.9.9'
 $RAM     = '8G'
 $TIMEOUT_MIN = 20
 
@@ -115,6 +115,13 @@ distanthorizons|Distant Horizons
 clumps|Clumps
 chunky|Chunky
 neruina|Neruina
+fastsuite|FastSuite
+fastfurnace|FastFurnace
+fastworkbench|FastWorkbench
+badoptimizations|BadOptimizations
+dynamic-fps|Dynamic FPS
+moreculling|More Culling
+packet-fixer|Packet Fixer
 # Komfort und Oberflaeche
 emi|EMI
 jade|Jade

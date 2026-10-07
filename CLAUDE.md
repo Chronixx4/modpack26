@@ -30,7 +30,7 @@ Kommunikation mit dem Nutzer: Deutsch, locker, kurz.
   - Modus `linear` (Quests gesperrt bis Vorgaenger fertig); Quests mit Kill/Dimension/Struktur/Biom setzt der Generator auf `flexible`, sonst zaehlen sie erst nach dem Freischalten. Abgabe-Quests (`abgabe=True`) verbrauchen Items. Belohnungen: XP, Items, Loot-Kisten `loot1`-`loot4` (`inhalt/loot.py`).
   - `pack/config/` landet in `overrides/config` (.mrpack) bzw. `config/` (beide ZIPs) und im lokalen Testserver. Der Servertest gibt die Zeile `Questbuch: Loaded ... quests` aus.
 - CurseForge-Jars holt das Skript automatisch aus `%USERPROFILE%\Downloads` (Dateinamen-Muster in `$cfPatterns`).
-- Aktuelle Version: **PACKVER 0.9.8**. Bei jeder Änderung `$PACKVER` hochzählen.
+- Aktuelle Version: **PACKVER 0.9.9**. Bei jeder Änderung `$PACKVER` hochzählen.
 
 ## Mods, die nur auf CurseForge sind (liegen in curseforge-mods\ bzw. Downloads)
 Alle für 1.21.1 NeoForge. Download-URL-Schema: `https://www.curseforge.com/minecraft/mc-mods/<slug>/download/<fileId>`
@@ -82,6 +82,7 @@ CurseForge blockt Downloads per Skript, auch über die interne `/api/v1`. Diese 
 - 0.9.6: Technik-Paket (Draconic Evolution (Beta), Industrial Foregoing, PneumaticCraft, Immersive Engineering, Extreme Reactors, Oritech, Ender IO (Beta), Iron Jetpacks, Actually Additions, Integrated Dynamics). Camera Overhaul und AmbientSounds entfernt (soll jeder selbst entscheiden).
 - 0.9.7: Questbuch mit 12 Kapiteln und 233 Quests (Willkommen, Create, Ars Nouveau, Iron's Spells, AE2, Mekanism, Samen und Bienen, Draconic, Dimensionen, Bosse, Apotheosis, Energie und Technik). Alle IDs gegen die echte Registry geprueft, Servertest OK (`Loaded 12 chapters, 233 quests`). Aussehen im Spiel noch nicht geprueft.
 - 0.9.8: Questbuch 2.0: 6 Gruppen, 33 Kapitel, 1178 Quests, 4 Loot-Kisten-Stufen. Fix fuer "Unnamed"/falsche Reihenfolge (63-Bit-IDs). Reihenfolge gegen Rezepte geprueft, Vorschaubilder pro Kapitel.
+- 0.9.9: Performance: FastSuite, FastFurnace, FastWorkbench, Packet Fixer, dazu nur fuer den Client BadOptimizations, Dynamic FPS und More Culling. Server-`user_jvm_args.txt` mit Xms=Xmx=12G und Aikar-G1-Flags (der Servertest ueberschreibt die Datei mit wenig RAM, die Flags testet er also nicht). `simulation-distance` 6. Im Index nachgetragen, ohne kompletten Neu-Build (in der Cloud gibt's kein pwsh), andere Mods also unveraendert. Bewusst nicht aufgenommen: C2ME und ScalableLux (Alpha), Noisium (veraltet), AllTheLeaks (nur CF), ModernFix `dynamic_resources` (ungetestet).
 
 ## Offene Aufgaben
 1. v9 bauen, `Unser-Modpack-0.9.0.mrpack` importieren, eine Testwelt anlegen, ins Nether und End gehen, `latest.log` prüfen.

@@ -1,16 +1,23 @@
-﻿Unser Modpack 0.9.8 - Modliste
-Minecraft 1.21.1, NeoForge 21.1.256   |   259 Mods inkl. Bibliotheken   |   Stand 2026-10-06
+﻿Unser Modpack 0.9.9 - Modliste
+Minecraft 1.21.1, NeoForge 21.1.256   |   266 Mods inkl. Bibliotheken   |   Stand 2026-10-07
 
-== Performance und Grafik (10) ==
+== Performance und Grafik (17) ==
+  BadOptimizations                               2.4.1  (nur Client)
   Chunky                                         1.4.23  (nur Server)
   Clumps                                         19.0.0.1
   Distant Horizons                               3.3.3-1.21.1  (nur Client)
+  Dynamic FPS                                    3.11.4  (nur Client)
   Entity Culling                                 1.11.2  (nur Client)
+  FastFurnace                                    1.21.1-9.0.1
+  FastSuite                                      1.21.1-6.0.7
+  FastWorkbench                                  1.21.1-9.1.3
   FerriteCore                                    7.0.3-neoforge
   ImmediatelyFast                                1.6.14+1.21.1-neoforge  (nur Client)
   Lithium                                        mc1.21.1-0.15.4-neoforge
   ModernFix                                      5.27.24+mc1.21.1
+  More Culling                                   1.0.10  (nur Client)
   Neruina - Ticking Entity Fixer                 3.3.3
+  Packet Fixer                                   3.3.1
   Sodium                                         mc1.21.1-0.8.13-neoforge  (nur Client)
 
 == Komfort und Oberflaeche (23) ==
