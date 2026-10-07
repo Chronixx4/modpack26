@@ -967,7 +967,7 @@
 					id: "1220D8F26F8F2279"
 					item: {
 						count: 1
-						id: "cookingforblockheads:fridge"
+						id: "cookingforblockheads:white_fridge"
 					}
 					type: "item"
 				}
@@ -992,7 +992,7 @@
 					id: "57C28B5E0BA7E5C6"
 					item: {
 						count: 1
-						id: "cookingforblockheads:oven"
+						id: "cookingforblockheads:white_oven"
 					}
 					type: "item"
 				}
