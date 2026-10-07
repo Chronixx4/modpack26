@@ -222,7 +222,7 @@ kapitel('bosse', '&cBosse', 'minecraft:wither_skeleton_skull', 'Von leicht bis b
 # ---------------------------------------------------------------------------
 kapitel('waffen', '&4Waffen und Rüstung', 'simplyswords:iron_longsword', 'Schwerter, Bögen und Rüstungen für jede Spielweise', [
     Q('start', 'Waffenkammer', 'check',
-      'Kampf ist hier Vanilla, aber du hast viel mehr Waffen zur Auswahl: Simply Swords, Archers, Rogues & Warriors und mehr.\n\n'
+      'Kampf ist hier Vanilla, aber du hast viel mehr Waffen zur Auswahl: Simply Swords, Archers, Rogues & Warriors, Paladins & Priests und mehr.\n\n'
       'Jede Waffenart spielt sich anders. Probier einfach aus, was dir liegt.',
       nach=['erste_schritte/eisen'], belohnung='loot1', haupt=True, form='gear', gross=True),
 
@@ -309,6 +309,75 @@ kapitel('waffen', '&4Waffen und Rüstung', 'simplyswords:iron_longsword', 'Schwe
     Q('artefakt', 'Erstes Artefakt', 'artifacts:running_shoes',
       'Artefakte findest du in Truhen und bei Mimics. Sie kommen in die Zusatzplätze und geben dauerhaft Boni, z. B. schnelleres Laufen.',
       nach=['mimic'], belohnung=2, optional=True, form='heart', zeile=3),
+
+    # --- Paladins & Priests ---
+    Q('moench', 'Mönchswerkbank', 'paladins:monk_workbench',
+      'Paladins & Priests bringt heilige Krieger und Heiler. Die Mönchswerkbank ist der Arbeitsplatz des Mönch-Dorfbewohners. Für sie brauchst du eine Ghast-Träne aus dem Nether.',
+      nach=['start', 'dimensionen/nether'], belohnung=1, zeile=5),
+    Q('heilrunen', 'Heilrunen', ['runes:crafting_altar', ('item', 'runes:healing_stone', 16)],
+      'Die Zauber von Paladinen und Priestern verbrauchen &eHeilrunen&r. Aus Stein und Goldnuggets geht es auch an der Werkbank, der Runenaltar macht aber viel mehr Runen daraus.',
+      nach=['moench'], belohnung=1, zeile=4),
+    Q('heiligstab', 'Heiliger Stab', 'paladins:holy_staff',
+      'Die Waffe der Priester: Mit dem Stab heilst du dich und deine Freunde. Welche Zauber er hat, zeigt der Tooltip.',
+      nach=['moench'], belohnung=1, zeile=5),
+    Q('prior', 'Prior-Gewand', 'paladins:prior_robe_chest',
+      'Die Robe für Heiler, aus Wolle, Gold und Ghast-Tränen. Die Werte siehst du im Tooltip.',
+      nach=['heiligstab'], belohnung=2, zeile=5),
+    Q('kriegshammer', 'Großhammer', 'paladins:iron_great_hammer',
+      'Die Waffe der Paladine: langsam, aber wuchtig, und mit heiligen Zaubern.',
+      nach=['moench'], belohnung=1, zeile=6),
+    Q('kite_schild', 'Drachenschild', 'paladins:iron_kite_shield',
+      'Der große Schild der Paladine. Er gehört in die Zweithand, neben Hammer oder Streitkolben.',
+      nach=['kriegshammer'], belohnung=1, zeile=7),
+    Q('paladin_ruestung', 'Paladin-Rüstung', 'paladins:paladin_armor_chest',
+      'Schwere Rüstung aus Eisen und Kupfer für Paladine.',
+      nach=['kriegshammer'], belohnung=2, zeile=6),
+    Q('kreuzritter', 'Kreuzritter', 'paladins:crusader_armor_chest',
+      'Die bessere Paladin-Rüstung, aus Eisen, Gold und Ghast-Tränen.',
+      nach=['paladin_ruestung'], belohnung=2, zeile=6),
+    Q('netherit_paladin', 'Netherit-Kreuzritter', 'paladins:netherite_crusader_armor_chest',
+      'Wie bei Vanilla: Kreuzritter-Rüstung, Netheritbarren und Netherit-Schmiedevorlage in den Schmiedetisch.',
+      nach=['kreuzritter', 'erste_schritte/netherit'], belohnung='loot2', form='hexagon', zeile=6),
+
+    # --- Shield Expansion ---
+    Q('schild_eisen', 'Eisenschild', 'shieldexp:iron_shield', [
+        'Shield Expansion macht Schilde spannender: Sie haben Ausdauer und nach dem Blocken eine Abklingzeit. Heb den Schild &ekurz vor dem Treffer&r, dann &aparierst&r du den Angriff.',
+        'Shift im Tooltip zeigt Parierdauer, Ausdauer und Explosionswiderstand. Es gibt Schilde aus Holz, Gold, Eisen, Diamant und Netherit.',
+    ], nach=['start'], belohnung=1, zeile=-5),
+    Q('schild_diamant', 'Diamantschild', 'shieldexp:diamond_shield',
+      'Mehr Ausdauer, besseres Parieren.',
+      nach=['schild_eisen', 'erste_schritte/diamant'], belohnung=2, zeile=-5),
+    Q('schild_netherit', 'Netheritschild', 'shieldexp:netherite_shield',
+      'Diamantschild, Netheritbarren und Netherit-Schmiedevorlage in den Schmiedetisch. Der beste Schild aus Shield Expansion.',
+      nach=['schild_diamant', 'erste_schritte/netherit'], belohnung=2, zeile=-5),
+])
+
+# ---------------------------------------------------------------------------
+# L2 Hostility: stärkere Mobs, Level und Eigenschaften
+# ---------------------------------------------------------------------------
+kapitel('hostility', '&cGefahrenstufen', 'l2hostility:hostility_detector', 'L2 Hostility: Monster mit Level und Eigenschaften', [
+    Q('start', 'Gefahrenkompass', 'l2hostility:hostility_detector', [
+        'Mit L2 Hostility haben Monster ein &eLevel&r: mehr Leben, mehr Schaden und besondere Eigenschaften (Traits). Das Level hängt von Dimension, Biom, Entfernung zum Spawn und deinem eigenen Gefahrenlevel ab.',
+        'Wer Monster tötet, steigt im Level, wer stirbt, sinkt. In der Hand zeigt dir der Gefahrenkompass die Werte, alles Weitere steht im Gefahren-Reiter im Inventar.',
+    ], nach=['erste_schritte/eisen'], belohnung='loot1', haupt=True, form='gear', gross=True),
+    Q('brille', 'Unsichtbares sehen', 'l2hostility:detector_glasses',
+      'Manche Monster sind unsichtbar oder machen dich blind. Mit der Detektorbrille siehst du sie trotzdem.',
+      nach=['start', 'dimensionen/nether'], belohnung=2, zeile=-1),
+    Q('charm', 'Beute-Talisman', 'l2hostility:charm_of_looting_1',
+      'Mit dem Talisman lassen Monster mit bestimmten Eigenschaften besondere Beute fallen. Was genau, zeigt dir JEI.',
+      nach=['start'], belohnung=2, zeile=1),
+    Q('orb', 'Hostility-Kugel', 'l2hostility:hostility_orb',
+      'Erreicht dein Gefahrenlevel bestimmte Stufen, bekommst du beim nächsten Kill eine Belohnung, manchmal eine Hostility-Kugel. Sie sorgt dafür, dass in einem Bereich keine Monster mit Level mehr spawnen. Wie man sie benutzt, steht im Tooltip.',
+      nach=['start'], belohnung=2, haupt=True),
+    Q('vernunft', 'Flasche der Vernunft', 'l2hostility:bottle_of_sanity',
+      'Setzt dein eigenes Gefahrenlevel komplett zurück. Gut, wenn es dir zu heftig wird.',
+      nach=['orb'], belohnung=2, zeile=-1),
+    Q('chaos', 'Chaos-Barren', 'l2hostility:chaos_ingot',
+      'Für den Chaos-Barren brauchst du seltsame Zutaten aus L2 Complements, z. B. Unliving Ice oder Seelenflamme. Wie du sie bekommst, steht in ihrem Tooltip, das Rezept in JEI.',
+      nach=['orb'], belohnung='loot3', haupt=True, form='hexagon'),
+    Q('ende', 'Wunder-Barren', 'l2hostility:miracle_ingot',
+      'Chaos-Barren, Hostility-Essenz und Wunderstaub: das stärkste Material von L2 Hostility.',
+      nach=['chaos'], belohnung='loot4', haupt=True, form='star', gross=True),
 ])
 
 # ---------------------------------------------------------------------------
