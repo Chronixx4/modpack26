@@ -92,7 +92,8 @@ CurseForge blockt Downloads per Skript, auch über die interne `/api/v1`. Diese 
 2. **Questbuch im Spiel ansehen** (seit 0.9.8): Texte, Reihenfolge, Bilder. Aenderungen in `pack/quests/inhalt/*.py` machen (nicht im Editiermodus, sonst ueberschreibt der naechste Generatorlauf sie).
 3. **Server auf dem Heimserver** einrichten: ZimaOS, Marvin hat dort schon ein eigenes Docker-Panel fuer mehrere Minecraft-Server (keine docker-compose noetig). Dafuer das `-Server.zip` aus dem Release nehmen (12 GB RAM fuer Minecraft, Container mind. 14 GB, Java 21, Ports 25565/TCP und 24454/UDP fuer Voice Chat), danach mit Chunky vorgenerieren.
 4. Erst danach die **richtige Welt** starten, damit Strukturen und Biome ueberall generiert werden.
-5. Optional: Shader wieder einbauen, sobald es eine Iris-Version gibt, die zu Sodium 0.8 passt.
+5. **Beim naechsten Update:** EvilCraft-Questtexte nachbessern (viele Quests verweisen nur aufs Handbuch). Dafuer das Handbuch "Origins of Darkness" aus der EvilCraft-Jar auslesen und die Mechaniken daraus uebernehmen.
+6. Optional: Shader wieder einbauen, sobald es eine Iris-Version gibt, die zu Sodium 0.8 passt.
 
 ## Mod-Bauplan (Übersicht)
 Artifact „Modpack-Bauplan 1.21.1“ auf claude.ai (Checkliste mit 143 Mods nach Kategorien). Die maßgebliche Liste ist aber `$ModList` in `build-und-test.ps1`.
