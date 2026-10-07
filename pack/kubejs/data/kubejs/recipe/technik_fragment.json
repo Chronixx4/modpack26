@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "mekanism:pellet_antimatter"
+    },
+    "B": {
+      "item": "draconicevolution:awakened_core"
+    },
+    "C": {
+      "item": "ae2:singularity"
+    },
+    "D": {
+      "item": "megacells:cell_component_256m"
+    },
+    "E": {
+      "item": "powah:crystal_nitro"
+    },
+    "F": {
+      "item": "create:precision_mechanism"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "CDE",
+    "AFA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "kubejs:technik_fragment"
+  }
+}

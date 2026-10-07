@@ -229,7 +229,7 @@
 					id: "18BDE56A0B6FDF73"
 					item: {
 						count: 1
-						id: "mekanism:ingot_steel"
+						id: "immersiveengineering:ingot_steel"
 					}
 					type: "item"
 				}
@@ -257,7 +257,7 @@
 					id: "55364EFFCC3D4E6F"
 					item: {
 						count: 1
-						id: "mekanism:ingot_steel"
+						id: "immersiveengineering:ingot_steel"
 					}
 					type: "item"
 				}
@@ -1410,7 +1410,7 @@
 					id: "5462C00673C0F6D4"
 					item: {
 						count: 1
-						id: "mekanism:raw_uranium"
+						id: "immersiveengineering:raw_uranium"
 					}
 					type: "item"
 				}

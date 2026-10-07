@@ -534,8 +534,110 @@
 		{
 			dependencies: [
 				"5CE435D1495C885B"
+			]
+			id: "3251D03D393EC56D"
+			rewards: [
+				{
+					id: "11F03C3C86FE3CFD"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "563D8BD8998CEAFC"
+					item: {
+						count: 1
+						id: "kubejs:technik_fragment"
+					}
+					type: "item"
+				}
+			]
+			x: 14.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
 				"32A301062C41A82C"
+			]
+			id: "5A6AD8C60B21AD3E"
+			rewards: [
+				{
+					id: "57E3BF76550BD8EB"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "5090F8705654A438"
+					item: {
+						count: 1
+						id: "kubejs:magie_fragment"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
 				"5BC3E48821BB81B0"
+			]
+			id: "34D1154D4D07116B"
+			rewards: [
+				{
+					id: "1813A1BC448505DF"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "1189B4AC8D4F65DD"
+					item: {
+						count: 1
+						id: "kubejs:abenteuer_fragment"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"3251D03D393EC56D"
+				"5A6AD8C60B21AD3E"
+				"34D1154D4D07116B"
+			]
+			id: "1C831C87DBB31067"
+			rewards: [
+				{
+					id: "319CDB4803ED2B6C"
+					table_id: 3797459037597754809L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			size: 1.5d
+			tasks: [
+				{
+					id: "7B0580A072D611C9"
+					item: {
+						count: 1
+						id: "kubejs:chronicle_core"
+					}
+					type: "item"
+				}
+			]
+			x: 16.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"1C831C87DBB31067"
 			]
 			id: "3DFDB1DEA868495B"
 			rewards: [
@@ -553,7 +655,7 @@
 					type: "checkmark"
 				}
 			]
-			x: 14.0d
+			x: 18.0d
 			y: 0.0d
 		}
 	]

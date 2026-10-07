@@ -180,7 +180,7 @@
 					id: "1DE61351583517F1"
 					item: {
 						count: 1
-						id: "occultism:silver_ingot"
+						id: "immersiveengineering:ingot_silver"
 					}
 					type: "item"
 				}
@@ -341,7 +341,7 @@
 					id: "57A912FFD96BB3E8"
 					item: {
 						count: 1
-						id: "occultism:iron_dust"
+						id: "immersiveengineering:dust_iron"
 					}
 					type: "item"
 				}
@@ -908,7 +908,7 @@
 					id: "7BA75BE31D7DDCDD"
 					item: {
 						count: 1
-						id: "occultism:silver_ingot"
+						id: "immersiveengineering:ingot_silver"
 					}
 					type: "item"
 				}

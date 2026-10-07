@@ -437,8 +437,22 @@ kapitel('finale', '&cDas große Finale', 'minecraft:dragon_egg', 'Ein letztes Zi
       'Zum Abschluss noch ein kleines Opfer: vier Nethersterne.',
       nach=['start'], belohnung='loot4', abgabe=True, optional=True, zeile=-1),
 
+    # Chronicle-Kern: drei Fragmente, im mechanischen Crafter von Create zusammengesetzt (pack/kubejs)
+    Q('frag_technik', 'Technik-Fragment', 'kubejs:technik_fragment',
+      'Das erste Stück des &6Chronicle-Kerns&r. Dafür brauchst du Antimaterie, einen erweckten Kern, eine Singularität, eine 256M-Komponente, Nitro-Kristall und einen Präzisionsmechanismus. Das Rezept zeigt dir EMI.',
+      nach=['draconic'], belohnung=3, haupt=True),
+    Q('frag_magie', 'Magie-Fragment', 'kubejs:magie_fragment',
+      'Das magische Stück: Insanium, ein Wilden-Tribut, Iesnium, legendäre Tinte, Stellarit und Drachenhaut. Das Rezept zeigt dir EMI.',
+      nach=['mystical'], belohnung=3, zeile=-2),
+    Q('frag_abenteuer', 'Abenteuer-Fragment', 'kubejs:abenteuer_fragment',
+      'Hierfür musst du überall gewesen sein: Ignitium, Drachenstahl, feuriger Barren, verzaubertes Gravitit, Netherstern, Herz der Tiefe, Unobtainium und reine Dunkelheit. Das Rezept zeigt dir EMI.',
+      nach=['allthemodium'], belohnung=3, zeile=2),
+    Q('kern', 'Der Chronicle-Kern', 'kubejs:chronicle_core', [
+        'Das Herz dieses Packs. Die drei Fragmente, ein Chaotischer Kern, Nethersterne, Präzisionsmechanismen und robuste Bleche werden im &emechanischen Crafter&r von Create zusammengesetzt (5x5).',
+        'Wer den Kern in den Händen hält, hat Chronicle wirklich durchgespielt.',
+    ], nach=['frag_technik', 'frag_magie', 'frag_abenteuer'], belohnung='loot4', haupt=True, form='hexagon', gross=True),
     Q('ende', 'Pack geschafft!', 'check',
       'Du hast alles erreicht, was dieses Pack zu bieten hat. Glückwunsch!\n\n'
       'Zeit für eine neue Welt? Oder einfach eine riesige Basis bauen.',
-      nach=['draconic', 'mystical', 'allthemodium'], belohnung='loot4', haupt=True, form='star', gross=True),
+      nach=['kern'], belohnung='loot4', haupt=True, form='star', gross=True),
 ])

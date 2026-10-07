@@ -32,7 +32,7 @@ Kommunikation mit dem Nutzer: Deutsch, locker, kurz.
   - Modus `linear` (Quests gesperrt bis Vorgaenger fertig); Quests mit Kill/Dimension/Struktur/Biom setzt der Generator auf `flexible`, sonst zaehlen sie erst nach dem Freischalten. Abgabe-Quests (`abgabe=True`) verbrauchen Items. Belohnungen: XP, Items, Loot-Kisten `loot1`-`loot4` (`inhalt/loot.py`).
   - `pack/config/` landet in `overrides/config` (.mrpack) bzw. `config/` (beide ZIPs) und im lokalen Testserver. Der Servertest gibt die Zeile `Questbuch: Loaded ... quests` aus.
 - CurseForge-Jars holt das Skript automatisch aus `%USERPROFILE%\Downloads` (Dateinamen-Muster in `$cfPatterns`).
-- Aktuelle Version: **PACKVER 0.9.11**. Bei jeder Änderung `$PACKVER` hochzählen.
+- Aktuelle Version: **PACKVER 0.9.12**. Bei jeder Änderung `$PACKVER` hochzählen.
 
 ## Mods, die nur auf CurseForge sind (liegen in curseforge-mods\ bzw. Downloads)
 Alle für 1.21.1 NeoForge. Download-URL-Schema: `https://www.curseforge.com/minecraft/mc-mods/<slug>/download/<fileId>`
@@ -88,6 +88,7 @@ CurseForge blockt Downloads per Skript, auch über die interne `/api/v1`. Diese 
 - 0.9.9: Performance: FastSuite, FastFurnace, FastWorkbench, Packet Fixer, dazu nur fuer den Client BadOptimizations, Dynamic FPS und More Culling. Server-`user_jvm_args.txt` mit Xms=Xmx=12G und Aikar-G1-Flags (der Servertest ueberschreibt die Datei mit wenig RAM, die Flags testet er also nicht). `simulation-distance` 6. Im Index nachgetragen, ohne kompletten Neu-Build (in der Cloud gibt's kein pwsh), andere Mods also unveraendert. Bewusst nicht aufgenommen: C2ME und ScalableLux (Alpha), Noisium (veraltet), AllTheLeaks (nur CF), ModernFix `dynamic_resources` (ungetestet).
 - 0.9.10: Lootr, EMI Loot, Easy Villagers, Trade Cycling, Elevator Mod, Cooking for Blockheads, Pipez, Refined Storage, EvilCraft, dazu AllTheLeaks (CF). Questbuch: neue Kapitel Refined Storage und EvilCraft, Ergaenzungen in Willkommen (EMI Loot, Lootr), Erste Schritte (Aufzug), Lager (Pipez), Essen (Cooking for Blockheads), Strukturen (Dorfbewohner); 35 Kapitel, 1231 Quests. `ids.json`/`rezepte.json` dafuer aus den Jars ergaenzt (kein Servertest).
 - 0.9.11: Pack heisst jetzt **Chronicle** (Name im .mrpack, Dateinamen `Chronicle-<ver>.*`, Release-Titel, MOTD, Questbuch-Titel, LIES-MICH).
+- 0.9.12 (noch nicht released): **Almost Unified** (Standard-Config: Prioritaet minecraft > create > immersiveengineering > mekanism; z. B. Stahl/Silber/Elektrum/Nickel/Uran werden zu IE). Quests, die Varianten anderer Mods verlangten (Mekanism-/Oritech-/Ad-Astra-Stahl, Occultism-Silber usw.), auf die IE-Items umgestellt. **Chronicle-Kern** (eigenes Endgame): KubeJS-Items `kubejs:technik_fragment`, `magie_fragment`, `abenteuer_fragment`, `chronicle_core` in `pack/kubejs/` (startup_scripts, Rezepte als JSON in data/kubejs/recipe, Texturen, Namen); der Kern im mechanischen Crafter (5x5). Questbuch-Finale: Fragmente + Kern vor `ende`. `pack/kubejs` landet in overrides/kubejs bzw. kubejs/ beider ZIPs. Ungetestet (kein Servertest ohne Rueckfrage).
 
 ## Offene Aufgaben
 1. **0.9.10 im Client testen:** kurz in die Welt, auf Grafikfehler achten (More Culling, BadOptimizations seit 0.9.9).

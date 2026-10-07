@@ -191,7 +191,7 @@ kapitel('dimensionen', '&2Dimensionen', 'minecraft:obsidian', 'Neue Welten entde
       nach=['ac_verlassen'], belohnung=2, optional=True, form='heart', zeile=8),
 
     # ---- Ad Astra ----
-    Q('aa_stahl', 'Weltraum-Stahl', ('item', 'ad_astra:steel_ingot', 16),
+    Q('aa_stahl', 'Weltraum-Stahl', ('item', 'immersiveengineering:ingot_steel', 16),
       'Für Ad Astra brauchst du viel Stahl, z. B. aus dem Etrionischen Hochofen (Eisen plus Kohle). Andere Stahlquellen gehen auch.',
       nach=['start'], belohnung=2, zeile=6),
     Q('aa_werkbank', 'NASA-Werkbank', 'ad_astra:nasa_workbench',

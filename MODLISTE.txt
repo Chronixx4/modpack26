@@ -1,5 +1,5 @@
-﻿Chronicle 0.9.11 - Modliste
-Minecraft 1.21.1, NeoForge 21.1.256   |   276 Mods inkl. Bibliotheken   |   Stand 2026-10-07
+﻿Chronicle 0.9.12 - Modliste
+Minecraft 1.21.1, NeoForge 21.1.256   |   277 Mods inkl. Bibliotheken   |   Stand 2026-10-07
 
 == Performance und Grafik (18) ==
   All The Leaks                                  1.1.13+1.21.1-neoforge  (CurseForge)
@@ -21,7 +21,8 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   276 Mods inkl. Bibliotheken   |   Stan
   Packet Fixer                                   3.3.1
   Sodium                                         mc1.21.1-0.8.13-neoforge  (nur Client)
 
-== Komfort und Oberflaeche (26) ==
+== Komfort und Oberflaeche (27) ==
+  Almost Unified                                 1.21.1-1.4.2+neoforge
   AppleSkin                                      3.0.9+mc1.21
   Better Advancements                            0.4.3.21  (nur Client)
   Carry On                                       2.2.6
