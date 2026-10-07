@@ -561,3 +561,163 @@ kapitel('create_3', '&6Create 3: Addons', 'createaddition:electric_motor',
       'Garnished bringt Nüsse und viele neue Rezepte für Mixer, Lüfter und Ausguss. Das Beil hilft beim Sammeln, Details in JEI.',
       nach=['create_1/messing'], belohnung=1, optional=True, form='heart', zeile=12, spalte=4),
 ])
+
+# ---------------------------------------------------------------------------
+# Create 4: The Factory Must Grow
+# ---------------------------------------------------------------------------
+kapitel('tfmg', '&6Create 4: TFMG', 'tfmg:steel_mechanism',
+        'Gusseisen, Hochofen, Öl, Motoren, Chemie und Strom', [
+    # --- Grundstoffe ---
+    Q('start', 'Gusseisen', ('item', 'tfmg:cast_iron_ingot', 8),
+      'Create: The Factory Must Grow bringt Schwerindustrie zu Create. Los geht es mit &eGusseisen&r: Eisen und Kohle in der Presse über einem beheizten Becken verdichten.\n\n'
+      'Aus Gusseisen baust du Rohre, Tanks und die ersten Öfen.',
+      nach=['create_1/messing'], belohnung=['loot1', ('item', 'minecraft:coal', 32)],
+      form='gear', gross=True, haupt=True),
+    Q('koksofen', 'Koksofen', ('item', 'tfmg:coke_oven', 2),
+      'Macht aus Kohle langsam &eKoks&r. Nebenbei entstehen Kreosot und Kohlendioxid, die du abpumpen kannst.\n\n'
+      'Weil er so langsam ist, lohnen sich lange Reihen aus vielen Öfen. Das Ponder (Taste &eW&r) zeigt den Aufbau.',
+      nach=['start'], belohnung=2, haupt=True, form='hexagon'),
+    Q('koks', 'Koks', ('item', 'tfmg:coal_coke', 32),
+      'Koks ist der Brennstoff für den Hochofen. Dort kommt er zerkleinert als &eKoksstaub&r hinein.',
+      nach=['koksofen'], belohnung=2, haupt=True),
+    Q('kreosot', 'Gehärtete Bretter', ('item', 'tfmg:hardened_planks', 16),
+      'Kreosot aus dem Koksofen per Ausguss auf Bretter füllen. Die gehärteten Bretter sind die Basis für das Stahlgehäuse.',
+      nach=['koksofen', 'create_1/ausguss'], belohnung=1, zeile=-2),
+    Q('erststahl', 'Erster Stahl', ('item', 'immersiveengineering:ingot_steel', 16),
+      'Für den Hochofen brauchst du schon etwas Stahl. Den gibt es z. B. aus dem Ironworks-Mixer (überhitzt), von Immersive Engineering, Mekanism oder Metallurgy. Die Wege zeigt JEI.',
+      nach=['start'], belohnung=2, zeile=-1),
+    Q('gehaeuse', 'Stahlgehäuse', ('item', 'tfmg:steel_casing', 8),
+      'Stahlbarren auf gehärtete Bretter anwenden, wie bei den Create-Gehäusen.',
+      nach=['kreosot', 'stahl'], belohnung=2, zeile=-2),
+    Q('schwergehaeuse', 'Schwermaschinen', ('item', 'tfmg:heavy_machinery_casing', 8),
+      'Ein Stahlblech auf das Stahlgehäuse anwenden. Das Schwermaschinengehäuse steckt in fast allen großen TFMG-Maschinen.',
+      nach=['gehaeuse'], belohnung=2, zeile=-2),
+    Q('blei_nickel', 'Blei und Nickel', [('item', 'immersiveengineering:ingot_lead', 16),
+                                         ('item', 'immersiveengineering:ingot_nickel', 16)],
+      'Blei und Nickel brauchst du als Bleche für den Stahlmechanismus und vieles mehr. Erze dafür findest du unter Tage.',
+      nach=['create_1/messing'], belohnung=1, zeile=-1, spalte=4),
+    Q('schamotte', 'Schamotte', ('item', 'tfmg:fireclay_ball', 16),
+      'Schamotte liegt in großen Gesteinsschichten unter Tage. Abbauen gibt Schamotteklumpen.',
+      nach=['start'], belohnung=1, zeile=1),
+    Q('ziegel', 'Feuerfeste Ziegel', ('item', 'tfmg:fireproof_bricks', 24),
+      'Schamotte im Ofen brennen und zu Ziegelblöcken verarbeiten. Daraus mauerst du den Hochofen.',
+      nach=['schamotte'], belohnung=2, zeile=1),
+    Q('kalk', 'Flussmittel', ('item', 'tfmg:limesand', 32),
+      'Kalkstein im Mahlwerk zerkleinern gibt &eKalksand&r. Der Hochofen braucht ihn als Flussmittel.',
+      nach=['create_1/ende'], belohnung=1, zeile=2, spalte=4),
+    Q('beton', 'Beton', 'tfmg:liquid_concrete_bucket',
+      'Kalksand, Sand, Kies und Wasser ergeben flüssigen Beton. Füll einen Eimer davon ab. Die Rezepte stehen in JEI.',
+      nach=['kalk'], belohnung=1, optional=True, form='heart', zeile=2),
+    Q('abgabe_koks', 'Abgabe: Koks', ('item', 'tfmg:coal_coke', 64),
+      'Deine Koksöfen laufen? Dann her mit einem Stapel.',
+      nach=['koks'], abgabe=True, optional=True, belohnung='loot2', zeile=-1, spalte=3),
+
+    # --- Hochofen und Stahl ---
+    Q('hochofen', 'Hochofen', ['tfmg:blast_furnace_output', 'tfmg:blast_furnace_hatch',
+                               ('item', 'tfmg:blast_furnace_reinforcement', 4)],
+      'Der Ausgang ist das Herz des Hochofens. Darum baust du einen Zylinder aus feuerfesten Ziegeln mit einer Luke für die Heißluft. Verstärkungen außen herum braucht er zum Laufen und machen ihn schneller.\n\n'
+      'Den genauen Aufbau zeigt das Ponder.',
+      nach=['koks', 'ziegel', 'erststahl'], belohnung='loot2', haupt=True, form='hexagon'),
+    Q('guss', 'Gießbecken', 'tfmg:casting_basin',
+      'Fängt flüssigen Stahl auf und gießt daraus Barren. Sorg für einen Abnehmer, der Speicher im Becken ist klein.',
+      nach=['ziegel'], belohnung=1, zeile=1),
+    Q('winderhitzer', 'Heißluft', ['tfmg:blast_stove', 'tfmg:air_intake'],
+      'Drei Winderhitzer übereinander bilden den kleinsten Erhitzer. Unten seitlich kommt Luft vom Lufteinlass rein, von unten Kreosot oder Gichtgas als Brennstoff.\n\n'
+      'Oben kommt Heißluft raus, die in die Luke des Hochofens gepumpt wird. Das Kohlendioxid muss unten seitlich raus.',
+      nach=['hochofen'], belohnung=2, haupt=True),
+    Q('stahl', 'Hochofenstahl', 'tfmg:molten_steel_bucket',
+      'Oben in den Hochofen kommen zerkleinertes Eisenerz (oder Roheisen), Kalksand und Koksstaub. Unten fließt flüssiger Stahl heraus, dazu Schlacke.\n\n'
+      'Füll einen Eimer mit flüssigem Stahl, der Rest geht ins Gießbecken.',
+      nach=['winderhitzer', 'kalk', 'guss'], belohnung='loot2', haupt=True, form='hexagon', gross=True),
+    Q('mechanismus', 'Stahlmechanismus', ('item', 'tfmg:steel_mechanism', 4),
+      'Das Gegenstück zum Präzisionsgetriebe: eine Sequenzielle Montage aus Stahlplatte, Stahlzahnrädern, Blei- und Nickelblech, Schrauben und Schraubendreher.\n\n'
+      'Die genaue Reihenfolge zeigt JEI. Ab hier brauchst du ihn ständig.',
+      nach=['stahl', 'blei_nickel'], belohnung='loot2', haupt=True, form='hexagon'),
+    Q('grossmotor', 'Einfacher Großmotor', 'tfmg:simple_large_engine',
+      'Ein großer Motor aus Gusseisen, Stahlblech und Präzisionsgetriebe, gebaut in der Mechanischen Handwerkseinheit. Er braucht Luft, Treibstoff (z. B. Diesel, Kerosin, Naphtha oder Gichtgas) und einen Auspuff für das Kohlendioxid.',
+      nach=['create_2/praezision', 'stahl'], belohnung=2, zeile=4),
+
+    # --- Öl ---
+    Q('scanner', 'Ölsuche', ['tfmg:surface_scanner', 'tfmg:machine_input'],
+      'Der Oberflächenscanner wird von unten über einen Maschineneingang mit mindestens 64 U/min angetrieben. Oben zeigt er ein 5x5-Raster der Chunks um dich herum: Chunks mit Öl leuchten.',
+      nach=['mechanismus', 'schwergehaeuse'], belohnung=2, haupt=True),
+    Q('pumpenbock', 'Pumpenbock', ['tfmg:pumpjack_base', 'tfmg:pumpjack_crank', 'tfmg:pumpjack_hammer',
+                                   ('item', 'tfmg:industrial_pipe', 16)],
+      'Erst Industrierohre vom Ölvorkommen bis zur Oberfläche legen, darauf kommt der Sockel. Dahinter Hammerhalter, darüber Verbindung, Kopf und Hammerteile (mit Kleber verbinden), dazu Kurbel und Maschineneingang.\n\n'
+      'Klingt kompliziert, das Ponder zeigt es Schritt für Schritt.',
+      nach=['scanner'], belohnung=2, haupt=True),
+    Q('rohoel', 'Rohöl', 'tfmg:crude_oil_bucket',
+      'Der Pumpenbock fördert Rohöl. Füll einen Eimer davon ab.',
+      nach=['pumpenbock'], belohnung=2, haupt=True),
+    Q('destille', 'Destillationsturm', ['tfmg:steel_distillation_controller',
+                                        ('item', 'tfmg:steel_distillation_output', 3)],
+      'Unten Stahltanks, daneben die Steuerung, darüber bis zu 6 Ausgänge mit Industrierohren dazwischen. Eine Hitzequelle unter den Tanks treibt den Turm an.\n\n'
+      'Rohöl kommt in die Steuerung, heraus kommen Schweröl, Diesel, Kerosin, Naphtha, Benzin und Flüssiggas.',
+      nach=['rohoel'], belohnung=2, haupt=True, form='hexagon'),
+    Q('treibstoff', 'Treibstoffe', ['tfmg:diesel_bucket', 'tfmg:gasoline_bucket'],
+      'Je ein Eimer Diesel und Benzin. Damit laufen die Motoren von TFMG.',
+      nach=['destille'], belohnung='loot2', haupt=True),
+    Q('asphalt', 'Straßenbau', 'tfmg:liquid_asphalt_bucket',
+      'Aus Schweröl wird Bitumen, daraus mit Sand und Kies Asphaltmischung und mit Wasser im Mixer flüssiger Asphalt. Die Schritte zeigt JEI.',
+      nach=['destille'], belohnung=1, optional=True, form='heart', zeile=-1),
+
+    # --- Chemie ---
+    Q('bottich', 'Chemiebottich', ['tfmg:steel_chemical_vat', 'tfmg:industrial_mixer', 'tfmg:mixer_blade'],
+      'Der Bottich ist eine Maschine mit Aufsätzen. Mit Industriemixer und eingesetztem Mixerblatt wird er zum Mixer, manche Rezepte brauchen Hitze darunter.\n\n'
+      'Andere Aufsätze machen ihn z. B. zur Zentrifuge oder zur Elektrolyse. Siehe Ponder.',
+      nach=['mechanismus', 'schwergehaeuse'], belohnung=2, zeile=3),
+    Q('aluminium', 'Aluminium', ('item', 'immersiveengineering:ingot_aluminum', 16),
+      'Bauxit aus den Gesteinsschichten unter Tage zerkleinern und im beheizten Bottich zu Aluminium verarbeiten. Immersive Engineering hat einen eigenen Weg, siehe JEI.',
+      nach=['bottich'], belohnung=1, zeile=4),
+    Q('kunststoff', 'Kunststoff', ('item', 'tfmg:plastic_sheet', 16),
+      'Naphtha aus der Destille wird im Bottich zu Ethylen und Propylen. Beheizt wird daraus flüssiger Kunststoff, den du zu Platten gießt. Den genauen Weg zeigt JEI.',
+      nach=['bottich', 'destille'], belohnung=2, zeile=1),
+    Q('gummi', 'Gummi', ('item', 'tfmg:rubber_sheet', 8),
+      'Schwefelstaub und Schweröl im beheizten Bottich ergeben Gummi.',
+      nach=['bottich', 'destille'], belohnung=1, zeile=3),
+    Q('abgabe_kunststoff', 'Abgabe: Kunststoff', ('item', 'tfmg:plastic_sheet', 16),
+      'Die Chemieanlage läuft? Dann her mit den Platten.',
+      nach=['kunststoff'], abgabe=True, optional=True, belohnung='loot3', zeile=3, spalte=13),
+
+    # --- Strom ---
+    Q('silizium', 'Silizium', ('item', 'tfmg:silicon_ingot', 8),
+      'Quarz wird im Hochofen zu flüssigem Silizium, das du zu Barren gießt. Den Weg zeigt JEI.',
+      nach=['stahl'], belohnung=2, zeile=1),
+    Q('magnet', 'Blitzmagnet', 'tfmg:magnet',
+      'Nickel, Silizium und Stahl im beheizten Mixer ergeben &eMagnetlegierung&r. Der Polarisator macht daraus Magnete, braucht aber Strom und schon einen Magneten.\n\n'
+      'Den &eersten&r Magneten bekommst du so: Lass einen Magnetlegierungsbarren fallen und lass einen &eBlitz&r einschlagen, bei Gewitter oder mit einem Dreizack mit Kanalisierung.',
+      nach=['silizium', 'mechanismus'], belohnung=2, zeile=2),
+    Q('wickler', 'Wickelmaschine', ['tfmg:winding_machine', 'tfmg:copper_spool'],
+      'Die Wickelmaschine wickelt Spulen und stellt Windungen bzw. Widerstände ein. Die Kupferspule wickelst du aus Kupferdraht um eine leere Spule.',
+      nach=['mechanismus', 'schwergehaeuse'], belohnung=2, zeile=-2),
+    Q('generator', 'Generator', 'tfmg:generator',
+      'Der Generator entsteht in einer Sequenziellen Montage mit Kondensator, Stahlblech, Kupferspule, Magnet und mehr. Er erzeugt aus Rotation Strom.\n\n'
+      'Wie Spannung, Leistung und Gruppen funktionieren, erklärt das Ponder.',
+      nach=['magnet', 'wickler'], belohnung='loot3', form='hexagon', zeile=-3),
+    Q('stromnetz', 'Stromnetz', [('item', 'tfmg:electric_post', 4), ('item', 'tfmg:cable_connector', 4), 'tfmg:light_bulb'],
+      'Masten und Kabelanschlüsse verbinden deine Geräte. Eine Glühbirne ist der einfachste Verbraucher zum Testen.',
+      nach=['generator'], belohnung=2, zeile=-3),
+    Q('wandler', 'FE-Wandler', 'tfmg:converter',
+      'Wandelt TFMG-Strom in FE für andere Mods um. Mit dem Schraubenschlüssel kehrst du die Richtung um. Die Spannung stellst du im Menü ein.',
+      nach=['stromnetz'], belohnung=2, zeile=-4),
+    Q('e_motor', 'Elektromotor', 'tfmg:electric_motor',
+      'Strom rein, Rotation raus. Auch er entsteht in einer Sequenziellen Montage, die Schritte zeigt JEI.',
+      nach=['generator'], belohnung=2, zeile=-2),
+    Q('polarisator', 'Polarisator', 'tfmg:polarizer',
+      'Mit Strom (2000 W) macht er aus Magnetlegierung Magnete. Ab jetzt brauchst du keine Gewitter mehr.',
+      nach=['stromnetz', 'kunststoff'], belohnung=2, zeile=-3),
+    Q('platine', 'Leiterplatte', ('item', 'tfmg:circuit_board', 4),
+      'Kunststoff, Gold, Säure, Widerstand, Kondensator und Transistor: Die Leiterplatte hat viele Schritte, JEI zeigt sie alle. Für Widerstände brauchst du die Wickelmaschine, für Transistoren Silizium und Aluminium.',
+      nach=['kunststoff', 'wickler', 'silizium', 'aluminium'], belohnung=2, zeile=2),
+
+    # --- Motoren ---
+    Q('motor', 'Verbrennungsmotor', [('item', 'tfmg:regular_engine', 2), ('item', 'tfmg:engine_cylinder', 2)],
+      'Bis zu 5 Motorblöcke in einer Reihe, dann Zylinder und Welle einsetzen (Rechtsklick). Treibstoff rein, Abgas raus, Redstone-Signal zum Starten.\n\n'
+      'Für die Zündkerze im Zylinder brauchst du Aluminium. Welche Treibstoffe ein Zylinder verträgt, steht im Tooltip.',
+      nach=['treibstoff', 'mechanismus', 'aluminium'], belohnung=2, haupt=True),
+
+    Q('ende', 'Motorsteuerung', ['tfmg:engine_controller', 'tfmg:large_engine'],
+      'Der Großmotor läuft mit Diesel, Kerosin, Naphtha oder Gichtgas, braucht Luft und einen Auspuff. Mit der Motorsteuerung regelst du Drehzahl und Richtung: erst die Steuerung, dann den Motor mit einem Getriebe-Item anklicken. Die Tasten stehen in den Steuerungs-Einstellungen.\n\n'
+      'Deine Fabrik ist gewachsen. Glückwunsch!',
+      nach=['motor', 'platine', 'gummi', 'polarisator'], belohnung='loot3', form='star', gross=True, haupt=True),
+])
