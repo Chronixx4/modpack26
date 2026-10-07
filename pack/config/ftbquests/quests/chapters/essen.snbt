@@ -902,6 +902,133 @@
 		}
 		{
 			dependencies: [
+				"52F8EC74625961E6"
+			]
+			id: "7409A789B7D28D25"
+			rewards: [
+				{
+					id: "570850EBC5FBC406"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "762131E9AC168D82"
+					item: {
+						count: 1
+						id: "cookingforblockheads:recipe_book"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 12.0d
+		}
+		{
+			dependencies: [
+				"7409A789B7D28D25"
+			]
+			id: "56E7D090F3DF3F56"
+			rewards: [
+				{
+					id: "534889C0128EDB7D"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "10D93B74AEAE4F05"
+					item: {
+						count: 1
+						id: "cookingforblockheads:cooking_table"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 12.0d
+		}
+		{
+			dependencies: [
+				"56E7D090F3DF3F56"
+			]
+			id: "3E7B8C9835E098F1"
+			rewards: [
+				{
+					id: "1967B5A3B749B9A4"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "1220D8F26F8F2279"
+					item: {
+						count: 1
+						id: "cookingforblockheads:fridge"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 12.0d
+		}
+		{
+			dependencies: [
+				"56E7D090F3DF3F56"
+			]
+			id: "53306CC04399A8A6"
+			rewards: [
+				{
+					id: "766E4DDAE8186AF2"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "57C28B5E0BA7E5C6"
+					item: {
+						count: 1
+						id: "cookingforblockheads:oven"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 13.5d
+		}
+		{
+			dependencies: [
+				"56E7D090F3DF3F56"
+			]
+			id: "12E37EE8060FD6BA"
+			optional: true
+			rewards: [
+				{
+					id: "7A08B9E852C48495"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "7B065331A42736DC"
+					item: {
+						count: 1
+						id: "cookingforblockheads:sink"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 15.0d
+		}
+		{
+			dependencies: [
 				"7F2B7D6DE3B51165"
 				"7031B172ED438FB9"
 			]

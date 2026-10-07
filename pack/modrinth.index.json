@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
   "game": "minecraft",
-  "versionId": "0.9.9",
+  "versionId": "0.9.10",
   "name": "Unser Modpack",
   "files": [
     {
@@ -3843,6 +3843,141 @@
         "https://cdn.modrinth.com/data/c7m1mi73/versions/2C41Q8WX/packetfixer-3.3.1-1.20.5-1.21.X-merged.jar"
       ],
       "fileSize": 46623
+    },
+    {
+      "path": "mods/emi_loot-0.7.9+1.21+neoforge.jar",
+      "hashes": {
+        "sha1": "bd0326eeda721c87a29efd78f9a52f46d572392c",
+        "sha512": "9c67ff502da7a94ef7707c144deb4ec6472f445e99cc8eab30b77f22d886a86b8793338452fe394296f3132ed4d37271d475af184e3a9519ddebdad1a82eecf7"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/qbbO7Jns/versions/QXkODMCT/emi_loot-0.7.9%2B1.21%2Bneoforge.jar"
+      ],
+      "fileSize": 465870
+    },
+    {
+      "path": "mods/easy-villagers-neoforge-1.21.1-1.1.45.jar",
+      "hashes": {
+        "sha1": "fa2561b7710910c1ccc12a012986b1c5c3976e27",
+        "sha512": "911cb0b3add19eb9fae13e6321aeec8c9ebc6f819e21eb9e81599a5fbbfd64f83c8b392b737860e54c6a5215b37e72039d44373e67d87324280ac2c3001041c8"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/Kaov2qgi/versions/vkY28WLb/easy-villagers-neoforge-1.21.1-1.1.45.jar"
+      ],
+      "fileSize": 456631
+    },
+    {
+      "path": "mods/trade-cycling-neoforge-1.21.1-1.0.22.jar",
+      "hashes": {
+        "sha1": "2d3749601a3b6cffbd41ef9f497f8c9e312d8a6e",
+        "sha512": "1a479ca50ce0fb599993c6ea7823c5734a1ae287839882a3e058cd507ccf67d76e87ba35c38eec21a39e0051d7f26ae9a5e287c996d28a2a019cea46f1e8d0a7"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/qpPoAL6m/versions/wHjZ0TaF/trade-cycling-neoforge-1.21.1-1.0.22.jar"
+      ],
+      "fileSize": 86700
+    },
+    {
+      "path": "mods/evilcraft-1.21.1-neoforge-1.2.98.jar",
+      "hashes": {
+        "sha1": "7b9310cb78c649a3c77e5f3e4a597a562a280b04",
+        "sha512": "e3230ba536cc9cb9c68acbd0e2b76d9d770c6bdb29d90bda88d33a2c1fbed6ce2dc6648f6acfe40f32192068a73cfb620fe21252a9c3c5795a1b1a63e7798353"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/3ANq2btA/versions/8vZ8tNKR/evilcraft-1.21.1-neoforge-1.2.98.jar"
+      ],
+      "fileSize": 2850812
+    },
+    {
+      "path": "mods/pipez-neoforge-1.21.1-1.2.31.jar",
+      "hashes": {
+        "sha1": "a5671f7e8d38dfc092ace4091250e8f9e1245e1e",
+        "sha512": "7291230b62104b73b04564d6d39ba18d11134a5713ee79242c7ae8885d07c4efb5f5d0ab75b8ff9aba3119ed8163d0c5488ad603a2db21b92dc35715b723ce5e"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/iRmWy6ga/versions/BPGKb8pi/pipez-neoforge-1.21.1-1.2.31.jar"
+      ],
+      "fileSize": 456599
+    },
+    {
+      "path": "mods/refinedstorage-neoforge-2.0.9.jar",
+      "hashes": {
+        "sha1": "59d8e734ccb6eaab4cdf04093c55872af7a3e23a",
+        "sha512": "b98a938b8af859f1952bfb35fb6db712835a7dead88fa15258ac0f4f06b26b08ebfa49fd9a35b2c81f7a745b3cd4370ced98c242d0fe7473ba019d92da8f6c57"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/KDvYkUg3/versions/lHHiI26k/refinedstorage-neoforge-2.0.9.jar"
+      ],
+      "fileSize": 4360871
+    },
+    {
+      "path": "mods/cookingforblockheads-neoforge-1.21.1-21.1.24.jar",
+      "hashes": {
+        "sha1": "7494e5650d13f178c6b0f21b30345ee70d1f2b13",
+        "sha512": "bec8bb71b9540fd33bd4e5d1e5f151abc03c4fb97f1477f690d222c9710eabed876e5b2380a37bfdbc24649e1f66d8c963f13e6e738a336e9a0fdc88012d8447"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/vJnhuDde/versions/MQCIy6VF/cookingforblockheads-neoforge-1.21.1-21.1.24.jar"
+      ],
+      "fileSize": 1266042
+    },
+    {
+      "path": "mods/lootr-neoforge-1.21.1-1.11.38.127.jar",
+      "hashes": {
+        "sha1": "7a305b581abd90e1a8b7c1bb5eb4511d2653aa58",
+        "sha512": "7496051c1ba98f8801b8eb81773d1baec16166c3d2c5682476bd6f9433f794095099cea609fd5610525edb7c450b1bacd0011a31763e91c77c9a0034c8245ca3"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/EltpO5cN/versions/SPOrIzX8/lootr-neoforge-1.21.1-1.11.38.127.jar"
+      ],
+      "fileSize": 1075929
+    },
+    {
+      "path": "mods/elevatorid-neoforge-1.21.1-1.11.4.jar",
+      "hashes": {
+        "sha1": "87a5504efcd51de55cd4215a103cbfcf717fa022",
+        "sha512": "2b13e5daf0e54d7d004a1fbdcfbd75909f32c83527df727f708106b7d5770b790d35facb2308b2fd63540f40c895ff4c7cc30916bb5e6c4934f06484fbaed16e"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/hi2dSXTu/versions/NKEMiRIu/elevatorid-neoforge-1.21.1-1.11.4.jar"
+      ],
+      "fileSize": 191190
     }
   ],
   "dependencies": {

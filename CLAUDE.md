@@ -31,7 +31,7 @@ Kommunikation mit dem Nutzer: Deutsch, locker, kurz.
   - Modus `linear` (Quests gesperrt bis Vorgaenger fertig); Quests mit Kill/Dimension/Struktur/Biom setzt der Generator auf `flexible`, sonst zaehlen sie erst nach dem Freischalten. Abgabe-Quests (`abgabe=True`) verbrauchen Items. Belohnungen: XP, Items, Loot-Kisten `loot1`-`loot4` (`inhalt/loot.py`).
   - `pack/config/` landet in `overrides/config` (.mrpack) bzw. `config/` (beide ZIPs) und im lokalen Testserver. Der Servertest gibt die Zeile `Questbuch: Loaded ... quests` aus.
 - CurseForge-Jars holt das Skript automatisch aus `%USERPROFILE%\Downloads` (Dateinamen-Muster in `$cfPatterns`).
-- Aktuelle Version: **PACKVER 0.9.9**. Bei jeder Änderung `$PACKVER` hochzählen.
+- Aktuelle Version: **PACKVER 0.9.10**. Bei jeder Änderung `$PACKVER` hochzählen.
 
 ## Mods, die nur auf CurseForge sind (liegen in curseforge-mods\ bzw. Downloads)
 Alle für 1.21.1 NeoForge. Download-URL-Schema: `https://www.curseforge.com/minecraft/mc-mods/<slug>/download/<fileId>`
@@ -48,6 +48,7 @@ Alle für 1.21.1 NeoForge. Download-URL-Schema: `https://www.curseforge.com/mine
 | FTB Backups 2 1.0.28 | ftb-backups-2 | 5501351 |
 | AE2 Network Analyser 2.1.5 | ae2-network-analyser | 7622554 |
 | AllTheModium 3.1.1 | allthemodium | ? |
+| AllTheLeaks 1.1.13 | alltheleaks | ? |
 
 CurseForge blockt Downloads per Skript, auch über die interne `/api/v1`. Diese Dateien gehen nur über den Browser oder per Hand. Das Pack darf deshalb nur privat geteilt werden und nicht öffentlich hochgeladen werden, wegen der Lizenzen der Mods.
 
@@ -84,14 +85,14 @@ CurseForge blockt Downloads per Skript, auch über die interne `/api/v1`. Diese 
 - 0.9.7: Questbuch mit 12 Kapiteln und 233 Quests (Willkommen, Create, Ars Nouveau, Iron's Spells, AE2, Mekanism, Samen und Bienen, Draconic, Dimensionen, Bosse, Apotheosis, Energie und Technik). Alle IDs gegen die echte Registry geprueft, Servertest OK (`Loaded 12 chapters, 233 quests`). Aussehen im Spiel noch nicht geprueft.
 - 0.9.8: Questbuch 2.0: 6 Gruppen, 33 Kapitel, 1178 Quests, 4 Loot-Kisten-Stufen. Fix fuer "Unnamed"/falsche Reihenfolge (63-Bit-IDs). Reihenfolge gegen Rezepte geprueft, Vorschaubilder pro Kapitel.
 - 0.9.9: Performance: FastSuite, FastFurnace, FastWorkbench, Packet Fixer, dazu nur fuer den Client BadOptimizations, Dynamic FPS und More Culling. Server-`user_jvm_args.txt` mit Xms=Xmx=12G und Aikar-G1-Flags (der Servertest ueberschreibt die Datei mit wenig RAM, die Flags testet er also nicht). `simulation-distance` 6. Im Index nachgetragen, ohne kompletten Neu-Build (in der Cloud gibt's kein pwsh), andere Mods also unveraendert. Bewusst nicht aufgenommen: C2ME und ScalableLux (Alpha), Noisium (veraltet), AllTheLeaks (nur CF), ModernFix `dynamic_resources` (ungetestet).
+- 0.9.10: Lootr, EMI Loot, Easy Villagers, Trade Cycling, Elevator Mod, Cooking for Blockheads, Pipez, Refined Storage, EvilCraft, dazu AllTheLeaks (CF). Questbuch: neue Kapitel Refined Storage und EvilCraft, Ergaenzungen in Willkommen (EMI Loot, Lootr), Erste Schritte (Aufzug), Lager (Pipez), Essen (Cooking for Blockheads), Strukturen (Dorfbewohner); 35 Kapitel, 1231 Quests. `ids.json`/`rezepte.json` dafuer aus den Jars ergaenzt (kein Servertest).
 
 ## Offene Aufgaben
-1. **0.9.9 im Client testen:** kurz in die Welt, auf Grafikfehler achten (More Culling, BadOptimizations neu).
+1. **0.9.10 im Client testen:** kurz in die Welt, auf Grafikfehler achten (More Culling, BadOptimizations seit 0.9.9).
 2. **Questbuch im Spiel ansehen** (seit 0.9.8): Texte, Reihenfolge, Bilder. Aenderungen in `pack/quests/inhalt/*.py` machen (nicht im Editiermodus, sonst ueberschreibt der naechste Generatorlauf sie).
 3. **Server auf dem Heimserver** einrichten: ZimaOS, Marvin hat dort schon ein eigenes Docker-Panel fuer mehrere Minecraft-Server (keine docker-compose noetig). Dafuer das `-Server.zip` aus dem Release nehmen (12 GB RAM fuer Minecraft, Container mind. 14 GB, Java 21, Ports 25565/TCP und 24454/UDP fuer Voice Chat), danach mit Chunky vorgenerieren.
 4. Erst danach die **richtige Welt** starten, damit Strukturen und Biome ueberall generiert werden.
 5. Optional: Shader wieder einbauen, sobald es eine Iris-Version gibt, die zu Sodium 0.8 passt.
-6. Optional: AllTheLeaks (Speicherlecks, nur auf CurseForge, Jar per Hand nach `curseforge-mods\`).
 
 ## Mod-Bauplan (Übersicht)
 Artifact „Modpack-Bauplan 1.21.1“ auf claude.ai (Checkliste mit 143 Mods nach Kategorien). Die maßgebliche Liste ist aber `$ModList` in `build-und-test.ps1`.

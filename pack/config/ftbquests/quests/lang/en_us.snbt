@@ -43,6 +43,10 @@
 		"Fusion, Energiekerne und Chaos"
 	]
 	chapter.1D85E3583FB3C59B.title: "&4Draconic Evolution"
+	chapter.1DA43786BC688C72.chapter_subtitle: [
+		"Das andere Lagersystem: einfacher Einstieg, alles in einer Konsole"
+	]
+	chapter.1DA43786BC688C72.title: "&3Refined Storage"
 	chapter.1FBDA45DC9FEA878.chapter_subtitle: [
 		"Verbotene Schmiedekunst und Hexenhandwerk"
 	]
@@ -83,6 +87,10 @@
 		"Dampf, Präzision, Contraptions, Züge und Logistik"
 	]
 	chapter.51EF0D7FD9548C08.title: "&6Create 2: Fortgeschritten"
+	chapter.5393B6FB27658001.chapter_subtitle: [
+		"Dunkle Magie mit Blut, Geistern und Wetter"
+	]
+	chapter.5393B6FB27658001.title: "&4EvilCraft"
 	chapter.54687F941142C2AA.chapter_subtitle: [
 		"Dungeons, Dörfer und Ruinen"
 	]
@@ -300,6 +308,10 @@
 		"Eine stärkere Version des Dominion-Stabs. Was sie zusätzlich kann, zeigt der Tooltip."
 	]
 	quest.118F073D484295F0.title: "Besserer Dominion-Stab"
+	quest.118FA2A77F138F0F.quest_desc: [
+		"Ein Tank für Flüssigkeiten, vor allem für Blut."
+	]
+	quest.118FA2A77F138F0F.title: "Dunkler Tank"
 	quest.119858F55EEFAEDC.quest_desc: [
 		"Die &eRaffinerie&r trennt Rohöl in Diesel, Kerosin, Benzin und LPG. Je mehr Ausgabe-Blöcke du stapelst, desto mehr Sorten kommen raus."
 		""
@@ -366,6 +378,10 @@
 		"Baue einen Portalrahmen aus Steinziegeln (Form wie beim Nether) und aktiviere ihn mit dem Katalysator.\n\nEine dunkle Höhlenwelt mit eigenen Erzen. Fackeln nicht vergessen!"
 	]
 	quest.1254397AB2C01693.title: "Undergarden"
+	quest.125468E6B5D8698F.quest_desc: [
+		"Eine große Maschine, die das Wetter ändern kann. Wie man sie bekommt und bedient, steht im Handbuch."
+	]
+	quest.125468E6B5D8698F.title: "Umgebungsakkumulator"
 	quest.125B109315F7AC3E.quest_desc: [
 		"Riesige Mammutbäume und der bunte, magische Hain."
 	]
@@ -384,6 +400,10 @@
 		"Die Injektoren brauchen Strom. Jedes Rezept braucht eine Mindeststufe der Injektoren (in EMI angezeigt)."
 	]
 	quest.12CC94D9B77E7152.title: "Fusion Crafting"
+	quest.12E37EE8060FD6BA.quest_desc: [
+		"Ein Spülbecken liefert der Küche Wasser."
+	]
+	quest.12E37EE8060FD6BA.title: "Spülbecken"
 	quest.12F2DE19074140D3.quest_desc: [
 		"Ein kleines Luftwesen aus Ars Elemental."
 	]
@@ -400,6 +420,12 @@
 		"Terminit plus Netheritbarren: Aeternium ist eines der stärksten Materialien aus BetterEnd."
 	]
 	quest.1320A74A7EC0FE16.title: "Aeternium"
+	quest.132578639807F468.quest_desc: [
+		"Das Herz des Netzwerks. Er braucht &eStrom&r (Forge Energy), z. B. aus Powah oder Mekanism."
+		""
+		"Pro Netzwerk gibt es genau einen Controller."
+	]
+	quest.132578639807F468.title: "Der Controller"
 	quest.136074C21A4820F9.quest_desc: [
 		"Simply Swords hat auch einzigartige Waffen mit Spezialfähigkeiten, die nur in Truhen liegen. Die Glutklinge ist eine davon."
 	]
@@ -512,6 +538,10 @@
 		"Gib 64 Draconium-Barren ab und hol dir eine Belohnung."
 	]
 	quest.14D31A5B54A54E79.title: "Abgabe: Draconium"
+	quest.14DCB9FC28A7FF30.quest_desc: [
+		"Rachegeister sind nachts unterwegs und lassen sich nur schwer treffen. Besieg einen."
+	]
+	quest.14DCB9FC28A7FF30.title: "Rachegeist"
 	quest.14E3A47EF66B58C0.quest_desc: [
 		"Zum Abschluss noch ein kleines Opfer: vier Nethersterne."
 	]
@@ -536,6 +566,10 @@
 		"Dunkelstahl, Endstein und Obsidian. Die stärkste Legierung von Ender IO."
 	]
 	quest.1527F2E42F60C030.title: "Endstahl"
+	quest.152C900C9E51C661.quest_desc: [
+		"Trade Cycling: Solange du mit einem Dorfbewohner noch nicht gehandelt hast, kannst du im Handelsfenster per Knopf neue Angebote würfeln."
+	]
+	quest.152C900C9E51C661.title: "Handel neu würfeln"
 	quest.153AE0F15E49D275.quest_desc: [
 		"MEGA Cells braucht Himmelsstahl und Himmelsbronze. Rezepte siehst du in EMI."
 	]
@@ -552,6 +586,10 @@
 		"Eisdrachen findest du in verschneiten Gebieten. Ihr Atem friert dich ein."
 	]
 	quest.155D6EE638883874.title: "Eisdrache"
+	quest.1567EBCE6A3D837E.quest_desc: [
+		"Steck einen Dorfbewohner hinein und handle mit ihm, ganz ohne Gehege. Was er dafür noch braucht, zeigt dir EMI."
+	]
+	quest.1567EBCE6A3D837E.title: "Händlerblock"
 	quest.157BEEC60F99312B.quest_desc: [
 		"Die &eAtomschmiede&r ist ein Multiblock, der vom Enderischen Laser mit Energie versorgt wird. Sie stellt die stärksten Materialien her."
 	]
@@ -882,6 +920,10 @@
 		"Pulsierende Legierung ist Eisen plus Enderperle. Diamant mit pulsierenden Klumpen und Smaragd mit strahlenden Klumpen ergeben die Kristalle für die besten Maschinen."
 	]
 	quest.193D98269F5C23E5.title: "Kristalle"
+	quest.19431669CCDA8CE2.quest_desc: [
+		"Das Handbuch von EvilCraft. Hier steht genau, wie die Maschinen und Rituale funktionieren. Das Rezept zeigt dir EMI."
+	]
+	quest.19431669CCDA8CE2.title: "Origins of Darkness"
 	quest.19502274DB449EF9.quest_desc: [
 		"Manche Truhen in Höhlen und Strukturen sind Mimics. Sie beißen zu, wenn du sie öffnest. Besiegte Mimics lassen Artefakte fallen."
 	]
@@ -1074,6 +1116,10 @@
 		"Wandelt Mob-Drops in Seelen um und füllt damit Seelenurnen."
 	]
 	quest.1B4D5AB2FB2387BD.title: "Seelenextraktor"
+	quest.1B58A70D208E741B.quest_desc: [
+		"Wie der Basisprozessor, nur mit Gold."
+	]
+	quest.1B58A70D208E741B.title: "Verbesserter Prozessor"
 	quest.1B72E9BA80BD5B97.quest_desc: [
 		"In jedem Ozeanmonument leben drei Große Wächter. Sie geben dir Abbaulähmung, bis alle besiegt sind.\n\nMilch hebt den Effekt kurz auf, Wasseratmung hilft beim Tauchen."
 	]
@@ -1094,6 +1140,10 @@
 		"Spawnt Mobs mit Spawn-Flüssigkeit und Rotation. Der Beutesammler holt die Drops direkt ab. Details in EMI."
 	]
 	quest.1B836FC682280E43.title: "Mechanischer Spawner"
+	quest.1B965833FC5D3E92.quest_desc: [
+		"Gehärtete Blutscherben brauchst du für den Blutinfusionskern. Wie man sie bekommt, steht im Handbuch und in EMI."
+	]
+	quest.1B965833FC5D3E92.title: "Gehärtetes Blut"
 	quest.1B9975F32697473A.quest_desc: [
 		"Create Deco, Design n' Decor und Interiors: Laufstege, Kessel-Optik, Sitze und vieles mehr."
 	]
@@ -1114,6 +1164,10 @@
 		"Ab hier geht es in Millionen: 1M, 4M, 16M, 64M und 256M. Damit ist Speicherplatz kein Thema mehr."
 	]
 	quest.1BC417CD47C56209.title: "MEGA-Zellen"
+	quest.1BE545D34AEED331.quest_desc: [
+		"Gib 64 Netherquarz ab und bekomm dafür eine seltene Kiste."
+	]
+	quest.1BE545D34AEED331.title: "Abgabe: Netherquarz"
 	quest.1BF0DD5A6EEC8892.quest_desc: [
 		"Der Speicherbus bindet eine Kiste, Schublade oder Tonne ins Netz ein. Die Schnittstelle hält Items vorrätig und reicht sie heraus."
 	]
@@ -1502,6 +1556,12 @@
 		"Klick auf das Häkchen, um die Quest abzuschließen, und hol dir unten rechts die Belohnung ab."
 	]
 	quest.308BE00A58EBCB9A.title: "Willkommen!"
+	quest.30B648C5D10F9569.quest_desc: [
+		"Refined Storage ist ein Lagernetzwerk wie AE2, nur einfacher: keine Kanäle, und jedes Gerät hängt einfach am Kabel."
+		""
+		"Alles beginnt mit &eQuarzangereichertem Eisen&r aus Eisen und Netherquarz."
+	]
+	quest.30B648C5D10F9569.title: "Quarzeisen"
 	quest.30DC01E8174B4862.quest_desc: [
 		"Mithril, Arkaner Barren und Glut-Essenz. Mit einer Rune wird daraus eine Upgrade-Kugel für eine Schule."
 	]
@@ -1806,6 +1866,10 @@
 		"Für den eigenen brauchst du einen Warpstein (Smaragd, Amethyst, Enderperle)."
 	]
 	quest.34DA89287D13C44F.title: "Wegsteine"
+	quest.34F359AA5F1F314F.quest_desc: [
+		"Bindet eine normale Truhe, Schublade oder Sophisticated-Truhe ins Netzwerk ein."
+	]
+	quest.34F359AA5F1F314F.title: "Externer Speicher"
 	quest.3502E25F32F9B2BE.quest_desc: [
 		"Der wichtigste Staub der Mod. Rechtsklick damit auf die richtigen Strukturen erschafft Hephaistos-Schmiede, Clibano und Obelisken. Damit lädst du sogar Creeper auf."
 	]
@@ -2016,6 +2080,10 @@
 		"Rote Wüsten und Canyons. Auf dem Mars gibt es &eOstrum&r."
 	]
 	quest.37AFEE843D6FE3F3.title: "Der Mars"
+	quest.37B2A11498141778.quest_desc: [
+		"Bau den Rohprozessor und schmelz ihn im Ofen. So entstehen alle drei Prozessoren."
+	]
+	quest.37B2A11498141778.title: "Basisprozessor"
 	quest.37C1A1A841087814.quest_desc: [
 		"Silizium bekommst du aus Certus-Staub im Ofen. Mit dem Siliziumdruck wird daraus Gedrucktes Silizium für jeden Prozessor."
 	]
@@ -2044,6 +2112,10 @@
 		"Das erste Rezept der &eSequenziellen Montage&r: Goldblech auf ein Band, dann im Wechsel Zahnrad, großes Zahnrad und Eisenklumpen per Deployer, mehrmals hintereinander.\n\nManchmal kommt Schrott heraus. Mehrere Deployer und eine Presse am Band machen das automatisch."
 	]
 	quest.3801F5F81ADF81F8.title: "Präzisionsgetriebe"
+	quest.380E29A7F20A7A5A.quest_desc: [
+		"Der Kern steckt in fast allen Maschinen von EvilCraft."
+	]
+	quest.380E29A7F20A7A5A.title: "Blutinfusionskern"
 	quest.3814FBC42F865961.quest_desc: [
 		"Jede Stufe bringt mehr Platz und mehr Upgrade-Slots. Kupfer ist die erste."
 	]
@@ -2056,6 +2128,10 @@
 		"Ein Motor aus New Age, der Strom in Rotation umwandelt. Er braucht Magnetit, wie du das bekommst, zeigt EMI."
 	]
 	quest.3824C8B23FCA0AE4.title: "New-Age-Motor"
+	quest.382806C45C0F4EE2.quest_desc: [
+		"Eine tragbare Werkbank mit eigenem Zwischenspeicher."
+	]
+	quest.382806C45C0F4EE2.title: "Erhabener Handwerker"
 	quest.383F779B96C6BDF7.quest_desc: [
 		"Hebt einen Edelstein auf die nächste Reinheit, ohne Schleiftisch."
 	]
@@ -2098,6 +2174,10 @@
 		"&eSprung&r und &eSchleudern&r werfen dich durch die Luft, &eBlinzeln&r teleportiert dich ein Stück nach vorn."
 	]
 	quest.38C05F5E95F7B892.title: "Bewegungs-Glyphen"
+	quest.38EFFD4AB9482699.quest_desc: [
+		"Ein Anhänger, der mit Blut schlechte Effekte von dir nimmt."
+	]
+	quest.38EFFD4AB9482699.title: "Belebender Anhänger"
 	quest.3901F6F1D374C27D.quest_desc: [
 		"Die Abfüllanlage füllt Flüssigkeiten in Items, zum Beispiel Eimer oder Kanister."
 	]
@@ -2150,6 +2230,10 @@
 		"Die Assembler-Matrix ist ein Multiblock, der viele Assembler und Provider in einem ersetzt. Rahmen außen, Kerne innen, Aufbau steht im Handbuch."
 	]
 	quest.3986167DB4E1381E.title: "Assembler-Matrix"
+	quest.398F7E3ED2DE48E1.quest_desc: [
+		"Größere Speicherkerne baust du aus mehreren kleineren. Die Rezepte zeigt dir EMI."
+	]
+	quest.398F7E3ED2DE48E1.title: "Mehr Platz"
 	quest.39B72742553972A7.quest_desc: [
 		"Der Elektrolyseur spaltet Wasser in Wasserstoff und Sauerstoff. Beides brauchst du noch oft."
 	]
@@ -2182,10 +2266,18 @@
 		"&cWarnung: Wenn er überhitzt oder das Feld zusammenbricht, explodiert er und reißt ein riesiges Loch. Weit weg von der Basis bauen und vorher gut einlesen!"
 	]
 	quest.3A0CDE4A0211BF92.title: "Draconic-Reaktor"
+	quest.3A1B4B9BD6C7648F.quest_desc: [
+		"Für Flüssigkeiten und Strom gibt es eigene Rohre. Das Universalrohr kann alles auf einmal."
+	]
+	quest.3A1B4B9BD6C7648F.title: "Mehr Rohre"
 	quest.3A2A0EE84EA56DEB.quest_desc: [
 		"Die &eLadestation&r füllt Luft in Werkzeuge, Rüstung und Drohnen, die du hineinlegst."
 	]
 	quest.3A2A0EE84EA56DEB.title: "Ladestation"
+	quest.3A2B8565006580F9.quest_desc: [
+		"Die Blut-Variante des Akkumulators. Wer den baut, beherrscht EvilCraft."
+	]
+	quest.3A2B8565006580F9.title: "Blutiger Akkumulator"
 	quest.3A3A6B96E167B587.quest_desc: [
 		"AE2 Wireless Terminals fasst mehrere drahtlose Konsolen in einer zusammen. Kombiniere sie in der Werkbank."
 	]
@@ -2202,6 +2294,12 @@
 		"Zyklopen wohnen in Höhlen an der Küste, oft mit einer Schafherde. Er lässt sein &eZyklopenauge&r fallen."
 	]
 	quest.3A48E312FE17C7BE.title: "Zyklop"
+	quest.3A4D976F64301877.quest_desc: [
+		"Pipez: einfache Rohre für Items, Flüssigkeiten, Energie und Gas. Das Item-Rohr transportiert Items von einer Truhe oder Maschine zur nächsten."
+		""
+		"In den Einstellungen des Rohrs legst du fest, wo Items herausgezogen werden. Mit dem Schraubenschlüssel trennst und verbindest du Anschlüsse."
+	]
+	quest.3A4D976F64301877.title: "Rohre"
 	quest.3A68281AB0E6EA83.quest_desc: [
 		"Die Werkbank ist der Arbeitsplatz des Bogenmacher-Dorfbewohners. Bögen und Rüstung kannst du aber auch selbst bauen."
 	]
@@ -2214,6 +2312,10 @@
 		"Rohre leiten Flüssigkeiten, die Pumpe bewegt sie. Die Pumprichtung folgt der Drehrichtung."
 	]
 	quest.3A7B3B34032165C3.title: "Rohre und Pumpe"
+	quest.3A81F4D9C29393AA.quest_desc: [
+		"Netherquarz im Ofen schmelzen ergibt Silizium. Das steckt in jedem Prozessor."
+	]
+	quest.3A81F4D9C29393AA.title: "Silizium"
 	quest.3A96BD3C01F19278.quest_desc: [
 		"Die Grundlage für alle Truhen-Upgrades."
 	]
@@ -2408,6 +2510,10 @@
 		"Aus der Samenbasis wird jeder Ressourcen-Samen."
 	]
 	quest.3CECD1A4E2A7104D.title: "Prosperity-Samenbasis"
+	quest.3CF8E201BC98D6EE.quest_desc: [
+		"Eine Konsole mit eingebauter Werkbank. Zutaten werden direkt aus dem Netzwerk genommen."
+	]
+	quest.3CF8E201BC98D6EE.title: "Herstellungskonsole"
 	quest.3CFB69ACE763C87C.quest_desc: [
 		"Die Railgun schießt Stäbe mit Strom. Laut, teuer und sehr stark."
 	]
@@ -2490,6 +2596,10 @@
 		"Der neue Prozessor von MEGA Cells. Für die Presse brauchst du eine Singularität."
 	]
 	quest.3DF368E0579A9494.title: "Akkumulationsprozessor"
+	quest.3DF618E84FA965AE.quest_desc: [
+		"Die höchste Stufe, mit Diamant. Die brauchst du für Controller und Laufwerk."
+	]
+	quest.3DF618E84FA965AE.title: "Fortschrittlicher Prozessor"
 	quest.3DFDB1DEA868495B.quest_desc: [
 		"Du hast alles erreicht, was dieses Pack zu bieten hat. Glückwunsch!\n\nZeit für eine neue Welt? Oder einfach eine riesige Basis bauen."
 	]
@@ -2518,6 +2628,10 @@
 		"Unreine weiße Kreide machst du aus Otherstone- und Anderswelt-Holz-Staub. Im Geisterfeuer wird sie rein. Mit Kreide zeichnest du die Pentakel auf den Boden."
 	]
 	quest.3E48A0A8DF2827F0.title: "Weiße Kreide"
+	quest.3E4D42A8A5946FB6.quest_desc: [
+		"Damit sammelst du Blut. Wie genau, steht im Handbuch."
+	]
+	quest.3E4D42A8A5946FB6.title: "Blutextraktor"
 	quest.3E54C0C2B080EB27.quest_desc: [
 		"Das schwerere Set für Bogenschützen. Es braucht Netheritschrott."
 	]
@@ -2530,6 +2644,10 @@
 		"Der Djinni-Miner gräbt schneller und findet nur Erze statt Steinen."
 	]
 	quest.3E78CE6AF6D12441.title: "Erz-Djinni"
+	quest.3E7B8C9835E098F1.quest_desc: [
+		"Lager für Zutaten. Was darin liegt, kann der Kochtisch direkt benutzen."
+	]
+	quest.3E7B8C9835E098F1.title: "Kühlschrank"
 	quest.3E7DA96A7C831B00.quest_desc: [
 		"Robustes Blech auf einen Messingrahmen. Aus diesem Rahmen baust du alles rund um Züge."
 	]
@@ -2808,6 +2926,10 @@
 		"Bonus-Biom: eine Höhle aus Süßigkeiten. Lecker, aber nicht ungefährlich."
 	]
 	quest.522B1AB052C3313E.title: "Süße Höhle"
+	quest.522B7A7AE31C231F.quest_desc: [
+		"Schleim und Faden ergeben das Bindemittel für die Prozessoren."
+	]
+	quest.522B7A7AE31C231F.title: "Prozessor-Rohmaterial"
 	quest.52330B932957B85D.quest_desc: [
 		"Die nächste Stufe."
 	]
@@ -2874,6 +2996,10 @@
 		"Mit Stufen-Upgrades bekommt der Reiserucksack mehr Platz und größere Tanks."
 	]
 	quest.530370D2275B9F1A.title: "Reiserucksack aufwerten"
+	quest.53306CC04399A8A6.quest_desc: [
+		"Ein Ofen für die Küche. Der Kochtisch kann damit auch Gerichte zubereiten, die gebraten werden müssen."
+	]
+	quest.53306CC04399A8A6.title: "Küchenofen"
 	quest.5330D1AF3B7B2CB2.quest_desc: [
 		"Arkanes Kristallerz findest du tief unter der Erde. Der Kristall ist der Grundstoff für fast alles in Forbidden & Arcanus."
 	]
@@ -3020,6 +3146,10 @@
 		"Inferium-Samen wachsen zu mehr Inferium-Essenz. Je besser das Ackerland darunter, desto mehr Essenz pro Ernte."
 	]
 	quest.553AAAE0FFEDA20E.title: "Inferium-Samen"
+	quest.55487E634C671C0C.quest_desc: [
+		"Easy Villagers: Dorfbewohner lassen sich als Item mitnehmen. Wie das geht, steht in EMI. So ziehst du mit ihnen um, ohne sie mühsam zu führen."
+	]
+	quest.55487E634C671C0C.title: "Dorfbewohner einpacken"
 	quest.555069810060F442.quest_desc: [
 		"Simple Voice Chat: Mit &eV&r öffnest du das Menü, dort stellst du Mikrofon und Lautstärke ein. Standardmäßig sprichst du mit gedrückter Push-to-Talk-Taste (Feststelltaste)."
 		""
@@ -3140,6 +3270,12 @@
 		"In der Yetihöhle im Schneewald. Er wirft Eisbrocken, also immer in Bewegung bleiben."
 	]
 	quest.56D9BA6A550DD1BB.title: "Der Alpha-Yeti"
+	quest.56E7D090F3DF3F56.quest_desc: [
+		"Der Kochtisch ist das Herz der Küche. Er zeigt alle Gerichte, die du mit den Zutaten aus deiner ganzen Küche kochen kannst."
+		""
+		"Zur Küche gehört alles, was direkt oder über Küchentheken und -schränke an den Tisch grenzt."
+	]
+	quest.56E7D090F3DF3F56.title: "Kochtisch"
 	quest.570967F49F4AF69A.quest_desc: [
 		"Pyromant, Kryomant und Elektromant: Jede Robe stärkt ihre Schule."
 	]
@@ -3208,6 +3344,10 @@
 		"Seven Seas bringt Schiffe aufs Meer. Die kleine Yacht ist das harmloseste davon."
 	]
 	quest.58028C82EE9FC2C8.title: "Kleine Yacht"
+	quest.58170E5B009A81BF.quest_desc: [
+		"Der Importeur zieht Items aus Maschinen ins Netzwerk, der Exporteur schiebt sie hinein. So automatisierst du Öfen und Maschinen."
+	]
+	quest.58170E5B009A81BF.title: "Importeur und Exporteur"
 	quest.5824B1C996578B1A.quest_desc: [
 		"Zünde in der Oberwelt ein Feuer auf Grundgestein oder Tiefenschiefer an. Wenn es ausgeht, liegen manchmal Körner der Ewigkeit herum."
 	]
@@ -3286,6 +3426,10 @@
 		"Ganz oben im Dunklen Turm. Der Kampf hat eine eigene Mechanik, ein Blick ins Wiki lohnt sich."
 	]
 	quest.593C01348F1C1D75.title: "Der Ur-Ghast"
+	quest.596773173107569C.quest_desc: [
+		"Über die Konsole siehst du alles im Netzwerk, kannst suchen, einlagern und rausnehmen."
+	]
+	quest.596773173107569C.title: "Konsole"
 	quest.599733B31D2BA79D.quest_desc: [
 		"Der verstärkte Reaktor kann mit Wasser gekühlt werden und macht dann Dampf statt Strom."
 	]
@@ -3348,6 +3492,10 @@
 		"Mit Redstone steuern: Die Kupplung trennt die Verbindung, die Gangschaltung kehrt die Drehrichtung um."
 	]
 	quest.5A4F4F3EB7830CEF.title: "Kupplung und Gangschaltung"
+	quest.5A511C1485C3CBAF.quest_desc: [
+		"Eine Truhe, die Werkzeuge darin mit Blut repariert."
+	]
+	quest.5A511C1485C3CBAF.title: "Blutkiste"
 	quest.5A5741A4439AE871.quest_desc: [
 		"Aus Chaos-Fragmenten, Draconic-Kernen und Erwachtem Draconium entsteht der &eChaotische Kern&r."
 	]
@@ -3400,6 +3548,12 @@
 		"Löscht alles, was nicht mehr in die volle Schublade passt. Ideal für Farmen, die zu viel liefern."
 	]
 	quest.5AF5813950C905F2.title: "Leerenerweiterung"
+	quest.5B0132E6BB384A49.quest_desc: [
+		"Der Blutinfusor tränkt Items mit Blut und verwandelt sie dabei. Er ist die wichtigste Maschine der Mod."
+		""
+		"Welche Items du darin herstellen kannst, zeigt dir EMI."
+	]
+	quest.5B0132E6BB384A49.title: "Blutinfusor"
 	quest.5B118AEDF8570D24.quest_desc: [
 		"Primitives Gehäuse, Kunststoff, Netherziegel, Eisen und ein Goldzahnrad, dazu Latex im Auflösungsapparat."
 	]
@@ -3432,6 +3586,12 @@
 		"Wandelt Rotation in Strom (FE) um. So betreibst du Strom-Maschinen anderer Mods mit Create-Kraft."
 	]
 	quest.5B5F6093BC635BCF.title: "Lichtmaschine"
+	quest.5B817B815DE814DB.quest_desc: [
+		"In der Rezeptkonsole schreibst du Rezepte auf leere Muster. Steck sie in einen Autohersteller, dann stellt das Netzwerk die Items auf Bestellung her."
+		""
+		"Bestellen geht in der Konsole: Item suchen und anklicken."
+	]
+	quest.5B817B815DE814DB.title: "Autocrafting"
 	quest.5B87BC0CBB0278E5.quest_desc: [
 		"Der Kessel erhitzt Wasser mit Strom oder heißem Natrium zu Dampf für die Turbine."
 	]
@@ -3556,6 +3716,10 @@
 		"Zerkleinertes Erz schmilzt zu einem Barren. Gewaschen gibt es zusätzlich Klumpen dazu."
 	]
 	quest.5D31489D4764E843.title: "Zerkleinertes Erz"
+	quest.5D3208F6F78195A6.quest_desc: [
+		"Im Geisterofen werden gefangene Geister verarbeitet und lassen dabei die Beute ihres Mobs fallen."
+	]
+	quest.5D3208F6F78195A6.title: "Geisterofen"
 	quest.5D32961FEE5248B0.quest_desc: [
 		"Kondensatoren speichern Strom. LV braucht Bleibleche, MV Elektrum und Nickel."
 	]
@@ -3936,10 +4100,24 @@
 		"&eEnderische Verbindung&r bekommst du u. a. aus dem Pulverizer, z. B. aus Enderperlen. Du brauchst sie für den Laser."
 	]
 	quest.71DC93DC79FC8AF2.title: "Enderische Verbindung"
+	quest.71DD9257BE56BF00.quest_desc: [
+		"EMI Loot zeigt in EMI auch Beute: Drück &eR&r auf ein Item und du siehst, welche Mobs, Blöcke und Truhen es fallen lassen."
+	]
+	quest.71DD9257BE56BF00.title: "Was droppt wo?"
+	quest.71E141B611AE7AEE.quest_desc: [
+		"Die größte normale Speicherzelle. Damit ist dein Lager für lange Zeit groß genug."
+	]
+	quest.71E141B611AE7AEE.title: "Riesenlager"
 	quest.71E3B0DD4DE8E73D.quest_desc: [
 		"Aus Gehäuse und Glas baust du die Außenhülle des Reaktors. Die Größe bestimmst du selbst."
 	]
 	quest.71E3B0DD4DE8E73D.title: "Reaktorgehäuse"
+	quest.7200200FB52FD53F.quest_desc: [
+		"Dank Lootr hat jede Truhe in Strukturen für jeden Spieler eigene Beute. Ihr müsst euch also nicht beeilen, wer zuerst plündert."
+		""
+		"Zum Abbauen einer Lootr-Truhe musst du schleichen."
+	]
+	quest.7200200FB52FD53F.title: "Eigene Beute"
 	quest.722CEFB96B22D92B.quest_desc: [
 		"Roben für Heilig, Evokation und Natur."
 	]
@@ -4014,6 +4192,10 @@
 		"Dein Team darf in deinen Chunks bauen, andere nicht."
 	]
 	quest.731D6E87C7D21E20.title: "Grundstück sichern"
+	quest.7355898D68B1F468.quest_desc: [
+		"Das Gehäuse für die großen Blöcke im Netzwerk."
+	]
+	quest.7355898D68B1F468.title: "Maschinengehäuse"
 	quest.735A6F339644AF18.quest_desc: [
 		"Das Zauberbuch des Erzmagiers hat Platz für die stärksten Glyphen von Ars Nouveau."
 	]
@@ -4042,6 +4224,12 @@
 		"Immersive Armors hat viele Sets mit eigenen Effekten. Die schwere Rüstung schützt stark, macht dich aber langsam."
 	]
 	quest.73905C48D054EEBF.title: "Schwere Rüstung"
+	quest.7390A586441BA250.quest_desc: [
+		"Elevator Mod: Stell zwei Aufzug-Blöcke genau übereinander, mit beliebig viel Platz dazwischen."
+		""
+		"Auf dem Block &eSpringen&r fährt nach oben, &eSchleichen&r nach unten. Für den Aufzug brauchst du Wolle und eine Enderperle."
+	]
+	quest.7390A586441BA250.title: "Aufzug"
 	quest.739357D0EDBAD9B9.quest_desc: [
 		"Kupfer auf entrindetes Holz. Grundlage für Ausguss und Abfluss."
 	]
@@ -4094,6 +4282,10 @@
 		"Fischfilet und Seegras ergeben Sushi."
 	]
 	quest.74098C5DBE34760E.title: "Sushi"
+	quest.7409A789B7D28D25.quest_desc: [
+		"Cooking for Blockheads: Das Kochbuch zeigt dir alle Gerichte, die du mit den Zutaten in deinem Inventar kochen kannst."
+	]
+	quest.7409A789B7D28D25.title: "Kochbuch"
 	quest.741229F943E627A1.quest_desc: [
 		"Zwei Mahlwerkräder nebeneinander, gegenläufig gedreht: Erze werden zerkleinert, mit mehr Bonus als beim Mahlstein.\n\nDamit sind die Grundlagen geschafft. Weiter geht es mit Dampf, Zügen und Logistik!"
 	]
@@ -4204,6 +4396,10 @@
 		"Die Diamant-Erweiterung bringt richtig viel Platz. Darüber gibt es nur noch Netherit."
 	]
 	quest.756D8A47BF739035.title: "Noch größer"
+	quest.75739C2C9A43B64C.quest_desc: [
+		"Modifikationen machen ein Rohr schneller und schalten Filter und Verteilmodi frei. Es gibt mehrere Stufen."
+	]
+	quest.75739C2C9A43B64C.title: "Rohr-Modifikation"
 	quest.758E3E4158402D76.quest_desc: [
 		"Erweitert ein Zauberbuch um einen Platz."
 	]
@@ -4340,6 +4536,10 @@
 		"Dank Visual Workbench bleiben die Items liegen, wenn du sie verlässt, und du siehst sie oben auf dem Block."
 	]
 	quest.76F5E1350AEC1627.title: "Werkbank"
+	quest.76F910D48C09D19B.quest_desc: [
+		"Gib 32 Dunkle Edelsteine ab und bekomm dafür eine seltene Kiste."
+	]
+	quest.76F910D48C09D19B.title: "Abgabe: Dunkle Edelsteine"
 	quest.76FB08086710BAC9.quest_desc: [
 		"Die Railgun von Immersive Engineering verschießt Stäbe mit Strom. Ein echtes Prunkstück."
 	]
@@ -4348,6 +4548,10 @@
 		"BetterNether bringt viele neue Biome. Finde den Nether-Dschungel, die Kieswüste und die Seelenebene."
 	]
 	quest.7709305FD5C60622.title: "Nether-Biome"
+	quest.770B72427A645427.quest_desc: [
+		"Ins Laufwerk steckst du die Speicherzellen. Darin landen alle Items deines Netzwerks."
+	]
+	quest.770B72427A645427.title: "Laufwerk und Speicherzelle"
 	quest.7717C33283ACAE3C.quest_desc: [
 		"In der Schablonenkonsole schreibst du Rezepte auf leere Schablonen. Das ist der erste Schritt zum Autocrafting."
 	]
@@ -4486,6 +4690,10 @@
 		"Der SPS macht aus Polonium Antimaterie, braucht dafür aber extrem viel Strom. Spätestens jetzt lohnt sich der Fusionsreaktor."
 	]
 	quest.7962AB82AD302E11.title: "Superkritischer Phasenwandler"
+	quest.79640B5A8342904A.quest_desc: [
+		"Eine komplette Eisenfarm in einem Block. Dafür kommt ein Dorfbewohner hinein."
+	]
+	quest.79640B5A8342904A.title: "Eisenfarm im Block"
 	quest.796EF133A6EC7899.quest_desc: [
 		"Das Material für &6mythische&r Ausrüstung, das seltenste von allen."
 	]
@@ -4524,6 +4732,10 @@
 		"Der Digital Miner baut gezielt Erze in einem großen Radius ab, ohne dass du graben musst. Filter einstellen nicht vergessen."
 	]
 	quest.79CF753B18D26C5E.title: "Digitaler Bergarbeiter"
+	quest.79ECCF044C4F3414.quest_desc: [
+		"Kabel verbinden Controller, Laufwerke und Konsolen. Anders als bei AE2 gibt es kein Kanal-Limit."
+	]
+	quest.79ECCF044C4F3414.title: "Kabel"
 	quest.79F98304CA2D2FA6.quest_desc: [
 		"Oxidierer und Isotopenzentrifuge sind die letzten Schritte zum Spaltbrennstoff. Die ganze Kette zeigt dir EMI."
 	]
@@ -4572,10 +4784,18 @@
 		"Der &eCrusher&r verdoppelt Erze zu Staub. Den Doppel-Crusher gibt es auch."
 	]
 	quest.7A868566133E6D5E.title: "Zerkleinerer"
+	quest.7A8EB442623F86E0.quest_desc: [
+		"Der Reiniger entfernt schlechte Verzauberungen und Flüche von Items und kann noch mehr. Details im Handbuch."
+	]
+	quest.7A8EB442623F86E0.title: "Reiniger"
 	quest.7AA391CBB9F572A2.quest_desc: [
 		"Wie der Naturkompass, nur für Strukturen: Dörfer, Dungeons, Tempel und alles, was die Mods mitbringen."
 	]
 	quest.7AA391CBB9F572A2.title: "Kompass des Entdeckers"
+	quest.7AAB44A7BA875B9D.quest_desc: [
+		"EvilCraft ist dunkle Magie mit Blut. Alles beginnt mit &eDunklen Edelsteinen&r aus Dunklem Erz in der Overworld."
+	]
+	quest.7AAB44A7BA875B9D.title: "Dunkle Edelsteine"
 	quest.7AD279CA40D7CFDF.quest_desc: [
 		"Fertige einen Ring und eine Kette mit Edelstein."
 	]
@@ -4630,6 +4850,10 @@
 		"Das Eisen des Undergarden. Gut für erste Werkzeuge dort unten."
 	]
 	quest.7B572E45F64E5BC0.title: "Cloggrum"
+	quest.7B59ADFD4F9D37F0.quest_desc: [
+		"Mit dem Funksender im Netzwerk greifst du per drahtloser Konsole von überall in Reichweite auf dein Lager zu."
+	]
+	quest.7B59ADFD4F9D37F0.title: "Drahtlose Konsole"
 	quest.7B61F149E77508B1.quest_desc: [
 		"Beste Waffe, beste Rüstung. Du bist für jeden Boss gerüstet."
 	]
@@ -4774,6 +4998,10 @@
 		"Die beste Rüstung von Mekanism, gebaut auf Netherit-Rüstung. Sie braucht Strom und lässt sich mit Modulen erweitern."
 	]
 	quest.7D3FCF5342B7F7D8.title: "MekaSuit"
+	quest.7D4A9568C4099124.quest_desc: [
+		"Ein Dunkler Edelstein, mit Blut aufgeladen."
+	]
+	quest.7D4A9568C4099124.title: "Dunkler Kraftedelstein"
 	quest.7D5471C31B97A495.quest_desc: [
 		"Der Quantencomputer ist eine Multiblock-CPU mit enormem Speicher und vielen parallelen Aufträgen. Aufbau und Größen stehen im Handbuch.\n\nDas ist die Spitze von AE2!"
 	]
@@ -4798,6 +5026,10 @@
 		"In der Zellenwerkbank filterst du Zellen. Karten sind Upgrades für Busse, Schnittstellen und Maschinen."
 	]
 	quest.7D94197273554CE9.title: "Zellenwerkbank und Karten"
+	quest.7D995835AE53AC25.quest_desc: [
+		"Ein Schwert aus Dunklem Kraftedelstein."
+	]
+	quest.7D995835AE53AC25.title: "Adernschwert"
 	quest.7DA01AE8EAF32CEF.quest_desc: [
 		"Der &eGrundlegende Generator&r verbrennt Brennstoff und macht Strom. Damit laufen deine ersten Maschinen."
 	]
@@ -4872,6 +5104,10 @@
 		"Die &eGießerei&r schmilzt zwei Zutaten zu Legierungen, z. B. Stahl, Elektrum, Adamant und später Energit und Duratium."
 	]
 	quest.7E2F1301E6595942.title: "Gießerei"
+	quest.7E39590C24224F46.quest_desc: [
+		"Zeigt dir, was gerade hergestellt wird, und lässt dich Aufträge abbrechen."
+	]
+	quest.7E39590C24224F46.title: "Autocrafting-Monitor"
 	quest.7E47170423CEB36E.quest_desc: [
 		"Aus Eisen und Prosperity wird ein Prosperity-Barren, mit Essenz dann der Barren der jeweiligen Stufe. Daraus werden Werkzeuge, Rüstung und Maschinen-Upgrades."
 	]

@@ -1,0 +1,496 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "evilcraft"
+	group: "1A4AF5F0953E77C6"
+	icon: {
+		id: "evilcraft:dark_gem"
+	}
+	id: "5393B6FB27658001"
+	images: [ ]
+	order_index: 23
+	quest_links: [
+		{
+			id: "7128160B00C845D7"
+			linked_quest: "58B2439153283A9D"
+			shape: "rsquare"
+			size: 1.0d
+			x: -2.0d
+			y: 0.0d
+		}
+		{
+			id: "3AC74D5B9DAD38A9"
+			linked_quest: "15DBC538E707CF99"
+			shape: "rsquare"
+			size: 1.0d
+			x: 0.0d
+			y: -3.0d
+		}
+	]
+	quests: [
+		{
+			dependencies: [
+				"58B2439153283A9D"
+			]
+			id: "7AAB44A7BA875B9D"
+			rewards: [
+				{
+					id: "339E8AF3D9E8FC53"
+					table_id: 8873071041503571705L
+					type: "loot"
+				}
+			]
+			shape: "gear"
+			size: 1.5d
+			tasks: [
+				{
+					id: "3F9E9D38408E31A1"
+					item: {
+						count: 1
+						id: "evilcraft:dark_gem"
+					}
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"7AAB44A7BA875B9D"
+			]
+			id: "19431669CCDA8CE2"
+			rewards: [
+				{
+					id: "383841761CADBFD3"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "7D8A28F376E7E56A"
+					item: {
+						count: 1
+						id: "evilcraft:origins_of_darkness"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"7AAB44A7BA875B9D"
+			]
+			id: "118FA2A77F138F0F"
+			rewards: [
+				{
+					id: "16BCCC697BEF7F56"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "3DEE9AAF514DFC82"
+					item: {
+						count: 1
+						id: "evilcraft:dark_tank"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"7AAB44A7BA875B9D"
+			]
+			id: "3E4D42A8A5946FB6"
+			rewards: [
+				{
+					id: "7C8A9E52140A168A"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "116A5D1DAAABC304"
+					item: {
+						count: 1
+						id: "evilcraft:blood_extractor"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"3E4D42A8A5946FB6"
+			]
+			id: "1B965833FC5D3E92"
+			rewards: [
+				{
+					id: "598CE18148720B2A"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "1B427DEBD47FB638"
+					item: {
+						count: 1
+						id: "evilcraft:hardened_blood_shard"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"3E4D42A8A5946FB6"
+			]
+			id: "7D4A9568C4099124"
+			rewards: [
+				{
+					id: "5F4388F417181014"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "34FEB9EF32F2D5C7"
+					item: {
+						count: 1
+						id: "evilcraft:dark_power_gem"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"1B965833FC5D3E92"
+				"7D4A9568C4099124"
+			]
+			id: "380E29A7F20A7A5A"
+			rewards: [
+				{
+					id: "59709301FC6F2EC3"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "38893F522ED69DCB"
+					item: {
+						count: 1
+						id: "evilcraft:blood_infusion_core"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"380E29A7F20A7A5A"
+			]
+			id: "5B0132E6BB384A49"
+			rewards: [
+				{
+					id: "5FB71C8C33C03915"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					id: "11C67791D31FD806"
+					item: {
+						count: 1
+						id: "evilcraft:blood_infuser"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"380E29A7F20A7A5A"
+			]
+			id: "5A511C1485C3CBAF"
+			rewards: [
+				{
+					id: "7611169405B0FEFE"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "7AA0E3B826DF75F5"
+					item: {
+						count: 1
+						id: "evilcraft:blood_chest"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"380E29A7F20A7A5A"
+			]
+			id: "7A8EB442623F86E0"
+			rewards: [
+				{
+					id: "30F1A7311BEF518B"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "7E52625F8ABB9D26"
+					item: {
+						count: 1
+						id: "evilcraft:purifier"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"7AAB44A7BA875B9D"
+			]
+			id: "14DCB9FC28A7FF30"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "7C930D514C135B2A"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					entity: "evilcraft:vengeance_spirit"
+					id: "5BB4EE4CC379B308"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 2.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"5B0132E6BB384A49"
+				"14DCB9FC28A7FF30"
+			]
+			id: "5D3208F6F78195A6"
+			rewards: [
+				{
+					id: "3A0256E956CB2680"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "5B8ACA7DD41C5834"
+					item: {
+						count: 1
+						id: "evilcraft:spirit_furnace"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"7D4A9568C4099124"
+			]
+			id: "7D995835AE53AC25"
+			optional: true
+			rewards: [
+				{
+					id: "3C8A122DB976FF0E"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "531F07DA9A8220F0"
+					item: {
+						count: 1
+						id: "evilcraft:vein_sword"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 4.5d
+		}
+		{
+			dependencies: [
+				"7AAB44A7BA875B9D"
+				"15DBC538E707CF99"
+			]
+			id: "382806C45C0F4EE2"
+			optional: true
+			rewards: [
+				{
+					id: "79A9E1242ED357D9"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "1F2A8D39202CEA5C"
+					item: {
+						count: 1
+						id: "evilcraft:exalted_crafter"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"5B0132E6BB384A49"
+			]
+			id: "38EFFD4AB9482699"
+			rewards: [
+				{
+					id: "308DED1BBFF2ADD4"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "5858E5BCE2FA65FF"
+					item: {
+						count: 1
+						id: "evilcraft:invigorating_pendant"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"5B0132E6BB384A49"
+			]
+			id: "125468E6B5D8698F"
+			rewards: [
+				{
+					id: "1FBC3E846BF0389A"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "124419C1E2AA18CD"
+					item: {
+						count: 1
+						id: "evilcraft:environmental_accumulator"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"125468E6B5D8698F"
+			]
+			id: "3A2B8565006580F9"
+			rewards: [
+				{
+					id: "1F1EE0314853B033"
+					table_id: 6783561722415423100L
+					type: "loot"
+				}
+			]
+			shape: "star"
+			size: 1.5d
+			tasks: [
+				{
+					id: "34E19684CD55BC20"
+					item: {
+						count: 1
+						id: "evilcraft:sanguinary_environmental_accumulator"
+					}
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"7AAB44A7BA875B9D"
+			]
+			id: "76F910D48C09D19B"
+			optional: true
+			rewards: [
+				{
+					id: "1E9192AEF6E55CFA"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					consume_items: true
+					count: 32L
+					id: "75D5A608DF615D84"
+					item: {
+						count: 1
+						id: "evilcraft:dark_gem"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -4.5d
+		}
+	]
+}

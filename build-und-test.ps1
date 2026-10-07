@@ -9,7 +9,7 @@ $ProgressPreference = 'SilentlyContinue'
 $MC      = '1.21.1'
 $LOADER  = 'neoforge'
 $PACK    = 'Unser Modpack'
-$PACKVER = '0.9.9'
+$PACKVER = '0.9.10'
 $RAM     = '8G'
 $TIMEOUT_MIN = 20
 
@@ -25,7 +25,7 @@ New-Item -ItemType Directory -Force -Path $Work, $Cache, $CfDir | Out-Null
 # CurseForge-Mods automatisch aus dem Download-Ordner holen (falls dort vorhanden)
 $dl = Join-Path $env:USERPROFILE 'Downloads'
 $cfPatterns = @('*twilightforest*1.21.1*.jar','ExtendedAE-1.21-*neoforge*.jar','ars_elemental-1.21.1-*.jar','ars_technica-1.21.1-*.jar',
-                '*ftb*quests*2101*.jar','*ftb*library*2101*.jar','*ftb*teams*2101*.jar','*ftbbackups2*neoforge*.jar','AE2NetworkAnalyzer-1.21-*neoforge*.jar','allthemodium-*_mc_1.21.1.jar')
+                '*ftb*quests*2101*.jar','*ftb*library*2101*.jar','*ftb*teams*2101*.jar','*ftbbackups2*neoforge*.jar','AE2NetworkAnalyzer-1.21-*neoforge*.jar','allthemodium-*_mc_1.21.1.jar','alltheleaks-*neoforge*.jar')
 if (Test-Path $dl) {
   foreach ($pat in $cfPatterns) {
     $hit = Get-ChildItem -Path $dl -Filter $pat -ErrorAction SilentlyContinue | Where-Object { $_.Name -notmatch 'fabric' } | Sort-Object LastWriteTime | Select-Object -Last 1
@@ -146,6 +146,9 @@ natures-compass|Nature's Compass
 spark|Spark
 trash-cans|Trash Cans
 inventory-profiles-next|Inventory Profiles Next
+emi-loot|EMI Loot
+easy-villagers|Easy Villagers
+trade-cycling|Trade Cycling
 # Multiplayer, Quests und Verwaltung
 ftb-quests|FTB Quests
 ftb-library|FTB Library
@@ -174,6 +177,7 @@ occultism|Occultism
 forbidden-arcanus|Forbidden and Arcanus
 hexerei|Hexerei
 irons-jewelry|Iron's Gems 'n Jewelry
+evilcraft|EvilCraft
 # Create und Addons
 create|Create
 createaddition|Create Crafts & Additions
@@ -234,6 +238,8 @@ enderio|Ender IO
 iron-jetpacks|Iron Jetpacks
 actually-additions|Actually Additions
 integrated-dynamics|Integrated Dynamics
+pipez|Pipez
+refined-storage|Refined Storage
 # Ressourcen und Landwirtschaft
 mystical-agriculture|Mystical Agriculture
 productivebees|Productive Bees
@@ -241,6 +247,7 @@ farmers-delight|Farmer's Delight
 aquaculture|Aquaculture 2
 mystical-agradditions|Mystical Agradditions
 dungeons_delight|Dungeon's Delight
+cooking-for-blockheads|Cooking for Blockheads
 # Dimensionen
 the-twilight-forest|The Twilight Forest
 aether|The Aether
@@ -272,6 +279,7 @@ yungs-bridges|YUNG's Bridges
 towns-and-towers|Towns and Towers
 dungeons-and-taverns|Dungeons and Taverns
 idas|Integrated Dungeons and Structures
+lootr|Lootr
 # Mobs und Bosse
 l_enders-cataclysm|L_Ender's Cataclysm
 mowzies-mobs|Mowzie's Mobs
@@ -296,6 +304,7 @@ artifacts|Artifacts
 immersive-armors|Immersive Armors
 # Transport
 waystones|Waystones
+elevatormod|Elevator Mod
 # Deko und Bauen
 supplementaries|Supplementaries
 amendments|Amendments
@@ -329,7 +338,7 @@ foreach ($l in ($ModListRaw -split "`r?`n")) {
 # Kategorien der CurseForge-Jars (Dateiname -> Kategorie)
 $cfCat = [ordered]@{
   'twilightforest' = 'Dimensionen'; 'ExtendedAE' = 'AE2 und Technik'; 'AE2NetworkAnalyzer' = 'AE2 und Technik'
-  'ars_' = 'Magie'; 'ftb' = 'Multiplayer, Quests und Verwaltung'; 'allthemodium' = 'Dimensionen'
+  'ars_' = 'Magie'; 'ftb' = 'Multiplayer, Quests und Verwaltung'; 'allthemodium' = 'Dimensionen'; 'alltheleaks' = 'Performance und Grafik'
 }
 
 $vq = '?loaders=' + [uri]::EscapeDataString('["neoforge"]') + '&game_versions=' + [uri]::EscapeDataString('["1.21.1"]')
