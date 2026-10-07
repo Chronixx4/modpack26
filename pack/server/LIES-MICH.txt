@@ -3,7 +3,8 @@ Minecraft @MC@, NeoForge @NEOFORGE@
 
 VORAUSSETZUNGEN
 - Java 21 (z. B. Docker-Image mit Java 21 / Temurin 21)
-- 12 GB RAM fuer Minecraft (einstellbar in user_jvm_args.txt)
+- 12 GB RAM fuer Minecraft (einstellbar in user_jvm_args.txt, -Xms und -Xmx gleich lassen)
+  Der Container/die VM braucht etwas mehr, also mindestens 14 GB.
 - Ports: 25565/TCP (Minecraft) und 24454/UDP (Simple Voice Chat)
 
 ERSTER START
@@ -15,6 +16,7 @@ ERSTER START
 4. Warten bis "Done (...)" im Log steht. Der erste Start dauert ein paar Minuten.
 
 WENN DEIN DOCKER-PANEL NEOFORGE SELBST INSTALLIERT
+- Die Java-Optionen aus user_jvm_args.txt (RAM und G1-Einstellungen) im Panel eintragen.
 - Die Ordner "mods" und "config" (und gern server.properties) uebernehmen, NeoForge-Version @NEOFORGE@ waehlen.
 
 WELT VORGENERIEREN (empfohlen, bevor ihr spielt)
