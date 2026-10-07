@@ -86,12 +86,12 @@ CurseForge blockt Downloads per Skript, auch über die interne `/api/v1`. Diese 
 - 0.9.9: Performance: FastSuite, FastFurnace, FastWorkbench, Packet Fixer, dazu nur fuer den Client BadOptimizations, Dynamic FPS und More Culling. Server-`user_jvm_args.txt` mit Xms=Xmx=12G und Aikar-G1-Flags (der Servertest ueberschreibt die Datei mit wenig RAM, die Flags testet er also nicht). `simulation-distance` 6. Im Index nachgetragen, ohne kompletten Neu-Build (in der Cloud gibt's kein pwsh), andere Mods also unveraendert. Bewusst nicht aufgenommen: C2ME und ScalableLux (Alpha), Noisium (veraltet), AllTheLeaks (nur CF), ModernFix `dynamic_resources` (ungetestet).
 
 ## Offene Aufgaben
-1. v9 bauen, `Unser-Modpack-0.9.0.mrpack` importieren, eine Testwelt anlegen, ins Nether und End gehen, `latest.log` prüfen.
-2. ~~Integrated Mowzie's Mobs~~: wird auf Modrinth gefunden, erledigt.
-3. **Server auf dem Heimserver** einrichten: ZimaOS, Marvin hat dort schon ein eigenes Docker-Panel fuer mehrere Minecraft-Server (keine docker-compose noetig). Dafuer das `-Server.zip` aus dem Release nehmen (12 GB RAM, Java 21, Ports 25565/TCP und 24454/UDP fuer Voice Chat), danach mit Chunky vorgenerieren.
-4. ~~FTB-Quests-Kapitel~~: Questbuch 2.0 in 0.9.8. Offen: im Spiel ansehen; Aenderungen in `pack/quests/inhalt/*.py` machen (nicht im Editiermodus, sonst ueberschreibt der naechste Generatorlauf sie).
+1. **0.9.9 im Client testen:** kurz in die Welt, auf Grafikfehler achten (More Culling, BadOptimizations neu).
+2. **Questbuch im Spiel ansehen** (seit 0.9.8): Texte, Reihenfolge, Bilder. Aenderungen in `pack/quests/inhalt/*.py` machen (nicht im Editiermodus, sonst ueberschreibt der naechste Generatorlauf sie).
+3. **Server auf dem Heimserver** einrichten: ZimaOS, Marvin hat dort schon ein eigenes Docker-Panel fuer mehrere Minecraft-Server (keine docker-compose noetig). Dafuer das `-Server.zip` aus dem Release nehmen (12 GB RAM fuer Minecraft, Container mind. 14 GB, Java 21, Ports 25565/TCP und 24454/UDP fuer Voice Chat), danach mit Chunky vorgenerieren.
+4. Erst danach die **richtige Welt** starten, damit Strukturen und Biome ueberall generiert werden.
 5. Optional: Shader wieder einbauen, sobald es eine Iris-Version gibt, die zu Sodium 0.8 passt.
-6. Erst danach die **richtige Welt** starten, damit Strukturen und Biome überall generiert werden.
+6. Optional: AllTheLeaks (Speicherlecks, nur auf CurseForge, Jar per Hand nach `curseforge-mods\`).
 
 ## Mod-Bauplan (Übersicht)
 Artifact „Modpack-Bauplan 1.21.1“ auf claude.ai (Checkliste mit 143 Mods nach Kategorien). Die maßgebliche Liste ist aber `$ModList` in `build-und-test.ps1`.
