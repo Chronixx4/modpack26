@@ -107,12 +107,36 @@
 			y: 16.5d
 		}
 		{
+			id: "72580FD2F66DAB35"
+			linked_quest: "7031B172ED438FB9"
+			shape: "rsquare"
+			size: 1.0d
+			x: -2.0d
+			y: 18.0d
+		}
+		{
+			id: "79B4AD2A82B11D5F"
+			linked_quest: "329F70C574BC8504"
+			shape: "rsquare"
+			size: 1.0d
+			x: -2.0d
+			y: 19.5d
+		}
+		{
+			id: "3EAEBE39CAE20EC1"
+			linked_quest: "54B72C2B9145C579"
+			shape: "rsquare"
+			size: 1.0d
+			x: 0.0d
+			y: -3.0d
+		}
+		{
 			id: "1C047A13DABABB7A"
 			linked_quest: "37592CBD4C8521A4"
 			shape: "rsquare"
 			size: 1.0d
 			x: -2.0d
-			y: 18.0d
+			y: 22.5d
 		}
 		{
 			id: "593B961CF2BAC08E"
@@ -120,15 +144,7 @@
 			shape: "rsquare"
 			size: 1.0d
 			x: 0.0d
-			y: -3.0d
-		}
-		{
-			id: "72580FD2F66DAB35"
-			linked_quest: "7031B172ED438FB9"
-			shape: "rsquare"
-			size: 1.0d
-			x: 2.0d
-			y: 16.5d
+			y: -7.5d
 		}
 		{
 			id: "11FCB639E4CE448F"
@@ -136,7 +152,7 @@
 			shape: "rsquare"
 			size: 1.0d
 			x: 4.0d
-			y: 16.5d
+			y: 19.5d
 		}
 	]
 	quests: [
@@ -1693,6 +1709,182 @@
 		}
 		{
 			dependencies: [
+				"7031B172ED438FB9"
+			]
+			id: "1DA2F32BA0E21471"
+			rewards: [
+				{
+					id: "79CE7D20F369EE06"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					count: 8L
+					id: "55F8C0DDE6DCDD1D"
+					item: {
+						count: 1
+						id: "mekanism:ingot_tin"
+					}
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 18.0d
+		}
+		{
+			dependencies: [
+				"1DA2F32BA0E21471"
+			]
+			id: "788BB44960DE0AF9"
+			rewards: [
+				{
+					id: "71D6D9D1081FA860"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					count: 8L
+					id: "70020D633B60AB08"
+					item: {
+						count: 1
+						id: "mekanism:ingot_bronze"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 18.0d
+		}
+		{
+			dependencies: [
+				"329F70C574BC8504"
+			]
+			id: "17F6F0A47813200F"
+			rewards: [
+				{
+					id: "3E2F90603A46CE1C"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					count: 8L
+					id: "11538D8E537ECCEB"
+					item: {
+						count: 1
+						id: "immersiveengineering:ingot_steel"
+					}
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 19.5d
+		}
+		{
+			dependencies: [
+				"17F6F0A47813200F"
+			]
+			id: "55F3855C792BD53D"
+			rewards: [
+				{
+					id: "525689F414857B5C"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "18D8E7ED0F34F0EC"
+					item: {
+						count: 1
+						id: "create_ironworks:steel_hammer"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 19.5d
+		}
+		{
+			dependencies: [
+				"58777B3FFAF1E7BE"
+			]
+			id: "3BACB8E7B2E9B7AB"
+			rewards: [
+				{
+					id: "3DD51E0DD72A5AE4"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "1FC3F5B7E8DF3B51"
+					item: {
+						count: 1
+						id: "create_mechanical_extruder:mechanical_extruder"
+					}
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 21.0d
+		}
+		{
+			dependencies: [
+				"54B72C2B9145C579"
+			]
+			id: "51B3D7915B7E1529"
+			rewards: [
+				{
+					id: "3FBECB5947E48E43"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "1931118EE3D4DD0E"
+					item: {
+						count: 1
+						id: "create_mechanical_extruder:mechanical_brass_extruder"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 21.0d
+		}
+		{
+			dependencies: [
+				"7AEAA59AC962AF57"
+			]
+			id: "52344AA6F0B4144F"
+			optional: true
+			rewards: [
+				{
+					id: "50AC7D6EFDA7D97D"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "59F97A057C82FDE4"
+					type: "checkmark"
+				}
+			]
+			x: 4.0d
+			y: 21.0d
+		}
+		{
+			dependencies: [
 				"37592CBD4C8521A4"
 			]
 			id: "3F9CA97D6CA7CFF0"
@@ -1724,7 +1916,7 @@
 				}
 			]
 			x: 0.0d
-			y: 18.0d
+			y: 22.5d
 		}
 		{
 			dependencies: [
@@ -1751,7 +1943,7 @@
 				}
 			]
 			x: 2.0d
-			y: 18.0d
+			y: 22.5d
 		}
 		{
 			dependencies: [
@@ -1794,7 +1986,7 @@
 				}
 			]
 			x: 4.0d
-			y: 18.0d
+			y: 22.5d
 		}
 		{
 			dependencies: [
@@ -1821,7 +2013,7 @@
 				}
 			]
 			x: 6.0d
-			y: 18.0d
+			y: 22.5d
 		}
 		{
 			dependencies: [
@@ -1848,7 +2040,7 @@
 				}
 			]
 			x: 8.0d
-			y: 18.0d
+			y: 22.5d
 		}
 	]
 }

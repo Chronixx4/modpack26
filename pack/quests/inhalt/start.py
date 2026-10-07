@@ -220,7 +220,7 @@ kapitel('erste_schritte', '&eErste Schritte', 'minecraft:crafting_table', 'Vom e
       nach=['haken_upgrade', 'amboss'], belohnung=2, zeile=4),
     Q('haken_motor', 'Motor-Upgrade', 'grapplemod:motorupgradeitem',
       'Mit Motor zieht dich der Haken von selbst zum Ziel. Freischalten an der Haken-Werkbank.',
-      nach=['haken_upgrade'], belohnung=1, zeile=5),
+      nach=['haken_modifier'], belohnung=1, zeile=5),
     Q('enderstab', 'Enderstab', 'grapplemod:launcheritem',
       'Aus Enderperle und Kolben: Der Enderstab schleudert dich in Blickrichtung durch die Luft.',
       nach=['enterhaken'], belohnung=1, optional=True, form='heart', zeile=3),

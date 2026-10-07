@@ -8,7 +8,7 @@
 	}
 	id: "54687F941142C2AA"
 	images: [ ]
-	order_index: 30
+	order_index: 32
 	quest_links: [
 		{
 			id: "18B1A0CAE24A6071"
@@ -652,6 +652,80 @@
 			]
 			x: 4.0d
 			y: 6.0d
+		}
+		{
+			dependencies: [
+				"1055241A975F792E"
+			]
+			id: "7D36F3250A67FE13"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "72E0BDD4EC819F28"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "5EF0D1952F92A38C"
+					structure: "kobolds:kobold_den"
+					type: "structure"
+				}
+			]
+			x: 2.0d
+			y: 15.0d
+		}
+		{
+			dependencies: [
+				"7D36F3250A67FE13"
+			]
+			id: "3DD338DA42F7E6E2"
+			rewards: [
+				{
+					id: "1B0DA56042F43043"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "3CF01064C90AA2B0"
+					item: {
+						count: 1
+						id: "kobolds:kobold_template"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 15.0d
+		}
+		{
+			dependencies: [
+				"3DD338DA42F7E6E2"
+				"58B2439153283A9D"
+			]
+			id: "775B7FFE054A17C8"
+			rewards: [
+				{
+					id: "501C7EA2594F8205"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "57EF2B5675076AC0"
+					item: {
+						count: 1
+						id: "kobolds:kobold_iron_sword"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 15.0d
 		}
 		{
 			dependencies: [

@@ -215,6 +215,12 @@ kapitel('bosse', '&cBosse', 'minecraft:wither_skeleton_skull', 'Von leicht bis b
       'Mit der Essenz des Sturms baust du ihre mächtigen Waffen.',
       nach=['maledictus'], belohnung='loot4', form='hexagon', zeile=2),
 
+    Q('goety_apostel', 'Apostel (Goety)', ('kill', 'goety:apostle', 1),
+      'Ein Boss aus Goety, den du mit einem Sabbat-Ritual rufst. Wie das geht, steht im Goety-Kapitel.',
+      nach=['goety/apostel'], belohnung=3, optional=True, zeile=8),
+    Q('goety_wesir', 'Wesir (Goety)', ('kill', 'goety:vizier', 1),
+      'Ein Boss aus Goety: Er erscheint, wenn du eine Dunkle Schriftrolle im Waldanwesen benutzt. Mehr im Goety-Kapitel.',
+      nach=['goety/wesir'], belohnung=3, optional=True, zeile=9),
 ])
 
 # ---------------------------------------------------------------------------

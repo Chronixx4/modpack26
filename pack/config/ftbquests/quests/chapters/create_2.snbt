@@ -82,6 +82,22 @@
 			x: 4.0d
 			y: 7.5d
 		}
+		{
+			id: "7E107AAAF0258987"
+			linked_quest: "54B72C2B9145C579"
+			shape: "rsquare"
+			size: 1.0d
+			x: -2.0d
+			y: -4.5d
+		}
+		{
+			id: "351674FF17157C8C"
+			linked_quest: "7031B172ED438FB9"
+			shape: "rsquare"
+			size: 1.0d
+			x: -2.0d
+			y: -9.0d
+		}
 	]
 	quests: [
 		{
@@ -1470,6 +1486,243 @@
 			]
 			x: 6.0d
 			y: 7.5d
+		}
+		{
+			dependencies: [
+				"72C65EEBF10EE622"
+			]
+			id: "1844C6B318D0151F"
+			rewards: [
+				{
+					id: "780408430DD7A110"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "79241D90D84BE02B"
+					item: {
+						count: 1
+						id: "create_mobile_packages:robo_bee"
+					}
+					type: "item"
+				}
+			]
+			x: 20.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"1844C6B318D0151F"
+			]
+			id: "1C41923DA025078D"
+			rewards: [
+				{
+					id: "540946E678A0D761"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "1ECD73DE37D9F933"
+					item: {
+						count: 1
+						id: "create_mobile_packages:bee_port"
+					}
+					type: "item"
+				}
+			]
+			x: 22.0d
+			y: 4.5d
+		}
+		{
+			dependencies: [
+				"56C5DA0F8D7E5132"
+			]
+			id: "3DE856991C06BB05"
+			rewards: [
+				{
+					id: "5E6C2F5C54C445B2"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "3753A42183F76407"
+					item: {
+						count: 1
+						id: "create_mobile_packages:portable_stock_ticker"
+					}
+					type: "item"
+				}
+			]
+			x: 24.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"54B72C2B9145C579"
+				"16289D4340FB223A"
+			]
+			id: "584EE76BAA675860"
+			rewards: [
+				{
+					id: "74AD430EBCB6261B"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "1749684C0A8A5130"
+					item: {
+						count: 1
+						id: "numismatics:vendor"
+					}
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: -4.5d
+		}
+		{
+			dependencies: [
+				"584EE76BAA675860"
+				"76EF3C773870B1DA"
+			]
+			id: "336BC9DE62F3B39F"
+			rewards: [
+				{
+					id: "7FCE54190561A287"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "563323E578E05117"
+					item: {
+						count: 1
+						id: "numismatics:brass_depositor"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: -4.5d
+		}
+		{
+			dependencies: [
+				"3801F5F81ADF81F8"
+			]
+			id: "18B096922F97D119"
+			rewards: [
+				{
+					id: "5A4DA2C135BA5DE6"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "7477D91C701C3331"
+					item: {
+						count: 1
+						id: "numismatics:bank_terminal"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"18B096922F97D119"
+			]
+			id: "3AB4871CF04DF357"
+			rewards: [
+				{
+					id: "764F2CBF772CA1B5"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "5BFBD42B005D7AB2"
+					item: {
+						count: 1
+						id: "numismatics:white_card"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"7031B172ED438FB9"
+			]
+			id: "1284FE36367C7727"
+			rewards: [
+				{
+					id: "30372951599C4DEA"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "5E2F2A124CF1DC16"
+					item: {
+						count: 1
+						id: "create:schematic_table"
+					}
+					type: "item"
+				}
+				{
+					id: "391782FF3D08378D"
+					item: {
+						count: 1
+						id: "create:schematicannon"
+					}
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: -9.0d
+		}
+		{
+			dependencies: [
+				"1284FE36367C7727"
+			]
+			id: "79AC55DACAC32C8D"
+			optional: true
+			rewards: [
+				{
+					id: "33E70235760565AA"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "5BA6A77FB0BF7FDF"
+					item: {
+						count: 1
+						id: "create_pattern_schematics:empty_pattern_schematic"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -9.0d
 		}
 		{
 			dependencies: [

@@ -43,12 +43,52 @@
 			y: 6.0d
 		}
 		{
+			id: "1B8A5BA6A4A701E0"
+			linked_quest: "5C79B486F0C5E9D2"
+			shape: "rsquare"
+			size: 1.0d
+			x: 2.0d
+			y: 16.5d
+		}
+		{
+			id: "3BAE53F0645FFEC8"
+			linked_quest: "1EC196EC8629D11F"
+			shape: "rsquare"
+			size: 1.0d
+			x: 4.0d
+			y: 15.0d
+		}
+		{
+			id: "1F514499F1D63012"
+			linked_quest: "158910F703716CDC"
+			shape: "rsquare"
+			size: 1.0d
+			x: 6.0d
+			y: 9.0d
+		}
+		{
+			id: "710F7CD2DCA449BB"
+			linked_quest: "50E8691B34B8D316"
+			shape: "rsquare"
+			size: 1.0d
+			x: 0.0d
+			y: -7.5d
+		}
+		{
 			id: "19192F1725ADF1F2"
 			linked_quest: "7031B172ED438FB9"
 			shape: "rsquare"
 			size: 1.0d
 			x: 6.0d
 			y: 3.0d
+		}
+		{
+			id: "146102EFD0EEAD0E"
+			linked_quest: "19ADA048D98D80EE"
+			shape: "rsquare"
+			size: 1.0d
+			x: 8.0d
+			y: 4.5d
 		}
 	]
 	quests: [
@@ -776,6 +816,469 @@
 		{
 			dependencies: [
 				"52F8EC74625961E6"
+			]
+			id: "5B340F18579F4F27"
+			rewards: [
+				{
+					id: "76CD32B2E942B679"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "75D4E1238A5E5F33"
+					item: {
+						count: 1
+						id: "tide:stone_fishing_rod"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 18.0d
+		}
+		{
+			dependencies: [
+				"5B340F18579F4F27"
+			]
+			id: "19A7350321A8314C"
+			rewards: [
+				{
+					id: "719236DFB9345F07"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "53EC7C9439EF0B1F"
+					item: {
+						count: 1
+						id: "tide:fishing_journal"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 16.5d
+		}
+		{
+			dependencies: [
+				"5B340F18579F4F27"
+			]
+			id: "5A99DCA7BDF4AD72"
+			rewards: [
+				{
+					id: "16E50E1079ED918E"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "140610D906592D01"
+					item: {
+						count: 1
+						id: "tide:bait"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 19.5d
+		}
+		{
+			dependencies: [
+				"5B340F18579F4F27"
+				"5C79B486F0C5E9D2"
+			]
+			id: "31DC4873300AE79D"
+			rewards: [
+				{
+					id: "704C4A58F15111A6"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "769CE5F21EC4D401"
+					item: {
+						count: 1
+						id: "tide:angling_table"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 18.0d
+		}
+		{
+			dependencies: [
+				"5B340F18579F4F27"
+			]
+			id: "32BF3F8E706C9F3B"
+			optional: true
+			rewards: [
+				{
+					id: "5CC6AC37332B6A1D"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "5A25C7E5E22DAB94"
+					item: {
+						count: 1
+						id: "tide:wooden_crate"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 21.0d
+		}
+		{
+			dependencies: [
+				"31DC4873300AE79D"
+				"58B2439153283A9D"
+			]
+			id: "75AF845EF1C8B0CA"
+			rewards: [
+				{
+					id: "172F7A0E40068A3A"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "104F47D447638E76"
+					item: {
+						count: 1
+						id: "tide:iron_fishing_rod"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 18.0d
+		}
+		{
+			dependencies: [
+				"75AF845EF1C8B0CA"
+				"783C45DB630387CD"
+			]
+			id: "10BDEA615932914E"
+			rewards: [
+				{
+					id: "1BC80C83E83BEF12"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					id: "30FABA7FCD877410"
+					item: {
+						count: 1
+						id: "tide:diamond_fishing_rod"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 18.0d
+		}
+		{
+			dependencies: [
+				"31DC4873300AE79D"
+				"1EC196EC8629D11F"
+			]
+			id: "34F1B453AD430B7C"
+			rewards: [
+				{
+					id: "5216E31662D19D04"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "3D0E5B32D7B2A2D1"
+					item: {
+						count: 1
+						id: "tide:lavaproof_hook"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 19.5d
+		}
+		{
+			dependencies: [
+				"34F1B453AD430B7C"
+				"158910F703716CDC"
+			]
+			id: "554B197AB7486EB8"
+			rewards: [
+				{
+					id: "1F9FE6F72BB2BABC"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "1D438AAAE6F5F4BB"
+					item: {
+						count: 1
+						id: "tide:void_hook"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 19.5d
+		}
+		{
+			dependencies: [
+				"19A7350321A8314C"
+			]
+			id: "7B7D27A8B1594597"
+			optional: true
+			rewards: [
+				{
+					id: "1B3F506ACEF67C02"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "3D8768EE752DF821"
+					item: {
+						count: 1
+						id: "tide:fish_finder"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 16.5d
+		}
+		{
+			dependencies: [
+				"52F8EC74625961E6"
+			]
+			id: "5634498A8C835DBC"
+			rewards: [
+				{
+					id: "3DABC5950CEFB713"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "5849635BD92F5073"
+					item: {
+						count: 1
+						id: "naturalist:capture_net"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -10.5d
+		}
+		{
+			dependencies: [
+				"5634498A8C835DBC"
+			]
+			id: "1C3803DB455E371B"
+			optional: true
+			rewards: [
+				{
+					id: "7C0627B10DAFC265"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "170ACA37FDF729CF"
+					item: {
+						count: 1
+						id: "naturalist:butterfly"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: -10.5d
+		}
+		{
+			dependencies: [
+				"5634498A8C835DBC"
+			]
+			id: "52EB00BE37C395A2"
+			rewards: [
+				{
+					id: "10FF9F6DC5EE4455"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "3F629FCCEA6D2FED"
+					item: {
+						count: 1
+						id: "naturalist:glow_goop"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: -12.0d
+		}
+		{
+			dependencies: [
+				"52F8EC74625961E6"
+			]
+			id: "70F64AFB8B519018"
+			optional: true
+			rewards: [
+				{
+					id: "58F9F07649D84760"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "50BCB00D2FB7922F"
+					item: {
+						count: 1
+						id: "naturalist:antler"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -13.5d
+		}
+		{
+			dependencies: [
+				"52F8EC74625961E6"
+			]
+			id: "1324D483BE070812"
+			optional: true
+			rewards: [
+				{
+					id: "54DFFA6BB19FBB79"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "3B0F459184AE7700"
+					item: {
+						count: 1
+						id: "naturalist:knapsack"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -15.0d
+		}
+		{
+			dependencies: [
+				"52F8EC74625961E6"
+				"50E8691B34B8D316"
+			]
+			id: "171C4901A3D4F3D1"
+			rewards: [
+				{
+					id: "11F374D4BE306832"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "323C27F3E0128C93"
+					item: {
+						count: 1
+						id: "sereneseasons:calendar"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -7.5d
+		}
+		{
+			dependencies: [
+				"171C4901A3D4F3D1"
+			]
+			id: "7FD520C45AE6FCDA"
+			rewards: [
+				{
+					id: "14B0553727C6B050"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "11C50F0A911847F6"
+					type: "checkmark"
+				}
+			]
+			x: 4.0d
+			y: -7.5d
+		}
+		{
+			dependencies: [
+				"171C4901A3D4F3D1"
+				"1EC196EC8629D11F"
+			]
+			id: "1FA1D6FF6F6EE024"
+			optional: true
+			rewards: [
+				{
+					id: "19C976B470572120"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "316CDA42095CAE93"
+					item: {
+						count: 1
+						id: "sereneseasons:season_sensor"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: -9.0d
+		}
+		{
+			dependencies: [
+				"52F8EC74625961E6"
 				"58B2439153283A9D"
 			]
 			id: "36C7C5F1168EB239"
@@ -1073,6 +1576,58 @@
 			]
 			x: 10.0d
 			y: 3.0d
+		}
+		{
+			dependencies: [
+				"5D4DDE3A08C629E0"
+				"19ADA048D98D80EE"
+			]
+			id: "75E86F012765F988"
+			rewards: [
+				{
+					id: "38968C4D9193ED61"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					count: 4L
+					id: "71AEFFE665DFF602"
+					item: {
+						count: 1
+						id: "create_factory:waffle"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 4.5d
+		}
+		{
+			dependencies: [
+				"75E86F012765F988"
+			]
+			id: "1C7E2076C8239B60"
+			rewards: [
+				{
+					id: "70E3CCF3741FA1A1"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "5D1B768499BD40A2"
+					item: {
+						count: 1
+						id: "create_factory:sweet_berries_jam_roll"
+					}
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: 4.5d
 		}
 	]
 }

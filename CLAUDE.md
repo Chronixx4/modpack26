@@ -90,15 +90,31 @@ CurseForge blockt Downloads per Skript, auch über die interne `/api/v1`. Diese 
 - 0.9.11: Pack heisst jetzt **Chronicle** (Name im .mrpack, Dateinamen `Chronicle-<ver>.*`, Release-Titel, MOTD, Questbuch-Titel, LIES-MICH).
 - 0.9.12 (Release v0.9.12, 2026-10-07): **Almost Unified** (Standard-Config: Prioritaet minecraft > create > immersiveengineering > mekanism; z. B. Stahl/Silber/Elektrum/Nickel/Uran werden zu IE). Quests, die Varianten anderer Mods verlangten (Mekanism-/Oritech-/Ad-Astra-Stahl, Occultism-Silber usw.), auf die IE-Items umgestellt. **Chronicle-Kern** (eigenes Endgame): KubeJS-Items `kubejs:technik_fragment`, `magie_fragment`, `abenteuer_fragment`, `chronicle_core` in `pack/kubejs/` (startup_scripts, Rezepte als JSON in data/kubejs/recipe, Texturen, Namen); der Kern im mechanischen Crafter (5x5). Questbuch-Finale: Fragmente + Kern vor `ende`. `pack/kubejs` landet in overrides/kubejs bzw. kubejs/ beider ZIPs. GitHub-Servertest OK (258 Mods, 374 s, `Loaded 35 chapters, 1235 quests`, keine ungueltigen Items, KubeJS-Items registriert). Ob die KubeJS-Rezepte laden, zeigt der Servertest nicht (Rezeptfehler werden gefiltert), also im Spiel per EMI pruefen.
 
-- 0.9.13 (in Arbeit, nicht released): EMI ersetzt durch **JEI**, EMI Loot ersetzt durch **Just Enough Resources** (nur Client). Questtexte von EMI auf JEI umgestellt, die Schluessel `emi`/`emi_loot` bleiben. Neue Mods laut `PLAN-0.9.13.md` folgen. Zum Pflegen des Index ohne pwsh gibt es `tools/index-pflegen.py` (`add <slug>...` holt die neueste 1.21.1-NeoForge-Release-Version plus Pflicht-Abhaengigkeiten, `rm <pfad-teil>...` entfernt; MODLISTE.txt danach per Hand nachziehen), es setzt env wie das PS1-Skript.
+- 0.9.13 (fertig auf dem Arbeitsbranch, nicht released): Umsetzung von `PLAN-0.9.13.md`.
+  - EMI ersetzt durch **JEI**, EMI Loot durch **Just Enough Resources** (nur Client). Questtexte auf JEI umgestellt, die Schluessel `emi`/`emi_loot` bleiben.
+  - **20 neue Mods:** Numismatics, TFMG, Mobile Packages, Pattern Schematics, Ironworks, Mechanical Extruder, Ultimate Factory, Create Factory, Train Perspective, Goety, End Remastered, Enderscape, L2 Hostility, Kobolds, Paladins & Priests, Shield Expansion, Grappling Hook, Naturalist, Tide, Serene Seasons. Dazu 6 Bibliotheken; insgesamt 303 Mods.
+  - **Neuer Ordner `pack/defaultconfigs`** (landet in overrides/defaultconfigs und in beiden ZIPs). Darin ist L2 Hostility entschaerft: `dimensionFactor` 2, `allowLegendary` false. Die Datei gilt als Server-Config pro Welt und greift nur bei neuen Welten.
+  - **KubeJS:** `pack/kubejs/data/create/recipe/mixing/brass_ingot.json` ueberschreibt Ironworks, damit Messing wieder 2 Barren gibt.
+  - **End Remastered streng:** Normale Enderaugen gehen nicht, man braucht 12 von 16 Augen.
+  - **Questbuch:** 38 Kapitel, 1419 Quests.
+    - Neue Kapitel: `tfmg` (Create 4), `goety`, `hostility` (Gefahrenstufen).
+    - Neue Aeste in create_2, create_3, dimensionen (Augen, Enderscape, Endstadt alt/neu), strukturen (Kobolds), waffen (Paladins, Schilde), erste_schritte (Enterhaken), essen (Tide, Naturalist, Jahreszeiten, Create Factory) und bosse (Goety-Bosse).
+    - EvilCraft-Texte aus dem Handbuch. Die Quest `evilcraft/akkumulator` verlangt jetzt den Akkumulationskern, weil der Akkumulator nicht craftbar ist.
+    - Uebrig bleibt eine Warnung: `refined_storage/silizium`. Sie ist falsch, weil `refined_storage/start` den Nether schon voraussetzt.
+  - `ids.json`/`rezepte.json` aus den neuen Jars ergaenzt. Es gab keinen Servertest.
+  - Im Spiel pruefen:
+    - Ist das Enderscape-Datapack `new_end_cities` aktiv? Laufen Enderscape und Better End zusammen?
+    - Gehen die TFMG-Rezepte mit Almost Unified noch? Betroffen sind `heavy_plate` und `rebar`.
+    - Kommt das Messing-Rezept wieder mit 2 Barren?
+    - Greift die L2-Config in einer neuen Welt?
 
 ## Offene Aufgaben
 1. **0.9.12 im Client testen:** kurz in die Welt, auf Grafikfehler achten (More Culling, BadOptimizations seit 0.9.9). Dazu pruefen: Rezepte der drei Fragmente und des Chronicle-Kerns in EMI, Almost Unified (z. B. Mekanism-Stahl wird zu IE-Stahl), in einer neuen Welt keine doppelten Erze.
 2. **Questbuch im Spiel ansehen** (seit 0.9.8): Texte, Reihenfolge, Bilder. Aenderungen in `pack/quests/inhalt/*.py` machen (nicht im Editiermodus, sonst ueberschreibt der naechste Generatorlauf sie).
 3. **Server auf dem Heimserver** einrichten: ZimaOS, Marvin hat dort schon ein eigenes Docker-Panel fuer mehrere Minecraft-Server (keine docker-compose noetig). Dafuer das `-Server.zip` aus dem Release nehmen (12 GB RAM fuer Minecraft, Container mind. 14 GB, Java 21, Ports 25565/TCP und 24454/UDP fuer Voice Chat), danach mit Chunky vorgenerieren.
 4. Erst danach die **richtige Welt** starten, damit Strukturen und Biome ueberall generiert werden.
-5. **Beim naechsten Update:** EvilCraft-Questtexte nachbessern (viele Quests verweisen nur aufs Handbuch). Dafuer das Handbuch "Origins of Darkness" aus der EvilCraft-Jar auslesen und die Mechaniken daraus uebernehmen.
-6. **0.9.13 vorbereitet:** `PLAN-0.9.13.md` (20 Mod-Kandidaten, die nicht in ATM10 sind, Entscheidungen, kompletter Quest-Plan mit IDs). Marvin nimmt ueberall die Empfehlung; die Mod-Auswahl steht noch aus.
+5. (erledigt in 0.9.13: EvilCraft-Questtexte aus dem Handbuch)
+6. **0.9.13 umgesetzt** (siehe Stand). Als Naechstes kommt der Release, wenn Marvin "mach den Release" sagt. Danach im Spiel die Punkte unter "Im Spiel pruefen" bei 0.9.13 abhaken.
 7. Optional: Shader wieder einbauen, sobald es eine Iris-Version gibt, die zu Sodium 0.8 passt.
 
 ## Mod-Bauplan (Übersicht)
