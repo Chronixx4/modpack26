@@ -97,11 +97,11 @@ kapitel('pneumaticcraft', '&7PneumaticCraft', P + 'air_compressor', 'Druckluft, 
 
 # ---------------------------------------------------------------------------
 kapitel('oritech', '&5Oritech', O + 'assembler_block', 'Maschinen, Laser und Teilchenbeschleuniger', [
-    Q('start', 'Nickel', ('item', O + 'nickel_ingot', 8),
+    Q('start', 'Nickel', ('item', 'immersiveengineering:ingot_nickel', 8),
       ['Oritech beginnt mit &eNickel&r. Das Erz findest du in der Oberwelt, einfach schmelzen.',
        'Das Handbuch und EMI zeigen dir alle Rezepte.'],
       nach=['erste_schritte/eisen'], belohnung=[('item', 'minecraft:coal', 16), 2], form='gear', gross=True, haupt=True),
-    Q('legierungen', 'Stahl und Elektrum', [('item', O + 'steel_ingot', 8), ('item', O + 'electrum_ingot', 8)],
+    Q('legierungen', 'Stahl und Elektrum', [('item', 'immersiveengineering:ingot_steel', 8), ('item', 'immersiveengineering:ingot_electrum', 8)],
       'Am Anfang craftest du Legierungen per Hand: zwei Eisen und zwei Kohle ergeben Stahl, zwei Gold und zwei Redstone ergeben Elektrum. Später geht das in der Gießerei günstiger.',
       nach=['start'], haupt=True),
     Q('kerne', 'Maschinenkerne', [('item', O + 'machine_core_1', 4), ('item', O + 'machine_core_2', 4)],
@@ -134,7 +134,7 @@ kapitel('oritech', '&5Oritech', O + 'assembler_block', 'Maschinen, Laser und Tei
     Q('foundry', 'Gießerei', O + 'foundry_block',
       'Die &eGießerei&r schmilzt zwei Zutaten zu Legierungen, z. B. Stahl, Elektrum, Adamant und später Energit und Duratium.',
       nach=['pulverizer'], belohnung=2, haupt=True),
-    Q('abgabe', 'Abgabe: Stahl', ('item', O + 'steel_ingot', 64),
+    Q('abgabe', 'Abgabe: Stahl', ('item', 'immersiveengineering:ingot_steel', 64),
       'Gib 64 Oritech-Stahl ab und hol dir eine Belohnung.',
       nach=['legierungen'], abgabe=True, optional=True, belohnung='loot2'),
     Q('assembler', 'Zusammenfüger', O + 'assembler_block',

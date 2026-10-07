@@ -1204,6 +1204,12 @@
 		"Rechtsklick mit Packband auf eine Truhe, dann kannst du sie samt Inhalt abbauen und mitnehmen."
 	]
 	quest.1C79DC94AE450181.title: "Packband"
+	quest.1C831C87DBB31067.quest_desc: [
+		"Das Herz dieses Packs. Die drei Fragmente, ein Chaotischer Kern, Nethersterne, Präzisionsmechanismen und robuste Bleche werden im &emechanischen Crafter&r von Create zusammengesetzt (5x5)."
+		""
+		"Wer den Kern in den Händen hält, hat Chronicle wirklich durchgespielt."
+	]
+	quest.1C831C87DBB31067.title: "Der Chronicle-Kern"
 	quest.1C83F978776BE561.quest_desc: [
 		"Fast das Maximum. Netherit setzt du am Schmiedetisch obendrauf."
 	]
@@ -1656,6 +1662,10 @@
 		"Wie die Fabrikanzeige, aber für Flüssigkeiten."
 	]
 	quest.323D79A46F9B269E.title: "Flüssigkeits-Fabrikanzeige"
+	quest.3251D03D393EC56D.quest_desc: [
+		"Das erste Stück des &6Chronicle-Kerns&r. Dafür brauchst du Antimaterie, einen erweckten Kern, eine Singularität, eine 256M-Komponente, Nitro-Kristall und einen Präzisionsmechanismus. Das Rezept zeigt dir EMI."
+	]
+	quest.3251D03D393EC56D.title: "Technik-Fragment"
 	quest.32542EDC850E666B.quest_desc: [
 		"Advanced Technologies bringt Mündungsbremsen, Schalldämpfer, gezogene Läufe, Raketen und mehr."
 	]
@@ -1860,6 +1870,10 @@
 		"Eine große Burg mit Wachen und Schatzkammern."
 	]
 	quest.34C763F945B8B4E5.title: "Die Burg"
+	quest.34D1154D4D07116B.quest_desc: [
+		"Hierfür musst du überall gewesen sein: Ignitium, Drachenstahl, feuriger Barren, verzaubertes Gravitit, Netherstern, Herz der Tiefe, Unobtainium und reine Dunkelheit. Das Rezept zeigt dir EMI."
+	]
+	quest.34D1154D4D07116B.title: "Abenteuer-Fragment"
 	quest.34DA89287D13C44F.quest_desc: [
 		"Mit Wegsteinen teleportierst du dich zwischen Orten, die du schon besucht hast. In Dörfern stehen oft schon welche."
 		""
@@ -3504,6 +3518,10 @@
 		"Bessere Angeln halten länger und fangen besser."
 	]
 	quest.5A5E5AFC1B6F3237.title: "Goldene Angel"
+	quest.5A6AD8C60B21AD3E.quest_desc: [
+		"Das magische Stück: Insanium, ein Wilden-Tribut, Iesnium, legendäre Tinte, Stellarit und Drachenhaut. Das Rezept zeigt dir EMI."
+	]
+	quest.5A6AD8C60B21AD3E.title: "Magie-Fragment"
 	quest.5A7A1D2B14036142.quest_desc: [
 		"8 Legierungsziegel als 2x2x2-Würfel, dann mit dem Hammer draufhauen. Der Ofen läuft mit Brennstoff und schmilzt zwei Metalle zu einer Legierung."
 	]

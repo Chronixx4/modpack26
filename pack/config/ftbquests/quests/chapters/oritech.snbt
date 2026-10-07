@@ -57,7 +57,7 @@
 					id: "3F82FC0F78023618"
 					item: {
 						count: 1
-						id: "oritech:nickel_ingot"
+						id: "immersiveengineering:ingot_nickel"
 					}
 					type: "item"
 				}
@@ -83,7 +83,7 @@
 					id: "10C22F143A1D4E96"
 					item: {
 						count: 1
-						id: "oritech:steel_ingot"
+						id: "immersiveengineering:ingot_steel"
 					}
 					type: "item"
 				}
@@ -92,7 +92,7 @@
 					id: "518AB6DA80BDD280"
 					item: {
 						count: 1
-						id: "oritech:electrum_ingot"
+						id: "immersiveengineering:ingot_electrum"
 					}
 					type: "item"
 				}
@@ -418,7 +418,7 @@
 					id: "3162341D298AB545"
 					item: {
 						count: 1
-						id: "oritech:steel_ingot"
+						id: "immersiveengineering:ingot_steel"
 					}
 					type: "item"
 				}

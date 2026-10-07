@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "mysticalagradditions:insanium_ingot"
+    },
+    "B": {
+      "item": "ars_nouveau:wilden_tribute"
+    },
+    "C": {
+      "item": "occultism:iesnium_ingot"
+    },
+    "D": {
+      "item": "irons_spellbooks:legendary_ink"
+    },
+    "E": {
+      "item": "forbidden_arcanus:stellarite_piece"
+    },
+    "F": {
+      "item": "irons_spellbooks:dragonskin"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "CDE",
+    "AFA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "kubejs:magie_fragment"
+  }
+}

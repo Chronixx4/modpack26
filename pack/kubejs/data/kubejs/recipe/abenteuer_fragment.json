@@ -1,0 +1,39 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "cataclysm:ignitium_ingot"
+    },
+    "B": {
+      "item": "iceandfire:dragonsteel_fire_ingot"
+    },
+    "C": {
+      "item": "twilightforest:fiery_ingot"
+    },
+    "D": {
+      "item": "aether:enchanted_gravitite"
+    },
+    "E": {
+      "item": "minecraft:nether_star"
+    },
+    "F": {
+      "item": "deeperdarker:heart_of_the_deep"
+    },
+    "G": {
+      "item": "allthemodium:unobtainium_ingot"
+    },
+    "H": {
+      "item": "alexscaves:pure_darkness"
+    }
+  },
+  "pattern": [
+    "ABC",
+    "DEF",
+    "GHG"
+  ],
+  "result": {
+    "count": 1,
+    "id": "kubejs:abenteuer_fragment"
+  }
+}

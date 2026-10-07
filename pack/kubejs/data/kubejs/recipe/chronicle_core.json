@@ -1,0 +1,40 @@
+{
+  "type": "create:mechanical_crafting",
+  "accept_mirrored": false,
+  "category": "misc",
+  "key": {
+    "T": {
+      "item": "kubejs:technik_fragment"
+    },
+    "M": {
+      "item": "kubejs:magie_fragment"
+    },
+    "A": {
+      "item": "kubejs:abenteuer_fragment"
+    },
+    "P": {
+      "item": "create:precision_mechanism"
+    },
+    "S": {
+      "item": "create:sturdy_sheet"
+    },
+    "N": {
+      "item": "minecraft:nether_star"
+    },
+    "C": {
+      "item": "draconicevolution:chaotic_core"
+    }
+  },
+  "pattern": [
+    " SPS ",
+    "STNMS",
+    "PNCNP",
+    "SANAS",
+    " SPS "
+  ],
+  "result": {
+    "count": 1,
+    "id": "kubejs:chronicle_core"
+  },
+  "show_notification": true
+}

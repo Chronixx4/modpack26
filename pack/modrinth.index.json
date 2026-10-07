@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
   "game": "minecraft",
-  "versionId": "0.9.11",
+  "versionId": "0.9.12",
   "name": "Chronicle",
   "files": [
     {
@@ -3978,6 +3978,21 @@
         "https://cdn.modrinth.com/data/hi2dSXTu/versions/NKEMiRIu/elevatorid-neoforge-1.21.1-1.11.4.jar"
       ],
       "fileSize": 191190
+    },
+    {
+      "path": "mods/almostunified-neoforge-1.21.1-1.4.2.jar",
+      "hashes": {
+        "sha1": "f9a58fa95780f4b045d30559c1fdaedaa7f0fba3",
+        "sha512": "82ddfb82b86dcbf62c729ebbb2ed571bf284d31a8ad494b7e10db2da24a87e7887969e6092b78e79053ea0279c75de58dc548d30eca6ba60c2816a9bd3e436fd"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/sdaSaQEz/versions/e8iYxxI3/almostunified-neoforge-1.21.1-1.4.2.jar"
+      ],
+      "fileSize": 295093
     }
   ],
   "dependencies": {

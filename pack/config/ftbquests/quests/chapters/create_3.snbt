@@ -194,7 +194,7 @@
 					id: "1DCA6B70D60ABC8B"
 					item: {
 						count: 1
-						id: "createaddition:copper_wire"
+						id: "immersiveengineering:wire_copper"
 					}
 					type: "item"
 				}
@@ -254,7 +254,7 @@
 					id: "3B5E7FC0FCBAA89D"
 					item: {
 						count: 1
-						id: "createaddition:electrum_ingot"
+						id: "immersiveengineering:ingot_electrum"
 					}
 					type: "item"
 				}
@@ -1026,7 +1026,7 @@
 					id: "36DE1E4189C7504A"
 					item: {
 						count: 1
-						id: "createmetallurgy:steel_ingot"
+						id: "immersiveengineering:ingot_steel"
 					}
 					type: "item"
 				}

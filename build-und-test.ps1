@@ -9,7 +9,7 @@ $ProgressPreference = 'SilentlyContinue'
 $MC      = '1.21.1'
 $LOADER  = 'neoforge'
 $PACK    = 'Chronicle'
-$PACKVER = '0.9.11'
+$PACKVER = '0.9.12'
 $RAM     = '8G'
 $TIMEOUT_MIN = 20
 
@@ -124,6 +124,7 @@ moreculling|More Culling
 packet-fixer|Packet Fixer
 # Komfort und Oberflaeche
 emi|EMI
+almostunified|Almost Unified
 jade|Jade
 xaeros-minimap|Xaero's Minimap
 xaeros-world-map|Xaero's World Map
@@ -485,6 +486,14 @@ if (Test-Path -LiteralPath $cfgSrc) {
   Copy-Item -LiteralPath $cfgSrc $ovRoot -Recurse -Force
   Say "  Configs aus pack\config mit eingepackt (Questbuch)"
 }
+# KubeJS-Skripte (Chronicle-Kern usw.) aus pack\kubejs
+$kjsSrc = Join-Path $Root 'pack\kubejs'
+if (Test-Path -LiteralPath $kjsSrc) {
+  $ovRoot = Join-Path $packDir 'overrides'
+  New-Item -ItemType Directory -Force -Path $ovRoot | Out-Null
+  Copy-Item -LiteralPath $kjsSrc $ovRoot -Recurse -Force
+  Say "  KubeJS-Skripte aus pack\kubejs mit eingepackt"
+}
 $mrpack = Join-Path $Root ("Chronicle-" + $PACKVER + ".mrpack")
 Remove-Item -Force $mrpack -ErrorAction SilentlyContinue
 Add-Type -AssemblyName System.IO.Compression.FileSystem
@@ -594,6 +603,7 @@ foreach ($f in $files) {
 Say "  $serverMods Mods im Testserver (reine Client-Mods wie Sodium oder Karten werden serverseitig ausgelassen)"
 foreach ($j in $cfJars) { Copy-Item -LiteralPath $j.FullName (Join-Path $Server 'mods') -Force; $serverMods++ }
 if (Test-Path -LiteralPath $cfgSrc) { Copy-Item -LiteralPath $cfgSrc $Server -Recurse -Force }
+if (Test-Path -LiteralPath $kjsSrc) { Copy-Item -LiteralPath $kjsSrc $Server -Recurse -Force }
 Set-Content -Path (Join-Path $Server 'eula.txt') -Value 'eula=true'
 Set-Content -Path (Join-Path $Server 'user_jvm_args.txt') -Value "-Xms2G`n-Xmx$RAM"
 

@@ -1333,7 +1333,7 @@
 					id: "58A78DCB383E733C"
 					item: {
 						count: 1
-						id: "ad_astra:steel_ingot"
+						id: "immersiveengineering:ingot_steel"
 					}
 					type: "item"
 				}
