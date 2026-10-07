@@ -21,7 +21,7 @@ import dsl  # noqa: E402
 
 OUT = os.path.join(HERE, '..', 'config', 'ftbquests', 'quests')
 TEILE = ['start', 'create', 'ae2_mekanism', 'technik_a', 'technik_b', 'magie_a', 'magie_b', 'abenteuer_a', 'abenteuer_b']
-BUCH_TITEL = 'Unser Modpack'
+BUCH_TITEL = 'Chronicle'
 BUCH_ICON = 'minecraft:writable_book'
 FORMEN = {'circle', 'square', 'rsquare', 'diamond', 'pentagon', 'hexagon', 'octagon', 'heart', 'gear', 'star'}
 DX, DY = 2.0, 1.5

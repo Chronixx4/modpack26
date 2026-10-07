@@ -1,4 +1,4 @@
-Unser Modpack @VERSION@ - Server
+Chronicle @VERSION@ - Server
 Minecraft @MC@, NeoForge @NEOFORGE@
 
 VORAUSSETZUNGEN

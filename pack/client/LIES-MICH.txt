@@ -1,8 +1,8 @@
-Unser Modpack @VERSION@ - Client
+Chronicle @VERSION@ - Client
 Minecraft @MC@, NeoForge @NEOFORGE@
 
 MODRINTH APP (empfohlen)
-Nimm statt dieser ZIP die Datei Unser-Modpack-@VERSION@.mrpack aus dem Release:
+Nimm statt dieser ZIP die Datei Chronicle-@VERSION@.mrpack aus dem Release:
 Modrinth App -> "+" -> "Aus Datei importieren".
 
 ANDERE LAUNCHER (Prism, CurseForge-App, ATLauncher ...)
