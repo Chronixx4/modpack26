@@ -8,8 +8,8 @@ $ProgressPreference = 'SilentlyContinue'
 
 $MC      = '1.21.1'
 $LOADER  = 'neoforge'
-$PACK    = 'Unser Modpack'
-$PACKVER = '0.9.10'
+$PACK    = 'Chronicle'
+$PACKVER = '0.9.11'
 $RAM     = '8G'
 $TIMEOUT_MIN = 20
 
@@ -485,7 +485,7 @@ if (Test-Path -LiteralPath $cfgSrc) {
   Copy-Item -LiteralPath $cfgSrc $ovRoot -Recurse -Force
   Say "  Configs aus pack\config mit eingepackt (Questbuch)"
 }
-$mrpack = Join-Path $Root ("Unser-Modpack-" + $PACKVER + ".mrpack")
+$mrpack = Join-Path $Root ("Chronicle-" + $PACKVER + ".mrpack")
 Remove-Item -Force $mrpack -ErrorAction SilentlyContinue
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 [IO.Compression.ZipFile]::CreateFromDirectory($packDir, $mrpack)

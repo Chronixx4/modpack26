@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Baut aus pack/modrinth.index.json + curseforge-mods/*.jar die Release-Dateien:
-#   Unser-Modpack-<ver>.mrpack        (Modrinth App)
-#   Unser-Modpack-<ver>-Client.zip    (mods-Ordner fuer andere Launcher)
-#   Unser-Modpack-<ver>-Server.zip    (Server-Mods, NeoForge-Installer, Startdateien)
+#   Chronicle-<ver>.mrpack        (Modrinth App)
+#   Chronicle-<ver>-Client.zip    (mods-Ordner fuer andere Launcher)
+#   Chronicle-<ver>-Server.zip    (Server-Mods, NeoForge-Installer, Startdateien)
 # Aufruf: pakete-bauen.sh [Ausgabeordner]   (Standard: dist/)
 # Braucht: jq, curl, sha512sum, zip
 set -euo pipefail
@@ -14,7 +14,7 @@ CACHE="${CACHE_DIR:-$OUT/cache}"
 VER="$(jq -r .versionId "$IDX")"
 MC="$(jq -r .dependencies.minecraft "$IDX")"
 NF="$(jq -r .dependencies.neoforge "$IDX")"
-NAME="Unser-Modpack-$VER"
+NAME="Chronicle-$VER"
 mkdir -p "$CACHE"
 
 fill() {  # Platzhalter in Vorlagen ersetzen

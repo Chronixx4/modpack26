@@ -1,14 +1,15 @@
-# Unser Modpack – Projektstand (Übergabe an Claude Code)
+# Chronicle (Modpack) – Projektstand (Übergabe an Claude Code)
 
-Eigenes Minecraft-Modpack für Chronixx und Freunde, als Nachfolger für ATM10.
+Eigenes Minecraft-Modpack **Chronicle** (bis 0.9.10 "Unser Modpack") für Chronixx und Freunde, als Nachfolger für ATM10.
 Schwerpunkte: Ars Nouveau (Magie), Create mit vielen Addons, AE2 mit Addons, neue Dimensionen, Bosse, Waffen.
 Kommunikation mit dem Nutzer: Deutsch, locker, kurz.
 **Tests nur nach Rueckfrage:** Servertests (lokal in der Cloud oder per Workflow-Start) nie von selbst starten, immer erst fragen und auf Marvins OK warten. Der automatische Test von GitHub bei PRs ist davon ausgenommen.
+**PR/Release nur auf Ansage:** Aenderungen nur committen und auf den Arbeitsbranch pushen. Einen PR (und damit ein Release) erst erstellen, wenn Marvin es sagt, er will vorher oft noch mehr aendern.
 
 ## Eckdaten
 - Minecraft **1.21.1**, Loader **NeoForge 21.1.x** (zuletzt 21.1.255), Java 21
-- Launcher: **Modrinth App**; Profile liegen unter `C:\Users\Marvin\AppData\Roaming\ModrinthApp\profiles\Unser-Modpack-<version>\`
-- Logs: `...\profiles\Unser-Modpack-<version>\logs\latest.log`, Crashs unter `crash-reports\`
+- Launcher: **Modrinth App**; Profile liegen unter `C:\Users\Marvin\AppData\Roaming\ModrinthApp\profiles\Chronicle-<version>\`
+- Logs: `...\profiles\Chronicle-<version>\logs\latest.log`, Crashs unter `crash-reports\`
 - Kampfsystem: **Vanilla**, also bewusst ohne Better Combat und ohne Epic Fight
 - Ziel: **eine einzige .mrpack-Datei**, die die Freunde in die Modrinth App importieren
 - PC: Windows 11, RTX 5070, Azul Java 21
@@ -18,20 +19,20 @@ Kommunikation mit dem Nutzer: Deutsch, locker, kurz.
 - Ablauf des Skripts:
   1. Jede Mod aus `$ModList` (Format `slug|Name|optional-Versionsregex`) über die Modrinth-API v2 auflösen. Zuerst wird der Slug versucht, danach eine Namenssuche mit **nur exakten** Treffern.
   2. Required-Abhängigkeiten rekursiv auflösen.
-  3. `modrinth.index.json` schreiben. CurseForge-Jars aus `curseforge-mods\` kommen nach `overrides/mods`. Daraus entsteht `Unser-Modpack-<PACKVER>.mrpack`. Danach wird sofort `ERGEBNIS.txt` geschrieben.
+  3. `modrinth.index.json` schreiben. CurseForge-Jars aus `curseforge-mods\` kommen nach `overrides/mods`. Daraus entsteht `Chronicle-<PACKVER>.mrpack`. Danach wird sofort `ERGEBNIS.txt` geschrieben.
   4. Einen NeoForge-Testserver aufsetzen und starten, bis `Done (` im Log steht. Danach wird `ERGEBNIS.txt` aktualisiert.
 - Das Skript schreibt ausserdem `MODLISTE.txt` (alle Mods nach Kategorie; Kategorien = `# `-Zeilen in `$ModList`, CF-Jars ueber `$cfCat`) und `pack/modrinth.index.json`. Beide nach jedem Build mit committen.
 - **Ausschlusslisten:** `pack/server-ausschluss.txt` und `pack/client-ausschluss.txt` (Dateinamen-Muster). Das Skript setzt dafuer `env.server`/`env.client` auf `unsupported` im .mrpack. Aktuell: Chunky nur Server, Distant Horizons/Xaero/Sound Physics nur Client.
 - **Release:** `.github/workflows/release.yml` ruft `.github/scripts/pakete-bauen.sh` (baut `.mrpack`, `-Client.zip` mit mods-Ordner, `-Server.zip` mit Server-Mods, NeoForge-Installer, `start.sh`/`start.bat`, `user_jvm_args.txt` (12 GB), `server.properties`, `eula.txt`, LIES-MICH) und `.github/scripts/servertest.sh` (Server-ZIP entpacken, starten bis `Done (`). Vorlagen fuer die Server-/Client-Dateien liegen in `pack/server/` und `pack/client/` (Platzhalter `@VERSION@`, `@MC@`, `@NEOFORGE@`).
   - Pull Request: bauen + Servertest. Push auf `main` mit neuer `versionId` in `pack/modrinth.index.json`: zusaetzlich Release `v<Version>` mit allen Dateien. Gibt es das Release schon, passiert nichts. Tags kann Claude aus der Cloud-Umgebung nicht pushen.
-  - Lokal testbar: `bash .github/scripts/pakete-bauen.sh dist && bash .github/scripts/servertest.sh dist/Unser-Modpack-<ver>-Server.zip`
+  - Lokal testbar: `bash .github/scripts/pakete-bauen.sh dist && bash .github/scripts/servertest.sh dist/Chronicle-<ver>-Server.zip`
 - **Questbuch (FTB Quests):** Inhalt in `pack/quests/inhalt/*.py` (ein Teil pro Datei, Reihenfolge in `generator.py` `TEILE`), Format in `pack/quests/dsl.py`, Regeln + Anker (kapiteluebergreifende Schluessel) in `pack/quests/AUTOREN.md`. `pack/quests/generator.py` schreibt `pack/config/ftbquests/quests/` (data.snbt, chapter_groups.snbt, chapters/*.snbt, reward_tables/*.snbt, lang/en_us.snbt; Texte stehen in en_us, damit sie in jeder Client-Sprache erscheinen). Aufruf: `python3 pack/quests/generator.py --ids ids.json --rezepte rezepte.json [--bilder ordner]`, Ergebnis mit committen.
   - Quest-IDs = Hash aus Kapitel + Schluessel, **auf 63 Bit begrenzt** (FTB Quests liest IDs als vorzeichenbehaftete Zahl; groessere IDs werden stillschweigend zu 0 und neu vergeben -> "Unnamed" und kaputte Abhaengigkeiten, so passiert in 0.9.7). Schluessel nicht umbenennen, sonst geht Fortschritt verloren.
   - `ids.json` = Registry-Dump (KubeJS auf dem Testserver) plus Dimensionen/Strukturen/Struktur-Tags/Biome aus den Jars; `rezepte.json` baut `pack/quests/rezepte.py <mods-ordner> <aus.json>`. Nachschlagen: `pack/quests/such.py`. Beide JSONs sind nicht im Repo (je ~5 MB).
   - Modus `linear` (Quests gesperrt bis Vorgaenger fertig); Quests mit Kill/Dimension/Struktur/Biom setzt der Generator auf `flexible`, sonst zaehlen sie erst nach dem Freischalten. Abgabe-Quests (`abgabe=True`) verbrauchen Items. Belohnungen: XP, Items, Loot-Kisten `loot1`-`loot4` (`inhalt/loot.py`).
   - `pack/config/` landet in `overrides/config` (.mrpack) bzw. `config/` (beide ZIPs) und im lokalen Testserver. Der Servertest gibt die Zeile `Questbuch: Loaded ... quests` aus.
 - CurseForge-Jars holt das Skript automatisch aus `%USERPROFILE%\Downloads` (Dateinamen-Muster in `$cfPatterns`).
-- Aktuelle Version: **PACKVER 0.9.10**. Bei jeder Änderung `$PACKVER` hochzählen.
+- Aktuelle Version: **PACKVER 0.9.11**. Bei jeder Änderung `$PACKVER` hochzählen.
 
 ## Mods, die nur auf CurseForge sind (liegen in curseforge-mods\ bzw. Downloads)
 Alle für 1.21.1 NeoForge. Download-URL-Schema: `https://www.curseforge.com/minecraft/mc-mods/<slug>/download/<fileId>`
@@ -86,13 +87,15 @@ CurseForge blockt Downloads per Skript, auch über die interne `/api/v1`. Diese 
 - 0.9.8: Questbuch 2.0: 6 Gruppen, 33 Kapitel, 1178 Quests, 4 Loot-Kisten-Stufen. Fix fuer "Unnamed"/falsche Reihenfolge (63-Bit-IDs). Reihenfolge gegen Rezepte geprueft, Vorschaubilder pro Kapitel.
 - 0.9.9: Performance: FastSuite, FastFurnace, FastWorkbench, Packet Fixer, dazu nur fuer den Client BadOptimizations, Dynamic FPS und More Culling. Server-`user_jvm_args.txt` mit Xms=Xmx=12G und Aikar-G1-Flags (der Servertest ueberschreibt die Datei mit wenig RAM, die Flags testet er also nicht). `simulation-distance` 6. Im Index nachgetragen, ohne kompletten Neu-Build (in der Cloud gibt's kein pwsh), andere Mods also unveraendert. Bewusst nicht aufgenommen: C2ME und ScalableLux (Alpha), Noisium (veraltet), AllTheLeaks (nur CF), ModernFix `dynamic_resources` (ungetestet).
 - 0.9.10: Lootr, EMI Loot, Easy Villagers, Trade Cycling, Elevator Mod, Cooking for Blockheads, Pipez, Refined Storage, EvilCraft, dazu AllTheLeaks (CF). Questbuch: neue Kapitel Refined Storage und EvilCraft, Ergaenzungen in Willkommen (EMI Loot, Lootr), Erste Schritte (Aufzug), Lager (Pipez), Essen (Cooking for Blockheads), Strukturen (Dorfbewohner); 35 Kapitel, 1231 Quests. `ids.json`/`rezepte.json` dafuer aus den Jars ergaenzt (kein Servertest).
+- 0.9.11: Pack heisst jetzt **Chronicle** (Name im .mrpack, Dateinamen `Chronicle-<ver>.*`, Release-Titel, MOTD, Questbuch-Titel, LIES-MICH).
 
 ## Offene Aufgaben
 1. **0.9.10 im Client testen:** kurz in die Welt, auf Grafikfehler achten (More Culling, BadOptimizations seit 0.9.9).
 2. **Questbuch im Spiel ansehen** (seit 0.9.8): Texte, Reihenfolge, Bilder. Aenderungen in `pack/quests/inhalt/*.py` machen (nicht im Editiermodus, sonst ueberschreibt der naechste Generatorlauf sie).
 3. **Server auf dem Heimserver** einrichten: ZimaOS, Marvin hat dort schon ein eigenes Docker-Panel fuer mehrere Minecraft-Server (keine docker-compose noetig). Dafuer das `-Server.zip` aus dem Release nehmen (12 GB RAM fuer Minecraft, Container mind. 14 GB, Java 21, Ports 25565/TCP und 24454/UDP fuer Voice Chat), danach mit Chunky vorgenerieren.
 4. Erst danach die **richtige Welt** starten, damit Strukturen und Biome ueberall generiert werden.
-5. Optional: Shader wieder einbauen, sobald es eine Iris-Version gibt, die zu Sodium 0.8 passt.
+5. **Beim naechsten Update:** EvilCraft-Questtexte nachbessern (viele Quests verweisen nur aufs Handbuch). Dafuer das Handbuch "Origins of Darkness" aus der EvilCraft-Jar auslesen und die Mechaniken daraus uebernehmen.
+6. Optional: Shader wieder einbauen, sobald es eine Iris-Version gibt, die zu Sodium 0.8 passt.
 
 ## Mod-Bauplan (Übersicht)
 Artifact „Modpack-Bauplan 1.21.1“ auf claude.ai (Checkliste mit 143 Mods nach Kategorien). Die maßgebliche Liste ist aber `$ModList` in `build-und-test.ps1`.

@@ -61,7 +61,7 @@ jobs:
         env:
           TEST_RAM: 5G
           TEST_TIMEOUT_MIN: 25
-        run: bash .github/scripts/servertest.sh "dist/Unser-Modpack-${{ steps.ver.outputs.ver }}-Server.zip" "$RUNNER_TEMP/servertest"
+        run: bash .github/scripts/servertest.sh "dist/Chronicle-${{ steps.ver.outputs.ver }}-Server.zip" "$RUNNER_TEMP/servertest"
 
       - name: Server-Log sichern
         if: failure()
@@ -85,9 +85,9 @@ jobs:
             echo
             echo "| Datei | Wofuer |"
             echo "|---|---|"
-            echo "| \`Unser-Modpack-$VER.mrpack\` | **Modrinth App**: \"+\" -> \"Aus Datei importieren\" |"
-            echo "| \`Unser-Modpack-$VER-Client.zip\` | andere Launcher (Prism, CurseForge ...): mods-Ordner in die Instanz kopieren |"
-            echo "| \`Unser-Modpack-$VER-Server.zip\` | Server: entpacken, eula.txt bestaetigen, start.sh / start.bat (Java 21, 12 GB RAM) |"
+            echo "| \`Chronicle-$VER.mrpack\` | **Modrinth App**: \"+\" -> \"Aus Datei importieren\" |"
+            echo "| \`Chronicle-$VER-Client.zip\` | andere Launcher (Prism, CurseForge ...): mods-Ordner in die Instanz kopieren |"
+            echo "| \`Chronicle-$VER-Server.zip\` | Server: entpacken, eula.txt bestaetigen, start.sh / start.bat (Java 21, 12 GB RAM) |"
             echo
             echo "Servertest im Workflow: bestanden."
             echo
@@ -96,10 +96,10 @@ jobs:
             echo '```'
           } > notes.md
           gh release create "${{ steps.ver.outputs.tag }}" \
-            "dist/Unser-Modpack-$VER.mrpack" \
-            "dist/Unser-Modpack-$VER-Client.zip" \
-            "dist/Unser-Modpack-$VER-Server.zip" \
+            "dist/Chronicle-$VER.mrpack" \
+            "dist/Chronicle-$VER-Client.zip" \
+            "dist/Chronicle-$VER-Server.zip" \
             MODLISTE.txt \
             --target "$GITHUB_SHA" \
-            --title "Unser Modpack $VER" \
+            --title "Chronicle $VER" \
             --notes-file notes.md
