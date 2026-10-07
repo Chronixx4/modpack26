@@ -4,6 +4,7 @@ Eigenes Minecraft-Modpack **Chronicle** (bis 0.9.10 "Unser Modpack") für Chroni
 Schwerpunkte: Ars Nouveau (Magie), Create mit vielen Addons, AE2 mit Addons, neue Dimensionen, Bosse, Waffen.
 Kommunikation mit dem Nutzer: Deutsch, locker, kurz.
 **Tests nur nach Rueckfrage:** Servertests (lokal in der Cloud oder per Workflow-Start) nie von selbst starten, immer erst fragen und auf Marvins OK warten. Der automatische Test von GitHub bei PRs ist davon ausgenommen.
+**PR/Release nur auf Ansage:** Aenderungen nur committen und auf den Arbeitsbranch pushen. Einen PR (und damit ein Release) erst erstellen, wenn Marvin es sagt, er will vorher oft noch mehr aendern.
 
 ## Eckdaten
 - Minecraft **1.21.1**, Loader **NeoForge 21.1.x** (zuletzt 21.1.255), Java 21
