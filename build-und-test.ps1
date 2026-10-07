@@ -179,6 +179,7 @@ forbidden-arcanus|Forbidden and Arcanus
 hexerei|Hexerei
 irons-jewelry|Iron's Gems 'n Jewelry
 evilcraft|EvilCraft
+goety|Goety - The Dark Arts
 # Create und Addons
 create|Create
 createaddition|Create Crafts & Additions
@@ -214,6 +215,15 @@ create-mechanical-spawner|Create Mechanical Spawner
 create-enchantable-machinery|Create: Enchantable Machinery
 create-encased|Create Encased
 create-teleporters|Create: Teleporters
+numismatics|Create: Numismatics
+create-tfmg|Create: The Factory Must Grow
+create-mobile-packages|Create: Mobile Packages
+create-pattern-schematics|Create: Pattern Schematics
+create-ironworks|Create: Ironworks
+create-mechanical-extruder|Create Mechanical Extruder
+create-ultimate-factory|Create: Ultimate Factory
+create-factory|Create: Factory
+create-train-perspective|Create: Train Perspective
 # AE2 und Technik
 ae2|Applied Energistics 2
 applied-energistics-2-wireless-terminals|AE2 Wireless Terminals
@@ -249,6 +259,8 @@ aquaculture|Aquaculture 2
 mystical-agradditions|Mystical Agradditions
 dungeons_delight|Dungeon's Delight
 cooking-for-blockheads|Cooking for Blockheads
+tide|Tide 2
+serene-seasons|Serene Seasons
 # Dimensionen
 the-twilight-forest|The Twilight Forest
 aether|The Aether
@@ -259,6 +271,8 @@ betternether-neoforge|BetterNether Neoforge
 betterend-neoforge|BetterEnd Neoforge
 kSsLSjEt|Alex's Caves (Unofficial Port)
 ad-astra|Ad Astra
+endrem|End Remastered
+enderscape|Enderscape
 # Weltgenerierung und Biome
 terralith|Terralith
 tectonic|Tectonic
@@ -293,6 +307,9 @@ friends-and-foes-forge|Friends&Foes
 mutant-monsters|Mutant Monsters
 aquamirae|Aquamirae
 bossesrise|Bosses'Rise
+l2hostility|L2 Hostility
+kobolds|Kobolds
+naturalist|Naturalist
 # Waffen, Ruestung und Ausruestung
 simply-swords|Simply Swords
 simply-swords-cataclysm|Simply Swords: Cataclysm
@@ -303,6 +320,9 @@ apotheosis|Apotheosis
 apothic-attributes|Apothic Attributes
 artifacts|Artifacts
 immersive-armors|Immersive Armors
+paladins-and-priests|Paladins & Priests (RPG Series)
+shield-expansion|Shield Expansion
+grappling-hook-mod|Grappling Hook Mod
 # Transport
 waystones|Waystones
 elevatormod|Elevator Mod
@@ -494,6 +514,14 @@ if (Test-Path -LiteralPath $kjsSrc) {
   Copy-Item -LiteralPath $kjsSrc $ovRoot -Recurse -Force
   Say "  KubeJS-Skripte aus pack\kubejs mit eingepackt"
 }
+# Standard-Configs fuer neue Welten (Server-Configs, z. B. L2 Hostility) aus pack\defaultconfigs
+$dcfSrc = Join-Path $Root 'pack\defaultconfigs'
+if (Test-Path -LiteralPath $dcfSrc) {
+  $ovRoot = Join-Path $packDir 'overrides'
+  New-Item -ItemType Directory -Force -Path $ovRoot | Out-Null
+  Copy-Item -LiteralPath $dcfSrc $ovRoot -Recurse -Force
+  Say "  Standard-Configs aus pack\defaultconfigs mit eingepackt"
+}
 $mrpack = Join-Path $Root ("Chronicle-" + $PACKVER + ".mrpack")
 Remove-Item -Force $mrpack -ErrorAction SilentlyContinue
 Add-Type -AssemblyName System.IO.Compression.FileSystem
@@ -604,6 +632,7 @@ Say "  $serverMods Mods im Testserver (reine Client-Mods wie Sodium oder Karten 
 foreach ($j in $cfJars) { Copy-Item -LiteralPath $j.FullName (Join-Path $Server 'mods') -Force; $serverMods++ }
 if (Test-Path -LiteralPath $cfgSrc) { Copy-Item -LiteralPath $cfgSrc $Server -Recurse -Force }
 if (Test-Path -LiteralPath $kjsSrc) { Copy-Item -LiteralPath $kjsSrc $Server -Recurse -Force }
+if (Test-Path -LiteralPath $dcfSrc) { Copy-Item -LiteralPath $dcfSrc $Server -Recurse -Force }
 Set-Content -Path (Join-Path $Server 'eula.txt') -Value 'eula=true'
 Set-Content -Path (Join-Path $Server 'user_jvm_args.txt') -Value "-Xms2G`n-Xmx$RAM"
 

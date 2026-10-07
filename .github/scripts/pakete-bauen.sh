@@ -29,6 +29,7 @@ cp "$IDX" "$OUT/mrpack/"
 cp "$ROOT"/curseforge-mods/*.jar "$OUT/mrpack/overrides/mods/"
 [ -d "$ROOT/pack/config" ] && cp -r "$ROOT/pack/config" "$OUT/mrpack/overrides/"   # Questbuch
 [ -d "$ROOT/pack/kubejs" ] && cp -r "$ROOT/pack/kubejs" "$OUT/mrpack/overrides/"   # Chronicle-Kern
+[ -d "$ROOT/pack/defaultconfigs" ] && cp -r "$ROOT/pack/defaultconfigs" "$OUT/mrpack/overrides/"   # Server-Configs fuer neue Welten
 rm -f "$OUT/$NAME.mrpack"
 (cd "$OUT/mrpack" && zip -q -r -D "$OUT/$NAME.mrpack" modrinth.index.json overrides)
 echo "  $NAME.mrpack"
@@ -59,6 +60,7 @@ done
 cp "$ROOT"/curseforge-mods/*.jar "$C/mods/"
 [ -d "$ROOT/pack/config" ] && cp -r "$ROOT/pack/config" "$C/"
 [ -d "$ROOT/pack/kubejs" ] && cp -r "$ROOT/pack/kubejs" "$C/"
+[ -d "$ROOT/pack/defaultconfigs" ] && cp -r "$ROOT/pack/defaultconfigs" "$C/"
 fill "$ROOT/pack/client/LIES-MICH.txt" "$C/LIES-MICH.txt"
 cp "$ROOT/MODLISTE.txt" "$C/"
 rm -f "$OUT/$NAME-Client.zip"
@@ -75,6 +77,7 @@ done
 cp "$ROOT"/curseforge-mods/*.jar "$S/mods/"
 [ -d "$ROOT/pack/config" ] && cp -r "$ROOT/pack/config" "$S/"
 [ -d "$ROOT/pack/kubejs" ] && cp -r "$ROOT/pack/kubejs" "$S/"
+[ -d "$ROOT/pack/defaultconfigs" ] && cp -r "$ROOT/pack/defaultconfigs" "$S/"
 INST="$CACHE/neoforge-$NF-installer.jar"
 [ -f "$INST" ] || curl -fsSL --retry 3 -o "$INST" \
   "https://maven.neoforged.net/releases/net/neoforged/neoforge/$NF/neoforge-$NF-installer.jar"
