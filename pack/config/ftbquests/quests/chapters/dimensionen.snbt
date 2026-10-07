@@ -8,7 +8,7 @@
 	}
 	id: "7A661EEA6014AAA1"
 	images: [ ]
-	order_index: 28
+	order_index: 30
 	quest_links: [
 		{
 			id: "5F144634C3B5875C"
@@ -17,6 +17,22 @@
 			size: 1.0d
 			x: -2.0d
 			y: 0.0d
+		}
+		{
+			id: "58559179CFF42682"
+			linked_quest: "5A044730D3704EC3"
+			shape: "rsquare"
+			size: 1.0d
+			x: 10.0d
+			y: 18.0d
+		}
+		{
+			id: "1CACF973B56E410E"
+			linked_quest: "7DEA9045F2922FBA"
+			shape: "rsquare"
+			size: 1.0d
+			x: 10.0d
+			y: 21.0d
 		}
 		{
 			id: "390154D49B5CDD8E"
@@ -150,13 +166,8 @@
 			]
 			tasks: [
 				{
-					count: 12L
 					id: "1E6B127412761513"
-					item: {
-						count: 1
-						id: "minecraft:ender_eye"
-					}
-					type: "item"
+					type: "checkmark"
 				}
 			]
 			x: 8.0d
@@ -212,10 +223,11 @@
 		}
 		{
 			dependencies: [
-				"158910F703716CDC"
+				"19E57C11E6601748"
+				"79876A178196B29C"
 			]
+			dependency_requirement: "one_completed"
 			id: "7CB70728947BA2A5"
-			progression_mode: "flexible"
 			rewards: [
 				{
 					id: "3E7A13A53A669D70"
@@ -226,12 +238,59 @@
 			tasks: [
 				{
 					id: "7260207DBFADB88F"
+					type: "checkmark"
+				}
+			]
+			x: 16.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"158910F703716CDC"
+			]
+			id: "19E57C11E6601748"
+			optional: true
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "52BFC0CD425017E0"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "1E9A768D464F6DC3"
 					structure: "minecraft:end_city"
 					type: "structure"
 				}
 			]
 			x: 14.0d
-			y: 0.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"158910F703716CDC"
+			]
+			id: "79876A178196B29C"
+			optional: true
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "58DE0B2C93DC6A5F"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "591B5DD506AE75F0"
+					structure: "enderscape:end_city"
+					type: "structure"
+				}
+			]
+			x: 14.0d
+			y: 3.0d
 		}
 		{
 			dependencies: [
@@ -256,7 +315,7 @@
 					type: "item"
 				}
 			]
-			x: 16.0d
+			x: 18.0d
 			y: 0.0d
 		}
 		{
@@ -316,6 +375,826 @@
 			]
 			x: 8.0d
 			y: -1.5d
+		}
+		{
+			dependencies: [
+				"52E0C3AF5E700AE5"
+			]
+			id: "181365BA1B2149FB"
+			optional: true
+			rewards: [
+				{
+					id: "3AB36A51C7E8332C"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "diamond"
+			tasks: [
+				{
+					id: "52F4BE326F965345"
+					type: "checkmark"
+				}
+			]
+			x: 10.0d
+			y: 6.0d
+		}
+		{
+			dependencies: [
+				"52E0C3AF5E700AE5"
+			]
+			id: "1D4D73B49E77C1E7"
+			optional: true
+			rewards: [
+				{
+					id: "51E1676BB99C2590"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "diamond"
+			tasks: [
+				{
+					id: "7C401A49EAFAAC26"
+					type: "checkmark"
+				}
+			]
+			x: 10.0d
+			y: 10.5d
+		}
+		{
+			dependencies: [
+				"52E0C3AF5E700AE5"
+			]
+			id: "3E18E3E244D9ECB4"
+			optional: true
+			rewards: [
+				{
+					id: "7D7C1953935513D2"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "diamond"
+			tasks: [
+				{
+					id: "53AEDA02F66D2F1C"
+					type: "checkmark"
+				}
+			]
+			x: 10.0d
+			y: 15.0d
+		}
+		{
+			dependencies: [
+				"52E0C3AF5E700AE5"
+			]
+			id: "1C081C5358214175"
+			optional: true
+			rewards: [
+				{
+					id: "7A78EE8F994CA2F6"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "diamond"
+			tasks: [
+				{
+					id: "36BFEE3C5C03DF35"
+					type: "checkmark"
+				}
+			]
+			x: 10.0d
+			y: 19.5d
+		}
+		{
+			dependencies: [
+				"181365BA1B2149FB"
+			]
+			id: "1613CF57229CBCB5"
+			optional: true
+			rewards: [
+				{
+					id: "7561389DCAB86827"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "11928EC5E8798225"
+					item: {
+						count: 1
+						id: "endrem:lost_eye"
+					}
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: 4.5d
+		}
+		{
+			dependencies: [
+				"181365BA1B2149FB"
+			]
+			id: "31DE1D1924FBE968"
+			optional: true
+			rewards: [
+				{
+					id: "5E86989F7ACF4937"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "52C335E4324F425F"
+					item: {
+						count: 1
+						id: "endrem:cold_eye"
+					}
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: 6.0d
+		}
+		{
+			dependencies: [
+				"181365BA1B2149FB"
+			]
+			id: "5885C60D085C3A71"
+			optional: true
+			rewards: [
+				{
+					id: "7164922909E7B794"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "3985B3C07BDD27EA"
+					item: {
+						count: 1
+						id: "endrem:black_eye"
+					}
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: 7.5d
+		}
+		{
+			dependencies: [
+				"181365BA1B2149FB"
+			]
+			id: "54500B2A62A3D9DC"
+			optional: true
+			rewards: [
+				{
+					id: "7FCF98A1D0068424"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "567E3AC02A288532"
+					item: {
+						count: 1
+						id: "endrem:corrupted_eye"
+					}
+					type: "item"
+				}
+			]
+			x: 14.0d
+			y: 7.5d
+		}
+		{
+			dependencies: [
+				"1D4D73B49E77C1E7"
+			]
+			id: "1FC0CB9E2D0D19FE"
+			optional: true
+			rewards: [
+				{
+					id: "3126B58F885E23B0"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "5BA159979625978B"
+					item: {
+						count: 1
+						id: "endrem:old_eye"
+					}
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: 9.0d
+		}
+		{
+			dependencies: [
+				"1D4D73B49E77C1E7"
+			]
+			id: "7F2196178285E0D9"
+			optional: true
+			rewards: [
+				{
+					id: "33FD907299F404DE"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "1FFC5B856A95AEE3"
+					item: {
+						count: 1
+						id: "endrem:rogue_eye"
+					}
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: 10.5d
+		}
+		{
+			dependencies: [
+				"1D4D73B49E77C1E7"
+			]
+			id: "3CC8BE371B4D27DA"
+			optional: true
+			rewards: [
+				{
+					id: "31BF0149E5FAF3AA"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "12C4275FC016386A"
+					item: {
+						count: 1
+						id: "endrem:nether_eye"
+					}
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: 12.0d
+		}
+		{
+			dependencies: [
+				"1D4D73B49E77C1E7"
+			]
+			id: "1A40FFFC40F3DF9A"
+			optional: true
+			rewards: [
+				{
+					id: "3DFBB89D71A55F68"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "5FDA11AB0B7BC49D"
+					item: {
+						count: 1
+						id: "endrem:cursed_eye"
+					}
+					type: "item"
+				}
+			]
+			x: 14.0d
+			y: 12.0d
+		}
+		{
+			dependencies: [
+				"3E18E3E244D9ECB4"
+			]
+			id: "71B9BB1A3549EDCE"
+			optional: true
+			rewards: [
+				{
+					id: "1D243A3ADE8F640B"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "5FA15ABEFBA5F722"
+					item: {
+						count: 1
+						id: "endrem:witch_eye"
+					}
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: 13.5d
+		}
+		{
+			dependencies: [
+				"3E18E3E244D9ECB4"
+			]
+			id: "5D34635C86FB6B81"
+			optional: true
+			rewards: [
+				{
+					id: "1932946365CB59B7"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "10C237FCFFC44825"
+					item: {
+						count: 1
+						id: "endrem:undead_eye"
+					}
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: 15.0d
+		}
+		{
+			dependencies: [
+				"3E18E3E244D9ECB4"
+			]
+			id: "7A259629FCD4CF5B"
+			optional: true
+			rewards: [
+				{
+					id: "1F55A657466DA087"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "1A78C46B2151D1FF"
+					item: {
+						count: 1
+						id: "endrem:magical_eye"
+					}
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: 16.5d
+		}
+		{
+			dependencies: [
+				"3E18E3E244D9ECB4"
+			]
+			id: "79A65784E6A5A7F1"
+			optional: true
+			rewards: [
+				{
+					id: "7E91E499A676F41B"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "15A87F78A408FC0F"
+					item: {
+						count: 1
+						id: "endrem:guardian_eye"
+					}
+					type: "item"
+				}
+			]
+			x: 14.0d
+			y: 16.5d
+		}
+		{
+			dependencies: [
+				"1C081C5358214175"
+				"5A044730D3704EC3"
+			]
+			id: "71509C3FDC4148FE"
+			optional: true
+			rewards: [
+				{
+					id: "57802383A6E11898"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "35EBD3BB71AE9419"
+					item: {
+						count: 1
+						id: "endrem:wither_eye"
+					}
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: 18.0d
+		}
+		{
+			dependencies: [
+				"1C081C5358214175"
+			]
+			id: "3A51A33E23980542"
+			optional: true
+			rewards: [
+				{
+					id: "7CF11895B936CAD7"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "71CF81B1050B3D34"
+					item: {
+						count: 1
+						id: "endrem:evil_eye"
+					}
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: 19.5d
+		}
+		{
+			dependencies: [
+				"1C081C5358214175"
+				"7DEA9045F2922FBA"
+			]
+			id: "7D2837E2B5F9518A"
+			optional: true
+			rewards: [
+				{
+					id: "543AE9487512D774"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "13426FF8D3395F91"
+					item: {
+						count: 1
+						id: "endrem:cryptic_eye"
+					}
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: 21.0d
+		}
+		{
+			dependencies: [
+				"1C081C5358214175"
+			]
+			id: "380E8394D830E765"
+			optional: true
+			rewards: [
+				{
+					id: "1B2EC75C945B1B4E"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "1B2182D40AEB8BFA"
+					item: {
+						count: 1
+						id: "endrem:exotic_eye"
+					}
+					type: "item"
+				}
+			]
+			x: 14.0d
+			y: 21.0d
+		}
+		{
+			dependencies: [
+				"158910F703716CDC"
+			]
+			id: "3897E0629AA2EAD2"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "3A81F4A28F55C8A0"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					biome: "enderscape:celestial_grove"
+					id: "334B1949BF1B2BB6"
+					type: "biome"
+				}
+				{
+					biome: "enderscape:veiled_woodlands"
+					id: "5EB52C1675A23D40"
+					type: "biome"
+				}
+				{
+					biome: "enderscape:magnia_crags"
+					id: "576BBF7518C06928"
+					type: "biome"
+				}
+				{
+					biome: "enderscape:corrupt_barrens"
+					id: "183F4330E49CD793"
+					type: "biome"
+				}
+			]
+			x: 16.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"3897E0629AA2EAD2"
+			]
+			id: "3CB0C1930F5E50D6"
+			rewards: [
+				{
+					id: "36E5465CE87C857D"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					count: 4L
+					id: "17FABCCB8C0F5512"
+					item: {
+						count: 1
+						id: "enderscape:drift_jelly_bottle"
+					}
+					type: "item"
+				}
+			]
+			x: 18.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"3897E0629AA2EAD2"
+			]
+			id: "144071E46D79733A"
+			rewards: [
+				{
+					id: "3B64ACA97E843D61"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					count: 3L
+					id: "1DFC3C499C6D152F"
+					item: {
+						count: 1
+						id: "enderscape:nebulite"
+					}
+					type: "item"
+				}
+			]
+			x: 18.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"3897E0629AA2EAD2"
+			]
+			id: "36AC533C91EF3735"
+			rewards: [
+				{
+					id: "3C7579C9CF1C6B9E"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					count: 4L
+					id: "55757BFA1AFE1B80"
+					item: {
+						count: 1
+						id: "enderscape:shadoline_ingot"
+					}
+					type: "item"
+				}
+			]
+			x: 18.0d
+			y: -4.5d
+		}
+		{
+			dependencies: [
+				"3CB0C1930F5E50D6"
+				"144071E46D79733A"
+			]
+			id: "552616992E3B1965"
+			rewards: [
+				{
+					id: "36B70950F12CDDAC"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "51D862C0A2B8C00F"
+					item: {
+						count: 1
+						id: "enderscape:drift_leggings"
+					}
+					type: "item"
+				}
+			]
+			x: 20.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"36AC533C91EF3735"
+			]
+			id: "377367312054A61F"
+			rewards: [
+				{
+					id: "33740E10F91F8F84"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "18C9D71252110ADE"
+					item: {
+						count: 1
+						id: "enderscape:magnia_attractor"
+					}
+					type: "item"
+				}
+			]
+			x: 20.0d
+			y: -4.5d
+		}
+		{
+			dependencies: [
+				"36AC533C91EF3735"
+			]
+			id: "15C9D53E61231B66"
+			rewards: [
+				{
+					id: "791EC2BBA7B72F44"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "513FE2B8FF160208"
+					item: {
+						count: 1
+						id: "enderscape:end_stone_rubble_shield"
+					}
+					type: "item"
+				}
+			]
+			x: 20.0d
+			y: -6.0d
+		}
+		{
+			dependencies: [
+				"3897E0629AA2EAD2"
+			]
+			id: "3779F804B522C7EA"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "79769C44A2BE417C"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "7C964547BF33DF90"
+					structure: "enderscape:mirestone_ruins"
+					type: "structure"
+				}
+			]
+			x: 18.0d
+			y: -6.0d
+		}
+		{
+			dependencies: [
+				"3897E0629AA2EAD2"
+			]
+			id: "57B6B0B26D4EA539"
+			optional: true
+			rewards: [
+				{
+					id: "15D2D201BA7F830A"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "1AA254BC0B0C9E77"
+					item: {
+						count: 1
+						id: "enderscape:rustle_bucket"
+					}
+					type: "item"
+				}
+			]
+			x: 18.0d
+			y: -7.5d
+		}
+		{
+			dependencies: [
+				"79876A178196B29C"
+			]
+			id: "19C28797515EFA67"
+			optional: true
+			rewards: [
+				{
+					id: "1675A7A5C9B1A0DC"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "75A38EBE8672CCC2"
+					item: {
+						count: 1
+						id: "enderscape:end_city_key"
+					}
+					type: "item"
+				}
+			]
+			x: 16.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"19C28797515EFA67"
+			]
+			id: "584EF38E395EA018"
+			optional: true
+			rewards: [
+				{
+					id: "3AF51C11A757C5D1"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					id: "79FBD964A7BF4028"
+					item: {
+						count: 1
+						id: "enderscape:mirror"
+					}
+					type: "item"
+				}
+			]
+			x: 18.0d
+			y: 3.0d
 		}
 		{
 			dependencies: [
@@ -820,7 +1699,7 @@
 				}
 			]
 			x: 2.0d
-			y: 1.5d
+			y: 22.5d
 		}
 		{
 			dependencies: [
@@ -845,7 +1724,7 @@
 				}
 			]
 			x: 2.0d
-			y: 6.0d
+			y: 27.0d
 		}
 		{
 			dependencies: [
@@ -869,7 +1748,7 @@
 				}
 			]
 			x: 4.0d
-			y: 6.0d
+			y: 27.0d
 		}
 		{
 			dependencies: [
@@ -895,7 +1774,7 @@
 				}
 			]
 			x: 6.0d
-			y: 6.0d
+			y: 27.0d
 		}
 		{
 			dependencies: [
@@ -920,7 +1799,7 @@
 				}
 			]
 			x: 8.0d
-			y: 6.0d
+			y: 27.0d
 		}
 		{
 			dependencies: [
@@ -945,7 +1824,7 @@
 				}
 			]
 			x: 10.0d
-			y: 6.0d
+			y: 27.0d
 		}
 		{
 			dependencies: [
@@ -970,7 +1849,7 @@
 				}
 			]
 			x: 12.0d
-			y: 6.0d
+			y: 27.0d
 		}
 		{
 			dependencies: [
@@ -993,7 +1872,7 @@
 				}
 			]
 			x: 2.0d
-			y: 4.5d
+			y: 25.5d
 		}
 		{
 			dependencies: [
@@ -1018,7 +1897,7 @@
 				}
 			]
 			x: 4.0d
-			y: 4.5d
+			y: 25.5d
 		}
 		{
 			dependencies: [
@@ -1042,7 +1921,7 @@
 				}
 			]
 			x: 6.0d
-			y: 4.5d
+			y: 25.5d
 		}
 		{
 			dependencies: [
@@ -1065,7 +1944,7 @@
 				}
 			]
 			x: 2.0d
-			y: 3.0d
+			y: 24.0d
 		}
 		{
 			dependencies: [
@@ -1091,7 +1970,7 @@
 				}
 			]
 			x: 4.0d
-			y: 3.0d
+			y: 24.0d
 		}
 		{
 			dependencies: [
@@ -1117,7 +1996,7 @@
 				}
 			]
 			x: 6.0d
-			y: 3.0d
+			y: 24.0d
 		}
 		{
 			dependencies: [
@@ -1156,7 +2035,7 @@
 				}
 			]
 			x: 2.0d
-			y: 12.0d
+			y: 33.0d
 		}
 		{
 			dependencies: [
@@ -1187,7 +2066,7 @@
 				}
 			]
 			x: 4.0d
-			y: 12.0d
+			y: 33.0d
 		}
 		{
 			dependencies: [
@@ -1218,7 +2097,7 @@
 				}
 			]
 			x: 6.0d
-			y: 12.0d
+			y: 33.0d
 		}
 		{
 			dependencies: [
@@ -1249,7 +2128,7 @@
 				}
 			]
 			x: 8.0d
-			y: 12.0d
+			y: 33.0d
 		}
 		{
 			dependencies: [
@@ -1280,7 +2159,7 @@
 				}
 			]
 			x: 10.0d
-			y: 12.0d
+			y: 33.0d
 		}
 		{
 			dependencies: [
@@ -1313,7 +2192,7 @@
 				}
 			]
 			x: 12.0d
-			y: 12.0d
+			y: 33.0d
 		}
 		{
 			dependencies: [
@@ -1339,7 +2218,7 @@
 				}
 			]
 			x: 2.0d
-			y: 9.0d
+			y: 30.0d
 		}
 		{
 			dependencies: [
@@ -1364,7 +2243,7 @@
 				}
 			]
 			x: 4.0d
-			y: 9.0d
+			y: 30.0d
 		}
 		{
 			dependencies: [
@@ -1397,7 +2276,7 @@
 				}
 			]
 			x: 4.0d
-			y: 7.5d
+			y: 28.5d
 		}
 		{
 			dependencies: [
@@ -1446,7 +2325,7 @@
 				}
 			]
 			x: 6.0d
-			y: 10.5d
+			y: 31.5d
 		}
 		{
 			dependencies: [
@@ -1481,7 +2360,7 @@
 				}
 			]
 			x: 6.0d
-			y: 9.0d
+			y: 30.0d
 		}
 		{
 			dependencies: [
@@ -1505,7 +2384,7 @@
 				}
 			]
 			x: 8.0d
-			y: 9.0d
+			y: 30.0d
 		}
 		{
 			dependencies: [
@@ -1539,7 +2418,7 @@
 				}
 			]
 			x: 10.0d
-			y: 9.0d
+			y: 30.0d
 		}
 		{
 			dependencies: [
@@ -1562,7 +2441,7 @@
 				}
 			]
 			x: 12.0d
-			y: 9.0d
+			y: 30.0d
 		}
 		{
 			dependencies: [
@@ -1596,7 +2475,7 @@
 				}
 			]
 			x: 14.0d
-			y: 9.0d
+			y: 30.0d
 		}
 		{
 			dependencies: [
@@ -1619,7 +2498,7 @@
 				}
 			]
 			x: 16.0d
-			y: 9.0d
+			y: 30.0d
 		}
 		{
 			dependencies: [
@@ -1643,7 +2522,7 @@
 				}
 			]
 			x: 16.0d
-			y: 10.5d
+			y: 31.5d
 		}
 		{
 			dependencies: [
@@ -1678,7 +2557,7 @@
 				}
 			]
 			x: 18.0d
-			y: 9.0d
+			y: 30.0d
 		}
 		{
 			dependencies: [
@@ -1701,7 +2580,7 @@
 				}
 			]
 			x: 20.0d
-			y: 9.0d
+			y: 30.0d
 		}
 		{
 			dependencies: [
@@ -1736,7 +2615,7 @@
 				}
 			]
 			x: 2.0d
-			y: 13.5d
+			y: 34.5d
 		}
 		{
 			dependencies: [
@@ -1766,7 +2645,7 @@
 				}
 			]
 			x: 4.0d
-			y: 13.5d
+			y: 34.5d
 		}
 	]
 }

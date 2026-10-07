@@ -8,7 +8,7 @@
 	}
 	id: "35B9EF090F20DB49"
 	images: [ ]
-	order_index: 32
+	order_index: 34
 	quest_links: [
 		{
 			id: "75E6ED2C644E70CC"
@@ -41,6 +41,14 @@
 			size: 1.0d
 			x: 6.0d
 			y: -4.5d
+		}
+		{
+			id: "52D391B82F2C66CB"
+			linked_quest: "1EC196EC8629D11F"
+			shape: "rsquare"
+			size: 1.0d
+			x: 0.0d
+			y: 7.5d
 		}
 	]
 	quests: [
@@ -681,6 +689,320 @@
 			]
 			x: 4.0d
 			y: 4.5d
+		}
+		{
+			dependencies: [
+				"5FC8AC773525DC2D"
+				"1EC196EC8629D11F"
+			]
+			id: "5DBF98352EF15100"
+			rewards: [
+				{
+					id: "7356B51946B8EC7C"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "13354EB4032D8463"
+					item: {
+						count: 1
+						id: "paladins:monk_workbench"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 7.5d
+		}
+		{
+			dependencies: [
+				"5DBF98352EF15100"
+			]
+			id: "3CE52B85A4C3C9A8"
+			rewards: [
+				{
+					id: "53DA9F3211CEDE5F"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "78DC4C713F8E9C64"
+					item: {
+						count: 1
+						id: "runes:crafting_altar"
+					}
+					type: "item"
+				}
+				{
+					count: 16L
+					id: "50DF96153514B662"
+					item: {
+						count: 1
+						id: "runes:healing_stone"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 6.0d
+		}
+		{
+			dependencies: [
+				"5DBF98352EF15100"
+			]
+			id: "716ED9FFBE0AA942"
+			rewards: [
+				{
+					id: "37269A3557B0196D"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "39ABF9C6A4E1F655"
+					item: {
+						count: 1
+						id: "paladins:holy_staff"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 7.5d
+		}
+		{
+			dependencies: [
+				"716ED9FFBE0AA942"
+			]
+			id: "5E7BEE618E0B82C3"
+			rewards: [
+				{
+					id: "73D45FE28E75B318"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "73DB74C22B2FD2C2"
+					item: {
+						count: 1
+						id: "paladins:prior_robe_chest"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 7.5d
+		}
+		{
+			dependencies: [
+				"5DBF98352EF15100"
+			]
+			id: "71E8CAC87A92AA5C"
+			rewards: [
+				{
+					id: "50AD39B5FB7376D9"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "59ED619C06739000"
+					item: {
+						count: 1
+						id: "paladins:iron_great_hammer"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 9.0d
+		}
+		{
+			dependencies: [
+				"71E8CAC87A92AA5C"
+			]
+			id: "7F64304414EEA5C5"
+			rewards: [
+				{
+					id: "1C28455A92A24F44"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "7000DADEF9F3378B"
+					item: {
+						count: 1
+						id: "paladins:iron_kite_shield"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 10.5d
+		}
+		{
+			dependencies: [
+				"71E8CAC87A92AA5C"
+			]
+			id: "1AC1269BAC78BA4B"
+			rewards: [
+				{
+					id: "7FE7A356C04D14D2"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "16CE0DEF97A7CC47"
+					item: {
+						count: 1
+						id: "paladins:paladin_armor_chest"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 9.0d
+		}
+		{
+			dependencies: [
+				"1AC1269BAC78BA4B"
+			]
+			id: "1ABC12254B18CAA2"
+			rewards: [
+				{
+					id: "381E11C3EC401619"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "76AE0934D598EE16"
+					item: {
+						count: 1
+						id: "paladins:crusader_armor_chest"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 9.0d
+		}
+		{
+			dependencies: [
+				"1ABC12254B18CAA2"
+				"1DF98BD3858BF0B7"
+			]
+			id: "1F86277D1DD01CEC"
+			rewards: [
+				{
+					id: "3A8B01A680FE2F1A"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					id: "3E9DA0D1A027379C"
+					item: {
+						count: 1
+						id: "paladins:netherite_crusader_armor_chest"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 9.0d
+		}
+		{
+			dependencies: [
+				"5FC8AC773525DC2D"
+			]
+			id: "3CC7256580EBC429"
+			rewards: [
+				{
+					id: "775B2E66116E1DCE"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "7FD36787F3CC1267"
+					item: {
+						count: 1
+						id: "shieldexp:iron_shield"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -7.5d
+		}
+		{
+			dependencies: [
+				"3CC7256580EBC429"
+				"783C45DB630387CD"
+			]
+			id: "3D506D97FEBECBD5"
+			rewards: [
+				{
+					id: "53B196754783DD7A"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "5A9D994351F60557"
+					item: {
+						count: 1
+						id: "shieldexp:diamond_shield"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: -7.5d
+		}
+		{
+			dependencies: [
+				"3D506D97FEBECBD5"
+				"1DF98BD3858BF0B7"
+			]
+			id: "7BFFF78B1662A588"
+			rewards: [
+				{
+					id: "5E80AADBC61863C5"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "35775883E037D6E0"
+					item: {
+						count: 1
+						id: "shieldexp:netherite_shield"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: -7.5d
 		}
 	]
 }

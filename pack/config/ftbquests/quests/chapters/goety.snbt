@@ -1,0 +1,1242 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "goety"
+	group: "1A4AF5F0953E77C6"
+	icon: {
+		id: "goety:dark_wand"
+	}
+	id: "538A59EFBBFBCB38"
+	images: [ ]
+	order_index: 25
+	quest_links: [
+		{
+			id: "15C2A90D826D7515"
+			linked_quest: "58B2439153283A9D"
+			shape: "rsquare"
+			size: 1.0d
+			x: -2.0d
+			y: 0.0d
+		}
+		{
+			id: "1D7FA930A4AA73F1"
+			linked_quest: "1EC196EC8629D11F"
+			shape: "rsquare"
+			size: 1.0d
+			x: 38.0d
+			y: -3.0d
+		}
+		{
+			id: "1BF69A2BDF3B0EC9"
+			linked_quest: "158910F703716CDC"
+			shape: "rsquare"
+			size: 1.0d
+			x: 30.0d
+			y: 3.0d
+		}
+	]
+	quests: [
+		{
+			dependencies: [
+				"58B2439153283A9D"
+			]
+			id: "335EC29B850667C0"
+			rewards: [
+				{
+					id: "1D81506C235D0569"
+					table_id: 8873071041503571705L
+					type: "loot"
+				}
+			]
+			shape: "gear"
+			size: 1.5d
+			tasks: [
+				{
+					id: "7783EEFAE57C0DCF"
+					item: {
+						count: 1
+						id: "goety:ectoplasm"
+					}
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"335EC29B850667C0"
+			]
+			id: "191AD49FEF001938"
+			rewards: [
+				{
+					id: "1E71F69716B07D76"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "1C1E543381B9E1FE"
+					item: {
+						count: 1
+						id: "goety:totem_of_roots"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"191AD49FEF001938"
+			]
+			id: "395DD72A13F7C435"
+			rewards: [
+				{
+					id: "320D1EB67C548BAD"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					count: 8L
+					id: "768E0A9DA9790CFF"
+					item: {
+						count: 1
+						id: "goety:cursed_ingot"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"395DD72A13F7C435"
+			]
+			id: "3AFBE2C80CEF2111"
+			rewards: [
+				{
+					id: "590256CE9B3E2E67"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					count: 4L
+					id: "78835F9D83CD585C"
+					item: {
+						count: 1
+						id: "goety:magic_emerald"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"3AFBE2C80CEF2111"
+			]
+			id: "3297391F46A482F9"
+			rewards: [
+				{
+					id: "714822FCDD4DA5F5"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "1D259F96FEEFF201"
+					item: {
+						count: 1
+						id: "goety:totem_of_souls"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"3297391F46A482F9"
+			]
+			id: "7CE47E7ECBC766DB"
+			rewards: [
+				{
+					id: "597F635A235EC0F7"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "5B2F61073EB3D947"
+					item: {
+						count: 1
+						id: "goety:dark_fabric"
+					}
+					type: "item"
+				}
+				{
+					id: "12652960ABE33A53"
+					item: {
+						count: 1
+						id: "goety:magic_fabric"
+					}
+					type: "item"
+				}
+				{
+					id: "7DB4ED40319C7139"
+					item: {
+						count: 1
+						id: "goety:spirit_fabric"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"7CE47E7ECBC766DB"
+			]
+			id: "1B5AA3D6FC108ABE"
+			rewards: [
+				{
+					id: "568359EEBF9CF8CC"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "5842129E18B6C3F3"
+					item: {
+						count: 1
+						id: "goety:empty_focus"
+					}
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"1B5AA3D6FC108ABE"
+			]
+			id: "3380B4BAC930B52B"
+			rewards: [
+				{
+					id: "53F09E60D895BEF2"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "743AA40002073C2D"
+					item: {
+						count: 1
+						id: "goety:dark_wand"
+					}
+					type: "item"
+				}
+			]
+			x: 14.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"3380B4BAC930B52B"
+			]
+			id: "356259BF85903082"
+			rewards: [
+				{
+					id: "78271FE555CAD928"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "771E6976D1B72D00"
+					item: {
+						count: 1
+						id: "goety:cursed_cage"
+					}
+					type: "item"
+				}
+			]
+			x: 16.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"356259BF85903082"
+			]
+			id: "141C09A8BC1FF0CC"
+			rewards: [
+				{
+					id: "174E9DE08A066346"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					id: "71F1E320708151AD"
+					item: {
+						count: 1
+						id: "goety:dark_altar"
+					}
+					type: "item"
+				}
+				{
+					count: 4L
+					id: "561D3856E81B6E94"
+					item: {
+						count: 1
+						id: "goety:pedestal"
+					}
+					type: "item"
+				}
+			]
+			x: 18.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"141C09A8BC1FF0CC"
+			]
+			id: "152B4220A05C2B96"
+			rewards: [
+				{
+					id: "7699AA452D5A4922"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "1AE052C6FE108870"
+					item: {
+						count: 1
+						id: "goety:animation_core"
+					}
+					type: "item"
+				}
+			]
+			x: 20.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"152B4220A05C2B96"
+			]
+			id: "17C77960AAE208FC"
+			rewards: [
+				{
+					id: "50AFD7DF71E73E03"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "5BC07D85411A6F47"
+					item: {
+						count: 1
+						id: "goety:rotting_focus"
+					}
+					type: "item"
+				}
+			]
+			x: 22.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"17C77960AAE208FC"
+			]
+			id: "5EBD3279774713D4"
+			rewards: [
+				{
+					id: "1A1404ACC3CA34B4"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "5286DA7F8DC45587"
+					item: {
+						count: 1
+						id: "goety:necro_staff"
+					}
+					type: "item"
+				}
+			]
+			x: 24.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"5EBD3279774713D4"
+			]
+			id: "7811F8B0AD35590B"
+			rewards: [
+				{
+					id: "5FFF34712917B3E8"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "3029A60418651DF7"
+					item: {
+						count: 1
+						id: "goety:soul_emerald"
+					}
+					type: "item"
+				}
+			]
+			x: 26.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"7811F8B0AD35590B"
+				"342CC542BC296E5B"
+			]
+			id: "55A47A62773C0139"
+			rewards: [
+				{
+					id: "11B329B394FCDE0B"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					id: "51746187C4028EBA"
+					item: {
+						count: 1
+						id: "goety:necro_brazier"
+					}
+					type: "item"
+				}
+				{
+					id: "170C3672F7E3C2C0"
+					item: {
+						count: 1
+						id: "goety:soul_candlestick"
+					}
+					type: "item"
+				}
+			]
+			x: 28.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"55A47A62773C0139"
+			]
+			id: "1E4ACEC2B5D1F67F"
+			rewards: [
+				{
+					id: "777E861BD929F6F0"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					count: 4L
+					id: "5F8AB1543D209086"
+					item: {
+						count: 1
+						id: "goety:dark_ingot"
+					}
+					type: "item"
+				}
+			]
+			x: 30.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"1E4ACEC2B5D1F67F"
+			]
+			id: "3BDC72FACB94BDE5"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "534C2667DE066AA2"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "5AE69263915F8E72"
+					structure: "goety:crypt"
+					type: "structure"
+				}
+			]
+			x: 32.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"3BDC72FACB94BDE5"
+			]
+			id: "5B91A59F156D1D00"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "5A30038ECEDBFCD4"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					entity: "goety:skull_lord"
+					id: "3318E476E1804796"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 34.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"5B91A59F156D1D00"
+			]
+			id: "1505159D73C18A5B"
+			rewards: [
+				{
+					id: "73104BBBF3E19B5A"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "133066221B6CDADF"
+					item: {
+						count: 1
+						id: "goety:forbidden_scroll"
+					}
+					type: "item"
+				}
+			]
+			x: 36.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"1505159D73C18A5B"
+			]
+			id: "79723F1B47E3C128"
+			rewards: [
+				{
+					id: "78A23B2E36D1747B"
+					table_id: 6783561722415423100L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					id: "344A202CEC2D55AD"
+					item: {
+						count: 1
+						id: "goety:arca"
+					}
+					type: "item"
+				}
+			]
+			x: 38.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"79723F1B47E3C128"
+				"1EC196EC8629D11F"
+			]
+			id: "754DE057098EC652"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "721FCEFD8B4D1C8E"
+					table_id: 6783561722415423100L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					entity: "goety:apostle"
+					id: "5496AF6AA1C015FD"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 40.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"754DE057098EC652"
+			]
+			id: "15A644C84447FE8C"
+			rewards: [
+				{
+					id: "11B0F3A484A10ECF"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "57C9D7518AA37B00"
+					item: {
+						count: 1
+						id: "goety:unholy_blood"
+					}
+					type: "item"
+				}
+			]
+			x: 42.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"15A644C84447FE8C"
+				"1505159D73C18A5B"
+				"79723F1B47E3C128"
+			]
+			id: "3C13A72B23CF8C6A"
+			rewards: [
+				{
+					id: "34DDB5090FB8A65A"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "3CC1469ACFDCAA10"
+					item: {
+						count: 1
+						id: "goety:undeath_potion"
+					}
+					type: "item"
+				}
+			]
+			x: 44.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"3C13A72B23CF8C6A"
+			]
+			id: "72BF08D5E15B69F3"
+			rewards: [
+				{
+					id: "369F41EF642128E3"
+					table_id: 3797459037597754809L
+					type: "loot"
+				}
+			]
+			shape: "star"
+			size: 1.5d
+			tasks: [
+				{
+					id: "3713C4358ABE81DE"
+					type: "checkmark"
+				}
+			]
+			x: 46.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"335EC29B850667C0"
+			]
+			id: "342CC542BC296E5B"
+			rewards: [
+				{
+					id: "5ADCC864CBE38A9B"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "3A1A48501D27757E"
+					item: {
+						count: 1
+						id: "goety:cursed_infuser"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"335EC29B850667C0"
+			]
+			id: "7404193A83B24D26"
+			optional: true
+			rewards: [
+				{
+					id: "7D140F0037A860DF"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					consume_items: true
+					count: 16L
+					id: "34A77AC5A629D774"
+					item: {
+						count: 1
+						id: "goety:ectoplasm"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"395DD72A13F7C435"
+			]
+			id: "7173CD5F92E690FC"
+			optional: true
+			rewards: [
+				{
+					id: "5B9FD3CCB3457A8D"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					consume_items: true
+					count: 32L
+					id: "5BE9FEBBA142C2F4"
+					item: {
+						count: 1
+						id: "goety:cursed_ingot"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"3380B4BAC930B52B"
+			]
+			id: "1CAC882F5F7EBBF6"
+			rewards: [
+				{
+					id: "10D602066A4A36B9"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "5170DA5C72ADFC94"
+					item: {
+						count: 1
+						id: "goety:fire_breath_focus"
+					}
+					type: "item"
+				}
+			]
+			x: 16.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"7CE47E7ECBC766DB"
+			]
+			id: "3FF53BDEF5855D14"
+			rewards: [
+				{
+					id: "7F7C228DD6DA6D70"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "752DDDF4A10DB109"
+					item: {
+						count: 1
+						id: "goety:dark_scroll"
+					}
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"3FF53BDEF5855D14"
+			]
+			id: "3ECAE375BD66463B"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "72FD1F488009B680"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					entity: "goety:vizier"
+					id: "1DDAC2F7D80C70EB"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 14.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"3ECAE375BD66463B"
+			]
+			id: "1A92BECED4EBD40F"
+			rewards: [
+				{
+					id: "37ED77E416D0104A"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "7C3ECFF4597DCFF4"
+					item: {
+						count: 1
+						id: "goety:soul_ruby"
+					}
+					type: "item"
+				}
+			]
+			x: 16.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"141C09A8BC1FF0CC"
+			]
+			id: "5060F17D4E91EA58"
+			rewards: [
+				{
+					id: "7609E107CA8AF37F"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "58C0BEB903748146"
+					item: {
+						count: 1
+						id: "goety:black_iron_helmet"
+					}
+					type: "item"
+				}
+				{
+					id: "7CEF640860AF55B6"
+					item: {
+						count: 1
+						id: "goety:black_iron_chestplate"
+					}
+					type: "item"
+				}
+				{
+					id: "3BA45355208B4AD2"
+					item: {
+						count: 1
+						id: "goety:black_iron_leggings"
+					}
+					type: "item"
+				}
+				{
+					id: "194C2B031F677FB1"
+					item: {
+						count: 1
+						id: "goety:black_iron_boots"
+					}
+					type: "item"
+				}
+			]
+			x: 20.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"141C09A8BC1FF0CC"
+			]
+			id: "5D975F00B2CD751A"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "7686DAB42CB8CB69"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					entity: "goety:hurricane"
+					id: "363BC1DB97D021EA"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 20.0d
+			y: -4.5d
+		}
+		{
+			dependencies: [
+				"141C09A8BC1FF0CC"
+			]
+			id: "73A48B39C502EF8E"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "5E7091732EBDB6BC"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "5A89DDAEE382BD73"
+					structure: "goety:blighted_shack"
+					type: "structure"
+				}
+			]
+			x: 20.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"73A48B39C502EF8E"
+			]
+			id: "786F06305DBBD78F"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "168B48E3E7268060"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					entity: "goety:crone"
+					id: "52CA8BB09BE27B78"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 22.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"152B4220A05C2B96"
+			]
+			id: "50DAE0624C30E53E"
+			rewards: [
+				{
+					id: "38671EF55B607FD7"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "5E562F364121DE1C"
+					item: {
+						count: 1
+						id: "goety:osseous_focus"
+					}
+					type: "item"
+				}
+			]
+			x: 22.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"152B4220A05C2B96"
+			]
+			id: "3AFB9485BE7E3392"
+			rewards: [
+				{
+					id: "3A78BBBA63382E52"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "54F7029145E05D12"
+					item: {
+						count: 1
+						id: "goety:vexing_focus"
+					}
+					type: "item"
+				}
+			]
+			x: 22.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"7811F8B0AD35590B"
+				"17C77960AAE208FC"
+			]
+			id: "13EBBC052865248A"
+			rewards: [
+				{
+					id: "5DF3EF4D904F67BE"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "5F68D3C2CA96A4E0"
+					item: {
+						count: 1
+						id: "goety:necro_crown"
+					}
+					type: "item"
+				}
+				{
+					id: "31E51D4117287ED9"
+					item: {
+						count: 1
+						id: "goety:necro_cape"
+					}
+					type: "item"
+				}
+			]
+			x: 28.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"5060F17D4E91EA58"
+				"1E4ACEC2B5D1F67F"
+			]
+			id: "76E9712845A81D04"
+			rewards: [
+				{
+					id: "162BC1BA7D94C245"
+					table_id: 1753254771712731614L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					id: "15CD23AC12A08871"
+					item: {
+						count: 1
+						id: "goety:dark_helmet"
+					}
+					type: "item"
+				}
+				{
+					id: "536283E0319942B0"
+					item: {
+						count: 1
+						id: "goety:dark_chestplate"
+					}
+					type: "item"
+				}
+				{
+					id: "5FA79A3F8C931DC4"
+					item: {
+						count: 1
+						id: "goety:dark_leggings"
+					}
+					type: "item"
+				}
+				{
+					id: "7B732239A4164479"
+					item: {
+						count: 1
+						id: "goety:dark_boots"
+					}
+					type: "item"
+				}
+			]
+			x: 32.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"1E4ACEC2B5D1F67F"
+				"158910F703716CDC"
+			]
+			id: "5CF940675A96FC13"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "5492F5B5B1DBE319"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "5FBDAA1D326EC972"
+					structure: "goety:final_terminal"
+					type: "structure"
+				}
+			]
+			x: 32.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"5CF940675A96FC13"
+			]
+			id: "30D852AC1948C018"
+			rewards: [
+				{
+					id: "5D2E140DC0C286CC"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					count: 4L
+					id: "35663A9D457AE8B4"
+					item: {
+						count: 1
+						id: "goety:void_shard"
+					}
+					type: "item"
+				}
+			]
+			x: 34.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"30D852AC1948C018"
+			]
+			id: "3A9DC115ED280E1B"
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "34D70A196F041685"
+					table_id: 6783561722415423100L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					entity: "goety:ender_keeper"
+					id: "1C39724D4C87EAE0"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 36.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"1505159D73C18A5B"
+				"5EBD3279774713D4"
+			]
+			id: "730D944F7151992D"
+			rewards: [
+				{
+					id: "5CC16F3651875ECC"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "16A2F570DC2CC1A2"
+					item: {
+						count: 1
+						id: "goety:nameless_staff"
+					}
+					type: "item"
+				}
+			]
+			x: 38.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"15A644C84447FE8C"
+				"1E4ACEC2B5D1F67F"
+			]
+			id: "37A55BC103B097E8"
+			optional: true
+			rewards: [
+				{
+					id: "170A40CB2DD1009F"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "7F1A42031156205F"
+					item: {
+						count: 1
+						id: "goety:death_scythe"
+					}
+					type: "item"
+				}
+			]
+			x: 44.0d
+			y: 1.5d
+		}
+	]
+}

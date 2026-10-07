@@ -1,0 +1,213 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "hostility"
+	group: "78E8109A2807F0AD"
+	icon: {
+		id: "l2hostility:hostility_detector"
+	}
+	id: "71E2090556941C00"
+	images: [ ]
+	order_index: 35
+	quest_links: [
+		{
+			id: "1C4CEC87A4C6D2E7"
+			linked_quest: "58B2439153283A9D"
+			shape: "rsquare"
+			size: 1.0d
+			x: -2.0d
+			y: 0.0d
+		}
+		{
+			id: "3346A459E0669087"
+			linked_quest: "1EC196EC8629D11F"
+			shape: "rsquare"
+			size: 1.0d
+			x: 0.0d
+			y: -1.5d
+		}
+	]
+	quests: [
+		{
+			dependencies: [
+				"58B2439153283A9D"
+			]
+			id: "34493D6ECDA7F2DD"
+			rewards: [
+				{
+					id: "1BD1BC741B24CA44"
+					table_id: 8873071041503571705L
+					type: "loot"
+				}
+			]
+			shape: "gear"
+			size: 1.5d
+			tasks: [
+				{
+					id: "19B1AD59EE9844E1"
+					item: {
+						count: 1
+						id: "l2hostility:hostility_detector"
+					}
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"34493D6ECDA7F2DD"
+				"1EC196EC8629D11F"
+			]
+			id: "18B314D0AD3B3728"
+			rewards: [
+				{
+					id: "1C0EE81FD86465A8"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "1BAB733F1EC2D7C2"
+					item: {
+						count: 1
+						id: "l2hostility:detector_glasses"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"34493D6ECDA7F2DD"
+			]
+			id: "746DD13198316CEE"
+			rewards: [
+				{
+					id: "1182F1807F7AE73C"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "7224F7EABD985818"
+					item: {
+						count: 1
+						id: "l2hostility:charm_of_looting_1"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"34493D6ECDA7F2DD"
+			]
+			id: "713B64CB0EAB5474"
+			rewards: [
+				{
+					id: "176DE35DD7ED0024"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "5743CE09D5C2C82D"
+					item: {
+						count: 1
+						id: "l2hostility:hostility_orb"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"713B64CB0EAB5474"
+			]
+			id: "55AE54C1E9E38937"
+			rewards: [
+				{
+					id: "5F6265E290CA8602"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "7AEE6121A08D63A9"
+					item: {
+						count: 1
+						id: "l2hostility:bottle_of_sanity"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"713B64CB0EAB5474"
+			]
+			id: "33BB5160BDC15D08"
+			rewards: [
+				{
+					id: "741EB4B83BFB4A1F"
+					table_id: 6783561722415423100L
+					type: "loot"
+				}
+			]
+			shape: "hexagon"
+			tasks: [
+				{
+					id: "374E462068E589CC"
+					item: {
+						count: 1
+						id: "l2hostility:chaos_ingot"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"33BB5160BDC15D08"
+			]
+			id: "36220CBF70979320"
+			rewards: [
+				{
+					id: "1A217158143B2917"
+					table_id: 3797459037597754809L
+					type: "loot"
+				}
+			]
+			shape: "star"
+			size: 1.5d
+			tasks: [
+				{
+					id: "7C313647B017DF44"
+					item: {
+						count: 1
+						id: "l2hostility:miracle_ingot"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 0.0d
+		}
+	]
+}

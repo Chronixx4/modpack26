@@ -18,6 +18,14 @@
 			x: -2.0d
 			y: 0.0d
 		}
+		{
+			id: "53EA76C2A066E28A"
+			linked_quest: "5A044730D3704EC3"
+			shape: "rsquare"
+			size: 1.0d
+			x: 22.0d
+			y: 4.5d
+		}
 	]
 	quests: [
 		{
@@ -999,6 +1007,162 @@
 			]
 			x: 10.0d
 			y: 3.0d
+		}
+		{
+			dependencies: [
+				"3BD0AA56234869AA"
+			]
+			id: "1AC8016FA975B4EE"
+			rewards: [
+				{
+					id: "7D508F079DE43290"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "114D770E7FB2D67F"
+					item: {
+						count: 1
+						id: "grapplemod:grapplinghook"
+					}
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: 6.0d
+		}
+		{
+			dependencies: [
+				"1AC8016FA975B4EE"
+				"15DBC538E707CF99"
+			]
+			id: "532C9B26C50F00B3"
+			rewards: [
+				{
+					id: "5CB53EDF2283FF55"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "532B77841F957398"
+					item: {
+						count: 1
+						id: "grapplemod:baseupgradeitem"
+					}
+					type: "item"
+				}
+			]
+			x: 14.0d
+			y: 6.0d
+		}
+		{
+			dependencies: [
+				"532C9B26C50F00B3"
+				"108D158308E19C07"
+			]
+			id: "598C2D42766E5A98"
+			rewards: [
+				{
+					id: "3DF25DC85C1B687B"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "7C74CA228D194F8E"
+					item: {
+						count: 1
+						id: "grapplemod:block_grapple_modifier"
+					}
+					type: "item"
+				}
+			]
+			x: 22.0d
+			y: 6.0d
+		}
+		{
+			dependencies: [
+				"598C2D42766E5A98"
+			]
+			id: "12343D11D4E17C55"
+			rewards: [
+				{
+					id: "1E6D868F69AC7488"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "51CD7297D376D7CF"
+					item: {
+						count: 1
+						id: "grapplemod:motorupgradeitem"
+					}
+					type: "item"
+				}
+			]
+			x: 24.0d
+			y: 7.5d
+		}
+		{
+			dependencies: [
+				"1AC8016FA975B4EE"
+			]
+			id: "7FDC7D5D27B04F4A"
+			optional: true
+			rewards: [
+				{
+					id: "75B1080A7B6FE34A"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "7E1A01E4FF054971"
+					item: {
+						count: 1
+						id: "grapplemod:launcheritem"
+					}
+					type: "item"
+				}
+			]
+			x: 14.0d
+			y: 4.5d
+		}
+		{
+			dependencies: [
+				"598C2D42766E5A98"
+				"5A044730D3704EC3"
+			]
+			id: "16B78F512BEA86DD"
+			optional: true
+			rewards: [
+				{
+					id: "1E9A04C1D9E24963"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "5C8AB926A400646E"
+					item: {
+						count: 1
+						id: "grapplemod:limitsupgradeitem"
+					}
+					type: "item"
+				}
+			]
+			x: 24.0d
+			y: 6.0d
 		}
 		{
 			dependencies: [

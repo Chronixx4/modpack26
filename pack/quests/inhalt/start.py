@@ -22,12 +22,12 @@ kapitel('willkommen', '&eWillkommen', 'minecraft:writable_book', 'Erst mal ankom
         'Manche Quests belohnen dich mit einer Loot-Kiste. Nimm sie in die Hand und mach Rechtsklick, um sie zu öffnen.',
         'Es gibt vier Stufen: &fGewöhnlich&r, &aSelten&r, &5Episch&r und &6Legendär&r.',
     ], nach=['abgabe'], belohnung='loot1'),
-    Q('emi', 'EMI: Rezepte finden', 'check', [
-        'Rechts im Inventar siehst du die Item-Liste von EMI. Fahr mit der Maus über ein Item und drück &eR&r für Rezepte oder &eU&r für Verwendungen.',
+    Q('emi', 'JEI: Rezepte finden', 'check', [
+        'Rechts im Inventar siehst du die Item-Liste von JEI (Just Enough Items). Fahr mit der Maus über ein Item und drück &eR&r für Rezepte oder &eU&r für Verwendungen.',
         'Unten gibt es ein Suchfeld. Mit &e@modname&r filterst du nach Mods.',
     ], nach=['questbuch'], haupt=True),
     Q('emi_loot', 'Was droppt wo?', 'check',
-      'EMI Loot zeigt in EMI auch Beute: Drück &eR&r auf ein Item und du siehst, welche Mobs, Blöcke und Truhen es fallen lassen.',
+      'Just Enough Resources zeigt in JEI auch Beute: Drück &eR&r auf ein Item und du siehst, welche Mobs es fallen lassen, in welchen Truhen es liegt und auf welcher Höhe ein Erz vorkommt.',
       nach=['emi']),
     Q('lootr', 'Eigene Beute', 'check', [
         'Dank Lootr hat jede Truhe in Strukturen für jeden Spieler eigene Beute. Ihr müsst euch also nicht beeilen, wer zuerst plündert.',
@@ -96,7 +96,7 @@ kapitel('erste_schritte', '&eErste Schritte', 'minecraft:crafting_table', 'Vom e
     ], nach=['werkbank']),
     Q('sack', 'Kleinkram', 'supplementaries:sack', [
         'Supplementaries, Amendments und Quark bringen viele kleine Extras: Säcke, Seile, Gläser, Laternen an der Wand und mehr.',
-        'Stöber einfach mal in EMI.',
+        'Stöber einfach mal in JEI.',
     ], nach=['werkbank'], optional=True, form='heart'),
     Q('seil', 'Seil', ('item', 'supplementaries:rope', 16),
       'An Seilen aus Supplementaries kannst du hoch- und runterklettern. Gut für Schächte und Höhlen.',
@@ -207,6 +207,26 @@ kapitel('erste_schritte', '&eErste Schritte', 'minecraft:crafting_table', 'Vom e
         'Elevator Mod: Stell zwei Aufzug-Blöcke genau übereinander, mit beliebig viel Platz dazwischen.',
         'Auf dem Block &eSpringen&r fährt nach oben, &eSchleichen&r nach unten. Für den Aufzug brauchst du Wolle und eine Enderperle.',
     ], nach=['eisen'], optional=True, form='heart'),
+    # Fortbewegung: Grappling Hook Mod
+    Q('enterhaken', 'Enterhaken', 'grapplemod:grapplinghook', [
+        'Grappling Hook Mod: Mit Rechtsklick schießt du den Haken ab und hängst dich an Wände und Decken. Damit kommst du über Schluchten und auf Klippen.',
+        'Der Haken lässt sich später mit Upgrades stark verbessern.',
+    ], nach=['eisenspitzhacke'], belohnung=1, zeile=4),
+    Q('haken_upgrade', 'Haken-Upgrade', 'grapplemod:baseupgradeitem',
+      'Das Basis-Upgrade aus Gold und Faden ist die Grundlage für alle anderen Haken-Upgrades.',
+      nach=['enterhaken', 'gold'], belohnung=1, zeile=4),
+    Q('haken_modifier', 'Haken-Werkbank', 'grapplemod:block_grapple_modifier',
+      'Am Grappling Hook Modifier schaltest du Upgrades frei: Rechtsklick mit dem Upgrade. Danach legst du deinen Haken hinein und stellst ihn ein, z. B. Seillänge, Schwingen oder Motor.',
+      nach=['haken_upgrade', 'amboss'], belohnung=2, zeile=4),
+    Q('haken_motor', 'Motor-Upgrade', 'grapplemod:motorupgradeitem',
+      'Mit Motor zieht dich der Haken von selbst zum Ziel. Freischalten an der Haken-Werkbank.',
+      nach=['haken_modifier'], belohnung=1, zeile=5),
+    Q('enderstab', 'Enderstab', 'grapplemod:launcheritem',
+      'Aus Enderperle und Kolben: Der Enderstab schleudert dich in Blickrichtung durch die Luft.',
+      nach=['enterhaken'], belohnung=1, optional=True, form='heart', zeile=3),
+    Q('haken_limits', 'Grenzenlos', 'grapplemod:limitsupgradeitem',
+      'Das Limits-Upgrade braucht einen Netherstern vom Wither. Es hebt die Grenzen bei den Haken-Einstellungen auf.',
+      nach=['haken_modifier', 'bosse/wither'], belohnung=2, optional=True, zeile=4),
     Q('abgabe_eisen', 'Abgabe: Eisen', ('item', 'minecraft:iron_ingot', 64),
       'Gib 64 Eisenbarren ab und bekomm dafür eine seltene Kiste.',
       nach=['eisen'], abgabe=True, optional=True, belohnung='loot2'),
@@ -317,7 +337,7 @@ kapitel('lager', '&eLager und Rucksäcke', 'sophisticatedstorage:chest', 'Ordnun
     # Traveler's Backpack
     Q('travelers', 'Reiserucksack', 'travelersbackpack:standard', [
         "Traveler's Backpack: ein Rucksack mit zwei Flüssigkeitstanks und eingebautem Schlafsack.",
-        'Es gibt ihn in vielen Designs mit kleinen Spezialfähigkeiten. Schau in EMI.',
+        'Es gibt ihn in vielen Designs mit kleinen Spezialfähigkeiten. Schau in JEI.',
     ], nach=['rucksack'], zeile=-2, optional=True, form='heart'),
     Q('travelers_eisen', 'Reiserucksack aufwerten', 'travelersbackpack:iron_tier_upgrade',
       'Mit Stufen-Upgrades bekommt der Reiserucksack mehr Platz und größere Tanks.',
@@ -342,9 +362,9 @@ kapitel('lager', '&eLager und Rucksäcke', 'sophisticatedstorage:chest', 'Ordnun
 ])
 
 # ---------------------------------------------------------------------------
-# Essen: Farmer's Delight, Aquaculture, Dungeon's Delight, Garnished
+# Essen: Farmer's Delight, Aquaculture, Tide, Naturalist, Serene Seasons, Dungeon's Delight, Garnished, Create: Factory
 # ---------------------------------------------------------------------------
-kapitel('essen', '&eEssen und Angeln', 'farmersdelight:cooking_pot', "Farmer's Delight, Aquaculture und mehr", [
+kapitel('essen', '&eEssen und Angeln', 'farmersdelight:cooking_pot', "Farmer's Delight, Aquaculture, Tide und mehr", [
     # Farmer's Delight
     Q('start', 'Küchenmesser', 'farmersdelight:flint_knife', [
         "Farmer's Delight bringt eine richtige Küche. Alles beginnt mit dem Messer.",
@@ -408,7 +428,7 @@ kapitel('essen', '&eEssen und Angeln', 'farmersdelight:cooking_pot', "Farmer's D
     # Aquaculture
     Q('angel', 'Eisen-Angel', 'aquaculture:iron_fishing_rod', [
         'Aquaculture bringt viele neue Fische und bessere Angeln. Was du fängst, hängt vom Biom ab.',
-        'Haken, Köder und Angelschnur lassen sich in die Angel einsetzen. Schau in EMI.',
+        'Haken, Köder und Angelschnur lassen sich in die Angel einsetzen. Schau in JEI.',
     ], nach=['start', 'erste_schritte/eisen'], zeile=5),
     Q('wurm', 'Würmer', 'aquaculture:worm',
       'Würmer sind ein guter Köder. Du findest sie beim Graben in Erde und Gras oder züchtest sie in der Wurmfarm.',
@@ -436,9 +456,73 @@ kapitel('essen', '&eEssen und Angeln', 'farmersdelight:cooking_pot', "Farmer's D
       'Die beste Angel von Aquaculture.',
       nach=['neptunium'], zeile=5),
 
+    # Tide: zweites Angelsystem (getrennt von Aquaculture)
+    Q('tide_angel', 'Tide: Steinangel', 'tide:stone_fishing_rod', [
+        '&eZwei Angelsysteme:&r Aquaculture (oben) und Tide laufen parallel. Tide macht auch die normale Angel zur Tide-Angel. Beißt ein Fisch an, startet ein kleines Minispiel. Tide hat seine eigenen Fische, Angeln und Zubehör.',
+        'Die erste Tide-Angel baust du aus Bruchstein und Faden. &cVorsicht:&r Beide Mods haben eine "Iron Fishing Rod", schau auf den Mod-Namen im Tooltip.',
+    ], nach=['start'], belohnung=1, zeile=12),
+    Q('tide_buch', 'Angeltagebuch', 'tide:fishing_journal',
+      'Fisch plus Buch: Das Tagebuch sammelt jeden Fisch, den du mit Tide fängst, mit Infos dazu.',
+      nach=['tide_angel'], belohnung=1, zeile=11),
+    Q('tide_koeder', 'Köder', 'tide:bait',
+      'Köder aus Pflanzen, verrottetem Fleisch, Samen und Knochenmehl. Wie er wirkt, steht im Tooltip.',
+      nach=['tide_angel'], belohnung=1, zeile=13),
+    Q('tide_tisch', 'Angeltisch', 'tide:angling_table',
+      'Am Angeltisch rüstest du Tide-Angeln aus: Haken, Schnur und Schwimmer kommen hier in die Angel.',
+      nach=['tide_angel', 'erste_schritte/kupfer'], belohnung=2, zeile=12),
+    Q('tide_kiste', 'Kisten angeln', 'tide:wooden_crate',
+      'Beim Angeln mit Tide hängen manchmal ganze Kisten voller Beute am Haken.',
+      nach=['tide_angel'], belohnung=1, optional=True, form='heart', zeile=14),
+    Q('tide_eisen', 'Eiserne Tide-Angel', 'tide:iron_fishing_rod',
+      'Die nächste Tide-Angel. Je besser die Angel, desto leichter wird das Minispiel.',
+      nach=['tide_tisch', 'erste_schritte/eisen'], belohnung=1, zeile=12),
+    Q('tide_diamant', 'Diamant-Tide-Angel', 'tide:diamond_fishing_rod',
+      'Eine der besten Tide-Angeln. Das Rezept zeigt dir JEI.',
+      nach=['tide_eisen', 'erste_schritte/diamant'], belohnung='loot2', zeile=12),
+    Q('tide_lava', 'Lavafest', 'tide:lavaproof_hook',
+      'Mit dem lavafesten Haken angelst du in Lava. Dort beißen ganz andere Fische.',
+      nach=['tide_tisch', 'dimensionen/nether'], belohnung=2, zeile=13),
+    Q('tide_void', 'Leerehaken', 'tide:void_hook',
+      'Aus weinendem Obsidian und Drachenatem. Damit angelst du sogar in der Leere des End.',
+      nach=['tide_lava', 'dimensionen/end'], belohnung=2, zeile=13),
+    Q('tide_finder', 'Fischfinder', 'tide:fish_finder',
+      'Aus Taschenuhr, Mondkalender, Tiefenmesser, Klimamesser und Wetterradio. Er zeigt dir auf einen Blick, was beim Angeln zählt.',
+      nach=['tide_buch'], belohnung=2, optional=True, zeile=11),
+
+    # Naturalist
+    Q('fangnetz', 'Fangnetz', 'naturalist:capture_net', [
+        'Naturalist bringt viele echte Tiere: Bären, Hirsche, Schlangen, Glühwürmchen und mehr. In Savannen und Sümpfen gibt es dafür keine Nutztiere mehr, in Wäldern keine Schweine.',
+        'Mit dem Fangnetz aus Bambus und Faden fängst du kleine Tiere ein.',
+    ], nach=['start'], belohnung=1, zeile=-7),
+    Q('schmetterling', 'Schmetterling', 'naturalist:butterfly',
+      'Fang einen Schmetterling mit dem Netz. Es gibt verschiedene Arten.',
+      nach=['fangnetz'], belohnung=1, optional=True, form='heart', zeile=-7),
+    Q('glibber', 'Leuchtschleim', 'naturalist:glow_goop',
+      'Glühwürmchen lassen Leuchtschleim fallen, oder du brätst Leuchtbeeren. Er leuchtet und wird z. B. zu Spektralpfeilen.',
+      nach=['fangnetz'], belohnung=1, zeile=-8),
+    Q('geweih', 'Geweih', 'naturalist:antler',
+      'Hirsche lassen manchmal ihr Geweih fallen.',
+      nach=['start'], belohnung=1, optional=True, form='heart', zeile=-9),
+    Q('tornister', 'Tornister', 'naturalist:knapsack',
+      'Aus der Haut von Elefanten oder Nashörnern. Was er kann, steht im Tooltip.',
+      nach=['start'], belohnung=1, optional=True, form='heart', zeile=-10),
+
+    # Serene Seasons
+    Q('kalender', 'Jahreszeiten', 'sereneseasons:calendar', [
+        'Serene Seasons bringt Frühling, Sommer, Herbst und Winter, im Winter schneit es. Der Kalender aus Uhr und Papier zeigt dir die Jahreszeit.',
+        'Im Tooltip von Samen und Früchten steht, in welchen Jahreszeiten sie wachsen. Außerhalb ihrer Saison wachsen Pflanzen kaum.',
+    ], nach=['start', 'erste_schritte/redstone'], belohnung=1, zeile=-5),
+    Q('gewaechshaus', 'Tipp: Gewächshaus', 'check', [
+        'Felder unter einem &eGlasdach&r wachsen das ganze Jahr. Das gilt auch für Felder &eunter Y=48&r, also im Keller oder in einer Höhle.',
+        'Bau deine Farmen also am besten gleich als Gewächshaus. Hak ab, wenn du es verstanden hast.',
+    ], nach=['kalender'], belohnung=2, zeile=-5),
+    Q('jahreszeitsensor', 'Jahreszeitsensor', 'sereneseasons:season_sensor',
+      'Gibt je nach Jahreszeit ein anderes Redstone-Signal. Für den Sensor brauchst du Netherquarz.',
+      nach=['kalender', 'dimensionen/nether'], belohnung=1, optional=True, zeile=-6),
+
     # Dungeon's Delight
     Q('dd_hackbeil', 'Hackbeil', 'dungeonsdelight:iron_cleaver',
-      "Dungeon's Delight macht aus Monstern Zutaten. Das Hackbeil ist eine schwere Klinge aus dieser Mod, was es genau kann, steht im Tooltip und in EMI.",
+      "Dungeon's Delight macht aus Monstern Zutaten. Das Hackbeil ist eine schwere Klinge aus dieser Mod, was es genau kann, steht im Tooltip und in JEI.",
       nach=['start', 'erste_schritte/eisen'], zeile=-3),
     Q('dd_spinne', 'Spinnenfleisch', 'dungeonsdelight:spider_meat',
       'Besieg eine Spinne mit einem Messer in der Hand, dann lässt sie Spinnenfleisch fallen.',
@@ -447,7 +531,7 @@ kapitel('essen', '&eEssen und Angeln', 'farmersdelight:cooking_pot', "Farmer's D
       'Bau einen Monster-Spawner ab, dann bekommst du fleckigen Schrott. Den brauchst du für die Monster-Küche.',
       nach=['dd_hackbeil'], zeile=-3),
     Q('dd_topf', 'Monstertopf', 'dungeonsdelight:monster_pot',
-      'Der Kochtopf für Monster-Gerichte. Rezepte findest du in EMI.',
+      'Der Kochtopf für Monster-Gerichte. Rezepte findest du in JEI.',
       nach=['dd_schrott', 'kochtopf'], zeile=-3),
     Q('dd_herd', 'Dungeon-Herd', 'dungeonsdelight:dungeon_stove',
       'Die passende Hitzequelle zum Monstertopf.',
@@ -473,10 +557,17 @@ kapitel('essen', '&eEssen und Angeln', 'farmersdelight:cooking_pot', "Farmer's D
     # Create-Anbindung
     Q('kitchen', 'Küche automatisieren', 'check', [
         "Create: Central Kitchen verbindet Create mit Farmer's Delight. Viele Kochtopf-Rezepte lassen sich mit Mixer und beheiztem Becken automatisieren.",
-        'Welche genau, zeigt dir EMI.',
+        'Welche genau, zeigt dir JEI.',
     ], nach=['eintopf', 'create_1/start'], zeile=2),
     Q('nuesse', 'Nüsse', 'garnished:nut_mix', [
         'Create: Garnished bringt Nussbäume in die Welt. Aus ihren Blättern fallen ungarnierte Nüsse.',
-        'Mit Create werden daraus garnierte Nüsse und viele Snacks. Wie genau, zeigt dir EMI.',
+        'Mit Create werden daraus garnierte Nüsse und viele Snacks. Wie genau, zeigt dir JEI.',
     ], nach=['kitchen'], zeile=2),
+    Q('waffel', 'Waffeln', ('item', 'create_factory:waffle', 4), [
+        'Create: Factory bringt Süßes aus der Fabrik. Teig, Zucker, Ei und Milch werden im beheizten Mixer zu Kuchenteig, die Presse macht Waffeln daraus und im Räucherofen werden sie fertig.',
+        'Mit dem Ausguss kannst du sie z. B. mit Honig oder Schokolade füllen.',
+    ], nach=['kitchen', 'create_1/messing'], belohnung=2, zeile=3),
+    Q('marmelade', 'Marmeladenbrötchen', 'create_factory:sweet_berries_jam_roll',
+      'Süßbeeren und Zucker werden im &eüberhitzten&r Mixer (Lohenkuchen) zu Marmelade. Mit dem Ausguss kommt sie aufs Brot.',
+      nach=['waffel'], belohnung=2, zeile=3),
 ])

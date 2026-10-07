@@ -8,7 +8,7 @@
 	}
 	id: "5393B6FB27658001"
 	images: [ ]
-	order_index: 23
+	order_index: 24
 	quest_links: [
 		{
 			id: "7128160B00C845D7"
@@ -429,7 +429,7 @@
 					id: "124419C1E2AA18CD"
 					item: {
 						count: 1
-						id: "evilcraft:environmental_accumulator"
+						id: "evilcraft:environmental_accumulation_core"
 					}
 					type: "item"
 				}

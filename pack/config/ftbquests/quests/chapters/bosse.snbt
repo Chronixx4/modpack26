@@ -8,7 +8,7 @@
 	}
 	id: "134AD7612381CA43"
 	images: [ ]
-	order_index: 31
+	order_index: 33
 	quest_links: [
 		{
 			id: "75449FE08D0E357A"
@@ -33,6 +33,22 @@
 			size: 1.0d
 			x: 6.0d
 			y: -6.0d
+		}
+		{
+			id: "1DABF9D026108CAD"
+			linked_quest: "754DE057098EC652"
+			shape: "rsquare"
+			size: 1.0d
+			x: -2.0d
+			y: 12.0d
+		}
+		{
+			id: "59C4F1847D619AD5"
+			linked_quest: "3ECAE375BD66463B"
+			shape: "rsquare"
+			size: 1.0d
+			x: -2.0d
+			y: 13.5d
 		}
 	]
 	quests: [
@@ -1457,6 +1473,56 @@
 			]
 			x: 20.0d
 			y: 3.0d
+		}
+		{
+			dependencies: [
+				"754DE057098EC652"
+			]
+			id: "1C9EC7F0D58A6BE0"
+			optional: true
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "5DD839277D48F9AD"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					entity: "goety:apostle"
+					id: "10012B7D1699B7A5"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 0.0d
+			y: 12.0d
+		}
+		{
+			dependencies: [
+				"3ECAE375BD66463B"
+			]
+			id: "707B7E4EA5835FFE"
+			optional: true
+			progression_mode: "flexible"
+			rewards: [
+				{
+					id: "15DD4308DFAC0B31"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					entity: "goety:vizier"
+					id: "30BCC1ECE416E0AF"
+					type: "kill"
+					value: 1L
+				}
+			]
+			x: 0.0d
+			y: 13.5d
 		}
 	]
 }
