@@ -3,6 +3,7 @@
 Eigenes Minecraft-Modpack für Chronixx und Freunde, als Nachfolger für ATM10.
 Schwerpunkte: Ars Nouveau (Magie), Create mit vielen Addons, AE2 mit Addons, neue Dimensionen, Bosse, Waffen.
 Kommunikation mit dem Nutzer: Deutsch, locker, kurz.
+**Tests nur nach Rueckfrage:** Servertests (lokal in der Cloud oder per Workflow-Start) nie von selbst starten, immer erst fragen und auf Marvins OK warten. Der automatische Test von GitHub bei PRs ist davon ausgenommen.
 
 ## Eckdaten
 - Minecraft **1.21.1**, Loader **NeoForge 21.1.x** (zuletzt 21.1.255), Java 21
