@@ -98,6 +98,67 @@ kapitel('occultism', '&8Occultism', 'occultism:datura', 'Geister beschwören, bi
 ])
 
 # ---------------------------------------------------------------------------
+# EvilCraft
+# ---------------------------------------------------------------------------
+kapitel('evilcraft', '&4EvilCraft', 'evilcraft:dark_gem', 'Dunkle Magie mit Blut, Geistern und Wetter', [
+    Q('start', 'Dunkle Edelsteine', 'evilcraft:dark_gem', [
+        'EvilCraft ist dunkle Magie mit Blut. Alles beginnt mit &eDunklen Edelsteinen&r aus Dunklem Erz in der Overworld.',
+    ], nach=['erste_schritte/eisen'], belohnung='loot1', haupt=True, form='gear', gross=True),
+    Q('buch', 'Origins of Darkness', 'evilcraft:origins_of_darkness',
+      'Das Handbuch von EvilCraft. Hier steht genau, wie die Maschinen und Rituale funktionieren. Das Rezept zeigt dir EMI.',
+      nach=['start'], belohnung=2, zeile=-1),
+    Q('tank', 'Dunkler Tank', 'evilcraft:dark_tank',
+      'Ein Tank für Flüssigkeiten, vor allem für Blut.',
+      nach=['start'], zeile=1),
+    Q('extraktor', 'Blutextraktor', 'evilcraft:blood_extractor',
+      'Damit sammelst du Blut. Wie genau, steht im Handbuch.',
+      nach=['start'], haupt=True),
+    Q('scherbe', 'Gehärtetes Blut', 'evilcraft:hardened_blood_shard',
+      'Gehärtete Blutscherben brauchst du für den Blutinfusionskern. Wie man sie bekommt, steht im Handbuch und in EMI.',
+      nach=['extraktor'], haupt=True),
+    Q('kraftstein', 'Dunkler Kraftedelstein', 'evilcraft:dark_power_gem',
+      'Ein Dunkler Edelstein, mit Blut aufgeladen.',
+      nach=['extraktor'], zeile=1),
+    Q('kern', 'Blutinfusionskern', 'evilcraft:blood_infusion_core',
+      'Der Kern steckt in fast allen Maschinen von EvilCraft.',
+      nach=['scherbe', 'kraftstein'], belohnung=2, haupt=True),
+    Q('infuser', 'Blutinfusor', 'evilcraft:blood_infuser', [
+        'Der Blutinfusor tränkt Items mit Blut und verwandelt sie dabei. Er ist die wichtigste Maschine der Mod.',
+        'Welche Items du darin herstellen kannst, zeigt dir EMI.',
+    ], nach=['kern'], belohnung='loot2', haupt=True, form='hexagon'),
+    Q('blutkiste', 'Blutkiste', 'evilcraft:blood_chest',
+      'Eine Truhe, die Werkzeuge darin mit Blut repariert.',
+      nach=['kern'], zeile=-1),
+    Q('reiniger', 'Reiniger', 'evilcraft:purifier',
+      'Der Reiniger entfernt schlechte Verzauberungen und Flüche von Items und kann noch mehr. Details im Handbuch.',
+      nach=['kern'], zeile=1),
+    Q('geist', 'Rachegeist', ('kill', 'evilcraft:vengeance_spirit', 1),
+      'Rachegeister sind nachts unterwegs und lassen sich nur schwer treffen. Besieg einen.',
+      nach=['start'], belohnung=2, zeile=2),
+    Q('geisterofen', 'Geisterofen', 'evilcraft:spirit_furnace',
+      'Im Geisterofen werden gefangene Geister verarbeitet und lassen dabei die Beute ihres Mobs fallen.',
+      nach=['infuser', 'geist'], belohnung=2, zeile=2),
+    Q('schwert', 'Adernschwert', 'evilcraft:vein_sword',
+      'Ein Schwert aus Dunklem Kraftedelstein.',
+      nach=['kraftstein'], zeile=3, optional=True, form='heart'),
+    Q('handwerker', 'Erhabener Handwerker', 'evilcraft:exalted_crafter',
+      'Eine tragbare Werkbank mit eigenem Zwischenspeicher.',
+      nach=['start', 'erste_schritte/gold'], zeile=-2, optional=True, form='heart'),
+    Q('anhaenger', 'Belebender Anhänger', 'evilcraft:invigorating_pendant',
+      'Ein Anhänger, der mit Blut schlechte Effekte von dir nimmt.',
+      nach=['infuser'], zeile=-1),
+    Q('akkumulator', 'Umgebungsakkumulator', 'evilcraft:environmental_accumulator',
+      'Eine große Maschine, die das Wetter ändern kann. Wie man sie bekommt und bedient, steht im Handbuch.',
+      nach=['infuser'], belohnung=2, haupt=True),
+    Q('ende', 'Blutiger Akkumulator', 'evilcraft:sanguinary_environmental_accumulator',
+      'Die Blut-Variante des Akkumulators. Wer den baut, beherrscht EvilCraft.',
+      nach=['akkumulator'], belohnung='loot3', haupt=True, form='star', gross=True),
+    Q('abgabe_edelsteine', 'Abgabe: Dunkle Edelsteine', ('item', 'evilcraft:dark_gem', 32),
+      'Gib 32 Dunkle Edelsteine ab und bekomm dafür eine seltene Kiste.',
+      nach=['start'], abgabe=True, optional=True, belohnung='loot2', zeile=-3),
+])
+
+# ---------------------------------------------------------------------------
 # Forbidden & Arcanus + Hexerei
 # ---------------------------------------------------------------------------
 kapitel('forbidden_hexerei', '&5Forbidden & Arcanus und Hexerei', 'forbidden_arcanus:arcane_crystal',

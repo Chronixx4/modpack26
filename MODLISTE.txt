@@ -1,7 +1,8 @@
-﻿Unser Modpack 0.9.9 - Modliste
-Minecraft 1.21.1, NeoForge 21.1.256   |   266 Mods inkl. Bibliotheken   |   Stand 2026-10-07
+﻿Unser Modpack 0.9.10 - Modliste
+Minecraft 1.21.1, NeoForge 21.1.256   |   276 Mods inkl. Bibliotheken   |   Stand 2026-10-07
 
-== Performance und Grafik (17) ==
+== Performance und Grafik (18) ==
+  All The Leaks                                  1.1.13+1.21.1-neoforge  (CurseForge)
   BadOptimizations                               2.4.1  (nur Client)
   Chunky                                         1.4.23  (nur Server)
   Clumps                                         19.0.0.1
@@ -20,7 +21,7 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   266 Mods inkl. Bibliotheken   |   Stan
   Packet Fixer                                   3.3.1
   Sodium                                         mc1.21.1-0.8.13-neoforge  (nur Client)
 
-== Komfort und Oberflaeche (23) ==
+== Komfort und Oberflaeche (26) ==
   AppleSkin                                      3.0.9+mc1.21
   Better Advancements                            0.4.3.21  (nur Client)
   Carry On                                       2.2.6
@@ -29,7 +30,9 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   266 Mods inkl. Bibliotheken   |   Stan
   Corpse                                         neoforge-1.21.1-1.1.13
   Default Options                                21.1.8+neoforge-1.21.1  (nur Client)
   Easy Anvils                                    v21.1.0-1.21.1-NeoForge
+  Easy Villagers                                 neoforge-1.21.1-1.1.45
   EMI                                            1.1.24+1.21.1+neoforge
+  EMI Loot                                       0.7.9+1.21+neoforge
   Explorer's Compass                             1.21.1-3.4.0-neoforge
   Grind enchantments                             4.0.1+neoforge-1.21.1
   Inventory Profiles Next                        neoforge-1.21.1-2.2.5  (nur Client)
@@ -40,6 +43,7 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   266 Mods inkl. Bibliotheken   |   Stan
   Sound Physics Remastered                       neoforge-1.21.1-1.5.1  (nur Client)
   spark                                          1.10.124-neoforge-1.21.1
   TorchMaster                                    21.1.13-release
+  Trade Cycling                                  neoforge-1.21.1-1.0.22
   Trash Cans                                     1.1.1-neoforge-mc1.21
   Visual Workbench                               21.1.2
   Xaero's Minimap                                neoforge-1.21.1-26.6.0  (nur Client)
@@ -61,15 +65,16 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   266 Mods inkl. Bibliotheken   |   Stan
   Storage Drawers                                1.21.1-13.11.4
   Traveler's Backpack                            1.21.1-10.1.39
 
-== Magie (14) ==
+== Magie (15) ==
   Ars Additions                                  21.3.0
   Ars Creo                                       5.4.0
   Ars Elemental                                  ars_elemental-1.21.1-0.7.10.4  (CurseForge)
-  Ars Énergistique                               2.1.1-beta
   Ars Nouveau                                    5.13.3
   Ars Ocultas                                    1.21.1-2.6.1
   Ars Technica                                   2.7.6  (CurseForge)
+  Ars Énergistique                               2.1.1-beta
   Cataclysm: Spellbooks                          1.1.11-1.21
+  EvilCraft                                      1.21.1-1.2.98
   Forbidden and Arcanus                          2.6.1
   Hexerei                                        0.5.0.3
   Iron's Gems 'n Jewelry                         1.21.1-2.0.2
@@ -113,7 +118,7 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   266 Mods inkl. Bibliotheken   |   Stan
   Steam 'n' Rails Neoforge                       0.2.1+neoforge-mc1.21.1
   Waystones: Sable (Create Aeronautics Addon)    1.0.7
 
-== AE2 und Technik (24) ==
+== AE2 und Technik (26) ==
   Actually Additions                             1.3.26
   AdvancedAE                                     1.6.12-1.21.1
   AE2NetworkAnalyzer                             1.21-2.1.5-neoforge  (CurseForge)
@@ -136,11 +141,14 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   266 Mods inkl. Bibliotheken   |   Stan
   Mekanism Generators                            10.7.19.85
   Mekanism Tools                                 10.7.19.85
   Oritech                                        1.2.13
+  Pipez                                          neoforge-1.21.1-1.2.31
   PneumaticCraft: Repressurized                  8.2.23
   Powah!                                         6.2.10-neoforge
+  Refined Storage                                2.0.9
 
-== Ressourcen und Landwirtschaft (6) ==
+== Ressourcen und Landwirtschaft (7) ==
   Aquaculture 2                                  2.7.21
+  Cooking for Blockheads                         21.1.24+neoforge-1.21.1
   Dungeon's Delight                              1.5.1
   Farmer's Delight                               1.21.1-1.3.4
   Mystical Agradditions                          8.0.15
@@ -165,9 +173,10 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   266 Mods inkl. Bibliotheken   |   Stan
   Tectonic                                       3.0.28-neoforge-21.1
   Terralith                                      2.6.2
 
-== Strukturen und Dungeons (15) ==
-   Integrated Dungeons and Structures            1.13.7+1.21.1-neoforge
+== Strukturen und Dungeons (16) ==
   Dungeons and Taverns                           v4.4.4+mod
+   Integrated Dungeons and Structures            1.13.7+1.21.1-neoforge
+  Lootr                                          1.21.1-1.11.38.127
   Repurposed Structures - Neoforge/Forge         7.5.22+1.21.1-neoforge
   Towns and Towers                               1.13.11
   When Dungeons Arise                            2.1.68
@@ -206,7 +215,8 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   266 Mods inkl. Bibliotheken   |   Stan
   Simply Swords                                  1.70.2-1.21.1
   Simply Swords: Cataclysm                       1.0.2+1.21.1+neoforge
 
-== Transport (1) ==
+== Transport (2) ==
+  ElevatorMod                                    neoforge-1.21.1-1.11.4
   Waystones                                      21.1.46+neoforge-1.21.1
 
 == Deko und Bauen (12) ==

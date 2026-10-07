@@ -977,6 +977,33 @@
 			dependencies: [
 				"58B2439153283A9D"
 			]
+			id: "7390A586441BA250"
+			optional: true
+			rewards: [
+				{
+					id: "16B097782A1B8190"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			shape: "heart"
+			tasks: [
+				{
+					id: "1297763D1CD6D279"
+					item: {
+						count: 1
+						id: "elevatorid:elevator_white"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"58B2439153283A9D"
+			]
 			id: "76BE00C3DFE42F0F"
 			optional: true
 			rewards: [
@@ -999,7 +1026,7 @@
 				}
 			]
 			x: 10.0d
-			y: 3.0d
+			y: -4.5d
 		}
 	]
 }

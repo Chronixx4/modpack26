@@ -8,7 +8,7 @@
 	}
 	id: "54687F941142C2AA"
 	images: [ ]
-	order_index: 28
+	order_index: 30
 	quest_links: [
 		{
 			id: "18B1A0CAE24A6071"
@@ -527,6 +527,103 @@
 			]
 			x: 4.0d
 			y: 4.5d
+		}
+		{
+			dependencies: [
+				"7DBF5A09EBAEA107"
+			]
+			id: "152C900C9E51C661"
+			rewards: [
+				{
+					id: "354603346E17FF63"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "74F7826C9AEE3800"
+					type: "checkmark"
+				}
+			]
+			x: 4.0d
+			y: 10.5d
+		}
+		{
+			dependencies: [
+				"7DBF5A09EBAEA107"
+			]
+			id: "55487E634C671C0C"
+			rewards: [
+				{
+					id: "597173EECC1D5D7E"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "1D08E433AE806A55"
+					item: {
+						count: 1
+						id: "easy_villagers:villager"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 12.0d
+		}
+		{
+			dependencies: [
+				"55487E634C671C0C"
+			]
+			id: "1567EBCE6A3D837E"
+			rewards: [
+				{
+					id: "13239DBA18252554"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "597B26A9D1F47669"
+					item: {
+						count: 1
+						id: "easy_villagers:trader"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 12.0d
+		}
+		{
+			dependencies: [
+				"55487E634C671C0C"
+				"58B2439153283A9D"
+			]
+			id: "79640B5A8342904A"
+			rewards: [
+				{
+					id: "5C6B2AD93017318F"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "50E14DE99BFE314B"
+					item: {
+						count: 1
+						id: "easy_villagers:iron_farm"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 13.5d
 		}
 		{
 			dependencies: [

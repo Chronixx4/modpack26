@@ -26,6 +26,13 @@ kapitel('willkommen', '&eWillkommen', 'minecraft:writable_book', 'Erst mal ankom
         'Rechts im Inventar siehst du die Item-Liste von EMI. Fahr mit der Maus über ein Item und drück &eR&r für Rezepte oder &eU&r für Verwendungen.',
         'Unten gibt es ein Suchfeld. Mit &e@modname&r filterst du nach Mods.',
     ], nach=['questbuch'], haupt=True),
+    Q('emi_loot', 'Was droppt wo?', 'check',
+      'EMI Loot zeigt in EMI auch Beute: Drück &eR&r auf ein Item und du siehst, welche Mobs, Blöcke und Truhen es fallen lassen.',
+      nach=['emi']),
+    Q('lootr', 'Eigene Beute', 'check', [
+        'Dank Lootr hat jede Truhe in Strukturen für jeden Spieler eigene Beute. Ihr müsst euch also nicht beeilen, wer zuerst plündert.',
+        'Zum Abbauen einer Lootr-Truhe musst du schleichen.',
+    ], nach=['lootkisten']),
     Q('jade', 'Jade: Was ist das?', 'check',
       'Schau einen Block oder ein Tier an: Oben am Bildschirm zeigt Jade Name, Mod und z. B. den Fortschritt einer Maschine.',
       nach=['emi']),
@@ -196,6 +203,10 @@ kapitel('erste_schritte', '&eErste Schritte', 'minecraft:crafting_table', 'Vom e
     Q('ende', 'Bestens ausgerüstet', ['minecraft:netherite_pickaxe', 'minecraft:netherite_chestplate'],
       'Netherit-Werkzeug und -Rüstung halten fast alles aus und brennen nicht in Lava. Jetzt steht dir das ganze Pack offen!',
       nach=['netherit'], belohnung='loot3', haupt=True, form='star', gross=True),
+    Q('aufzug', 'Aufzug', 'elevatorid:elevator_white', [
+        'Elevator Mod: Stell zwei Aufzug-Blöcke genau übereinander, mit beliebig viel Platz dazwischen.',
+        'Auf dem Block &eSpringen&r fährt nach oben, &eSchleichen&r nach unten. Für den Aufzug brauchst du Wolle und eine Enderperle.',
+    ], nach=['eisen'], optional=True, form='heart'),
     Q('abgabe_eisen', 'Abgabe: Eisen', ('item', 'minecraft:iron_ingot', 64),
       'Gib 64 Eisenbarren ab und bekomm dafür eine seltene Kiste.',
       nach=['eisen'], abgabe=True, optional=True, belohnung='loot2'),
@@ -312,6 +323,16 @@ kapitel('lager', '&eLager und Rucksäcke', 'sophisticatedstorage:chest', 'Ordnun
       'Mit Stufen-Upgrades bekommt der Reiserucksack mehr Platz und größere Tanks.',
       nach=['travelers'], zeile=-2, optional=True, form='heart'),
 
+    Q('pipez', 'Rohre', 'pipez:item_pipe', [
+        'Pipez: einfache Rohre für Items, Flüssigkeiten, Energie und Gas. Das Item-Rohr transportiert Items von einer Truhe oder Maschine zur nächsten.',
+        'In den Einstellungen des Rohrs legst du fest, wo Items herausgezogen werden. Mit dem Schraubenschlüssel trennst und verbindest du Anschlüsse.',
+    ], nach=['start', 'erste_schritte/redstone'], zeile=6),
+    Q('pipez_rohre', 'Mehr Rohre', ['pipez:fluid_pipe', 'pipez:energy_pipe'],
+      'Für Flüssigkeiten und Strom gibt es eigene Rohre. Das Universalrohr kann alles auf einmal.',
+      nach=['pipez'], zeile=6),
+    Q('pipez_upgrade', 'Rohr-Modifikation', 'pipez:basic_upgrade',
+      'Modifikationen machen ein Rohr schneller und schalten Filter und Verteilmodi frei. Es gibt mehrere Stufen.',
+      nach=['pipez'], zeile=7),
     Q('create_kisten', 'Truhen auf Contraptions', 'check',
       'Mit Sophisticated Storage Create Integration funktionieren die Truhen und Fässer auch auf Create-Contraptions, z. B. auf Zügen.',
       nach=['eisentruhe', 'create_1/start'], optional=True, form='heart', zeile=2),
@@ -432,6 +453,23 @@ kapitel('essen', '&eEssen und Angeln', 'farmersdelight:cooking_pot', "Farmer's D
       'Die passende Hitzequelle zum Monstertopf.',
       nach=['dd_topf'], zeile=-3),
 
+    # Cooking for Blockheads
+    Q('cfb_buch', 'Kochbuch', 'cookingforblockheads:recipe_book',
+      'Cooking for Blockheads: Das Kochbuch zeigt dir alle Gerichte, die du mit den Zutaten in deinem Inventar kochen kannst.',
+      nach=['start'], zeile=8),
+    Q('cfb_tisch', 'Kochtisch', 'cookingforblockheads:cooking_table', [
+        'Der Kochtisch ist das Herz der Küche. Er zeigt alle Gerichte, die du mit den Zutaten aus deiner ganzen Küche kochen kannst.',
+        'Zur Küche gehört alles, was direkt oder über Küchentheken und -schränke an den Tisch grenzt.',
+    ], nach=['cfb_buch'], belohnung=2, zeile=8),
+    Q('cfb_kuehlschrank', 'Kühlschrank', 'cookingforblockheads:white_fridge',
+      'Lager für Zutaten. Was darin liegt, kann der Kochtisch direkt benutzen.',
+      nach=['cfb_tisch'], zeile=8),
+    Q('cfb_ofen', 'Küchenofen', 'cookingforblockheads:white_oven',
+      'Ein Ofen für die Küche. Der Kochtisch kann damit auch Gerichte zubereiten, die gebraten werden müssen.',
+      nach=['cfb_tisch'], zeile=9),
+    Q('cfb_spuele', 'Spülbecken', 'cookingforblockheads:sink',
+      'Ein Spülbecken liefert der Küche Wasser.',
+      nach=['cfb_tisch'], zeile=10, optional=True, form='heart'),
     # Create-Anbindung
     Q('kitchen', 'Küche automatisieren', 'check', [
         "Create: Central Kitchen verbindet Create mit Farmer's Delight. Viele Kochtopf-Rezepte lassen sich mit Mixer und beheiztem Becken automatisieren.",

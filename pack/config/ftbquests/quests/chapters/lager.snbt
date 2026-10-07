@@ -877,6 +877,90 @@
 		}
 		{
 			dependencies: [
+				"3D9F3ABDBED0C263"
+				"50E8691B34B8D316"
+			]
+			id: "3A4D976F64301877"
+			rewards: [
+				{
+					id: "16071700DA60C731"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "3B9E4425BA4BEED9"
+					item: {
+						count: 1
+						id: "pipez:item_pipe"
+					}
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 9.0d
+		}
+		{
+			dependencies: [
+				"3A4D976F64301877"
+			]
+			id: "3A1B4B9BD6C7648F"
+			rewards: [
+				{
+					id: "3ABE26F9FF50D324"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "73E5C03D1182A7CC"
+					item: {
+						count: 1
+						id: "pipez:fluid_pipe"
+					}
+					type: "item"
+				}
+				{
+					id: "57B7E52CFB582D10"
+					item: {
+						count: 1
+						id: "pipez:energy_pipe"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 9.0d
+		}
+		{
+			dependencies: [
+				"3A4D976F64301877"
+			]
+			id: "75739C2C9A43B64C"
+			rewards: [
+				{
+					id: "3DA1D208453B2024"
+					type: "xp_levels"
+					xp_levels: 1
+				}
+			]
+			tasks: [
+				{
+					id: "1E6D3E8024249D7F"
+					item: {
+						count: 1
+						id: "pipez:basic_upgrade"
+					}
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 10.5d
+		}
+		{
+			dependencies: [
 				"197F5ACBD7134EB7"
 				"7031B172ED438FB9"
 			]

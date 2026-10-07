@@ -259,6 +259,75 @@ kapitel('ae2_addons', '&bAE2 Addons', 'extendedae:ex_pattern_provider', 'Extende
 ])
 
 # ---------------------------------------------------------------------------
+# Refined Storage
+# ---------------------------------------------------------------------------
+kapitel('refined_storage', '&3Refined Storage', 'refinedstorage:controller', 'Das andere Lagersystem: einfacher Einstieg, alles in einer Konsole', [
+    Q('start', 'Quarzeisen', 'refinedstorage:quartz_enriched_iron', [
+        'Refined Storage ist ein Lagernetzwerk wie AE2, nur einfacher: keine Kanäle, und jedes Gerät hängt einfach am Kabel.',
+        'Alles beginnt mit &eQuarzangereichertem Eisen&r aus Eisen und Netherquarz.',
+    ], nach=['erste_schritte/eisen', 'dimensionen/nether'], belohnung='loot1', haupt=True, form='gear', gross=True),
+    Q('silizium', 'Silizium', 'refinedstorage:silicon',
+      'Netherquarz im Ofen schmelzen ergibt Silizium. Das steckt in jedem Prozessor.',
+      nach=['start'], haupt=True),
+    Q('bindung', 'Prozessor-Rohmaterial', 'refinedstorage:processor_binding',
+      'Schleim und Faden ergeben das Bindemittel für die Prozessoren.',
+      nach=['start'], zeile=-1),
+    Q('basis', 'Basisprozessor', 'refinedstorage:basic_processor',
+      'Bau den Rohprozessor und schmelz ihn im Ofen. So entstehen alle drei Prozessoren.',
+      nach=['silizium', 'bindung', 'erste_schritte/redstone'], haupt=True),
+    Q('verbessert', 'Verbesserter Prozessor', 'refinedstorage:improved_processor',
+      'Wie der Basisprozessor, nur mit Gold.',
+      nach=['basis', 'erste_schritte/gold'], zeile=1),
+    Q('fortgeschritten', 'Fortschrittlicher Prozessor', 'refinedstorage:advanced_processor',
+      'Die höchste Stufe, mit Diamant. Die brauchst du für Controller und Laufwerk.',
+      nach=['basis', 'erste_schritte/diamant'], haupt=True),
+    Q('gehaeuse', 'Maschinengehäuse', 'refinedstorage:machine_casing',
+      'Das Gehäuse für die großen Blöcke im Netzwerk.',
+      nach=['start'], zeile=-2),
+    Q('controller', 'Der Controller', 'refinedstorage:controller', [
+        'Das Herz des Netzwerks. Er braucht &eStrom&r (Forge Energy), z. B. aus Powah oder Mekanism.',
+        'Pro Netzwerk gibt es genau einen Controller.',
+    ], nach=['fortgeschritten', 'gehaeuse'], belohnung='loot2', haupt=True, form='hexagon'),
+    Q('kabel', 'Kabel', ('item', 'refinedstorage:cable', 8),
+      'Kabel verbinden Controller, Laufwerke und Konsolen. Anders als bei AE2 gibt es kein Kanal-Limit.',
+      nach=['controller'], zeile=-1),
+    Q('laufwerk', 'Laufwerk und Speicherzelle', ['refinedstorage:disk_drive', 'refinedstorage:1k_storage_disk'],
+      'Ins Laufwerk steckst du die Speicherzellen. Darin landen alle Items deines Netzwerks.',
+      nach=['controller'], haupt=True),
+    Q('konsole', 'Konsole', 'refinedstorage:grid',
+      'Über die Konsole siehst du alles im Netzwerk, kannst suchen, einlagern und rausnehmen.',
+      nach=['laufwerk', 'verbessert'], haupt=True),
+    Q('werkbankkonsole', 'Herstellungskonsole', 'refinedstorage:crafting_grid',
+      'Eine Konsole mit eingebauter Werkbank. Zutaten werden direkt aus dem Netzwerk genommen.',
+      nach=['konsole'], belohnung=2, haupt=True),
+    Q('extern', 'Externer Speicher', 'refinedstorage:external_storage',
+      'Bindet eine normale Truhe, Schublade oder Sophisticated-Truhe ins Netzwerk ein.',
+      nach=['konsole'], zeile=1),
+    Q('import', 'Importeur und Exporteur', ['refinedstorage:importer', 'refinedstorage:exporter'],
+      'Der Importeur zieht Items aus Maschinen ins Netzwerk, der Exporteur schiebt sie hinein. So automatisierst du Öfen und Maschinen.',
+      nach=['konsole'], zeile=2),
+    Q('groesser', 'Mehr Platz', 'refinedstorage:16k_storage_disk',
+      'Größere Speicherkerne baust du aus mehreren kleineren. Die Rezepte zeigt dir EMI.',
+      nach=['laufwerk', 'verbessert'], belohnung=2, zeile=-1),
+    Q('autocrafter', 'Autocrafting', ['refinedstorage:pattern_grid', 'refinedstorage:autocrafter'], [
+        'In der Rezeptkonsole schreibst du Rezepte auf leere Muster. Steck sie in einen Autohersteller, dann stellt das Netzwerk die Items auf Bestellung her.',
+        'Bestellen geht in der Konsole: Item suchen und anklicken.',
+    ], nach=['werkbankkonsole'], belohnung='loot2', haupt=True, form='hexagon'),
+    Q('monitor', 'Autocrafting-Monitor', 'refinedstorage:autocrafting_monitor',
+      'Zeigt dir, was gerade hergestellt wird, und lässt dich Aufträge abbrechen.',
+      nach=['autocrafter'], zeile=1),
+    Q('funk', 'Drahtlose Konsole', ['refinedstorage:wireless_transmitter', 'refinedstorage:wireless_grid'],
+      'Mit dem Funksender im Netzwerk greifst du per drahtloser Konsole von überall in Reichweite auf dein Lager zu.',
+      nach=['autocrafter', 'erste_schritte/diamant'], belohnung=2, haupt=True),
+    Q('ende', 'Riesenlager', 'refinedstorage:64k_storage_disk',
+      'Die größte normale Speicherzelle. Damit ist dein Lager für lange Zeit groß genug.',
+      nach=['funk', 'groesser'], belohnung='loot3', haupt=True, form='star', gross=True),
+    Q('abgabe_quarz', 'Abgabe: Netherquarz', ('item', 'minecraft:quartz', 64),
+      'Gib 64 Netherquarz ab und bekomm dafür eine seltene Kiste.',
+      nach=['start'], abgabe=True, optional=True, belohnung='loot2', zeile=-3),
+])
+
+# ---------------------------------------------------------------------------
 # Mekanism
 # ---------------------------------------------------------------------------
 kapitel('mekanism', '&7Mekanism', 'mekanism:metallurgic_infuser', 'Erzverarbeitung, Chemie, Reaktoren und MekaSuit', [
