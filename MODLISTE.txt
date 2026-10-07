@@ -121,7 +121,7 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   303 Mods inkl. Bibliotheken   |   Stan
   Create: Pattern Schematics                     2.0.10
   Create: Power Loader                           2.0.5-mc1.21.1
   Create: Teleporters                            3.0.0
-  Create: The Factory Must Grow                  1.2.0
+  Create: TFMG Community Edition                 1.3.2a
   Create: Train Perspective                      1.1.1+neoforge-1.21.1  (nur Client)
   Create: Transmission!                          1.2.2+neoforge-create6-1.21.1
   Create: Ultimate Factory                       2.2.4

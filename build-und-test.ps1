@@ -216,7 +216,7 @@ create-enchantable-machinery|Create: Enchantable Machinery
 create-encased|Create Encased
 create-teleporters|Create: Teleporters
 numismatics|Create: Numismatics
-create-tfmg|Create: The Factory Must Grow
+tfmg-community-edition|Create: TFMG Community Edition
 create-mobile-packages|Create: Mobile Packages
 create-pattern-schematics|Create: Pattern Schematics
 create-ironworks|Create: Ironworks

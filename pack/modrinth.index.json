@@ -4010,21 +4010,6 @@
       "fileSize": 1894517
     },
     {
-      "path": "mods/tfmg-1.2.0.jar",
-      "hashes": {
-        "sha1": "b520f3687f60a69eb265ff5b9a16759b9e124103",
-        "sha512": "03f2ad28c78ef565ef203c5650280acb0b846d6105dc5c84b2e31187f501be5c59733ef3adb623fbaa32c3233d113d608905259128661ffab06b26b270b1b38c"
-      },
-      "env": {
-        "client": "required",
-        "server": "required"
-      },
-      "downloads": [
-        "https://cdn.modrinth.com/data/USgVjXsk/versions/uDi14nbt/tfmg-1.2.0.jar"
-      ],
-      "fileSize": 4924243
-    },
-    {
       "path": "mods/create_mobile_packages-1.21.1-0.7.8.jar",
       "hashes": {
         "sha1": "1e5238c8764bcfc3c0af29c3ff5b4533a18364c7",
@@ -4383,6 +4368,21 @@
         "https://cdn.modrinth.com/data/e0bNACJD/versions/pHEgQQUE/SereneSeasons-neoforge-1.21.1-10.1.0.9.jar"
       ],
       "fileSize": 163020
+    },
+    {
+      "path": "mods/tfmg-1.21.1-1.3.2a-community.jar",
+      "hashes": {
+        "sha1": "32db66ef75c8e1b956683c1caa06d0e28ff3aba1",
+        "sha512": "ffd088be6e0c94772eee8b4f551e73e10ccbf0aeccacc36b03b3ed566f677202a1ea5dc9bce50f66a69d98a59c98f7ff8dc2b4598298a0c90dda389644469e49"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/hC1xYvnS/versions/L0pdVzc7/tfmg-1.21.1-1.3.2a-community.jar"
+      ],
+      "fileSize": 5534993
     }
   ],
   "dependencies": {

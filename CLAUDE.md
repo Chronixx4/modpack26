@@ -101,10 +101,11 @@ CurseForge blockt Downloads per Skript, auch über die interne `/api/v1`. Diese 
     - Neue Aeste in create_2, create_3, dimensionen (Augen, Enderscape, Endstadt alt/neu), strukturen (Kobolds), waffen (Paladins, Schilde), erste_schritte (Enterhaken), essen (Tide, Naturalist, Jahreszeiten, Create Factory) und bosse (Goety-Bosse).
     - EvilCraft-Texte aus dem Handbuch. Die Quest `evilcraft/akkumulator` verlangt jetzt den Akkumulationskern, weil der Akkumulator nicht craftbar ist.
     - Uebrig bleibt eine Warnung: `refined_storage/silizium`. Sie ist falsch, weil `refined_storage/start` den Nether schon voraussetzt.
-  - `ids.json`/`rezepte.json` aus den neuen Jars ergaenzt. Es gab keinen Servertest.
+  - **TFMG = Community Edition** (`tfmg-community-edition` 1.3.2a, gleiche modId `tfmg`). Das Original TFMG 1.2.0 laesst sich nicht mit Bits 'n' Bobs starten (Absturz im PR-Servertest: "bits_n_bobs is incompatible with tfmg 1.2.2 or below"). In CE gibt es keine Motorsteuerung und keinen FE-Converter mehr. Die Quests sind darauf angepasst (`tfmg/ende` = Grossmotor, `tfmg/akku` statt Wandler).
+  - `ids.json`/`rezepte.json` aus den neuen Jars ergaenzt.
   - Im Spiel pruefen:
     - Ist das Enderscape-Datapack `new_end_cities` aktiv? Laufen Enderscape und Better End zusammen?
-    - Gehen die TFMG-Rezepte mit Almost Unified noch? Betroffen sind `heavy_plate` und `rebar`.
+    - Gehen die TFMG-Rezepte (Community Edition) mit Almost Unified noch? Betroffen sind `heavy_plate` und `rebar`.
     - Kommt das Messing-Rezept wieder mit 2 Barren?
     - Greift die L2-Config in einer neuen Welt?
 

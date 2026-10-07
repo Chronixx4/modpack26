@@ -1107,26 +1107,27 @@
 		{
 			dependencies: [
 				"1CAF73AD0D3789BE"
+				"5B2A25CD0A93CE28"
 			]
-			id: "55AEF1B7B1C21CAD"
+			id: "53749F9129418C3B"
 			rewards: [
 				{
-					id: "18DA528CE966A480"
+					id: "1E53C30F898866CF"
 					type: "xp_levels"
 					xp_levels: 2
 				}
 			]
 			tasks: [
 				{
-					id: "14EF44ADDF2FF31A"
+					id: "3DD463DF966D4820"
 					item: {
 						count: 1
-						id: "tfmg:converter"
+						id: "tfmg:accumulator"
 					}
 					type: "item"
 				}
 			]
-			x: 22.0d
+			x: 26.0d
 			y: -6.0d
 		}
 		{
@@ -1264,14 +1265,6 @@
 			tasks: [
 				{
 					id: "58278D442B96009D"
-					item: {
-						count: 1
-						id: "tfmg:engine_controller"
-					}
-					type: "item"
-				}
-				{
-					id: "128859B54A284125"
 					item: {
 						count: 1
 						id: "tfmg:large_engine"

@@ -759,9 +759,9 @@ kapitel('tfmg', '&6Create 4: TFMG', 'tfmg:steel_mechanism',
     Q('stromnetz', 'Stromnetz', [('item', 'tfmg:electric_post', 4), ('item', 'tfmg:cable_connector', 4), 'tfmg:light_bulb'],
       'Masten und Kabelanschlüsse verbinden deine Geräte. Eine Glühbirne ist der einfachste Verbraucher zum Testen.',
       nach=['generator'], belohnung=2, zeile=-3),
-    Q('wandler', 'FE-Wandler', 'tfmg:converter',
-      'Wandelt TFMG-Strom in FE für andere Mods um. Mit dem Schraubenschlüssel kehrst du die Richtung um. Die Spannung stellst du im Menü ein.',
-      nach=['stromnetz'], belohnung=2, zeile=-4),
+    Q('akku', 'Akkumulator', 'tfmg:accumulator',
+      'Speichert viel Strom. Unten geht er rein, oben kommt er langsam wieder raus. So puffert er dein Netz.',
+      nach=['stromnetz', 'aluminium'], belohnung=2, zeile=-4),
     Q('e_motor', 'Elektromotor', 'tfmg:electric_motor',
       'Strom rein, Rotation raus. Auch er entsteht in einer Sequenziellen Montage, die Schritte zeigt JEI.',
       nach=['generator'], belohnung=2, zeile=-4),
@@ -770,7 +770,7 @@ kapitel('tfmg', '&6Create 4: TFMG', 'tfmg:steel_mechanism',
       nach=['kunststoff', 'wickler', 'silizium', 'aluminium'], belohnung=2, zeile=-1),
 
     Q('voltmeter', 'Voltmeter', 'tfmg:voltmeter',
-      'Ein Messgerät für deinen Strom, gebaut mit einem Magneten. Du brauchst es auch für die Motorsteuerung.',
+      'Ein Messgerät für deinen Strom, gebaut mit einem Magneten. Du brauchst es auch für den Polarisator.',
       nach=['magnet'], belohnung=1, zeile=-3, spalte=13),
 
     # --- Motoren ---
@@ -779,8 +779,8 @@ kapitel('tfmg', '&6Create 4: TFMG', 'tfmg:steel_mechanism',
       'Für die Zündkerze im Zylinder brauchst du Aluminium. Welche Treibstoffe ein Zylinder verträgt, steht im Tooltip.',
       nach=['treibstoff', 'aluminium'], belohnung=2, haupt=True),
 
-    Q('ende', 'Motorsteuerung', ['tfmg:engine_controller', 'tfmg:large_engine'],
-      'Der Großmotor läuft mit Diesel, Kerosin, Naphtha oder Gichtgas, braucht Luft und einen Auspuff. Mit der Motorsteuerung regelst du Drehzahl und Richtung: erst die Steuerung, dann den Motor mit einem Getriebe-Item anklicken. Die Tasten stehen in den Steuerungs-Einstellungen.\n\n'
+    Q('ende', 'Großmotor', 'tfmg:large_engine',
+      'Der Großmotor entsteht im Mechanischen Handwerk. Er läuft mit Diesel, Kerosin, Naphtha oder Gichtgas, braucht Luft und einen Auspuff und gibt Rotation an eine Welle ab, ähnlich wie eine Dampfmaschine.\n\n'
       'Deine Fabrik ist gewachsen. Glückwunsch!',
       nach=['motor', 'platine', 'gummi', 'voltmeter'], belohnung='loot3', form='star', gross=True, haupt=True),
 ])

@@ -3536,6 +3536,10 @@
 		"Draconium-Staub schmilzt du im Ofen zu &eDraconium-Barren&r."
 	]
 	quest.537444F0AE80D61C.title: "Draconium-Barren"
+	quest.53749F9129418C3B.quest_desc: [
+		"Speichert viel Strom. Unten geht er rein, oben kommt er langsam wieder raus. So puffert er dein Netz."
+	]
+	quest.53749F9129418C3B.title: "Akkumulator"
 	quest.53853B92B6039F45.quest_desc: [
 		"Speichert &eQuelle&r (Source), die Energie dieser Mod. Maschinen ziehen sie aus Gläsern in der Nähe."
 	]
@@ -3688,10 +3692,6 @@
 		"Setzt dein eigenes Gefahrenlevel komplett zurück. Gut, wenn es dir zu heftig wird."
 	]
 	quest.55AE54C1E9E38937.title: "Flasche der Vernunft"
-	quest.55AEF1B7B1C21CAD.quest_desc: [
-		"Wandelt TFMG-Strom in FE für andere Mods um. Mit dem Schraubenschlüssel kehrst du die Richtung um. Die Spannung stellst du im Menü ein."
-	]
-	quest.55AEF1B7B1C21CAD.title: "FE-Wandler"
 	quest.55B355EB5FB49019.quest_desc: [
 		"Mystical Agradditions bringt eine sechste Stufe: &5Insanium&r. Vier Supremium-Essenzen ergeben ein Insanium."
 	]
@@ -3713,9 +3713,9 @@
 	]
 	quest.55F3855C792BD53D.title: "Stahlhammer"
 	quest.55F3D536D7E03055.quest_desc: [
-		"Der Großmotor läuft mit Diesel, Kerosin, Naphtha oder Gichtgas, braucht Luft und einen Auspuff. Mit der Motorsteuerung regelst du Drehzahl und Richtung: erst die Steuerung, dann den Motor mit einem Getriebe-Item anklicken. Die Tasten stehen in den Steuerungs-Einstellungen.\n\nDeine Fabrik ist gewachsen. Glückwunsch!"
+		"Der Großmotor entsteht im Mechanischen Handwerk. Er läuft mit Diesel, Kerosin, Naphtha oder Gichtgas, braucht Luft und einen Auspuff und gibt Rotation an eine Welle ab, ähnlich wie eine Dampfmaschine.\n\nDeine Fabrik ist gewachsen. Glückwunsch!"
 	]
-	quest.55F3D536D7E03055.title: "Motorsteuerung"
+	quest.55F3D536D7E03055.title: "Großmotor"
 	quest.55F4A334241ECA29.quest_desc: [
 		"Kalkstein im Mahlwerk zerkleinern gibt &eKalksand&r. Der Hochofen braucht ihn als Flussmittel."
 	]
@@ -5409,7 +5409,7 @@
 	]
 	quest.78DC9BB2270B5FF0.title: "Strom fürs Netz"
 	quest.78EFDB0C1CCA7966.quest_desc: [
-		"Ein Messgerät für deinen Strom, gebaut mit einem Magneten. Du brauchst es auch für die Motorsteuerung."
+		"Ein Messgerät für deinen Strom, gebaut mit einem Magneten. Du brauchst es auch für den Polarisator."
 	]
 	quest.78EFDB0C1CCA7966.title: "Voltmeter"
 	quest.78F1E467E7B385AA.quest_desc: [
