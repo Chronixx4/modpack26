@@ -1,4 +1,4 @@
-﻿Chronicle 0.9.12 - Modliste
+﻿Chronicle 0.9.13 - Modliste
 Minecraft 1.21.1, NeoForge 21.1.256   |   277 Mods inkl. Bibliotheken   |   Stand 2026-10-07
 
 == Performance und Grafik (18) ==
@@ -32,12 +32,12 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   277 Mods inkl. Bibliotheken   |   Stan
   Default Options                                21.1.8+neoforge-1.21.1  (nur Client)
   Easy Anvils                                    v21.1.0-1.21.1-NeoForge
   Easy Villagers                                 neoforge-1.21.1-1.1.45
-  EMI                                            1.1.24+1.21.1+neoforge
-  EMI Loot                                       0.7.9+1.21+neoforge
   Explorer's Compass                             1.21.1-3.4.0-neoforge
   Grind enchantments                             4.0.1+neoforge-1.21.1
   Inventory Profiles Next                        neoforge-1.21.1-2.2.5  (nur Client)
   Jade 🔍                                        15.10.6+neoforge
+  Just Enough Items (JEI)                        19.51.0.418
+  Just Enough Resources (JER)                    1.6.0.17  (nur Client)
   Mouse Tweaks                                   1.21-2.26.1-neoforge  (nur Client)
   Nature's Compass                               1.21.1-3.4.0-neoforge
   Polymorph                                      1.1.0+1.21.1

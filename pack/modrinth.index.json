@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
   "game": "minecraft",
-  "versionId": "0.9.12",
+  "versionId": "0.9.13",
   "name": "Chronicle",
   "files": [
     {
@@ -2090,21 +2090,6 @@
       "fileSize": 3160490
     },
     {
-      "path": "mods/emi-1.1.24+1.21.1+neoforge.jar",
-      "hashes": {
-        "sha1": "3fd494b37027dfbc7f78414d7cbf251c9eb6738a",
-        "sha512": "f4c45ed686fe617311d6debadcb6ace5963e66f8cfe0cfed398231f081f87407070efc7a73c8b695d158f1d87a97180737b9107a46771e77df2bc9a7dc715ebd"
-      },
-      "env": {
-        "client": "required",
-        "server": "optional"
-      },
-      "downloads": [
-        "https://cdn.modrinth.com/data/fRiHVvU7/versions/5sIPA1To/emi-1.1.24%2B1.21.1%2Bneoforge.jar"
-      ],
-      "fileSize": 1111538
-    },
-    {
       "path": "mods/Searchables-neoforge-1.21.1-1.0.2.jar",
       "hashes": {
         "sha1": "5b8a0b43a474c066371b2e16f9bfb88622552a74",
@@ -3845,21 +3830,6 @@
       "fileSize": 46623
     },
     {
-      "path": "mods/emi_loot-0.7.9+1.21+neoforge.jar",
-      "hashes": {
-        "sha1": "bd0326eeda721c87a29efd78f9a52f46d572392c",
-        "sha512": "9c67ff502da7a94ef7707c144deb4ec6472f445e99cc8eab30b77f22d886a86b8793338452fe394296f3132ed4d37271d475af184e3a9519ddebdad1a82eecf7"
-      },
-      "env": {
-        "client": "required",
-        "server": "required"
-      },
-      "downloads": [
-        "https://cdn.modrinth.com/data/qbbO7Jns/versions/QXkODMCT/emi_loot-0.7.9%2B1.21%2Bneoforge.jar"
-      ],
-      "fileSize": 465870
-    },
-    {
       "path": "mods/easy-villagers-neoforge-1.21.1-1.1.45.jar",
       "hashes": {
         "sha1": "fa2561b7710910c1ccc12a012986b1c5c3976e27",
@@ -3993,6 +3963,36 @@
         "https://cdn.modrinth.com/data/sdaSaQEz/versions/e8iYxxI3/almostunified-neoforge-1.21.1-1.4.2.jar"
       ],
       "fileSize": 295093
+    },
+    {
+      "path": "mods/jei-1.21.1-neoforge-19.51.0.418.jar",
+      "hashes": {
+        "sha1": "d19552586f686eae4ef5e7199f31604d1d3cfca7",
+        "sha512": "a6ca3abc3080f6f41033a77cb955fefe9f9ebae795c33546227f555b2d31e8d4131cc705126d14a3fbabb31097fc0e876dc0bbeb05ad907a1b796f21e57527bf"
+      },
+      "env": {
+        "client": "required",
+        "server": "optional"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/u6dRKJwZ/versions/ufHUqt9b/jei-1.21.1-neoforge-19.51.0.418.jar"
+      ],
+      "fileSize": 1804792
+    },
+    {
+      "path": "mods/JustEnoughResources-NeoForge-1.21.1-1.6.0.17.jar",
+      "hashes": {
+        "sha1": "e739d69b2de31ca8c0cb4691ab08e823f153bc44",
+        "sha512": "9a4f8c32e65d5f9451edcf1a584b22b9f590dab2cfb3efb68ef2b4c042d8ff39dcfdaddba0a9d615c7af4ecfa1cefda417c8972d7dcb54e574837ec81d6939b0"
+      },
+      "env": {
+        "client": "required",
+        "server": "unsupported"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/uEfK2CXF/versions/TgNFki8j/JustEnoughResources-NeoForge-1.21.1-1.6.0.17.jar"
+      ],
+      "fileSize": 292088
     }
   ],
   "dependencies": {

@@ -9,7 +9,7 @@ $ProgressPreference = 'SilentlyContinue'
 $MC      = '1.21.1'
 $LOADER  = 'neoforge'
 $PACK    = 'Chronicle'
-$PACKVER = '0.9.12'
+$PACKVER = '0.9.13'
 $RAM     = '8G'
 $TIMEOUT_MIN = 20
 
@@ -123,7 +123,7 @@ dynamic-fps|Dynamic FPS
 moreculling|More Culling
 packet-fixer|Packet Fixer
 # Komfort und Oberflaeche
-emi|EMI
+jei|Just Enough Items (JEI)
 almostunified|Almost Unified
 jade|Jade
 xaeros-minimap|Xaero's Minimap
@@ -147,7 +147,7 @@ natures-compass|Nature's Compass
 spark|Spark
 trash-cans|Trash Cans
 inventory-profiles-next|Inventory Profiles Next
-emi-loot|EMI Loot
+just-enough-resources-jer|Just Enough Resources (JER)
 easy-villagers|Easy Villagers
 trade-cycling|Trade Cycling
 # Multiplayer, Quests und Verwaltung

@@ -32,7 +32,7 @@ Kommunikation mit dem Nutzer: Deutsch, locker, kurz.
   - Modus `linear` (Quests gesperrt bis Vorgaenger fertig); Quests mit Kill/Dimension/Struktur/Biom setzt der Generator auf `flexible`, sonst zaehlen sie erst nach dem Freischalten. Abgabe-Quests (`abgabe=True`) verbrauchen Items. Belohnungen: XP, Items, Loot-Kisten `loot1`-`loot4` (`inhalt/loot.py`).
   - `pack/config/` landet in `overrides/config` (.mrpack) bzw. `config/` (beide ZIPs) und im lokalen Testserver. Der Servertest gibt die Zeile `Questbuch: Loaded ... quests` aus.
 - CurseForge-Jars holt das Skript automatisch aus `%USERPROFILE%\Downloads` (Dateinamen-Muster in `$cfPatterns`).
-- Aktuelle Version: **PACKVER 0.9.12**. Bei jeder Änderung `$PACKVER` hochzählen.
+- Aktuelle Version: **PACKVER 0.9.13** (in Arbeit, letztes Release 0.9.12). Bei jeder Änderung `$PACKVER` hochzählen.
 
 ## Mods, die nur auf CurseForge sind (liegen in curseforge-mods\ bzw. Downloads)
 Alle für 1.21.1 NeoForge. Download-URL-Schema: `https://www.curseforge.com/minecraft/mc-mods/<slug>/download/<fileId>`
@@ -90,13 +90,15 @@ CurseForge blockt Downloads per Skript, auch über die interne `/api/v1`. Diese 
 - 0.9.11: Pack heisst jetzt **Chronicle** (Name im .mrpack, Dateinamen `Chronicle-<ver>.*`, Release-Titel, MOTD, Questbuch-Titel, LIES-MICH).
 - 0.9.12 (Release v0.9.12, 2026-10-07): **Almost Unified** (Standard-Config: Prioritaet minecraft > create > immersiveengineering > mekanism; z. B. Stahl/Silber/Elektrum/Nickel/Uran werden zu IE). Quests, die Varianten anderer Mods verlangten (Mekanism-/Oritech-/Ad-Astra-Stahl, Occultism-Silber usw.), auf die IE-Items umgestellt. **Chronicle-Kern** (eigenes Endgame): KubeJS-Items `kubejs:technik_fragment`, `magie_fragment`, `abenteuer_fragment`, `chronicle_core` in `pack/kubejs/` (startup_scripts, Rezepte als JSON in data/kubejs/recipe, Texturen, Namen); der Kern im mechanischen Crafter (5x5). Questbuch-Finale: Fragmente + Kern vor `ende`. `pack/kubejs` landet in overrides/kubejs bzw. kubejs/ beider ZIPs. GitHub-Servertest OK (258 Mods, 374 s, `Loaded 35 chapters, 1235 quests`, keine ungueltigen Items, KubeJS-Items registriert). Ob die KubeJS-Rezepte laden, zeigt der Servertest nicht (Rezeptfehler werden gefiltert), also im Spiel per EMI pruefen.
 
+- 0.9.13 (in Arbeit, nicht released): EMI ersetzt durch **JEI**, EMI Loot ersetzt durch **Just Enough Resources** (nur Client). Questtexte von EMI auf JEI umgestellt, die Schluessel `emi`/`emi_loot` bleiben. Neue Mods laut `PLAN-0.9.13.md` folgen. Zum Pflegen des Index ohne pwsh gibt es `tools/index-pflegen.py` (`add <slug>...` holt die neueste 1.21.1-NeoForge-Release-Version plus Pflicht-Abhaengigkeiten, `rm <pfad-teil>...` entfernt; MODLISTE.txt danach per Hand nachziehen), es setzt env wie das PS1-Skript.
+
 ## Offene Aufgaben
 1. **0.9.12 im Client testen:** kurz in die Welt, auf Grafikfehler achten (More Culling, BadOptimizations seit 0.9.9). Dazu pruefen: Rezepte der drei Fragmente und des Chronicle-Kerns in EMI, Almost Unified (z. B. Mekanism-Stahl wird zu IE-Stahl), in einer neuen Welt keine doppelten Erze.
 2. **Questbuch im Spiel ansehen** (seit 0.9.8): Texte, Reihenfolge, Bilder. Aenderungen in `pack/quests/inhalt/*.py` machen (nicht im Editiermodus, sonst ueberschreibt der naechste Generatorlauf sie).
 3. **Server auf dem Heimserver** einrichten: ZimaOS, Marvin hat dort schon ein eigenes Docker-Panel fuer mehrere Minecraft-Server (keine docker-compose noetig). Dafuer das `-Server.zip` aus dem Release nehmen (12 GB RAM fuer Minecraft, Container mind. 14 GB, Java 21, Ports 25565/TCP und 24454/UDP fuer Voice Chat), danach mit Chunky vorgenerieren.
 4. Erst danach die **richtige Welt** starten, damit Strukturen und Biome ueberall generiert werden.
 5. **Beim naechsten Update:** EvilCraft-Questtexte nachbessern (viele Quests verweisen nur aufs Handbuch). Dafuer das Handbuch "Origins of Darkness" aus der EvilCraft-Jar auslesen und die Mechaniken daraus uebernehmen.
-6. **0.9.13 vorbereitet:** `PLAN-0.9.13.md` (20 Mod-Kandidaten, die nicht in ATM10 sind, offene Entscheidungen, kompletter Quest-Plan mit IDs). Marvin sucht aus, dann einbauen.
+6. **0.9.13 vorbereitet:** `PLAN-0.9.13.md` (20 Mod-Kandidaten, die nicht in ATM10 sind, Entscheidungen, kompletter Quest-Plan mit IDs). Marvin nimmt ueberall die Empfehlung; die Mod-Auswahl steht noch aus.
 7. Optional: Shader wieder einbauen, sobald es eine Iris-Version gibt, die zu Sodium 0.8 passt.
 
 ## Mod-Bauplan (Übersicht)

@@ -29,7 +29,20 @@ Noch **nichts eingebaut**: Marvin sucht aus, dann Einbau auf dem Arbeitsbranch.
 | 19 | Tide 2 | `tide` | 2.1.1 | – (Cloth Config drin) |
 | 20 | Serene Seasons | `serene-seasons` | 10.1.0.9 | – (GlitchCore drin) |
 
-## 2. Entscheidungen für Marvin (vor dem Einbau)
+## 2. Entscheidungen
+
+**Entschieden (Marvin, 2026-10-07): überall die Empfehlung.** Das heißt:
+- End Remastered: Option A (streng). Die Quest `enderauge` wird umgebaut.
+- L2 Hostility: Config entschärfen (`dimensionFactor` 0–2, `allowLegendary=false`).
+- Tide und Aquaculture: beide behalten, im Kapitel Essen zwei getrennte Äste.
+- Serene Seasons: mit Standard-Config. Im Questtext auf das Gewächshaus hinweisen.
+- Ironworks: Messing-Rezept per KubeJS auf 2 Barren zurücksetzen.
+- Paladins und Shield Expansion: erst bei Problemen den Item Only Mode einschalten.
+- Enderscape: Servertest mit End-Chunks, aber nur nach Rückfrage.
+
+Schon erledigt für 0.9.13: **EMI ersetzt durch JEI**, und **EMI Loot ersetzt durch Just Enough Resources (JER)**. Die Questtexte sind umgestellt, die Quest-Schlüssel `emi` und `emi_loot` bleiben gleich, damit der Fortschritt erhalten bleibt.
+
+Hintergrund zu den Punkten:
 
 1. **End Remastered (11):** Normale Enderaugen sind dann weder werfbar noch einsetzbar, man braucht 12 von 16 verschiedenen Augen.
    - Option A, empfohlen: so lassen. Die Quest `dimensionen/enderauge` wird umgebaut (siehe 4.3).

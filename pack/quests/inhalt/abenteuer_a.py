@@ -126,7 +126,7 @@ kapitel('dimensionen', '&2Dimensionen', 'minecraft:obsidian', 'Neue Welten entde
 
     # ---- Undergarden ----
     Q('katalysator', 'Katalysator', 'undergarden:catalyst',
-      'Mit dem Katalysator öffnest du das Portal in den Undergarden. Rezept in EMI.',
+      'Mit dem Katalysator öffnest du das Portal in den Undergarden. Rezept in JEI.',
       nach=['start'], belohnung=1, zeile=4),
     Q('undergarden', 'Undergarden', ('dim', 'undergarden:undergarden'),
       'Baue einen Portalrahmen aus Steinziegeln (Form wie beim Nether) und aktiviere ihn mit dem Katalysator.\n\n'
@@ -142,7 +142,7 @@ kapitel('dimensionen', '&2Dimensionen', 'minecraft:obsidian', 'Neue Welten entde
       'Rote Kristalle, besonders stark gegen die Rotlinge (die Untoten des Undergarden).',
       nach=['froststahl'], belohnung=2, zeile=4),
     Q('regalium', 'Regalium', 'undergarden:regalium_crystal',
-      'Ein seltenes Erz des Undergarden. Wofür du es brauchst, zeigt dir EMI.',
+      'Ein seltenes Erz des Undergarden. Wofür du es brauchst, zeigt dir JEI.',
       nach=['utherium'], belohnung='loot2', zeile=4),
 
     # ---- Deeper and Darker ----
@@ -297,7 +297,7 @@ kapitel('twilight', '&2Twilight Forest', 'twilightforest:twilight_oak_sapling', 
       'Der Minoschwammerl hinterlässt Meef Stroganoff. Sehr sättigend!',
       nach=['minoshroom'], belohnung=2, zeile=-1),
     Q('zerlegebank', 'Zerlegebank', 'twilightforest:uncrafting_table',
-      'Die Zerlegebank nimmt Items wieder auseinander, gegen ein paar Erfahrungslevel. Du brauchst dafür den Labyrinthkarten-Fokus (Rezept in EMI).',
+      'Die Zerlegebank nimmt Items wieder auseinander, gegen ein paar Erfahrungslevel. Du brauchst dafür den Labyrinthkarten-Fokus (Rezept in JEI).',
       nach=['minoshroom'], belohnung=3, zeile=1),
     Q('feuerblut', 'Feuerblut', ('item', 'twilightforest:fiery_blood', 2),
       'Die Hydra lässt Feuerblut fallen.',
@@ -404,10 +404,10 @@ kapitel('strukturen', '&6Strukturen', 'explorerscompass:explorerscompass', 'Dung
       'Trade Cycling: Solange du mit einem Dorfbewohner noch nicht gehandelt hast, kannst du im Handelsfenster per Knopf neue Angebote würfeln.',
       nach=['tnt_dorf'], belohnung=1, zeile=7),
     Q('dorfbewohner', 'Dorfbewohner einpacken', 'easy_villagers:villager',
-      'Easy Villagers: Dorfbewohner lassen sich als Item mitnehmen. Wie das geht, steht in EMI. So ziehst du mit ihnen um, ohne sie mühsam zu führen.',
+      'Easy Villagers: Dorfbewohner lassen sich als Item mitnehmen. Wie das geht, steht in JEI. So ziehst du mit ihnen um, ohne sie mühsam zu führen.',
       nach=['tnt_dorf'], belohnung=2, zeile=8),
     Q('haendlerblock', 'Händlerblock', 'easy_villagers:trader',
-      'Steck einen Dorfbewohner hinein und handle mit ihm, ganz ohne Gehege. Was er dafür noch braucht, zeigt dir EMI.',
+      'Steck einen Dorfbewohner hinein und handle mit ihm, ganz ohne Gehege. Was er dafür noch braucht, zeigt dir JEI.',
       nach=['dorfbewohner'], zeile=8),
     Q('eisenfarm', 'Eisenfarm im Block', 'easy_villagers:iron_farm',
       'Eine komplette Eisenfarm in einem Block. Dafür kommt ein Dorfbewohner hinein.',

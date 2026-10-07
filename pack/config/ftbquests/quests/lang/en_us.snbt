@@ -167,7 +167,7 @@
 	]
 	quest.104730F6A543FD4D.title: "Shulker-Kiste"
 	quest.1048DFCC176A3424.quest_desc: [
-		"Plastikplatten kommen aus Polymerharz oder Biopolymer, die du in der Zentrifuge herstellst. Die genauen Wege zeigt EMI."
+		"Plastikplatten kommen aus Polymerharz oder Biopolymer, die du in der Zentrifuge herstellst. Die genauen Wege zeigt JEI."
 	]
 	quest.1048DFCC176A3424.title: "Plastik"
 	quest.105258EF3732EE78.quest_desc: [
@@ -197,7 +197,7 @@
 	]
 	quest.108D158308E19C07.title: "Amboss"
 	quest.10A17F7181107E91.quest_desc: [
-		"Mit dem Katalysator öffnest du das Portal in den Undergarden. Rezept in EMI."
+		"Mit dem Katalysator öffnest du das Portal in den Undergarden. Rezept in JEI."
 	]
 	quest.10A17F7181107E91.title: "Katalysator"
 	quest.10A29809685B7E20.quest_desc: [
@@ -397,7 +397,7 @@
 	quest.12CC94D9B77E7152.quest_desc: [
 		"&eFusion Crafting&r: Der Fusion Crafting Core steht in der Mitte, die &eInjektoren&r zeigen auf ihn. In den Kern kommt das Haupt-Item, in die Injektoren die Zutaten."
 		""
-		"Die Injektoren brauchen Strom. Jedes Rezept braucht eine Mindeststufe der Injektoren (in EMI angezeigt)."
+		"Die Injektoren brauchen Strom. Jedes Rezept braucht eine Mindeststufe der Injektoren (in JEI angezeigt)."
 	]
 	quest.12CC94D9B77E7152.title: "Fusion Crafting"
 	quest.12E37EE8060FD6BA.quest_desc: [
@@ -479,7 +479,7 @@
 	]
 	quest.140DD6EC92430E36.title: "Energie-Pylon"
 	quest.14113B6F624B27CB.quest_desc: [
-		"Reichweiten-, Tempo- und Effizienz-Upgrades kommen direkt in die Maschine. Höhere Reichweiten-Stufen stehen in EMI."
+		"Reichweiten-, Tempo- und Effizienz-Upgrades kommen direkt in die Maschine. Höhere Reichweiten-Stufen stehen in JEI."
 	]
 	quest.14113B6F624B27CB.title: "Upgrades"
 	quest.141667D8349427F7.quest_desc: [
@@ -527,7 +527,7 @@
 	]
 	quest.149693DAD2A88405.title: "Aufzug"
 	quest.14B533EE5898D7EE.quest_desc: [
-		"Leg ein Regal in den Zaubertisch und verzaubere es: Das ist eine &eInfusion&r. Die nötigen Werte zeigt EMI. Infundierte Regale sind die Basis für alle besseren Varianten."
+		"Leg ein Regal in den Zaubertisch und verzaubere es: Das ist eine &eInfusion&r. Die nötigen Werte zeigt JEI. Infundierte Regale sind die Basis für alle besseren Varianten."
 	]
 	quest.14B533EE5898D7EE.title: "Infusion"
 	quest.14CA01035714C0B9.quest_desc: [
@@ -571,7 +571,7 @@
 	]
 	quest.152C900C9E51C661.title: "Handel neu würfeln"
 	quest.153AE0F15E49D275.quest_desc: [
-		"MEGA Cells braucht Himmelsstahl und Himmelsbronze. Rezepte siehst du in EMI."
+		"MEGA Cells braucht Himmelsstahl und Himmelsbronze. Rezepte siehst du in JEI."
 	]
 	quest.153AE0F15E49D275.title: "Himmelsmetalle"
 	quest.153DB2682CEC39D5.quest_desc: [
@@ -587,7 +587,7 @@
 	]
 	quest.155D6EE638883874.title: "Eisdrache"
 	quest.1567EBCE6A3D837E.quest_desc: [
-		"Steck einen Dorfbewohner hinein und handle mit ihm, ganz ohne Gehege. Was er dafür noch braucht, zeigt dir EMI."
+		"Steck einen Dorfbewohner hinein und handle mit ihm, ganz ohne Gehege. Was er dafür noch braucht, zeigt dir JEI."
 	]
 	quest.1567EBCE6A3D837E.title: "Händlerblock"
 	quest.157BEEC60F99312B.quest_desc: [
@@ -753,7 +753,7 @@
 	]
 	quest.16F39659029AE244.title: "Stahlkabel (HV)"
 	quest.170105E53BEA0461.quest_desc: [
-		"Das Fokus-Item der Blitz-Schule. Du brauchst es für die Blitz-Rune und den Antiken Kodex. Wie man es bekommt, zeigt EMI."
+		"Das Fokus-Item der Blitz-Schule. Du brauchst es für die Blitz-Rune und den Antiken Kodex. Wie man es bekommt, zeigt JEI."
 	]
 	quest.170105E53BEA0461.title: "Blitz in der Flasche"
 	quest.171148D31F0DABDC.quest_desc: [
@@ -769,7 +769,7 @@
 	]
 	quest.174701AC59CF81FB.title: "Spawner-Runen"
 	quest.1749169803616808.quest_desc: [
-		"Die Zerlegebank nimmt Items wieder auseinander, gegen ein paar Erfahrungslevel. Du brauchst dafür den Labyrinthkarten-Fokus (Rezept in EMI)."
+		"Die Zerlegebank nimmt Items wieder auseinander, gegen ein paar Erfahrungslevel. Du brauchst dafür den Labyrinthkarten-Fokus (Rezept in JEI)."
 	]
 	quest.1749169803616808.title: "Zerlegebank"
 	quest.174F0B0A61ACFBA0.quest_desc: [
@@ -793,7 +793,7 @@
 	quest.1773678FDCE88B33.quest_desc: [
 		"Create: Garnished bringt Nussbäume in die Welt. Aus ihren Blättern fallen ungarnierte Nüsse."
 		""
-		"Mit Create werden daraus garnierte Nüsse und viele Snacks. Wie genau, zeigt dir EMI."
+		"Mit Create werden daraus garnierte Nüsse und viele Snacks. Wie genau, zeigt dir JEI."
 	]
 	quest.1773678FDCE88B33.title: "Nüsse"
 	quest.178B34D3803D3C16.quest_desc: [
@@ -849,7 +849,7 @@
 	]
 	quest.183AC59E542FDDFA.title: "Sekundenkleber"
 	quest.185AFA590FE6C3F7.quest_desc: [
-		"Jede Linsenfarbe bevorzugt andere Erze. In EMI siehst du bei der Laserbasis, welche Farbe was bringt."
+		"Jede Linsenfarbe bevorzugt andere Erze. In JEI siehst du bei der Laserbasis, welche Farbe was bringt."
 	]
 	quest.185AFA590FE6C3F7.title: "Linsen"
 	quest.186CE55CF3A53C59.quest_desc: [
@@ -881,7 +881,7 @@
 	]
 	quest.189B9FA22F626819.title: "Versiegeltes Gerüst"
 	quest.18A40924A87FACCC.quest_desc: [
-		"Dieser Faden erhöht dein maximales Mana. Weitere Fäden findest du in EMI."
+		"Dieser Faden erhöht dein maximales Mana. Weitere Fäden findest du in JEI."
 	]
 	quest.18A40924A87FACCC.title: "Magische Kapazität"
 	quest.18AB83470B076AB9.quest_desc: [
@@ -921,7 +921,7 @@
 	]
 	quest.193D98269F5C23E5.title: "Kristalle"
 	quest.19431669CCDA8CE2.quest_desc: [
-		"Das Handbuch von EvilCraft. Hier steht genau, wie die Maschinen und Rituale funktionieren. Das Rezept zeigt dir EMI."
+		"Das Handbuch von EvilCraft. Hier steht genau, wie die Maschinen und Rituale funktionieren. Das Rezept zeigt dir JEI."
 	]
 	quest.19431669CCDA8CE2.title: "Origins of Darkness"
 	quest.19502274DB449EF9.quest_desc: [
@@ -947,7 +947,7 @@
 	]
 	quest.1972FECAE9B9FCF5.title: "Whirlisprig"
 	quest.197EDF81309AF84A.quest_desc: [
-		"Die Fermentationsstation braucht schon das einfache Gehäuse. Was sie herstellt, siehst du in EMI."
+		"Die Fermentationsstation braucht schon das einfache Gehäuse. Was sie herstellt, siehst du in JEI."
 	]
 	quest.197EDF81309AF84A.title: "Fermentation"
 	quest.197F5ACBD7134EB7.quest_desc: [
@@ -1035,7 +1035,7 @@
 	]
 	quest.1A26B241DE5F7688.title: "Fortgeschritten"
 	quest.1A2B6CB9E5CFCCE3.quest_desc: [
-		"ExtendedAE bringt einen neuen Kristall: &eEntro&r. Er wächst ähnlich wie Certus an knospenden Blöcken. Die genauen Wege dorthin zeigt dir EMI.\n\nAus Entro-Staub, Gold und Lapis wird ein Entro-Barren."
+		"ExtendedAE bringt einen neuen Kristall: &eEntro&r. Er wächst ähnlich wie Certus an knospenden Blöcken. Die genauen Wege dorthin zeigt dir JEI.\n\nAus Entro-Staub, Gold und Lapis wird ein Entro-Barren."
 	]
 	quest.1A2B6CB9E5CFCCE3.title: "Entro"
 	quest.1A3B194466340C81.quest_desc: [
@@ -1065,7 +1065,7 @@
 	quest.1A845B89F73C6C90.quest_desc: [
 		"Der &eAtomare Rekonstruktor&r schießt einen Laser in Blickrichtung und verwandelt Blöcke und Items, die davor liegen. Er braucht Strom."
 		""
-		"Rezepte im Handbuch (Actually Additions Manual) oder in EMI."
+		"Rezepte im Handbuch (Actually Additions Manual) oder in JEI."
 	]
 	quest.1A845B89F73C6C90.title: "Atomarer Rekonstruktor"
 	quest.1A84AF0E13D42CB9.quest_desc: [
@@ -1101,7 +1101,7 @@
 	]
 	quest.1B1CDB8EE4B6A8F9.title: "Hamburger"
 	quest.1B2917D4769CDB65.quest_desc: [
-		"Die Amboss-Variante des Lohenbrenners. Was er genau kann, steht in EMI."
+		"Die Amboss-Variante des Lohenbrenners. Was er genau kann, steht in JEI."
 	]
 	quest.1B2917D4769CDB65.title: "Lohen-Schmied"
 	quest.1B304D990F679220.quest_desc: [
@@ -1137,11 +1137,11 @@
 	]
 	quest.1B8368B9094FFFD9.title: "Drucker"
 	quest.1B836FC682280E43.quest_desc: [
-		"Spawnt Mobs mit Spawn-Flüssigkeit und Rotation. Der Beutesammler holt die Drops direkt ab. Details in EMI."
+		"Spawnt Mobs mit Spawn-Flüssigkeit und Rotation. Der Beutesammler holt die Drops direkt ab. Details in JEI."
 	]
 	quest.1B836FC682280E43.title: "Mechanischer Spawner"
 	quest.1B965833FC5D3E92.quest_desc: [
-		"Gehärtete Blutscherben brauchst du für den Blutinfusionskern. Wie man sie bekommt, steht im Handbuch und in EMI."
+		"Gehärtete Blutscherben brauchst du für den Blutinfusionskern. Wie man sie bekommt, steht im Handbuch und in JEI."
 	]
 	quest.1B965833FC5D3E92.title: "Gehärtetes Blut"
 	quest.1B9975F32697473A.quest_desc: [
@@ -1397,7 +1397,7 @@
 	quest.1EC4215438DB91EA.quest_desc: [
 		"Supplementaries, Amendments und Quark bringen viele kleine Extras: Säcke, Seile, Gläser, Laternen an der Wand und mehr."
 		""
-		"Stöber einfach mal in EMI."
+		"Stöber einfach mal in JEI."
 	]
 	quest.1EC4215438DB91EA.title: "Kleinkram"
 	quest.1EC673AA249703B5.quest_desc: [
@@ -1427,7 +1427,7 @@
 	quest.1F1C042A7A40101C.quest_desc: [
 		"Traveler's Backpack: ein Rucksack mit zwei Flüssigkeitstanks und eingebautem Schlafsack."
 		""
-		"Es gibt ihn in vielen Designs mit kleinen Spezialfähigkeiten. Schau in EMI."
+		"Es gibt ihn in vielen Designs mit kleinen Spezialfähigkeiten. Schau in JEI."
 	]
 	quest.1F1C042A7A40101C.title: "Reiserucksack"
 	quest.1F4BA91A5354A3E5.quest_desc: [
@@ -1443,7 +1443,7 @@
 	]
 	quest.1F599823FE146B2E.title: "Drei Prozessoren"
 	quest.1F5F44EF8CE2AD9D.quest_desc: [
-		"Create: Power Loader. Angetrieben hält er Chunks geladen, damit deine Fabrik weiterläuft. Wie du den leeren Lader aktivierst, zeigt EMI."
+		"Create: Power Loader. Angetrieben hält er Chunks geladen, damit deine Fabrik weiterläuft. Wie du den leeren Lader aktivierst, zeigt JEI."
 	]
 	quest.1F5F44EF8CE2AD9D.title: "Chunk-Lader"
 	quest.1F7FD88943AE51EE.quest_desc: [
@@ -1587,11 +1587,11 @@
 	]
 	quest.3108B6FC84572873.title: "Import und Export"
 	quest.3126B360E8EDC249.quest_desc: [
-		"Eine feurige Essenz für Kessel und Upgrade-Kugeln. Wo du sie bekommst, zeigt EMI."
+		"Eine feurige Essenz für Kessel und Upgrade-Kugeln. Wo du sie bekommst, zeigt JEI."
 	]
 	quest.3126B360E8EDC249.title: "Glut-Essenz"
 	quest.313057252DB3BB90.quest_desc: [
-		"Ein großer Multiblock, der aus Dampf jede Menge Strom macht. Dazu gehören noch Spulen, Ventile und Lüftungen; Maße und Aufbau zeigt dir EMI."
+		"Ein großer Multiblock, der aus Dampf jede Menge Strom macht. Dazu gehören noch Spulen, Ventile und Lüftungen; Maße und Aufbau zeigt dir JEI."
 	]
 	quest.313057252DB3BB90.title: "Industrielle Turbine"
 	quest.3150FABF8768263A.quest_desc: [
@@ -1603,7 +1603,7 @@
 	]
 	quest.31510814E5284C5A.title: "Besserer Würfel"
 	quest.31639190C35AB60A.quest_desc: [
-		"Der Kochtopf für Monster-Gerichte. Rezepte findest du in EMI."
+		"Der Kochtopf für Monster-Gerichte. Rezepte findest du in JEI."
 	]
 	quest.31639190C35AB60A.title: "Monstertopf"
 	quest.3195E00CDDC74828.quest_desc: [
@@ -1663,7 +1663,7 @@
 	]
 	quest.323D79A46F9B269E.title: "Flüssigkeits-Fabrikanzeige"
 	quest.3251D03D393EC56D.quest_desc: [
-		"Das erste Stück des &6Chronicle-Kerns&r. Dafür brauchst du Antimaterie, einen erweckten Kern, eine Singularität, eine 256M-Komponente, Nitro-Kristall und einen Präzisionsmechanismus. Das Rezept zeigt dir EMI."
+		"Das erste Stück des &6Chronicle-Kerns&r. Dafür brauchst du Antimaterie, einen erweckten Kern, eine Singularität, eine 256M-Komponente, Nitro-Kristall und einen Präzisionsmechanismus. Das Rezept zeigt dir JEI."
 	]
 	quest.3251D03D393EC56D.title: "Technik-Fragment"
 	quest.32542EDC850E666B.quest_desc: [
@@ -1711,7 +1711,7 @@
 	]
 	quest.32B6D3A364BB574F.title: "Taverne"
 	quest.32BACAFCE3E9001E.quest_desc: [
-		"Mit einem Upgrade-Ritual (Edelholzbretter, arkane Kristalle, Spawner-Schrott) hebst du die Schmiede auf Stufe 2. Die Anforderungen zeigt EMI unter \"Hephaestus Forge Upgrading\"."
+		"Mit einem Upgrade-Ritual (Edelholzbretter, arkane Kristalle, Spawner-Schrott) hebst du die Schmiede auf Stufe 2. Die Anforderungen zeigt dir JEI."
 	]
 	quest.32BACAFCE3E9001E.title: "Schmiede Stufe 2"
 	quest.32C298783B8AFEBE.quest_desc: [
@@ -1743,7 +1743,7 @@
 	]
 	quest.331152F84D7A653A.title: "Rosenquarz"
 	quest.333283FDAAEDED0B.quest_desc: [
-		"Ein seltenes Erz des Undergarden. Wofür du es brauchst, zeigt dir EMI."
+		"Ein seltenes Erz des Undergarden. Wofür du es brauchst, zeigt dir JEI."
 	]
 	quest.333283FDAAEDED0B.title: "Regalium"
 	quest.3337EEE029332007.quest_desc: [
@@ -1851,7 +1851,7 @@
 	]
 	quest.34902DFE5620A656.title: "Quantenlegierung"
 	quest.3490617E873AB567.quest_desc: [
-		"Create Aeronautics mit Sable: Contraptions, die wirklich fliegen und physikalisch simuliert werden. Propeller geben Schub.\n\nRezepte stehen in EMI, Erklärungen im Ponder."
+		"Create Aeronautics mit Sable: Contraptions, die wirklich fliegen und physikalisch simuliert werden. Propeller geben Schub.\n\nRezepte stehen in JEI, Erklärungen im Ponder."
 	]
 	quest.3490617E873AB567.title: "Propeller"
 	quest.3495740D288CDA80.quest_desc: [
@@ -1871,7 +1871,7 @@
 	]
 	quest.34C763F945B8B4E5.title: "Die Burg"
 	quest.34D1154D4D07116B.quest_desc: [
-		"Hierfür musst du überall gewesen sein: Ignitium, Drachenstahl, feuriger Barren, verzaubertes Gravitit, Netherstern, Herz der Tiefe, Unobtainium und reine Dunkelheit. Das Rezept zeigt dir EMI."
+		"Hierfür musst du überall gewesen sein: Ignitium, Drachenstahl, feuriger Barren, verzaubertes Gravitit, Netherstern, Herz der Tiefe, Unobtainium und reine Dunkelheit. Das Rezept zeigt dir JEI."
 	]
 	quest.34D1154D4D07116B.title: "Abenteuer-Fragment"
 	quest.34DA89287D13C44F.quest_desc: [
@@ -2005,7 +2005,7 @@
 	]
 	quest.36503D470E6FC1E4.title: "Komprimiertes Eisen"
 	quest.36525D334E1A76C6.quest_desc: [
-		"Zutat für bessere Bücher. Wie du es bekommst, zeigt EMI."
+		"Zutat für bessere Bücher. Wie du es bekommst, zeigt JEI."
 	]
 	quest.36525D334E1A76C6.title: "Schweinsleder"
 	quest.365E676BD0617FBC.quest_desc: [
@@ -2035,7 +2035,7 @@
 	]
 	quest.36C6CDD3A4980BFB.title: "Kreide für Djinnis"
 	quest.36C7C5F1168EB239.quest_desc: [
-		"Dungeon's Delight macht aus Monstern Zutaten. Das Hackbeil ist eine schwere Klinge aus dieser Mod, was es genau kann, steht im Tooltip und in EMI."
+		"Dungeon's Delight macht aus Monstern Zutaten. Das Hackbeil ist eine schwere Klinge aus dieser Mod, was es genau kann, steht im Tooltip und in JEI."
 	]
 	quest.36C7C5F1168EB239.title: "Hackbeil"
 	quest.36D26F58E6B43610.quest_desc: [
@@ -2139,7 +2139,7 @@
 	]
 	quest.381BCC5138AB61E8.title: "Augmentiertisch"
 	quest.3824C8B23FCA0AE4.quest_desc: [
-		"Ein Motor aus New Age, der Strom in Rotation umwandelt. Er braucht Magnetit, wie du das bekommst, zeigt EMI."
+		"Ein Motor aus New Age, der Strom in Rotation umwandelt. Er braucht Magnetit, wie du das bekommst, zeigt JEI."
 	]
 	quest.3824C8B23FCA0AE4.title: "New-Age-Motor"
 	quest.382806C45C0F4EE2.quest_desc: [
@@ -2245,7 +2245,7 @@
 	]
 	quest.3986167DB4E1381E.title: "Assembler-Matrix"
 	quest.398F7E3ED2DE48E1.quest_desc: [
-		"Größere Speicherkerne baust du aus mehreren kleineren. Die Rezepte zeigt dir EMI."
+		"Größere Speicherkerne baust du aus mehreren kleineren. Die Rezepte zeigt dir JEI."
 	]
 	quest.398F7E3ED2DE48E1.title: "Mehr Platz"
 	quest.39B72742553972A7.quest_desc: [
@@ -2355,7 +2355,7 @@
 	]
 	quest.3ACA3396E8E406D1.title: "Herz der Tiefen"
 	quest.3ACF79C17AA257E6.quest_desc: [
-		"Die Grundzutat für fast alles. Sie liegt in Truhen und fällt bei magischen Gegnern; weitere Wege zeigt EMI."
+		"Die Grundzutat für fast alles. Sie liegt in Truhen und fällt bei magischen Gegnern; weitere Wege zeigt JEI."
 	]
 	quest.3ACF79C17AA257E6.title: "Arkane Essenz"
 	quest.3AD805849B980BFA.quest_desc: [
@@ -2389,7 +2389,7 @@
 	]
 	quest.3B3ACED54775C24A.title: "Kabelschneider"
 	quest.3B3E9F8F10930226.quest_desc: [
-		"Lädt Items mit Strom auf und kann für Rezepte Items elektrisch \"aufladen\". Schau in EMI."
+		"Lädt Items mit Strom auf und kann für Rezepte Items elektrisch \"aufladen\". Schau in JEI."
 	]
 	quest.3B3E9F8F10930226.title: "Teslaspule"
 	quest.3B428436E79A474A.quest_desc: [
@@ -2579,7 +2579,7 @@
 	]
 	quest.3D9F3ABDBED0C263.title: "Bessere Truhen"
 	quest.3DB66BE0B9F99810.quest_desc: [
-		"Edelsteine bestimmen den Bonus deines Schmucks. Wo es sie gibt, zeigt EMI."
+		"Edelsteine bestimmen den Bonus deines Schmucks. Wo es sie gibt, zeigt JEI."
 	]
 	quest.3DB66BE0B9F99810.title: "Edelsteine"
 	quest.3DB6BB309B2C16D1.quest_desc: [
@@ -2885,7 +2885,7 @@
 	quest.516A479A281A3835.quest_desc: [
 		"Aquaculture bringt viele neue Fische und bessere Angeln. Was du fängst, hängt vom Biom ab."
 		""
-		"Haken, Köder und Angelschnur lassen sich in die Angel einsetzen. Schau in EMI."
+		"Haken, Köder und Angelschnur lassen sich in die Angel einsetzen. Schau in JEI."
 	]
 	quest.516A479A281A3835.title: "Eisen-Angel"
 	quest.518665CD886E2345.quest_desc: [
@@ -3161,7 +3161,7 @@
 	]
 	quest.553AAAE0FFEDA20E.title: "Inferium-Samen"
 	quest.55487E634C671C0C.quest_desc: [
-		"Easy Villagers: Dorfbewohner lassen sich als Item mitnehmen. Wie das geht, steht in EMI. So ziehst du mit ihnen um, ohne sie mühsam zu führen."
+		"Easy Villagers: Dorfbewohner lassen sich als Item mitnehmen. Wie das geht, steht in JEI. So ziehst du mit ihnen um, ohne sie mühsam zu führen."
 	]
 	quest.55487E634C671C0C.title: "Dorfbewohner einpacken"
 	quest.555069810060F442.quest_desc: [
@@ -3323,7 +3323,7 @@
 	]
 	quest.57892775D733D070.title: "Einsatzgerät"
 	quest.579C1EC495E68A8A.quest_desc: [
-		"Auch Materialien aus anderen Mods lassen sich anbauen, z. B. Certus-Quarz für AE2, Osmium und Stahl für Mekanism. Welche es gibt, zeigt EMI."
+		"Auch Materialien aus anderen Mods lassen sich anbauen, z. B. Certus-Quarz für AE2, Osmium und Stahl für Mekanism. Welche es gibt, zeigt JEI."
 	]
 	quest.579C1EC495E68A8A.title: "Mod-Samen"
 	quest.57B9E61DA276EDB0.quest_desc: [
@@ -3381,7 +3381,7 @@
 	quest.585BFE2584CC8996.quest_desc: [
 		"Oritech beginnt mit &eNickel&r. Das Erz findest du in der Oberwelt, einfach schmelzen."
 		""
-		"Das Handbuch und EMI zeigen dir alle Rezepte."
+		"Das Handbuch und JEI zeigen dir alle Rezepte."
 	]
 	quest.585BFE2584CC8996.title: "Nickel"
 	quest.5866B739609C824A.quest_desc: [
@@ -3519,7 +3519,7 @@
 	]
 	quest.5A5E5AFC1B6F3237.title: "Goldene Angel"
 	quest.5A6AD8C60B21AD3E.quest_desc: [
-		"Das magische Stück: Insanium, ein Wilden-Tribut, Iesnium, legendäre Tinte, Stellarit und Drachenhaut. Das Rezept zeigt dir EMI."
+		"Das magische Stück: Insanium, ein Wilden-Tribut, Iesnium, legendäre Tinte, Stellarit und Drachenhaut. Das Rezept zeigt dir JEI."
 	]
 	quest.5A6AD8C60B21AD3E.title: "Magie-Fragment"
 	quest.5A7A1D2B14036142.quest_desc: [
@@ -3531,7 +3531,7 @@
 	]
 	quest.5A9B42080B092B83.title: "Elemente"
 	quest.5A9EE3254969658A.quest_desc: [
-		"Die &eThermopneumatische Verarbeitungsanlage&r macht aus LPG und Kohle Plastik. Rezept und Bedingungen in EMI."
+		"Die &eThermopneumatische Verarbeitungsanlage&r macht aus LPG und Kohle Plastik. Rezept und Bedingungen in JEI."
 	]
 	quest.5A9EE3254969658A.title: "Plastik"
 	quest.5AA7DF14990F98E8.quest_desc: [
@@ -3569,7 +3569,7 @@
 	quest.5B0132E6BB384A49.quest_desc: [
 		"Der Blutinfusor tränkt Items mit Blut und verwandelt sie dabei. Er ist die wichtigste Maschine der Mod."
 		""
-		"Welche Items du darin herstellen kannst, zeigt dir EMI."
+		"Welche Items du darin herstellen kannst, zeigt dir JEI."
 	]
 	quest.5B0132E6BB384A49.title: "Blutinfusor"
 	quest.5B118AEDF8570D24.quest_desc: [
@@ -3619,7 +3619,7 @@
 	]
 	quest.5B9335E05F924891.title: "Lichtbogenofen"
 	quest.5B9A9B737B3D52B9.quest_desc: [
-		"Aus Dunkelmetall-Stücken machst du Barren für Rüstung und Waffen von Born in Chaos. Schau in EMI, wo du sie findest."
+		"Aus Dunkelmetall-Stücken machst du Barren für Rüstung und Waffen von Born in Chaos. Schau in JEI, wo du sie findest."
 	]
 	quest.5B9A9B737B3D52B9.title: "Dunkles Metall"
 	quest.5B9BBFC60BBD529C.quest_desc: [
@@ -3753,7 +3753,7 @@
 	quest.5D4DDE3A08C629E0.quest_desc: [
 		"Create: Central Kitchen verbindet Create mit Farmer's Delight. Viele Kochtopf-Rezepte lassen sich mit Mixer und beheiztem Becken automatisieren."
 		""
-		"Welche genau, zeigt dir EMI."
+		"Welche genau, zeigt dir JEI."
 	]
 	quest.5D4DDE3A08C629E0.title: "Küche automatisieren"
 	quest.5D522C686AE0C08D.quest_desc: [
@@ -3805,7 +3805,7 @@
 	]
 	quest.5DEAAE9A93AC882D.title: "MEGA-Geräte"
 	quest.5DED8F13FA57FD0A.quest_desc: [
-		"Garnished bringt Nüsse und viele neue Rezepte für Mixer, Lüfter und Ausguss. Das Beil hilft beim Sammeln, Details in EMI."
+		"Garnished bringt Nüsse und viele neue Rezepte für Mixer, Lüfter und Ausguss. Das Beil hilft beim Sammeln, Details in JEI."
 	]
 	quest.5DED8F13FA57FD0A.title: "Garnished"
 	quest.5DFB83C82E8BD14F.quest_desc: [
@@ -3843,7 +3843,7 @@
 	]
 	quest.5E61E19A4F1B9DEE.title: "Energetisierter Stahl"
 	quest.5E7C7971E6510BE7.quest_desc: [
-		"Kreuze zwei Bienenarten miteinander. Welche Eltern du für welche Biene brauchst, zeigt EMI unter \"Bee Breeding\". Hak ab, sobald du deine erste neue Art gezüchtet hast."
+		"Kreuze zwei Bienenarten miteinander. Welche Eltern du für welche Biene brauchst, zeigt JEI unter \"Bee Breeding\". Hak ab, sobald du deine erste neue Art gezüchtet hast."
 	]
 	quest.5E7C7971E6510BE7.title: "Bienen züchten"
 	quest.5E8E80FBFDCC3C8A.quest_desc: [
@@ -3875,7 +3875,7 @@
 	]
 	quest.5EC8C14267F2315F.title: "Pickarang"
 	quest.5EECCCA78341CB28.quest_desc: [
-		"Die höchste Stufe für die stärksten Maschinen. Braucht Netheritbarren, Diamanten und Äthergas, Details in EMI."
+		"Die höchste Stufe für die stärksten Maschinen. Braucht Netheritbarren, Diamanten und Äthergas, Details in JEI."
 	]
 	quest.5EECCCA78341CB28.title: "Überlegenes Gehäuse"
 	quest.5EF1FA3E3FC2E0E5.quest_desc: [
@@ -3911,7 +3911,7 @@
 	]
 	quest.5F5DCBFF90D4D0B2.title: "Erze verdoppeln"
 	quest.5F603826CCB498E0.quest_desc: [
-		"Pro Stufe brauchst du eine &eEnergiezelle&r, &eTriebwerke&r und einen &eKondensator&r aus dem jeweiligen Material. Welche Stufe was braucht, steht in EMI."
+		"Pro Stufe brauchst du eine &eEnergiezelle&r, &eTriebwerke&r und einen &eKondensator&r aus dem jeweiligen Material. Welche Stufe was braucht, steht in JEI."
 	]
 	quest.5F603826CCB498E0.title: "Zelle und Triebwerk"
 	quest.5F6A2D5E471E60D1.quest_desc: [
@@ -3923,7 +3923,7 @@
 	]
 	quest.5F75304C6523BDC6.title: "Flug-Modul"
 	quest.5F7606D5D16714DC.quest_desc: [
-		"Baue das Fundament der Schmiede, stell einen Schmiedetisch in die Mitte und klick ihn mit Mundabitur-Staub an.\n\nDen genauen Aufbau zeigt dir Ponder (Taste W über dem Item in EMI)."
+		"Baue das Fundament der Schmiede, stell einen Schmiedetisch in die Mitte und klick ihn mit Mundabitur-Staub an.\n\nDen genauen Aufbau zeigt dir Ponder (Taste W über dem Item in JEI)."
 	]
 	quest.5F7606D5D16714DC.title: "Hephaistos-Schmiede"
 	quest.5F76303CA5D13E31.quest_desc: [
@@ -3977,7 +3977,7 @@
 	]
 	quest.5FF6752CBC44B92C.title: "Kompositbogen"
 	quest.5FFF4C719AC45B6B.quest_desc: [
-		"Eine Legierung aus Gold und Silber. Wo du sie herstellst, zeigt EMI."
+		"Eine Legierung aus Gold und Silber. Wo du sie herstellst, zeigt JEI."
 	]
 	quest.5FFF4C719AC45B6B.title: "Elektrum"
 	quest.70280879DB26AA8B.quest_desc: [
@@ -4119,7 +4119,7 @@
 	]
 	quest.71DC93DC79FC8AF2.title: "Enderische Verbindung"
 	quest.71DD9257BE56BF00.quest_desc: [
-		"EMI Loot zeigt in EMI auch Beute: Drück &eR&r auf ein Item und du siehst, welche Mobs, Blöcke und Truhen es fallen lassen."
+		"Just Enough Resources zeigt in JEI auch Beute: Drück &eR&r auf ein Item und du siehst, welche Mobs es fallen lassen, in welchen Truhen es liegt und auf welcher Höhe ein Erz vorkommt."
 	]
 	quest.71DD9257BE56BF00.title: "Was droppt wo?"
 	quest.71E141B611AE7AEE.quest_desc: [
@@ -4289,7 +4289,7 @@
 	]
 	quest.73F859085DECE506.title: "Arkaner Sand"
 	quest.73FD8B3805A285CC.quest_desc: [
-		"Ein Zauberbuch mit Bonus auf Eiszauber. Dafür brauchst du Eisgift; woher es kommt, zeigt EMI."
+		"Ein Zauberbuch mit Bonus auf Eiszauber. Dafür brauchst du Eisgift; woher es kommt, zeigt JEI."
 	]
 	quest.73FD8B3805A285CC.title: "Frostbuch"
 	quest.73FE427D1DFC30CC.quest_desc: [
@@ -4379,7 +4379,7 @@
 	]
 	quest.74DFFEBA3439E943.title: "Minimap und Weltkarte"
 	quest.74F47EBA9AFFC99A.quest_desc: [
-		"Aus seinen Knochen kannst du eine eigene Rüstung bauen. Schau in EMI nach."
+		"Aus seinen Knochen kannst du eine eigene Rüstung bauen. Schau in JEI nach."
 	]
 	quest.74F47EBA9AFFC99A.title: "Mutantenskelett"
 	quest.74FB2DE10B6D7B9D.quest_desc: [
@@ -4545,7 +4545,7 @@
 	]
 	quest.76E3A4004544D385.title: "Behandeltes Holz"
 	quest.76EF3C773870B1DA.quest_desc: [
-		"Pulverisierter Obsidian wird über mehrere Schritte zu Robustem Blech. Wie genau, zeigt dir EMI."
+		"Pulverisierter Obsidian wird über mehrere Schritte zu Robustem Blech. Wie genau, zeigt dir JEI."
 	]
 	quest.76EF3C773870B1DA.title: "Robustes Blech"
 	quest.76F5E1350AEC1627.quest_desc: [
@@ -4639,7 +4639,7 @@
 	]
 	quest.77F327FA3244D192.title: "Heilig, Natur, Evokation"
 	quest.78278E7C701E1498.quest_desc: [
-		"Mit dem Verzauberer machst du aus Büchern und Zutaten gezielt Verzauberungsbücher. Was er kann, steht in EMI."
+		"Mit dem Verzauberer machst du aus Büchern und Zutaten gezielt Verzauberungsbücher. Was er kann, steht in JEI."
 	]
 	quest.78278E7C701E1498.title: "Verzauberer"
 	quest.783C45DB630387CD.quest_desc: [
@@ -4717,7 +4717,7 @@
 	]
 	quest.796EF133A6EC7899.title: "Gottgeschmiedete Perle"
 	quest.7973DBE11E287880.quest_desc: [
-		"Feuer vor dem Lüfter räuchert (kocht Essen), Lava schmilzt. Seelenfeuer macht noch etwas anderes, schau in EMI.\n\nHak die Quest ab, wenn du es ausprobiert hast."
+		"Feuer vor dem Lüfter räuchert (kocht Essen), Lava schmilzt. Seelenfeuer macht noch etwas anderes, schau in JEI.\n\nHak die Quest ab, wenn du es ausprobiert hast."
 	]
 	quest.7973DBE11E287880.title: "Räuchern und Schmelzen"
 	quest.7974981E19B01287.quest_desc: [
@@ -4755,7 +4755,7 @@
 	]
 	quest.79ECCF044C4F3414.title: "Kabel"
 	quest.79F98304CA2D2FA6.quest_desc: [
-		"Oxidierer und Isotopenzentrifuge sind die letzten Schritte zum Spaltbrennstoff. Die ganze Kette zeigt dir EMI."
+		"Oxidierer und Isotopenzentrifuge sind die letzten Schritte zum Spaltbrennstoff. Die ganze Kette zeigt dir JEI."
 	]
 	quest.79F98304CA2D2FA6.title: "Spaltbrennstoff"
 	quest.7A03239EEEC0EDFB.quest_desc: [
@@ -4819,11 +4819,11 @@
 	]
 	quest.7AD279CA40D7CFDF.title: "Eigener Schmuck"
 	quest.7ADCC75C9FAC4E30.quest_desc: [
-		"Rechts im Inventar siehst du die Item-Liste von EMI. Fahr mit der Maus über ein Item und drück &eR&r für Rezepte oder &eU&r für Verwendungen."
+		"Rechts im Inventar siehst du die Item-Liste von JEI (Just Enough Items). Fahr mit der Maus über ein Item und drück &eR&r für Rezepte oder &eU&r für Verwendungen."
 		""
 		"Unten gibt es ein Suchfeld. Mit &e@modname&r filterst du nach Mods."
 	]
-	quest.7ADCC75C9FAC4E30.title: "EMI: Rezepte finden"
+	quest.7ADCC75C9FAC4E30.title: "JEI: Rezepte finden"
 	quest.7AEAA59AC962AF57.quest_desc: [
 		"Baue einen leeren Lohenbrenner und fang damit im Nether eine Lohe ein (Rechtsklick). Gefüttert mit Brennstoff heizt er ein Becken.\n\nEine Lohe reicht, sie lebt im Brenner weiter."
 	]
@@ -4893,13 +4893,13 @@
 	]
 	quest.7BACE0D2E35CBB87.title: "Meister der Verzauberung"
 	quest.7BB2021DE12412C8.quest_desc: [
-		"Bessere Rohre werden gegossen: geschmolzenes Metall in eine Gussform. EMI zeigt die Schritte."
+		"Bessere Rohre werden gegossen: geschmolzenes Metall in eine Gussform. JEI zeigt die Schritte."
 	]
 	quest.7BB2021DE12412C8.title: "Gusseisen-Kanone"
 	quest.7BCACB40D971A921.quest_desc: [
 		"Die &eDruckkammer&r ist ein hohler Würfel (mindestens 3x3x3) aus Wänden oder Glas, mit einem &eVentil&r für die Luft und &eInterfaces&r für Items rein und raus."
 		""
-		"Darin werden Items unter Druck umgewandelt, z. B. Eisen zu Komprimiertem Eisen oder Kohleblöcke zu Diamanten. Rezepte in EMI."
+		"Darin werden Items unter Druck umgewandelt, z. B. Eisen zu Komprimiertem Eisen oder Kohleblöcke zu Diamanten. Rezepte in JEI."
 	]
 	quest.7BCACB40D971A921.title: "Druckkammer"
 	quest.7BD663D8850EAB47.quest_desc: [
@@ -5053,7 +5053,7 @@
 	]
 	quest.7DA01AE8EAF32CEF.title: "Strom!"
 	quest.7DB2A5AB4BB5F032.quest_desc: [
-		"Erfahrung gibt es hier als Flüssigkeit. Welche Wege es gibt, zeigt EMI. Fülle einen Eimer damit."
+		"Erfahrung gibt es hier als Flüssigkeit. Welche Wege es gibt, zeigt JEI. Fülle einen Eimer damit."
 	]
 	quest.7DB2A5AB4BB5F032.title: "Flüssige Erfahrung"
 	quest.7DBB256EA5C0F681.quest_desc: [
@@ -5079,7 +5079,7 @@
 	quest.7DDCD8B1E7D60BED.quest_desc: [
 		"Dein erstes &eJetpack&r! Mit Strom aufladen, anziehen und mit Leertaste fliegen."
 		""
-		"Höhere Stufen fliegen schneller und speichern mehr Energie. Die Rezepte aller Stufen findest du in EMI."
+		"Höhere Stufen fliegen schneller und speichern mehr Energie. Die Rezepte aller Stufen findest du in JEI."
 	]
 	quest.7DDCD8B1E7D60BED.title: "Jetpack!"
 	quest.7DDD695F6951857B.quest_desc: [
@@ -5165,7 +5165,7 @@
 	]
 	quest.7EA766940A29B5FA.title: "Chaotische Waffen"
 	quest.7EADD692849D37A9.quest_desc: [
-		"Rechtsklick mit bestimmten Items auf einen Spawner ändert seine Werte, z. B. Tempo oder Anzahl der Mobs. Welche Items was bewirken, zeigt EMI unter \"Spawner Modifiers\"."
+		"Rechtsklick mit bestimmten Items auf einen Spawner ändert seine Werte, z. B. Tempo oder Anzahl der Mobs. Welche Items was bewirken, zeigt JEI unter \"Spawner Modifiers\"."
 	]
 	quest.7EADD692849D37A9.title: "Spawner verändern"
 	quest.7EAECFB7A9C04365.quest_desc: [
@@ -5177,7 +5177,7 @@
 	]
 	quest.7EB88498593BB374.title: "Akkumulator"
 	quest.7ECF31965A8DA279.quest_desc: [
-		"Auflösen mit Schwefelsäure, waschen, kristallisieren: Aus einem Erz werden fünf Barren. Die ganze Kette ist lang, schau sie dir in EMI an."
+		"Auflösen mit Schwefelsäure, waschen, kristallisieren: Aus einem Erz werden fünf Barren. Die ganze Kette ist lang, schau sie dir in JEI an."
 	]
 	quest.7ECF31965A8DA279.title: "Erze verfünffachen"
 	quest.7ECFAA5FFB5678CB.quest_desc: [

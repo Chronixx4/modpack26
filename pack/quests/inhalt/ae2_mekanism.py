@@ -157,11 +157,11 @@ kapitel('ae2', '&bApplied Energistics 2', 'ae2:controller', 'Alles in einem Netz
 kapitel('ae2_addons', '&bAE2 Addons', 'extendedae:ex_pattern_provider', 'ExtendedAE, AdvancedAE, MEGA Cells und mehr', [
     Q('start', 'Entro', ['extendedae:entro_crystal', 'extendedae:entro_ingot'],
       'ExtendedAE bringt einen neuen Kristall: &eEntro&r. Er wächst ähnlich wie Certus an knospenden Blöcken. '
-      'Die genauen Wege dorthin zeigt dir EMI.\n\nAus Entro-Staub, Gold und Lapis wird ein Entro-Barren.',
+      'Die genauen Wege dorthin zeigt dir JEI.\n\nAus Entro-Staub, Gold und Lapis wird ein Entro-Barren.',
       nach=['ae2/prozessoren'], belohnung=['loot2', 2], form='gear', gross=True, haupt=True),
     # Zeile -3/-4: MEGA Cells
     Q('himmelsstahl', 'Himmelsmetalle', ['megacells:sky_steel_ingot', 'megacells:sky_bronze_ingot'],
-      'MEGA Cells braucht Himmelsstahl und Himmelsbronze. Rezepte siehst du in EMI.',
+      'MEGA Cells braucht Himmelsstahl und Himmelsbronze. Rezepte siehst du in JEI.',
       nach=['start'], belohnung=1, zeile=-3),
     Q('mega_presse', 'Akkumulationsprozessor', ['megacells:accumulation_processor_press', 'megacells:accumulation_processor'],
       'Der neue Prozessor von MEGA Cells. Für die Presse brauchst du eine Singularität.',
@@ -307,7 +307,7 @@ kapitel('refined_storage', '&3Refined Storage', 'refinedstorage:controller', 'Da
       'Der Importeur zieht Items aus Maschinen ins Netzwerk, der Exporteur schiebt sie hinein. So automatisierst du Öfen und Maschinen.',
       nach=['konsole'], zeile=2),
     Q('groesser', 'Mehr Platz', 'refinedstorage:16k_storage_disk',
-      'Größere Speicherkerne baust du aus mehreren kleineren. Die Rezepte zeigt dir EMI.',
+      'Größere Speicherkerne baust du aus mehreren kleineren. Die Rezepte zeigt dir JEI.',
       nach=['laufwerk', 'verbessert'], belohnung=2, zeile=-1),
     Q('autocrafter', 'Autocrafting', ['refinedstorage:pattern_grid', 'refinedstorage:autocrafter'], [
         'In der Rezeptkonsole schreibst du Rezepte auf leere Muster. Steck sie in einen Autohersteller, dann stellt das Netzwerk die Items auf Bestellung her.',
@@ -425,7 +425,7 @@ kapitel('mekanism', '&7Mekanism', 'mekanism:metallurgic_infuser', 'Erzverarbeitu
     Q('turbine', 'Industrielle Turbine', ['mekanismgenerators:turbine_casing', 'mekanismgenerators:turbine_rotor',
                                           'mekanismgenerators:turbine_blade', 'mekanismgenerators:rotational_complex',
                                           'mekanismgenerators:saturating_condenser'],
-      'Ein großer Multiblock, der aus Dampf jede Menge Strom macht. Dazu gehören noch Spulen, Ventile und Lüftungen; Maße und Aufbau zeigt dir EMI.',
+      'Ein großer Multiblock, der aus Dampf jede Menge Strom macht. Dazu gehören noch Spulen, Ventile und Lüftungen; Maße und Aufbau zeigt dir JEI.',
       nach=['fortgeschritten'], belohnung='loot2', zeile=-3),
     Q('boiler', 'Thermoelektrischer Kessel', ['mekanism:boiler_casing', 'mekanism:superheating_element'],
       'Der Kessel erhitzt Wasser mit Strom oder heißem Natrium zu Dampf für die Turbine.',
@@ -449,7 +449,7 @@ kapitel('mekanism', '&7Mekanism', 'mekanism:metallurgic_infuser', 'Erzverarbeitu
     Q('x5', 'Erze verfünffachen', ['mekanism:chemical_dissolution_chamber', 'mekanism:chemical_washer',
                                    'mekanism:chemical_crystallizer'],
       'Auflösen mit Schwefelsäure, waschen, kristallisieren: Aus einem Erz werden fünf Barren. '
-      'Die ganze Kette ist lang, schau sie dir in EMI an.',
+      'Die ganze Kette ist lang, schau sie dir in JEI an.',
       nach=['ultimate'], belohnung='loot3', form='hexagon', zeile=-2),
     Q('hdpe', 'Plastik', ['mekanism:hdpe_pellet', 'mekanism:hdpe_sheet'],
       'HDPE entsteht in der Druck-Reaktionskammer aus Substrat, Ethen und Sauerstoff. Die Folien stecken in MekaSuit, SPS und Modulen.',
@@ -486,7 +486,7 @@ kapitel('mekanism', '&7Mekanism', 'mekanism:metallurgic_infuser', 'Erzverarbeitu
       '&cStrahlung ist in Mekanism echt&r und kann dich töten. Der Schutzanzug schützt, der Geigerzähler warnt.',
       nach=['uran'], belohnung=2, zeile=-1),
     Q('brennstoff', 'Spaltbrennstoff', ['mekanism:chemical_oxidizer', 'mekanism:isotopic_centrifuge'],
-      'Oxidierer und Isotopenzentrifuge sind die letzten Schritte zum Spaltbrennstoff. Die ganze Kette zeigt dir EMI.',
+      'Oxidierer und Isotopenzentrifuge sind die letzten Schritte zum Spaltbrennstoff. Die ganze Kette zeigt dir JEI.',
       nach=['uran'], belohnung=2, haupt=True),
     Q('spaltung', 'Spaltreaktor', ['mekanismgenerators:fission_reactor_casing', 'mekanismgenerators:fission_fuel_assembly',
                                    'mekanismgenerators:control_rod_assembly', 'mekanismgenerators:fission_reactor_port'],

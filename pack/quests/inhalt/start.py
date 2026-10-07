@@ -22,12 +22,12 @@ kapitel('willkommen', '&eWillkommen', 'minecraft:writable_book', 'Erst mal ankom
         'Manche Quests belohnen dich mit einer Loot-Kiste. Nimm sie in die Hand und mach Rechtsklick, um sie zu öffnen.',
         'Es gibt vier Stufen: &fGewöhnlich&r, &aSelten&r, &5Episch&r und &6Legendär&r.',
     ], nach=['abgabe'], belohnung='loot1'),
-    Q('emi', 'EMI: Rezepte finden', 'check', [
-        'Rechts im Inventar siehst du die Item-Liste von EMI. Fahr mit der Maus über ein Item und drück &eR&r für Rezepte oder &eU&r für Verwendungen.',
+    Q('emi', 'JEI: Rezepte finden', 'check', [
+        'Rechts im Inventar siehst du die Item-Liste von JEI (Just Enough Items). Fahr mit der Maus über ein Item und drück &eR&r für Rezepte oder &eU&r für Verwendungen.',
         'Unten gibt es ein Suchfeld. Mit &e@modname&r filterst du nach Mods.',
     ], nach=['questbuch'], haupt=True),
     Q('emi_loot', 'Was droppt wo?', 'check',
-      'EMI Loot zeigt in EMI auch Beute: Drück &eR&r auf ein Item und du siehst, welche Mobs, Blöcke und Truhen es fallen lassen.',
+      'Just Enough Resources zeigt in JEI auch Beute: Drück &eR&r auf ein Item und du siehst, welche Mobs es fallen lassen, in welchen Truhen es liegt und auf welcher Höhe ein Erz vorkommt.',
       nach=['emi']),
     Q('lootr', 'Eigene Beute', 'check', [
         'Dank Lootr hat jede Truhe in Strukturen für jeden Spieler eigene Beute. Ihr müsst euch also nicht beeilen, wer zuerst plündert.',
@@ -96,7 +96,7 @@ kapitel('erste_schritte', '&eErste Schritte', 'minecraft:crafting_table', 'Vom e
     ], nach=['werkbank']),
     Q('sack', 'Kleinkram', 'supplementaries:sack', [
         'Supplementaries, Amendments und Quark bringen viele kleine Extras: Säcke, Seile, Gläser, Laternen an der Wand und mehr.',
-        'Stöber einfach mal in EMI.',
+        'Stöber einfach mal in JEI.',
     ], nach=['werkbank'], optional=True, form='heart'),
     Q('seil', 'Seil', ('item', 'supplementaries:rope', 16),
       'An Seilen aus Supplementaries kannst du hoch- und runterklettern. Gut für Schächte und Höhlen.',
@@ -317,7 +317,7 @@ kapitel('lager', '&eLager und Rucksäcke', 'sophisticatedstorage:chest', 'Ordnun
     # Traveler's Backpack
     Q('travelers', 'Reiserucksack', 'travelersbackpack:standard', [
         "Traveler's Backpack: ein Rucksack mit zwei Flüssigkeitstanks und eingebautem Schlafsack.",
-        'Es gibt ihn in vielen Designs mit kleinen Spezialfähigkeiten. Schau in EMI.',
+        'Es gibt ihn in vielen Designs mit kleinen Spezialfähigkeiten. Schau in JEI.',
     ], nach=['rucksack'], zeile=-2, optional=True, form='heart'),
     Q('travelers_eisen', 'Reiserucksack aufwerten', 'travelersbackpack:iron_tier_upgrade',
       'Mit Stufen-Upgrades bekommt der Reiserucksack mehr Platz und größere Tanks.',
@@ -408,7 +408,7 @@ kapitel('essen', '&eEssen und Angeln', 'farmersdelight:cooking_pot', "Farmer's D
     # Aquaculture
     Q('angel', 'Eisen-Angel', 'aquaculture:iron_fishing_rod', [
         'Aquaculture bringt viele neue Fische und bessere Angeln. Was du fängst, hängt vom Biom ab.',
-        'Haken, Köder und Angelschnur lassen sich in die Angel einsetzen. Schau in EMI.',
+        'Haken, Köder und Angelschnur lassen sich in die Angel einsetzen. Schau in JEI.',
     ], nach=['start', 'erste_schritte/eisen'], zeile=5),
     Q('wurm', 'Würmer', 'aquaculture:worm',
       'Würmer sind ein guter Köder. Du findest sie beim Graben in Erde und Gras oder züchtest sie in der Wurmfarm.',
@@ -438,7 +438,7 @@ kapitel('essen', '&eEssen und Angeln', 'farmersdelight:cooking_pot', "Farmer's D
 
     # Dungeon's Delight
     Q('dd_hackbeil', 'Hackbeil', 'dungeonsdelight:iron_cleaver',
-      "Dungeon's Delight macht aus Monstern Zutaten. Das Hackbeil ist eine schwere Klinge aus dieser Mod, was es genau kann, steht im Tooltip und in EMI.",
+      "Dungeon's Delight macht aus Monstern Zutaten. Das Hackbeil ist eine schwere Klinge aus dieser Mod, was es genau kann, steht im Tooltip und in JEI.",
       nach=['start', 'erste_schritte/eisen'], zeile=-3),
     Q('dd_spinne', 'Spinnenfleisch', 'dungeonsdelight:spider_meat',
       'Besieg eine Spinne mit einem Messer in der Hand, dann lässt sie Spinnenfleisch fallen.',
@@ -447,7 +447,7 @@ kapitel('essen', '&eEssen und Angeln', 'farmersdelight:cooking_pot', "Farmer's D
       'Bau einen Monster-Spawner ab, dann bekommst du fleckigen Schrott. Den brauchst du für die Monster-Küche.',
       nach=['dd_hackbeil'], zeile=-3),
     Q('dd_topf', 'Monstertopf', 'dungeonsdelight:monster_pot',
-      'Der Kochtopf für Monster-Gerichte. Rezepte findest du in EMI.',
+      'Der Kochtopf für Monster-Gerichte. Rezepte findest du in JEI.',
       nach=['dd_schrott', 'kochtopf'], zeile=-3),
     Q('dd_herd', 'Dungeon-Herd', 'dungeonsdelight:dungeon_stove',
       'Die passende Hitzequelle zum Monstertopf.',
@@ -473,10 +473,10 @@ kapitel('essen', '&eEssen und Angeln', 'farmersdelight:cooking_pot', "Farmer's D
     # Create-Anbindung
     Q('kitchen', 'Küche automatisieren', 'check', [
         "Create: Central Kitchen verbindet Create mit Farmer's Delight. Viele Kochtopf-Rezepte lassen sich mit Mixer und beheiztem Becken automatisieren.",
-        'Welche genau, zeigt dir EMI.',
+        'Welche genau, zeigt dir JEI.',
     ], nach=['eintopf', 'create_1/start'], zeile=2),
     Q('nuesse', 'Nüsse', 'garnished:nut_mix', [
         'Create: Garnished bringt Nussbäume in die Welt. Aus ihren Blättern fallen ungarnierte Nüsse.',
-        'Mit Create werden daraus garnierte Nüsse und viele Snacks. Wie genau, zeigt dir EMI.',
+        'Mit Create werden daraus garnierte Nüsse und viele Snacks. Wie genau, zeigt dir JEI.',
     ], nach=['kitchen'], zeile=2),
 ])
