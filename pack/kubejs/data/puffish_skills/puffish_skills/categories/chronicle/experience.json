@@ -1,0 +1,98 @@
+{
+  "level_limit": 130,
+  "experience_per_level": {
+    "type": "expression",
+    "data": {
+      "expression": "min(30 + level * 6, 400)"
+    }
+  },
+  "sources": [
+    {
+      "type": "puffish_skills:kill_entity",
+      "data": {
+        "variables": {
+          "max_health": {
+            "operations": [
+              {
+                "type": "get_killed_living_entity"
+              },
+              {
+                "type": "get_max_health"
+              }
+            ]
+          }
+        },
+        "experience": [
+          {
+            "condition": "max_health >= 100",
+            "expression": "max_health * 1.5"
+          },
+          {
+            "condition": "max_health < 100",
+            "expression": "max_health / 4"
+          }
+        ],
+        "anti_farming": {
+          "limit_per_chunk": 15,
+          "reset_after_seconds": 300
+        }
+      }
+    },
+    {
+      "type": "puffish_skills:mine_block",
+      "data": {
+        "variables": {
+          "silk_touch": {
+            "operations": [
+              {
+                "type": "get_tool_item_stack"
+              },
+              {
+                "type": "puffish_skills:test",
+                "data": {
+                  "nbt": "{Enchantments:[{id:\"minecraft:silk_touch\"}]}"
+                }
+              }
+            ]
+          },
+          "erz": {
+            "operations": [
+              {
+                "type": "get_mined_block_state"
+              },
+              {
+                "type": "puffish_skills:test",
+                "data": {
+                  "block": "#c:ores"
+                }
+              }
+            ]
+          },
+          "tief": {
+            "operations": [
+              {
+                "type": "get_mined_block_state"
+              },
+              {
+                "type": "puffish_skills:test",
+                "data": {
+                  "block": "#c:ores_in_ground/deepslate"
+                }
+              }
+            ]
+          }
+        },
+        "experience": [
+          {
+            "condition": "!silk_touch & erz & tief",
+            "expression": "12"
+          },
+          {
+            "condition": "!silk_touch & erz & !tief",
+            "expression": "10"
+          }
+        ]
+      }
+    }
+  ]
+}

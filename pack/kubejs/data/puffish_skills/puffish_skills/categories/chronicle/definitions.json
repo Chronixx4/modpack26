@@ -1,0 +1,3977 @@
+{
+  "kern": {
+    "title": "Chronicle",
+    "description": "Der Ausgangspunkt. Von hier führen fünf Wege ab.",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "kubejs:chronicle_core"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "challenge"
+      }
+    },
+    "cost": 0,
+    "rewards": []
+  },
+  "abenteuer_w": {
+    "title": "Aufbruch",
+    "description": "+2 Maximales Leben (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:iron_sword"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "goal"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.max_health",
+          "value": 2,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Abenteuer"
+  },
+  "abenteuer_0_0": {
+    "title": "Kampfkunst I",
+    "description": "+3% Nahkampfschaden (Vanilla)\n+3% Fernkampfschaden (Ranged Weapon API)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:diamond_sword"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.attack_damage",
+          "value": 0.03,
+          "operation": "multiply_total"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "ranged_weapon:damage",
+          "value": 0.03,
+          "operation": "multiply_base"
+        }
+      }
+    ],
+    "extra_description": "Du teilst mehr Schaden aus, im Nah- und Fernkampf."
+  },
+  "abenteuer_0_1": {
+    "title": "Kampfkunst II",
+    "description": "+3% Nahkampfschaden (Vanilla)\n+3% Fernkampfschaden (Ranged Weapon API)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:diamond_sword"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.attack_damage",
+          "value": 0.03,
+          "operation": "multiply_total"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "ranged_weapon:damage",
+          "value": 0.03,
+          "operation": "multiply_base"
+        }
+      }
+    ],
+    "extra_description": "Du teilst mehr Schaden aus, im Nah- und Fernkampf."
+  },
+  "abenteuer_0_2": {
+    "title": "Kampfkunst III",
+    "description": "+4% Nahkampfschaden (Vanilla)\n+4% Fernkampfschaden (Ranged Weapon API)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:diamond_sword"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.attack_damage",
+          "value": 0.04,
+          "operation": "multiply_total"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "ranged_weapon:damage",
+          "value": 0.04,
+          "operation": "multiply_base"
+        }
+      }
+    ],
+    "extra_description": "Du teilst mehr Schaden aus, im Nah- und Fernkampf."
+  },
+  "abenteuer_0_3": {
+    "title": "Kampfkunst IV",
+    "description": "+5% Nahkampfschaden (Vanilla)\n+5% Fernkampfschaden (Ranged Weapon API)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:diamond_sword"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.attack_damage",
+          "value": 0.05,
+          "operation": "multiply_total"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "ranged_weapon:damage",
+          "value": 0.05,
+          "operation": "multiply_base"
+        }
+      }
+    ],
+    "extra_description": "Du teilst mehr Schaden aus, im Nah- und Fernkampf."
+  },
+  "abenteuer_0_4": {
+    "title": "Kampfkunst V",
+    "description": "+6% Nahkampfschaden (Vanilla)\n+6% Fernkampfschaden (Ranged Weapon API)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:diamond_sword"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "goal"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.attack_damage",
+          "value": 0.06,
+          "operation": "multiply_total"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "ranged_weapon:damage",
+          "value": 0.06,
+          "operation": "multiply_base"
+        }
+      }
+    ],
+    "extra_description": "Du teilst mehr Schaden aus, im Nah- und Fernkampf."
+  },
+  "abenteuer_1_0": {
+    "title": "Zähigkeit I",
+    "description": "+2 Maximales Leben (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:golden_apple"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.max_health",
+          "value": 2,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du hältst mehr aus."
+  },
+  "abenteuer_1_1": {
+    "title": "Zähigkeit II",
+    "description": "+2 Maximales Leben (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:golden_apple"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.max_health",
+          "value": 2,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du hältst mehr aus."
+  },
+  "abenteuer_1_2": {
+    "title": "Zähigkeit III",
+    "description": "+2 Maximales Leben (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:golden_apple"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.max_health",
+          "value": 2,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du hältst mehr aus."
+  },
+  "abenteuer_1_3": {
+    "title": "Zähigkeit IV",
+    "description": "+4 Maximales Leben (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:golden_apple"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.max_health",
+          "value": 4,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du hältst mehr aus."
+  },
+  "abenteuer_1_4": {
+    "title": "Zähigkeit V",
+    "description": "+4 Maximales Leben (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:golden_apple"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "goal"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.max_health",
+          "value": 4,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du hältst mehr aus."
+  },
+  "abenteuer_2_0": {
+    "title": "Bossjäger I",
+    "description": "+1 Rüstungsdurchdringung (Apothic)\n+2% Kritischer Schaden (Apothic)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:wither_skeleton_skull"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:armor_pierce",
+          "value": 1.0,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:crit_damage",
+          "value": 0.02,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du durchbrichst Rüstungen und triffst kritisch härter."
+  },
+  "abenteuer_2_1": {
+    "title": "Bossjäger II",
+    "description": "+1 Rüstungsdurchdringung (Apothic)\n+2% Kritischer Schaden (Apothic)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:wither_skeleton_skull"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:armor_pierce",
+          "value": 1.0,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:crit_damage",
+          "value": 0.02,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du durchbrichst Rüstungen und triffst kritisch härter."
+  },
+  "abenteuer_2_2": {
+    "title": "Bossjäger III",
+    "description": "+1.2 Rüstungsdurchdringung (Apothic)\n+2.5% Kritischer Schaden (Apothic)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:wither_skeleton_skull"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:armor_pierce",
+          "value": 1.25,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:crit_damage",
+          "value": 0.025,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du durchbrichst Rüstungen und triffst kritisch härter."
+  },
+  "abenteuer_2_3": {
+    "title": "Bossjäger IV",
+    "description": "+1.5 Rüstungsdurchdringung (Apothic)\n+3% Kritischer Schaden (Apothic)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:wither_skeleton_skull"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:armor_pierce",
+          "value": 1.5,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:crit_damage",
+          "value": 0.03,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du durchbrichst Rüstungen und triffst kritisch härter."
+  },
+  "abenteuer_2_4": {
+    "title": "Bossjäger V",
+    "description": "+2 Rüstungsdurchdringung (Apothic)\n+4% Kritischer Schaden (Apothic)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:wither_skeleton_skull"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "goal"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:armor_pierce",
+          "value": 2.0,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:crit_damage",
+          "value": 0.04,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du durchbrichst Rüstungen und triffst kritisch härter."
+  },
+  "abenteuer_3_0": {
+    "title": "Wanderer I",
+    "description": "+2% Lauftempo (Vanilla)\n+2% Zaubern in Bewegung (Iron's Spells)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:leather_boots"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.movement_speed",
+          "value": 0.02,
+          "operation": "multiply_base"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "irons_spellbooks:casting_movespeed",
+          "value": 0.02,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du bewegst dich schneller, auch beim Zaubern."
+  },
+  "abenteuer_3_1": {
+    "title": "Wanderer II",
+    "description": "+2% Lauftempo (Vanilla)\n+2% Zaubern in Bewegung (Iron's Spells)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:leather_boots"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.movement_speed",
+          "value": 0.02,
+          "operation": "multiply_base"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "irons_spellbooks:casting_movespeed",
+          "value": 0.02,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du bewegst dich schneller, auch beim Zaubern."
+  },
+  "abenteuer_3_2": {
+    "title": "Wanderer III",
+    "description": "+3% Lauftempo (Vanilla)\n+3% Zaubern in Bewegung (Iron's Spells)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:leather_boots"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.movement_speed",
+          "value": 0.03,
+          "operation": "multiply_base"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "irons_spellbooks:casting_movespeed",
+          "value": 0.03,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du bewegst dich schneller, auch beim Zaubern."
+  },
+  "abenteuer_3_3": {
+    "title": "Wanderer IV",
+    "description": "+3% Lauftempo (Vanilla)\n+3% Zaubern in Bewegung (Iron's Spells)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:leather_boots"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.movement_speed",
+          "value": 0.03,
+          "operation": "multiply_base"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "irons_spellbooks:casting_movespeed",
+          "value": 0.03,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du bewegst dich schneller, auch beim Zaubern."
+  },
+  "abenteuer_3_4": {
+    "title": "Wanderer V",
+    "description": "+5% Lauftempo (Vanilla)\n+5% Zaubern in Bewegung (Iron's Spells)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:leather_boots"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "goal"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.movement_speed",
+          "value": 0.05,
+          "operation": "multiply_base"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "irons_spellbooks:casting_movespeed",
+          "value": 0.05,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du bewegst dich schneller, auch beim Zaubern."
+  },
+  "abenteuer_g": {
+    "title": "Chronicle-Abenteurer",
+    "description": "+10% Kritischer Schaden (Apothic)\n+4 Maximales Leben (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:nether_star"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "challenge"
+      }
+    },
+    "cost": 3,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:crit_damage",
+          "value": 0.1,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.max_health",
+          "value": 4,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Bosse verlieren ihren Schrecken. Dafür müssen die beiden mittleren Linien voll ausgebaut sein.",
+    "required_skills": 2
+  },
+  "magie_w": {
+    "title": "Erste Funken",
+    "description": "+10 Max. Mana (Iron's Spells)\n+10 Max. Mana (Ars Nouveau)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "irons_spellbooks:arcane_essence"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "goal"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "irons_spellbooks:max_mana",
+          "value": 10,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "ars_nouveau:ars_nouveau.perk.max_mana",
+          "value": 10,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Magie"
+  },
+  "magie_0_0": {
+    "title": "Manavorrat I",
+    "description": "+10 Max. Mana (Iron's Spells)\n+10 Max. Mana (Ars Nouveau)\n+3% Seelen-Rabatt (Goety)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:lapis_lazuli"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "irons_spellbooks:max_mana",
+          "value": 10,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "ars_nouveau:ars_nouveau.perk.max_mana",
+          "value": 10,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "goety:soul_discount",
+          "value": 0.03,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Jeder Zaubertyp bekommt mehr Reserven."
+  },
+  "magie_0_1": {
+    "title": "Manavorrat II",
+    "description": "+10 Max. Mana (Iron's Spells)\n+10 Max. Mana (Ars Nouveau)\n+3% Seelen-Rabatt (Goety)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:lapis_lazuli"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "irons_spellbooks:max_mana",
+          "value": 10,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "ars_nouveau:ars_nouveau.perk.max_mana",
+          "value": 10,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "goety:soul_discount",
+          "value": 0.03,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Jeder Zaubertyp bekommt mehr Reserven."
+  },
+  "magie_0_2": {
+    "title": "Manavorrat III",
+    "description": "+15 Max. Mana (Iron's Spells)\n+15 Max. Mana (Ars Nouveau)\n+4.5% Seelen-Rabatt (Goety)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:lapis_lazuli"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "irons_spellbooks:max_mana",
+          "value": 15,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "ars_nouveau:ars_nouveau.perk.max_mana",
+          "value": 15,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "goety:soul_discount",
+          "value": 0.045,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Jeder Zaubertyp bekommt mehr Reserven."
+  },
+  "magie_0_3": {
+    "title": "Manavorrat IV",
+    "description": "+15 Max. Mana (Iron's Spells)\n+15 Max. Mana (Ars Nouveau)\n+4.5% Seelen-Rabatt (Goety)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:lapis_lazuli"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "irons_spellbooks:max_mana",
+          "value": 15,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "ars_nouveau:ars_nouveau.perk.max_mana",
+          "value": 15,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "goety:soul_discount",
+          "value": 0.045,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Jeder Zaubertyp bekommt mehr Reserven."
+  },
+  "magie_0_4": {
+    "title": "Manavorrat V",
+    "description": "+20 Max. Mana (Iron's Spells)\n+20 Max. Mana (Ars Nouveau)\n+6% Seelen-Rabatt (Goety)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:lapis_lazuli"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "goal"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "irons_spellbooks:max_mana",
+          "value": 20,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "ars_nouveau:ars_nouveau.perk.max_mana",
+          "value": 20,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "goety:soul_discount",
+          "value": 0.06,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Jeder Zaubertyp bekommt mehr Reserven."
+  },
+  "magie_1_0": {
+    "title": "Fließende Energie I",
+    "description": "+5% Mana-Regeneration (Iron's Spells)\n+1 Mana-Regeneration (Ars Nouveau)\n+5% Zaubergeschwindigkeit (Goety)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:glowstone_dust"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "irons_spellbooks:mana_regen",
+          "value": 0.05,
+          "operation": "multiply_base"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "ars_nouveau:ars_nouveau.perk.mana_regen",
+          "value": 1.0,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "goety:casting_speed",
+          "value": 0.05,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Das Mana lädt sich schneller auf."
+  },
+  "magie_1_1": {
+    "title": "Fließende Energie II",
+    "description": "+5% Mana-Regeneration (Iron's Spells)\n+1 Mana-Regeneration (Ars Nouveau)\n+5% Zaubergeschwindigkeit (Goety)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:glowstone_dust"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "irons_spellbooks:mana_regen",
+          "value": 0.05,
+          "operation": "multiply_base"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "ars_nouveau:ars_nouveau.perk.mana_regen",
+          "value": 1.0,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "goety:casting_speed",
+          "value": 0.05,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Das Mana lädt sich schneller auf."
+  },
+  "magie_1_2": {
+    "title": "Fließende Energie III",
+    "description": "+6% Mana-Regeneration (Iron's Spells)\n+1.2 Mana-Regeneration (Ars Nouveau)\n+6% Zaubergeschwindigkeit (Goety)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:glowstone_dust"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "irons_spellbooks:mana_regen",
+          "value": 0.06,
+          "operation": "multiply_base"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "ars_nouveau:ars_nouveau.perk.mana_regen",
+          "value": 1.2,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "goety:casting_speed",
+          "value": 0.06,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Das Mana lädt sich schneller auf."
+  },
+  "magie_1_3": {
+    "title": "Fließende Energie IV",
+    "description": "+7% Mana-Regeneration (Iron's Spells)\n+1.4 Mana-Regeneration (Ars Nouveau)\n+7% Zaubergeschwindigkeit (Goety)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:glowstone_dust"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "irons_spellbooks:mana_regen",
+          "value": 0.07,
+          "operation": "multiply_base"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "ars_nouveau:ars_nouveau.perk.mana_regen",
+          "value": 1.4,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "goety:casting_speed",
+          "value": 0.07,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Das Mana lädt sich schneller auf."
+  },
+  "magie_1_4": {
+    "title": "Fließende Energie V",
+    "description": "+9% Mana-Regeneration (Iron's Spells)\n+1.8 Mana-Regeneration (Ars Nouveau)\n+9% Zaubergeschwindigkeit (Goety)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:glowstone_dust"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "goal"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "irons_spellbooks:mana_regen",
+          "value": 0.09,
+          "operation": "multiply_base"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "ars_nouveau:ars_nouveau.perk.mana_regen",
+          "value": 1.8,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "goety:casting_speed",
+          "value": 0.09,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Das Mana lädt sich schneller auf."
+  },
+  "magie_2_0": {
+    "title": "Zauberkraft I",
+    "description": "+3% Zauberstärke (Iron's Spells)\n+3% Zauberstärke (Spell Power, Paladine & Co.)\n+0.3 Zauberpotenz (Goety)\n+0.6 Zauberschaden (Ars Nouveau)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:enchanted_book"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "irons_spellbooks:spell_power",
+          "value": 0.03,
+          "operation": "multiply_base"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "spell_power:generic",
+          "value": 3.0,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "goety:spell_potency",
+          "value": 0.3,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "ars_nouveau:ars_nouveau.perk.spell_damage",
+          "value": 0.6,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Deine Zauber treffen härter."
+  },
+  "magie_2_1": {
+    "title": "Zauberkraft II",
+    "description": "+4% Zauberstärke (Iron's Spells)\n+4% Zauberstärke (Spell Power, Paladine & Co.)\n+0.4 Zauberpotenz (Goety)\n+0.8 Zauberschaden (Ars Nouveau)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:enchanted_book"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "irons_spellbooks:spell_power",
+          "value": 0.04,
+          "operation": "multiply_base"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "spell_power:generic",
+          "value": 4.0,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "goety:spell_potency",
+          "value": 0.4,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "ars_nouveau:ars_nouveau.perk.spell_damage",
+          "value": 0.8,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Deine Zauber treffen härter."
+  },
+  "magie_2_2": {
+    "title": "Zauberkraft III",
+    "description": "+5% Zauberstärke (Iron's Spells)\n+5% Zauberstärke (Spell Power, Paladine & Co.)\n+0.5 Zauberpotenz (Goety)\n+1 Zauberschaden (Ars Nouveau)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:enchanted_book"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "irons_spellbooks:spell_power",
+          "value": 0.05,
+          "operation": "multiply_base"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "spell_power:generic",
+          "value": 5.0,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "goety:spell_potency",
+          "value": 0.5,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "ars_nouveau:ars_nouveau.perk.spell_damage",
+          "value": 1.0,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Deine Zauber treffen härter."
+  },
+  "magie_2_3": {
+    "title": "Zauberkraft IV",
+    "description": "+6% Zauberstärke (Iron's Spells)\n+6% Zauberstärke (Spell Power, Paladine & Co.)\n+0.6 Zauberpotenz (Goety)\n+1.2 Zauberschaden (Ars Nouveau)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:enchanted_book"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "irons_spellbooks:spell_power",
+          "value": 0.06,
+          "operation": "multiply_base"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "spell_power:generic",
+          "value": 6.0,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "goety:spell_potency",
+          "value": 0.6,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "ars_nouveau:ars_nouveau.perk.spell_damage",
+          "value": 1.2,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Deine Zauber treffen härter."
+  },
+  "magie_2_4": {
+    "title": "Zauberkraft V",
+    "description": "+8% Zauberstärke (Iron's Spells)\n+8% Zauberstärke (Spell Power, Paladine & Co.)\n+0.8 Zauberpotenz (Goety)\n+1.6 Zauberschaden (Ars Nouveau)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:enchanted_book"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "goal"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "irons_spellbooks:spell_power",
+          "value": 0.08,
+          "operation": "multiply_base"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "spell_power:generic",
+          "value": 8.0,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "goety:spell_potency",
+          "value": 0.8,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "ars_nouveau:ars_nouveau.perk.spell_damage",
+          "value": 1.6,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Deine Zauber treffen härter."
+  },
+  "magie_3_0": {
+    "title": "Konzentration I",
+    "description": "+2% Abklingzeit (Iron's Spells)\n+2% Abklingzeit (Goety)\n+2% Zaubertempo (Spell Power)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:clock"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "irons_spellbooks:cooldown_reduction",
+          "value": 0.02,
+          "operation": "multiply_base"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "goety:cooldown_discount",
+          "value": 0.02,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "spell_power:haste",
+          "value": 2.0,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Zauber sind schneller wieder bereit."
+  },
+  "magie_3_1": {
+    "title": "Konzentration II",
+    "description": "+3% Abklingzeit (Iron's Spells)\n+3% Abklingzeit (Goety)\n+3% Zaubertempo (Spell Power)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:clock"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "irons_spellbooks:cooldown_reduction",
+          "value": 0.03,
+          "operation": "multiply_base"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "goety:cooldown_discount",
+          "value": 0.03,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "spell_power:haste",
+          "value": 3.0,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Zauber sind schneller wieder bereit."
+  },
+  "magie_3_2": {
+    "title": "Konzentration III",
+    "description": "+3% Abklingzeit (Iron's Spells)\n+3% Abklingzeit (Goety)\n+3% Zaubertempo (Spell Power)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:clock"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "irons_spellbooks:cooldown_reduction",
+          "value": 0.03,
+          "operation": "multiply_base"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "goety:cooldown_discount",
+          "value": 0.03,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "spell_power:haste",
+          "value": 3.0,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Zauber sind schneller wieder bereit."
+  },
+  "magie_3_3": {
+    "title": "Konzentration IV",
+    "description": "+4% Abklingzeit (Iron's Spells)\n+4% Abklingzeit (Goety)\n+4% Zaubertempo (Spell Power)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:clock"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "irons_spellbooks:cooldown_reduction",
+          "value": 0.04,
+          "operation": "multiply_base"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "goety:cooldown_discount",
+          "value": 0.04,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "spell_power:haste",
+          "value": 4.0,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Zauber sind schneller wieder bereit."
+  },
+  "magie_3_4": {
+    "title": "Konzentration V",
+    "description": "+5% Abklingzeit (Iron's Spells)\n+5% Abklingzeit (Goety)\n+5% Zaubertempo (Spell Power)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:clock"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "goal"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "irons_spellbooks:cooldown_reduction",
+          "value": 0.05,
+          "operation": "multiply_base"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "goety:cooldown_discount",
+          "value": 0.05,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "spell_power:haste",
+          "value": 5.0,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Zauber sind schneller wieder bereit."
+  },
+  "magie_g": {
+    "title": "Chronicle-Magier",
+    "description": "+20% Zauberstärke (Iron's Spells)\n+20% Zauberstärke (Spell Power, Paladine & Co.)\n+2 Zauberpotenz (Goety)\n+3 Zauberschaden (Ars Nouveau)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "irons_spellbooks:legendary_ink"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "challenge"
+      }
+    },
+    "cost": 3,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "irons_spellbooks:spell_power",
+          "value": 0.2,
+          "operation": "multiply_base"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "spell_power:generic",
+          "value": 20.0,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "goety:spell_potency",
+          "value": 2,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "ars_nouveau:ars_nouveau.perk.spell_damage",
+          "value": 3,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Dein Zauberschaden steigt in allen Magiesystemen. Dafür müssen die beiden mittleren Linien voll ausgebaut sein.",
+    "required_skills": 2
+  },
+  "handwerk_w": {
+    "title": "Fleißige Hände",
+    "description": "+3% Erfahrung (Apothic)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:crafting_table"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "goal"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:experience_gained",
+          "value": 0.03,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Handwerk"
+  },
+  "handwerk_0_0": {
+    "title": "Lernbegierde I",
+    "description": "+4% Erfahrung (Apothic)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:experience_bottle"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:experience_gained",
+          "value": 0.04,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du sammelst mehr Erfahrung."
+  },
+  "handwerk_0_1": {
+    "title": "Lernbegierde II",
+    "description": "+4% Erfahrung (Apothic)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:experience_bottle"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:experience_gained",
+          "value": 0.04,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du sammelst mehr Erfahrung."
+  },
+  "handwerk_0_2": {
+    "title": "Lernbegierde III",
+    "description": "+5% Erfahrung (Apothic)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:experience_bottle"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:experience_gained",
+          "value": 0.05,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du sammelst mehr Erfahrung."
+  },
+  "handwerk_0_3": {
+    "title": "Lernbegierde IV",
+    "description": "+6% Erfahrung (Apothic)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:experience_bottle"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:experience_gained",
+          "value": 0.06,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du sammelst mehr Erfahrung."
+  },
+  "handwerk_0_4": {
+    "title": "Lernbegierde V",
+    "description": "+8% Erfahrung (Apothic)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:experience_bottle"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "goal"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:experience_gained",
+          "value": 0.08,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du sammelst mehr Erfahrung."
+  },
+  "handwerk_1_0": {
+    "title": "Glückspilz I",
+    "description": "+1 Glück (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:rabbit_foot"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.luck",
+          "value": 1,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Mehr Glück bei Beute und beim Angeln."
+  },
+  "handwerk_1_1": {
+    "title": "Glückspilz II",
+    "description": "+1 Glück (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:rabbit_foot"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.luck",
+          "value": 1,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Mehr Glück bei Beute und beim Angeln."
+  },
+  "handwerk_1_2": {
+    "title": "Glückspilz III",
+    "description": "+1 Glück (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:rabbit_foot"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.luck",
+          "value": 1,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Mehr Glück bei Beute und beim Angeln."
+  },
+  "handwerk_1_3": {
+    "title": "Glückspilz IV",
+    "description": "+1 Glück (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:rabbit_foot"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.luck",
+          "value": 1,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Mehr Glück bei Beute und beim Angeln."
+  },
+  "handwerk_1_4": {
+    "title": "Glückspilz V",
+    "description": "+2 Glück (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:rabbit_foot"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "goal"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.luck",
+          "value": 2,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Mehr Glück bei Beute und beim Angeln."
+  },
+  "handwerk_2_0": {
+    "title": "Gute Küche I",
+    "description": "+1 Maximales Leben (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:cooked_beef"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.max_health",
+          "value": 1,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Ein gutes Essen stärkt dich dauerhaft."
+  },
+  "handwerk_2_1": {
+    "title": "Gute Küche II",
+    "description": "+1 Maximales Leben (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:cooked_beef"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.max_health",
+          "value": 1,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Ein gutes Essen stärkt dich dauerhaft."
+  },
+  "handwerk_2_2": {
+    "title": "Gute Küche III",
+    "description": "+1 Maximales Leben (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:cooked_beef"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.max_health",
+          "value": 1,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Ein gutes Essen stärkt dich dauerhaft."
+  },
+  "handwerk_2_3": {
+    "title": "Gute Küche IV",
+    "description": "+2 Maximales Leben (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:cooked_beef"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.max_health",
+          "value": 2,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Ein gutes Essen stärkt dich dauerhaft."
+  },
+  "handwerk_2_4": {
+    "title": "Gute Küche V",
+    "description": "+2 Maximales Leben (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:cooked_beef"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "goal"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.max_health",
+          "value": 2,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Ein gutes Essen stärkt dich dauerhaft."
+  },
+  "handwerk_3_0": {
+    "title": "Genesung I",
+    "description": "+5% Erhaltene Heilung (Apothic)\n+1.5% Lebensraub (Apothic)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:glistering_melon_slice"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:healing_received",
+          "value": 0.05,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:life_steal",
+          "value": 0.015,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Heilung wirkt besser."
+  },
+  "handwerk_3_1": {
+    "title": "Genesung II",
+    "description": "+5% Erhaltene Heilung (Apothic)\n+1.5% Lebensraub (Apothic)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:glistering_melon_slice"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:healing_received",
+          "value": 0.05,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:life_steal",
+          "value": 0.015,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Heilung wirkt besser."
+  },
+  "handwerk_3_2": {
+    "title": "Genesung III",
+    "description": "+6% Erhaltene Heilung (Apothic)\n+1.8% Lebensraub (Apothic)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:glistering_melon_slice"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:healing_received",
+          "value": 0.06,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:life_steal",
+          "value": 0.018,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Heilung wirkt besser."
+  },
+  "handwerk_3_3": {
+    "title": "Genesung IV",
+    "description": "+8% Erhaltene Heilung (Apothic)\n+2.4% Lebensraub (Apothic)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:glistering_melon_slice"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:healing_received",
+          "value": 0.08,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:life_steal",
+          "value": 0.024,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Heilung wirkt besser."
+  },
+  "handwerk_3_4": {
+    "title": "Genesung V",
+    "description": "+10% Erhaltene Heilung (Apothic)\n+3% Lebensraub (Apothic)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:glistering_melon_slice"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "goal"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:healing_received",
+          "value": 0.1,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:life_steal",
+          "value": 0.03,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Heilung wirkt besser."
+  },
+  "handwerk_g": {
+    "title": "Chronicle-Meister",
+    "description": "+15% Erfahrung (Apothic)\n+2 Glück (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:emerald"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "challenge"
+      }
+    },
+    "cost": 3,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:experience_gained",
+          "value": 0.15,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.luck",
+          "value": 2,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Deine Arbeit trägt Früchte. Dafür müssen die beiden mittleren Linien voll ausgebaut sein.",
+    "required_skills": 2
+  },
+  "ueberleben_w": {
+    "title": "Abgehärtet",
+    "description": "+1 Rüstung (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:shield"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "goal"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.armor",
+          "value": 1,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Überleben"
+  },
+  "ueberleben_0_0": {
+    "title": "Panzerung I",
+    "description": "+1 Rüstung (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:iron_chestplate"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.armor",
+          "value": 1,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Mehr Rüstung."
+  },
+  "ueberleben_0_1": {
+    "title": "Panzerung II",
+    "description": "+1 Rüstung (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:iron_chestplate"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.armor",
+          "value": 1,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Mehr Rüstung."
+  },
+  "ueberleben_0_2": {
+    "title": "Panzerung III",
+    "description": "+1 Rüstung (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:iron_chestplate"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.armor",
+          "value": 1,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Mehr Rüstung."
+  },
+  "ueberleben_0_3": {
+    "title": "Panzerung IV",
+    "description": "+2 Rüstung (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:iron_chestplate"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.armor",
+          "value": 2,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Mehr Rüstung."
+  },
+  "ueberleben_0_4": {
+    "title": "Panzerung V",
+    "description": "+2 Rüstung (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:iron_chestplate"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "goal"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.armor",
+          "value": 2,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Mehr Rüstung."
+  },
+  "ueberleben_1_0": {
+    "title": "Standhaft I",
+    "description": "+1 Rüstungshärte (Vanilla)\n+5% Rückstoßresistenz (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:netherite_ingot"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.armor_toughness",
+          "value": 1,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.knockback_resistance",
+          "value": 0.05,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Mehr Härte und Rückstoßschutz."
+  },
+  "ueberleben_1_1": {
+    "title": "Standhaft II",
+    "description": "+1 Rüstungshärte (Vanilla)\n+5% Rückstoßresistenz (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:netherite_ingot"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.armor_toughness",
+          "value": 1,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.knockback_resistance",
+          "value": 0.05,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Mehr Härte und Rückstoßschutz."
+  },
+  "ueberleben_1_2": {
+    "title": "Standhaft III",
+    "description": "+1 Rüstungshärte (Vanilla)\n+5% Rückstoßresistenz (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:netherite_ingot"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.armor_toughness",
+          "value": 1,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.knockback_resistance",
+          "value": 0.05,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Mehr Härte und Rückstoßschutz."
+  },
+  "ueberleben_1_3": {
+    "title": "Standhaft IV",
+    "description": "+1 Rüstungshärte (Vanilla)\n+5% Rückstoßresistenz (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:netherite_ingot"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.armor_toughness",
+          "value": 1,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.knockback_resistance",
+          "value": 0.05,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Mehr Härte und Rückstoßschutz."
+  },
+  "ueberleben_1_4": {
+    "title": "Standhaft V",
+    "description": "+2 Rüstungshärte (Vanilla)\n+10% Rückstoßresistenz (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:netherite_ingot"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "goal"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.armor_toughness",
+          "value": 2,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.knockback_resistance",
+          "value": 0.1,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Mehr Härte und Rückstoßschutz."
+  },
+  "ueberleben_2_0": {
+    "title": "Flink I",
+    "description": "+3% Ausweichen (Apothic)\n+12% Weniger Fallschaden (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:feather"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:dodge_chance",
+          "value": 0.03,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.fall_damage_multiplier",
+          "value": -0.12,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du weichst aus und fällst weicher."
+  },
+  "ueberleben_2_1": {
+    "title": "Flink II",
+    "description": "+3% Ausweichen (Apothic)\n+12% Weniger Fallschaden (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:feather"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:dodge_chance",
+          "value": 0.03,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.fall_damage_multiplier",
+          "value": -0.12,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du weichst aus und fällst weicher."
+  },
+  "ueberleben_2_2": {
+    "title": "Flink III",
+    "description": "+4% Ausweichen (Apothic)\n+16% Weniger Fallschaden (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:feather"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:dodge_chance",
+          "value": 0.04,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.fall_damage_multiplier",
+          "value": -0.16,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du weichst aus und fällst weicher."
+  },
+  "ueberleben_2_3": {
+    "title": "Flink IV",
+    "description": "+5% Ausweichen (Apothic)\n+20% Weniger Fallschaden (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:feather"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:dodge_chance",
+          "value": 0.05,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.fall_damage_multiplier",
+          "value": -0.2,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du weichst aus und fällst weicher."
+  },
+  "ueberleben_2_4": {
+    "title": "Flink V",
+    "description": "+6% Ausweichen (Apothic)\n+24% Weniger Fallschaden (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:feather"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "goal"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:dodge_chance",
+          "value": 0.06,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.fall_damage_multiplier",
+          "value": -0.24,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du weichst aus und fällst weicher."
+  },
+  "ueberleben_3_0": {
+    "title": "Widerstand I",
+    "description": "+4% Zauberresistenz (Iron's Spells)\n+4% Zauberresistenz (Spell Power)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:magma_cream"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "irons_spellbooks:spell_resist",
+          "value": 0.04,
+          "operation": "multiply_base"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "spell_power:resistance.generic",
+          "value": 4.0,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Weniger Schaden durch Magie in allen Systemen."
+  },
+  "ueberleben_3_1": {
+    "title": "Widerstand II",
+    "description": "+4% Zauberresistenz (Iron's Spells)\n+4% Zauberresistenz (Spell Power)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:magma_cream"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "irons_spellbooks:spell_resist",
+          "value": 0.04,
+          "operation": "multiply_base"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "spell_power:resistance.generic",
+          "value": 4.0,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Weniger Schaden durch Magie in allen Systemen."
+  },
+  "ueberleben_3_2": {
+    "title": "Widerstand III",
+    "description": "+5% Zauberresistenz (Iron's Spells)\n+5% Zauberresistenz (Spell Power)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:magma_cream"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "irons_spellbooks:spell_resist",
+          "value": 0.05,
+          "operation": "multiply_base"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "spell_power:resistance.generic",
+          "value": 5.0,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Weniger Schaden durch Magie in allen Systemen."
+  },
+  "ueberleben_3_3": {
+    "title": "Widerstand IV",
+    "description": "+6% Zauberresistenz (Iron's Spells)\n+6% Zauberresistenz (Spell Power)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:magma_cream"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "irons_spellbooks:spell_resist",
+          "value": 0.06,
+          "operation": "multiply_base"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "spell_power:resistance.generic",
+          "value": 6.0,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Weniger Schaden durch Magie in allen Systemen."
+  },
+  "ueberleben_3_4": {
+    "title": "Widerstand V",
+    "description": "+8% Zauberresistenz (Iron's Spells)\n+8% Zauberresistenz (Spell Power)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:magma_cream"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "goal"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "irons_spellbooks:spell_resist",
+          "value": 0.08,
+          "operation": "multiply_base"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "spell_power:resistance.generic",
+          "value": 8.0,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Weniger Schaden durch Magie in allen Systemen."
+  },
+  "ueberleben_g": {
+    "title": "Chronicle-Wächter",
+    "description": "−10% Erlittener Schaden (Spell Engine)\n+2 Rüstung (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:totem_of_undying"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "challenge"
+      }
+    },
+    "cost": 3,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "spell_engine:damage_taken",
+          "value": -10.0,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.armor",
+          "value": 2,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Fast nichts bringt dich mehr aus der Ruhe. Dafür müssen die beiden mittleren Linien voll ausgebaut sein.",
+    "required_skills": 2
+  },
+  "technik_w": {
+    "title": "Geübte Hände",
+    "description": "+3% Abbautempo (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:iron_pickaxe"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "goal"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:player.mining_efficiency",
+          "value": 0.3,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Technik"
+  },
+  "technik_0_0": {
+    "title": "Schürfer I",
+    "description": "+3% Abbautempo (Vanilla)\n+3% Abbautempo (Apothic)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:diamond_pickaxe"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:player.mining_efficiency",
+          "value": 0.3,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:mining_speed",
+          "value": 0.03,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du baust schneller ab."
+  },
+  "technik_0_1": {
+    "title": "Schürfer II",
+    "description": "+4% Abbautempo (Vanilla)\n+4% Abbautempo (Apothic)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:diamond_pickaxe"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:player.mining_efficiency",
+          "value": 0.4,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:mining_speed",
+          "value": 0.04,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du baust schneller ab."
+  },
+  "technik_0_2": {
+    "title": "Schürfer III",
+    "description": "+5% Abbautempo (Vanilla)\n+5% Abbautempo (Apothic)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:diamond_pickaxe"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:player.mining_efficiency",
+          "value": 0.5,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:mining_speed",
+          "value": 0.05,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du baust schneller ab."
+  },
+  "technik_0_3": {
+    "title": "Schürfer IV",
+    "description": "+6% Abbautempo (Vanilla)\n+6% Abbautempo (Apothic)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:diamond_pickaxe"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:player.mining_efficiency",
+          "value": 0.6,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:mining_speed",
+          "value": 0.06,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du baust schneller ab."
+  },
+  "technik_0_4": {
+    "title": "Schürfer V",
+    "description": "+8% Abbautempo (Vanilla)\n+8% Abbautempo (Apothic)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:diamond_pickaxe"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "goal"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:player.mining_efficiency",
+          "value": 0.8,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:mining_speed",
+          "value": 0.08,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du baust schneller ab."
+  },
+  "technik_1_0": {
+    "title": "Reichweite I",
+    "description": "+0.5 Reichweite Blöcke (Vanilla)\n+0.2 Reichweite Angriff (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:spyglass"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:player.block_interaction_range",
+          "value": 0.5,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:player.entity_interaction_range",
+          "value": 0.25,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du erreichst Blöcke und Gegner weiter weg."
+  },
+  "technik_1_1": {
+    "title": "Reichweite II",
+    "description": "+0.5 Reichweite Blöcke (Vanilla)\n+0.2 Reichweite Angriff (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:spyglass"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:player.block_interaction_range",
+          "value": 0.5,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:player.entity_interaction_range",
+          "value": 0.25,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du erreichst Blöcke und Gegner weiter weg."
+  },
+  "technik_1_2": {
+    "title": "Reichweite III",
+    "description": "+0.5 Reichweite Blöcke (Vanilla)\n+0.2 Reichweite Angriff (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:spyglass"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:player.block_interaction_range",
+          "value": 0.5,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:player.entity_interaction_range",
+          "value": 0.25,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du erreichst Blöcke und Gegner weiter weg."
+  },
+  "technik_1_3": {
+    "title": "Reichweite IV",
+    "description": "+1 Reichweite Blöcke (Vanilla)\n+0.5 Reichweite Angriff (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:spyglass"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:player.block_interaction_range",
+          "value": 1,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:player.entity_interaction_range",
+          "value": 0.5,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du erreichst Blöcke und Gegner weiter weg."
+  },
+  "technik_1_4": {
+    "title": "Reichweite V",
+    "description": "+1 Reichweite Blöcke (Vanilla)\n+0.5 Reichweite Angriff (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:spyglass"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "goal"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:player.block_interaction_range",
+          "value": 1,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:player.entity_interaction_range",
+          "value": 0.5,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du erreichst Blöcke und Gegner weiter weg."
+  },
+  "technik_2_0": {
+    "title": "Kraftakt I",
+    "description": "+2% Nahkampfschaden (Vanilla)\n+4% Rückstoßresistenz (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:anvil"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.attack_damage",
+          "value": 0.02,
+          "operation": "multiply_total"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.knockback_resistance",
+          "value": 0.04,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Mit schwerem Werkzeug schlägst du härter zu."
+  },
+  "technik_2_1": {
+    "title": "Kraftakt II",
+    "description": "+2% Nahkampfschaden (Vanilla)\n+4% Rückstoßresistenz (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:anvil"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.attack_damage",
+          "value": 0.02,
+          "operation": "multiply_total"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.knockback_resistance",
+          "value": 0.04,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Mit schwerem Werkzeug schlägst du härter zu."
+  },
+  "technik_2_2": {
+    "title": "Kraftakt III",
+    "description": "+3% Nahkampfschaden (Vanilla)\n+6% Rückstoßresistenz (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:anvil"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.attack_damage",
+          "value": 0.03,
+          "operation": "multiply_total"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.knockback_resistance",
+          "value": 0.06,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Mit schwerem Werkzeug schlägst du härter zu."
+  },
+  "technik_2_3": {
+    "title": "Kraftakt IV",
+    "description": "+3% Nahkampfschaden (Vanilla)\n+6% Rückstoßresistenz (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:anvil"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.attack_damage",
+          "value": 0.03,
+          "operation": "multiply_total"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.knockback_resistance",
+          "value": 0.06,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Mit schwerem Werkzeug schlägst du härter zu."
+  },
+  "technik_2_4": {
+    "title": "Kraftakt V",
+    "description": "+5% Nahkampfschaden (Vanilla)\n+10% Rückstoßresistenz (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:anvil"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "goal"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.attack_damage",
+          "value": 0.05,
+          "operation": "multiply_total"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.knockback_resistance",
+          "value": 0.1,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Mit schwerem Werkzeug schlägst du härter zu."
+  },
+  "technik_3_0": {
+    "title": "Tiefseetechnik I",
+    "description": "+4% Abbautempo unter Wasser (Vanilla)\n+4% Bewegung im Wasser (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:heart_of_the_sea"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:player.submerged_mining_speed",
+          "value": 0.04,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.water_movement_efficiency",
+          "value": 0.04,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du arbeitest unter Wasser wie an Land."
+  },
+  "technik_3_1": {
+    "title": "Tiefseetechnik II",
+    "description": "+4% Abbautempo unter Wasser (Vanilla)\n+4% Bewegung im Wasser (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:heart_of_the_sea"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:player.submerged_mining_speed",
+          "value": 0.04,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.water_movement_efficiency",
+          "value": 0.04,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du arbeitest unter Wasser wie an Land."
+  },
+  "technik_3_2": {
+    "title": "Tiefseetechnik III",
+    "description": "+6% Abbautempo unter Wasser (Vanilla)\n+6% Bewegung im Wasser (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:heart_of_the_sea"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 1,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:player.submerged_mining_speed",
+          "value": 0.06,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.water_movement_efficiency",
+          "value": 0.06,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du arbeitest unter Wasser wie an Land."
+  },
+  "technik_3_3": {
+    "title": "Tiefseetechnik IV",
+    "description": "+6% Abbautempo unter Wasser (Vanilla)\n+6% Bewegung im Wasser (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:heart_of_the_sea"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "task"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:player.submerged_mining_speed",
+          "value": 0.06,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.water_movement_efficiency",
+          "value": 0.06,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du arbeitest unter Wasser wie an Land."
+  },
+  "technik_3_4": {
+    "title": "Tiefseetechnik V",
+    "description": "+10% Abbautempo unter Wasser (Vanilla)\n+10% Bewegung im Wasser (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "minecraft:heart_of_the_sea"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "goal"
+      }
+    },
+    "cost": 2,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:player.submerged_mining_speed",
+          "value": 0.1,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.water_movement_efficiency",
+          "value": 0.1,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Du arbeitest unter Wasser wie an Land."
+  },
+  "technik_g": {
+    "title": "Chronicle-Techniker",
+    "description": "+20% Abbautempo (Vanilla)\n+20% Abbautempo (Apothic)\n+1 Reichweite Blöcke (Vanilla)",
+    "icon": {
+      "type": "item",
+      "data": {
+        "item": "create:precision_mechanism"
+      }
+    },
+    "frame": {
+      "type": "advancement",
+      "data": {
+        "frame": "challenge"
+      }
+    },
+    "cost": 3,
+    "rewards": [
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:player.mining_efficiency",
+          "value": 2.0,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:mining_speed",
+          "value": 0.2,
+          "operation": "addition"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:player.block_interaction_range",
+          "value": 1,
+          "operation": "addition"
+        }
+      }
+    ],
+    "extra_description": "Die Maschinen arbeiten für dich. Dafür müssen die beiden mittleren Linien voll ausgebaut sein.",
+    "required_skills": 2
+  }
+}

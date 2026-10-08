@@ -1,5 +1,5 @@
-﻿Chronicle 0.9.15 - Modliste
-Minecraft 1.21.1, NeoForge 21.1.256   |   303 Mods inkl. Bibliotheken   |   Stand 2026-10-07
+﻿Chronicle 0.9.16 - Modliste
+Minecraft 1.21.1, NeoForge 21.1.256   |   304 Mods inkl. Bibliotheken   |   Stand 2026-10-07
 
 == Performance und Grafik (18) ==
   All The Leaks                                  1.1.13+1.21.1-neoforge  (CurseForge)
@@ -50,13 +50,14 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   303 Mods inkl. Bibliotheken   |   Stan
   Xaero's Minimap                                neoforge-1.21.1-26.6.0  (nur Client)
   Xaero's World Map                              neoforge-1.21.1-1.47.0  (nur Client)
 
-== Multiplayer, Quests und Verwaltung (7) ==
+== Multiplayer, Quests und Verwaltung (8) ==
   FTB Backups 2                                  1.0.28  (CurseForge)
   FTB Library                                    2101.1.37  (CurseForge)
   FTB Quests                                     2101.1.36  (CurseForge)
   FTB Teams                                      2101.1.11  (CurseForge)
   KubeJS                                         2101.7.2-build.377
   Open Parties and Claims                        neoforge-1.21.1-0.32.7
+  Pufferfish's Skills                            0.19.1
   Simple Voice Chat                              neoforge-1.21.1-2.6.22
 
 == Lagerung und Rucksaecke (5) ==
