@@ -32,7 +32,7 @@ Kommunikation mit dem Nutzer: Deutsch, locker, kurz.
   - Modus `linear` (Quests gesperrt bis Vorgaenger fertig); Quests mit Kill/Dimension/Struktur/Biom setzt der Generator auf `flexible`, sonst zaehlen sie erst nach dem Freischalten. Abgabe-Quests (`abgabe=True`) verbrauchen Items. Belohnungen: XP, Items, Loot-Kisten `loot1`-`loot4` (`inhalt/loot.py`).
   - `pack/config/` landet in `overrides/config` (.mrpack) bzw. `config/` (beide ZIPs) und im lokalen Testserver. Der Servertest gibt die Zeile `Questbuch: Loaded ... quests` aus.
 - CurseForge-Jars holt das Skript automatisch aus `%USERPROFILE%\Downloads` (Dateinamen-Muster in `$cfPatterns`).
-- Aktuelle Version: **PACKVER 0.9.13** (Release v0.9.13). Bei jeder Änderung `$PACKVER` hochzählen.
+- Aktuelle Version: **PACKVER 0.9.14**. Bei jeder Änderung `$PACKVER` hochzählen.
 
 ## Mods, die nur auf CurseForge sind (liegen in curseforge-mods\ bzw. Downloads)
 Alle für 1.21.1 NeoForge. Download-URL-Schema: `https://www.curseforge.com/minecraft/mc-mods/<slug>/download/<fileId>`
@@ -108,6 +108,8 @@ CurseForge blockt Downloads per Skript, auch über die interne `/api/v1`. Diese 
     - Gehen die TFMG-Rezepte (Community Edition) mit Almost Unified noch? Betroffen sind `heavy_plate` und `rebar`.
     - Kommt das Messing-Rezept wieder mit 2 Barren?
     - Greift die L2-Config in einer neuen Welt?
+
+- 0.9.14: Chronicle-Kern, Fragmente: Items per `StartupEvents.modifyCreativeTab` in den Tab "Zutaten" (ohne Tab fehlten sie in der JEI-Liste; `.group()` gibt es in KubeJS 7 nicht mehr und bricht den Start ab). Rezepte laden serverseitig korrekt (Pruefskript). **Startkiste** (`pack/kubejs/server_scripts/startkiste.js`): beim ersten Login Questbuch, Fleisch, Fackeln, Steinspitzhacke/-axt. **ModernFix `dynamic_resources`** an (`pack/config/modernfix-mixins.properties`), bei Grafikfehlern auf false. C2ME bewusst nicht (nur Alpha). Im Spiel pruefen: JEI zeigt Fragmente/Kern, Startkiste kommt genau einmal, keine fehlenden Modelle.
 
 ## Offene Aufgaben
 1. **0.9.13 im Client testen:** kurz in eine neue Welt, auf Grafikfehler achten. Pruefen: Rezepte der drei Fragmente und des Chronicle-Kerns in JEI, Almost Unified (Mekanism-Stahl wird zu IE-Stahl), keine doppelten Erze, dazu die Punkte unter "Im Spiel pruefen" bei 0.9.13.
