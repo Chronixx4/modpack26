@@ -1,0 +1,51 @@
+{
+  "background_u_index": 0,
+  "background_v_index": 0,
+  "category": "sonstige",
+  "condition": {
+    "type": "modonomicon:none"
+  },
+  "description": "book.chronicle.bossfuehrer.sonstige.piglich.description",
+  "hide_while_locked": false,
+  "icon": {
+    "item": "allthemodium:piglich_heart"
+  },
+  "name": "book.chronicle.bossfuehrer.sonstige.piglich.name",
+  "pages": [
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.chronicle.bossfuehrer.sonstige.piglich.p0.text",
+      "title": "book.chronicle.bossfuehrer.sonstige.piglich.name",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "modonomicon:spotlight",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "item": {
+        "item": "allthemodium:piglich_heart"
+      },
+      "text": "book.chronicle.bossfuehrer.sonstige.piglich.beute.text",
+      "title": ""
+    }
+  ],
+  "parents": [
+    {
+      "draw_arrow": true,
+      "entry": "sonstige/mimic",
+      "line_enabled": true,
+      "line_reversed": false
+    }
+  ],
+  "show_when_any_parent_unlocked": false,
+  "sort_number": 2,
+  "x": 4,
+  "y": 0
+}

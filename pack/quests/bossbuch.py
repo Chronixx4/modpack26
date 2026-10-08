@@ -1,7 +1,8 @@
-"""Erzeugt das Patchouli-Buch "Bossfuehrer" aus den Boss-Quests des Questbuchs.
+"""Erzeugt das Modonomicon-Buch "Bossfuehrer" aus den Boss-Quests des Questbuchs.
+(Patchouli geht nicht: es liest Buecher nur aus Mod-Jars, nicht aus KubeJS-Datenpaketen.)
 
 Aufruf: python3 pack/quests/bossbuch.py
-Schreibt pack/kubejs/data/chronicle/patchouli_books/bossfuehrer (en_us, greift als Rueckfall in jeder Sprache).
+Schreibt pack/kubejs/data/chronicle/modonomicon/books/bossfuehrer und pack/kubejs/assets/chronicle/lang/en_us.json (greift als Rueckfall in jeder Sprache).
 Quelle der Texte sind die Quests (kill-Aufgaben), Gruppen = Mod der Kreatur.
 """
 import importlib
@@ -16,7 +17,9 @@ sys.path.insert(0, HIER)
 import generator as g  # noqa: E402
 import dsl  # noqa: E402
 
-OUT = os.path.join(HIER, '..', 'kubejs', 'data', 'chronicle', 'patchouli_books', 'bossfuehrer')
+OUT = os.path.join(HIER, '..', 'kubejs', 'data', 'chronicle', 'modonomicon', 'books', 'bossfuehrer')
+ALT = os.path.join(HIER, '..', 'kubejs', 'data', 'chronicle', 'patchouli_books')
+LANG = os.path.join(HIER, '..', 'kubejs', 'assets', 'chronicle', 'lang')
 
 # Mod -> (Kategorie, Anzeigename, Symbol, Beschreibung)
 MODS = [
@@ -41,16 +44,27 @@ NAME = {m[0]: m for m in MODS}
 UEBERSPRINGEN = {('ars_nouveau', 'wilden'), ('evilcraft', 'geist'), ('bosse', 'goety_apostel'), ('bosse', 'goety_wesir')}
 
 FARBE = re.compile(r'&([0-9a-fk-or])')
+BUCH = 'chronicle:bossfuehrer'
 
 
-def pt(s):
-    """Quest-Farbcodes (&e ... &r) in Patchouli-Formatierung."""
-    s = s.replace('\n\n', '$(br2)').replace('\n', '$(br)')
-    s = FARBE.sub(lambda m: '$()' if m.group(1) == 'r' else '$(' + m.group(1) + ')', s)
-    return s
+def md(s):
+    """Quest-Farbcodes (&e ... &r) in Markdown (fett) fuer Modonomicon."""
+    out, offen = '', False
+    for teil in re.split(r'(&[0-9a-fk-or])', s):
+        m = FARBE.fullmatch(teil)
+        if not m:
+            out += teil
+        elif m.group(1) == 'r':
+            if offen:
+                out += '**'
+                offen = False
+        elif not offen:
+            out += '**'
+            offen = True
+    return out + ('**' if offen else '')
 
 
-def teile(text, grenze=330):
+def teile(text, grenze=380):
     absaetze = [a for a in re.split(r'\n\n', text) if a.strip()]
     seiten, akt = [], ''
     for a in absaetze:
@@ -97,15 +111,32 @@ def schreibe(pfad, daten):
 
 def main():
     bosse = lade()
-    if os.path.isdir(OUT):
-        shutil.rmtree(OUT)
+    for d in (OUT, ALT, LANG):
+        if os.path.isdir(d):
+            shutil.rmtree(d)
+    lang = {}
+    pre = 'book.chronicle.bossfuehrer.'
     schreibe(os.path.join(OUT, 'book.json'), {
-        'name': 'Chronicle Bossführer',
-        'landing_text': 'Alle Bosse und Gegner aus dem Questbuch an einem Ort: wo sie leben, wie du sie rufst und was sie fallen lassen.',
-        'book_texture': 'patchouli:textures/gui/book_red.png',
-        'show_progress': False,
-        'version': 1,
+        'allow_open_book_with_invalid_links': True,
+        'auto_add_read_conditions': True,
+        'book_content_texture': 'modonomicon:textures/gui/book_content.png',
+        'book_overview_texture': 'modonomicon:textures/gui/book_overview.png',
+        'crafting_texture': 'modonomicon:textures/gui/crafting_textures.png',
+        'creative_tab': 'modonomicon:modonomicon',
+        'default_title_color': 0,
+        'description': '',
+        'display_mode': 'node',
+        'font': 'modonomicon:default',
+        'frame_texture': 'modonomicon:textures/gui/book_frame.png',
+        'generate_book_item': True,
+        'name': pre + 'name',
+        'page_display_mode': 'double_page',
+        'single_page_texture': 'modonomicon:textures/gui/single_page_entry.png',
+        'tooltip': pre + 'tooltip',
+        'turn_page_sound': 'modonomicon:turn_page',
     })
+    lang[pre + 'name'] = 'Chronicle Bossführer'
+    lang[pre + 'tooltip'] = 'Alle Bosse aus dem Questbuch: Fundort, Beschwörung und Beute.'
     benutzt = []
     for b in bosse:
         mod = b['entity'].split(':')[0]
@@ -115,25 +146,65 @@ def main():
     reihenfolge = [m[0] for m in MODS if m[0] in benutzt]
     for i, mid in enumerate(reihenfolge):
         _, name, icon, beschr = NAME[mid]
-        schreibe(os.path.join(OUT, 'en_us', 'categories', mid + '.json'),
-                 {'name': name, 'description': beschr, 'icon': icon, 'sortnum': i})
-    zaehler = {}
+        schreibe(os.path.join(OUT, 'categories', mid + '.json'), {
+            'background': 'modonomicon:textures/gui/dark_slate_seamless.png',
+            'background_height': 512,
+            'background_width': 512,
+            'background_parallax_layers': [],
+            'background_texture_zoom_multiplier': 1.0,
+            'description': '',
+            'display_mode': 'node',
+            'entry_textures': 'modonomicon:textures/gui/entry_textures.png',
+            'icon': {'item': icon},
+            'max_scroll_x': 2048,
+            'max_scroll_y': 2048,
+            'name': pre + mid + '.name',
+            'show_category_button': True,
+            'sort_number': i,
+        })
+        lang[pre + mid + '.name'] = name
+    zaehler, vorher = {}, {}
     for b in bosse:
         mid = b['mod']
-        n = zaehler[mid] = zaehler.get(mid, 0) + 1
-        name = NAME[mid][1]
-        seiten = teile(b['text']) or ['Keine Hinweise.']
-        kopf = '$(l)' + name + '$()'
-        if b['anzahl'] > 1:
-            kopf += ' (' + str(b['anzahl']) + 'x besiegen)'
-        pages = [{'type': 'text', 'title': b['titel'], 'text': kopf + '$(br2)' + pt(seiten[0])}]
-        pages += [{'type': 'text', 'text': pt(s)} for s in seiten[1:]]
+        n = zaehler[mid] = zaehler.get(mid, 0)
+        zaehler[mid] += 1
+        eid = b['entity'].split(':')[1]
+        k = pre + mid + '.' + eid + '.'
+        seiten = teile(md(b['text'])) or ['Keine Hinweise.']
+        kopf = '**' + NAME[mid][1] + '**' + (' (' + str(b['anzahl']) + 'x besiegen)' if b['anzahl'] > 1 else '')
+        lang[k + 'name'] = b['titel']
+        lang[k + 'description'] = NAME[mid][1]
+        pages = []
+        for i, t in enumerate(seiten):
+            pages.append({'type': 'modonomicon:text', 'anchor': '', 'condition': {'type': 'modonomicon:none'},
+                          'show_title_separator': True, 'text': k + f'p{i}.text',
+                          'title': k + 'name' if i == 0 else '', 'use_markdown_in_title': False})
+            lang[k + f'p{i}.text'] = (kopf + '\n\n' if i == 0 else '') + t
         for it in b['items'][:1]:
-            pages.append({'type': 'spotlight', 'item': it, 'text': 'Das gibt es als Beute oder Trophäe.'})
+            pages.append({'type': 'modonomicon:spotlight', 'anchor': '', 'condition': {'type': 'modonomicon:none'},
+                          'item': {'item': it}, 'text': k + 'beute.text', 'title': ''})
+            lang[k + 'beute.text'] = 'Das gibt es als Beute oder Trophäe.'
         icon = b['items'][0] if b['items'] else NAME[mid][2]
-        schreibe(os.path.join(OUT, 'en_us', 'entries', mid, b['entity'].split(':')[1] + '.json'), {
-            'name': b['titel'], 'category': mid, 'icon': icon, 'sortnum': n,
-            'read_by_default': True, 'pages': pages})
+        eintrag = {
+            'background_u_index': 0, 'background_v_index': 0,
+            'category': mid,
+            'condition': {'type': 'modonomicon:none'},
+            'description': k + 'description',
+            'hide_while_locked': False,
+            'icon': {'item': icon},
+            'name': k + 'name',
+            'pages': pages,
+            'parents': [],
+            'show_when_any_parent_unlocked': False,
+            'sort_number': n,
+            'x': (n % 6) * 2,
+            'y': (n // 6) * 2,
+        }
+        if n % 6 and vorher.get(mid):
+            eintrag['parents'] = [{'draw_arrow': True, 'entry': mid + '/' + vorher[mid], 'line_enabled': True, 'line_reversed': False}]
+        vorher[mid] = eid
+        schreibe(os.path.join(OUT, 'entries', mid, eid + '.json'), eintrag)
+    schreibe(os.path.join(LANG, 'en_us.json'), lang)
     print(f'{len(bosse)} Bosse, {len(reihenfolge)} Kategorien -> {os.path.normpath(OUT)}')
 
 

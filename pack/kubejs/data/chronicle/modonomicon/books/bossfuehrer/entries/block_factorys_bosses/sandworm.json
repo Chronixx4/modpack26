@@ -1,0 +1,39 @@
+{
+  "background_u_index": 0,
+  "background_v_index": 0,
+  "category": "block_factorys_bosses",
+  "condition": {
+    "type": "modonomicon:none"
+  },
+  "description": "book.chronicle.bossfuehrer.block_factorys_bosses.sandworm.description",
+  "hide_while_locked": false,
+  "icon": {
+    "item": "minecraft:totem_of_undying"
+  },
+  "name": "book.chronicle.bossfuehrer.block_factorys_bosses.sandworm.name",
+  "pages": [
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.chronicle.bossfuehrer.block_factorys_bosses.sandworm.p0.text",
+      "title": "book.chronicle.bossfuehrer.block_factorys_bosses.sandworm.name",
+      "use_markdown_in_title": false
+    }
+  ],
+  "parents": [
+    {
+      "draw_arrow": true,
+      "entry": "block_factorys_bosses/yeti",
+      "line_enabled": true,
+      "line_reversed": false
+    }
+  ],
+  "show_when_any_parent_unlocked": false,
+  "sort_number": 1,
+  "x": 2,
+  "y": 0
+}

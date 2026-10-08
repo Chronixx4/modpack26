@@ -1,0 +1,51 @@
+{
+  "background_u_index": 0,
+  "background_v_index": 0,
+  "category": "iceandfire",
+  "condition": {
+    "type": "modonomicon:none"
+  },
+  "description": "book.chronicle.bossfuehrer.iceandfire.ice_dragon.description",
+  "hide_while_locked": false,
+  "icon": {
+    "item": "iceandfire:ice_dragon_heart"
+  },
+  "name": "book.chronicle.bossfuehrer.iceandfire.ice_dragon.name",
+  "pages": [
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.chronicle.bossfuehrer.iceandfire.ice_dragon.p0.text",
+      "title": "book.chronicle.bossfuehrer.iceandfire.ice_dragon.name",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "modonomicon:spotlight",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "item": {
+        "item": "iceandfire:ice_dragon_heart"
+      },
+      "text": "book.chronicle.bossfuehrer.iceandfire.ice_dragon.beute.text",
+      "title": ""
+    }
+  ],
+  "parents": [
+    {
+      "draw_arrow": true,
+      "entry": "iceandfire/fire_dragon",
+      "line_enabled": true,
+      "line_reversed": false
+    }
+  ],
+  "show_when_any_parent_unlocked": false,
+  "sort_number": 4,
+  "x": 8,
+  "y": 0
+}

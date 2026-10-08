@@ -1,0 +1,19 @@
+{
+  "allow_open_book_with_invalid_links": true,
+  "auto_add_read_conditions": true,
+  "book_content_texture": "modonomicon:textures/gui/book_content.png",
+  "book_overview_texture": "modonomicon:textures/gui/book_overview.png",
+  "crafting_texture": "modonomicon:textures/gui/crafting_textures.png",
+  "creative_tab": "modonomicon:modonomicon",
+  "default_title_color": 0,
+  "description": "",
+  "display_mode": "node",
+  "font": "modonomicon:default",
+  "frame_texture": "modonomicon:textures/gui/book_frame.png",
+  "generate_book_item": true,
+  "name": "book.chronicle.bossfuehrer.name",
+  "page_display_mode": "double_page",
+  "single_page_texture": "modonomicon:textures/gui/single_page_entry.png",
+  "tooltip": "book.chronicle.bossfuehrer.tooltip",
+  "turn_page_sound": "modonomicon:turn_page"
+}

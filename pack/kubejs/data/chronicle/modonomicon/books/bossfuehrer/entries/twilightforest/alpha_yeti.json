@@ -1,0 +1,44 @@
+{
+  "background_u_index": 0,
+  "background_v_index": 0,
+  "category": "twilightforest",
+  "condition": {
+    "type": "modonomicon:none"
+  },
+  "description": "book.chronicle.bossfuehrer.twilightforest.alpha_yeti.description",
+  "hide_while_locked": false,
+  "icon": {
+    "item": "twilightforest:alpha_yeti_trophy"
+  },
+  "name": "book.chronicle.bossfuehrer.twilightforest.alpha_yeti.name",
+  "pages": [
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.chronicle.bossfuehrer.twilightforest.alpha_yeti.p0.text",
+      "title": "book.chronicle.bossfuehrer.twilightforest.alpha_yeti.name",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "modonomicon:spotlight",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "item": {
+        "item": "twilightforest:alpha_yeti_trophy"
+      },
+      "text": "book.chronicle.bossfuehrer.twilightforest.alpha_yeti.beute.text",
+      "title": ""
+    }
+  ],
+  "parents": [],
+  "show_when_any_parent_unlocked": false,
+  "sort_number": 6,
+  "x": 0,
+  "y": 2
+}

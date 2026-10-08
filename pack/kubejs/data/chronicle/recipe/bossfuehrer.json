@@ -11,9 +11,9 @@
   ],
   "result": {
     "count": 1,
-    "id": "patchouli:guide_book",
+    "id": "modonomicon:modonomicon",
     "components": {
-      "patchouli:book": "chronicle:bossfuehrer"
+      "modonomicon:book_id": "chronicle:bossfuehrer"
     }
   }
 }

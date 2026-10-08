@@ -1,0 +1,39 @@
+{
+  "background_u_index": 0,
+  "background_v_index": 0,
+  "category": "born_in_chaos_v1",
+  "condition": {
+    "type": "modonomicon:none"
+  },
+  "description": "book.chronicle.bossfuehrer.born_in_chaos_v1.mother_spider.description",
+  "hide_while_locked": false,
+  "icon": {
+    "item": "born_in_chaos_v1:dire_hound_leader_spawn_egg"
+  },
+  "name": "book.chronicle.bossfuehrer.born_in_chaos_v1.mother_spider.name",
+  "pages": [
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.chronicle.bossfuehrer.born_in_chaos_v1.mother_spider.p0.text",
+      "title": "book.chronicle.bossfuehrer.born_in_chaos_v1.mother_spider.name",
+      "use_markdown_in_title": false
+    }
+  ],
+  "parents": [
+    {
+      "draw_arrow": true,
+      "entry": "born_in_chaos_v1/supreme_bonescaller",
+      "line_enabled": true,
+      "line_reversed": false
+    }
+  ],
+  "show_when_any_parent_unlocked": false,
+  "sort_number": 2,
+  "x": 4,
+  "y": 0
+}

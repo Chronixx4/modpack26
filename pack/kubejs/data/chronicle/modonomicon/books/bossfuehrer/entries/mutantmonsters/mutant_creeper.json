@@ -1,0 +1,39 @@
+{
+  "background_u_index": 0,
+  "background_v_index": 0,
+  "category": "mutantmonsters",
+  "condition": {
+    "type": "modonomicon:none"
+  },
+  "description": "book.chronicle.bossfuehrer.mutantmonsters.mutant_creeper.description",
+  "hide_while_locked": false,
+  "icon": {
+    "item": "mutantmonsters:hulk_hammer"
+  },
+  "name": "book.chronicle.bossfuehrer.mutantmonsters.mutant_creeper.name",
+  "pages": [
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.chronicle.bossfuehrer.mutantmonsters.mutant_creeper.p0.text",
+      "title": "book.chronicle.bossfuehrer.mutantmonsters.mutant_creeper.name",
+      "use_markdown_in_title": false
+    }
+  ],
+  "parents": [
+    {
+      "draw_arrow": true,
+      "entry": "mutantmonsters/mutant_skeleton",
+      "line_enabled": true,
+      "line_reversed": false
+    }
+  ],
+  "show_when_any_parent_unlocked": false,
+  "sort_number": 2,
+  "x": 4,
+  "y": 0
+}

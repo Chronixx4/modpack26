@@ -1,0 +1,39 @@
+{
+  "background_u_index": 0,
+  "background_v_index": 0,
+  "category": "cataclysm",
+  "condition": {
+    "type": "modonomicon:none"
+  },
+  "description": "book.chronicle.bossfuehrer.cataclysm.ender_guardian.description",
+  "hide_while_locked": false,
+  "icon": {
+    "item": "cataclysm:ignitium_ingot"
+  },
+  "name": "book.chronicle.bossfuehrer.cataclysm.ender_guardian.name",
+  "pages": [
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.chronicle.bossfuehrer.cataclysm.ender_guardian.p0.text",
+      "title": "book.chronicle.bossfuehrer.cataclysm.ender_guardian.name",
+      "use_markdown_in_title": false
+    }
+  ],
+  "parents": [
+    {
+      "draw_arrow": true,
+      "entry": "cataclysm/ender_golem",
+      "line_enabled": true,
+      "line_reversed": false
+    }
+  ],
+  "show_when_any_parent_unlocked": false,
+  "sort_number": 5,
+  "x": 10,
+  "y": 0
+}

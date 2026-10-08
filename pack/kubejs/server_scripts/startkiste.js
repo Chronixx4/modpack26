@@ -4,7 +4,7 @@ PlayerEvents.loggedIn(event => {
   if (p.persistentData.getBoolean('chronicle_startkiste')) return
   p.persistentData.putBoolean('chronicle_startkiste', true)
   p.give(Item.of('ftbquests:book'))
-  p.give(Item.of('patchouli:guide_book[patchouli:book="chronicle:bossfuehrer"]'))
+  p.give(Item.of('modonomicon:modonomicon[modonomicon:book_id="chronicle:bossfuehrer"]'))
   p.give(Item.of('minecraft:cooked_beef', 16))
   p.give(Item.of('minecraft:torch', 32))
   p.give(Item.of('minecraft:stone_pickaxe'))
