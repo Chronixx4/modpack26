@@ -2,13 +2,15 @@
 
 Effekt: E(label, einheit, faktor, attribut, operation)  -> Attribut-Reward
         S(label, einheit, faktor, name)                  -> Skript-Wert (Reward 'tag', gelesen von server_scripts/skills.js)
-Wirkung = Stufenwert * faktor. Bei einheit '%' wird der Wert fuer das Attribut durch 100 geteilt.
+Wirkung = Stufenwert * faktor. 'roh' skaliert nur den echten Attributwert (nicht die Anzeige), z. B. 1 % Abbautempo = +0,1 Effizienz. Bei einheit '%' wird der Wert fuer das Attribut durch 100 geteilt.
 Operationen: addition (Wert wird addiert), multiply_base (Wert * Grundwert), multiply_total.
-Attribut-IDs mit 'pruefen=True' sind noch nicht gegen die Registry bestaetigt (siehe PLAN-0.9.16-skilltree.md).
+Alle Attribut-IDs sind gegen die Registry bestaetigt (Servertest 2026-10-08). 'pruefen=True' = Skalierung/Wirkung im Spiel noch ungeprueft.
+Grundwerte (Standard): Iron's spell_power/mana_regen/cooldown_reduction/casting_movespeed/spell_resist = 1, Apothic experience_gained/healing_received/mining_speed = 1, crit_damage = 1.5,
+Spell Power generic/haste und Spell Engine damage_taken = 100 (Prozentpunkte, daher roh=100), Goety/Ars = 0.
 """
 from collections import namedtuple
 
-E = namedtuple('E', 'label einheit faktor attr op pruefen', defaults=(False,))
+E = namedtuple('E', 'label einheit faktor attr op pruefen roh', defaults=(False, 1))
 S = namedtuple('S', 'label einheit faktor name')
 
 STUFEN = ['I', 'II', 'III', 'IV', 'V']
@@ -32,13 +34,13 @@ AESTE = [
                  [E('Maximales Leben (Vanilla)', '', 2, VA + 'max_health', 'addition')]),
          linien=[
              ('Kampfkunst', 'minecraft:diamond_sword', [3, 3, 4, 5, 6], 'Du teilst mehr Schaden aus, im Nah- und Fernkampf.',
-              [E('Nahkampfschaden (Vanilla)', '%', 1, 'puffish_skills:player.melee_damage', 'multiply_base'),
+              [E('Nahkampfschaden (Vanilla)', '%', 1, VA + 'attack_damage', 'multiply_total'),
                E('Fernkampfschaden (Ranged Weapon API)', '%', 1, 'ranged_weapon:damage', 'multiply_base', True)]),
              ('Zähigkeit', 'minecraft:golden_apple', [2, 2, 2, 4, 4], 'Du hältst mehr aus.',
               [E('Maximales Leben (Vanilla)', '', 1, VA + 'max_health', 'addition')]),
              ('Bossjäger', 'minecraft:wither_skeleton_skull', [4, 4, 5, 6, 8], 'Du triffst starke Gegner härter.',
               [S('Schaden gegen Bosse', '%', 1, 'bossdmg'),
-               E('Rüstungsdurchdringung (Apothic)', '%', 0.5, AP + 'armor_pierce', 'addition', True)]),
+               E('Rüstungsdurchdringung (Apothic)', '', 0.25, AP + 'armor_pierce', 'addition', True)]),
              ('Wanderer', 'minecraft:leather_boots', [2, 2, 3, 3, 5], 'Du bewegst dich schneller, auch beim Zaubern.',
               [E('Lauftempo (Vanilla)', '%', 1, VA + 'movement_speed', 'multiply_base'),
                E("Zaubern in Bewegung (Iron's Spells)", '%', 1, IS + 'casting_movespeed', 'addition', True)]),
@@ -57,23 +59,23 @@ AESTE = [
                E('Seelen-Rabatt (Goety)', '%', 0.3, GO + 'soul_discount', 'addition', True)]),
              ('Fließende Energie', 'minecraft:glowstone_dust', [5, 5, 6, 7, 9], 'Das Mana lädt sich schneller auf.',
               [E("Mana-Regeneration (Iron's Spells)", '%', 1, IS + 'mana_regen', 'multiply_base'),
-               E('Mana-Regeneration (Ars Nouveau)', '%', 1, AN + 'mana_regen', 'addition', True),
+               E('Mana-Regeneration (Ars Nouveau)', '', 0.2, AN + 'mana_regen', 'addition', True),
                E('Zaubergeschwindigkeit (Goety)', '%', 1, GO + 'casting_speed', 'addition', True)]),
              ('Zauberkraft', 'minecraft:enchanted_book', [3, 4, 5, 6, 8], 'Deine Zauber treffen härter.',
               [E("Zauberstärke (Iron's Spells)", '%', 1, IS + 'spell_power', 'multiply_base'),
-               E('Zauberstärke (Spell Power, Paladine & Co.)', '%', 1, SP + 'generic', 'multiply_base', True),
-               E('Zauberpotenz (Goety)', '%', 1, GO + 'spell_potency', 'addition', True),
-               E('Zauberschaden (Ars Nouveau)', '%', 1, AN + 'spell_damage', 'addition', True)]),
+               E('Zauberstärke (Spell Power, Paladine & Co.)', '%', 1, SP + 'generic', 'addition', True, 100),
+               E('Zauberpotenz (Goety)', '', 0.1, GO + 'spell_potency', 'addition', True),
+               E('Zauberschaden (Ars Nouveau)', '', 0.2, AN + 'spell_damage', 'addition', True)]),
              ('Konzentration', 'minecraft:clock', [2, 3, 3, 4, 5], 'Zauber sind schneller wieder bereit.',
               [E("Abklingzeit (Iron's Spells)", '%', 1, IS + 'cooldown_reduction', 'multiply_base'),
                E('Abklingzeit (Goety)', '%', 1, GO + 'cooldown_discount', 'addition', True),
-               E('Zaubertempo (Spell Power)', '%', 1, SP + 'haste', 'multiply_base', True)]),
+               E('Zaubertempo (Spell Power)', '%', 1, SP + 'haste', 'addition', True, 100)]),
          ],
          gipfel=('Chronicle-Magier', 'Dein Zauberschaden steigt in allen Magiesystemen.', 'irons_spellbooks:legendary_ink',
                  [E("Zauberstärke (Iron's Spells)", '%', 20, IS + 'spell_power', 'multiply_base'),
-                  E('Zauberstärke (Spell Power, Paladine & Co.)', '%', 20, SP + 'generic', 'multiply_base', True),
-                  E('Zauberpotenz (Goety)', '%', 20, GO + 'spell_potency', 'addition', True),
-                  E('Zauberschaden (Ars Nouveau)', '%', 20, AN + 'spell_damage', 'addition', True)])),
+                  E('Zauberstärke (Spell Power, Paladine & Co.)', '%', 20, SP + 'generic', 'addition', True, 100),
+                  E('Zauberpotenz (Goety)', '', 2, GO + 'spell_potency', 'addition', True),
+                  E('Zauberschaden (Ars Nouveau)', '', 3, AN + 'spell_damage', 'addition', True)])),
     dict(id='handwerk', name='Handwerk', winkel=54,
          wurzel=('Fleißige Hände', 'Alles geht etwas leichter von der Hand.', 'minecraft:crafting_table',
                  [E('Erfahrung (Apothic)', '%', 3, AP + 'experience_gained', 'addition', True)]),
@@ -102,20 +104,20 @@ AESTE = [
                E('Rückstoßresistenz (Vanilla)', '%', 5, VA + 'knockback_resistance', 'addition')]),
              ('Flink', 'minecraft:feather', [3, 3, 4, 5, 6], 'Du weichst aus und fällst weicher.',
               [E('Ausweichen (Apothic)', '%', 1, AP + 'dodge_chance', 'addition', True),
-               E('Weniger Fallschaden (Vanilla)', '%', 4, VA + 'fall_damage_multiplier', 'multiply_base', True)]),
+               E('Weniger Fallschaden (Vanilla)', '%', 4, VA + 'fall_damage_multiplier', 'addition', True, -1)]),
              ('Widerstand', 'minecraft:magma_cream', [4, 4, 5, 6, 8], 'Weniger Schaden durch Magie in allen Systemen.',
               [E("Zauberresistenz (Iron's Spells)", '%', 1, IS + 'spell_resist', 'multiply_base'),
-               E('Zauberresistenz (Spell Power)', '%', 1, SP + 'resistance.generic', 'addition', True)]),
+               E('Zauberresistenz (Spell Power)', '%', 1, SP + 'resistance.generic', 'addition', True, 100)]),
          ],
          gipfel=('Chronicle-Wächter', 'Fast nichts bringt dich mehr aus der Ruhe.', 'minecraft:totem_of_undying',
-                 [E('Erlittener Schaden (Spell Engine)', '%', -10, 'spell_engine:damage_taken', 'multiply_base', True),
+                 [E('Erlittener Schaden (Spell Engine)', '%', -10, 'spell_engine:damage_taken', 'addition', True, 100),
                   E('Rüstung (Vanilla)', '', 2, VA + 'armor', 'addition')])),
     dict(id='technik', name='Technik', winkel=198,
          wurzel=('Geübte Hände', 'Maschinen und Werkzeuge gehorchen dir.', 'minecraft:iron_pickaxe',
-                 [E('Abbautempo (Vanilla)', '%', 3, 'puffish_skills:player.mining_speed', 'multiply_base')]),
+                 [E('Abbautempo (Vanilla)', '%', 3, PL + 'mining_efficiency', 'addition', False, 10)]),
          linien=[
              ('Schürfer', 'minecraft:diamond_pickaxe', [3, 4, 5, 6, 8], 'Du baust schneller ab.',
-              [E('Abbautempo (Vanilla)', '%', 1, 'puffish_skills:player.mining_speed', 'multiply_base'),
+              [E('Abbautempo (Vanilla)', '%', 1, PL + 'mining_efficiency', 'addition', False, 10),
                E('Abbautempo (Apothic)', '%', 1, AP + 'mining_speed', 'addition', True)]),
              ('Reichweite', 'minecraft:spyglass', [0.5, 0.5, 0.5, 1, 1], 'Du erreichst Blöcke und Gegner weiter weg.',
               [E('Reichweite Blöcke (Vanilla)', '', 1, PL + 'block_interaction_range', 'addition'),
@@ -123,11 +125,11 @@ AESTE = [
              ('Stabile Werkzeuge', 'minecraft:anvil', [10, 10, 15, 15, 20], 'Werkzeuge halten länger.',
               [S('Haltbarkeit', '%', 1, 'durability')]),
              ('Tiefseetechnik', 'minecraft:heart_of_the_sea', [4, 4, 6, 6, 10], 'Du arbeitest unter Wasser wie an Land.',
-              [E('Abbautempo unter Wasser (Vanilla)', '%', 1, PL + 'submerged_mining_speed', 'multiply_base'),
+              [E('Abbautempo unter Wasser (Vanilla)', '%', 1, PL + 'submerged_mining_speed', 'addition'),
                E('Bewegung im Wasser (Vanilla)', '%', 1, VA + 'water_movement_efficiency', 'addition', True)]),
          ],
          gipfel=('Chronicle-Techniker', 'Die Maschinen arbeiten für dich.', 'create:precision_mechanism',
-                 [E('Abbautempo (Vanilla)', '%', 20, 'puffish_skills:player.mining_speed', 'multiply_base'),
+                 [E('Abbautempo (Vanilla)', '%', 20, PL + 'mining_efficiency', 'addition', False, 10),
                   E('Abbautempo (Apothic)', '%', 20, AP + 'mining_speed', 'addition', True),
                   E('Reichweite Blöcke (Vanilla)', '', 1, PL + 'block_interaction_range', 'addition')])),
 ]

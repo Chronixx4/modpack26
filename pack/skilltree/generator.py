@@ -32,7 +32,7 @@ def fmt(w, einheit):
 def reward(e, nid, wert):
     if isinstance(e, spec.S):
         return {'type': 'puffish_skills:tag', 'data': {'tag': f'chr.{e.name}.{nid}.{round(wert * 10) / 10}'}}
-    v = wert / 100 if e.einheit == '%' else wert
+    v = (wert / 100 if e.einheit == '%' else wert) * e.roh
     return {'type': 'puffish_skills:attribute',
             'data': {'attribute': e.attr, 'value': round(v, 4), 'operation': e.op}}
 
@@ -68,7 +68,6 @@ def erfahrung():
                             {'type': 'puffish_skills:test', 'data': {'nbt': '{Enchantments:[{id:"minecraft:silk_touch"}]}'}}]}
     leben = {'operations': [{'type': 'get_killed_living_entity'}, {'type': 'get_max_health'}]}
     return {
-        'enabled': True,
         'level_limit': 130,
         'experience_per_level': {'type': 'expression', 'data': {'expression': 'min(30 + level * 6, 400)'}},
         'sources': [
@@ -136,7 +135,7 @@ def main():
         knoten(gid, wx + math.cos(rad) * s, wy + math.sin(rad) * s,
                definition(gid, n, sym, eff, [e.faktor for e in eff], spec.GIPFEL_KOSTEN, 'challenge',
                           {'extra_description': t + ' Dafür müssen die beiden mittleren Linien voll ausgebaut sein.',
-                           'required_skills': [ende[1], ende[2]]}))
+                           'required_skills': 2}))
         kanten.append([ende[1], gid])
         kanten.append([ende[2], gid])
 

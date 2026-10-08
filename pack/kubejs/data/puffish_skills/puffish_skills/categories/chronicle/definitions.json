@@ -65,9 +65,9 @@
       {
         "type": "puffish_skills:attribute",
         "data": {
-          "attribute": "puffish_skills:player.melee_damage",
+          "attribute": "minecraft:generic.attack_damage",
           "value": 0.03,
-          "operation": "multiply_base"
+          "operation": "multiply_total"
         }
       },
       {
@@ -101,9 +101,9 @@
       {
         "type": "puffish_skills:attribute",
         "data": {
-          "attribute": "puffish_skills:player.melee_damage",
+          "attribute": "minecraft:generic.attack_damage",
           "value": 0.03,
-          "operation": "multiply_base"
+          "operation": "multiply_total"
         }
       },
       {
@@ -137,9 +137,9 @@
       {
         "type": "puffish_skills:attribute",
         "data": {
-          "attribute": "puffish_skills:player.melee_damage",
+          "attribute": "minecraft:generic.attack_damage",
           "value": 0.04,
-          "operation": "multiply_base"
+          "operation": "multiply_total"
         }
       },
       {
@@ -173,9 +173,9 @@
       {
         "type": "puffish_skills:attribute",
         "data": {
-          "attribute": "puffish_skills:player.melee_damage",
+          "attribute": "minecraft:generic.attack_damage",
           "value": 0.05,
-          "operation": "multiply_base"
+          "operation": "multiply_total"
         }
       },
       {
@@ -209,9 +209,9 @@
       {
         "type": "puffish_skills:attribute",
         "data": {
-          "attribute": "puffish_skills:player.melee_damage",
+          "attribute": "minecraft:generic.attack_damage",
           "value": 0.06,
-          "operation": "multiply_base"
+          "operation": "multiply_total"
         }
       },
       {
@@ -367,7 +367,7 @@
   },
   "abenteuer_2_0": {
     "title": "Bossjäger I",
-    "description": "+4% Schaden gegen Bosse\n+2% Rüstungsdurchdringung (Apothic)",
+    "description": "+4% Schaden gegen Bosse\n+1 Rüstungsdurchdringung (Apothic)",
     "icon": {
       "type": "item",
       "data": {
@@ -392,7 +392,7 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "apothic_attributes:armor_pierce",
-          "value": 0.02,
+          "value": 1.0,
           "operation": "addition"
         }
       }
@@ -401,7 +401,7 @@
   },
   "abenteuer_2_1": {
     "title": "Bossjäger II",
-    "description": "+4% Schaden gegen Bosse\n+2% Rüstungsdurchdringung (Apothic)",
+    "description": "+4% Schaden gegen Bosse\n+1 Rüstungsdurchdringung (Apothic)",
     "icon": {
       "type": "item",
       "data": {
@@ -426,7 +426,7 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "apothic_attributes:armor_pierce",
-          "value": 0.02,
+          "value": 1.0,
           "operation": "addition"
         }
       }
@@ -435,7 +435,7 @@
   },
   "abenteuer_2_2": {
     "title": "Bossjäger III",
-    "description": "+5% Schaden gegen Bosse\n+2.5% Rüstungsdurchdringung (Apothic)",
+    "description": "+5% Schaden gegen Bosse\n+1.2 Rüstungsdurchdringung (Apothic)",
     "icon": {
       "type": "item",
       "data": {
@@ -460,7 +460,7 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "apothic_attributes:armor_pierce",
-          "value": 0.025,
+          "value": 1.25,
           "operation": "addition"
         }
       }
@@ -469,7 +469,7 @@
   },
   "abenteuer_2_3": {
     "title": "Bossjäger IV",
-    "description": "+6% Schaden gegen Bosse\n+3% Rüstungsdurchdringung (Apothic)",
+    "description": "+6% Schaden gegen Bosse\n+1.5 Rüstungsdurchdringung (Apothic)",
     "icon": {
       "type": "item",
       "data": {
@@ -494,7 +494,7 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "apothic_attributes:armor_pierce",
-          "value": 0.03,
+          "value": 1.5,
           "operation": "addition"
         }
       }
@@ -503,7 +503,7 @@
   },
   "abenteuer_2_4": {
     "title": "Bossjäger V",
-    "description": "+8% Schaden gegen Bosse\n+4% Rüstungsdurchdringung (Apothic)",
+    "description": "+8% Schaden gegen Bosse\n+2 Rüstungsdurchdringung (Apothic)",
     "icon": {
       "type": "item",
       "data": {
@@ -528,7 +528,7 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "apothic_attributes:armor_pierce",
-          "value": 0.04,
+          "value": 2.0,
           "operation": "addition"
         }
       }
@@ -748,10 +748,7 @@
       }
     ],
     "extra_description": "Bosse verlieren ihren Schrecken. Dafür müssen die beiden mittleren Linien voll ausgebaut sein.",
-    "required_skills": [
-      "abenteuer_1_4",
-      "abenteuer_2_4"
-    ]
+    "required_skills": 2
   },
   "magie_w": {
     "title": "Erste Funken",
@@ -1011,7 +1008,7 @@
   },
   "magie_1_0": {
     "title": "Fließende Energie I",
-    "description": "+5% Mana-Regeneration (Iron's Spells)\n+5% Mana-Regeneration (Ars Nouveau)\n+5% Zaubergeschwindigkeit (Goety)",
+    "description": "+5% Mana-Regeneration (Iron's Spells)\n+1 Mana-Regeneration (Ars Nouveau)\n+5% Zaubergeschwindigkeit (Goety)",
     "icon": {
       "type": "item",
       "data": {
@@ -1038,7 +1035,7 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "ars_nouveau:ars_nouveau.perk.mana_regen",
-          "value": 0.05,
+          "value": 1.0,
           "operation": "addition"
         }
       },
@@ -1055,7 +1052,7 @@
   },
   "magie_1_1": {
     "title": "Fließende Energie II",
-    "description": "+5% Mana-Regeneration (Iron's Spells)\n+5% Mana-Regeneration (Ars Nouveau)\n+5% Zaubergeschwindigkeit (Goety)",
+    "description": "+5% Mana-Regeneration (Iron's Spells)\n+1 Mana-Regeneration (Ars Nouveau)\n+5% Zaubergeschwindigkeit (Goety)",
     "icon": {
       "type": "item",
       "data": {
@@ -1082,7 +1079,7 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "ars_nouveau:ars_nouveau.perk.mana_regen",
-          "value": 0.05,
+          "value": 1.0,
           "operation": "addition"
         }
       },
@@ -1099,7 +1096,7 @@
   },
   "magie_1_2": {
     "title": "Fließende Energie III",
-    "description": "+6% Mana-Regeneration (Iron's Spells)\n+6% Mana-Regeneration (Ars Nouveau)\n+6% Zaubergeschwindigkeit (Goety)",
+    "description": "+6% Mana-Regeneration (Iron's Spells)\n+1.2 Mana-Regeneration (Ars Nouveau)\n+6% Zaubergeschwindigkeit (Goety)",
     "icon": {
       "type": "item",
       "data": {
@@ -1126,7 +1123,7 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "ars_nouveau:ars_nouveau.perk.mana_regen",
-          "value": 0.06,
+          "value": 1.2,
           "operation": "addition"
         }
       },
@@ -1143,7 +1140,7 @@
   },
   "magie_1_3": {
     "title": "Fließende Energie IV",
-    "description": "+7% Mana-Regeneration (Iron's Spells)\n+7% Mana-Regeneration (Ars Nouveau)\n+7% Zaubergeschwindigkeit (Goety)",
+    "description": "+7% Mana-Regeneration (Iron's Spells)\n+1.4 Mana-Regeneration (Ars Nouveau)\n+7% Zaubergeschwindigkeit (Goety)",
     "icon": {
       "type": "item",
       "data": {
@@ -1170,7 +1167,7 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "ars_nouveau:ars_nouveau.perk.mana_regen",
-          "value": 0.07,
+          "value": 1.4,
           "operation": "addition"
         }
       },
@@ -1187,7 +1184,7 @@
   },
   "magie_1_4": {
     "title": "Fließende Energie V",
-    "description": "+9% Mana-Regeneration (Iron's Spells)\n+9% Mana-Regeneration (Ars Nouveau)\n+9% Zaubergeschwindigkeit (Goety)",
+    "description": "+9% Mana-Regeneration (Iron's Spells)\n+1.8 Mana-Regeneration (Ars Nouveau)\n+9% Zaubergeschwindigkeit (Goety)",
     "icon": {
       "type": "item",
       "data": {
@@ -1214,7 +1211,7 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "ars_nouveau:ars_nouveau.perk.mana_regen",
-          "value": 0.09,
+          "value": 1.8,
           "operation": "addition"
         }
       },
@@ -1231,7 +1228,7 @@
   },
   "magie_2_0": {
     "title": "Zauberkraft I",
-    "description": "+3% Zauberstärke (Iron's Spells)\n+3% Zauberstärke (Spell Power, Paladine & Co.)\n+3% Zauberpotenz (Goety)\n+3% Zauberschaden (Ars Nouveau)",
+    "description": "+3% Zauberstärke (Iron's Spells)\n+3% Zauberstärke (Spell Power, Paladine & Co.)\n+0.3 Zauberpotenz (Goety)\n+0.6 Zauberschaden (Ars Nouveau)",
     "icon": {
       "type": "item",
       "data": {
@@ -1258,15 +1255,15 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "spell_power:generic",
-          "value": 0.03,
-          "operation": "multiply_base"
+          "value": 3.0,
+          "operation": "addition"
         }
       },
       {
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "goety:spell_potency",
-          "value": 0.03,
+          "value": 0.3,
           "operation": "addition"
         }
       },
@@ -1274,7 +1271,7 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "ars_nouveau:ars_nouveau.perk.spell_damage",
-          "value": 0.03,
+          "value": 0.6,
           "operation": "addition"
         }
       }
@@ -1283,7 +1280,7 @@
   },
   "magie_2_1": {
     "title": "Zauberkraft II",
-    "description": "+4% Zauberstärke (Iron's Spells)\n+4% Zauberstärke (Spell Power, Paladine & Co.)\n+4% Zauberpotenz (Goety)\n+4% Zauberschaden (Ars Nouveau)",
+    "description": "+4% Zauberstärke (Iron's Spells)\n+4% Zauberstärke (Spell Power, Paladine & Co.)\n+0.4 Zauberpotenz (Goety)\n+0.8 Zauberschaden (Ars Nouveau)",
     "icon": {
       "type": "item",
       "data": {
@@ -1310,15 +1307,15 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "spell_power:generic",
-          "value": 0.04,
-          "operation": "multiply_base"
+          "value": 4.0,
+          "operation": "addition"
         }
       },
       {
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "goety:spell_potency",
-          "value": 0.04,
+          "value": 0.4,
           "operation": "addition"
         }
       },
@@ -1326,7 +1323,7 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "ars_nouveau:ars_nouveau.perk.spell_damage",
-          "value": 0.04,
+          "value": 0.8,
           "operation": "addition"
         }
       }
@@ -1335,7 +1332,7 @@
   },
   "magie_2_2": {
     "title": "Zauberkraft III",
-    "description": "+5% Zauberstärke (Iron's Spells)\n+5% Zauberstärke (Spell Power, Paladine & Co.)\n+5% Zauberpotenz (Goety)\n+5% Zauberschaden (Ars Nouveau)",
+    "description": "+5% Zauberstärke (Iron's Spells)\n+5% Zauberstärke (Spell Power, Paladine & Co.)\n+0.5 Zauberpotenz (Goety)\n+1 Zauberschaden (Ars Nouveau)",
     "icon": {
       "type": "item",
       "data": {
@@ -1362,15 +1359,15 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "spell_power:generic",
-          "value": 0.05,
-          "operation": "multiply_base"
+          "value": 5.0,
+          "operation": "addition"
         }
       },
       {
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "goety:spell_potency",
-          "value": 0.05,
+          "value": 0.5,
           "operation": "addition"
         }
       },
@@ -1378,7 +1375,7 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "ars_nouveau:ars_nouveau.perk.spell_damage",
-          "value": 0.05,
+          "value": 1.0,
           "operation": "addition"
         }
       }
@@ -1387,7 +1384,7 @@
   },
   "magie_2_3": {
     "title": "Zauberkraft IV",
-    "description": "+6% Zauberstärke (Iron's Spells)\n+6% Zauberstärke (Spell Power, Paladine & Co.)\n+6% Zauberpotenz (Goety)\n+6% Zauberschaden (Ars Nouveau)",
+    "description": "+6% Zauberstärke (Iron's Spells)\n+6% Zauberstärke (Spell Power, Paladine & Co.)\n+0.6 Zauberpotenz (Goety)\n+1.2 Zauberschaden (Ars Nouveau)",
     "icon": {
       "type": "item",
       "data": {
@@ -1414,15 +1411,15 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "spell_power:generic",
-          "value": 0.06,
-          "operation": "multiply_base"
+          "value": 6.0,
+          "operation": "addition"
         }
       },
       {
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "goety:spell_potency",
-          "value": 0.06,
+          "value": 0.6,
           "operation": "addition"
         }
       },
@@ -1430,7 +1427,7 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "ars_nouveau:ars_nouveau.perk.spell_damage",
-          "value": 0.06,
+          "value": 1.2,
           "operation": "addition"
         }
       }
@@ -1439,7 +1436,7 @@
   },
   "magie_2_4": {
     "title": "Zauberkraft V",
-    "description": "+8% Zauberstärke (Iron's Spells)\n+8% Zauberstärke (Spell Power, Paladine & Co.)\n+8% Zauberpotenz (Goety)\n+8% Zauberschaden (Ars Nouveau)",
+    "description": "+8% Zauberstärke (Iron's Spells)\n+8% Zauberstärke (Spell Power, Paladine & Co.)\n+0.8 Zauberpotenz (Goety)\n+1.6 Zauberschaden (Ars Nouveau)",
     "icon": {
       "type": "item",
       "data": {
@@ -1466,15 +1463,15 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "spell_power:generic",
-          "value": 0.08,
-          "operation": "multiply_base"
+          "value": 8.0,
+          "operation": "addition"
         }
       },
       {
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "goety:spell_potency",
-          "value": 0.08,
+          "value": 0.8,
           "operation": "addition"
         }
       },
@@ -1482,7 +1479,7 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "ars_nouveau:ars_nouveau.perk.spell_damage",
-          "value": 0.08,
+          "value": 1.6,
           "operation": "addition"
         }
       }
@@ -1526,8 +1523,8 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "spell_power:haste",
-          "value": 0.02,
-          "operation": "multiply_base"
+          "value": 2.0,
+          "operation": "addition"
         }
       }
     ],
@@ -1570,8 +1567,8 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "spell_power:haste",
-          "value": 0.03,
-          "operation": "multiply_base"
+          "value": 3.0,
+          "operation": "addition"
         }
       }
     ],
@@ -1614,8 +1611,8 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "spell_power:haste",
-          "value": 0.03,
-          "operation": "multiply_base"
+          "value": 3.0,
+          "operation": "addition"
         }
       }
     ],
@@ -1658,8 +1655,8 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "spell_power:haste",
-          "value": 0.04,
-          "operation": "multiply_base"
+          "value": 4.0,
+          "operation": "addition"
         }
       }
     ],
@@ -1702,8 +1699,8 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "spell_power:haste",
-          "value": 0.05,
-          "operation": "multiply_base"
+          "value": 5.0,
+          "operation": "addition"
         }
       }
     ],
@@ -1711,7 +1708,7 @@
   },
   "magie_g": {
     "title": "Chronicle-Magier",
-    "description": "+20% Zauberstärke (Iron's Spells)\n+20% Zauberstärke (Spell Power, Paladine & Co.)\n+20% Zauberpotenz (Goety)\n+20% Zauberschaden (Ars Nouveau)",
+    "description": "+20% Zauberstärke (Iron's Spells)\n+20% Zauberstärke (Spell Power, Paladine & Co.)\n+2 Zauberpotenz (Goety)\n+3 Zauberschaden (Ars Nouveau)",
     "icon": {
       "type": "item",
       "data": {
@@ -1738,15 +1735,15 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "spell_power:generic",
-          "value": 0.2,
-          "operation": "multiply_base"
+          "value": 20.0,
+          "operation": "addition"
         }
       },
       {
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "goety:spell_potency",
-          "value": 0.2,
+          "value": 2,
           "operation": "addition"
         }
       },
@@ -1754,16 +1751,13 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "ars_nouveau:ars_nouveau.perk.spell_damage",
-          "value": 0.2,
+          "value": 3,
           "operation": "addition"
         }
       }
     ],
     "extra_description": "Dein Zauberschaden steigt in allen Magiesystemen. Dafür müssen die beiden mittleren Linien voll ausgebaut sein.",
-    "required_skills": [
-      "magie_1_4",
-      "magie_2_4"
-    ]
+    "required_skills": 2
   },
   "handwerk_w": {
     "title": "Fleißige Hände",
@@ -2418,10 +2412,7 @@
       }
     ],
     "extra_description": "Deine Arbeit trägt Früchte. Dafür müssen die beiden mittleren Linien voll ausgebaut sein.",
-    "required_skills": [
-      "handwerk_1_4",
-      "handwerk_2_4"
-    ]
+    "required_skills": 2
   },
   "ueberleben_w": {
     "title": "Abgehärtet",
@@ -2800,8 +2791,8 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "minecraft:generic.fall_damage_multiplier",
-          "value": 0.12,
-          "operation": "multiply_base"
+          "value": -0.12,
+          "operation": "addition"
         }
       }
     ],
@@ -2836,8 +2827,8 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "minecraft:generic.fall_damage_multiplier",
-          "value": 0.12,
-          "operation": "multiply_base"
+          "value": -0.12,
+          "operation": "addition"
         }
       }
     ],
@@ -2872,8 +2863,8 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "minecraft:generic.fall_damage_multiplier",
-          "value": 0.16,
-          "operation": "multiply_base"
+          "value": -0.16,
+          "operation": "addition"
         }
       }
     ],
@@ -2908,8 +2899,8 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "minecraft:generic.fall_damage_multiplier",
-          "value": 0.2,
-          "operation": "multiply_base"
+          "value": -0.2,
+          "operation": "addition"
         }
       }
     ],
@@ -2944,8 +2935,8 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "minecraft:generic.fall_damage_multiplier",
-          "value": 0.24,
-          "operation": "multiply_base"
+          "value": -0.24,
+          "operation": "addition"
         }
       }
     ],
@@ -2980,7 +2971,7 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "spell_power:resistance.generic",
-          "value": 0.04,
+          "value": 4.0,
           "operation": "addition"
         }
       }
@@ -3016,7 +3007,7 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "spell_power:resistance.generic",
-          "value": 0.04,
+          "value": 4.0,
           "operation": "addition"
         }
       }
@@ -3052,7 +3043,7 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "spell_power:resistance.generic",
-          "value": 0.05,
+          "value": 5.0,
           "operation": "addition"
         }
       }
@@ -3088,7 +3079,7 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "spell_power:resistance.generic",
-          "value": 0.06,
+          "value": 6.0,
           "operation": "addition"
         }
       }
@@ -3124,7 +3115,7 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "spell_power:resistance.generic",
-          "value": 0.08,
+          "value": 8.0,
           "operation": "addition"
         }
       }
@@ -3152,8 +3143,8 @@
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "spell_engine:damage_taken",
-          "value": -0.1,
-          "operation": "multiply_base"
+          "value": -10.0,
+          "operation": "addition"
         }
       },
       {
@@ -3166,10 +3157,7 @@
       }
     ],
     "extra_description": "Fast nichts bringt dich mehr aus der Ruhe. Dafür müssen die beiden mittleren Linien voll ausgebaut sein.",
-    "required_skills": [
-      "ueberleben_1_4",
-      "ueberleben_2_4"
-    ]
+    "required_skills": 2
   },
   "technik_w": {
     "title": "Geübte Hände",
@@ -3191,9 +3179,9 @@
       {
         "type": "puffish_skills:attribute",
         "data": {
-          "attribute": "puffish_skills:player.mining_speed",
-          "value": 0.03,
-          "operation": "multiply_base"
+          "attribute": "minecraft:player.mining_efficiency",
+          "value": 0.3,
+          "operation": "addition"
         }
       }
     ],
@@ -3219,9 +3207,9 @@
       {
         "type": "puffish_skills:attribute",
         "data": {
-          "attribute": "puffish_skills:player.mining_speed",
-          "value": 0.03,
-          "operation": "multiply_base"
+          "attribute": "minecraft:player.mining_efficiency",
+          "value": 0.3,
+          "operation": "addition"
         }
       },
       {
@@ -3255,9 +3243,9 @@
       {
         "type": "puffish_skills:attribute",
         "data": {
-          "attribute": "puffish_skills:player.mining_speed",
-          "value": 0.04,
-          "operation": "multiply_base"
+          "attribute": "minecraft:player.mining_efficiency",
+          "value": 0.4,
+          "operation": "addition"
         }
       },
       {
@@ -3291,9 +3279,9 @@
       {
         "type": "puffish_skills:attribute",
         "data": {
-          "attribute": "puffish_skills:player.mining_speed",
-          "value": 0.05,
-          "operation": "multiply_base"
+          "attribute": "minecraft:player.mining_efficiency",
+          "value": 0.5,
+          "operation": "addition"
         }
       },
       {
@@ -3327,9 +3315,9 @@
       {
         "type": "puffish_skills:attribute",
         "data": {
-          "attribute": "puffish_skills:player.mining_speed",
-          "value": 0.06,
-          "operation": "multiply_base"
+          "attribute": "minecraft:player.mining_efficiency",
+          "value": 0.6,
+          "operation": "addition"
         }
       },
       {
@@ -3363,9 +3351,9 @@
       {
         "type": "puffish_skills:attribute",
         "data": {
-          "attribute": "puffish_skills:player.mining_speed",
-          "value": 0.08,
-          "operation": "multiply_base"
+          "attribute": "minecraft:player.mining_efficiency",
+          "value": 0.8,
+          "operation": "addition"
         }
       },
       {
@@ -3711,7 +3699,7 @@
         "data": {
           "attribute": "minecraft:player.submerged_mining_speed",
           "value": 0.04,
-          "operation": "multiply_base"
+          "operation": "addition"
         }
       },
       {
@@ -3747,7 +3735,7 @@
         "data": {
           "attribute": "minecraft:player.submerged_mining_speed",
           "value": 0.04,
-          "operation": "multiply_base"
+          "operation": "addition"
         }
       },
       {
@@ -3783,7 +3771,7 @@
         "data": {
           "attribute": "minecraft:player.submerged_mining_speed",
           "value": 0.06,
-          "operation": "multiply_base"
+          "operation": "addition"
         }
       },
       {
@@ -3819,7 +3807,7 @@
         "data": {
           "attribute": "minecraft:player.submerged_mining_speed",
           "value": 0.06,
-          "operation": "multiply_base"
+          "operation": "addition"
         }
       },
       {
@@ -3855,7 +3843,7 @@
         "data": {
           "attribute": "minecraft:player.submerged_mining_speed",
           "value": 0.1,
-          "operation": "multiply_base"
+          "operation": "addition"
         }
       },
       {
@@ -3889,9 +3877,9 @@
       {
         "type": "puffish_skills:attribute",
         "data": {
-          "attribute": "puffish_skills:player.mining_speed",
-          "value": 0.2,
-          "operation": "multiply_base"
+          "attribute": "minecraft:player.mining_efficiency",
+          "value": 2.0,
+          "operation": "addition"
         }
       },
       {
@@ -3912,9 +3900,6 @@
       }
     ],
     "extra_description": "Die Maschinen arbeiten für dich. Dafür müssen die beiden mittleren Linien voll ausgebaut sein.",
-    "required_skills": [
-      "technik_1_4",
-      "technik_2_4"
-    ]
+    "required_skills": 2
   }
 }
