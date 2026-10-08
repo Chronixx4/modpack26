@@ -1,4 +1,4 @@
-﻿Chronicle 0.9.13 - Modliste
+﻿Chronicle 0.9.14 - Modliste
 Minecraft 1.21.1, NeoForge 21.1.256   |   303 Mods inkl. Bibliotheken   |   Stand 2026-10-07
 
 == Performance und Grafik (18) ==

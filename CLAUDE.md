@@ -32,7 +32,7 @@ Kommunikation mit dem Nutzer: Deutsch, locker, kurz.
   - Modus `linear` (Quests gesperrt bis Vorgaenger fertig); Quests mit Kill/Dimension/Struktur/Biom setzt der Generator auf `flexible`, sonst zaehlen sie erst nach dem Freischalten. Abgabe-Quests (`abgabe=True`) verbrauchen Items. Belohnungen: XP, Items, Loot-Kisten `loot1`-`loot4` (`inhalt/loot.py`).
   - `pack/config/` landet in `overrides/config` (.mrpack) bzw. `config/` (beide ZIPs) und im lokalen Testserver. Der Servertest gibt die Zeile `Questbuch: Loaded ... quests` aus.
 - CurseForge-Jars holt das Skript automatisch aus `%USERPROFILE%\Downloads` (Dateinamen-Muster in `$cfPatterns`).
-- Aktuelle Version: **PACKVER 0.9.13** (in Arbeit, letztes Release 0.9.12). Bei jeder Änderung `$PACKVER` hochzählen.
+- Aktuelle Version: **PACKVER 0.9.14**. Bei jeder Änderung `$PACKVER` hochzählen.
 
 ## Mods, die nur auf CurseForge sind (liegen in curseforge-mods\ bzw. Downloads)
 Alle für 1.21.1 NeoForge. Download-URL-Schema: `https://www.curseforge.com/minecraft/mc-mods/<slug>/download/<fileId>`
@@ -90,7 +90,7 @@ CurseForge blockt Downloads per Skript, auch über die interne `/api/v1`. Diese 
 - 0.9.11: Pack heisst jetzt **Chronicle** (Name im .mrpack, Dateinamen `Chronicle-<ver>.*`, Release-Titel, MOTD, Questbuch-Titel, LIES-MICH).
 - 0.9.12 (Release v0.9.12, 2026-10-07): **Almost Unified** (Standard-Config: Prioritaet minecraft > create > immersiveengineering > mekanism; z. B. Stahl/Silber/Elektrum/Nickel/Uran werden zu IE). Quests, die Varianten anderer Mods verlangten (Mekanism-/Oritech-/Ad-Astra-Stahl, Occultism-Silber usw.), auf die IE-Items umgestellt. **Chronicle-Kern** (eigenes Endgame): KubeJS-Items `kubejs:technik_fragment`, `magie_fragment`, `abenteuer_fragment`, `chronicle_core` in `pack/kubejs/` (startup_scripts, Rezepte als JSON in data/kubejs/recipe, Texturen, Namen); der Kern im mechanischen Crafter (5x5). Questbuch-Finale: Fragmente + Kern vor `ende`. `pack/kubejs` landet in overrides/kubejs bzw. kubejs/ beider ZIPs. GitHub-Servertest OK (258 Mods, 374 s, `Loaded 35 chapters, 1235 quests`, keine ungueltigen Items, KubeJS-Items registriert). Ob die KubeJS-Rezepte laden, zeigt der Servertest nicht (Rezeptfehler werden gefiltert), also im Spiel per EMI pruefen.
 
-- 0.9.13 (fertig auf dem Arbeitsbranch, nicht released): Umsetzung von `PLAN-0.9.13.md`.
+- 0.9.13 (Release v0.9.13, 2026-10-07; GitHub-Servertest OK nach 334 s, 282 Server-Mods, `Loaded 38 chapters, 1419 quests`, keine ungueltigen Items): Umsetzung von `PLAN-0.9.13.md`.
   - EMI ersetzt durch **JEI**, EMI Loot durch **Just Enough Resources** (nur Client). Questtexte auf JEI umgestellt, die Schluessel `emi`/`emi_loot` bleiben.
   - **20 neue Mods:** Numismatics, TFMG, Mobile Packages, Pattern Schematics, Ironworks, Mechanical Extruder, Ultimate Factory, Create Factory, Train Perspective, Goety, End Remastered, Enderscape, L2 Hostility, Kobolds, Paladins & Priests, Shield Expansion, Grappling Hook, Naturalist, Tide, Serene Seasons. Dazu 6 Bibliotheken; insgesamt 303 Mods.
   - **Neuer Ordner `pack/defaultconfigs`** (landet in overrides/defaultconfigs und in beiden ZIPs). Darin ist L2 Hostility entschaerft: `dimensionFactor` 2, `allowLegendary` false. Die Datei gilt als Server-Config pro Welt und greift nur bei neuen Welten.
@@ -109,13 +109,15 @@ CurseForge blockt Downloads per Skript, auch über die interne `/api/v1`. Diese 
     - Kommt das Messing-Rezept wieder mit 2 Barren?
     - Greift die L2-Config in einer neuen Welt?
 
+- 0.9.14: Chronicle-Kern, Fragmente: Items per `StartupEvents.modifyCreativeTab` in den Tab "Zutaten" (ohne Tab fehlten sie in der JEI-Liste; `.group()` gibt es in KubeJS 7 nicht mehr und bricht den Start ab). Rezepte laden serverseitig korrekt (Pruefskript). **Startkiste** (`pack/kubejs/server_scripts/startkiste.js`): beim ersten Login Questbuch, Fleisch, Fackeln, Steinspitzhacke/-axt. **ModernFix `dynamic_resources`** an (`pack/config/modernfix-mixins.properties`), bei Grafikfehlern auf false. C2ME bewusst nicht (nur Alpha). Im Spiel pruefen: JEI zeigt Fragmente/Kern, Startkiste kommt genau einmal, keine fehlenden Modelle.
+
 ## Offene Aufgaben
-1. **0.9.12 im Client testen:** kurz in die Welt, auf Grafikfehler achten (More Culling, BadOptimizations seit 0.9.9). Dazu pruefen: Rezepte der drei Fragmente und des Chronicle-Kerns in EMI, Almost Unified (z. B. Mekanism-Stahl wird zu IE-Stahl), in einer neuen Welt keine doppelten Erze.
+1. **0.9.13 im Client testen:** kurz in eine neue Welt, auf Grafikfehler achten. Pruefen: Rezepte der drei Fragmente und des Chronicle-Kerns in JEI, Almost Unified (Mekanism-Stahl wird zu IE-Stahl), keine doppelten Erze, dazu die Punkte unter "Im Spiel pruefen" bei 0.9.13.
 2. **Questbuch im Spiel ansehen** (seit 0.9.8): Texte, Reihenfolge, Bilder. Aenderungen in `pack/quests/inhalt/*.py` machen (nicht im Editiermodus, sonst ueberschreibt der naechste Generatorlauf sie).
 3. **Server auf dem Heimserver** einrichten: ZimaOS, Marvin hat dort schon ein eigenes Docker-Panel fuer mehrere Minecraft-Server (keine docker-compose noetig). Dafuer das `-Server.zip` aus dem Release nehmen (12 GB RAM fuer Minecraft, Container mind. 14 GB, Java 21, Ports 25565/TCP und 24454/UDP fuer Voice Chat), danach mit Chunky vorgenerieren.
 4. Erst danach die **richtige Welt** starten, damit Strukturen und Biome ueberall generiert werden.
 5. (erledigt in 0.9.13: EvilCraft-Questtexte aus dem Handbuch)
-6. **0.9.13 umgesetzt** (siehe Stand). Als Naechstes kommt der Release, wenn Marvin "mach den Release" sagt. Danach im Spiel die Punkte unter "Im Spiel pruefen" bei 0.9.13 abhaken.
+6. (erledigt: 0.9.13 released)
 7. Optional: Shader wieder einbauen, sobald es eine Iris-Version gibt, die zu Sodium 0.8 passt.
 
 ## Mod-Bauplan (Übersicht)
