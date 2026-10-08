@@ -1,0 +1,13 @@
+{
+  "unlocked_by_default": true,
+  "starting_points": 3,
+  "title": "Chronicle",
+  "description": "Dein Weg durch Chronicle. Punkte bekommst du durch Kämpfe, Erze und Quests.",
+  "icon": {
+    "type": "item",
+    "data": {
+      "item": "kubejs:chronicle_core"
+    }
+  },
+  "background": "textures/gui/advancements/backgrounds/stone.png"
+}

@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
   "game": "minecraft",
-  "versionId": "0.9.15",
+  "versionId": "0.9.16",
   "name": "Chronicle",
   "files": [
     {
@@ -4383,6 +4383,21 @@
         "https://cdn.modrinth.com/data/hC1xYvnS/versions/L0pdVzc7/tfmg-1.21.1-1.3.2a-community.jar"
       ],
       "fileSize": 5534993
+    },
+    {
+      "path": "mods/puffish_skills-0.19.1-1.21-neoforge.jar",
+      "hashes": {
+        "sha1": "9e0b16f97427fc7b0049fa3f518579cdc9fe59f9",
+        "sha512": "2b5e11f8677b472d971cab3aa36e6e9267d04065ff40b70f537ace85f704b5d6e99b259b02776618d69592f26d01d5ea6dea5a241a1c5a3a4f5cde08ee492008"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/hqQqvaa4/versions/uqAz8XFU/puffish_skills-0.19.1-1.21-neoforge.jar"
+      ],
+      "fileSize": 653105
     }
   ],
   "dependencies": {

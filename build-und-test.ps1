@@ -9,7 +9,7 @@ $ProgressPreference = 'SilentlyContinue'
 $MC      = '1.21.1'
 $LOADER  = 'neoforge'
 $PACK    = 'Chronicle'
-$PACKVER = '0.9.15'
+$PACKVER = '0.9.16'
 $RAM     = '8G'
 $TIMEOUT_MIN = 20
 
@@ -157,6 +157,7 @@ ftb-backups-2|FTB Backups 2
 open-parties-and-claims|Open Parties and Claims
 simple-voice-chat|Simple Voice Chat
 kubejs|KubeJS
+skills|Pufferfish's Skills
 # Lagerung und Rucksaecke
 sophisticated-backpacks|Sophisticated Backpacks
 sophisticated-storage|Sophisticated Storage
