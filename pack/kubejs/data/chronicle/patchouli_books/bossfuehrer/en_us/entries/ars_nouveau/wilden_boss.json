@@ -1,0 +1,14 @@
+{
+  "name": "Wilden-Chimäre",
+  "category": "ars_nouveau",
+  "icon": "ars_nouveau:wilden_horn",
+  "sortnum": 1,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Wilden-Chimäre",
+      "text": "$(l)Ars Nouveau$()$(br2)$(c)Der Boss von Ars Nouveau.$() Er wechselt zwischen Angriffsphasen. Bring gute Rüstung und Heilung mit.$(br2)Er lässt den $(e)Wilden-Tribut$() fallen."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Walkürenkönigin",
+  "category": "aether",
+  "icon": "aether:gold_dungeon_key",
+  "sortnum": 2,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Walkürenkönigin",
+      "text": "$(l)Aether$()$(br2)Die Königin der Walküren wohnt im Silber-Dungeon. Sie kämpft erst, wenn du genug $(e)Siegesmedaillen$() von ihren Walküren hast."
+    }
+  ]
+}

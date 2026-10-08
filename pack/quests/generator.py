@@ -129,10 +129,36 @@ def reward_nbt(r, rid, chk, wo, tabellen):
     raise SystemExit(f'{wo}: unbekannte Belohnung {r!r}')
 
 
+def reduziert(quests):
+    """Abhaengigkeiten ohne die, die ueber eine andere Abhaengigkeit schon erfuellt sind (nur im Kapitel)."""
+    keys = {q['key'] for q in quests}
+    direkt = {q['key']: [d for d in q['nach'] if d in keys] for q in quests}
+    memo = {}
+
+    def vor(k):
+        if k not in memo:
+            memo[k] = set()
+            for d in direkt[k]:
+                memo[k] |= {d} | vor(d)
+        return memo[k]
+
+    aus = {}
+    for q in quests:
+        if q.get('eine'):
+            aus[q['key']] = list(q['nach'])
+            continue
+        ueber = set()
+        for d in direkt[q['key']]:
+            ueber |= vor(d)
+        aus[q['key']] = [d for d in q['nach'] if d not in ueber]
+    return aus
+
+
 def layout(quests):
     """Spalte = Tiefe (laengster Pfad im Kapitel), Zeile nach Eltern (Schwerpunkt), Hauptlinie auf 0."""
     keys = {q['key'] for q in quests}
-    nach = {q['key']: [d for d in q['nach'] if d in keys] for q in quests}
+    rd = reduziert(quests)
+    nach = {q['key']: [d for d in rd[q['key']] if d in keys] for q in quests}
     tiefe = {}
 
     def t(k, stack=()):
@@ -180,7 +206,75 @@ def layout(quests):
         pos = [c * DY for c in sorted(belegt)]
         for p, (_, _, _, q) in zip(pos, wunsch):
             y[q['key']] = p
+    frei_keys = {q['key'] for q in quests if not q.get('haupt')}
+    _entwirren(nach, tiefe, y, frei_keys)
     return {q['key']: (tiefe[q['key']] * DX, y[q['key']]) for q in quests}
+
+
+def _kreuzt(e1, e2):
+    (a, b), (c, d) = e1, e2
+    if a == c or b == d or a == d or b == c:
+        return False
+
+    def o(p, q, r):
+        return (q[0] - p[0]) * (r[1] - p[1]) - (q[1] - p[1]) * (r[0] - p[0])
+    return o(a, b, c) * o(a, b, d) < 0 and o(c, d, a) * o(c, d, b) < 0
+
+
+def _entwirren(nach, tiefe, y, frei):
+    """Lokale Suche: freie Quests auf andere Zeilen der eigenen Spalte schieben oder tauschen,
+    solange es weniger Linienkreuzungen (und kuerzere Linien) gibt."""
+    kanten = [(d, k) for k, ds in nach.items() for d in ds]
+    inz = defaultdict(list)
+    for e in kanten:
+        inz[e[0]].append(e)
+        inz[e[1]].append(e)
+
+    def pt(k):
+        return (tiefe[k], y[k])
+
+    def kosten(keys):
+        mine = {e for k in keys for e in inz[k]}
+        c = 0
+        for e in mine:
+            c += 0.05 * abs(y[e[0]] - y[e[1]])
+            for f in kanten:
+                if f not in mine or f > e:
+                    if _kreuzt((pt(e[0]), pt(e[1])), (pt(f[0]), pt(f[1]))):
+                        c += 1
+        return c
+
+    spalten = defaultdict(list)
+    for k in y:
+        spalten[tiefe[k]].append(k)
+    for _ in range(4):
+        besser = False
+        for k in sorted(frei):
+            col = spalten[tiefe[k]]
+            alt = y[k]
+            belegt = {y[o]: o for o in col}
+            lo, hi = min(belegt), max(belegt)
+            for cand in [alt + i * DY for i in range(-12, 13) if i]:
+                if cand < lo - 3 * DY or cand > hi + 3 * DY:
+                    continue
+                o = next((v for yy, v in belegt.items() if abs(yy - cand) < 1e-6), None)
+                if o is not None and o not in frei:
+                    continue
+                keys = [k] + ([o] if o else [])
+                vor = kosten(keys)
+                y[k] = cand
+                if o:
+                    y[o] = alt
+                if kosten(keys) < vor - 1e-9:
+                    belegt = {y[x]: x for x in col}
+                    alt = cand
+                    besser = True
+                else:
+                    y[k] = alt
+                    if o:
+                        y[o] = cand
+        if not besser:
+            break
 
 
 def items_von(q):
@@ -402,6 +496,7 @@ def main():
                     links.append({'id': hid(k['datei'], 'link', d), 'linked_quest': hid(kap, key),
                                   'shape': 'rsquare', 'size': 1.0, 'x': float(lx), 'y': float(ly)})
 
+        rd = reduziert(k['quests'])
         quests = []
         for q in k['quests']:
             wo = f"{k['datei']}/{q['key']}"
@@ -411,9 +506,9 @@ def main():
             rewards = rewards if isinstance(rewards, list) else [rewards]
             x, y = pos[q['key']]
             qn = {}
-            if q['nach']:
-                qn['dependencies'] = [hid(*d.split('/', 1)) if '/' in d else hid(k['datei'], d) for d in q['nach'] if d not in fremd]
-                if q.get('eine') and len(q['nach']) > 1:
+            if rd[q['key']]:
+                qn['dependencies'] = [hid(*d.split('/', 1)) if '/' in d else hid(k['datei'], d) for d in rd[q['key']] if d not in fremd]
+                if q.get('eine') and len(rd[q['key']]) > 1:
                     qn['dependency_requirement'] = 'one_completed'
             qn['id'] = qid
             if q.get('optional'):

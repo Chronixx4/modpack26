@@ -1,0 +1,14 @@
+{
+  "name": "Leithund",
+  "category": "born_in_chaos_v1",
+  "icon": "born_in_chaos_v1:dire_hound_leader_spawn_egg",
+  "sortnum": 1,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Leithund",
+      "text": "$(l)Born in Chaos$()$(br2)Born in Chaos bringt finstere Gegner mit. Der Anführer der Schreckenshunde ist der Einstieg.$(br2)Er lässt seinen $(e)Fangzahn$() fallen."
+    }
+  ]
+}

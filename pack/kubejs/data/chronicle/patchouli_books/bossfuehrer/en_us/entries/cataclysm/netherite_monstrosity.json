@@ -1,0 +1,14 @@
+{
+  "name": "Netherit-Monstrosität",
+  "category": "cataclysm",
+  "icon": "cataclysm:ignitium_ingot",
+  "sortnum": 1,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Netherit-Monstrosität",
+      "text": "$(l)Cataclysm$()$(br2)Ab hier kommt $(c)L_Ender's Cataclysm$(). Die Monstrosität bewacht die Seelenschmiede im Nether.$(br2)Die Augen von Cataclysm funktionieren wie ein Enderauge: werfen, folgen, Struktur finden. Hier brauchst du das $(e)Auge der Monstrosität$()."
+    }
+  ]
+}

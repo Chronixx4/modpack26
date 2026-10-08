@@ -24,7 +24,7 @@
 			shape: "rsquare"
 			size: 1.0d
 			x: 6.0d
-			y: -1.5d
+			y: -3.0d
 		}
 		{
 			id: "78A571C77B433A86"
@@ -32,7 +32,7 @@
 			shape: "rsquare"
 			size: 1.0d
 			x: 10.0d
-			y: -1.5d
+			y: -3.0d
 		}
 	]
 	quests: [
@@ -113,7 +113,7 @@
 				}
 			]
 			x: 2.0d
-			y: -1.5d
+			y: -4.5d
 		}
 		{
 			dependencies: [
@@ -190,7 +190,7 @@
 				}
 			]
 			x: 6.0d
-			y: -3.0d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -394,7 +394,7 @@
 				}
 			]
 			x: 8.0d
-			y: 3.0d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -429,7 +429,7 @@
 				}
 			]
 			x: 10.0d
-			y: 3.0d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -454,7 +454,7 @@
 				}
 			]
 			x: 12.0d
-			y: 3.0d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -627,7 +627,7 @@
 				}
 			]
 			x: 12.0d
-			y: -1.5d
+			y: -4.5d
 		}
 		{
 			dependencies: [
@@ -706,7 +706,7 @@
 				}
 			]
 			x: 14.0d
-			y: 1.5d
+			y: -4.5d
 		}
 		{
 			dependencies: [
@@ -906,7 +906,7 @@
 				}
 			]
 			x: 20.0d
-			y: 1.5d
+			y: 4.5d
 		}
 		{
 			dependencies: [
@@ -1060,7 +1060,7 @@
 				}
 			]
 			x: 10.0d
-			y: -3.0d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -1087,7 +1087,7 @@
 				}
 			]
 			x: 8.0d
-			y: -3.0d
+			y: -1.5d
 		}
 		{
 			dependencies: [

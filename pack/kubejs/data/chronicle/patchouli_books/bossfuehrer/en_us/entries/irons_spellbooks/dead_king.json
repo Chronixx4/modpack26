@@ -1,0 +1,14 @@
+{
+  "name": "Der tote König",
+  "category": "irons_spellbooks",
+  "icon": "irons_spellbooks:arcane_essence",
+  "sortnum": 1,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Der tote König",
+      "text": "$(l)Iron's Spells 'n Spellbooks$()$(br2)$(c)Ein harter Boss.$() Der tote König wacht in alten Gemäuern über sein Grab. Bring Heilung und gute Rüstung."
+    }
+  ]
+}

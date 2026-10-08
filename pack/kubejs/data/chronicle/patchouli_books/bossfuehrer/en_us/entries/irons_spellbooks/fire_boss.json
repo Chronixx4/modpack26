@@ -1,0 +1,14 @@
+{
+  "name": "Feuer-Boss",
+  "category": "irons_spellbooks",
+  "icon": "irons_spellbooks:arcane_essence",
+  "sortnum": 6,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Feuer-Boss",
+      "text": "$(l)Iron's Spells 'n Spellbooks$()$(br2)$(c)Ein Feuer-Boss aus Iron's Spells.$() Feuerresistenz-Tränke helfen sehr."
+    }
+  ]
+}

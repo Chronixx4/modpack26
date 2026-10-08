@@ -1,0 +1,14 @@
+{
+  "name": "Piratenkapitän",
+  "category": "block_factorys_bosses",
+  "icon": "minecraft:totem_of_undying",
+  "sortnum": 3,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Piratenkapitän",
+      "text": "$(l)Block Factory's Bosses$()$(br2)Der Kapitän der Piraten von Bosses'Rise hat eine ganze Mannschaft dabei."
+    }
+  ]
+}

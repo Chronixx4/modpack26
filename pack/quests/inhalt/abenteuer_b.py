@@ -514,16 +514,16 @@ kapitel('finale', '&cDas große Finale', 'minecraft:dragon_egg', 'Ein letztes Zi
 
     # Chronicle-Kern: drei Fragmente, im mechanischen Crafter von Create zusammengesetzt (pack/kubejs)
     Q('frag_technik', 'Technik-Fragment', 'kubejs:technik_fragment',
-      'Das erste Stück des &6Chronicle-Kerns&r. Dafür brauchst du Antimaterie, einen erweckten Kern, eine Singularität, eine 256M-Komponente, Nitro-Kristall und einen Präzisionsmechanismus. Das Rezept zeigt dir JEI.',
+      'Das erste Stück des &6Chronicle-Kerns&r. Dafür brauchst du Antimaterie, einen erweckten Kern, eine Singularität, eine 256M-Komponente, Nitro-Kristall und einen Präzisionsmechanismus. Das Rezept zeigt dir JEI (Taste R auf dem Item).\n\n&7Werkbank 3x3:&r\nAntimaterie-Pellet | Erweckter Kern | Antimaterie-Pellet\nSingularität | 256M-Komponente | Nitro-Kristall\nAntimaterie-Pellet | Präzisionsmechanismus | Antimaterie-Pellet',
       nach=['draconic'], belohnung=3, haupt=True),
     Q('frag_magie', 'Magie-Fragment', 'kubejs:magie_fragment',
-      'Das magische Stück: Insanium, ein Wilden-Tribut, Iesnium, legendäre Tinte, Stellarit und Drachenhaut. Das Rezept zeigt dir JEI.',
+      'Das magische Stück: Insanium, ein Wilden-Tribut, Iesnium, legendäre Tinte, Stellarit und Drachenhaut. Das Rezept zeigt dir JEI (Taste R auf dem Item).\n\n&7Werkbank 3x3:&r\nInsanium-Barren | Wilden-Tribut | Insanium-Barren\nIesnium-Barren | Legendäre Tinte | Stellarit-Stück\nInsanium-Barren | Drachenhaut | Insanium-Barren',
       nach=['mystical'], belohnung=3, zeile=-2),
     Q('frag_abenteuer', 'Abenteuer-Fragment', 'kubejs:abenteuer_fragment',
-      'Hierfür musst du überall gewesen sein: Ignitium, Drachenstahl, feuriger Barren, verzaubertes Gravitit, Netherstern, Herz der Tiefe, Unobtainium und reine Dunkelheit. Das Rezept zeigt dir JEI.',
+      'Hierfür musst du überall gewesen sein: Ignitium, Drachenstahl, feuriger Barren, verzaubertes Gravitit, Netherstern, Herz der Tiefe, Unobtainium und reine Dunkelheit. Das Rezept zeigt dir JEI (Taste R auf dem Item).\n\n&7Werkbank 3x3:&r\nIgnitium | Drachenstahl (Feuer) | Feuriger Barren\nVerz. Gravitit | Netherstern | Herz der Tiefe\nUnobtainium | Reine Dunkelheit | Unobtainium',
       nach=['allthemodium'], belohnung=3, zeile=2),
     Q('kern', 'Der Chronicle-Kern', 'kubejs:chronicle_core', [
-        'Das Herz dieses Packs. Die drei Fragmente, ein Chaotischer Kern, Nethersterne, Präzisionsmechanismen und robuste Bleche werden im &emechanischen Crafter&r von Create zusammengesetzt (5x5).',
+        'Das Herz dieses Packs. Die drei Fragmente, ein Chaotischer Kern, Nethersterne, Präzisionsmechanismen und robuste Bleche werden im &emechanischen Crafter&r von Create zusammengesetzt (5x5).\n\n&7Muster (T=Technik, M=Magie, A=Abenteuer, S=Robustes Blech, P=Präzisionsmechanismus, N=Netherstern, C=Chaotischer Kern):&r\n_ S P S _\nS T N M S\nP N C N P\nS A N A S\n_ S P S _',
         'Wer den Kern in den Händen hält, hat Chronicle wirklich durchgespielt.',
     ], nach=['frag_technik', 'frag_magie', 'frag_abenteuer'], belohnung='loot4', haupt=True, form='hexagon', gross=True),
     Q('ende', 'Pack geschafft!', 'check',

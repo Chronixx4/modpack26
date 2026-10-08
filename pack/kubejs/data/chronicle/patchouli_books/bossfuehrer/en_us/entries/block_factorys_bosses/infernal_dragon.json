@@ -1,0 +1,14 @@
+{
+  "name": "Ashlord",
+  "category": "block_factorys_bosses",
+  "icon": "minecraft:totem_of_undying",
+  "sortnum": 6,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Ashlord",
+      "text": "$(l)Block Factory's Bosses$()$(br2)Der höllische Drache ist der stärkste Boss von Bosses'Rise. Feuerschutz ist Pflicht."
+    }
+  ]
+}

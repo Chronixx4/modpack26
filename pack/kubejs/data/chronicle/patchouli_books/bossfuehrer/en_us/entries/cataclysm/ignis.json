@@ -1,0 +1,14 @@
+{
+  "name": "Ignis",
+  "category": "cataclysm",
+  "icon": "cataclysm:ignitium_ingot",
+  "sortnum": 2,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Ignis",
+      "text": "$(l)Cataclysm$()$(br2)Der brennende Ritter wartet in der Brennenden Arena im Nether. Das $(e)Flammenauge$() zeigt dir den Weg.$(br2)Er hinterlässt Ignitium, eines der besten Materialien im Pack."
+    }
+  ]
+}

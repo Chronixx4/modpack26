@@ -1,0 +1,14 @@
+{
+  "name": "Nerakyss, der Kraken",
+  "category": "block_factorys_bosses",
+  "icon": "minecraft:totem_of_undying",
+  "sortnum": 4,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Nerakyss, der Kraken",
+      "text": "$(l)Block Factory's Bosses$()$(br2)Der Kraken greift mit seinen Tentakeln aus dem Wasser an."
+    }
+  ]
+}

@@ -1399,7 +1399,7 @@
 	]
 	quest.1C7E2076C8239B60.title: "Marmeladenbrötchen"
 	quest.1C831C87DBB31067.quest_desc: [
-		"Das Herz dieses Packs. Die drei Fragmente, ein Chaotischer Kern, Nethersterne, Präzisionsmechanismen und robuste Bleche werden im &emechanischen Crafter&r von Create zusammengesetzt (5x5)."
+		"Das Herz dieses Packs. Die drei Fragmente, ein Chaotischer Kern, Nethersterne, Präzisionsmechanismen und robuste Bleche werden im &emechanischen Crafter&r von Create zusammengesetzt (5x5).\n\n&7Muster (T=Technik, M=Magie, A=Abenteuer, S=Robustes Blech, P=Präzisionsmechanismus, N=Netherstern, C=Chaotischer Kern):&r\n_ S P S _\nS T N M S\nP N C N P\nS A N A S\n_ S P S _"
 		""
 		"Wer den Kern in den Händen hält, hat Chronicle wirklich durchgespielt."
 	]
@@ -1909,7 +1909,7 @@
 	]
 	quest.323D79A46F9B269E.title: "Flüssigkeits-Fabrikanzeige"
 	quest.3251D03D393EC56D.quest_desc: [
-		"Das erste Stück des &6Chronicle-Kerns&r. Dafür brauchst du Antimaterie, einen erweckten Kern, eine Singularität, eine 256M-Komponente, Nitro-Kristall und einen Präzisionsmechanismus. Das Rezept zeigt dir JEI."
+		"Das erste Stück des &6Chronicle-Kerns&r. Dafür brauchst du Antimaterie, einen erweckten Kern, eine Singularität, eine 256M-Komponente, Nitro-Kristall und einen Präzisionsmechanismus. Das Rezept zeigt dir JEI (Taste R auf dem Item).\n\n&7Werkbank 3x3:&r\nAntimaterie-Pellet | Erweckter Kern | Antimaterie-Pellet\nSingularität | 256M-Komponente | Nitro-Kristall\nAntimaterie-Pellet | Präzisionsmechanismus | Antimaterie-Pellet"
 	]
 	quest.3251D03D393EC56D.title: "Technik-Fragment"
 	quest.32542EDC850E666B.quest_desc: [
@@ -2157,7 +2157,7 @@
 	]
 	quest.34C763F945B8B4E5.title: "Die Burg"
 	quest.34D1154D4D07116B.quest_desc: [
-		"Hierfür musst du überall gewesen sein: Ignitium, Drachenstahl, feuriger Barren, verzaubertes Gravitit, Netherstern, Herz der Tiefe, Unobtainium und reine Dunkelheit. Das Rezept zeigt dir JEI."
+		"Hierfür musst du überall gewesen sein: Ignitium, Drachenstahl, feuriger Barren, verzaubertes Gravitit, Netherstern, Herz der Tiefe, Unobtainium und reine Dunkelheit. Das Rezept zeigt dir JEI (Taste R auf dem Item).\n\n&7Werkbank 3x3:&r\nIgnitium | Drachenstahl (Feuer) | Feuriger Barren\nVerz. Gravitit | Netherstern | Herz der Tiefe\nUnobtainium | Reine Dunkelheit | Unobtainium"
 	]
 	quest.34D1154D4D07116B.title: "Abenteuer-Fragment"
 	quest.34DA89287D13C44F.quest_desc: [
@@ -4075,7 +4075,7 @@
 	]
 	quest.5A5E5AFC1B6F3237.title: "Goldene Angel"
 	quest.5A6AD8C60B21AD3E.quest_desc: [
-		"Das magische Stück: Insanium, ein Wilden-Tribut, Iesnium, legendäre Tinte, Stellarit und Drachenhaut. Das Rezept zeigt dir JEI."
+		"Das magische Stück: Insanium, ein Wilden-Tribut, Iesnium, legendäre Tinte, Stellarit und Drachenhaut. Das Rezept zeigt dir JEI (Taste R auf dem Item).\n\n&7Werkbank 3x3:&r\nInsanium-Barren | Wilden-Tribut | Insanium-Barren\nIesnium-Barren | Legendäre Tinte | Stellarit-Stück\nInsanium-Barren | Drachenhaut | Insanium-Barren"
 	]
 	quest.5A6AD8C60B21AD3E.title: "Magie-Fragment"
 	quest.5A7A1D2B14036142.quest_desc: [

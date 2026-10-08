@@ -1,0 +1,19 @@
+{
+  "name": "Blitzdrache",
+  "category": "iceandfire",
+  "icon": "iceandfire:lightning_dragon_heart",
+  "sortnum": 6,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Blitzdrache",
+      "text": "$(l)Eis und Feuer$()$(br2)Blitzdrachen leben in warmen, trockenen Gegenden. Sie greifen mit Blitzen an."
+    },
+    {
+      "type": "spotlight",
+      "item": "iceandfire:lightning_dragon_heart",
+      "text": "Das gibt es als Beute oder Trophäe."
+    }
+  ]
+}

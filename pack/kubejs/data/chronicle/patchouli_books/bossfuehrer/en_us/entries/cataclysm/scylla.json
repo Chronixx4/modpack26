@@ -1,0 +1,19 @@
+{
+  "name": "Scylla",
+  "category": "cataclysm",
+  "icon": "cataclysm:essence_of_the_storm",
+  "sortnum": 9,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Scylla",
+      "text": "$(l)Cataclysm$()$(br2)Scylla herrscht über die Akropolis. Folge dem $(e)Sturmauge$().$(br2)Mit der Essenz des Sturms baust du ihre mächtigen Waffen."
+    },
+    {
+      "type": "spotlight",
+      "item": "cataclysm:essence_of_the_storm",
+      "text": "Das gibt es als Beute oder Trophäe."
+    }
+  ]
+}

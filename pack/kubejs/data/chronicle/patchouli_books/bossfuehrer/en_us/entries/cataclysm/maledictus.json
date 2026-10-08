@@ -1,0 +1,19 @@
+{
+  "name": "Maledictus",
+  "category": "cataclysm",
+  "icon": "cataclysm:cursium_ingot",
+  "sortnum": 8,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Maledictus",
+      "text": "$(l)Cataclysm$()$(br2)Im Frostgefängnis wartet der Maledictus. Das $(e)Auge des Fluchs$() führt dich hin.$(br2)Er lässt $(e)Cursium$() fallen."
+    },
+    {
+      "type": "spotlight",
+      "item": "cataclysm:cursium_ingot",
+      "text": "Das gibt es als Beute oder Trophäe."
+    }
+  ]
+}

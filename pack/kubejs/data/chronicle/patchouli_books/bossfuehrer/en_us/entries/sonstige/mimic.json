@@ -1,0 +1,14 @@
+{
+  "name": "Falsche Truhe!",
+  "category": "sonstige",
+  "icon": "minecraft:skeleton_skull",
+  "sortnum": 2,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Falsche Truhe!",
+      "text": "$(l)Sonstige$()$(br2)Manche Truhen in Höhlen und Strukturen sind Mimics. Sie beißen zu, wenn du sie öffnest. Besiegte Mimics lassen Artefakte fallen."
+    }
+  ]
+}

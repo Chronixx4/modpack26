@@ -1,0 +1,18 @@
+{
+  "name": "Der Apostel",
+  "category": "goety",
+  "icon": "goety:dark_wand",
+  "sortnum": 2,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Der Apostel",
+      "text": "$(l)Goety$()$(br2)Das $(e)Sabbat-Ritual$() (8 Weinender Obsidian, 16 Obsidian, 4 Seelenfeuer) ruft einen Apostel. Ein Netheritbarren kommt auf den Altar, auf die Sockel Hexenhut, Hexenmeister-Schärpe, Infernal Tome usw. (siehe JEI)."
+    },
+    {
+      "type": "text",
+      "text": "$(c)Nicht im Nether rufen$(), dort ist er am stärksten. Bei halber Gesundheit heilt er sich und wird gefährlicher. Waffen mit $(e)Bann$() stoppen seine Heilung."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Chaos-Wächter",
+  "category": "sonstige",
+  "icon": "minecraft:skeleton_skull",
+  "sortnum": 1,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Chaos-Wächter",
+      "text": "$(l)Sonstige$()$(br2)Weit draußen im End liegt die $(e)Chaos-Insel$(). Dort wartet der $(c)Chaos-Wächter$(), ein viel stärkerer Drache. Nimm volle Draconic-Ausrüstung mit!$(br2)Nach dem Sieg kannst du den Chaos-Kristall abbauen und bekommst $(e)Chaos-Splitter$()."
+    }
+  ]
+}
