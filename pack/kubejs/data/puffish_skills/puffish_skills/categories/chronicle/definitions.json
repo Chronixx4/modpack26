@@ -367,7 +367,7 @@
   },
   "abenteuer_2_0": {
     "title": "Bossjäger I",
-    "description": "+4% Schaden gegen Bosse\n+1 Rüstungsdurchdringung (Apothic)",
+    "description": "+1 Rüstungsdurchdringung (Apothic)\n+2% Kritischer Schaden (Apothic)",
     "icon": {
       "type": "item",
       "data": {
@@ -383,25 +383,27 @@
     "cost": 1,
     "rewards": [
       {
-        "type": "puffish_skills:tag",
-        "data": {
-          "tag": "chr.bossdmg.abenteuer_2_0.4.0"
-        }
-      },
-      {
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "apothic_attributes:armor_pierce",
           "value": 1.0,
           "operation": "addition"
         }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:crit_damage",
+          "value": 0.02,
+          "operation": "addition"
+        }
       }
     ],
-    "extra_description": "Du triffst starke Gegner härter."
+    "extra_description": "Du durchbrichst Rüstungen und triffst kritisch härter."
   },
   "abenteuer_2_1": {
     "title": "Bossjäger II",
-    "description": "+4% Schaden gegen Bosse\n+1 Rüstungsdurchdringung (Apothic)",
+    "description": "+1 Rüstungsdurchdringung (Apothic)\n+2% Kritischer Schaden (Apothic)",
     "icon": {
       "type": "item",
       "data": {
@@ -416,12 +418,6 @@
     },
     "cost": 1,
     "rewards": [
-      {
-        "type": "puffish_skills:tag",
-        "data": {
-          "tag": "chr.bossdmg.abenteuer_2_1.4.0"
-        }
-      },
       {
         "type": "puffish_skills:attribute",
         "data": {
@@ -429,13 +425,21 @@
           "value": 1.0,
           "operation": "addition"
         }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:crit_damage",
+          "value": 0.02,
+          "operation": "addition"
+        }
       }
     ],
-    "extra_description": "Du triffst starke Gegner härter."
+    "extra_description": "Du durchbrichst Rüstungen und triffst kritisch härter."
   },
   "abenteuer_2_2": {
     "title": "Bossjäger III",
-    "description": "+5% Schaden gegen Bosse\n+1.2 Rüstungsdurchdringung (Apothic)",
+    "description": "+1.2 Rüstungsdurchdringung (Apothic)\n+2.5% Kritischer Schaden (Apothic)",
     "icon": {
       "type": "item",
       "data": {
@@ -450,12 +454,6 @@
     },
     "cost": 1,
     "rewards": [
-      {
-        "type": "puffish_skills:tag",
-        "data": {
-          "tag": "chr.bossdmg.abenteuer_2_2.5.0"
-        }
-      },
       {
         "type": "puffish_skills:attribute",
         "data": {
@@ -463,13 +461,21 @@
           "value": 1.25,
           "operation": "addition"
         }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:crit_damage",
+          "value": 0.025,
+          "operation": "addition"
+        }
       }
     ],
-    "extra_description": "Du triffst starke Gegner härter."
+    "extra_description": "Du durchbrichst Rüstungen und triffst kritisch härter."
   },
   "abenteuer_2_3": {
     "title": "Bossjäger IV",
-    "description": "+6% Schaden gegen Bosse\n+1.5 Rüstungsdurchdringung (Apothic)",
+    "description": "+1.5 Rüstungsdurchdringung (Apothic)\n+3% Kritischer Schaden (Apothic)",
     "icon": {
       "type": "item",
       "data": {
@@ -485,25 +491,27 @@
     "cost": 2,
     "rewards": [
       {
-        "type": "puffish_skills:tag",
-        "data": {
-          "tag": "chr.bossdmg.abenteuer_2_3.6.0"
-        }
-      },
-      {
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "apothic_attributes:armor_pierce",
           "value": 1.5,
           "operation": "addition"
         }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:crit_damage",
+          "value": 0.03,
+          "operation": "addition"
+        }
       }
     ],
-    "extra_description": "Du triffst starke Gegner härter."
+    "extra_description": "Du durchbrichst Rüstungen und triffst kritisch härter."
   },
   "abenteuer_2_4": {
     "title": "Bossjäger V",
-    "description": "+8% Schaden gegen Bosse\n+2 Rüstungsdurchdringung (Apothic)",
+    "description": "+2 Rüstungsdurchdringung (Apothic)\n+4% Kritischer Schaden (Apothic)",
     "icon": {
       "type": "item",
       "data": {
@@ -519,21 +527,23 @@
     "cost": 2,
     "rewards": [
       {
-        "type": "puffish_skills:tag",
-        "data": {
-          "tag": "chr.bossdmg.abenteuer_2_4.8.0"
-        }
-      },
-      {
         "type": "puffish_skills:attribute",
         "data": {
           "attribute": "apothic_attributes:armor_pierce",
           "value": 2.0,
           "operation": "addition"
         }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "apothic_attributes:crit_damage",
+          "value": 0.04,
+          "operation": "addition"
+        }
       }
     ],
-    "extra_description": "Du triffst starke Gegner härter."
+    "extra_description": "Du durchbrichst Rüstungen und triffst kritisch härter."
   },
   "abenteuer_3_0": {
     "title": "Wanderer I",
@@ -717,7 +727,7 @@
   },
   "abenteuer_g": {
     "title": "Chronicle-Abenteurer",
-    "description": "+15% Schaden gegen Bosse\n+10% Kritischer Schaden (Apothic)",
+    "description": "+10% Kritischer Schaden (Apothic)\n+4 Maximales Leben (Vanilla)",
     "icon": {
       "type": "item",
       "data": {
@@ -733,16 +743,18 @@
     "cost": 3,
     "rewards": [
       {
-        "type": "puffish_skills:tag",
+        "type": "puffish_skills:attribute",
         "data": {
-          "tag": "chr.bossdmg.abenteuer_g.15.0"
+          "attribute": "apothic_attributes:crit_damage",
+          "value": 0.1,
+          "operation": "addition"
         }
       },
       {
         "type": "puffish_skills:attribute",
         "data": {
-          "attribute": "apothic_attributes:crit_damage",
-          "value": 0.1,
+          "attribute": "minecraft:generic.max_health",
+          "value": 4,
           "operation": "addition"
         }
       }
@@ -2069,7 +2081,7 @@
   },
   "handwerk_2_0": {
     "title": "Gute Küche I",
-    "description": "+5% Nahrungswert",
+    "description": "+1 Maximales Leben (Vanilla)",
     "icon": {
       "type": "item",
       "data": {
@@ -2085,17 +2097,19 @@
     "cost": 1,
     "rewards": [
       {
-        "type": "puffish_skills:tag",
+        "type": "puffish_skills:attribute",
         "data": {
-          "tag": "chr.food.handwerk_2_0.5.0"
+          "attribute": "minecraft:generic.max_health",
+          "value": 1,
+          "operation": "addition"
         }
       }
     ],
-    "extra_description": "Essen sättigt länger."
+    "extra_description": "Ein gutes Essen stärkt dich dauerhaft."
   },
   "handwerk_2_1": {
     "title": "Gute Küche II",
-    "description": "+5% Nahrungswert",
+    "description": "+1 Maximales Leben (Vanilla)",
     "icon": {
       "type": "item",
       "data": {
@@ -2111,17 +2125,19 @@
     "cost": 1,
     "rewards": [
       {
-        "type": "puffish_skills:tag",
+        "type": "puffish_skills:attribute",
         "data": {
-          "tag": "chr.food.handwerk_2_1.5.0"
+          "attribute": "minecraft:generic.max_health",
+          "value": 1,
+          "operation": "addition"
         }
       }
     ],
-    "extra_description": "Essen sättigt länger."
+    "extra_description": "Ein gutes Essen stärkt dich dauerhaft."
   },
   "handwerk_2_2": {
     "title": "Gute Küche III",
-    "description": "+5% Nahrungswert",
+    "description": "+1 Maximales Leben (Vanilla)",
     "icon": {
       "type": "item",
       "data": {
@@ -2137,17 +2153,19 @@
     "cost": 1,
     "rewards": [
       {
-        "type": "puffish_skills:tag",
+        "type": "puffish_skills:attribute",
         "data": {
-          "tag": "chr.food.handwerk_2_2.5.0"
+          "attribute": "minecraft:generic.max_health",
+          "value": 1,
+          "operation": "addition"
         }
       }
     ],
-    "extra_description": "Essen sättigt länger."
+    "extra_description": "Ein gutes Essen stärkt dich dauerhaft."
   },
   "handwerk_2_3": {
     "title": "Gute Küche IV",
-    "description": "+10% Nahrungswert",
+    "description": "+2 Maximales Leben (Vanilla)",
     "icon": {
       "type": "item",
       "data": {
@@ -2163,17 +2181,19 @@
     "cost": 2,
     "rewards": [
       {
-        "type": "puffish_skills:tag",
+        "type": "puffish_skills:attribute",
         "data": {
-          "tag": "chr.food.handwerk_2_3.10.0"
+          "attribute": "minecraft:generic.max_health",
+          "value": 2,
+          "operation": "addition"
         }
       }
     ],
-    "extra_description": "Essen sättigt länger."
+    "extra_description": "Ein gutes Essen stärkt dich dauerhaft."
   },
   "handwerk_2_4": {
     "title": "Gute Küche V",
-    "description": "+10% Nahrungswert",
+    "description": "+2 Maximales Leben (Vanilla)",
     "icon": {
       "type": "item",
       "data": {
@@ -2189,13 +2209,15 @@
     "cost": 2,
     "rewards": [
       {
-        "type": "puffish_skills:tag",
+        "type": "puffish_skills:attribute",
         "data": {
-          "tag": "chr.food.handwerk_2_4.10.0"
+          "attribute": "minecraft:generic.max_health",
+          "value": 2,
+          "operation": "addition"
         }
       }
     ],
-    "extra_description": "Essen sättigt länger."
+    "extra_description": "Ein gutes Essen stärkt dich dauerhaft."
   },
   "handwerk_3_0": {
     "title": "Genesung I",
@@ -3548,8 +3570,8 @@
     "extra_description": "Du erreichst Blöcke und Gegner weiter weg."
   },
   "technik_2_0": {
-    "title": "Stabile Werkzeuge I",
-    "description": "+10% Haltbarkeit",
+    "title": "Kraftakt I",
+    "description": "+2% Nahkampfschaden (Vanilla)\n+4% Rückstoßresistenz (Vanilla)",
     "icon": {
       "type": "item",
       "data": {
@@ -3565,17 +3587,27 @@
     "cost": 1,
     "rewards": [
       {
-        "type": "puffish_skills:tag",
+        "type": "puffish_skills:attribute",
         "data": {
-          "tag": "chr.durability.technik_2_0.10.0"
+          "attribute": "minecraft:generic.attack_damage",
+          "value": 0.02,
+          "operation": "multiply_total"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.knockback_resistance",
+          "value": 0.04,
+          "operation": "addition"
         }
       }
     ],
-    "extra_description": "Werkzeuge halten länger."
+    "extra_description": "Mit schwerem Werkzeug schlägst du härter zu."
   },
   "technik_2_1": {
-    "title": "Stabile Werkzeuge II",
-    "description": "+10% Haltbarkeit",
+    "title": "Kraftakt II",
+    "description": "+2% Nahkampfschaden (Vanilla)\n+4% Rückstoßresistenz (Vanilla)",
     "icon": {
       "type": "item",
       "data": {
@@ -3591,17 +3623,27 @@
     "cost": 1,
     "rewards": [
       {
-        "type": "puffish_skills:tag",
+        "type": "puffish_skills:attribute",
         "data": {
-          "tag": "chr.durability.technik_2_1.10.0"
+          "attribute": "minecraft:generic.attack_damage",
+          "value": 0.02,
+          "operation": "multiply_total"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.knockback_resistance",
+          "value": 0.04,
+          "operation": "addition"
         }
       }
     ],
-    "extra_description": "Werkzeuge halten länger."
+    "extra_description": "Mit schwerem Werkzeug schlägst du härter zu."
   },
   "technik_2_2": {
-    "title": "Stabile Werkzeuge III",
-    "description": "+15% Haltbarkeit",
+    "title": "Kraftakt III",
+    "description": "+3% Nahkampfschaden (Vanilla)\n+6% Rückstoßresistenz (Vanilla)",
     "icon": {
       "type": "item",
       "data": {
@@ -3617,17 +3659,27 @@
     "cost": 1,
     "rewards": [
       {
-        "type": "puffish_skills:tag",
+        "type": "puffish_skills:attribute",
         "data": {
-          "tag": "chr.durability.technik_2_2.15.0"
+          "attribute": "minecraft:generic.attack_damage",
+          "value": 0.03,
+          "operation": "multiply_total"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.knockback_resistance",
+          "value": 0.06,
+          "operation": "addition"
         }
       }
     ],
-    "extra_description": "Werkzeuge halten länger."
+    "extra_description": "Mit schwerem Werkzeug schlägst du härter zu."
   },
   "technik_2_3": {
-    "title": "Stabile Werkzeuge IV",
-    "description": "+15% Haltbarkeit",
+    "title": "Kraftakt IV",
+    "description": "+3% Nahkampfschaden (Vanilla)\n+6% Rückstoßresistenz (Vanilla)",
     "icon": {
       "type": "item",
       "data": {
@@ -3643,17 +3695,27 @@
     "cost": 2,
     "rewards": [
       {
-        "type": "puffish_skills:tag",
+        "type": "puffish_skills:attribute",
         "data": {
-          "tag": "chr.durability.technik_2_3.15.0"
+          "attribute": "minecraft:generic.attack_damage",
+          "value": 0.03,
+          "operation": "multiply_total"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.knockback_resistance",
+          "value": 0.06,
+          "operation": "addition"
         }
       }
     ],
-    "extra_description": "Werkzeuge halten länger."
+    "extra_description": "Mit schwerem Werkzeug schlägst du härter zu."
   },
   "technik_2_4": {
-    "title": "Stabile Werkzeuge V",
-    "description": "+20% Haltbarkeit",
+    "title": "Kraftakt V",
+    "description": "+5% Nahkampfschaden (Vanilla)\n+10% Rückstoßresistenz (Vanilla)",
     "icon": {
       "type": "item",
       "data": {
@@ -3669,13 +3731,23 @@
     "cost": 2,
     "rewards": [
       {
-        "type": "puffish_skills:tag",
+        "type": "puffish_skills:attribute",
         "data": {
-          "tag": "chr.durability.technik_2_4.20.0"
+          "attribute": "minecraft:generic.attack_damage",
+          "value": 0.05,
+          "operation": "multiply_total"
+        }
+      },
+      {
+        "type": "puffish_skills:attribute",
+        "data": {
+          "attribute": "minecraft:generic.knockback_resistance",
+          "value": 0.1,
+          "operation": "addition"
         }
       }
     ],
-    "extra_description": "Werkzeuge halten länger."
+    "extra_description": "Mit schwerem Werkzeug schlägst du härter zu."
   },
   "technik_3_0": {
     "title": "Tiefseetechnik I",

@@ -76,6 +76,9 @@ Alle Ziele aus den Mod-Jars gelesen (`lang/en_us.json`). **Genaue Attribut-IDs u
 
 ## 7. Schritte
 
+**Stand 2026-10-08:** Schritte 1-3 erledigt (Servertest: Datapack laedt, alle Attribute existieren). Schritte 4 (Quest-Punkte), 5 (Skripte), 6 (Respec), 7 (Hinweise) von Marvin gestrichen; die drei Skript-Linien wurden durch Attribut-Linien ersetzt.
+
+
 1. **Mod einbauen** (`$ModList`, Modliste, Index) und Servertest "Start OK" (PR-Test reicht).
 2. **Generator + Spec** schreiben (`pack/skilltree/`), erzeugt die Datenpaket-Dateien. Kopie in `pack/kubejs/data/puffish_skills/...`.
 3. **Attribut-IDs pruefen**: lokaler Servertest mit KubeJS-Pruefskript (`Attribute`-Registry auslesen), danach Spec korrigieren. Mit Marvins OK.
