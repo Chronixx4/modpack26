@@ -1,0 +1,14 @@
+{
+  "name": "Der Leviathan",
+  "category": "cataclysm",
+  "icon": "cataclysm:ignitium_ingot",
+  "sortnum": 4,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Der Leviathan",
+      "text": "$(l)Cataclysm$()$(br2)Tief in der versunkenen Stadt lauert der Leviathan. Das $(e)Abgrundauge$() führt dich hin.$(br2)Ohne Wasseratmung oder Conduit wird es hier schnell eng."
+    }
+  ]
+}

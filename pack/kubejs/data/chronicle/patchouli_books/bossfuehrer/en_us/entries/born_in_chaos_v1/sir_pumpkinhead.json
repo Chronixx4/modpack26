@@ -1,0 +1,14 @@
+{
+  "name": "Sir Pumpkinhead",
+  "category": "born_in_chaos_v1",
+  "icon": "born_in_chaos_v1:dire_hound_leader_spawn_egg",
+  "sortnum": 4,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Sir Pumpkinhead",
+      "text": "$(l)Born in Chaos$()$(br2)Ein Kürbisritter auf seinem Höllenross. Hol ihn zuerst vom Pferd."
+    }
+  ]
+}

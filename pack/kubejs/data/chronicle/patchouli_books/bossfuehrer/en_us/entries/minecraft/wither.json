@@ -1,0 +1,14 @@
+{
+  "name": "Der Wither",
+  "category": "minecraft",
+  "icon": "minecraft:nether_star",
+  "sortnum": 2,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Der Wither",
+      "text": "$(l)Minecraft$()$(br2)Baue ihn aus vier Seelensand und drei Witherskelettschädeln. Am besten tief unter der Erde, denn er sprengt alles weg.$(br2)Er lässt einen $(e)Netherstern$() fallen."
+    }
+  ]
+}

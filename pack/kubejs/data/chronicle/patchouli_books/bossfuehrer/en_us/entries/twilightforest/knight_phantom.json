@@ -1,0 +1,19 @@
+{
+  "name": "Die Phantomritter",
+  "category": "twilightforest",
+  "icon": "twilightforest:knight_phantom_trophy",
+  "sortnum": 5,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Die Phantomritter",
+      "text": "$(l)Twilight Forest$() (6x besiegen)$(br2)Sechs Phantomritter in der Ritterfestung im Dunklen Wald. Vorher musst du den Weg dorthin freikämpfen."
+    },
+    {
+      "type": "spotlight",
+      "item": "twilightforest:knight_phantom_trophy",
+      "text": "Das gibt es als Beute oder Trophäe."
+    }
+  ]
+}

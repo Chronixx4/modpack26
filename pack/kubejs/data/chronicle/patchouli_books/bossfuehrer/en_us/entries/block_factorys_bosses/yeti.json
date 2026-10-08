@@ -1,0 +1,14 @@
+{
+  "name": "Skor, der Yeti",
+  "category": "block_factorys_bosses",
+  "icon": "minecraft:totem_of_undying",
+  "sortnum": 1,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Skor, der Yeti",
+      "text": "$(l)Block Factory's Bosses$()$(br2)Bosses'Rise bringt eigene Arenen mit Bossen. Skor ist der Yeti und haust in der Kälte."
+    }
+  ]
+}

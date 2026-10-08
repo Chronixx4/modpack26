@@ -1,0 +1,19 @@
+{
+  "name": "Die Naga",
+  "category": "twilightforest",
+  "icon": "twilightforest:naga_trophy",
+  "sortnum": 1,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Die Naga",
+      "text": "$(l)Twilight Forest$()$(br2)Eine riesige Schlange im Innenhof aus Nagastein. Sie ist schnell, also nicht im Freien herumstehen."
+    },
+    {
+      "type": "spotlight",
+      "item": "twilightforest:naga_trophy",
+      "text": "Das gibt es als Beute oder Trophäe."
+    }
+  ]
+}

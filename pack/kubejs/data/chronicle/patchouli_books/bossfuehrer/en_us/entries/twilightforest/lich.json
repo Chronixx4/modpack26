@@ -1,0 +1,19 @@
+{
+  "name": "Der Lich",
+  "category": "twilightforest",
+  "icon": "twilightforest:lich_trophy",
+  "sortnum": 2,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Der Lich",
+      "text": "$(l)Twilight Forest$()$(br2)Der Lich wohnt ganz oben in seinem Turm. Erst seine Schilde zerstören, dann kannst du ihn treffen. Er lässt mächtige Zepter fallen."
+    },
+    {
+      "type": "spotlight",
+      "item": "twilightforest:lich_trophy",
+      "text": "Das gibt es als Beute oder Trophäe."
+    }
+  ]
+}

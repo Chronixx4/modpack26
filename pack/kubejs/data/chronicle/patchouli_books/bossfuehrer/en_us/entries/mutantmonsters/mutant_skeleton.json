@@ -1,0 +1,14 @@
+{
+  "name": "Mutantenskelett",
+  "category": "mutantmonsters",
+  "icon": "mutantmonsters:hulk_hammer",
+  "sortnum": 2,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Mutantenskelett",
+      "text": "$(l)Mutantenmonster$()$(br2)Aus seinen Knochen kannst du eine eigene Rüstung bauen. Schau in JEI nach."
+    }
+  ]
+}

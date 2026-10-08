@@ -1,0 +1,14 @@
+{
+  "name": "Sonnengeist",
+  "category": "aether",
+  "icon": "aether:gold_dungeon_key",
+  "sortnum": 3,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Sonnengeist",
+      "text": "$(l)Aether$()$(br2)Der Sonnengeist ist der letzte Boss des Aether und haust im Gold-Dungeon. Feuerschutz ist Pflicht."
+    }
+  ]
+}

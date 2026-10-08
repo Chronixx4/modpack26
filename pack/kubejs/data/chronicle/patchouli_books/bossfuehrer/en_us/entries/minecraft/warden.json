@@ -1,0 +1,14 @@
+{
+  "name": "Der Wärter",
+  "category": "minecraft",
+  "icon": "minecraft:nether_star",
+  "sortnum": 4,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Der Wärter",
+      "text": "$(l)Minecraft$()$(br2)Der Warden aus der Tiefen Dunkelheit ist extrem stark. Meistens ist Schleichen klüger als Kämpfen.$(br2)Wenn du dich traust: Fernkampf und viel Abstand."
+    }
+  ]
+}

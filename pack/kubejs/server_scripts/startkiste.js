@@ -4,9 +4,10 @@ PlayerEvents.loggedIn(event => {
   if (p.persistentData.getBoolean('chronicle_startkiste')) return
   p.persistentData.putBoolean('chronicle_startkiste', true)
   p.give(Item.of('ftbquests:book'))
+  p.give(Item.of('patchouli:guide_book[patchouli:book="chronicle:bossfuehrer"]'))
   p.give(Item.of('minecraft:cooked_beef', 16))
   p.give(Item.of('minecraft:torch', 32))
   p.give(Item.of('minecraft:stone_pickaxe'))
   p.give(Item.of('minecraft:stone_axe'))
-  p.tell(Text.gold('Willkommen bei Chronicle! Dein Questbuch liegt im Inventar.'))
+  p.tell(Text.gold('Willkommen bei Chronicle! Questbuch und Bossführer liegen im Inventar.'))
 })

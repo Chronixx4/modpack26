@@ -1,0 +1,19 @@
+{
+  "name": "Piglich",
+  "category": "sonstige",
+  "icon": "allthemodium:piglich_heart",
+  "sortnum": 3,
+  "read_by_default": true,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Piglich",
+      "text": "$(l)Sonstige$()$(br2)Ein untoter Piglin-Magier aus Allthemodium. Er lässt sein Herz fallen."
+    },
+    {
+      "type": "spotlight",
+      "item": "allthemodium:piglich_heart",
+      "text": "Das gibt es als Beute oder Trophäe."
+    }
+  ]
+}
