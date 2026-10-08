@@ -262,6 +262,7 @@ dungeons_delight|Dungeon's Delight
 cooking-for-blockheads|Cooking for Blockheads
 tide|Tide 2
 serene-seasons|Serene Seasons
+l_enders-cataclysm-delight|L_Ender 's Cataclysm Delight
 # Dimensionen
 the-twilight-forest|The Twilight Forest
 aether|The Aether
@@ -311,6 +312,11 @@ bossesrise|Bosses'Rise
 l2hostility|L2 Hostility
 kobolds|Kobolds
 naturalist|Naturalist
+integrated-catalcysm|Integrated Catalcysm
+goety-cataclysm|Goety Cataclysm
+mowzies-cataclysm|Mowzie's Cataclysm
+gtbcs-cataclysmic-boss-ui|GTBC's Cataclysmic Boss UI
+cataclysm_create|Cataclysm x Create Integration
 # Waffen, Ruestung und Ausruestung
 simply-swords|Simply Swords
 simply-swords-cataclysm|Simply Swords: Cataclysm
