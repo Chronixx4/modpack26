@@ -32,7 +32,7 @@
 			shape: "rsquare"
 			size: 1.0d
 			x: 2.0d
-			y: -1.5d
+			y: -4.5d
 		}
 		{
 			id: "1AD66653E5A8B241"
@@ -80,7 +80,7 @@
 			shape: "rsquare"
 			size: 1.0d
 			x: 0.0d
-			y: -6.0d
+			y: 1.5d
 		}
 		{
 			id: "5917D26A2727C14E"
@@ -88,7 +88,7 @@
 			shape: "rsquare"
 			size: 1.0d
 			x: 0.0d
-			y: -7.5d
+			y: -3.0d
 		}
 		{
 			id: "11D1D20C03B6256C"
@@ -96,7 +96,7 @@
 			shape: "rsquare"
 			size: 1.0d
 			x: 0.0d
-			y: 1.5d
+			y: 3.0d
 		}
 		{
 			id: "5DAF39B99F3D917B"
@@ -104,7 +104,7 @@
 			shape: "rsquare"
 			size: 1.0d
 			x: 2.0d
-			y: -7.5d
+			y: -6.0d
 		}
 		{
 			id: "75CD402450E70442"
@@ -524,7 +524,7 @@
 				}
 			]
 			x: 2.0d
-			y: -6.0d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -550,7 +550,7 @@
 				}
 			]
 			x: 2.0d
-			y: 1.5d
+			y: 3.0d
 		}
 		{
 			dependencies: [
@@ -833,7 +833,7 @@
 				}
 			]
 			x: 2.0d
-			y: -4.5d
+			y: -1.5d
 		}
 	]
 }

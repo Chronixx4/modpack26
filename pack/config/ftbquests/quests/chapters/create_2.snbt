@@ -32,7 +32,7 @@
 			shape: "rsquare"
 			size: 1.0d
 			x: 0.0d
-			y: -1.5d
+			y: -3.0d
 		}
 		{
 			id: "577718289D5337CF"
@@ -40,7 +40,7 @@
 			shape: "rsquare"
 			size: 1.0d
 			x: 0.0d
-			y: -3.0d
+			y: -1.5d
 		}
 		{
 			id: "37F3BBBB15D27897"
@@ -157,7 +157,7 @@
 				}
 			]
 			x: 2.0d
-			y: -1.5d
+			y: -3.0d
 		}
 		{
 			dependencies: [
@@ -182,7 +182,7 @@
 				}
 			]
 			x: 4.0d
-			y: -1.5d
+			y: -4.5d
 		}
 		{
 			dependencies: [
@@ -209,7 +209,7 @@
 				}
 			]
 			x: 2.0d
-			y: -3.0d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -316,7 +316,7 @@
 				}
 			]
 			x: 4.0d
-			y: 4.5d
+			y: -1.5d
 		}
 		{
 			dependencies: [

@@ -685,7 +685,7 @@
 				}
 			]
 			x: 10.0d
-			y: 3.0d
+			y: 4.5d
 		}
 		{
 			dependencies: [
@@ -836,7 +836,7 @@
 				}
 			]
 			x: 10.0d
-			y: 4.5d
+			y: 3.0d
 		}
 		{
 			dependencies: [
@@ -1181,7 +1181,6 @@
 		{
 			dependencies: [
 				"739357D0EDBAD9B9"
-				"74DE9DAA189ED502"
 			]
 			id: "3903F54E4148AB26"
 			rewards: [

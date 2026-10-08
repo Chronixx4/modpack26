@@ -40,7 +40,7 @@
 			shape: "rsquare"
 			size: 1.0d
 			x: 10.0d
-			y: -1.5d
+			y: -3.0d
 		}
 		{
 			id: "35FF2DD8351CBCFE"
@@ -105,7 +105,7 @@
 				}
 			]
 			x: 2.0d
-			y: -6.0d
+			y: 3.0d
 		}
 		{
 			dependencies: [
@@ -189,11 +189,10 @@
 				}
 			]
 			x: 6.0d
-			y: -4.5d
+			y: -3.0d
 		}
 		{
 			dependencies: [
-				"19D34D116F012E7D"
 				"14B533EE5898D7EE"
 			]
 			id: "7DBF0E4A4542C92C"
@@ -465,7 +464,7 @@
 				}
 			]
 			x: 2.0d
-			y: -9.0d
+			y: -4.5d
 		}
 		{
 			dependencies: [
@@ -603,7 +602,7 @@
 				}
 			]
 			x: 6.0d
-			y: 3.0d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -636,7 +635,7 @@
 				}
 			]
 			x: 6.0d
-			y: 1.5d
+			y: 3.0d
 		}
 		{
 			dependencies: [
@@ -686,7 +685,7 @@
 				}
 			]
 			x: 10.0d
-			y: 1.5d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -840,7 +839,7 @@
 				}
 			]
 			x: 4.0d
-			y: 3.0d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -861,7 +860,7 @@
 				}
 			]
 			x: 2.0d
-			y: 9.0d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -886,7 +885,7 @@
 				}
 			]
 			x: 2.0d
-			y: 6.0d
+			y: 4.5d
 		}
 		{
 			dependencies: [
@@ -907,7 +906,7 @@
 				}
 			]
 			x: 4.0d
-			y: 7.5d
+			y: 4.5d
 		}
 		{
 			dependencies: [
@@ -994,7 +993,7 @@
 				}
 			]
 			x: 2.0d
-			y: 10.5d
+			y: -1.5d
 		}
 	]
 }

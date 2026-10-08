@@ -111,6 +111,8 @@ CurseForge blockt Downloads per Skript, auch über die interne `/api/v1`. Diese 
 
 - 0.9.14: Chronicle-Kern, Fragmente: Items per `StartupEvents.modifyCreativeTab` in den Tab "Zutaten" (ohne Tab fehlten sie in der JEI-Liste; `.group()` gibt es in KubeJS 7 nicht mehr und bricht den Start ab). Rezepte laden serverseitig korrekt (Pruefskript). **Startkiste** (`pack/kubejs/server_scripts/startkiste.js`): beim ersten Login Questbuch, Fleisch, Fackeln, Steinspitzhacke/-axt. **ModernFix `dynamic_resources`** an (`pack/config/modernfix-mixins.properties`), bei Grafikfehlern auf false. C2ME bewusst nicht (nur Alpha). Im Spiel pruefen: JEI zeigt Fragmente/Kern, Startkiste kommt genau einmal, keine fehlenden Modelle.
 
+- Nach 0.9.14 (noch ohne Release): Questbuch-Layout entwirrt (`generator.py`: ueberfluessige Abhaengigkeiten entfernt, `zeile` ist nur noch Startwert, lokale Suche gegen Linienkreuzungen, 199 -> 77 im ganzen Buch, `haupt` bleibt auf Zeile 0). Rezepte von Fragmenten und Kern stehen jetzt zusaetzlich im Questtext.
+
 ## Offene Aufgaben
 1. **0.9.13 im Client testen:** kurz in eine neue Welt, auf Grafikfehler achten. Pruefen: Rezepte der drei Fragmente und des Chronicle-Kerns in JEI, Almost Unified (Mekanism-Stahl wird zu IE-Stahl), keine doppelten Erze, dazu die Punkte unter "Im Spiel pruefen" bei 0.9.13.
 2. **Questbuch im Spiel ansehen** (seit 0.9.8): Texte, Reihenfolge, Bilder. Aenderungen in `pack/quests/inhalt/*.py` machen (nicht im Editiermodus, sonst ueberschreibt der naechste Generatorlauf sie).
