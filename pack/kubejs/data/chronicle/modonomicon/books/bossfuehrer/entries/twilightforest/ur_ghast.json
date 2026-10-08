@@ -1,0 +1,51 @@
+{
+  "background_u_index": 0,
+  "background_v_index": 0,
+  "category": "twilightforest",
+  "condition": {
+    "type": "modonomicon:none"
+  },
+  "description": "book.chronicle.bossfuehrer.twilightforest.ur_ghast.description",
+  "hide_while_locked": false,
+  "icon": {
+    "item": "twilightforest:ur_ghast_trophy"
+  },
+  "name": "book.chronicle.bossfuehrer.twilightforest.ur_ghast.name",
+  "pages": [
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.chronicle.bossfuehrer.twilightforest.ur_ghast.p0.text",
+      "title": "book.chronicle.bossfuehrer.twilightforest.ur_ghast.name",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "modonomicon:spotlight",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "item": {
+        "item": "twilightforest:ur_ghast_trophy"
+      },
+      "text": "book.chronicle.bossfuehrer.twilightforest.ur_ghast.beute.text",
+      "title": ""
+    }
+  ],
+  "parents": [
+    {
+      "draw_arrow": true,
+      "entry": "twilightforest/knight_phantom",
+      "line_enabled": true,
+      "line_reversed": false
+    }
+  ],
+  "show_when_any_parent_unlocked": false,
+  "sort_number": 5,
+  "x": 10,
+  "y": 0
+}

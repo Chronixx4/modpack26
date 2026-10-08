@@ -1,0 +1,32 @@
+{
+  "background_u_index": 0,
+  "background_v_index": 0,
+  "category": "aether",
+  "condition": {
+    "type": "modonomicon:none"
+  },
+  "description": "book.chronicle.bossfuehrer.aether.slider.description",
+  "hide_while_locked": false,
+  "icon": {
+    "item": "aether:gold_dungeon_key"
+  },
+  "name": "book.chronicle.bossfuehrer.aether.slider.name",
+  "pages": [
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.chronicle.bossfuehrer.aether.slider.p0.text",
+      "title": "book.chronicle.bossfuehrer.aether.slider.name",
+      "use_markdown_in_title": false
+    }
+  ],
+  "parents": [],
+  "show_when_any_parent_unlocked": false,
+  "sort_number": 0,
+  "x": 0,
+  "y": 0
+}

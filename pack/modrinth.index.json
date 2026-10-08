@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
   "game": "minecraft",
-  "versionId": "0.9.16",
+  "versionId": "0.9.17",
   "name": "Chronicle",
   "files": [
     {
@@ -4398,6 +4398,96 @@
         "https://cdn.modrinth.com/data/hqQqvaa4/versions/uqAz8XFU/puffish_skills-0.19.1-1.21-neoforge.jar"
       ],
       "fileSize": 653105
+    },
+    {
+      "path": "mods/integrated_cataclysm-1.0.6+1.21.1-neoforge.jar",
+      "hashes": {
+        "sha1": "d9490abb8c6c66c61eabd836ffb016d385fd2b75",
+        "sha512": "010a5b17f3c1b315162e8e323892b279fab773b3eb6ad2b070d142dc4989043051eeedfee43d483698931b0b292927ed5d9b381bc4eba62c53ebd1bfbb10e7fc"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/ONbfwGTw/versions/rpOm77o6/integrated_cataclysm-1.0.6%2B1.21.1-neoforge.jar"
+      ],
+      "fileSize": 5125361
+    },
+    {
+      "path": "mods/goety_cataclysm-1.21.1-1.8.4.jar",
+      "hashes": {
+        "sha1": "b8b066f0ee12099505306043455cdc879e2d3949",
+        "sha512": "45e390fb44ea7aa6b5f81b95b57ca224489a527a66167de1bdcf9a53c71cb5a54f6d29b69fa30b3f342e853c30bee677cf2c3701d141edf76b0be8515b6b6b60"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/YwmuwbXi/versions/gv1JY0TU/goety_cataclysm-1.21.1-1.8.4.jar"
+      ],
+      "fileSize": 1826641
+    },
+    {
+      "path": "mods/mowzies_cataclysm-1.2.2.jar",
+      "hashes": {
+        "sha1": "0dff3e849155ca343d1a500f5b9ca2b54ffa692d",
+        "sha512": "d36b165aa2e7ad19b90ea8108267464fa2b4e08eabc10d971d5f9bbad595bc95bac1970059fdd39bc48c8bcb175b46e96e119a4f2126dae315560084ed3e48cc"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/7UsJsd1y/versions/hEKmD0v9/mowzies_cataclysm-1.2.2.jar"
+      ],
+      "fileSize": 28114
+    },
+    {
+      "path": "mods/lendersdelight-1.21.1-1.0.10b.jar",
+      "hashes": {
+        "sha1": "dc8409a1a67bddf306fbb17de845a74e29ae7825",
+        "sha512": "066945d8d2d80d33788bee50b0c4c3b86b5d43e3e56155fe0f5bb86c79bc46b5f1e854737515343030d5ac535b5ee5c48e28cef6fdb2f299a00eb5c2ba8af37a"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/a48R8AGk/versions/cl5zVy2S/lendersdelight-1.21.1-1.0.10b.jar"
+      ],
+      "fileSize": 194532
+    },
+    {
+      "path": "mods/gtbcs_cataclysmic_uis-1.0.3+1.21.1.jar",
+      "hashes": {
+        "sha1": "b5f665dbe83105092c7731ae9f53d1f3a9359549",
+        "sha512": "854422098fd6a4e42ab0d061d536dfdaf472002837eb7c85ce7845984f90cecfa2e767b0583e8db9c7af3a8ad2a4486085d571a6c7cecb6ca869c2f1762e60c8"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/ScjLhji2/versions/k7TCCKym/gtbcs_cataclysmic_uis-1.0.3%2B1.21.1.jar"
+      ],
+      "fileSize": 655091
+    },
+    {
+      "path": "mods/cataclysm_create-1.21.1-Neoforge.jar",
+      "hashes": {
+        "sha1": "852b6adfa8369f4b7a18722cf11d8bd84aec87b0",
+        "sha512": "ddb814395bc3b782e972853c6761cfad4106dea18de1972829f6fa563f44df867aa7e45721e93ff4aa4ce7b7b9383e73bb880680fcc407385a18d9368a7ab2c0"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/pmUh6mZW/versions/6Km4SJcj/cataclysm_create-1.21.1-Neoforge.jar"
+      ],
+      "fileSize": 177219
     }
   ],
   "dependencies": {

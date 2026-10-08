@@ -1,0 +1,51 @@
+{
+  "background_u_index": 0,
+  "background_v_index": 0,
+  "category": "cataclysm",
+  "condition": {
+    "type": "modonomicon:none"
+  },
+  "description": "book.chronicle.bossfuehrer.cataclysm.maledictus.description",
+  "hide_while_locked": false,
+  "icon": {
+    "item": "cataclysm:cursium_ingot"
+  },
+  "name": "book.chronicle.bossfuehrer.cataclysm.maledictus.name",
+  "pages": [
+    {
+      "type": "modonomicon:text",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "show_title_separator": true,
+      "text": "book.chronicle.bossfuehrer.cataclysm.maledictus.p0.text",
+      "title": "book.chronicle.bossfuehrer.cataclysm.maledictus.name",
+      "use_markdown_in_title": false
+    },
+    {
+      "type": "modonomicon:spotlight",
+      "anchor": "",
+      "condition": {
+        "type": "modonomicon:none"
+      },
+      "item": {
+        "item": "cataclysm:cursium_ingot"
+      },
+      "text": "book.chronicle.bossfuehrer.cataclysm.maledictus.beute.text",
+      "title": ""
+    }
+  ],
+  "parents": [
+    {
+      "draw_arrow": true,
+      "entry": "cataclysm/ancient_remnant",
+      "line_enabled": true,
+      "line_reversed": false
+    }
+  ],
+  "show_when_any_parent_unlocked": false,
+  "sort_number": 7,
+  "x": 2,
+  "y": 2
+}
