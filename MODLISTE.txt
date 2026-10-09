@@ -19,7 +19,7 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   316 Mods inkl. Bibliotheken   |   Stan
   ModernFix                                      5.27.24+mc1.21.1
   More Culling                                   1.0.10  (nur Client)
   Neruina - Ticking Entity Fixer                 3.3.3
-  NoTimeOut                                     1.21.1-1.0.0  (Server wichtig)
+  NoTimeOut                                     1.21.1-1.0.0
   Packet Fixer                                   3.3.1
   Sodium                                         mc1.21.1-0.8.13-neoforge  (nur Client)
 
