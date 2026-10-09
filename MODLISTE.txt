@@ -1,7 +1,7 @@
-﻿Chronicle 0.9.19 - Modliste
-Minecraft 1.21.1, NeoForge 21.1.256   |   315 Mods inkl. Bibliotheken   |   Stand 2026-10-09
+﻿Chronicle 0.9.21 - Modliste
+Minecraft 1.21.1, NeoForge 21.1.256   |   316 Mods inkl. Bibliotheken   |   Stand 2026-10-09
 
-== Performance und Grafik (19) ==
+== Performance und Grafik (20) ==
   All The Leaks                                  1.1.13+1.21.1-neoforge  (CurseForge)
   BadOptimizations                               2.4.1  (nur Client)
   Chunky                                         1.4.23  (nur Server)
@@ -19,6 +19,7 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   315 Mods inkl. Bibliotheken   |   Stan
   ModernFix                                      5.27.24+mc1.21.1
   More Culling                                   1.0.10  (nur Client)
   Neruina - Ticking Entity Fixer                 3.3.3
+  NoTimeOut                                     1.21.1-1.0.0  (Server wichtig)
   Packet Fixer                                   3.3.1
   Sodium                                         mc1.21.1-0.8.13-neoforge  (nur Client)
 

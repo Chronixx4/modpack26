@@ -123,6 +123,8 @@ CurseForge blockt Downloads per Skript, auch über die interne `/api/v1`. Diese 
 
 - 0.9.19 (Release auf Ansage): **Iris 1.8.14-beta.1** (`iris`, nur Client, 315 Mods) fuer Shader. Index von Hand ergaenzt (Cloud hat keinen Modrinth-Zugriff). Bekannte Iris-Issues: Startabsturz Sodium 0.8.13 (#3402, offen), Absturz nach Serverbeitritt (#3187), Aufloesung im Spiel aendern macht Bloecke unsichtbar (#3214), leeres Shader-Menue -> Hintergrund-Blur aus. **Im Client pruefen:** Start, Welt, Serverbeitritt, Shader an/aus. Wenn es crasht: Iris wieder raus (Zeile in `$ModList`, Index, MODLISTE).
 
+- 0.9.21 (Release auf Ansage): **NoTimeOut** (`notimeout`, 1.0.0, 316 Mods) verlaengert Login-, Keep-Alive- und Read-Timeout des Servers. Grund: Nach einem Server-Neustart kam beim erneuten Joinen ein Timeout ("zu lange zum Joinen"), der erste Join klappte. Index von Hand ergaenzt. Ob es hilft, ist ungetestet; sonst Server-/Client-`latest.log` anschauen. Die Zeit stellt man in der generierten Common-Config (`config/notimeout-common.toml`) ein.
+
 ## Offene Aufgaben
 1. **0.9.15 im Client testen:** kurz in eine neue Welt, auf Grafikfehler achten. Pruefen: Rezepte der drei Fragmente und des Chronicle-Kerns in JEI, Almost Unified (Mekanism-Stahl wird zu IE-Stahl), keine doppelten Erze, dazu die Punkte unter "Im Spiel pruefen" bei 0.9.13.
 2. **Questbuch im Spiel ansehen** (seit 0.9.8): Texte, Reihenfolge, Bilder. Aenderungen in `pack/quests/inhalt/*.py` machen (nicht im Editiermodus, sonst ueberschreibt der naechste Generatorlauf sie).
