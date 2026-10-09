@@ -393,6 +393,31 @@
     .slot { padding:7px 6px; }
     .slot .ico { width:20px; height:20px; }
   }
+
+  /* Suche */
+  button.slot { border:0; cursor:pointer; font-family:var(--px); }
+  #sov { position:fixed; inset:0; z-index:60; background:rgba(0,0,0,.7); padding:max(12px,env(safe-area-inset-top)) 12px 12px; overflow-y:auto; }
+  #sov[hidden] { display:none; }
+  #sov:not([hidden]) { animation:popIn .2s ease-out; }
+  .sbox { max-width:640px; margin:6vh auto 0; background:var(--panel); padding:14px; box-shadow:0 0 0 3px #000, inset 3px 3px 0 var(--hi), inset -3px -3px 0 #181a1f; }
+  .srow { display:flex; gap:10px; }
+  .srow input { flex:1; min-width:0; font:500 19px var(--body); color:#fff; background:#14151a; border:0; padding:12px 14px; box-shadow:0 0 0 3px #000, inset 3px 3px 0 #000, inset -3px -3px 0 #4a4d56; }
+  #sx { flex:none; width:auto; min-width:0; padding-inline:16px; }
+  #sres { margin-top:12px; display:grid; gap:6px; }
+  #sres h4 { font:9px var(--px); color:var(--grass); margin:8px 0 2px; letter-spacing:.1em; }
+  #sres button { display:flex; gap:8px; text-align:left; width:100%; padding:10px 12px; font:500 17px/1.3 var(--body); color:var(--text); background:var(--panel2); border:0; cursor:pointer;
+                 box-shadow:0 0 0 2px #000, inset 2px 2px 0 var(--hi), inset -2px -2px 0 #181a1f; }
+  #sres button:hover,#sres button:focus-visible { background:#3e4150; }
+  #sres button small { margin-left:auto; color:var(--mute); font-size:14px; white-space:nowrap; }
+  #sres p { color:var(--mute); margin:6px 0; }
+  @media (max-width:760px) {
+    .tabs { position:fixed; left:0; right:0; bottom:0; z-index:30; border-top:3px solid #000; border-bottom:0; padding-bottom:env(safe-area-inset-bottom); }
+    .tabs .wrap { padding-top:8px; padding-bottom:8px; padding-inline:8px; gap:4px; }
+    .tab { top:0; flex:1 0 auto; text-align:center; padding:13px 9px; font-size:8px; }
+    .tab[aria-current="page"] { top:0; padding-bottom:13px; }
+    body { padding-bottom:calc(66px + env(safe-area-inset-bottom)); }
+    footer { margin-bottom:0; }
+  }
   @media (prefers-reduced-motion:reduce) {
     *,*::before,*::after { animation:none !important; transition:none !important; }
     html.js .rv:not(.in) { opacity:1; transform:none; }
@@ -416,6 +441,7 @@
   <div class="wrap">
     <a class="brand" href="#top">Chronicle</a>
     <div class="slots">
+      <button class="slot" id="sbtn" type="button" aria-label="Suchen (Taste /)"><canvas class="ico" data-i="glass" width="10" height="10" style="width:20px;height:20px"></canvas><b>Suche</b></button>
       <a class="slot" href="#guide"><canvas class="ico" data-i="wand" width="10" height="10" style="width:20px;height:20px"></canvas><b>Guide</b></a>
       <a class="slot" href="#download"><canvas class="ico" data-i="chest" width="10" height="10" style="width:20px;height:20px"></canvas><b>Download</b></a>
       <a class="slot" href="#install"><canvas class="ico" data-i="book" width="10" height="10" style="width:20px;height:20px"></canvas><b>Start</b></a>
@@ -426,6 +452,13 @@
     </div>
   </div>
 </nav>
+
+<div id="sov" hidden>
+  <div class="sbox" role="dialog" aria-label="Suche">
+    <div class="srow"><input id="sin" type="search" placeholder="Mod, Boss oder Guide suchen" autocomplete="off" aria-label="Suchbegriff"><button class="mc sm" id="sx" type="button">Zu</button></div>
+    <div id="sres" aria-live="polite"></div>
+  </div>
+</div>
 
 <header class="hero" id="top">
   <canvas id="scene" aria-hidden="true"></canvas>
@@ -455,6 +488,7 @@
     <section id="stats-sec" style="padding-top:44px">
       <div class="stats">
         <div class="stat"><b>1.21.1</b><span>Minecraft</span></div>
+        <div class="stat"><b id="statVer">0.9.21</b><span>Chronicle-Version</span></div>
         <div class="stat"><b id="statMods">320</b><span>Mods</span></div>
         <div class="stat"><b>1430</b><span>Quests in 38 Kapiteln</span></div>
         <div class="stat"><b>73</b><span>Bosse im Bossführer</span></div>
@@ -716,7 +750,7 @@
       <p class="kicker">Changelog</p>
       <h2>Was sich seit 0.9.0 getan hat</h2>
       <div class="pixel-rule"></div>
-      <ol class="timeline"><li><div class="ver"><b>0.9.21</b><span>Server</span></div><ul><li>Neu: NoTimeOut, damit man nach einem Server-Neustart nicht mehr in den Timeout beim Beitreten läuft. Insgesamt 320 Mods.</li></ul></li><li><div class="ver"><b>0.9.19</b><span>Mods · Grafik</span></div><ul><li>Iris ist zurück (1.8.14-beta.1, nur Client), damit sind Shader wieder möglich. Insgesamt 315 Mods.</li><li>Shader-Pakete selbst gibt es nicht im Pack, sie kommen über die Modrinth App in den Ordner shaderpacks.</li><li>Die Render-Skalierung nicht im Spiel ändern, sonst werden Blöcke unsichtbar. Ist das Shader-Menü leer, den Hintergrund-Blur ausschalten.</li></ul></li><li><div class="ver"><b>0.9.18</b><span>Mods · Questbuch</span></div><ul><li>Neu: Deep Aether, Alshanex&#x27;s Familiars und Create: Wizardry, damit 314 Mods.</li><li>11 neue Quests, jetzt 1430. Der Bossführer kennt 73 Bosse.</li><li>Das Questbuch-Layout ist übersichtlicher, die Linien kreuzen sich weniger.</li></ul></li><li><div class="ver"><b>0.9.17</b><span>Mods · Bossführer</span></div><ul><li>Bossführer als Buch im Spiel, mit Eintrag für jeden Boss.</li><li>Sechs Cataclysm-Addons: Integrated Cataclysm, Goety Cataclysm, Mowzie&#x27;s Cataclysm, Cataclysm Delight, Boss UI und die Create-Integration.</li></ul></li><li><div class="ver"><b>0.9.16</b><span>Skilltree</span></div><ul><li>Der Skilltree mit Pufferfish&#x27;s Skills: 111 Knoten in fünf Ästen.</li><li>Punkte gibt es für Kills und Erze.</li></ul></li><li><div class="ver"><b>0.9.15</b><span>Questbuch</span></div><ul><li>Das Questbuch-Layout wurde entwirrt. Linienkreuzungen sanken von 199 auf 77.</li><li>Die Rezepte der Fragmente stehen jetzt im Questtext.</li></ul></li><li><div class="ver"><b>0.9.14</b><span>Komfort</span></div><ul><li>Startkiste beim ersten Login: Questbuch, Fleisch, Fackeln und Steinwerkzeug.</li><li>Fragmente erscheinen im Kreativ-Tab &quot;Zutaten&quot; und damit in JEI.</li><li>ModernFix mit dynamischem Laden der Ressourcen.</li></ul></li><li><div class="ver"><b>0.9.13</b><span>Mods · Questbuch</span></div><ul><li>JEI ersetzt EMI. Just Enough Resources zeigt Beute.</li><li>20 neue Mods, unter anderem Numismatics, TFMG, Goety, End Remastered, Enderscape, L2 Hostility, Tide und Serene Seasons.</li><li>Questbuch auf 38 Kapitel und 1419 Quests ausgebaut.</li></ul></li><li><div class="ver"><b>0.9.12</b><span>Endgame</span></div><ul><li>Almost Unified vereinheitlicht Erze und Metalle.</li><li>Der Chronicle-Kern mit drei Fragmenten als eigenes Endgame.</li></ul></li><li><div class="ver"><b>0.9.11</b><span>Name</span></div><ul><li>Das Pack heißt jetzt Chronicle.</li></ul></li><li><div class="ver"><b>0.9.10</b><span>Mods</span></div><ul><li>Lootr, Easy Villagers, Trade Cycling, Elevator Mod, Cooking for Blockheads, Pipez, Refined Storage und EvilCraft.</li></ul></li><li><div class="ver"><b>0.9.9</b><span>Leistung</span></div><ul><li>FastSuite, FastFurnace, FastWorkbench, Packet Fixer, dazu für den Client BadOptimizations, Dynamic FPS und More Culling.</li><li>Server mit 12 GB RAM und angepassten Java-Flags.</li></ul></li><li><div class="ver"><b>0.9.8</b><span>Questbuch</span></div><ul><li>Questbuch 2.0: 6 Gruppen, 33 Kapitel, 1178 Quests und vier Stufen Loot-Kisten.</li><li>Behoben: Quests hießen &quot;Unnamed&quot; und standen in falscher Reihenfolge.</li></ul></li><li><div class="ver"><b>0.9.7</b><span>Questbuch</span></div><ul><li>Erstes Questbuch mit 12 Kapiteln und 233 Quests.</li></ul></li><li><div class="ver"><b>0.9.6</b><span>Mods</span></div><ul><li>Technik-Paket: Draconic Evolution, Industrial Foregoing, PneumaticCraft, Immersive Engineering, Extreme Reactors, Oritech, Ender IO und mehr.</li></ul></li><li><div class="ver"><b>0.9.5</b><span>Test</span></div><ul><li>Client-Test: läuft einwandfrei.</li></ul></li><li><div class="ver"><b>0.9.4</b><span>Mods</span></div><ul><li>AllTheModium in der offiziellen CurseForge-Version.</li></ul></li><li><div class="ver"><b>0.9.3</b><span>Mods</span></div><ul><li>15 neue Mods, darunter Mekanism, Productive Bees, Mystical Agriculture, Carry On und Alex&#x27;s Caves.</li></ul></li><li><div class="ver"><b>0.9.2</b><span>Mods</span></div><ul><li>Create: Steam &#x27;n&#x27; Rails.</li></ul></li><li><div class="ver"><b>0.9.0</b><span>Start</span></div><ul><li>Erste Fassung als &quot;Unser Modpack&quot;: 180 Mods, Servertest ohne Fehler.</li></ul></li></ol>
+      <ol class="timeline"><li><div class="ver"><b>0.9.21</b><span>Server</span></div><ul><li>Neu: NoTimeOut, damit man nach einem Server-Neustart nicht mehr in den Timeout beim Beitreten läuft. Insgesamt 320 Mods.</li></ul></li><li><div class="ver"><b>0.9.20</b><span>Update</span></div><ul><li>Neu: eigener Ladebildschirm im Chronicle-Stil mit FancyMenu und Drippy Loading Screen (nur Client). Insgesamt 319 Mods.</li></ul></li><li><div class="ver"><b>0.9.19</b><span>Mods · Grafik</span></div><ul><li>Iris ist zurück (1.8.14-beta.1, nur Client), damit sind Shader wieder möglich. Insgesamt 315 Mods.</li><li>Shader-Pakete selbst gibt es nicht im Pack, sie kommen über die Modrinth App in den Ordner shaderpacks.</li><li>Die Render-Skalierung nicht im Spiel ändern, sonst werden Blöcke unsichtbar. Ist das Shader-Menü leer, den Hintergrund-Blur ausschalten.</li></ul></li><li><div class="ver"><b>0.9.18</b><span>Mods · Questbuch</span></div><ul><li>Neu: Deep Aether, Alshanex&#x27;s Familiars und Create: Wizardry, damit 314 Mods.</li><li>11 neue Quests, jetzt 1430. Der Bossführer kennt 73 Bosse.</li><li>Das Questbuch-Layout ist übersichtlicher, die Linien kreuzen sich weniger.</li></ul></li><li><div class="ver"><b>0.9.17</b><span>Mods · Bossführer</span></div><ul><li>Bossführer als Buch im Spiel, mit Eintrag für jeden Boss.</li><li>Sechs Cataclysm-Addons: Integrated Cataclysm, Goety Cataclysm, Mowzie&#x27;s Cataclysm, Cataclysm Delight, Boss UI und die Create-Integration.</li></ul></li><li><div class="ver"><b>0.9.16</b><span>Skilltree</span></div><ul><li>Der Skilltree mit Pufferfish&#x27;s Skills: 111 Knoten in fünf Ästen.</li><li>Punkte gibt es für Kills und Erze.</li></ul></li><li><div class="ver"><b>0.9.15</b><span>Questbuch</span></div><ul><li>Das Questbuch-Layout wurde entwirrt. Linienkreuzungen sanken von 199 auf 77.</li><li>Die Rezepte der Fragmente stehen jetzt im Questtext.</li></ul></li><li><div class="ver"><b>0.9.14</b><span>Komfort</span></div><ul><li>Startkiste beim ersten Login: Questbuch, Fleisch, Fackeln und Steinwerkzeug.</li><li>Fragmente erscheinen im Kreativ-Tab &quot;Zutaten&quot; und damit in JEI.</li><li>ModernFix mit dynamischem Laden der Ressourcen.</li></ul></li><li><div class="ver"><b>0.9.13</b><span>Mods · Questbuch</span></div><ul><li>JEI ersetzt EMI. Just Enough Resources zeigt Beute.</li><li>20 neue Mods, unter anderem Numismatics, TFMG, Goety, End Remastered, Enderscape, L2 Hostility, Tide und Serene Seasons.</li><li>Questbuch auf 38 Kapitel und 1419 Quests ausgebaut.</li></ul></li><li><div class="ver"><b>0.9.12</b><span>Endgame</span></div><ul><li>Almost Unified vereinheitlicht Erze und Metalle.</li><li>Der Chronicle-Kern mit drei Fragmenten als eigenes Endgame.</li></ul></li><li><div class="ver"><b>0.9.11</b><span>Name</span></div><ul><li>Das Pack heißt jetzt Chronicle.</li></ul></li><li><div class="ver"><b>0.9.10</b><span>Mods</span></div><ul><li>Lootr, Easy Villagers, Trade Cycling, Elevator Mod, Cooking for Blockheads, Pipez, Refined Storage und EvilCraft.</li></ul></li><li><div class="ver"><b>0.9.9</b><span>Leistung</span></div><ul><li>FastSuite, FastFurnace, FastWorkbench, Packet Fixer, dazu für den Client BadOptimizations, Dynamic FPS und More Culling.</li><li>Server mit 12 GB RAM und angepassten Java-Flags.</li></ul></li><li><div class="ver"><b>0.9.8</b><span>Questbuch</span></div><ul><li>Questbuch 2.0: 6 Gruppen, 33 Kapitel, 1178 Quests und vier Stufen Loot-Kisten.</li><li>Behoben: Quests hießen &quot;Unnamed&quot; und standen in falscher Reihenfolge.</li></ul></li><li><div class="ver"><b>0.9.7</b><span>Questbuch</span></div><ul><li>Erstes Questbuch mit 12 Kapiteln und 233 Quests.</li></ul></li><li><div class="ver"><b>0.9.6</b><span>Mods</span></div><ul><li>Technik-Paket: Draconic Evolution, Industrial Foregoing, PneumaticCraft, Immersive Engineering, Extreme Reactors, Oritech, Ender IO und mehr.</li></ul></li><li><div class="ver"><b>0.9.5</b><span>Test</span></div><ul><li>Client-Test: läuft einwandfrei.</li></ul></li><li><div class="ver"><b>0.9.4</b><span>Mods</span></div><ul><li>AllTheModium in der offiziellen CurseForge-Version.</li></ul></li><li><div class="ver"><b>0.9.3</b><span>Mods</span></div><ul><li>15 neue Mods, darunter Mekanism, Productive Bees, Mystical Agriculture, Carry On und Alex&#x27;s Caves.</li></ul></li><li><div class="ver"><b>0.9.2</b><span>Mods</span></div><ul><li>Create: Steam &#x27;n&#x27; Rails.</li></ul></li><li><div class="ver"><b>0.9.0</b><span>Start</span></div><ul><li>Erste Fassung als &quot;Unser Modpack&quot;: 180 Mods, Servertest ohne Fehler.</li></ul></li></ol>
     </section>
   </div>
   </div>
@@ -765,6 +799,7 @@
     gear:['....gg....','.g.gggg.g.','.gggddggg.','.ggd..dgg.','gggd..dggg','gggd..dggg','.ggd..dgg.','.gggddggg.','.g.gggg.g.','....gg....'],
     chest:['..........','.BBBBBBBB.','BbbbbbbbbB','BbbbbbbbbB','BBBByyBBBB','BbbbyYbbbB','BbbbbbbbbB','BbbbbbbbbB','BBBBBBBBBB','..........'],
     sword:['........ws','.......wsS','......wsS.','.....wsS..','.y..wsS...','..ywsS....','...yyS....','..hhy.....','.hh.......','hh........'],
+    glass:['..........','...GGGG...','..G....G..','.G......G.','.G......G.','.G......G.','..G....G..','...GGGGhh.','......hh..','.....hh...'],
     wand:['...pppp...','..pqqppP..','..pqpppP..','..ppppPP..','...PPPP...','....hh....','....hh....','...hh.....','...hh.....','..hh......'],
     portal:['.oooooooo.','.oppPppPo.','.oPppPppo.','.oppPppPo.','.oPppPppo.','.oppPppPo.','.oPppPppo.','.oppPppPo.','.oooooooo.','..........'],
     skull:['..wwwwww..','.wwwwwwww.','wwwwwwwwww','wkkwwwwkkw','wkkwwwwkkw','wwwwkkwwww','.wwwwwwww.','..wkwkwk..','..wwwwww..','..........'],
@@ -867,7 +902,7 @@
     VIEWS.forEach(function (n) { document.getElementById(n).hidden = n !== v;
       document.getElementById('tab-' + n).setAttribute('aria-current', n === v ? 'page' : 'false'); });
     if (el && !el.classList.contains('view')) el.scrollIntoView();
-    else if (v !== 'home') document.querySelector('.tabs').scrollIntoView();
+    else if (v !== 'home') (getComputedStyle(document.querySelector('.tabs')).position === 'fixed' ? document.querySelector('main') : document.querySelector('.tabs')).scrollIntoView();
     else window.scrollTo(0, 0);
   }
   window.addEventListener('hashchange', route); route();
@@ -945,6 +980,36 @@
     }).catch(function () { out.innerHTML = '<p class="lead">Die Bosse konnten nicht geladen werden.</p>'; });
   })();
 
+
+
+  /* ---------- Globale Suche ---------- */
+  (function () {
+    var ov = document.getElementById('sov'), inp = document.getElementById('sin'), res = document.getElementById('sres'), md = null, bd = null, gi = null;
+    function load(u, cb) { fetch(u).then(function (r) { return r.json(); }).then(cb).catch(function () {}); }
+    function guide() { if (gi) return gi; gi = []; var n = 0;
+      document.querySelectorAll('#guide .recipe h3,#guide .way header,#guide details.bg summary,#guide .toast .t,#guide h2').forEach(function (h) {
+        var el = h.closest('.recipe,.way,details.bg,.toast') || h; if (!el.id) el.id = 'g-' + (++n); gi.push({ t: h.textContent.replace(/\s+/g, ' ').trim(), id: el.id, hay: (el.textContent || '').toLowerCase() }); });
+      return gi; }
+    function open() { ov.hidden = false; inp.value = ''; res.textContent = ''; if (!md) load('modliste.json', function (d) { md = d; }); if (!bd) load('bosse.json', function (d) { bd = d; }); setTimeout(function () { inp.focus(); }, 30); }
+    function close() { ov.hidden = true; }
+    function go(hash, box, q) { close(); if (box) { var i = document.getElementById(box); i.value = q; i.dispatchEvent(new Event('input')); } if (location.hash === '#' + hash) route(); else location.hash = hash; }
+    function row(label, small, fn) { var b = document.createElement('button'); b.type = 'button'; var s = document.createElement('span'); s.textContent = label; b.appendChild(s);
+      if (small) { var m = document.createElement('small'); m.textContent = small; b.appendChild(m); } b.onclick = fn; res.appendChild(b); }
+    function head(t) { var h = document.createElement('h4'); h.textContent = t; res.appendChild(h); }
+    function run() { var q = inp.value.trim().toLowerCase(); res.textContent = ''; if (q.length < 2) return; var any = false;
+      var g = guide().filter(function (x) { return x.t.toLowerCase().indexOf(q) > -1; }); if (!g.length) g = guide().filter(function (x) { return x.hay.indexOf(q) > -1; }); g = g.slice(0, 6);
+      if (g.length) { any = true; head('GUIDE'); g.forEach(function (x) { row(x.t, '', function () { go(x.id); }); }); }
+      var b = bd ? bd.bosse.filter(function (x) { return (x.name + ' ' + x.id).toLowerCase().indexOf(q) > -1; }) : [];
+      if (b.length) { any = true; head('BOSSE (' + b.length + ')'); b.slice(0, 6).forEach(function (x) { row(x.name, '', function () { go('bosse', 'bq', x.name); }); }); }
+      var m = []; if (md) md.kategorien.forEach(function (c) { c.mods.forEach(function (x) { if (x.n.toLowerCase().indexOf(q) > -1) m.push([x, c.name]); }); });
+      if (m.length) { any = true; head('MODS (' + m.length + ')'); m.slice(0, 8).forEach(function (x) { row(x[0].n, x[1], function () { go('mods', 'q', x[0].n); }); }); }
+      if (!any) { var p = document.createElement('p'); p.textContent = 'Nichts gefunden.'; res.appendChild(p); } }
+    inp.addEventListener('input', run);
+    document.getElementById('sbtn').onclick = open; document.getElementById('sx').onclick = close;
+    ov.addEventListener('click', function (e) { if (e.target === ov) close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !ov.hidden) close();
+      else if (e.key === '/' && ov.hidden && !/INPUT|TEXTAREA/.test(document.activeElement.tagName)) { e.preventDefault(); open(); } });
+  })();
 
   /* ---------- Bewegung ---------- */
   (function () {
