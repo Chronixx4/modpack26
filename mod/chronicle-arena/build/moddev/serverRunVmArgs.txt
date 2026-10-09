@@ -14,4 +14,5 @@ jdk.naming.dns/com.sun.jndi.dns=java.naming
 -Djava.net.preferIPv6Addresses=system
 -DignoreList=mixinextras-neoforge-0.5.5.jar,client-extra,neoforge-
 -DlegacyClassPath.file=/home/user/modpack26/mod/chronicle-arena/build/moddev/serverLegacyClasspath.txt
+-Dchronicle_arena.dump=/tmp/claude-0/blocks.txt
 -Dchronicle_arena.selftest=true

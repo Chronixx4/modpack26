@@ -20,6 +20,7 @@ neoForge {
         server {
             server()
             systemProperty 'chronicle_arena.selftest', System.getProperty('chronicle_arena.selftest', 'false')
+            systemProperty 'chronicle_arena.dump', System.getProperty('chronicle_arena.dump', '')
         }
         client {
             client()

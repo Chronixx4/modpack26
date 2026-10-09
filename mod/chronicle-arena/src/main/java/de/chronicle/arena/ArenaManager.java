@@ -829,6 +829,24 @@ public final class ArenaManager {
                 })));
     }
 
+    /** Nur fuer Vorschaubilder: schreibt die gebauten Bloecke in eine Textdatei (-Dchronicle_arena.dump=pfad). */
+    private static void dumpBlocks(ServerLevel level) {
+        String path = System.getProperty("chronicle_arena.dump");
+        if (path == null || path.isEmpty()) return;
+        try (java.io.PrintWriter w = new java.io.PrintWriter(path)) {
+            int[][] boxes = {{-20, 55, -20, 82, 100, 20}, {-40, 55, 160, 40, 135, 240}};
+            for (int[] b : boxes) {
+                for (int x = b[0]; x <= b[3]; x++) for (int y = b[1]; y <= b[4]; y++) for (int z = b[2]; z <= b[5]; z++) {
+                    var st = level.getBlockState(new BlockPos(x, y, z));
+                    if (st.isAir() || st.is(net.minecraft.world.level.block.Blocks.BARRIER)) continue;
+                    w.println(x + " " + y + " " + z + " " + net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(st.getBlock()).getPath());
+                }
+            }
+        } catch (Exception e) {
+            LOGGER.error("Dump fehlgeschlagen", e);
+        }
+    }
+
     /** Selbsttest: baut die Arena und spawnt jeden Mob jeder Begegnung einmal (dann wieder weg). */
     private static void debug(MinecraftServer server) {
         ServerLevel level = server.getLevel(DIM);
@@ -837,6 +855,7 @@ public final class ArenaManager {
             return;
         }
         ArenaBuilder.ensureBuilt(level);
+        dumpBlocks(level);
         LOGGER.info("ARENA-DEBUG: Arena gebaut, Marker={}, Terminal={}, Portal={}",
                 level.getBlockState(new BlockPos(0, 60, 200)).getBlock(),
                 level.getBlockState(LOBBY).getBlock(),
