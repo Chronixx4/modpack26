@@ -9,7 +9,7 @@ $ProgressPreference = 'SilentlyContinue'
 $MC      = '1.21.1'
 $LOADER  = 'neoforge'
 $PACK    = 'Chronicle'
-$PACKVER = '0.9.20'
+$PACKVER = '0.9.21'
 $RAM     = '8G'
 $TIMEOUT_MIN = 20
 
@@ -123,6 +123,7 @@ badoptimizations|BadOptimizations
 dynamic-fps|Dynamic FPS
 moreculling|More Culling
 packet-fixer|Packet Fixer
+notimeout|NoTimeOut
 # Komfort und Oberflaeche
 jei|Just Enough Items (JEI)
 fancymenu|FancyMenu

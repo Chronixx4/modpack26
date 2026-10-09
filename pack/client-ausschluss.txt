@@ -2,3 +2,5 @@
 # Chunky: crasht zusammen mit Distant Horizons (DH ruft Chunky auf, bevor es geladen ist),
 # auch im Einzelspieler. Vorgenerieren macht ihr auf dem Server.
 Chunky-*
+# NoTimeOut: reine Server-Mod gegen Join-Timeouts.
+notimeout-*
