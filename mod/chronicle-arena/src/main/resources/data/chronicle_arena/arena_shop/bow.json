@@ -1,5 +1,6 @@
 {
-  "order": 10,
+  "order": 13,
+  "category": "waffen",
   "name": "Arena-Bogen",
   "item": "minecraft:bow",
   "count": 1,

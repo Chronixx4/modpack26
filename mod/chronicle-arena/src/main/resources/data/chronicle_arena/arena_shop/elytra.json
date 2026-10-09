@@ -1,5 +1,6 @@
 {
-  "order": 15,
+  "order": 33,
+  "category": "werkzeug",
   "name": "Elytren",
   "item": "minecraft:elytra",
   "count": 1,

@@ -36,7 +36,7 @@ public final class ArenaDefs {
     public record Tier(ResourceLocation id, int order, String name, String desc,
                        double health, double damage, double count, int waves,
                        ResourceLocation loot, int xp, int bossRolls,
-                       ResourceLocation requires, int tokens,
+                       ResourceLocation requires, int tokens, int tokensPerWave,
                        double waveHealth, double waveDamage, double waveCount) {}
 
     /** Mob-Gruppe einer Welle: ab fromWave, Anzahl = base + (welle - fromWave) * perWave. */
@@ -63,8 +63,8 @@ public final class ArenaDefs {
     }
 
     /** Shop-Angebot: Gegenstand gegen Arena-Marken. components ist ein optionales Komponenten-JSON. */
-    public record ShopOffer(ResourceLocation id, int order, String name, ResourceLocation item, int count, int price,
-                            JsonObject components) {
+    public record ShopOffer(ResourceLocation id, int order, String category, String name, ResourceLocation item,
+                            int count, int price, JsonObject components) {
         public boolean available() {
             return BuiltInRegistries.ITEM.containsKey(item);
         }
@@ -154,6 +154,7 @@ public final class ArenaDefs {
                             GsonHelper.getAsInt(o, "boss_rolls", 2),
                             rl(o, "requires", null),
                             GsonHelper.getAsInt(o, "tokens", 3),
+                            GsonHelper.getAsInt(o, "tokens_per_wave", 1),
                             GsonHelper.getAsDouble(o, "wave_health", 1.0),
                             GsonHelper.getAsDouble(o, "wave_damage", 1.0),
                             GsonHelper.getAsDouble(o, "wave_count", 1.0)));
@@ -181,6 +182,7 @@ public final class ArenaDefs {
                 try {
                     JsonObject o = GsonHelper.convertToJsonObject(e.getValue(), "offer");
                     list.add(new ShopOffer(e.getKey(), GsonHelper.getAsInt(o, "order", 0),
+                            GsonHelper.getAsString(o, "category", "material"),
                             GsonHelper.getAsString(o, "name", e.getKey().getPath()),
                             ResourceLocation.parse(GsonHelper.getAsString(o, "item")),
                             Math.max(1, GsonHelper.getAsInt(o, "count", 1)),
@@ -194,7 +196,14 @@ public final class ArenaDefs {
             Map<ResourceLocation, ShopOffer> out = new LinkedHashMap<>();
             for (ShopOffer o : list) out.put(o.id(), o);
             shop = out;
-            LOGGER.info("Arena: {} Shop-Angebote geladen", out.size());
+            int missing = 0;
+            for (ShopOffer o : out.values()) {
+                if (!o.available()) {
+                    missing++;
+                    LOGGER.info("Arena-Shop: {} ausgeblendet (Item {} fehlt im Pack)", o.id(), o.item());
+                }
+            }
+            LOGGER.info("Arena: {} Shop-Angebote geladen, {} ausgeblendet", out.size(), missing);
         }
     }
 

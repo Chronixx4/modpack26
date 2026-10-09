@@ -1,5 +1,6 @@
 {
-  "order": 14,
+  "order": 24,
+  "category": "ruestung",
   "name": "Arena-Stiefel",
   "item": "minecraft:netherite_boots",
   "count": 1,
@@ -10,7 +11,8 @@
         "minecraft:protection": 4,
         "minecraft:unbreaking": 3,
         "minecraft:feather_falling": 4,
-        "minecraft:depth_strider": 3
+        "minecraft:depth_strider": 3,
+        "minecraft:mending": 1
       }
     },
     "minecraft:custom_name": "{\"text\": \"Arena-Stiefel\", \"italic\": false, \"color\": \"light_purple\"}"

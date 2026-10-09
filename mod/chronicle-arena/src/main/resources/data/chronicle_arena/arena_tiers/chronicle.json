@@ -13,5 +13,6 @@
   "tokens": 16,
   "wave_health": 0.75,
   "wave_damage": 0.8,
-  "wave_count": 0.7
+  "wave_count": 0.7,
+  "tokens_per_wave": 3
 }

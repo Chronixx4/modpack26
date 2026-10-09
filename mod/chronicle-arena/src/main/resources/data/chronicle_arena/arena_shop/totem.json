@@ -1,5 +1,6 @@
 {
   "order": 7,
+  "category": "verbrauch",
   "name": "Totem der Unsterblichkeit",
   "item": "minecraft:totem_of_undying",
   "count": 1,

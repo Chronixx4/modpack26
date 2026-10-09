@@ -1,9 +1,11 @@
 package de.chronicle.arena;
 
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 
@@ -14,9 +16,11 @@ public final class Net {
     private Net() {}
 
     public static void register(RegisterPayloadHandlersEvent event) {
-        PayloadRegistrar reg = event.registrar("2");
+        PayloadRegistrar reg = event.registrar("3");
         reg.playToClient(OpenTerminal.TYPE, OpenTerminal.CODEC,
                 (payload, ctx) -> ctx.enqueueWork(() -> de.chronicle.arena.client.ClientHooks.openTerminal(payload)));
+        reg.playToClient(OpenShop.TYPE, OpenShop.CODEC,
+                (payload, ctx) -> ctx.enqueueWork(() -> de.chronicle.arena.client.ClientHooks.openShop(payload)));
         reg.playToClient(Tokens.TYPE, Tokens.CODEC,
                 (payload, ctx) -> ctx.enqueueWork(() -> de.chronicle.arena.client.ClientHooks.updateTokens(payload.count())));
         reg.playToServer(Action.TYPE, Action.CODEC,
@@ -33,18 +37,17 @@ public final class Net {
 
     public record EncInfo(String id, boolean boss, String name, String desc, String icon) {}
 
-    public record ShopInfo(String id, String name, String item, int count, int price) {}
+    public record ShopInfo(String id, String category, String name, int price, ItemStack stack) {}
 
-    /** Server -> Client: Inhalt des Menues. */
-    public record OpenTerminal(boolean running, String status, int tokens, List<TierInfo> tiers,
-                               List<EncInfo> encounters, List<ShopInfo> shop) implements CustomPacketPayload {
+    /** Server -> Client: Inhalt des Kampf-Menues. */
+    public record OpenTerminal(boolean running, String status, List<TierInfo> tiers, List<EncInfo> encounters)
+            implements CustomPacketPayload {
         public static final Type<OpenTerminal> TYPE = new Type<>(ChronicleArena.id("open_terminal"));
         public static final StreamCodec<FriendlyByteBuf, OpenTerminal> CODEC = StreamCodec.of(OpenTerminal::write, OpenTerminal::read);
 
         private static void write(FriendlyByteBuf buf, OpenTerminal p) {
             buf.writeBoolean(p.running);
             buf.writeUtf(p.status);
-            buf.writeVarInt(p.tokens);
             buf.writeVarInt(p.tiers.size());
             for (TierInfo t : p.tiers) {
                 buf.writeUtf(t.id);
@@ -61,20 +64,11 @@ public final class Net {
                 buf.writeUtf(e.desc, 1024);
                 buf.writeUtf(e.icon);
             }
-            buf.writeVarInt(p.shop.size());
-            for (ShopInfo s : p.shop) {
-                buf.writeUtf(s.id);
-                buf.writeUtf(s.name);
-                buf.writeUtf(s.item);
-                buf.writeVarInt(s.count);
-                buf.writeVarInt(s.price);
-            }
         }
 
         private static OpenTerminal read(FriendlyByteBuf buf) {
             boolean running = buf.readBoolean();
             String status = buf.readUtf();
-            int tokens = buf.readVarInt();
             int nt = buf.readVarInt();
             List<TierInfo> tiers = new ArrayList<>();
             for (int i = 0; i < nt; i++) {
@@ -85,12 +79,40 @@ public final class Net {
             for (int i = 0; i < ne; i++) {
                 encs.add(new EncInfo(buf.readUtf(), buf.readBoolean(), buf.readUtf(), buf.readUtf(1024), buf.readUtf()));
             }
-            int ns = buf.readVarInt();
-            List<ShopInfo> shop = new ArrayList<>();
-            for (int i = 0; i < ns; i++) {
-                shop.add(new ShopInfo(buf.readUtf(), buf.readUtf(), buf.readUtf(), buf.readVarInt(), buf.readVarInt()));
+            return new OpenTerminal(running, status, tiers, encs);
+        }
+
+        @Override
+        public Type<? extends CustomPacketPayload> type() {
+            return TYPE;
+        }
+    }
+
+    /** Server -> Client: Shop mit allen Angeboten (mit echten Item-Stacks fuer Tooltips). */
+    public record OpenShop(int tokens, List<ShopInfo> offers) implements CustomPacketPayload {
+        public static final Type<OpenShop> TYPE = new Type<>(ChronicleArena.id("open_shop"));
+        public static final StreamCodec<RegistryFriendlyByteBuf, OpenShop> CODEC = StreamCodec.of(OpenShop::write, OpenShop::read);
+
+        private static void write(RegistryFriendlyByteBuf buf, OpenShop p) {
+            buf.writeVarInt(p.tokens);
+            buf.writeVarInt(p.offers.size());
+            for (ShopInfo s : p.offers) {
+                buf.writeUtf(s.id);
+                buf.writeUtf(s.category);
+                buf.writeUtf(s.name);
+                buf.writeVarInt(s.price);
+                ItemStack.STREAM_CODEC.encode(buf, s.stack);
             }
-            return new OpenTerminal(running, status, tokens, tiers, encs, shop);
+        }
+
+        private static OpenShop read(RegistryFriendlyByteBuf buf) {
+            int tokens = buf.readVarInt();
+            int n = buf.readVarInt();
+            List<ShopInfo> list = new ArrayList<>();
+            for (int i = 0; i < n; i++) {
+                list.add(new ShopInfo(buf.readUtf(), buf.readUtf(), buf.readUtf(), buf.readVarInt(), ItemStack.STREAM_CODEC.decode(buf)));
+            }
+            return new OpenShop(tokens, list);
         }
 
         @Override

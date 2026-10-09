@@ -73,7 +73,35 @@ def terminal(top):
     return px
 
 
+def shop(top):
+    px = []
+    for y in range(16):
+        row = []
+        for x in range(16):
+            border = x in (0, 15) or y in (0, 15)
+            if border:
+                row.append((90, 60, 20, 255))
+            elif top:
+                v = 190 + ((x * 7 + y * 13) % 4) * 8
+                row.append((v, int(v * 0.8), 40, 255))
+            else:
+                dx, dy = x - 7.5, y - 7.5
+                coin = math.hypot(dx, dy) < 4.8
+                core = math.hypot(dx, dy) < 2.6
+                if core:
+                    row.append((120, 60, 190, 255))
+                elif coin:
+                    row.append((250, 215, 80, 255))
+                else:
+                    v = 120 + ((x * 5 + y * 9) % 3) * 6
+                    row.append((v, int(v * 0.7), 40, 255))
+        px.append(row)
+    return px
+
+
 os.makedirs(OUT, exist_ok=True)
+png(os.path.join(OUT, 'arena_shop_top.png'), shop(True))
+png(os.path.join(OUT, 'arena_shop_side.png'), shop(False))
 png(os.path.join(OUT, 'arena_portal.png'), portal())
 open(os.path.join(OUT, 'arena_portal.png.mcmeta'), 'w').write('{"animation":{"frametime":3,"interpolate":true}}\n')
 png(os.path.join(OUT, 'arena_terminal_top.png'), terminal(True))

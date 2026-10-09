@@ -1,0 +1,17 @@
+{
+  "order": 25,
+  "category": "ruestung",
+  "name": "Arena-Schild",
+  "item": "minecraft:shield",
+  "count": 1,
+  "price": 40,
+  "components": {
+    "minecraft:enchantments": {
+      "levels": {
+        "minecraft:unbreaking": 3,
+        "minecraft:mending": 1
+      }
+    },
+    "minecraft:custom_name": "{\"text\": \"Arena-Schild\", \"italic\": false, \"color\": \"light_purple\"}"
+  }
+}

@@ -68,7 +68,9 @@ public final class ArenaManager {
 
     static final BlockPos LOBBY = new BlockPos(0, 64, 0);
     static final BlockPos ARENA = new BlockPos(0, 64, 200);
+    static final BlockPos SHOP = new BlockPos(60, 64, 0);
     static final int LOBBY_RADIUS = 12;
+    static final int SHOP_RADIUS = 12;
     static final int ARENA_RADIUS = 26;
     static final int MAX_ALIVE_MOBS = 30;
     static final int PREP_TICKS = 100;
@@ -180,10 +182,6 @@ public final class ArenaManager {
         for (ArenaDefs.Encounter e : ArenaDefs.encounters()) {
             encs.add(new Net.EncInfo(e.id().toString(), e.boss(), e.name(), e.desc(), e.icon().toString()));
         }
-        List<Net.ShopInfo> shop = new ArrayList<>();
-        for (ArenaDefs.ShopOffer o : ArenaDefs.shopOffers()) {
-            shop.add(new Net.ShopInfo(o.id().toString(), o.name(), o.item().toString(), o.count(), o.price()));
-        }
         String status;
         if (run == null) {
             status = Component.translatable("gui.chronicle_arena.status_free", playersInLobby(sp.server).size()).getString();
@@ -191,7 +189,18 @@ public final class ArenaManager {
             status = Component.translatable("gui.chronicle_arena.status_running", run.encounter.name(), run.tier.name(),
                     run.alive.size()).getString();
         }
-        PacketDistributor.sendToPlayer(sp, new Net.OpenTerminal(run != null, status, countTokens(sp), tiers, encs, shop));
+        PacketDistributor.sendToPlayer(sp, new Net.OpenTerminal(run != null, status, tiers, encs));
+    }
+
+    public static void openShop(ServerPlayer sp) {
+        if (sp.level().dimension() != DIM) return;
+        List<Net.ShopInfo> shop = new ArrayList<>();
+        for (ArenaDefs.ShopOffer o : ArenaDefs.shopOffers()) {
+            ItemStack stack = o.stack(sp.server.registryAccess());
+            if (stack.isEmpty()) continue;
+            shop.add(new Net.ShopInfo(o.id().toString(), o.category(), o.name(), o.price(), stack));
+        }
+        PacketDistributor.sendToPlayer(sp, new Net.OpenShop(countTokens(sp), shop));
     }
 
     public static void handleBuy(ServerPlayer sp, Net.Buy buy) {
@@ -249,7 +258,6 @@ public final class ArenaManager {
         ServerLevel level = server.getLevel(DIM);
         if (level == null) return;
         ArenaBuilder.ensureBuilt(level);
-        ArenaBuilder.applyTheme(level, enc.theme());
         Run r = new Run(enc, tier, group.size());
         run = r;
         int i = 0;
@@ -565,6 +573,15 @@ public final class ArenaManager {
         boolean cleared = r.queue.isEmpty() && r.mobs.isEmpty();
         if (!cleared) return;
 
+        if (r.state == State.WAVE && r.tier.tokensPerWave() > 0) {
+            for (UUID id : r.alive) {
+                ServerPlayer p = server.getPlayerList().getPlayer(id);
+                if (p == null) continue;
+                ItemHandlerHelper.giveItemToPlayer(p, new ItemStack(ModRegistry.TOKEN.get(), r.tier.tokensPerWave()));
+                p.displayClientMessage(Component.translatable("msg.chronicle_arena.wave_tokens", r.wave, r.tier.tokensPerWave()), true);
+            }
+        }
+
         if (r.state == State.BOSS) {
             finish(server, true);
         } else if (r.wave >= r.totalWaves) {
@@ -591,7 +608,7 @@ public final class ArenaManager {
             return null;
         }
         double angle = level.getRandom().nextDouble() * Math.PI * 2.0;
-        double dist = s.boss ? 8.0 : 14.0 + level.getRandom().nextDouble() * 7.0;
+        double dist = s.boss ? 8.0 : 13.0 + level.getRandom().nextDouble() * 6.5;
         double x = ARENA.getX() + 0.5 + Math.cos(angle) * dist;
         double z = ARENA.getZ() + 0.5 + Math.sin(angle) * dist;
         le.moveTo(x, ARENA.getY(), z, level.getRandom().nextFloat() * 360.0F, 0.0F);
@@ -864,14 +881,7 @@ public final class ArenaManager {
             if (o.components() != null && st.getEnchantments().isEmpty()) LOGGER.error("ARENA-DEBUG: Shop {} ohne Verzauberung", o.id());
         }
         LOGGER.info("ARENA-DEBUG: Shop {} von {} Angeboten ok", shopOk, ArenaDefs.shopOffers().size());
-        for (String theme : ArenaBuilder.themes()) {
-            try {
-                ArenaBuilder.applyTheme(level, theme);
-            } catch (Throwable t) {
-                LOGGER.error("ARENA-DEBUG: Thema {} Fehler", theme, t);
-            }
-        }
-        LOGGER.info("ARENA-DEBUG: {} Themen gebaut", ArenaBuilder.themes().size());
+        LOGGER.info("ARENA-DEBUG: Shop-Block={}", level.getBlockState(SHOP).getBlock());
     }
 
     // ------------------------------------------------------------------ Hilfen

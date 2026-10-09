@@ -1,7 +1,6 @@
 package de.chronicle.arena.client;
 
 import de.chronicle.arena.Net;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
@@ -66,11 +65,8 @@ public class TerminalScreen extends Screen {
                 .bounds(x, y + 134, 98, 20).build());
         addRenderableWidget(Button.builder(Component.translatable("gui.chronicle_arena.spectate"), b -> send(true))
                 .bounds(x + 102, y + 134, 98, 20).build()).active = data.running();
-        addRenderableWidget(Button.builder(Component.translatable("gui.chronicle_arena.shop"),
-                        b -> Minecraft.getInstance().setScreen(new ShopScreen(data, this)))
-                .bounds(x, y + 158, 98, 20).build());
         addRenderableWidget(Button.builder(Component.translatable("gui.chronicle_arena.close"), b -> onClose())
-                .bounds(x + 102, y + 158, 98, 20).build());
+                .bounds(x, y + 158, w, 20).build());
         refresh();
     }
 

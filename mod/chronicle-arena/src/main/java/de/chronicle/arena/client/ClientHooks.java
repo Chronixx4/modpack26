@@ -11,6 +11,10 @@ public final class ClientHooks {
         Minecraft.getInstance().setScreen(new TerminalScreen(payload));
     }
 
+    public static void openShop(Net.OpenShop payload) {
+        Minecraft.getInstance().setScreen(new ShopScreen(payload));
+    }
+
     public static void updateTokens(int count) {
         if (Minecraft.getInstance().screen instanceof ShopScreen shop) shop.setTokens(count);
     }

@@ -1,6 +1,7 @@
 {
-  "order": 1,
-  "name": "Goldene Aepfel x4",
+  "order": 3,
+  "category": "verbrauch",
+  "name": "Goldene Aepfel",
   "item": "minecraft:golden_apple",
   "count": 4,
   "price": 6

@@ -49,5 +49,14 @@
   "msg.chronicle_arena.unlocked": "Neue Stufe freigeschaltet: %s",
   "msg.chronicle_arena.locked": "%s hat die Stufe %s noch nicht freigeschaltet (erst %s schaffen).",
   "msg.chronicle_arena.stats": "%s: %s Siege, Bestzeit %s",
-  "msg.chronicle_arena.stats_tokens": "Marken im Inventar: %s"
+  "msg.chronicle_arena.stats_tokens": "Marken im Inventar: %s",
+  "block.chronicle_arena.arena_shop": "Arena-Haendler",
+  "gui.chronicle_arena.cat_verbrauch": "Verbrauch",
+  "gui.chronicle_arena.cat_waffen": "Waffen",
+  "gui.chronicle_arena.cat_ruestung": "Ruestung",
+  "gui.chronicle_arena.cat_werkzeug": "Werkzeug",
+  "gui.chronicle_arena.cat_material": "Material",
+  "gui.chronicle_arena.cat_magie": "Magie",
+  "gui.chronicle_arena.pick": "Waehle ein Angebot",
+  "msg.chronicle_arena.wave_tokens": "Welle %s geschafft: +%s Marken"
 }

@@ -33,8 +33,16 @@ public final class ModRegistry {
                     .lightLevel(state -> 10)
                     .sound(SoundType.METAL)));
 
+    public static final DeferredBlock<ArenaShopBlock> SHOP = BLOCKS.register("arena_shop",
+            () -> new ArenaShopBlock(BlockBehaviour.Properties.of()
+                    .strength(-1.0F, 3600000.0F)
+                    .lightLevel(state -> 12)
+                    .sound(SoundType.METAL)));
+
     public static final DeferredItem<BlockItem> PORTAL_ITEM = ITEMS.registerSimpleBlockItem(PORTAL);
     public static final DeferredItem<BlockItem> TERMINAL_ITEM = ITEMS.registerSimpleBlockItem(TERMINAL);
+
+    public static final DeferredItem<BlockItem> SHOP_ITEM = ITEMS.registerSimpleBlockItem(SHOP);
 
     public static final DeferredItem<Item> TOKEN = ITEMS.registerSimpleItem("arena_token", new Item.Properties().rarity(Rarity.RARE));
 
@@ -45,6 +53,7 @@ public final class ModRegistry {
                     .displayItems((params, out) -> {
                         out.accept(PORTAL_ITEM.get());
                         out.accept(TERMINAL_ITEM.get());
+                        out.accept(SHOP_ITEM.get());
                         out.accept(TOKEN.get());
                     })
                     .build());

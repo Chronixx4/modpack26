@@ -1,104 +1,147 @@
-[09Oct2026 22:25:29.035] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeserverdev, --gameDir, ., --fml.fmlVersion, 4.0.45, --fml.mcVersion, 1.21.1, --fml.neoForgeVersion, 21.1.255, --fml.neoFormVersion, 20240808.144430]
-[09Oct2026 22:25:29.039] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: JVM identified as Ubuntu OpenJDK 64-Bit Server VM 21.0.12.1+1-1-24.04.4-Ubuntu
-[09Oct2026 22:25:29.040] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 11.0.5+main.901c6ea8 starting: java version 21.0.12.1 by Ubuntu; OS Linux arch amd64 version 6.18.44-fc-v80
-[09Oct2026 22:25:29.135] [main/INFO] [net.neoforged.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgeserverdev
-[09Oct2026 22:25:29.167] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=union:/root/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.16.4+mixin.0.8.7/26d01f0567ab46e9ca0d2ed89d0ecc11aadbd433/sponge-mixin-0.16.4+mixin.0.8.7.jar%2394!/ Service=ModLauncher Env=SERVER
-[09Oct2026 22:25:29.428] [main/INFO] [net.neoforged.fml.loading.moddiscovery.locators.JarInJarDependencyLocator/]: Found 2 dependencies adding them to mods collection
-[09Oct2026 22:25:29.429] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/]: 
+[09Oct2026 22:43:52.490] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeserverdev, --gameDir, ., --fml.fmlVersion, 4.0.45, --fml.mcVersion, 1.21.1, --fml.neoForgeVersion, 21.1.255, --fml.neoFormVersion, 20240808.144430]
+[09Oct2026 22:43:52.494] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: JVM identified as Ubuntu OpenJDK 64-Bit Server VM 21.0.12.1+1-1-24.04.4-Ubuntu
+[09Oct2026 22:43:52.496] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 11.0.5+main.901c6ea8 starting: java version 21.0.12.1 by Ubuntu; OS Linux arch amd64 version 6.18.44-fc-v80
+[09Oct2026 22:43:52.672] [main/INFO] [net.neoforged.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgeserverdev
+[09Oct2026 22:43:52.747] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=union:/root/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.16.4+mixin.0.8.7/26d01f0567ab46e9ca0d2ed89d0ecc11aadbd433/sponge-mixin-0.16.4+mixin.0.8.7.jar%2394!/ Service=ModLauncher Env=SERVER
+[09Oct2026 22:43:53.302] [main/INFO] [net.neoforged.fml.loading.moddiscovery.locators.JarInJarDependencyLocator/]: Found 2 dependencies adding them to mods collection
+[09Oct2026 22:43:53.304] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/]: 
      Mod List:
 		Name Version (Mod Id)
 
 		Chronicle Arena 0.1.0 (chronicle_arena)
 		Minecraft 1.21.1 (minecraft)
 		NeoForge 21.1.255 (neoforge)
-[09Oct2026 22:25:30.149] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeserverdev' with arguments [--gameDir, .]
-[09Oct2026 22:25:30.756] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.5).
-[09Oct2026 22:25:37.192] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
-[09Oct2026 22:25:37.194] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, targets] with inputs: [0.1 -0.5 .9, 0 0 0]
-[09Oct2026 22:25:37.198] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, destination] and [teleport, targets] with inputs: [Player, 0123, @e, dd12be42-52a9-4a91-a8a1-11c01849e498]
-[09Oct2026 22:25:37.200] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets] and [teleport, destination] with inputs: [Player, 0123, dd12be42-52a9-4a91-a8a1-11c01849e498]
-[09Oct2026 22:25:37.202] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets, location] and [teleport, targets, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
-[09Oct2026 22:25:37.304] [modloading-worker-0/INFO] [net.neoforged.neoforge.common.NeoForgeMod/NEOFORGE-MOD]: NeoForge mod loading, version 21.1.255, for MC 1.21.1
-[09Oct2026 22:25:37.733] [main/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
-[09Oct2026 22:25:37.816] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/home/user/modpack26/mod/chronicle-arena/build/moddev/artifacts/neoforge-21.1.255.jar%23125!/assets/.mcassetsroot' uses unexpected schema
-[09Oct2026 22:25:37.817] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/home/user/modpack26/mod/chronicle-arena/build/moddev/artifacts/neoforge-21.1.255.jar%23125!/data/.mcassetsroot' uses unexpected schema
-[09Oct2026 22:25:38.474] [main/INFO] [net.minecraft.server.Main/]: No existing world data, creating new world
-[09Oct2026 22:25:38.979] [main/INFO] [net.minecraft.world.item.crafting.RecipeManager/]: Loaded 1291 recipes
-[09Oct2026 22:25:39.173] [main/INFO] [net.minecraft.advancements.AdvancementTree/]: Loaded 1399 advancements
-[09Oct2026 22:25:39.176] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: 4 Stufen geladen
-[09Oct2026 22:25:39.179] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:chaos ausgeblendet (Mob fehlt im Pack)
-[09Oct2026 22:25:39.179] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:ignis ausgeblendet (Mob fehlt im Pack)
-[09Oct2026 22:25:39.179] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:netherite_monstrosity ausgeblendet (Mob fehlt im Pack)
-[09Oct2026 22:25:39.179] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:ender_golem ausgeblendet (Mob fehlt im Pack)
-[09Oct2026 22:25:39.180] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:ender_guardian ausgeblendet (Mob fehlt im Pack)
-[09Oct2026 22:25:39.180] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:maledictus ausgeblendet (Mob fehlt im Pack)
-[09Oct2026 22:25:39.180] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:harbinger ausgeblendet (Mob fehlt im Pack)
-[09Oct2026 22:25:39.180] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:scylla ausgeblendet (Mob fehlt im Pack)
-[09Oct2026 22:25:39.180] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:leviathan ausgeblendet (Mob fehlt im Pack)
-[09Oct2026 22:25:39.181] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:frostmaw ausgeblendet (Mob fehlt im Pack)
-[09Oct2026 22:25:39.181] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:wroughtnaut ausgeblendet (Mob fehlt im Pack)
-[09Oct2026 22:25:39.181] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:umvuthi ausgeblendet (Mob fehlt im Pack)
-[09Oct2026 22:25:39.181] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:sculptor ausgeblendet (Mob fehlt im Pack)
-[09Oct2026 22:25:39.181] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:apostle ausgeblendet (Mob fehlt im Pack)
-[09Oct2026 22:25:39.182] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:lich ausgeblendet (Mob fehlt im Pack)
-[09Oct2026 22:25:39.182] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:hydra ausgeblendet (Mob fehlt im Pack)
-[09Oct2026 22:25:39.182] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:snow_queen ausgeblendet (Mob fehlt im Pack)
-[09Oct2026 22:25:39.182] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:sun_spirit ausgeblendet (Mob fehlt im Pack)
-[09Oct2026 22:25:39.182] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:valkyrie_queen ausgeblendet (Mob fehlt im Pack)
-[09Oct2026 22:25:39.182] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:ice_dragon ausgeblendet (Mob fehlt im Pack)
-[09Oct2026 22:25:39.183] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:fire_dragon ausgeblendet (Mob fehlt im Pack)
-[09Oct2026 22:25:39.183] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:piglich ausgeblendet (Mob fehlt im Pack)
-[09Oct2026 22:25:39.183] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: 28 Begegnungen geladen, 22 ausgeblendet
-[09Oct2026 22:25:39.184] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: 17 Shop-Angebote geladen
-[09Oct2026 22:25:39.685] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Starting minecraft server version 1.21.1
-[09Oct2026 22:25:39.686] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Loading properties
-[09Oct2026 22:25:39.686] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Default game type: SURVIVAL
-[09Oct2026 22:25:39.687] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Generating keypair
-[09Oct2026 22:25:39.797] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Starting Minecraft server on *:25565
-[09Oct2026 22:25:39.839] [Server thread/INFO] [net.minecraft.server.network.ServerConnectionListener/]: Using epoll channel type
-[09Oct2026 22:25:39.871] [Server thread/WARN] [net.minecraft.server.dedicated.DedicatedServer/]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
-[09Oct2026 22:25:39.872] [Server thread/WARN] [net.minecraft.server.dedicated.DedicatedServer/]: The server will make no attempt to authenticate usernames. Beware.
-[09Oct2026 22:25:39.872] [Server thread/WARN] [net.minecraft.server.dedicated.DedicatedServer/]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
-[09Oct2026 22:25:39.872] [Server thread/WARN] [net.minecraft.server.dedicated.DedicatedServer/]: To change this, set "online-mode" to "true" in the server.properties file.
-[09Oct2026 22:25:39.916] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Preparing level "world"
-[09Oct2026 22:25:45.364] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Preparing start region for dimension minecraft:overworld
-[09Oct2026 22:25:45.395] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 2%
-[09Oct2026 22:25:46.056] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 2%
-[09Oct2026 22:25:46.411] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 2%
-[09Oct2026 22:25:46.876] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 2%
-[09Oct2026 22:25:47.384] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 18%
-[09Oct2026 22:25:47.868] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 18%
-[09Oct2026 22:25:48.369] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 18%
-[09Oct2026 22:25:48.884] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 51%
-[09Oct2026 22:25:49.369] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 51%
-[09Oct2026 22:25:49.866] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 51%
-[09Oct2026 22:25:49.956] [Server thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Time elapsed: 4592 ms
-[09Oct2026 22:25:49.957] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Done (10.069s)! For help, type "help"
-[09Oct2026 22:25:49.998] [Server thread/INFO] [net.neoforged.neoforge.gametest.GameTestHooks/]: Enabled Gametest Namespaces: []
-[09Oct2026 22:25:50.003] [Server thread/INFO] [net.neoforged.neoforge.server.permission.PermissionAPI/]: Successfully initialized permission handler neoforge:default_handler
-[09Oct2026 22:25:50.325] [Server thread/INFO] [de.chronicle.arena.ArenaManager/]: ARENA-DEBUG: Arena gebaut, Marker=Block{minecraft:gold_block}, Terminal=Block{chronicle_arena:arena_terminal}, Portal=Block{chronicle_arena:arena_portal}
-[09Oct2026 22:25:50.326] [Server thread/INFO] [de.chronicle.arena.ArenaManager/]: ARENA-DEBUG: 4 Stufen, 6 Begegnungen verfuegbar
-[09Oct2026 22:25:50.427] [Server thread/INFO] [de.chronicle.arena.ArenaManager/]: ARENA-DEBUG: Spawn-Test fertig, ok=26 fehler=0
-[09Oct2026 22:25:50.431] [Server thread/INFO] [de.chronicle.arena.ArenaManager/]: ARENA-DEBUG: Shop 17 von 17 Angeboten ok
-[09Oct2026 22:25:50.454] [Server thread/INFO] [de.chronicle.arena.ArenaBuilder/]: Arena: Thema deepdark aufgebaut
-[09Oct2026 22:25:50.527] [Server thread/INFO] [de.chronicle.arena.ArenaBuilder/]: Arena: Thema nether aufgebaut
-[09Oct2026 22:25:50.564] [Server thread/INFO] [de.chronicle.arena.ArenaBuilder/]: Arena: Thema forest aufgebaut
-[09Oct2026 22:25:50.605] [Server thread/INFO] [de.chronicle.arena.ArenaBuilder/]: Arena: Thema sky aufgebaut
-[09Oct2026 22:25:50.645] [Server thread/INFO] [de.chronicle.arena.ArenaBuilder/]: Arena: Thema ice aufgebaut
-[09Oct2026 22:25:50.673] [Server thread/INFO] [de.chronicle.arena.ArenaBuilder/]: Arena: Thema desert aufgebaut
-[09Oct2026 22:25:50.699] [Server thread/INFO] [de.chronicle.arena.ArenaBuilder/]: Arena: Thema sea aufgebaut
-[09Oct2026 22:25:50.721] [Server thread/INFO] [de.chronicle.arena.ArenaBuilder/]: Arena: Thema default aufgebaut
-[09Oct2026 22:25:50.748] [Server thread/INFO] [de.chronicle.arena.ArenaBuilder/]: Arena: Thema end aufgebaut
-[09Oct2026 22:25:50.750] [Server thread/INFO] [de.chronicle.arena.ArenaManager/]: ARENA-DEBUG: 9 Themen gebaut
-[09Oct2026 22:25:50.764] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Stopping server
-[09Oct2026 22:25:50.768] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving players
-[09Oct2026 22:25:50.768] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving worlds
-[09Oct2026 22:25:52.934] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[09Oct2026 22:25:52.968] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
-[09Oct2026 22:25:52.972] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/chronicle_arena:arena
-[09Oct2026 22:25:53.692] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
-[09Oct2026 22:25:53.705] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[09Oct2026 22:25:53.705] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[09Oct2026 22:25:53.706] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (arena): All chunks are saved
-[09Oct2026 22:25:53.708] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[09Oct2026 22:25:53.708] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage: All dimensions are saved
+[09Oct2026 22:43:54.208] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeserverdev' with arguments [--gameDir, .]
+[09Oct2026 22:43:55.068] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.5).
+[09Oct2026 22:44:01.609] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[09Oct2026 22:44:01.614] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, targets] with inputs: [0.1 -0.5 .9, 0 0 0]
+[09Oct2026 22:44:01.617] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, destination] and [teleport, targets] with inputs: [Player, 0123, @e, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[09Oct2026 22:44:01.619] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets] and [teleport, destination] with inputs: [Player, 0123, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[09Oct2026 22:44:01.621] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets, location] and [teleport, targets, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[09Oct2026 22:44:01.693] [modloading-worker-0/INFO] [net.neoforged.neoforge.common.NeoForgeMod/NEOFORGE-MOD]: NeoForge mod loading, version 21.1.255, for MC 1.21.1
+[09Oct2026 22:44:02.160] [main/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[09Oct2026 22:44:02.228] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/home/user/modpack26/mod/chronicle-arena/build/moddev/artifacts/neoforge-21.1.255.jar%23125!/assets/.mcassetsroot' uses unexpected schema
+[09Oct2026 22:44:02.230] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/home/user/modpack26/mod/chronicle-arena/build/moddev/artifacts/neoforge-21.1.255.jar%23125!/data/.mcassetsroot' uses unexpected schema
+[09Oct2026 22:44:02.911] [main/INFO] [net.minecraft.server.Main/]: No existing world data, creating new world
+[09Oct2026 22:44:03.444] [main/INFO] [net.minecraft.world.item.crafting.RecipeManager/]: Loaded 1291 recipes
+[09Oct2026 22:44:03.689] [main/INFO] [net.minecraft.advancements.AdvancementTree/]: Loaded 1399 advancements
+[09Oct2026 22:44:03.693] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: 4 Stufen geladen
+[09Oct2026 22:44:03.696] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:chaos ausgeblendet (Mob fehlt im Pack)
+[09Oct2026 22:44:03.696] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:ignis ausgeblendet (Mob fehlt im Pack)
+[09Oct2026 22:44:03.697] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:netherite_monstrosity ausgeblendet (Mob fehlt im Pack)
+[09Oct2026 22:44:03.697] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:ender_golem ausgeblendet (Mob fehlt im Pack)
+[09Oct2026 22:44:03.698] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:ender_guardian ausgeblendet (Mob fehlt im Pack)
+[09Oct2026 22:44:03.698] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:maledictus ausgeblendet (Mob fehlt im Pack)
+[09Oct2026 22:44:03.698] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:harbinger ausgeblendet (Mob fehlt im Pack)
+[09Oct2026 22:44:03.699] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:scylla ausgeblendet (Mob fehlt im Pack)
+[09Oct2026 22:44:03.699] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:leviathan ausgeblendet (Mob fehlt im Pack)
+[09Oct2026 22:44:03.699] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:frostmaw ausgeblendet (Mob fehlt im Pack)
+[09Oct2026 22:44:03.701] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:wroughtnaut ausgeblendet (Mob fehlt im Pack)
+[09Oct2026 22:44:03.701] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:umvuthi ausgeblendet (Mob fehlt im Pack)
+[09Oct2026 22:44:03.701] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:sculptor ausgeblendet (Mob fehlt im Pack)
+[09Oct2026 22:44:03.702] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:apostle ausgeblendet (Mob fehlt im Pack)
+[09Oct2026 22:44:03.702] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:lich ausgeblendet (Mob fehlt im Pack)
+[09Oct2026 22:44:03.702] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:hydra ausgeblendet (Mob fehlt im Pack)
+[09Oct2026 22:44:03.702] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:snow_queen ausgeblendet (Mob fehlt im Pack)
+[09Oct2026 22:44:03.702] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:sun_spirit ausgeblendet (Mob fehlt im Pack)
+[09Oct2026 22:44:03.703] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:valkyrie_queen ausgeblendet (Mob fehlt im Pack)
+[09Oct2026 22:44:03.705] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:ice_dragon ausgeblendet (Mob fehlt im Pack)
+[09Oct2026 22:44:03.706] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:fire_dragon ausgeblendet (Mob fehlt im Pack)
+[09Oct2026 22:44:03.706] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:piglich ausgeblendet (Mob fehlt im Pack)
+[09Oct2026 22:44:03.707] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: 28 Begegnungen geladen, 22 ausgeblendet
+[09Oct2026 22:44:03.709] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:stroganoff ausgeblendet (Item twilightforest:meef_stroganoff fehlt im Pack)
+[09Oct2026 22:44:03.710] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:honey_treat ausgeblendet (Item productivebees:honey_treat fehlt im Pack)
+[09Oct2026 22:44:03.710] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:atm_apple ausgeblendet (Item allthemodium:allthemodium_apple fehlt im Pack)
+[09Oct2026 22:44:03.711] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:wrought_axe ausgeblendet (Item mowziesmobs:wrought_axe fehlt im Pack)
+[09Oct2026 22:44:03.711] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:railgun ausgeblendet (Item immersiveengineering:railgun fehlt im Pack)
+[09Oct2026 22:44:03.711] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:scythe ausgeblendet (Item goety:death_scythe fehlt im Pack)
+[09Oct2026 22:44:03.711] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:dark_wand ausgeblendet (Item goety:dark_wand fehlt im Pack)
+[09Oct2026 22:44:03.712] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:bi_helmet ausgeblendet (Item goety:black_iron_helmet fehlt im Pack)
+[09Oct2026 22:44:03.712] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:bi_chest ausgeblendet (Item goety:black_iron_chestplate fehlt im Pack)
+[09Oct2026 22:44:03.713] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:bi_legs ausgeblendet (Item goety:black_iron_leggings fehlt im Pack)
+[09Oct2026 22:44:03.713] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:bi_boots ausgeblendet (Item goety:black_iron_boots fehlt im Pack)
+[09Oct2026 22:44:03.713] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:naga_chest ausgeblendet (Item twilightforest:naga_chestplate fehlt im Pack)
+[09Oct2026 22:44:03.714] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:naga_legs ausgeblendet (Item twilightforest:naga_leggings fehlt im Pack)
+[09Oct2026 22:44:03.714] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:atm_helmet ausgeblendet (Item allthemodium:allthemodium_helmet fehlt im Pack)
+[09Oct2026 22:44:03.715] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:backpack_iron ausgeblendet (Item sophisticatedbackpacks:iron_backpack fehlt im Pack)
+[09Oct2026 22:44:03.715] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:backpack_gold ausgeblendet (Item sophisticatedbackpacks:gold_backpack fehlt im Pack)
+[09Oct2026 22:44:03.715] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:backpack_diamond ausgeblendet (Item sophisticatedbackpacks:diamond_backpack fehlt im Pack)
+[09Oct2026 22:44:03.715] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:traveler ausgeblendet (Item travelersbackpack:standard fehlt im Pack)
+[09Oct2026 22:44:03.716] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:watering_can ausgeblendet (Item mysticalagriculture:watering_can fehlt im Pack)
+[09Oct2026 22:44:03.716] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:infused_pick ausgeblendet (Item occultism:infused_pickaxe fehlt im Pack)
+[09Oct2026 22:44:03.716] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:atm_pick ausgeblendet (Item allthemodium:allthemodium_pickaxe fehlt im Pack)
+[09Oct2026 22:44:03.716] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:teleport_pad ausgeblendet (Item allthemodium:teleport_pad fehlt im Pack)
+[09Oct2026 22:44:03.717] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:magic_map ausgeblendet (Item twilightforest:magic_map fehlt im Pack)
+[09Oct2026 22:44:03.717] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:steel ausgeblendet (Item immersiveengineering:ingot_steel fehlt im Pack)
+[09Oct2026 22:44:03.717] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:brass ausgeblendet (Item create:brass_ingot fehlt im Pack)
+[09Oct2026 22:44:03.718] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:precision ausgeblendet (Item create:precision_mechanism fehlt im Pack)
+[09Oct2026 22:44:03.718] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:fluix ausgeblendet (Item ae2:fluix_crystal fehlt im Pack)
+[09Oct2026 22:44:03.718] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:certus ausgeblendet (Item ae2:certus_quartz_crystal fehlt im Pack)
+[09Oct2026 22:44:03.718] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:osmium ausgeblendet (Item mekanism:ingot_osmium fehlt im Pack)
+[09Oct2026 22:44:03.719] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:knightmetal ausgeblendet (Item twilightforest:knightmetal_ingot fehlt im Pack)
+[09Oct2026 22:44:03.719] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:ignitium ausgeblendet (Item cataclysm:ignitium_ingot fehlt im Pack)
+[09Oct2026 22:44:03.719] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:cursium ausgeblendet (Item cataclysm:cursium_ingot fehlt im Pack)
+[09Oct2026 22:44:03.719] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:witherite ausgeblendet (Item cataclysm:witherite_ingot fehlt im Pack)
+[09Oct2026 22:44:03.720] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:dark_ingot ausgeblendet (Item goety:dark_ingot fehlt im Pack)
+[09Oct2026 22:44:03.720] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:atm_ingot ausgeblendet (Item allthemodium:allthemodium_ingot fehlt im Pack)
+[09Oct2026 22:44:03.720] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:vibranium ausgeblendet (Item allthemodium:vibranium_ingot fehlt im Pack)
+[09Oct2026 22:44:03.720] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:unobtainium ausgeblendet (Item allthemodium:unobtainium_ingot fehlt im Pack)
+[09Oct2026 22:44:03.721] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:inferium ausgeblendet (Item mysticalagriculture:inferium_essence fehlt im Pack)
+[09Oct2026 22:44:03.721] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:prudentium ausgeblendet (Item mysticalagriculture:prudentium_essence fehlt im Pack)
+[09Oct2026 22:44:03.721] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:neodymium ausgeblendet (Item alexscaves:azure_neodymium_ingot fehlt im Pack)
+[09Oct2026 22:44:03.721] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:novice_book ausgeblendet (Item ars_nouveau:novice_spell_book fehlt im Pack)
+[09Oct2026 22:44:03.722] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:archmage_book ausgeblendet (Item ars_nouveau:archmage_spell_book fehlt im Pack)
+[09Oct2026 22:44:03.722] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:source_gem ausgeblendet (Item ars_nouveau:source_gem fehlt im Pack)
+[09Oct2026 22:44:03.722] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:legendary_ink ausgeblendet (Item irons_spellbooks:legendary_ink fehlt im Pack)
+[09Oct2026 22:44:03.722] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:sigil_socket ausgeblendet (Item apotheosis:sigil_of_socketing fehlt im Pack)
+[09Oct2026 22:44:03.722] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:sigil_enhance ausgeblendet (Item apotheosis:sigil_of_enhancement fehlt im Pack)
+[09Oct2026 22:44:03.723] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:gem_dust ausgeblendet (Item apotheosis:gem_dust fehlt im Pack)
+[09Oct2026 22:44:03.723] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:godforged ausgeblendet (Item apotheosis:godforged_pearl fehlt im Pack)
+[09Oct2026 22:44:03.723] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:hellshelf ausgeblendet (Item apothic_enchanting:hellshelf fehlt im Pack)
+[09Oct2026 22:44:03.723] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:soul_gem ausgeblendet (Item occultism:soul_gem fehlt im Pack)
+[09Oct2026 22:44:03.724] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:magic_emerald ausgeblendet (Item goety:magic_emerald fehlt im Pack)
+[09Oct2026 22:44:03.724] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:dragon_heart_ice ausgeblendet (Item iceandfire:ice_dragon_heart fehlt im Pack)
+[09Oct2026 22:44:03.724] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: 78 Shop-Angebote geladen, 52 ausgeblendet
+[09Oct2026 22:44:04.257] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Starting minecraft server version 1.21.1
+[09Oct2026 22:44:04.258] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Loading properties
+[09Oct2026 22:44:04.258] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Default game type: SURVIVAL
+[09Oct2026 22:44:04.258] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Generating keypair
+[09Oct2026 22:44:04.347] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Starting Minecraft server on *:25565
+[09Oct2026 22:44:04.458] [Server thread/INFO] [net.minecraft.server.network.ServerConnectionListener/]: Using epoll channel type
+[09Oct2026 22:44:04.536] [Server thread/WARN] [net.minecraft.server.dedicated.DedicatedServer/]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[09Oct2026 22:44:04.536] [Server thread/WARN] [net.minecraft.server.dedicated.DedicatedServer/]: The server will make no attempt to authenticate usernames. Beware.
+[09Oct2026 22:44:04.536] [Server thread/WARN] [net.minecraft.server.dedicated.DedicatedServer/]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[09Oct2026 22:44:04.536] [Server thread/WARN] [net.minecraft.server.dedicated.DedicatedServer/]: To change this, set "online-mode" to "true" in the server.properties file.
+[09Oct2026 22:44:04.593] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Preparing level "world"
+[09Oct2026 22:44:09.840] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Preparing start region for dimension minecraft:overworld
+[09Oct2026 22:44:09.899] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 2%
+[09Oct2026 22:44:10.381] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 2%
+[09Oct2026 22:44:10.843] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 2%
+[09Oct2026 22:44:11.344] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 4%
+[09Oct2026 22:44:11.845] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 18%
+[09Oct2026 22:44:12.342] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 18%
+[09Oct2026 22:44:12.876] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 51%
+[09Oct2026 22:44:13.350] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 51%
+[09Oct2026 22:44:13.850] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 51%
+[09Oct2026 22:44:14.027] [Server thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Time elapsed: 4186 ms
+[09Oct2026 22:44:14.028] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Done (9.469s)! For help, type "help"
+[09Oct2026 22:44:14.059] [Server thread/INFO] [net.neoforged.neoforge.gametest.GameTestHooks/]: Enabled Gametest Namespaces: []
+[09Oct2026 22:44:14.063] [Server thread/INFO] [net.neoforged.neoforge.server.permission.PermissionAPI/]: Successfully initialized permission handler neoforge:default_handler
+[09Oct2026 22:44:14.427] [Server thread/INFO] [de.chronicle.arena.ArenaBuilder/]: Arena: Lobby, Shop und Kampfplatz gebaut
+[09Oct2026 22:44:14.428] [Server thread/INFO] [de.chronicle.arena.ArenaManager/]: ARENA-DEBUG: Arena gebaut, Marker=Block{minecraft:lapis_block}, Terminal=Block{chronicle_arena:arena_terminal}, Portal=Block{chronicle_arena:arena_portal}
+[09Oct2026 22:44:14.428] [Server thread/INFO] [de.chronicle.arena.ArenaManager/]: ARENA-DEBUG: 4 Stufen, 6 Begegnungen verfuegbar
+[09Oct2026 22:44:14.500] [Server thread/INFO] [de.chronicle.arena.ArenaManager/]: ARENA-DEBUG: Spawn-Test fertig, ok=26 fehler=0
+[09Oct2026 22:44:14.506] [Server thread/INFO] [de.chronicle.arena.ArenaManager/]: ARENA-DEBUG: Shop 26 von 26 Angeboten ok
+[09Oct2026 22:44:14.508] [Server thread/INFO] [de.chronicle.arena.ArenaManager/]: ARENA-DEBUG: Shop-Block=Block{chronicle_arena:arena_shop}
+[09Oct2026 22:44:14.519] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Stopping server
+[09Oct2026 22:44:14.520] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving players
+[09Oct2026 22:44:14.520] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving worlds
+[09Oct2026 22:44:15.380] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[09Oct2026 22:44:15.835] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/chronicle_arena:arena
+[09Oct2026 22:44:16.197] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[09Oct2026 22:44:16.200] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[09Oct2026 22:44:16.207] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[09Oct2026 22:44:16.207] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (arena): All chunks are saved
+[09Oct2026 22:44:16.207] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[09Oct2026 22:44:16.207] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[09Oct2026 22:44:16.208] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage: All dimensions are saved
