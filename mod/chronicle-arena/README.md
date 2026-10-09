@@ -18,3 +18,8 @@ Eigene NeoForge-Mod (MC 1.21.1): Arena-Dimension mit Portal, Bosskaempfen und Mo
 - Es gibt genau eine Prunk-Arena (Tribuene, Tuerme, Fenster, Torbogen, schwebende Inseln, Monde), dazu Lobby, Bruecke und eine Shop-Plattform mit Haendler und sechs Staenden.
 - Eigene Arena: Bau im Spiel mit einem Struktur-Block speichern als `chronicle_arena:arena/arena` (bzw. `shop`) und als `data/chronicle_arena/structure/arena/arena.nbt` ins Datapack legen. Sie ersetzt dann den generierten Teil.
 - Selbsttest: `gradle runServer -Dchronicle_arena.selftest=true`.
+
+## Coins, Anzeige und Extras
+- Coins liegen auf dem Konto (nicht im Inventar). Links im Bild steht in der Arena das Konto (Coins, Kills, Bosse, Siege, Titel), rechts die Rangliste (Top 10, serverweit gespeichert).
+- Modifikatoren (Elite-Horde, Kein Heilen, Glaskanone, Hetzjagd) geben Coins-Bonus; die Tages-Challenge (feste Begegnung + Stufe + Modifikatoren pro Tag) gibt einmal taeglich Bonus-Coins.
+- Shop-Kategorie Kosmetik: Titel (in Anzeige und Rangliste) und Partikelspuren. Siege loesen Feuerwerk und Fanfare aus.

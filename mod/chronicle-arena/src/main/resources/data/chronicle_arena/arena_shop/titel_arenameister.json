@@ -1,0 +1,10 @@
+{
+  "order": 303,
+  "category": "kosmetik",
+  "name": "Titel: Arenameister",
+  "item": "minecraft:gold_ingot",
+  "count": 1,
+  "price": 80,
+  "cosmetic": "title",
+  "value": "Arenameister"
+}

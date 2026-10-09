@@ -38,7 +38,9 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.entity.EntityMobGriefingEvent;
 import net.neoforged.neoforge.event.entity.EntityTeleportEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
+import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
 import net.neoforged.neoforge.event.entity.living.LivingExperienceDropEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
@@ -49,6 +51,8 @@ import net.neoforged.neoforge.items.ItemHandlerHelper;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.slf4j.Logger;
 
+import java.time.LocalDate;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -82,6 +86,56 @@ public final class ArenaManager {
 
     private static Run run;
     private static int tickCounter;
+    private static final Set<UUID> statsDirty = new HashSet<>();
+
+    // ------------------------------------------------------------------ Modifikatoren
+
+    static final int MOD_ELITE = 1;
+    static final int MOD_NOHEAL = 2;
+    static final int MOD_GLASS = 4;
+    static final int MOD_SPEED = 8;
+    private static final int[] MOD_BITS = {MOD_ELITE, MOD_NOHEAL, MOD_GLASS, MOD_SPEED};
+    private static final String[] MOD_NAMES = {"Elite-Horde", "Kein Heilen", "Glaskanone", "Hetzjagd"};
+    private static final String[] MOD_DESCS = {
+            "30% der Gegner sind Elite (doppelte Gesundheit).",
+            "Keine Regeneration, auch nicht zwischen den Wellen.",
+            "Du erleidest doppelten Schaden.",
+            "Alle Gegner sind 30% schneller."};
+    private static final int[] MOD_BONUS = {25, 35, 30, 20};
+
+    static double coinMult(int mask) {
+        int bonus = 0;
+        for (int i = 0; i < MOD_BITS.length; i++) if ((mask & MOD_BITS[i]) != 0) bonus += MOD_BONUS[i];
+        return 1.0 + bonus / 100.0;
+    }
+
+    static String modNames(int mask) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < MOD_BITS.length; i++) {
+            if ((mask & MOD_BITS[i]) != 0) {
+                if (sb.length() > 0) sb.append(", ");
+                sb.append(MOD_NAMES[i]);
+            }
+        }
+        return sb.length() == 0 ? "keine" : sb.toString();
+    }
+
+    // ------------------------------------------------------------------ Tages-Challenge
+
+    record Challenge(int day, ArenaDefs.Encounter encounter, ArenaDefs.Tier tier, int mask, int bonus) {}
+
+    static Challenge dailyChallenge() {
+        List<ArenaDefs.Encounter> encs = ArenaDefs.encounters();
+        List<ArenaDefs.Tier> tiers = ArenaDefs.tiers();
+        if (encs.isEmpty() || tiers.isEmpty()) return null;
+        int day = (int) LocalDate.now(ZoneOffset.UTC).toEpochDay();
+        java.util.Random rnd = new java.util.Random(day * 7919L + 13L);
+        ArenaDefs.Encounter enc = encs.get(rnd.nextInt(encs.size()));
+        ArenaDefs.Tier tier = tiers.get(rnd.nextInt(Math.min(3, tiers.size())));
+        int mask = 1 + rnd.nextInt(15);
+        int bonus = (int) Math.round(tier.tokens() * (enc.boss() ? 2 : 1) * coinMult(mask) * 2.0);
+        return new Challenge(day, enc, tier, mask, bonus);
+    }
 
     // ------------------------------------------------------------------ Run
 
@@ -113,6 +167,7 @@ public final class ArenaManager {
         final double damageScale;
         final double countScale;
         final int totalWaves;
+        final int mask;
         State state = State.PREP;
         int wave;
         int timer = PREP_TICKS;
@@ -123,7 +178,8 @@ public final class ArenaManager {
         boolean started;
         int fightTicks;
 
-        Run(ArenaDefs.Encounter encounter, ArenaDefs.Tier tier, int players) {
+        Run(ArenaDefs.Encounter encounter, ArenaDefs.Tier tier, int players, int mask) {
+            this.mask = mask;
             this.encounter = encounter;
             this.tier = tier;
             int extra = Math.max(0, players - 1);
@@ -162,6 +218,8 @@ public final class ArenaManager {
         ArenaBuilder.ensureBuilt(arena);
         teleport(sp, arena, LOBBY.getX() + 0.5, LOBBY.getY(), LOBBY.getZ() + 5.5, 180.0F);
         sp.sendSystemMessage(Component.translatable("msg.chronicle_arena.welcome"));
+        convertTokens(sp);
+        sendStats(sp);
     }
 
     public static void openTerminal(ServerPlayer sp) {
@@ -189,7 +247,15 @@ public final class ArenaManager {
             status = Component.translatable("gui.chronicle_arena.status_running", run.encounter.name(), run.tier.name(),
                     run.alive.size()).getString();
         }
-        PacketDistributor.sendToPlayer(sp, new Net.OpenTerminal(run != null, status, tiers, encs));
+        List<Net.ModInfo> mods = new ArrayList<>();
+        for (int i = 0; i < MOD_BITS.length; i++) mods.add(new Net.ModInfo(MOD_BITS[i], MOD_NAMES[i], MOD_DESCS[i], MOD_BONUS[i]));
+        Challenge ch = dailyChallenge();
+        Net.ChallengeInfo chi = ch == null ? new Net.ChallengeInfo("", "", 0, true, 0, "")
+                : new Net.ChallengeInfo(ch.encounter().id().toString(), ch.tier().id().toString(), ch.mask(),
+                ArenaStats.challengeDay(sp) == ch.day(), ch.bonus(),
+                ch.encounter().name() + " / " + ch.tier().name() + " / " + modNames(ch.mask()));
+        PacketDistributor.sendToPlayer(sp, new Net.OpenTerminal(run != null, status, tiers, encs, mods, chi));
+        sendStats(sp);
     }
 
     public static void openShop(ServerPlayer sp) {
@@ -198,23 +264,41 @@ public final class ArenaManager {
         for (ArenaDefs.ShopOffer o : ArenaDefs.shopOffers()) {
             ItemStack stack = o.stack(sp.server.registryAccess());
             if (stack.isEmpty()) continue;
-            shop.add(new Net.ShopInfo(o.id().toString(), o.category(), o.name(), o.price(), stack));
+            shop.add(new Net.ShopInfo(o.id().toString(), o.category(), o.name(), o.price(), stack, o.cosmetic()));
         }
-        PacketDistributor.sendToPlayer(sp, new Net.OpenShop(countTokens(sp), shop));
+        convertTokens(sp);
+        PacketDistributor.sendToPlayer(sp, new Net.OpenShop(ArenaStats.coins(sp), shop));
+        sendStats(sp);
     }
 
     public static void handleBuy(ServerPlayer sp, Net.Buy buy) {
         if (sp.level().dimension() != DIM) return;
         ArenaDefs.ShopOffer offer = ArenaDefs.shopOffer(ResourceLocation.tryParse(buy.offer()));
         if (offer == null) return;
-        if (countTokens(sp) < offer.price()) {
+        String oid = offer.id().toString();
+        if (offer.isCosmetic()) {
+            boolean had = ArenaStats.owns(sp, oid);
+            if (!had) {
+                if (!ArenaStats.spend(sp, offer.price())) {
+                    sp.sendSystemMessage(Component.translatable("msg.chronicle_arena.not_enough", offer.price()));
+                    return;
+                }
+                ArenaStats.give(sp, oid);
+                sp.sendSystemMessage(Component.translatable("msg.chronicle_arena.bought", offer.name(), offer.price()));
+            }
+            String cur = offer.cosmetic().equals("title") ? ArenaStats.title(sp) : ArenaStats.trail(sp);
+            ArenaStats.equip(sp, offer.cosmetic(), had && cur.equals(oid) ? "" : oid);
+            ArenaStats.publish(sp);
+            sendStats(sp);
+            return;
+        }
+        if (!ArenaStats.spend(sp, offer.price())) {
             sp.sendSystemMessage(Component.translatable("msg.chronicle_arena.not_enough", offer.price()));
             return;
         }
-        removeTokens(sp, offer.price());
         ItemHandlerHelper.giveItemToPlayer(sp, offer.stack(sp.server.registryAccess()));
         sp.sendSystemMessage(Component.translatable("msg.chronicle_arena.bought", offer.name(), offer.price()));
-        PacketDistributor.sendToPlayer(sp, new Net.Tokens(countTokens(sp)));
+        sendStats(sp);
     }
 
     public static void handleAction(ServerPlayer sp, Net.Action action) {
@@ -249,16 +333,16 @@ public final class ArenaManager {
                 return;
             }
         }
-        startRun(sp.server, enc, tier, group);
+        startRun(sp.server, enc, tier, group, action.mask() & 15);
     }
 
     // ------------------------------------------------------------------ Start und Ende
 
-    private static void startRun(MinecraftServer server, ArenaDefs.Encounter enc, ArenaDefs.Tier tier, List<ServerPlayer> group) {
+    private static void startRun(MinecraftServer server, ArenaDefs.Encounter enc, ArenaDefs.Tier tier, List<ServerPlayer> group, int mask) {
         ServerLevel level = server.getLevel(DIM);
         if (level == null) return;
         ArenaBuilder.ensureBuilt(level);
-        Run r = new Run(enc, tier, group.size());
+        Run r = new Run(enc, tier, group.size(), mask);
         run = r;
         int i = 0;
         for (ServerPlayer p : group) {
@@ -274,6 +358,7 @@ public final class ArenaManager {
             r.participants.add(p.getUUID());
             r.bar.addPlayer(p);
             p.sendSystemMessage(Component.translatable("msg.chronicle_arena.start", enc.name(), tier.name(), group.size()));
+            if (mask != 0) p.sendSystemMessage(Component.literal("Modifikatoren: " + modNames(mask) + " (Coins x" + coinMult(mask) + ")"));
             i++;
         }
         r.bar.setName(Component.translatable("bar.chronicle_arena.prepare", enc.name()));
@@ -325,6 +410,8 @@ public final class ArenaManager {
             if (won) {
                 recordWin(p, r);
                 reward(p, level, r);
+                ArenaFx.fanfare(p);
+                ArenaFx.burst(level, p.getX(), p.getY() + 1.0, p.getZ(), 3, 5.0);
             } else {
                 p.sendSystemMessage(Component.translatable("msg.chronicle_arena.lost"));
             }
@@ -349,11 +436,20 @@ public final class ArenaManager {
             }
         }
         if (tier.xp() > 0) p.giveExperiencePoints(tier.xp());
-        int tokens = tier.tokens() * (r.encounter.boss() ? 2 : 1);
-        if (tokens > 0) {
-            ItemHandlerHelper.giveItemToPlayer(p, new ItemStack(ModRegistry.TOKEN.get(), tokens));
-            p.sendSystemMessage(Component.translatable("msg.chronicle_arena.tokens", tokens));
+        int coins = (int) Math.round(tier.tokens() * (r.encounter.boss() ? 2 : 1) * coinMult(r.mask));
+        Challenge ch = dailyChallenge();
+        if (ch != null && ch.encounter() == r.encounter && ch.tier() == r.tier && ch.mask() == r.mask
+                && ArenaStats.challengeDay(p) != ch.day()) {
+            ArenaStats.setChallengeDay(p, ch.day());
+            coins += ch.bonus();
+            p.sendSystemMessage(Component.literal("Tages-Challenge geschafft: +" + ch.bonus() + " Bonus-Coins!"));
         }
+        if (coins > 0) {
+            ArenaStats.addCoins(p, coins);
+            p.sendSystemMessage(Component.translatable("msg.chronicle_arena.tokens", coins));
+        }
+        ArenaStats.publish(p);
+        sendStats(p);
         if (wins(p, tier.id()) == 1) {
             for (ArenaDefs.Tier other : ArenaDefs.tiers()) {
                 if (tier.id().equals(other.requires())) {
@@ -440,6 +536,31 @@ public final class ArenaManager {
         Run r = run;
         if (r != null) tickRun(server, r);
         if (tickCounter % 20 == 0) safetyCheck(server);
+        if (tickCounter % 4 == 0) trails(server);
+        if (tickCounter % 20 == 0 || tickCounter % 100 == 0) syncStats(server);
+    }
+
+    private void trails(MinecraftServer server) {
+        ServerLevel level = server.getLevel(DIM);
+        if (level == null) return;
+        for (ServerPlayer p : level.players()) {
+            if (p.isSpectator()) continue;
+            String id = ArenaStats.trail(p);
+            if (!id.isEmpty()) ArenaFx.spawnTrail(level, p, ArenaDefs.cosmeticValue(id));
+        }
+    }
+
+    private void syncStats(MinecraftServer server) {
+        ServerLevel level = server.getLevel(DIM);
+        if (level == null) return;
+        boolean all = tickCounter % 100 == 0;
+        for (ServerPlayer p : level.players()) {
+            if (all || statsDirty.contains(p.getUUID())) {
+                sendStats(p);
+                if (statsDirty.contains(p.getUUID())) ArenaStats.publish(p);
+            }
+        }
+        statsDirty.clear();
     }
 
     private void tickRun(MinecraftServer server, Run r) {
@@ -472,6 +593,13 @@ public final class ArenaManager {
             }
             case WAVE, BOSS -> tickFight(server, level, r);
             case ENDING -> {
+                if (r.won && r.timer % 25 == 0 && r.timer > 40) {
+                    for (UUID id : r.alive) {
+                        ServerPlayer p = server.getPlayerList().getPlayer(id);
+                        if (p != null) ArenaFx.burst(level, p.getX(), p.getY() + 1.0, p.getZ(), 2, 6.0);
+                    }
+                    ArenaFx.burst(level, ARENA.getX() + 0.5, ARENA.getY() + 4.0, ARENA.getZ() + 0.5, 3, 14.0);
+                }
                 if (--r.timer <= 0) endRun(server);
             }
         }
@@ -504,7 +632,7 @@ public final class ArenaManager {
             if (w < p.fromWave()) continue;
             double base = p.base() + (w - p.fromWave()) * p.perWave();
             int count = Math.max(1, (int) Math.round(base * r.countScale));
-            for (int i = 0; i < count; i++) r.queue.add(new Spawn(p.entity(), false, false));
+            for (int i = 0; i < count; i++) r.queue.add(new Spawn(p.entity(), eliteRoll(level, r), false));
         }
         if (e.elite() != null && w % e.eliteEvery() == 0 && w < r.totalWaves) {
             r.queue.add(new Spawn(e.elite(), true, false));
@@ -544,7 +672,7 @@ public final class ArenaManager {
                 r.addsSpawned = true;
                 for (ArenaDefs.Spawn a : r.encounter.adds()) {
                     int n = Math.max(1, (int) Math.round(a.count() * r.countScale));
-                    for (int i = 0; i < n; i++) r.queue.add(new Spawn(a.entity(), false, false));
+                    for (int i = 0; i < n; i++) r.queue.add(new Spawn(a.entity(), eliteRoll(level, r), false));
                 }
                 if (!r.encounter.adds().isEmpty()) {
                     actionbar(server, r, Component.translatable("msg.chronicle_arena.adds"));
@@ -574,11 +702,13 @@ public final class ArenaManager {
         if (!cleared) return;
 
         if (r.state == State.WAVE && r.tier.tokensPerWave() > 0) {
+            int perWave = (int) Math.round(r.tier.tokensPerWave() * coinMult(r.mask));
             for (UUID id : r.alive) {
                 ServerPlayer p = server.getPlayerList().getPlayer(id);
                 if (p == null) continue;
-                ItemHandlerHelper.giveItemToPlayer(p, new ItemStack(ModRegistry.TOKEN.get(), r.tier.tokensPerWave()));
-                p.displayClientMessage(Component.translatable("msg.chronicle_arena.wave_tokens", r.wave, r.tier.tokensPerWave()), true);
+                ArenaStats.addCoins(p, perWave);
+                statsDirty.add(id);
+                p.displayClientMessage(Component.translatable("msg.chronicle_arena.wave_tokens", r.wave, perWave), true);
             }
         }
 
@@ -592,11 +722,15 @@ public final class ArenaManager {
             r.timer = 100;
             for (UUID id : r.alive) {
                 ServerPlayer p = server.getPlayerList().getPlayer(id);
-                if (p != null) p.heal(6.0F);
+                if (p != null && (r.mask & MOD_NOHEAL) == 0) p.heal(6.0F);
             }
             r.bar.setProgress(1.0F);
             r.bar.setName(Component.translatable("bar.chronicle_arena.pause", r.wave, r.totalWaves));
         }
+    }
+
+    private static boolean eliteRoll(ServerLevel level, Run r) {
+        return (r.mask & MOD_ELITE) != 0 && level.getRandom().nextFloat() < 0.3F;
     }
 
     private LivingEntity spawnMob(ServerLevel level, Run r, Spawn s) {
@@ -619,6 +753,7 @@ public final class ArenaManager {
         double h = r.healthScale * (s.elite ? 2.0 : 1.0);
         scale(le, Attributes.MAX_HEALTH, h);
         scale(le, Attributes.ATTACK_DAMAGE, r.damageScale);
+        if ((r.mask & MOD_SPEED) != 0) scale(le, Attributes.MOVEMENT_SPEED, 1.3);
         le.setHealth(le.getMaxHealth());
         if (s.elite || s.boss) le.setGlowingTag(true);
         level.addFreshEntity(le);
@@ -703,11 +838,31 @@ public final class ArenaManager {
             }
             return;
         }
+        if ((r.mask & MOD_GLASS) != 0) event.setAmount(event.getAmount() * 2.0F);
         if (event.getAmount() >= sp.getHealth() + sp.getAbsorptionAmount()
                 && !event.getSource().is(DamageTypes.GENERIC_KILL)) {
             event.setCanceled(true);
             makeSpectator(sp);
             if (r.alive.isEmpty()) finish(sp.server, false);
+        }
+    }
+
+    @SubscribeEvent
+    public void onHeal(LivingHealEvent event) {
+        if (!(event.getEntity() instanceof ServerPlayer sp) || sp.level().dimension() != DIM) return;
+        Run r = run;
+        if (r != null && (r.mask & MOD_NOHEAL) != 0 && r.alive.contains(sp.getUUID())) event.setCanceled(true);
+    }
+
+    @SubscribeEvent
+    public void onDeath(LivingDeathEvent event) {
+        LivingEntity dead = event.getEntity();
+        Run r = run;
+        if (r == null || dead instanceof Player || dead.level().dimension() != DIM) return;
+        if (event.getSource().getEntity() instanceof ServerPlayer killer && r.alive.contains(killer.getUUID())
+                && r.mobs.contains(dead.getUUID())) {
+            ArenaStats.addKill(killer);
+            statsDirty.add(killer.getUUID());
         }
     }
 
@@ -812,7 +967,8 @@ public final class ArenaManager {
                         p.sendSystemMessage(Component.translatable("msg.chronicle_arena.stats", t.name(), w,
                                 w == 0 ? "-" : formatTime(best(p, t.id()))));
                     }
-                    p.sendSystemMessage(Component.translatable("msg.chronicle_arena.stats_tokens", countTokens(p)));
+                    p.sendSystemMessage(Component.literal("Coins: " + ArenaStats.coins(p) + ", Kills: " + ArenaStats.kills(p)
+                            + ", Bosse: " + ArenaStats.bosses(p) + ", Siege: " + ArenaStats.wins(p)));
                     return 1;
                 }))
                 .then(Commands.literal("debug").requires(src -> src.hasPermission(2)).executes(ctx -> {
@@ -862,7 +1018,7 @@ public final class ArenaManager {
                 level.getBlockState(new BlockPos(0, 64, 8)).getBlock());
         List<ArenaDefs.Tier> tiers = ArenaDefs.tiers();
         LOGGER.info("ARENA-DEBUG: {} Stufen, {} Begegnungen verfuegbar", tiers.size(), ArenaDefs.encounters().size());
-        Run dummy = new Run(ArenaDefs.encounters().get(0), tiers.get(tiers.size() - 1), 3);
+        Run dummy = new Run(ArenaDefs.encounters().get(0), tiers.get(tiers.size() - 1), 3, 15);
         int ok = 0;
         int fail = 0;
         for (ArenaDefs.Encounter e : ArenaDefs.encounters()) {
@@ -902,6 +1058,12 @@ public final class ArenaManager {
         }
         LOGGER.info("ARENA-DEBUG: Shop {} von {} Angeboten ok", shopOk, ArenaDefs.shopOffers().size());
         LOGGER.info("ARENA-DEBUG: Shop-Block={}", level.getBlockState(SHOP).getBlock());
+        for (ArenaDefs.ShopOffer o : ArenaDefs.shopOffers()) {
+            if ("trail".equals(o.cosmetic()) && ArenaFx.trail(o.value()) == null) LOGGER.error("ARENA-DEBUG: Spur {} ohne Partikel", o.id());
+        }
+        Challenge ch = dailyChallenge();
+        LOGGER.info("ARENA-DEBUG: Tages-Challenge {} / {} / {} (Bonus {}), Rangliste {} Eintraege", ch == null ? "-" : ch.encounter().id(),
+                ch == null ? "-" : ch.tier().id(), ch == null ? 0 : modNames(ch.mask()), ch == null ? 0 : ch.bonus(), ArenaStats.top(server, 10).size());
     }
 
     // ------------------------------------------------------------------ Hilfen
@@ -954,6 +1116,7 @@ public final class ArenaManager {
         int best = t.getInt("best");
         if (best == 0 || r.fightTicks < best) t.putInt("best", Math.max(1, r.fightTicks));
         pr.put(key, t);
+        ArenaStats.addWin(p, r.encounter.boss());
     }
 
     static String formatTime(int ticks) {
@@ -961,32 +1124,37 @@ public final class ArenaManager {
         return String.format("%d:%02d", sec / 60, sec % 60);
     }
 
-    static int countTokens(ServerPlayer p) {
+    /** Alte Arena-Marken aus dem Inventar in Coins umwandeln (1:1). */
+    static void convertTokens(ServerPlayer p) {
         int n = 0;
-        for (ItemStack st : p.getInventory().items) if (st.is(ModRegistry.TOKEN.get())) n += st.getCount();
-        for (ItemStack st : p.getInventory().offhand) if (st.is(ModRegistry.TOKEN.get())) n += st.getCount();
-        return n;
-    }
-
-    static void removeTokens(ServerPlayer p, int amount) {
-        int left = amount;
         for (ItemStack st : p.getInventory().items) {
-            if (left <= 0) break;
             if (st.is(ModRegistry.TOKEN.get())) {
-                int take = Math.min(left, st.getCount());
-                st.shrink(take);
-                left -= take;
+                n += st.getCount();
+                st.setCount(0);
             }
         }
         for (ItemStack st : p.getInventory().offhand) {
-            if (left <= 0) break;
             if (st.is(ModRegistry.TOKEN.get())) {
-                int take = Math.min(left, st.getCount());
-                st.shrink(take);
-                left -= take;
+                n += st.getCount();
+                st.setCount(0);
             }
         }
-        p.getInventory().setChanged();
+        if (n > 0) {
+            ArenaStats.addCoins(p, n);
+            p.getInventory().setChanged();
+            p.sendSystemMessage(Component.literal(n + " Arena-Marken wurden in Coins umgewandelt."));
+        }
+    }
+
+    static void sendStats(ServerPlayer p) {
+        String titleId = ArenaStats.title(p);
+        List<Net.BoardLine> board = new ArrayList<>();
+        for (ArenaStats.Line l : ArenaStats.top(p.server, 10)) {
+            board.add(new Net.BoardLine(l.name(), l.title(), l.wins(), l.bosses(), l.kills()));
+        }
+        PacketDistributor.sendToPlayer(p, new Net.Stats(ArenaStats.coins(p), ArenaStats.kills(p), ArenaStats.bosses(p),
+                ArenaStats.wins(p), titleId.isEmpty() ? "" : ArenaDefs.cosmeticName(titleId), titleId, ArenaStats.trail(p),
+                ArenaStats.owned(p), board, true));
     }
 
     private static void rememberMode(ServerPlayer sp) {

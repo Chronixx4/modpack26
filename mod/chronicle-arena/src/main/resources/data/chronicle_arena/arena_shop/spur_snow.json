@@ -1,0 +1,10 @@
+{
+  "order": 320,
+  "category": "kosmetik",
+  "name": "Spur: Schneeflocken",
+  "item": "minecraft:snowball",
+  "count": 1,
+  "price": 50,
+  "cosmetic": "trail",
+  "value": "snow"
+}

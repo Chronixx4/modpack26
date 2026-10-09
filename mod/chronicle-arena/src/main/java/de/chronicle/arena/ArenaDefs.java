@@ -64,7 +64,11 @@ public final class ArenaDefs {
 
     /** Shop-Angebot: Gegenstand gegen Arena-Marken. components ist ein optionales Komponenten-JSON. */
     public record ShopOffer(ResourceLocation id, int order, String category, String name, ResourceLocation item,
-                            int count, int price, JsonObject components) {
+                            int count, int price, JsonObject components, String cosmetic, String value) {
+        public boolean isCosmetic() {
+            return !cosmetic.isEmpty();
+        }
+
         public boolean available() {
             return BuiltInRegistries.ITEM.containsKey(item);
         }
@@ -105,6 +109,16 @@ public final class ArenaDefs {
     public static ShopOffer shopOffer(ResourceLocation id) {
         ShopOffer o = id == null ? null : shop.get(id);
         return o != null && o.available() ? o : null;
+    }
+
+    /** Anzeigename eines Kosmetik-Angebots (Titeltext), leer wenn unbekannt. */
+    public static String cosmeticValue(String offerId) {
+        return cosmeticName(offerId);
+    }
+
+    public static String cosmeticName(String offerId) {
+        ShopOffer o = shopOffer(ResourceLocation.tryParse(offerId));
+        return o == null ? "" : o.value();
     }
 
     public static Tier tier(ResourceLocation id) {
@@ -187,7 +201,8 @@ public final class ArenaDefs {
                             ResourceLocation.parse(GsonHelper.getAsString(o, "item")),
                             Math.max(1, GsonHelper.getAsInt(o, "count", 1)),
                             Math.max(1, GsonHelper.getAsInt(o, "price", 1)),
-                            o.has("components") ? GsonHelper.getAsJsonObject(o, "components") : null));
+                            o.has("components") ? GsonHelper.getAsJsonObject(o, "components") : null,
+                            GsonHelper.getAsString(o, "cosmetic", ""), GsonHelper.getAsString(o, "value", "")));
                 } catch (Exception ex) {
                     LOGGER.error("Arena-Shop {} ungueltig: {}", e.getKey(), ex.toString());
                 }

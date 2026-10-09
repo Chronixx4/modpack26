@@ -18,7 +18,7 @@ import java.util.Map;
  * Der Mauszeiger zeigt den vollen Item-Tooltip (Verzauberungen, Werte).
  */
 public class ShopScreen extends Screen {
-    private static final String[] CATEGORIES = {"verbrauch", "waffen", "ruestung", "werkzeug", "material", "magie"};
+    private static final String[] CATEGORIES = {"verbrauch", "waffen", "ruestung", "werkzeug", "material", "magie", "kosmetik"};
     private static final int COLS = 6;
     private static final int ROWS = 5;
     private static final int SLOT = 20;
@@ -39,12 +39,23 @@ public class ShopScreen extends Screen {
     public ShopScreen(Net.OpenShop data) {
         super(Component.translatable("gui.chronicle_arena.shop_title"));
         this.data = data;
-        this.tokens = data.tokens();
+        this.tokens = data.coins();
     }
 
-    public void setTokens(int count) {
-        this.tokens = count;
+    public void statsChanged() {
+        Net.Stats st = ClientState.stats;
+        if (st != null) this.tokens = st.coins();
         updateButtons();
+    }
+
+    private boolean owned(Net.ShopInfo s) {
+        Net.Stats st = ClientState.stats;
+        return st != null && st.owned().contains(s.id());
+    }
+
+    private boolean equipped(Net.ShopInfo s) {
+        Net.Stats st = ClientState.stats;
+        return st != null && (st.titleId().equals(s.id()) || st.trailId().equals(s.id()));
     }
 
     private List<Net.ShopInfo> items() {
@@ -76,7 +87,7 @@ public class ShopScreen extends Screen {
                 page = 0;
                 selected = null;
                 updateButtons();
-            }).bounds(left + 6, top + 36 + i * 24, 84, 20).build();
+            }).bounds(left + 6, top + 36 + i * 22, 84, 20).build();
             tabButtons.add(addRenderableWidget(b));
         }
         prevButton = addRenderableWidget(Button.builder(Component.literal("<"), b -> {
@@ -91,7 +102,7 @@ public class ShopScreen extends Screen {
             if (selected != null) PacketDistributor.sendToServer(new Net.Buy(selected.id()));
         }).bounds(left + 98 + COLS * SLOT + 14, top + 196, 108, 20).build());
         addRenderableWidget(Button.builder(Component.translatable("gui.chronicle_arena.close"), b -> onClose())
-                .bounds(left + 6, top + 36 + CATEGORIES.length * 24 + 12, 84, 20).build());
+                .bounds(left + 6, top + 36 + CATEGORIES.length * 22 + 6, 84, 20).build());
         updateButtons();
     }
 
@@ -102,7 +113,14 @@ public class ShopScreen extends Screen {
             b.active = i != category && counts.getOrDefault(CATEGORIES[i], 0) > 0;
         }
         prevButton.active = nextButton.active = pages() > 1;
-        buyButton.active = selected != null && tokens >= selected.price();
+        buyButton.active = selected != null && (tokens >= selected.price() || (!selected.cosmetic().isEmpty() && owned(selected)));
+        if (selected == null || selected.cosmetic().isEmpty()) {
+            buyButton.setMessage(Component.translatable("gui.chronicle_arena.buy"));
+        } else if (owned(selected)) {
+            buyButton.setMessage(Component.literal(equipped(selected) ? "Ablegen" : "Ausruesten"));
+        } else {
+            buyButton.setMessage(Component.translatable("gui.chronicle_arena.buy"));
+        }
     }
 
     @Override
@@ -148,8 +166,9 @@ public class ShopScreen extends Screen {
                 int y = gy + row * SLOT;
                 boolean has = idx < list.size();
                 Net.ShopInfo s = has ? list.get(idx) : null;
-                int bg = s == null ? 0xFF1A1726 : s == selected ? 0xFF6A3FB0 : tokens >= s.price() ? 0xFF2A2440 : 0xFF3A2430;
+                int bg = s == null ? 0xFF1A1726 : s == selected ? 0xFF6A3FB0 : (tokens >= s.price() || owned(s)) ? 0xFF2A2440 : 0xFF3A2430;
                 gfx.fill(x, y, x + SLOT - 1, y + SLOT - 1, bg);
+                if (s != null && equipped(s)) gfx.fill(x, y + SLOT - 3, x + SLOT - 1, y + SLOT - 1, 0xFF55FF55);
                 if (s != null) {
                     gfx.renderItem(s.stack(), x + 1, y + 1);
                     gfx.renderItemDecorations(this.font, s.stack(), x + 1, y + 1);
@@ -166,8 +185,8 @@ public class ShopScreen extends Screen {
             ItemStack st = selected.stack();
             gfx.renderItem(st, dx, top + 36);
             gfx.drawString(this.font, selected.name(), dx + 22, top + 36, 0xFFFFFF);
-            gfx.drawString(this.font, Component.translatable("gui.chronicle_arena.tokens", selected.price()), dx + 22, top + 47,
-                    tokens >= selected.price() ? 0xFFD700 : 0xFF6666);
+            gfx.drawString(this.font, owned(selected) ? Component.literal("Gekauft") : Component.translatable("gui.chronicle_arena.tokens", selected.price()), dx + 22, top + 47,
+                    owned(selected) ? 0x55FF55 : tokens >= selected.price() ? 0xFFD700 : 0xFF6666);
             List<Component> tip = Screen.getTooltipFromItem(this.minecraft, st);
             int ly = top + 66;
             for (int i = 1; i < tip.size() && i < 11; i++) {

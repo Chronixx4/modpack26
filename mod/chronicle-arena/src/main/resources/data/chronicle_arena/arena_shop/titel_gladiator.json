@@ -1,0 +1,10 @@
+{
+  "order": 300,
+  "category": "kosmetik",
+  "name": "Titel: Gladiator",
+  "item": "minecraft:iron_sword",
+  "count": 1,
+  "price": 20,
+  "cosmetic": "title",
+  "value": "Gladiator"
+}

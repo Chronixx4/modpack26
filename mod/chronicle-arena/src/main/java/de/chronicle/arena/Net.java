@@ -16,13 +16,13 @@ public final class Net {
     private Net() {}
 
     public static void register(RegisterPayloadHandlersEvent event) {
-        PayloadRegistrar reg = event.registrar("3");
+        PayloadRegistrar reg = event.registrar("4");
         reg.playToClient(OpenTerminal.TYPE, OpenTerminal.CODEC,
                 (payload, ctx) -> ctx.enqueueWork(() -> de.chronicle.arena.client.ClientHooks.openTerminal(payload)));
         reg.playToClient(OpenShop.TYPE, OpenShop.CODEC,
                 (payload, ctx) -> ctx.enqueueWork(() -> de.chronicle.arena.client.ClientHooks.openShop(payload)));
-        reg.playToClient(Tokens.TYPE, Tokens.CODEC,
-                (payload, ctx) -> ctx.enqueueWork(() -> de.chronicle.arena.client.ClientHooks.updateTokens(payload.count())));
+        reg.playToClient(Stats.TYPE, Stats.CODEC,
+                (payload, ctx) -> ctx.enqueueWork(() -> de.chronicle.arena.client.ClientHooks.updateStats(payload)));
         reg.playToServer(Action.TYPE, Action.CODEC,
                 (payload, ctx) -> ctx.enqueueWork(() -> {
                     if (ctx.player() instanceof ServerPlayer sp) ArenaManager.handleAction(sp, payload);
@@ -37,10 +37,17 @@ public final class Net {
 
     public record EncInfo(String id, boolean boss, String name, String desc, String icon) {}
 
-    public record ShopInfo(String id, String category, String name, int price, ItemStack stack) {}
+    public record ShopInfo(String id, String category, String name, int price, ItemStack stack, String cosmetic) {}
+
+    public record ModInfo(int bit, String name, String desc, int bonus) {}
+
+    public record ChallengeInfo(String encounter, String tier, int mask, boolean claimed, int bonusCoins, String text) {}
+
+    public record BoardLine(String name, String title, int wins, int bosses, int kills) {}
 
     /** Server -> Client: Inhalt des Kampf-Menues. */
-    public record OpenTerminal(boolean running, String status, List<TierInfo> tiers, List<EncInfo> encounters)
+    public record OpenTerminal(boolean running, String status, List<TierInfo> tiers, List<EncInfo> encounters,
+                               List<ModInfo> mods, ChallengeInfo challenge)
             implements CustomPacketPayload {
         public static final Type<OpenTerminal> TYPE = new Type<>(ChronicleArena.id("open_terminal"));
         public static final StreamCodec<FriendlyByteBuf, OpenTerminal> CODEC = StreamCodec.of(OpenTerminal::write, OpenTerminal::read);
@@ -64,6 +71,19 @@ public final class Net {
                 buf.writeUtf(e.desc, 1024);
                 buf.writeUtf(e.icon);
             }
+            buf.writeVarInt(p.mods.size());
+            for (ModInfo m : p.mods) {
+                buf.writeVarInt(m.bit);
+                buf.writeUtf(m.name);
+                buf.writeUtf(m.desc, 256);
+                buf.writeVarInt(m.bonus);
+            }
+            buf.writeUtf(p.challenge.encounter);
+            buf.writeUtf(p.challenge.tier);
+            buf.writeVarInt(p.challenge.mask);
+            buf.writeBoolean(p.challenge.claimed);
+            buf.writeVarInt(p.challenge.bonusCoins);
+            buf.writeUtf(p.challenge.text, 256);
         }
 
         private static OpenTerminal read(FriendlyByteBuf buf) {
@@ -79,7 +99,12 @@ public final class Net {
             for (int i = 0; i < ne; i++) {
                 encs.add(new EncInfo(buf.readUtf(), buf.readBoolean(), buf.readUtf(), buf.readUtf(1024), buf.readUtf()));
             }
-            return new OpenTerminal(running, status, tiers, encs);
+            int nm = buf.readVarInt();
+            List<ModInfo> mods = new ArrayList<>();
+            for (int i = 0; i < nm; i++) mods.add(new ModInfo(buf.readVarInt(), buf.readUtf(), buf.readUtf(256), buf.readVarInt()));
+            ChallengeInfo ch = new ChallengeInfo(buf.readUtf(), buf.readUtf(), buf.readVarInt(), buf.readBoolean(),
+                    buf.readVarInt(), buf.readUtf(256));
+            return new OpenTerminal(running, status, tiers, encs, mods, ch);
         }
 
         @Override
@@ -89,12 +114,12 @@ public final class Net {
     }
 
     /** Server -> Client: Shop mit allen Angeboten (mit echten Item-Stacks fuer Tooltips). */
-    public record OpenShop(int tokens, List<ShopInfo> offers) implements CustomPacketPayload {
+    public record OpenShop(int coins, List<ShopInfo> offers) implements CustomPacketPayload {
         public static final Type<OpenShop> TYPE = new Type<>(ChronicleArena.id("open_shop"));
         public static final StreamCodec<RegistryFriendlyByteBuf, OpenShop> CODEC = StreamCodec.of(OpenShop::write, OpenShop::read);
 
         private static void write(RegistryFriendlyByteBuf buf, OpenShop p) {
-            buf.writeVarInt(p.tokens);
+            buf.writeVarInt(p.coins);
             buf.writeVarInt(p.offers.size());
             for (ShopInfo s : p.offers) {
                 buf.writeUtf(s.id);
@@ -102,17 +127,18 @@ public final class Net {
                 buf.writeUtf(s.name);
                 buf.writeVarInt(s.price);
                 ItemStack.STREAM_CODEC.encode(buf, s.stack);
+                buf.writeUtf(s.cosmetic);
             }
         }
 
         private static OpenShop read(RegistryFriendlyByteBuf buf) {
-            int tokens = buf.readVarInt();
+            int coins = buf.readVarInt();
             int n = buf.readVarInt();
             List<ShopInfo> list = new ArrayList<>();
             for (int i = 0; i < n; i++) {
-                list.add(new ShopInfo(buf.readUtf(), buf.readUtf(), buf.readUtf(), buf.readVarInt(), ItemStack.STREAM_CODEC.decode(buf)));
+                list.add(new ShopInfo(buf.readUtf(), buf.readUtf(), buf.readUtf(), buf.readVarInt(), ItemStack.STREAM_CODEC.decode(buf), buf.readUtf()));
             }
-            return new OpenShop(tokens, list);
+            return new OpenShop(coins, list);
         }
 
         @Override
@@ -121,11 +147,49 @@ public final class Net {
         }
     }
 
-    /** Server -> Client: neue Markenzahl nach einem Kauf. */
-    public record Tokens(int count) implements CustomPacketPayload {
-        public static final Type<Tokens> TYPE = new Type<>(ChronicleArena.id("tokens"));
-        public static final StreamCodec<FriendlyByteBuf, Tokens> CODEC = StreamCodec.of(
-                (buf, p) -> buf.writeVarInt(p.count), buf -> new Tokens(buf.readVarInt()));
+    /** Server -> Client: Konto, Kosmetik und Rangliste (fuer die Anzeige in der Arena und den Shop). */
+    public record Stats(int coins, int kills, int bosses, int wins, String title, String titleId, String trailId,
+                        List<String> owned, List<BoardLine> board, boolean showHud) implements CustomPacketPayload {
+        public static final Type<Stats> TYPE = new Type<>(ChronicleArena.id("stats"));
+        public static final StreamCodec<FriendlyByteBuf, Stats> CODEC = StreamCodec.of(Stats::write, Stats::read);
+
+        private static void write(FriendlyByteBuf buf, Stats p) {
+            buf.writeVarInt(p.coins);
+            buf.writeVarInt(p.kills);
+            buf.writeVarInt(p.bosses);
+            buf.writeVarInt(p.wins);
+            buf.writeUtf(p.title);
+            buf.writeUtf(p.titleId);
+            buf.writeUtf(p.trailId);
+            buf.writeVarInt(p.owned.size());
+            for (String o : p.owned) buf.writeUtf(o);
+            buf.writeVarInt(p.board.size());
+            for (BoardLine l : p.board) {
+                buf.writeUtf(l.name);
+                buf.writeUtf(l.title);
+                buf.writeVarInt(l.wins);
+                buf.writeVarInt(l.bosses);
+                buf.writeVarInt(l.kills);
+            }
+            buf.writeBoolean(p.showHud);
+        }
+
+        private static Stats read(FriendlyByteBuf buf) {
+            int coins = buf.readVarInt();
+            int kills = buf.readVarInt();
+            int bosses = buf.readVarInt();
+            int wins = buf.readVarInt();
+            String title = buf.readUtf();
+            String titleId = buf.readUtf();
+            String trailId = buf.readUtf();
+            int no = buf.readVarInt();
+            List<String> owned = new ArrayList<>();
+            for (int i = 0; i < no; i++) owned.add(buf.readUtf());
+            int nb = buf.readVarInt();
+            List<BoardLine> board = new ArrayList<>();
+            for (int i = 0; i < nb; i++) board.add(new BoardLine(buf.readUtf(), buf.readUtf(), buf.readVarInt(), buf.readVarInt(), buf.readVarInt()));
+            return new Stats(coins, kills, bosses, wins, title, titleId, trailId, owned, board, buf.readBoolean());
+        }
 
         @Override
         public Type<? extends CustomPacketPayload> type() {
@@ -134,15 +198,16 @@ public final class Net {
     }
 
     /** Client -> Server: Start oder Zuschauen. */
-    public record Action(boolean spectate, String encounter, String tier) implements CustomPacketPayload {
+    public record Action(boolean spectate, String encounter, String tier, int mask) implements CustomPacketPayload {
         public static final Type<Action> TYPE = new Type<>(ChronicleArena.id("action"));
         public static final StreamCodec<FriendlyByteBuf, Action> CODEC = StreamCodec.of(
                 (buf, p) -> {
                     buf.writeBoolean(p.spectate);
                     buf.writeUtf(p.encounter);
                     buf.writeUtf(p.tier);
+                    buf.writeVarInt(p.mask);
                 },
-                buf -> new Action(buf.readBoolean(), buf.readUtf(), buf.readUtf()));
+                buf -> new Action(buf.readBoolean(), buf.readUtf(), buf.readUtf(), buf.readVarInt()));
 
         @Override
         public Type<? extends CustomPacketPayload> type() {

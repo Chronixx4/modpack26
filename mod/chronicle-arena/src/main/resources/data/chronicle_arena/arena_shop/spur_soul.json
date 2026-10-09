@@ -1,0 +1,10 @@
+{
+  "order": 311,
+  "category": "kosmetik",
+  "name": "Spur: Seelenfeuer-Spur",
+  "item": "minecraft:soul_lantern",
+  "count": 1,
+  "price": 50,
+  "cosmetic": "trail",
+  "value": "soul"
+}

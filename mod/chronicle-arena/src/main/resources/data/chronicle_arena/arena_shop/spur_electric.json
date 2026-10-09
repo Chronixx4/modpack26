@@ -1,0 +1,10 @@
+{
+  "order": 315,
+  "category": "kosmetik",
+  "name": "Spur: Elektro-Spur",
+  "item": "minecraft:lightning_rod",
+  "count": 1,
+  "price": 90,
+  "cosmetic": "trail",
+  "value": "electric"
+}

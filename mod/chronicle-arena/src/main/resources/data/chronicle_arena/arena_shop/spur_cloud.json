@@ -1,0 +1,10 @@
+{
+  "order": 316,
+  "category": "kosmetik",
+  "name": "Spur: Wolkenspur",
+  "item": "minecraft:white_wool",
+  "count": 1,
+  "price": 40,
+  "cosmetic": "trail",
+  "value": "cloud"
+}
