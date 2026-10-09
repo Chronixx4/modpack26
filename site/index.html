@@ -173,6 +173,52 @@
   .srv b { display:block; font:10px var(--px); color:var(--mute); margin-bottom:8px; }
   .srv span { font:15px var(--px); color:var(--dia); overflow-wrap:anywhere; }
 
+
+  /* Tabs und Guide */
+  .tabs { background:#0e0f12; border-bottom:3px solid #000; }
+  .tabs .wrap { display:flex; gap:6px; padding-top:14px; }
+  .tab { flex:none; padding:11px 18px 10px; font:11px var(--px); color:#cfcfcf; text-decoration:none; background:#4a4d56;
+         box-shadow:0 0 0 2px #000, inset 3px 3px 0 #7d818c, inset -3px 0 0 #2c2e34; position:relative; top:3px; }
+  .tab:hover { background:#5a5e69; color:#fff; }
+  .tab[aria-current="page"] { background:var(--deep); color:var(--gold); top:3px; padding-bottom:13px; box-shadow:0 0 0 2px #000, inset 3px 3px 0 #7d818c; }
+  .view[hidden] { display:none; }
+  .gnav { display:flex; flex-wrap:wrap; gap:10px; margin:0 0 6px; }
+  .gnav a { font:10px var(--px); color:#222; background:#8b8b8b; text-decoration:none; padding:9px 13px;
+            box-shadow:0 0 0 2px #000, inset 3px 3px 0 #c6c6c6, inset -3px -3px 0 #555; }
+  .gnav a:hover { background:#a8a8c8; }
+  .recipes { display:grid; gap:22px; grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr)); }
+  .recipe { padding:20px; background:var(--panel); min-width:0; box-shadow:0 0 0 3px #000, inset 3px 3px 0 var(--hi), inset -3px -3px 0 #181a1f; }
+  .recipe.wide { grid-column:1 / -1; }
+  .recipe h3 { font:12px/1.5 var(--px); margin:0 0 4px; color:var(--gold); text-shadow:2px 2px 0 #000; }
+  .recipe .where { margin:0 0 14px; color:var(--mute); font-size:16px; }
+  .rbody { display:flex; flex-wrap:wrap; gap:20px; align-items:flex-start; }
+  .rgrid { display:grid; gap:0; padding:12px; background:#c6c6c6; box-shadow:0 0 0 3px #000, inset 3px 3px 0 #fff, inset -3px -3px 0 #555; flex:none; }
+  .rc { width:52px; height:52px; display:flex; align-items:center; justify-content:center; background:#8b8b8b;
+        box-shadow:inset 3px 3px 0 #373737, inset -3px -3px 0 #fff; font:14px var(--px); color:#fff; text-shadow:2px 2px 0 #000; }
+  .rc i { display:block; width:34px; height:34px; font-style:normal; display:flex; align-items:center; justify-content:center; box-shadow:inset 2px 2px 0 rgba(255,255,255,.35), inset -2px -2px 0 rgba(0,0,0,.35), 0 0 0 2px #000; }
+  .legend { list-style:none; margin:0; padding:0; display:grid; gap:7px; font-size:17px; line-height:1.3; flex:1 1 220px; min-width:0; }
+  .legend li { display:flex; gap:10px; align-items:baseline; }
+  .legend b { flex:none; width:26px; height:26px; display:inline-flex; align-items:center; justify-content:center; font:11px var(--px); color:#fff; text-shadow:1px 1px 0 #000; box-shadow:0 0 0 2px #000; transform:translateY(5px); }
+  .legend small { color:var(--mute); font-size:15px; }
+  .note { margin:14px 0 0; padding:12px 14px; background:#14151a; font-size:16px; color:var(--mute); box-shadow:inset 3px 3px 0 #000, inset -3px -3px 0 #4a4d56; }
+  .note b { color:var(--gold); font-weight:600; }
+  .wgrid { display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); }
+  .way { padding:0; background:var(--panel); min-width:0; box-shadow:0 0 0 3px #000, inset 3px 3px 0 var(--hi), inset -3px -3px 0 #181a1f; }
+  .way header { padding:12px 16px; font:11px/1.5 var(--px); color:#fff; text-shadow:2px 2px 0 #000; border-bottom:3px solid #000; }
+  .way .wb { padding:12px 16px 16px; font-size:17px; line-height:1.4; }
+  .way .wb p { margin:0 0 8px; } .way .wb p:last-child { margin:0; }
+  .way em { font-style:normal; color:var(--gold); }
+  .bgroups { display:grid; gap:12px; }
+  details.bg { background:var(--panel); box-shadow:0 0 0 3px #000, inset 3px 3px 0 var(--hi), inset -3px -3px 0 #181a1f; min-width:0; }
+  details.bg summary { cursor:pointer; padding:14px 18px; font:11px/1.6 var(--px); color:#fff; list-style:none; display:flex; gap:12px; align-items:center; text-shadow:2px 2px 0 #000; }
+  details.bg summary::-webkit-details-marker { display:none; }
+  details.bg summary::before { content:'+'; flex:none; width:22px; height:22px; text-align:center; line-height:22px; background:var(--grass); color:#000; text-shadow:none; box-shadow:0 0 0 2px #000; }
+  details.bg[open] summary::before { content:'-'; background:var(--gold); }
+  details.bg summary span { margin-left:auto; font:500 15px var(--body); color:var(--mute); text-shadow:none; white-space:nowrap; }
+  details.bg ul { margin:0; padding:2px 18px 18px 52px; display:grid; gap:9px; font-size:17px; line-height:1.4; }
+  details.bg li b { color:var(--gold); font-weight:600; }
+  .gbox { margin-top:34px; }
+
   /* Footer: Erdschicht */
   footer { margin-top:64px; padding-block:34px 40px; border-top:12px solid var(--grass); position:relative;
            background-color:#4a3320; background-image:var(--tx-dirt,none); background-size:80px; image-rendering:pixelated; }
@@ -189,6 +235,7 @@
   <div class="wrap">
     <a class="brand" href="#top">Chronicle</a>
     <div class="slots">
+      <a class="slot" href="#guide"><canvas class="ico" data-i="wand" width="10" height="10" style="width:20px;height:20px"></canvas><b>Guide</b></a>
       <a class="slot" href="#download"><canvas class="ico" data-i="chest" width="10" height="10" style="width:20px;height:20px"></canvas><b>Download</b></a>
       <a class="slot" href="#install"><canvas class="ico" data-i="book" width="10" height="10" style="width:20px;height:20px"></canvas><b>Start</b></a>
       <a class="slot" href="#inhalt"><canvas class="ico" data-i="sword" width="10" height="10" style="width:20px;height:20px"></canvas><b>Inhalt</b></a>
@@ -211,8 +258,14 @@
   </div>
 </header>
 
+<div class="tabs"><div class="wrap" role="tablist" aria-label="Seitenbereiche">
+  <a class="tab" id="tab-home" href="#top" aria-current="page">Übersicht</a>
+  <a class="tab" id="tab-guide" href="#guide">Guide</a>
+</div></div>
+
 <main>
   <div class="wrap">
+  <div id="home" class="view">
 
     <section id="stats-sec" style="padding-top:44px">
       <div class="stats">
@@ -296,13 +349,13 @@
       <div class="pixel-rule"></div>
       <div class="panel core">
         <div>
-          <p style="margin:0">Das Pack hat sein eigenes Endgame. Du sammelst drei Fragmente, eines aus Technik, eines aus Magie und eines aus Abenteuer. Zusammen ergeben sie den Chronicle-Kern, den du im mechanischen Crafter (5x5) herstellst.</p>
+          <p style="margin:0">Das Pack hat sein eigenes Endgame. Du sammelst drei Fragmente, eines aus Technik, eines aus Magie und eines aus Abenteuer. Zusammen mit einem Chaotischen Kern, Nethersternen und Create-Teilen ergeben sie den Chronicle-Kern, gebaut im mechanischen Crafter (5x5).</p>
           <ul class="flist">
             <li><canvas class="ico" data-i="fragT" width="10" height="10"></canvas><span>Technik-Fragment</span></li>
             <li><canvas class="ico" data-i="fragM" width="10" height="10"></canvas><span>Magie-Fragment</span></li>
             <li><canvas class="ico" data-i="fragA" width="10" height="10"></canvas><span>Abenteuer-Fragment</span></li>
           </ul>
-          <p style="margin:14px 0 0;color:var(--mute);font-size:16px">Der Kern öffnet den Weg zum Ende. Das Rezept steht im Questbuch.</p>
+          <p style="margin:14px 0 0;color:var(--mute);font-size:16px">Er ist das große Finale des Questbuchs. <a href="#g-rezepte">Alle drei Rezepte und das Kern-Muster stehen im Guide.</a></p>
         </div>
         <div class="craft" aria-label="Drei Fragmente ergeben den Chronicle-Kern">
           <div class="grid3">
@@ -346,7 +399,57 @@
         </div>
       </div>
     </section>
+  </div>
 
+  <div id="guide" class="view" hidden>
+    <section style="padding-top:44px">
+      <p class="kicker">Guide</p>
+      <h2>Wie komme ich wohin?</h2>
+      <div class="pixel-rule"></div>
+      <p class="lead">Rezepte, Weltzugänge und Bosse an einem Ort. Die Details und die Reihenfolge stehen im Questbuch, hier ist die Kurzfassung.</p>
+      <div class="gnav"><a href="#g-rezepte">Rezepte</a><a href="#g-welten">Welten erreichen</a><a href="#g-bosse">Bosse finden</a></div>
+    </section>
+
+    <section id="g-rezepte">
+      <p class="kicker">Rezepte</p>
+      <h2>Fragmente und Chronicle-Kern</h2>
+      <div class="pixel-rule"></div>
+      <p class="lead">Die drei Fragmente baust du an der normalen Werkbank. Den Kern setzt du danach im mechanischen Crafter zusammen.</p>
+      <div class="recipes">
+        <article class="recipe">
+          <h3>Technik-Fragment</h3><p class="where">Werkbank 3x3</p>
+          <div class="rbody"><div class="rgrid" data-p="ABA|CDE|AFA"></div><ul class="legend"><li data-k="A" data-c="#d9382c"><b style="background:#d9382c">A</b><span>Antimaterie-Pellet <small>Mekanism</small></span></li><li data-k="B" data-c="#7a3cd1"><b style="background:#7a3cd1">B</b><span>Erweckter Kern <small>Draconic Evolution</small></span></li><li data-k="C" data-c="#2b2f3a"><b style="background:#2b2f3a">C</b><span>Singularität <small>AE2</small></span></li><li data-k="D" data-c="#4b86ff"><b style="background:#4b86ff">D</b><span>256M-Zellkomponente <small>MEGA Cells</small></span></li><li data-k="E" data-c="#2f8f2a"><b style="background:#2f8f2a">E</b><span>Nitro-Kristall <small>Powah</small></span></li><li data-k="F" data-c="#b88a14"><b style="background:#b88a14">F</b><span>Präzisionsmechanismus <small>Create</small></span></li></ul></div>
+        </article>
+        <article class="recipe">
+          <h3>Magie-Fragment</h3><p class="where">Werkbank 3x3</p>
+          <div class="rbody"><div class="rgrid" data-p="ABA|CDE|AFA"></div><ul class="legend"><li data-k="A" data-c="#4b86ff"><b style="background:#4b86ff">A</b><span>Insanium-Barren <small>Mystical Agradditions</small></span></li><li data-k="B" data-c="#2f8f2a"><b style="background:#2f8f2a">B</b><span>Wilden-Tribut <small>Ars Nouveau</small></span></li><li data-k="C" data-c="#7a3cd1"><b style="background:#7a3cd1">C</b><span>Iesnium-Barren <small>Occultism</small></span></li><li data-k="D" data-c="#d9382c"><b style="background:#d9382c">D</b><span>Legendäre Tinte <small>Iron&#x27;s Spells</small></span></li><li data-k="E" data-c="#b88a14"><b style="background:#b88a14">E</b><span>Stellarit-Stück <small>Forbidden Arcanus</small></span></li><li data-k="F" data-c="#3e9a30"><b style="background:#3e9a30">F</b><span>Drachenhaut <small>Iron&#x27;s Spells</small></span></li></ul></div>
+        </article>
+        <article class="recipe">
+          <h3>Abenteuer-Fragment</h3><p class="where">Werkbank 3x3</p>
+          <div class="rbody"><div class="rgrid" data-p="ABC|DEF|GHG"></div><ul class="legend"><li data-k="A" data-c="#e0702a"><b style="background:#e0702a">A</b><span>Ignitium-Barren <small>Cataclysm</small></span></li><li data-k="B" data-c="#d9382c"><b style="background:#d9382c">B</b><span>Drachenstahl-Barren (Feuer) <small>Ice and Fire</small></span></li><li data-k="C" data-c="#c9731a"><b style="background:#c9731a">C</b><span>Feuriger Barren <small>Twilight Forest</small></span></li><li data-k="D" data-c="#4de8d8"><b style="background:#4de8d8">D</b><span>Verzaubertes Gravitit <small>Aether</small></span></li><li data-k="E" data-c="#9aa3b5"><b style="background:#9aa3b5">E</b><span>Netherstern <small>Vanilla</small></span></li><li data-k="F" data-c="#1f9c91"><b style="background:#1f9c91">F</b><span>Herz der Tiefe <small>Deeper and Darker</small></span></li><li data-k="G" data-c="#b88a14"><b style="background:#b88a14">G</b><span>Unobtainium-Barren <small>Allthemodium</small></span></li><li data-k="H" data-c="#2b1d45"><b style="background:#2b1d45">H</b><span>Reine Dunkelheit <small>Alex&#x27;s Caves</small></span></li></ul></div><p class="note"><b>Tipp:</b> Du musst für die Zutaten fast jede Welt besucht haben. Das passt zum Namen.</p>
+        </article>
+        <article class="recipe wide">
+          <h3>Chronicle-Kern</h3><p class="where">Create: Mechanischer Crafter, 5x5 (die leeren Felder bleiben frei)</p>
+          <div class="rbody"><div class="rgrid" data-p=" SPS |STNMS|PNCNP|SANAS| SPS "></div><ul class="legend"><li data-k="T" data-c="#4b86ff"><b style="background:#4b86ff">T</b><span>Technik-Fragment <small>Chronicle</small></span></li><li data-k="M" data-c="#7a3cd1"><b style="background:#7a3cd1">M</b><span>Magie-Fragment <small>Chronicle</small></span></li><li data-k="A" data-c="#3e9a30"><b style="background:#3e9a30">A</b><span>Abenteuer-Fragment <small>Chronicle</small></span></li><li data-k="S" data-c="#8b939e"><b style="background:#8b939e">S</b><span>Robustes Blech <small>Create</small></span></li><li data-k="P" data-c="#b88a14"><b style="background:#b88a14">P</b><span>Präzisionsmechanismus <small>Create</small></span></li><li data-k="N" data-c="#e8e8f0"><b style="background:#e8e8f0">N</b><span>Netherstern <small>Vanilla</small></span></li><li data-k="C" data-c="#d9382c"><b style="background:#d9382c">C</b><span>Chaotischer Kern <small>Draconic Evolution</small></span></li></ul></div><p class="note"><b>So geht es:</b> Alle Zutaten legst du in einen Verbund aus mechanischen Craftern (Create) und versorgst ihn mit Drehkraft. Das Questbuch führt dich Schritt für Schritt hin. In JEI zeigt dir die Taste <b>R</b> auf dem Item jedes Rezept.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="g-welten">
+      <p class="kicker">Welten</p>
+      <h2>So kommst du in jede Dimension</h2>
+      <div class="pixel-rule"></div>
+      <div class="wgrid"><div class="way"><header style="background:#7a1d12">Nether</header><div class="wb"><p>Obsidian-Rahmen, <em>4 breit und 5 hoch</em>, mit Feuerzeug anzünden.</p><p>Trag Gold-Rüstung, sonst greifen dich Piglins an.</p></div></div><div class="way"><header style="background:#2a1f4a">Ende</header><div class="wb"><p>Du brauchst <em>12 Uralte Augen</em>, jedes von einer anderen Art, für den Portalrahmen. Normale Enderaugen reichen nicht.</p><p>Vor dem Sprung: Blöcke zum Bauen einpacken. Der Enderdrache wartet schon.</p></div></div><div class="way"><header style="background:#1d5f66">Aether</header><div class="wb"><p>Portalrahmen wie beim Nether, aber aus <em>Glowstone-Blöcken</em>. Dann einen Eimer Wasser in den Rahmen kippen.</p><p>Pass oben auf, die Inseln haben keinen Boden.</p></div></div><div class="way"><header style="background:#2f5e1d">Twilight Forest</header><div class="wb"><p>Standard-Weg der Mod: ein <em>Diamant</em> in einen kleinen Teich werfen, der von Blumen umgeben ist.</p><p>Die Gebiete sind per Fluch gesperrt, bis du den Boss davor besiegt hast. Das Questbuch zeigt die Reihenfolge.</p></div></div><div class="way"><header style="background:#25403a">Undergarden</header><div class="wb"><p>Rahmen aus <em>Steinziegeln</em> in Nether-Form bauen und mit dem Katalysator aktivieren.</p><p>Den Katalysator craftest du selbst, das Rezept zeigt JEI.</p></div></div><div class="way"><header style="background:#1a2b3a">Otherside</header><div class="wb"><p>Zuerst den <em>Warden</em> besiegen, er lässt das Herz der Tiefen fallen. Dann in der Antiken Stadt am Portalrahmen das Herz benutzen.</p></div></div><div class="way"><header style="background:#8a5f0a">Bumblezone</header><div class="wb"><p>Eine <em>Enderperle</em> auf ein Bienennest oder einen Bienenstock werfen, schon bist du drin.</p><p>Die Bienen werden schnell wütend.</p></div></div><div class="way"><header style="background:#4a3513">Allthemodium-Welten</header><div class="wb"><p>Das <em>Teleport-Pad</em> bringt dich hin: Schleichen und Rechtsklick mit leeren Händen.</p><p>Wo das Pad steht, entscheidet das Ziel. Overworld: Mining-Dimension. Nether: The Other. Ende: The Beyond.</p></div></div></div>
+    </section>
+
+    <section id="g-bosse">
+      <p class="kicker">Bosse</p>
+      <h2>Wo sie sitzen und wie du sie rufst</h2>
+      <div class="pixel-rule"></div>
+      <p class="lead">Im Spiel liegt der Bossführer als Buch in deiner Startkiste. Er listet alle 73 Bosse, hier sind die wichtigsten Gruppen.</p>
+      <div class="bgroups"><details class="bg" open><summary>Vanilla<span>4 Bosse</span></summary><ul><li><b>Wither</b> Aus 4 Seelensand und 3 Witherskelettschädeln bauen, am besten tief unter der Erde. Er lässt einen Netherstern fallen.</li><li><b>Enderdrache</b> Zuerst die Endkristalle auf den Obsidiansäulen zerstören, sonst heilt er sich.</li><li><b>Großer Wächter</b> Je drei leben in einem Ozeanmonument. Wasseratmung hilft, Milch hebt die Abbaulähmung kurz auf.</li><li><b>Warden</b> Lebt in der Antiken Stadt. Schleichen ist meist klüger als Kämpfen.</li></ul></details><details class="bg"><summary>Cataclysm<span>8 Bosse</span></summary><ul><li><b>Auge-Prinzip</b> Die Cataclysm-Augen funktionieren wie Enderaugen: werfen, folgen, Struktur finden.</li><li><b>Netherit-Monstrosität</b> Bewacht die Seelenschmiede im Nether. Du brauchst das Auge der Monstrosität.</li><li><b>Ignis</b> Wartet in der Brennenden Arena im Nether. Das Flammenauge zeigt den Weg. Er lässt Ignitium fallen, das du fürs Abenteuer-Fragment brauchst.</li><li><b>Harbinger</b> Haust in der Alten Fabrik. Folge dem Mechanischen Auge.</li><li><b>Leviathan</b> Liegt tief in der versunkenen Stadt. Das Abgrundauge führt hin, Wasseratmung ist Pflicht.</li><li><b>Uraltes Relikt</b> Schläft in der Verfluchten Pyramide in der Wüste. Folge dem Wüstenauge.</li><li><b>Maledictus</b> Sitzt im Frostgefängnis. Das Auge des Fluchs führt hin, er lässt Cursium fallen.</li><li><b>Scylla</b> Herrscht über die Akropolis. Folge dem Sturmauge.</li><li><b>Endergolem und Enderwächter</b> Leben in der Zerfallenen Zitadelle im Ende.</li></ul></details><details class="bg"><summary>Aether<span>3 Bosse</span></summary><ul><li><b>Slider</b> Im Bronze-Dungeon. Nur mit einer Spitzhacke gut zu treffen.</li><li><b>Walküren-Königin</b> Im Silber-Dungeon. Sie kämpft erst, wenn du genug Siegesmedaillen von ihren Walküren hast.</li><li><b>Sonnengeist</b> Der letzte Boss im Gold-Dungeon. Feuerschutz ist Pflicht.</li></ul></details><details class="bg"><summary>Twilight Forest<span>feste Reihenfolge</span></summary><ul><li><b>Reihenfolge</b> Gebiete bleiben mit Flüchen (Dunkelheit, Hitze, Kälte) gesperrt, bis du den Boss davor besiegt hast. Im Questbuch von links nach rechts folgen, die Naga kommt zuerst.</li></ul></details><details class="bg"><summary>Mowzie&#x27;s Mobs<span>4 Bosse</span></summary><ul><li><b>Ferrous Wroughtnaut</b> Schläft in einer Kammer unter der Erde. Von vorne kaum zu verletzen, greif ihn von hinten an.</li><li><b>Frostmaw</b> Schläft in verschneiten Gebieten. Er lässt seinen Eiskristall fallen.</li><li><b>Umvuthi</b> Lebt in einem Hain in der Savanne, seine Krieger beschützen ihn.</li><li><b>Sculptor</b> Wartet mit einer Kletterprüfung. Er gibt den Earthrend Gauntlet.</li></ul></details><details class="bg"><summary>Ice and Fire<span>6 Bosse</span></summary><ul><li><b>Zyklop</b> Wohnt in Küstenhöhlen, oft mit einer Schafherde.</li><li><b>Gorgone</b> Schau sie nicht direkt an, sonst wirst du zu Stein.</li><li><b>Hydra</b> Lebt in Sümpfen. Abgeschlagene Köpfe wachsen nach.</li><li><b>Feuerdrache</b> In Höhlen oder auf Horsten mit viel Gold. Feuerschutz ist Pflicht.</li><li><b>Eisdrache</b> In verschneiten Gebieten. Sein Atem friert dich ein.</li><li><b>Blitzdrache</b> In warmen, trockenen Gegenden.</li></ul></details><details class="bg"><summary>Goety<span>2 Bosse</span></summary><ul><li><b>Apostel</b> Rufst du mit einem Sabbat-Ritual. Das Goety-Kapitel im Questbuch erklärt es.</li><li><b>Wesir</b> Erscheint, wenn du eine Dunkle Schriftrolle im Waldanwesen benutzt.</li></ul></details><details class="bg"><summary>Weitere Bosse<span>viele mehr</span></summary><ul><li><b>Aquamirae</b> Captain Cornelia rufst du mit dem Muschelhorn. Der Aal und die Labyrinthmutter lauern im Eislabyrinth gefrorener Ozeane.</li><li><b>Bosses&#x27; Rise</b> Eigene Arenen mit Bossen. Helvar wartet hinter einer Tür, die den Arenaschlüssel der Unterwelt braucht.</li><li><b>Mutant Monsters</b> Riesige Versionen von Zombie, Skelett, Creeper und Enderman.</li><li><b>Born in Chaos</b> Vom Leithund bis zum Gefallenen Chaosritter. Schilde und gute Rüstung lohnen sich.</li><li><b>Piglich</b> Untoter Piglin-Magier aus Allthemodium, er lässt sein Herz fallen.</li><li><b>Mimic</b> Manche Truhen in Höhlen und Strukturen beißen zu.</li></ul></details></div>
+    </section>
+  </div>
   </div>
 </main>
 
@@ -473,6 +576,28 @@
     if (!reduce) { last = requestAnimationFrame(draw); }
   }
   var last; draw(performance.now());
+
+
+  /* ---------- Rezept-Raster ---------- */
+  document.querySelectorAll('.rgrid').forEach(function (g) {
+    var rows = g.getAttribute('data-p').split('|'), cols = rows[0].length, map = {};
+    g.parentNode.querySelectorAll('.legend li').forEach(function (li) { map[li.getAttribute('data-k')] = li.getAttribute('data-c'); });
+    g.style.gridTemplateColumns = 'repeat(' + cols + ',52px)';
+    rows.forEach(function (r) { for (var i = 0; i < cols; i++) { var ch = r[i] || ' ', d = document.createElement('div'); d.className = 'rc';
+      if (map[ch]) { var f = document.createElement('i'); f.style.background = map[ch]; f.textContent = ch; d.appendChild(f); } g.appendChild(d); } });
+  });
+
+  /* ---------- Tabs: Übersicht / Guide ---------- */
+  function route() {
+    var id = decodeURIComponent(location.hash.slice(1)), el = id ? document.getElementById(id) : null;
+    var guide = !!el && (el.id === 'guide' || !!el.closest('#guide'));
+    document.getElementById('guide').hidden = !guide; document.getElementById('home').hidden = guide;
+    document.getElementById('tab-guide').setAttribute('aria-current', guide ? 'page' : 'false');
+    document.getElementById('tab-home').setAttribute('aria-current', guide ? 'false' : 'page');
+    if (el && el.id !== 'guide') el.scrollIntoView(); else if (guide) document.getElementById('tab-guide').scrollIntoView();
+    else if (!id || id === 'top') window.scrollTo(0, 0);
+  }
+  window.addEventListener('hashchange', route); route();
 
   /* ---------- Downloads aus dem neuesten Release ---------- */
   var box = document.getElementById('dl');
