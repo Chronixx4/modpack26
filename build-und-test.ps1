@@ -126,6 +126,8 @@ packet-fixer|Packet Fixer
 notimeout|NoTimeOut
 # Komfort und Oberflaeche
 jei|Just Enough Items (JEI)
+fancymenu|FancyMenu
+drippy-loading-screen|Drippy Loading Screen
 almostunified|Almost Unified
 jade|Jade
 xaeros-minimap|Xaero's Minimap

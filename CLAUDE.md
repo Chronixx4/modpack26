@@ -33,7 +33,7 @@ Kommunikation mit dem Nutzer: Deutsch, locker, kurz.
   - `pack/config/` landet in `overrides/config` (.mrpack) bzw. `config/` (beide ZIPs) und im lokalen Testserver. Der Servertest gibt die Zeile `Questbuch: Loaded ... quests` aus.
 - **Webseite:** `site/index.html` (statisch, Netlify-Projekt `chronicle-modpack`, Tabs Uebersicht/Guide/Skilltree/Modliste/Changelog; Item-Icons in `site/img/items/`). `python3 tools/seite_aktualisieren.py` schreibt `site/modliste.json` aus `MODLISTE.txt` und setzt die Mod-Anzahl in `index.html`, nach jedem Build mitlaufen lassen und committen. Von Hand bleiben Changelog, Questzahlen und Guide-Rezepte in `index.html`. `netlify.toml` setzt `site/` als Veroeffentlichungsordner.
 - CurseForge-Jars holt das Skript automatisch aus `%USERPROFILE%\Downloads` (Dateinamen-Muster in `$cfPatterns`).
-- Aktuelle Version: **PACKVER 0.9.19**. Bei jeder Änderung `$PACKVER` hochzählen.
+- Aktuelle Version: **PACKVER 0.9.20**. Bei jeder Änderung `$PACKVER` hochzählen.
 
 ## Mods, die nur auf CurseForge sind (liegen in curseforge-mods\ bzw. Downloads)
 Alle für 1.21.1 NeoForge. Download-URL-Schema: `https://www.curseforge.com/minecraft/mc-mods/<slug>/download/<fileId>`
@@ -123,7 +123,9 @@ CurseForge blockt Downloads per Skript, auch über die interne `/api/v1`. Diese 
 
 - 0.9.19 (Release auf Ansage): **Iris 1.8.14-beta.1** (`iris`, nur Client, 315 Mods) fuer Shader. Index von Hand ergaenzt (Cloud hat keinen Modrinth-Zugriff). Bekannte Iris-Issues: Startabsturz Sodium 0.8.13 (#3402, offen), Absturz nach Serverbeitritt (#3187), Aufloesung im Spiel aendern macht Bloecke unsichtbar (#3214), leeres Shader-Menue -> Hintergrund-Blur aus. **Im Client pruefen:** Start, Welt, Serverbeitritt, Shader an/aus. Wenn es crasht: Iris wieder raus (Zeile in `$ModList`, Index, MODLISTE).
 
-- 0.9.21 (Release auf Ansage): **NoTimeOut** (`notimeout`, 1.0.0, 316 Mods) verlaengert Login-, Keep-Alive- und Read-Timeout des Servers. Grund: Nach einem Server-Neustart kam beim erneuten Joinen ein Timeout ("zu lange zum Joinen"), der erste Join klappte. Index von Hand ergaenzt. Ob es hilft, ist ungetestet; sonst Server-/Client-`latest.log` anschauen. Die Zeit stellt man in der generierten Common-Config (`config/notimeout-common.toml`) ein.
+- 0.9.20 (in Arbeit): **Eigener Ladebildschirm**. Mods (nur Client, 319 Mods): FancyMenu 3.9.14, Drippy Loading Screen 3.1.5, dazu Konkrete und Melody. Entwurf (Funken, Logo CHRONICLE, gruener Pixel-Balken, Tipps, ohne Untertitel und Versionsnummer) wurde von Marvin abgenommen; er will auch die Beitritts-Bildschirme (Verbinde/Lade Gelaende) im gleichen Stil. **Noch offen:** die Layouts selbst (`config/fancymenu`, `config/drippyloadingscreen`) entstehen im FancyMenu-Editor im Spiel und wurden noch nicht erstellt; Dateien dann nach `pack/config/` legen. **Texturen (fest im Pack):** `python3 tools/ladebild_texturen.py` erzeugt `pack/kubejs/assets/minecraft/textures/gui/title/mojangstudios.png` (CHRONICLE-Logo statt Mojang) und `menu_background.png` (dunkle Kachel fuer Beitritts-/Menuebildschirme). Ob KubeJS-Assets schon beim ersten Startbildschirm greifen und ob das Logo-Layout (zwei Haelften uebereinander) stimmt, ist ungeprueft; sonst als normales Ressourcenpaket in `resourcepacks/`. Nicht im Client getestet.
+
+- 0.9.21 (Release auf Ansage): **NoTimeOut** (`notimeout`, 1.0.0) verlaengert Login-, Keep-Alive- und Read-Timeout des Servers. Grund: Nach einem Server-Neustart flog man kurz nach dem Joinen mit "Timed out" raus (Server-Log: 40 s nach dem Login, Server dabei 9 s im Rueckstand). Index von Hand ergaenzt. Ungetestet; wenn es nicht hilft, Client-`latest.log` anschauen, ggf. `view-distance` 8.
 
 ## Offene Aufgaben
 1. **0.9.15 im Client testen:** kurz in eine neue Welt, auf Grafikfehler achten. Pruefen: Rezepte der drei Fragmente und des Chronicle-Kerns in JEI, Almost Unified (Mekanism-Stahl wird zu IE-Stahl), keine doppelten Erze, dazu die Punkte unter "Im Spiel pruefen" bei 0.9.13.
