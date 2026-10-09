@@ -9,6 +9,22 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+  /* Einfache Sperre: verhindert nur Zufallsbesuche, kein echter Schutz. */
+  (function () { var ok = false; try { ok = localStorage.getItem('chronicle-ok') === '06deac5b8d4a128e257bee1443a9ce063604e9ae63620479e7161fb01a668ac1'; } catch (e) {}
+    if (!ok && window.crypto && crypto.subtle) document.documentElement.classList.add('locked'); })();
+</script>
+<style>
+  html.locked body > :not(#gate) { display:none !important; }
+  #gate { display:none; min-height:100vh; align-items:center; justify-content:center; padding:24px 16px; }
+  html.locked #gate { display:flex; }
+  #gate form { width:100%; max-width:420px; text-align:center; }
+  #gate h1 { font:clamp(22px,7vw,34px)/1.2 var(--px); color:var(--gold); margin:0 0 8px; text-shadow:4px 4px 0 #000; }
+  #gate p { margin:0 0 22px; color:var(--mute); }
+  #gate input { width:100%; font:500 20px var(--body); text-align:center; color:#fff; background:#14151a; border:0; padding:14px;
+                box-shadow:0 0 0 3px #000, inset 3px 3px 0 #000, inset -3px -3px 0 #4a4d56; margin-bottom:16px; }
+  #gate .err { min-height:1.4em; margin:12px 0 0; color:#ff7b6b; font-size:17px; }
+</style>
 <style>
   /* Konzept: Minecraft-Titelbildschirm. Pixel-Dämmerung mit Portal und Schwebeinsel,
      darunter Tiefenschiefer-Boden mit Inventar-Slots, Fortschritts-Toasts und Crafting-Raster. */
@@ -268,6 +284,17 @@
 </style>
 </head>
 <body>
+
+<div id="gate">
+  <form id="gateform" autocomplete="off">
+    <h1>Chronicle</h1>
+    <p>Diese Seite ist nur für Freunde. Gib das Passwort ein.</p>
+    <label for="gpw" class="vh">Passwort</label>
+    <input id="gpw" type="password" placeholder="Passwort" autocomplete="off">
+    <button class="mc green" type="submit">Eintreten</button>
+    <p class="err" id="gerr" role="alert"></p>
+  </form>
+</div>
 
 <nav class="hotbar" aria-label="Hauptnavigation">
   <div class="wrap">
@@ -749,6 +776,19 @@
     document.getElementById('q').addEventListener('input', function (ev) { mq = ev.target.value; renderMods(); });
     renderMods();
   }).catch(function () { mout.innerHTML = '<p class="lead">Die Liste konnte nicht geladen werden. <a href="https://github.com/Chronixx4/modpack26/blob/main/MODLISTE.txt">Hier gibt es sie als Textdatei.</a></p>'; });
+
+
+  /* ---------- Sperre ---------- */
+  (function () {
+    var f = document.getElementById('gateform'); if (!f) return;
+    function sha(t) { return crypto.subtle.digest('SHA-256', new TextEncoder().encode(t)).then(function (b) {
+      return Array.prototype.map.call(new Uint8Array(b), function (x) { return ('0' + x.toString(16)).slice(-2); }).join(''); }); }
+    f.addEventListener('submit', function (ev) { ev.preventDefault();
+      sha(document.getElementById('gpw').value.trim().toLowerCase()).then(function (h) {
+        if (h === '06deac5b8d4a128e257bee1443a9ce063604e9ae63620479e7161fb01a668ac1') { try { localStorage.setItem('chronicle-ok', h); } catch (e) {} document.documentElement.classList.remove('locked'); }
+        else document.getElementById('gerr').textContent = 'Falsches Passwort.'; }); });
+    if (document.documentElement.classList.contains('locked')) setTimeout(function () { document.getElementById('gpw').focus(); }, 50);
+  })();
 
   /* ---------- Downloads aus dem neuesten Release ---------- */
   var box = document.getElementById('dl');
