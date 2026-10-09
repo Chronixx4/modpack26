@@ -6,30 +6,48 @@ OUT = os.path.join(os.path.dirname(__file__), '..', 'src', 'main', 'resources', 
 
 
 def png(path, px):
+    h = len(px)
     raw = b''.join(b'\x00' + bytes(c for p in row for c in p) for row in px)
     def chunk(t, d):
         c = struct.pack('>I', len(d)) + t + d
         return c + struct.pack('>I', zlib.crc32(t + d) & 0xffffffff)
-    data = b'\x89PNG\r\n\x1a\n' + chunk(b'IHDR', struct.pack('>IIBBBBB', 16, 16, 8, 6, 0, 0, 0)) \
+    data = b'\x89PNG\r\n\x1a\n' + chunk(b'IHDR', struct.pack('>IIBBBBB', 16, h, 8, 6, 0, 0, 0)) \
         + chunk(b'IDAT', zlib.compress(raw)) + chunk(b'IEND', b'')
     open(path, 'wb').write(data)
 
 
-def portal():
+FRAMES = 8
+
+
+def portal_frame(t):
+    """Runenstein-Rahmen mit wirbelnder Mitte; t = Bild 0..FRAMES-1."""
     px = []
+    phase = t * math.pi * 2 / FRAMES
     for y in range(16):
         row = []
         for x in range(16):
             dx, dy = x - 7.5, y - 7.5
             d = math.hypot(dx, dy)
             a = math.atan2(dy, dx)
-            v = 0.5 + 0.5 * math.sin(a * 3 + d * 1.1)
-            edge = max(abs(dx), abs(dy)) > 6.5
-            if edge:
-                row.append((30, 20, 50, 255))
+            edge = max(abs(dx), abs(dy))
+            if edge > 6.5:
+                v = 22 + ((x * 3 + y * 5) % 3) * 4
+                row.append((v, v - 4, v + 18, 255))
+            elif edge > 5.5:
+                rune = (x + y) % 4 == 0
+                row.append((130, 70, 210, 255) if rune else (48, 30, 80, 255))
             else:
-                row.append((int(70 + 120 * v), int(20 + 40 * v), int(140 + 110 * v), 255))
+                v = 0.5 + 0.5 * math.sin(a * 2 - d * 1.3 + phase)
+                w = 0.5 + 0.5 * math.sin(d * 0.9 - phase * 2)
+                row.append((int(60 + 130 * v), int(15 + 60 * w), int(150 + 100 * v), 255))
         px.append(row)
+    return px
+
+
+def portal():
+    px = []
+    for t in range(FRAMES):
+        px += portal_frame(t)
     return px
 
 
@@ -57,5 +75,6 @@ def terminal(top):
 
 os.makedirs(OUT, exist_ok=True)
 png(os.path.join(OUT, 'arena_portal.png'), portal())
+open(os.path.join(OUT, 'arena_portal.png.mcmeta'), 'w').write('{"animation":{"frametime":3,"interpolate":true}}\n')
 png(os.path.join(OUT, 'arena_terminal_top.png'), terminal(True))
 png(os.path.join(OUT, 'arena_terminal_side.png'), terminal(False))

@@ -84,13 +84,29 @@ public class TerminalScreen extends Screen {
         onClose();
     }
 
+    private static final int[] TIER_COLORS = {0xCD7F32, 0xC0C0C0, 0xFFD700, 0xB366FF};
+
+    @Override
+    public void renderBackground(GuiGraphics gfx, int mouseX, int mouseY, float partialTick) {
+        super.renderBackground(gfx, mouseX, mouseY, partialTick);
+        int cx = this.width / 2;
+        int top = this.height / 2 - 70;
+        int x0 = cx - 118;
+        int x1 = cx + 118;
+        int y0 = top - 44;
+        int y1 = top + 172;
+        gfx.fill(x0 - 2, y0 - 2, x1 + 2, y1 + 2, 0xFF7A3FD0);
+        gfx.fill(x0, y0, x1, y1, 0xEE12101C);
+        gfx.fill(x0, y0 + 26, x1, y0 + 27, 0xFF7A3FD0);
+    }
+
     @Override
     public void render(GuiGraphics gfx, int mouseX, int mouseY, float partialTick) {
         super.render(gfx, mouseX, mouseY, partialTick);
         int cx = this.width / 2;
         int top = this.height / 2 - 70;
-        gfx.drawCenteredString(this.font, this.title, cx, top - 32, 0xFFFFFF);
-        gfx.drawCenteredString(this.font, Component.literal(data.status()), cx, top - 18, data.running() ? 0xFFAA00 : 0x55FF55);
+        gfx.drawCenteredString(this.font, this.title, cx, top - 38, 0xE0B8FF);
+        gfx.drawCenteredString(this.font, Component.literal(data.status()), cx, top - 12, data.running() ? 0xFFAA00 : 0x55FF55);
 
         List<Net.EncInfo> list = current();
         int y = top + 74;
@@ -114,7 +130,7 @@ public class TerminalScreen extends Screen {
             int n = 0;
             for (FormattedCharSequence line : this.font.split(FormattedText.of(t.desc()), 200)) {
                 if (n++ >= 2) break;
-                gfx.drawString(this.font, line, cx - 100, ly, 0xFFD27F);
+                gfx.drawString(this.font, line, cx - 100, ly, TIER_COLORS[Math.min(tierIndex, TIER_COLORS.length - 1)]);
                 ly += 10;
             }
         }

@@ -1,0 +1,10 @@
+{
+  "type": "boss",
+  "order": 19,
+  "name": "Sonnengeist",
+  "description": "Aether-Boss.",
+  "icon": "minecraft:blaze_powder",
+  "boss": {
+    "entity": "aether:sun_spirit"
+  }
+}

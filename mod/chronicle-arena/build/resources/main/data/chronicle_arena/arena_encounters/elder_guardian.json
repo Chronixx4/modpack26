@@ -1,0 +1,16 @@
+{
+  "type": "boss",
+  "order": 2,
+  "name": "Uralter Waechter",
+  "description": "Mit Erschoepfung. Bring Milch mit.",
+  "icon": "minecraft:prismarine_shard",
+  "boss": {
+    "entity": "minecraft:elder_guardian"
+  },
+  "adds": [
+    {
+      "entity": "minecraft:guardian",
+      "count": 3
+    }
+  ]
+}

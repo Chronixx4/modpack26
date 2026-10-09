@@ -1,0 +1,46 @@
+{
+  "type": "waves",
+  "order": 2,
+  "name": "Illager-Ansturm",
+  "description": "Pluenderer, Vindikatoren, Magier und Verwuester.",
+  "icon": "minecraft:ominous_bottle",
+  "pools": [
+    {
+      "entity": "minecraft:pillager",
+      "from_wave": 1,
+      "base": 3,
+      "per_wave": 0.5
+    },
+    {
+      "entity": "minecraft:vindicator",
+      "from_wave": 1,
+      "base": 3,
+      "per_wave": 0.5
+    },
+    {
+      "entity": "minecraft:witch",
+      "from_wave": 3,
+      "base": 1,
+      "per_wave": 0.3
+    },
+    {
+      "entity": "minecraft:evoker",
+      "from_wave": 4,
+      "base": 1,
+      "per_wave": 0.25
+    },
+    {
+      "entity": "minecraft:vex",
+      "from_wave": 6,
+      "base": 3,
+      "per_wave": 0.5
+    }
+  ],
+  "elite": {
+    "entity": "minecraft:ravager",
+    "every": 5
+  },
+  "finale": {
+    "entity": "minecraft:ravager"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "order": 3,
+  "name": "Chronicle",
+  "description": "Nur fuer Profis: vierfache Lebenspunkte, doppelter Schaden. 20 Wellen.",
+  "health": 4.0,
+  "damage": 2.5,
+  "count": 2.0,
+  "waves": 20,
+  "loot": "chronicle_arena:rewards/chronicle",
+  "xp": 3500,
+  "boss_rolls": 3
+}

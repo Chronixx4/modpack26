@@ -1,0 +1,46 @@
+{
+  "type": "waves",
+  "order": 3,
+  "name": "Chaos aus Mods",
+  "description": "Mutanten aus dem Pack.",
+  "icon": "minecraft:ender_eye",
+  "pools": [
+    {
+      "entity": "minecraft:zombie",
+      "from_wave": 1,
+      "base": 3,
+      "per_wave": 0.4
+    },
+    {
+      "entity": "mutantmonsters:mutant_zombie",
+      "from_wave": 4,
+      "base": 1,
+      "per_wave": 0.15
+    },
+    {
+      "entity": "mutantmonsters:mutant_skeleton",
+      "from_wave": 6,
+      "base": 1,
+      "per_wave": 0.15
+    },
+    {
+      "entity": "mutantmonsters:mutant_creeper",
+      "from_wave": 8,
+      "base": 1,
+      "per_wave": 0.1
+    },
+    {
+      "entity": "minecraft:enderman",
+      "from_wave": 3,
+      "base": 2,
+      "per_wave": 0.4
+    }
+  ],
+  "elite": {
+    "entity": "mutantmonsters:mutant_enderman",
+    "every": 6
+  },
+  "finale": {
+    "entity": "mutantmonsters:mutant_enderman"
+  }
+}

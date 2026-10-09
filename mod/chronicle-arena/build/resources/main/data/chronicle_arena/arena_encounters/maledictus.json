@@ -1,0 +1,16 @@
+{
+  "type": "boss",
+  "order": 7,
+  "name": "Maledictus",
+  "description": "Der verfluchte Geist.",
+  "icon": "minecraft:soul_lantern",
+  "boss": {
+    "entity": "cataclysm:maledictus"
+  },
+  "adds": [
+    {
+      "entity": "minecraft:wither_skeleton",
+      "count": 3
+    }
+  ]
+}

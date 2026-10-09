@@ -1,0 +1,10 @@
+{
+  "type": "boss",
+  "order": 13,
+  "name": "Umvuthi",
+  "description": "Der Sonnenkoenig der Barakoa.",
+  "icon": "minecraft:gold_block",
+  "boss": {
+    "entity": "mowziesmobs:umvuthi"
+  }
+}

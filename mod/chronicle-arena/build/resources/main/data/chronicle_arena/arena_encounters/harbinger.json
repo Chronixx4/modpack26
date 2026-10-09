@@ -1,0 +1,10 @@
+{
+  "type": "boss",
+  "order": 8,
+  "name": "Der Vorbote",
+  "description": "Maschinengolem.",
+  "icon": "minecraft:iron_block",
+  "boss": {
+    "entity": "cataclysm:the_harbinger"
+  }
+}

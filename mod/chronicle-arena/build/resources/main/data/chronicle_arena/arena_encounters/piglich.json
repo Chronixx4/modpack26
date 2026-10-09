@@ -1,0 +1,16 @@
+{
+  "type": "boss",
+  "order": 23,
+  "name": "Piglich",
+  "description": "AllTheModium-Boss.",
+  "icon": "minecraft:gold_ingot",
+  "boss": {
+    "entity": "allthemodium:piglich"
+  },
+  "adds": [
+    {
+      "entity": "minecraft:piglin_brute",
+      "count": 3
+    }
+  ]
+}

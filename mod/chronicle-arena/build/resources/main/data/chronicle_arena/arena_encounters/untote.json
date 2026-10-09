@@ -1,0 +1,46 @@
+{
+  "type": "waves",
+  "order": 0,
+  "name": "Untote Horde",
+  "description": "Zombies, Skelette und Spinnen. Alle fuenf Wellen kommt ein Verwuester.",
+  "icon": "minecraft:zombie_head",
+  "pools": [
+    {
+      "entity": "minecraft:zombie",
+      "from_wave": 1,
+      "base": 4,
+      "per_wave": 0.6
+    },
+    {
+      "entity": "minecraft:skeleton",
+      "from_wave": 2,
+      "base": 2,
+      "per_wave": 0.5
+    },
+    {
+      "entity": "minecraft:spider",
+      "from_wave": 3,
+      "base": 2,
+      "per_wave": 0.4
+    },
+    {
+      "entity": "minecraft:husk",
+      "from_wave": 6,
+      "base": 2,
+      "per_wave": 0.4
+    },
+    {
+      "entity": "minecraft:creeper",
+      "from_wave": 4,
+      "base": 1,
+      "per_wave": 0.3
+    }
+  ],
+  "elite": {
+    "entity": "minecraft:ravager",
+    "every": 5
+  },
+  "finale": {
+    "entity": "minecraft:wither_skeleton"
+  }
+}
