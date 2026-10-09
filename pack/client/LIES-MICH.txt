@@ -17,4 +17,6 @@ PERFORMANCE
   die Qualitaet auf "Low" oder die LOD-Distanz runter und die CPU-Last auf "Low Impact" stellen.
 - Dynamic FPS drosselt das Spiel automatisch, wenn das Fenster im Hintergrund ist.
 
-Shader (Iris) sind absichtlich nicht dabei, die aktuelle Version vertraegt sich nicht mit Sodium.
+Shader: Iris (Beta fuer Sodium 0.8) ist dabei. Shader-Pakete selbst nicht, die laedst du dir z. B. ueber die Modrinth App
+(Shader-Pack in den Ordner shaderpacks). Aendere die Aufloesung/Render-Skalierung nicht im Spiel, sonst werden Bloecke
+unsichtbar (Shader neu laden hilft). Ist das Shader-Menue leer: Optionen -> Barrierefreiheit -> Hintergrund-Blur aus.

@@ -1,7 +1,7 @@
-﻿Chronicle 0.9.18 - Modliste
-Minecraft 1.21.1, NeoForge 21.1.256   |   314 Mods inkl. Bibliotheken   |   Stand 2026-10-07
+﻿Chronicle 0.9.19 - Modliste
+Minecraft 1.21.1, NeoForge 21.1.256   |   315 Mods inkl. Bibliotheken   |   Stand 2026-10-09
 
-== Performance und Grafik (18) ==
+== Performance und Grafik (19) ==
   All The Leaks                                  1.1.13+1.21.1-neoforge  (CurseForge)
   BadOptimizations                               2.4.1  (nur Client)
   Chunky                                         1.4.23  (nur Server)
@@ -14,6 +14,7 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   314 Mods inkl. Bibliotheken   |   Stan
   FastWorkbench                                  1.21.1-9.1.3
   FerriteCore                                    7.0.3-neoforge
   ImmediatelyFast                                1.6.14+1.21.1-neoforge  (nur Client)
+  Iris Shaders                                   1.8.14-beta.1+1.21.1-neoforge  (nur Client)
   Lithium                                        mc1.21.1-0.15.4-neoforge
   ModernFix                                      5.27.24+mc1.21.1
   More Culling                                   1.0.10  (nur Client)
