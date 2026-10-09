@@ -707,6 +707,15 @@ public final class ArenaManager {
         }
     }
 
+    /** Nur fuer den Entwicklungs-Selbsttest: gradle runServer -Dchronicle_arena.selftest=true. */
+    @SubscribeEvent
+    public void onServerStarted(net.neoforged.neoforge.event.server.ServerStartedEvent event) {
+        if (Boolean.getBoolean("chronicle_arena.selftest")) {
+            debug(event.getServer());
+            event.getServer().halt(false);
+        }
+    }
+
     @SubscribeEvent
     public void onCommands(RegisterCommandsEvent event) {
         CommandDispatcher<CommandSourceStack> d = event.getDispatcher();
@@ -720,6 +729,10 @@ public final class ArenaManager {
                     leave(p);
                     return 1;
                 }))
+                .then(Commands.literal("debug").requires(src -> src.hasPermission(2)).executes(ctx -> {
+                    debug(ctx.getSource().getServer());
+                    return 1;
+                }))
                 .then(Commands.literal("stop").requires(s -> s.hasPermission(2)).executes(ctx -> {
                     if (run == null) {
                         ctx.getSource().sendFailure(Component.translatable("msg.chronicle_arena.nothing_running"));
@@ -728,6 +741,52 @@ public final class ArenaManager {
                     finish(ctx.getSource().getServer(), false);
                     return 1;
                 })));
+    }
+
+    /** Selbsttest: baut die Arena und spawnt jeden Mob jeder Begegnung einmal (dann wieder weg). */
+    private static void debug(MinecraftServer server) {
+        ServerLevel level = server.getLevel(DIM);
+        if (level == null) {
+            LOGGER.error("ARENA-DEBUG: Dimension {} nicht gefunden", DIM.location());
+            return;
+        }
+        ArenaBuilder.ensureBuilt(level);
+        LOGGER.info("ARENA-DEBUG: Arena gebaut, Marker={}, Terminal={}, Portal={}",
+                level.getBlockState(new BlockPos(0, 60, 200)).getBlock(),
+                level.getBlockState(LOBBY).getBlock(),
+                level.getBlockState(new BlockPos(0, 64, 8)).getBlock());
+        List<ArenaDefs.Tier> tiers = ArenaDefs.tiers();
+        LOGGER.info("ARENA-DEBUG: {} Stufen, {} Begegnungen verfuegbar", tiers.size(), ArenaDefs.encounters().size());
+        Run dummy = new Run(ArenaDefs.encounters().get(0), tiers.get(tiers.size() - 1), 3);
+        int ok = 0;
+        int fail = 0;
+        for (ArenaDefs.Encounter e : ArenaDefs.encounters()) {
+            List<ResourceLocation> ids = new ArrayList<>();
+            if (e.boss()) {
+                ids.add(e.bossEntity());
+                for (ArenaDefs.Spawn a : e.adds()) ids.add(a.entity());
+            } else {
+                for (ArenaDefs.Pool p : e.pools()) ids.add(p.entity());
+                if (e.elite() != null) ids.add(e.elite());
+                if (e.finale() != null) ids.add(e.finale());
+            }
+            for (ResourceLocation id : ids) {
+                try {
+                    LivingEntity le = new ArenaManager().spawnMob(level, dummy, new Spawn(id, true, false));
+                    if (le == null) {
+                        fail++;
+                        LOGGER.error("ARENA-DEBUG: {} ({}) ergab null", id, e.id());
+                    } else {
+                        ok++;
+                        le.discard();
+                    }
+                } catch (Throwable t) {
+                    fail++;
+                    LOGGER.error("ARENA-DEBUG: {} ({}) Fehler", id, e.id(), t);
+                }
+            }
+        }
+        LOGGER.info("ARENA-DEBUG: Spawn-Test fertig, ok={} fehler={}", ok, fail);
     }
 
     // ------------------------------------------------------------------ Hilfen
