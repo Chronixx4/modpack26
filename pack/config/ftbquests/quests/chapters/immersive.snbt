@@ -121,7 +121,7 @@
 				}
 			]
 			x: 2.0d
-			y: -6.0d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -154,7 +154,7 @@
 				}
 			]
 			x: 4.0d
-			y: -6.0d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -217,7 +217,7 @@
 				}
 			]
 			x: 4.0d
-			y: -1.5d
+			y: 3.0d
 		}
 		{
 			dependencies: [
@@ -859,7 +859,7 @@
 				}
 			]
 			x: 8.0d
-			y: 3.0d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -885,7 +885,7 @@
 				}
 			]
 			x: 10.0d
-			y: 3.0d
+			y: 1.5d
 		}
 		{
 			dependencies: [

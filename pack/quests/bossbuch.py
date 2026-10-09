@@ -31,6 +31,7 @@ MODS = [
     ('iceandfire', 'Eis und Feuer', 'iceandfire:fire_dragon_heart', 'Drachen, Zyklopen und Gorgonen.'),
     ('goety', 'Goety', 'goety:dark_wand', 'Dunkle Magie und ihre Meister.'),
     ('aether', 'Aether', 'aether:gold_dungeon_key', 'Die Bosse der Aether-Dungeons.'),
+    ('deep_aether', 'Deep Aether', 'deep_aether:skyjade', 'Der Boss aus den Sturmwolken des Aether-Addons.'),
     ('aquamirae', 'Aquamirae', 'aquamirae:abyssal_amethyst', 'Gefahren aus der Tiefe des Meeres.'),
     ('block_factorys_bosses', "Block Factory's Bosses", 'minecraft:totem_of_undying', 'Sechs eigene Bosse in verschiedenen Biomen.'),
     ('irons_spellbooks', "Iron's Spells 'n Spellbooks", 'irons_spellbooks:arcane_essence', 'Magier und die Gegner der Strukturen.'),

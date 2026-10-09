@@ -124,7 +124,7 @@
 				}
 			]
 			x: 2.0d
-			y: -1.5d
+			y: -10.5d
 		}
 		{
 			dependencies: [
@@ -157,7 +157,7 @@
 				}
 			]
 			x: 2.0d
-			y: 1.5d
+			y: -3.0d
 		}
 		{
 			dependencies: [
@@ -190,7 +190,7 @@
 				}
 			]
 			x: 2.0d
-			y: -3.0d
+			y: -6.0d
 		}
 		{
 			dependencies: [
@@ -217,7 +217,7 @@
 				}
 			]
 			x: 4.0d
-			y: -3.0d
+			y: -6.0d
 		}
 		{
 			dependencies: [
@@ -364,7 +364,7 @@
 				}
 			]
 			x: 12.0d
-			y: -1.5d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -398,7 +398,7 @@
 				}
 			]
 			x: 12.0d
-			y: -3.0d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -423,7 +423,7 @@
 				}
 			]
 			x: 4.0d
-			y: -1.5d
+			y: -13.5d
 		}
 		{
 			dependencies: [
@@ -449,7 +449,7 @@
 				}
 			]
 			x: 8.0d
-			y: 1.5d
+			y: 3.0d
 		}
 		{
 			dependencies: [
@@ -474,7 +474,7 @@
 				}
 			]
 			x: 10.0d
-			y: 1.5d
+			y: 3.0d
 		}
 		{
 			dependencies: [
@@ -557,7 +557,7 @@
 				}
 			]
 			x: 4.0d
-			y: 1.5d
+			y: -3.0d
 		}
 		{
 			dependencies: [
@@ -584,7 +584,7 @@
 				}
 			]
 			x: 12.0d
-			y: 1.5d
+			y: 3.0d
 		}
 		{
 			dependencies: [
@@ -638,7 +638,7 @@
 				}
 			]
 			x: 2.0d
-			y: 7.5d
+			y: 3.0d
 		}
 		{
 			dependencies: [
@@ -687,7 +687,7 @@
 				}
 			]
 			x: 2.0d
-			y: 13.5d
+			y: 6.0d
 		}
 		{
 			dependencies: [
@@ -713,7 +713,7 @@
 				}
 			]
 			x: 2.0d
-			y: 6.0d
+			y: 9.0d
 		}
 		{
 			dependencies: [
@@ -738,7 +738,7 @@
 				}
 			]
 			x: 4.0d
-			y: 6.0d
+			y: 9.0d
 		}
 		{
 			dependencies: [
@@ -771,7 +771,7 @@
 				}
 			]
 			x: 4.0d
-			y: 10.5d
+			y: 4.5d
 		}
 		{
 			dependencies: [
@@ -798,7 +798,7 @@
 				}
 			]
 			x: 6.0d
-			y: 7.5d
+			y: 9.0d
 		}
 		{
 			dependencies: [
@@ -823,7 +823,7 @@
 				}
 			]
 			x: 4.0d
-			y: 7.5d
+			y: 3.0d
 		}
 		{
 			dependencies: [
@@ -856,7 +856,7 @@
 				}
 			]
 			x: 4.0d
-			y: 4.5d
+			y: 12.0d
 		}
 		{
 			dependencies: [
@@ -889,7 +889,7 @@
 				}
 			]
 			x: 6.0d
-			y: 6.0d
+			y: 10.5d
 		}
 		{
 			dependencies: [
@@ -916,7 +916,7 @@
 				}
 			]
 			x: 6.0d
-			y: 9.0d
+			y: 7.5d
 		}
 		{
 			dependencies: [
@@ -943,7 +943,7 @@
 				}
 			]
 			x: 8.0d
-			y: 9.0d
+			y: 10.5d
 		}
 		{
 			dependencies: [
@@ -968,7 +968,7 @@
 				}
 			]
 			x: 10.0d
-			y: 9.0d
+			y: 10.5d
 		}
 		{
 			dependencies: [
@@ -993,7 +993,7 @@
 				}
 			]
 			x: 10.0d
-			y: 10.5d
+			y: 9.0d
 		}
 		{
 			dependencies: [
@@ -1036,7 +1036,7 @@
 				}
 			]
 			x: 8.0d
-			y: 6.0d
+			y: 13.5d
 		}
 	]
 }

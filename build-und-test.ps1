@@ -9,7 +9,7 @@ $ProgressPreference = 'SilentlyContinue'
 $MC      = '1.21.1'
 $LOADER  = 'neoforge'
 $PACK    = 'Chronicle'
-$PACKVER = '0.9.17'
+$PACKVER = '0.9.18'
 $RAM     = '8G'
 $TIMEOUT_MIN = 20
 
@@ -181,6 +181,7 @@ hexerei|Hexerei
 irons-jewelry|Iron's Gems 'n Jewelry
 evilcraft|EvilCraft
 goety|Goety - The Dark Arts
+alshanexs-familiars|Alshanex's Familiars
 # Create und Addons
 create|Create
 createaddition|Create Crafts & Additions
@@ -225,6 +226,7 @@ create-mechanical-extruder|Create Mechanical Extruder
 create-ultimate-factory|Create: Ultimate Factory
 create-factory|Create: Factory
 create-train-perspective|Create: Train Perspective
+create-wizardry|Create: Wizardry
 # AE2 und Technik
 ae2|Applied Energistics 2
 applied-energistics-2-wireless-terminals|AE2 Wireless Terminals
@@ -275,6 +277,7 @@ kSsLSjEt|Alex's Caves (Unofficial Port)
 ad-astra|Ad Astra
 endrem|End Remastered
 enderscape|Enderscape
+deep-aether|Deep Aether
 # Weltgenerierung und Biome
 terralith|Terralith
 tectonic|Tectonic
@@ -363,6 +366,7 @@ foreach ($l in ($ModListRaw -split "`r?`n")) {
   if ($l -match '^#\s*(.+)$') { $curCat = $Matches[1].Trim() }
   elseif ($l -match '\|') { $catOf[$l.Split('|')[1].Trim()] = $curCat }
 }
+familiarslib|Familiarslib
 # Kategorien der CurseForge-Jars (Dateiname -> Kategorie)
 $cfCat = [ordered]@{
   'twilightforest' = 'Dimensionen'; 'ExtendedAE' = 'AE2 und Technik'; 'AE2NetworkAnalyzer' = 'AE2 und Technik'

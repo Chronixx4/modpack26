@@ -166,7 +166,7 @@
 				}
 			]
 			x: 6.0d
-			y: -1.5d
+			y: -3.0d
 		}
 		{
 			dependencies: [
@@ -473,7 +473,7 @@
 				}
 			]
 			x: 12.0d
-			y: -1.5d
+			y: 3.0d
 		}
 		{
 			dependencies: [
@@ -508,7 +508,7 @@
 				}
 			]
 			x: 16.0d
-			y: -1.5d
+			y: -3.0d
 		}
 		{
 			dependencies: [
@@ -697,7 +697,7 @@
 				}
 			]
 			x: 20.0d
-			y: -1.5d
+			y: -3.0d
 		}
 		{
 			dependencies: [
@@ -746,7 +746,7 @@
 				}
 			]
 			x: 20.0d
-			y: 1.5d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -771,7 +771,7 @@
 				}
 			]
 			x: 20.0d
-			y: -3.0d
+			y: 1.5d
 		}
 		{
 			dependencies: [

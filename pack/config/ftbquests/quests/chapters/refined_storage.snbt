@@ -40,7 +40,7 @@
 			shape: "rsquare"
 			size: 1.0d
 			x: 4.0d
-			y: 1.5d
+			y: 3.0d
 		}
 		{
 			id: "3872081DA6D700D3"
@@ -181,7 +181,7 @@
 				}
 			]
 			x: 6.0d
-			y: 1.5d
+			y: 3.0d
 		}
 		{
 			dependencies: [
@@ -453,7 +453,7 @@
 				}
 			]
 			x: 12.0d
-			y: -3.0d
+			y: 3.0d
 		}
 		{
 			dependencies: [
@@ -512,7 +512,7 @@
 				}
 			]
 			x: 18.0d
-			y: 1.5d
+			y: -1.5d
 		}
 		{
 			dependencies: [

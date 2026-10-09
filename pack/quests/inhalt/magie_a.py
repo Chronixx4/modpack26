@@ -341,6 +341,8 @@ kapitel('ars_addons', '&dArs Addons', AE + 'fire_focus', 'Elemental, Technica, A
 IS = 'irons_spellbooks:'
 CS = 'cataclysm_spellbooks:'
 IJ = 'irons_jewelry:'
+CW = 'create_wizardry:'
+FA = 'alshanex_familiars:'
 IS_POS = {
     # oben: Material, Runen, Roben
     'leder': (3, -1), 'slot': (4, -1), 'r_netherit': (5, -1), 'ringe': (8, -1), 'amulett': (9, -1),
@@ -529,6 +531,34 @@ kapitel('irons_spells', "&5Iron's Spells", IS + 'iron_spell_book', 'Zauberbüche
     Q('j_schmuck', 'Eigener Schmuck', [IJ + 'ring', IJ + 'necklace'],
       'Fertige einen Ring und eine Kette mit Edelstein.',
       nach=['j_steine'], belohnung=3),
+
+    # --- Create: Wizardry (Create trifft Iron's Spells) ---
+    Q('cw_start', 'Create trifft Magie', [CW + 'arcane_sheet', CW + 'arcane_casing'],
+      '&eCreate: Wizardry&r verbindet beide Welten. Presse einen Arkanen Barren zum Arkanen Blech. Das Arkane Gehäuse entsteht aus Lapisblock und Arkanem Barren.',
+      nach=['arkan', 'create_1/messing'], belohnung=3),
+    Q('cw_rohr', 'Arkane Rohre', [CW + 'arcane_pipe', CW + 'arcane_pump'],
+      'Mit Rohren und Pumpen transportierst du Mana wie eine Flüssigkeit. Halte die Leitungen kurz, über sehr lange Strecken kann es richtig schiefgehen.',
+      nach=['cw_start'], belohnung=2),
+    Q('cw_siphon', 'Mana-Siphon', CW + 'mana_siphon',
+      'Der Siphon zapft deine eigene Aura ab und liefert Mana als Flüssigkeit. Aus Mana-Kristallen bekommst du fast geschenkt Arkane Essenz.',
+      nach=['cw_rohr'], belohnung=3),
+    Q('cw_channeler', 'Channeler', CW + 'channeler',
+      'Der Channeler fängt Blitze ein und liefert Flüssigen Blitz. Wie das Rezept aussieht, zeigt JEI.',
+      nach=['cw_start'], belohnung=3),
+    Q('cw_caster', 'Blaze Caster', CW + 'blaze_caster',
+      'Der Blaze Caster zaubert automatisch. Er entsteht in einer Montagelinie aus einem Lohenbrenner.',
+      nach=['cw_siphon', 'cw_channeler'], belohnung='loot3'),
+
+    # --- Familiars (Alshanex's Familiars) ---
+    Q('fam_start', 'Begleiter zähmen', ('item', IS + 'arcane_essence', 4),
+      '&eAlshanex\'s Familiars&r bringt zähmbare Begleiter (Familiars), die du in der Welt findest. Gezähmt werden sie mit Arkaner Essenz und kämpfen danach mit Zaubern an deiner Seite.',
+      nach=['essenz'], belohnung=2, optional=True),
+    Q('fam_bett', 'Familiar-Bett', FA + 'pet_bed',
+      'Im Bett erholt sich ein Begleiter, den du vorher in einem Familiar-Tome verstaut hast.',
+      nach=['fam_start'], belohnung=2, optional=True),
+    Q('fam_ruestung', 'Familiologen-Set', [FA + 'familiar_helmet', FA + 'familiar_chestplate', FA + 'familiar_leggings', FA + 'familiar_boots'],
+      'Ein Rüstungsset, das auf Begleiter abgestimmt ist. Was es genau bringt, steht im Tooltip der Teile.',
+      nach=['fam_bett'], belohnung=3, optional=True),
 
     # --- Abgaben ---
     Q('abgabe', 'Abgabe: Arkane Essenz', ('item', IS + 'arcane_essence', 64),

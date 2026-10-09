@@ -12,7 +12,8 @@ Ausgabe: pack/config/ftbquests/quests/  (data.snbt, chapter_groups.snbt, chapter
 Quest-IDs sind Hashes aus Kapitel + Schluessel (stabil). FTB Quests liest IDs als
 vorzeichenbehaftete 64-Bit-Zahl, deshalb hoechstens 63 Bit.
 """
-import argparse, hashlib, importlib, json, os, shutil, sys
+import argparse
+import math, random, hashlib, importlib, json, os, shutil, sys
 from collections import defaultdict
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -221,9 +222,22 @@ def _kreuzt(e1, e2):
     return o(a, b, c) * o(a, b, d) < 0 and o(c, d, a) * o(c, d, b) < 0
 
 
+def _abstand(p, a, b):
+    """Abstand des Punktes p zur Strecke a-b."""
+    ax, ay = a
+    bx, by = b
+    dx, dy = bx - ax, by - ay
+    l2 = dx * dx + dy * dy
+    t = 0 if l2 == 0 else max(0, min(1, ((p[0] - ax) * dx + (p[1] - ay) * dy) / l2))
+    return math.hypot(p[0] - (ax + t * dx), p[1] - (ay + t * dy))
+
+
+NAH = 0.62  # so nah darf eine Linie an einer fremden Quest vorbeilaufen (Quest-Radius 0.5)
+
+
 def _entwirren(nach, tiefe, y, frei):
     """Lokale Suche: freie Quests auf andere Zeilen der eigenen Spalte schieben oder tauschen,
-    solange es weniger Linienkreuzungen (und kuerzere Linien) gibt."""
+    solange es weniger Linienkreuzungen, weniger Linien durch fremde Quests und kuerzere Linien gibt."""
     kanten = [(d, k) for k, ds in nach.items() for d in ds]
     inz = defaultdict(list)
     for e in kanten:
@@ -231,30 +245,38 @@ def _entwirren(nach, tiefe, y, frei):
         inz[e[1]].append(e)
 
     def pt(k):
-        return (tiefe[k], y[k])
+        return (tiefe[k] * DX, y[k])
 
     def kosten(keys):
         mine = {e for k in keys for e in inz[k]}
-        c = 0
+        c = 0.0
         for e in mine:
-            c += 0.05 * abs(y[e[0]] - y[e[1]])
+            a, b = pt(e[0]), pt(e[1])
+            c += 0.3 * abs(a[1] - b[1])
             for f in kanten:
                 if f not in mine or f > e:
-                    if _kreuzt((pt(e[0]), pt(e[1])), (pt(f[0]), pt(f[1]))):
+                    if _kreuzt((a, b), (pt(f[0]), pt(f[1]))):
                         c += 1
+            for k in y:
+                if k != e[0] and k != e[1] and _abstand(pt(k), a, b) < NAH:
+                    c += 3
+        for k in keys:
+            for f in kanten:
+                if f not in mine and k != f[0] and k != f[1] and _abstand(pt(k), pt(f[0]), pt(f[1])) < NAH:
+                    c += 3
         return c
 
     spalten = defaultdict(list)
     for k in y:
         spalten[tiefe[k]].append(k)
-    for _ in range(4):
+    for _ in range(5):
         besser = False
         for k in sorted(frei):
             col = spalten[tiefe[k]]
             alt = y[k]
             belegt = {y[o]: o for o in col}
             lo, hi = min(belegt), max(belegt)
-            for cand in [alt + i * DY for i in range(-12, 13) if i]:
+            for cand in [alt + i * DY for i in range(-14, 15) if i]:
                 if cand < lo - 3 * DY or cand > hi + 3 * DY:
                     continue
                 o = next((v for yy, v in belegt.items() if abs(yy - cand) < 1e-6), None)
@@ -275,6 +297,40 @@ def _entwirren(nach, tiefe, y, frei):
                         y[o] = cand
         if not besser:
             break
+    # Feinschliff: Simulated Annealing (deterministisch), damit lokale Minima aufbrechen
+    rnd = random.Random(7)
+    frei_l = sorted(frei)
+    if not frei_l:
+        return
+    best = {k: y[k] for k in y}
+    kost = sum(kosten([k]) for k in frei_l)
+    best_kost, temp = kost, 1.2
+    for schritt in range(6000):
+        temp = 1.2 * (1 - schritt / 6000) + 0.02
+        k = rnd.choice(frei_l)
+        col = spalten[tiefe[k]]
+        alt = y[k]
+        cand = alt + rnd.choice([-3, -2, -1, 1, 2, 3]) * DY
+        o = next((v for v in col if abs(y[v] - cand) < 1e-6), None)
+        if o is not None and o not in frei:
+            continue
+        keys = [k] + ([o] if o else [])
+        vor = kosten(keys)
+        y[k] = cand
+        if o:
+            y[o] = alt
+        d = kosten(keys) - vor
+        if d <= 0 or rnd.random() < math.exp(-d / temp):
+            kost += d
+            if kost < best_kost - 1e-9:
+                best_kost = kost
+                best = {x: y[x] for x in y}
+        else:
+            y[k] = alt
+            if o:
+                y[o] = cand
+    for k in y:
+        y[k] = best[k]
 
 
 def items_von(q):
