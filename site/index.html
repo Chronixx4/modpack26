@@ -220,6 +220,43 @@
   details.bg li b { color:var(--gold); font-weight:600; }
   .gbox { margin-top:34px; }
 
+
+  .tabs .wrap { overflow-x:auto; scrollbar-width:none; }
+  .tabs .wrap::-webkit-scrollbar { display:none; }
+  .vh { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
+  .msearch { display:flex; gap:14px; align-items:center; flex-wrap:wrap; margin-bottom:14px; }
+  .msearch input { flex:1 1 260px; min-width:0; font:500 19px var(--body); color:#fff; background:#14151a; border:0; padding:12px 14px;
+                   box-shadow:0 0 0 3px #000, inset 3px 3px 0 #000, inset -3px -3px 0 #4a4d56; }
+  .msearch input::placeholder { color:var(--mute); }
+  #qcount { font:10px var(--px); color:var(--mute); }
+  .chips { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:22px; }
+  .chip { font:9px/1.4 var(--px); color:#222; background:#8b8b8b; border:0; padding:8px 10px; cursor:pointer;
+          box-shadow:0 0 0 2px #000, inset 2px 2px 0 #c6c6c6, inset -2px -2px 0 #555; }
+  .chip:hover { background:#a8a8c8; }
+  .chip[aria-pressed="true"] { background:var(--grass); color:#000; box-shadow:0 0 0 2px #000, inset 2px 2px 0 #9ae06d, inset -2px -2px 0 #2d5f18; }
+  .mcat { margin:0 0 22px; }
+  .mcat h3 { font:11px/1.5 var(--px); color:var(--gold); margin:0 0 10px; text-shadow:2px 2px 0 #000; }
+  .mcat h3 span { color:var(--mute); }
+  .mgrid { display:grid; gap:8px; grid-template-columns:repeat(auto-fill,minmax(min(100%,270px),1fr)); }
+  .mod { display:flex; gap:8px; align-items:baseline; padding:9px 12px; background:var(--panel); min-width:0; font-size:17px; line-height:1.3;
+         box-shadow:0 0 0 2px #000, inset 2px 2px 0 var(--hi), inset -2px -2px 0 #181a1f; }
+  .mod b { font-weight:500; overflow-wrap:anywhere; }
+  .mod small { margin-left:auto; color:var(--mute); font-size:14px; white-space:nowrap; max-width:46%; overflow:hidden; text-overflow:ellipsis; }
+  .tg { font:8px var(--px); padding:3px 5px; color:#000; vertical-align:middle; }
+  .tg.client { background:var(--dia); } .tg.server { background:var(--gold); } .tg.cf { background:var(--ench); }
+  .timeline { list-style:none; margin:0; padding:0 0 0 22px; display:grid; gap:18px; border-left:4px solid #000; position:relative; }
+  .timeline > li { position:relative; padding:14px 16px; background:var(--panel); min-width:0; box-shadow:0 0 0 3px #000, inset 3px 3px 0 var(--hi), inset -3px -3px 0 #181a1f; }
+  .timeline > li::before { content:''; position:absolute; left:-33px; top:20px; width:14px; height:14px; background:var(--grass); box-shadow:0 0 0 3px #000; }
+  .timeline > li:first-child::before { background:var(--gold); }
+  .ver { display:flex; gap:12px; align-items:baseline; flex-wrap:wrap; margin-bottom:8px; }
+  .ver b { font:12px var(--px); color:var(--gold); text-shadow:2px 2px 0 #000; }
+  .ver span { font:9px var(--px); color:#000; background:var(--dia); padding:3px 6px; }
+  .timeline ul { margin:0; padding-left:20px; display:grid; gap:5px; font-size:17px; line-height:1.4; }
+  .sk .sklines { list-style:none; margin:10px 0; padding:0; display:grid; gap:10px; }
+  .sk .sklines small { display:block; color:var(--mute); font-size:14px; }
+  .sk .sklines b { color:#fff; font-weight:600; }
+  .skpeak { padding-top:6px; }
+
   /* Footer: Erdschicht */
   footer { margin-top:64px; padding-block:34px 40px; border-top:12px solid var(--grass); position:relative;
            background-color:#4a3320; background-image:var(--tx-dirt,none); background-size:80px; image-rendering:pixelated; }
@@ -262,6 +299,9 @@
 <div class="tabs"><div class="wrap" role="tablist" aria-label="Seitenbereiche">
   <a class="tab" id="tab-home" href="#top" aria-current="page">Übersicht</a>
   <a class="tab" id="tab-guide" href="#guide">Guide</a>
+  <a class="tab" id="tab-skills" href="#skills">Skilltree</a>
+  <a class="tab" id="tab-mods" href="#mods">Modliste</a>
+  <a class="tab" id="tab-log" href="#log">Changelog</a>
 </div></div>
 
 <main>
@@ -408,7 +448,14 @@
       <h2>Wie komme ich wohin?</h2>
       <div class="pixel-rule"></div>
       <p class="lead">Rezepte, Weltzugänge und Bosse an einem Ort. Die Details und die Reihenfolge stehen im Questbuch, hier ist die Kurzfassung.</p>
-      <div class="gnav"><a href="#g-rezepte">Rezepte</a><a href="#g-welten">Welten erreichen</a><a href="#g-bosse">Bosse finden</a></div>
+      <div class="gnav"><a href="#g-start">Einstieg</a><a href="#g-rezepte">Rezepte</a><a href="#g-welten">Welten erreichen</a><a href="#g-bosse">Bosse finden</a></div>
+    </section>
+
+    <section id="g-start">
+      <p class="kicker">Einstieg</p>
+      <h2>Die ersten Stunden</h2>
+      <div class="pixel-rule"></div>
+      <div class="steps"><div class="toast"><canvas class="ico" data-i="chest" width="10" height="10"></canvas><div><p class="t">1. Startkiste</p><p>Beim ersten Login liegen Questbuch, Bossführer, 16 Fleisch, 32 Fackeln, Steinspitzhacke und Steinaxt im Inventar.</p></div></div><div class="toast"><canvas class="ico" data-i="book" width="10" height="10"></canvas><div><p class="t">2. Questbuch öffnen</p><p>Die Quests sind linear: Eine Quest wird erst frei, wenn die davor erledigt ist. Folge den Quests von links nach rechts, das Kapitel &quot;Willkommen&quot; erklärt die Grundlagen.</p></div></div><div class="toast"><canvas class="ico" data-i="star" width="10" height="10"></canvas><div><p class="t">3. Skilltree anschauen</p><p>Mit der Taste K öffnest du den Baum. Du startest mit 3 Punkten. Wähle einen Ast, der zu deinem Spielstil passt.</p></div></div><div class="toast"><canvas class="ico" data-i="wand" width="10" height="10"></canvas><div><p class="t">4. Rezepte in JEI</p><p>Auf ein Item zeigen und R drücken zeigt das Rezept, U die Verwendung. Fast jede Frage zu Rezepten beantwortet JEI.</p></div></div><div class="toast"><canvas class="ico" data-i="portal" width="10" height="10"></canvas><div><p class="t">5. Erster Nether-Trip</p><p>Gold-Rüstung anziehen, sonst greifen Piglins an, und kein Bett im Nether benutzen, es explodiert. Mehr dazu im Abschnitt Welten.</p></div></div><div class="toast"><canvas class="ico" data-i="gear" width="10" height="10"></canvas><div><p class="t">6. Kisten und Bosse</p><p>Lootr gibt jedem Spieler eigene Beute pro Truhe. Den Bossführer nimmst du mit, bevor du auf Jagd gehst.</p></div></div></div>
     </section>
 
     <section id="g-rezepte">
@@ -449,6 +496,71 @@
       <div class="pixel-rule"></div>
       <p class="lead">Im Spiel liegt der Bossführer als Buch in deiner Startkiste. Er listet alle 73 Bosse, hier sind die wichtigsten Gruppen.</p>
       <div class="bgroups"><details class="bg" open><summary>Vanilla<span>4 Bosse</span></summary><ul><li><b>Wither</b> Aus 4 Seelensand und 3 Witherskelettschädeln bauen, am besten tief unter der Erde. Er lässt einen Netherstern fallen.</li><li><b>Enderdrache</b> Zuerst die Endkristalle auf den Obsidiansäulen zerstören, sonst heilt er sich.</li><li><b>Großer Wächter</b> Je drei leben in einem Ozeanmonument. Wasseratmung hilft, Milch hebt die Abbaulähmung kurz auf.</li><li><b>Warden</b> Lebt in der Antiken Stadt. Schleichen ist meist klüger als Kämpfen.</li></ul></details><details class="bg"><summary>Cataclysm<span>8 Bosse</span></summary><ul><li><b>Auge-Prinzip</b> Die Cataclysm-Augen funktionieren wie Enderaugen: werfen, folgen, Struktur finden.</li><li><b>Netherit-Monstrosität</b> Bewacht die Seelenschmiede im Nether. Du brauchst das Auge der Monstrosität.</li><li><b>Ignis</b> Wartet in der Brennenden Arena im Nether. Das Flammenauge zeigt den Weg. Er lässt Ignitium fallen, das du fürs Abenteuer-Fragment brauchst.</li><li><b>Harbinger</b> Haust in der Alten Fabrik. Folge dem Mechanischen Auge.</li><li><b>Leviathan</b> Liegt tief in der versunkenen Stadt. Das Abgrundauge führt hin, Wasseratmung ist Pflicht.</li><li><b>Uraltes Relikt</b> Schläft in der Verfluchten Pyramide in der Wüste. Folge dem Wüstenauge.</li><li><b>Maledictus</b> Sitzt im Frostgefängnis. Das Auge des Fluchs führt hin, er lässt Cursium fallen.</li><li><b>Scylla</b> Herrscht über die Akropolis. Folge dem Sturmauge.</li><li><b>Endergolem und Enderwächter</b> Leben in der Zerfallenen Zitadelle im Ende.</li></ul></details><details class="bg"><summary>Aether<span>3 Bosse</span></summary><ul><li><b>Slider</b> Im Bronze-Dungeon. Nur mit einer Spitzhacke gut zu treffen.</li><li><b>Walküren-Königin</b> Im Silber-Dungeon. Sie kämpft erst, wenn du genug Siegesmedaillen von ihren Walküren hast.</li><li><b>Sonnengeist</b> Der letzte Boss im Gold-Dungeon. Feuerschutz ist Pflicht.</li></ul></details><details class="bg"><summary>Twilight Forest<span>feste Reihenfolge</span></summary><ul><li><b>Reihenfolge</b> Gebiete bleiben mit Flüchen (Dunkelheit, Hitze, Kälte) gesperrt, bis du den Boss davor besiegt hast. Im Questbuch von links nach rechts folgen, die Naga kommt zuerst.</li></ul></details><details class="bg"><summary>Mowzie&#x27;s Mobs<span>4 Bosse</span></summary><ul><li><b>Ferrous Wroughtnaut</b> Schläft in einer Kammer unter der Erde. Von vorne kaum zu verletzen, greif ihn von hinten an.</li><li><b>Frostmaw</b> Schläft in verschneiten Gebieten. Er lässt seinen Eiskristall fallen.</li><li><b>Umvuthi</b> Lebt in einem Hain in der Savanne, seine Krieger beschützen ihn.</li><li><b>Sculptor</b> Wartet mit einer Kletterprüfung. Er gibt den Earthrend Gauntlet.</li></ul></details><details class="bg"><summary>Ice and Fire<span>6 Bosse</span></summary><ul><li><b>Zyklop</b> Wohnt in Küstenhöhlen, oft mit einer Schafherde.</li><li><b>Gorgone</b> Schau sie nicht direkt an, sonst wirst du zu Stein.</li><li><b>Hydra</b> Lebt in Sümpfen. Abgeschlagene Köpfe wachsen nach.</li><li><b>Feuerdrache</b> In Höhlen oder auf Horsten mit viel Gold. Feuerschutz ist Pflicht.</li><li><b>Eisdrache</b> In verschneiten Gebieten. Sein Atem friert dich ein.</li><li><b>Blitzdrache</b> In warmen, trockenen Gegenden.</li></ul></details><details class="bg"><summary>Goety<span>2 Bosse</span></summary><ul><li><b>Apostel</b> Rufst du mit einem Sabbat-Ritual. Das Goety-Kapitel im Questbuch erklärt es.</li><li><b>Wesir</b> Erscheint, wenn du eine Dunkle Schriftrolle im Waldanwesen benutzt.</li></ul></details><details class="bg"><summary>Weitere Bosse<span>viele mehr</span></summary><ul><li><b>Aquamirae</b> Captain Cornelia rufst du mit dem Muschelhorn. Der Aal und die Labyrinthmutter lauern im Eislabyrinth gefrorener Ozeane.</li><li><b>Bosses&#x27; Rise</b> Eigene Arenen mit Bossen. Helvar wartet hinter einer Tür, die den Arenaschlüssel der Unterwelt braucht.</li><li><b>Mutant Monsters</b> Riesige Versionen von Zombie, Skelett, Creeper und Enderman.</li><li><b>Born in Chaos</b> Vom Leithund bis zum Gefallenen Chaosritter. Schilde und gute Rüstung lohnen sich.</li><li><b>Piglich</b> Untoter Piglin-Magier aus Allthemodium, er lässt sein Herz fallen.</li><li><b>Mimic</b> Manche Truhen in Höhlen und Strukturen beißen zu.</li></ul></details></div>
+    </section>
+  </div>
+  <div id="skills" class="view" hidden>
+    <section style="padding-top:44px">
+      <p class="kicker">Skilltree</p>
+      <h2>Fünf Äste, 111 Knoten</h2>
+      <div class="pixel-rule"></div>
+      <p class="lead">Mit Punkten schaltest du Boni frei, die in allen Magie- und Waffensystemen des Packs wirken. Öffnen kannst du den Baum mit der Taste <b>K</b>.</p>
+      <div class="stats" style="margin:0 0 6px">
+        <div class="stat"><b>3</b><span>Startpunkte</span></div>
+        <div class="stat"><b>130</b><span>Maximales Level</span></div>
+        <div class="stat"><b>I-V</b><span>Stufen je Linie, Kosten 1, 1, 1, 2, 2</span></div>
+        <div class="stat"><b>3</b><span>Punkte für jeden Gipfel</span></div>
+      </div>
+    </section>
+    <section>
+      <p class="kicker">Aufstieg</p>
+      <h2>Wie bekomme ich Punkte?</h2>
+      <div class="pixel-rule"></div>
+      <div class="feats">
+        <div class="feat"><canvas class="ico" data-i="skull" width="10" height="10"></canvas><div><h3>Gegner besiegen</h3><p>Starke Gegner und Bosse (ab 100 Leben) geben das 1,5-Fache ihrer Leben als Erfahrung. Schwächere ein Viertel.</p></div></div>
+        <div class="feat"><canvas class="ico" data-i="sword" width="10" height="10"></canvas><div><h3>Gegen Farmen</h3><p>Pro Chunk zählen höchstens 15 Kills, danach ist 5 Minuten Pause.</p></div></div>
+        <div class="feat"><canvas class="ico" data-i="chest" width="10" height="10"></canvas><div><h3>Erze abbauen</h3><p>Auch Mining bringt Erfahrung für den Skilltree.</p></div></div>
+        <div class="feat"><canvas class="ico" data-i="star" width="10" height="10"></canvas><div><h3>Stufen werden teurer</h3><p>Der Bedarf steigt mit jedem Level an und bleibt ab einem Wert bei 400 Erfahrung.</p></div></div>
+      </div>
+    </section>
+    <section>
+      <p class="kicker">Äste</p>
+      <h2>Wohin soll es gehen?</h2>
+      <div class="pixel-rule"></div>
+      <div class="wgrid"><article class="way sk"><header style="background:#7a231a">Abenteuer</header><div class="wb">
+      <p><em>Aufbruch</em> ist der Start: Der Weg in die Welt beginnt.</p>
+      <ul class="sklines"><li><b>Kampfkunst</b> Du teilst mehr Schaden aus, im Nah- und Fernkampf. <small>Nahkampfschaden, Fernkampfschaden</small></li><li><b>Zähigkeit</b> Du hältst mehr aus. <small>Maximales Leben</small></li><li><b>Bossjäger</b> Du durchbrichst Rüstungen und triffst kritisch härter. <small>Rüstungsdurchdringung, Kritischer Schaden</small></li><li><b>Wanderer</b> Du bewegst dich schneller, auch beim Zaubern. <small>Lauftempo, Zaubern in Bewegung</small></li></ul>
+      <p class="skpeak">Gipfel: <em>Chronicle-Abenteurer</em>. Bosse verlieren ihren Schrecken.</p></div></article><article class="way sk"><header style="background:#4a2a7a">Magie</header><div class="wb">
+      <p><em>Erste Funken</em> ist der Start: Die Magie wird spürbar, egal welche Mod du nutzt.</p>
+      <ul class="sklines"><li><b>Manavorrat</b> Jeder Zaubertyp bekommt mehr Reserven. <small>Max. Mana, Seelen-Rabatt</small></li><li><b>Fließende Energie</b> Das Mana lädt sich schneller auf. <small>Mana-Regeneration, Zaubergeschwindigkeit</small></li><li><b>Zauberkraft</b> Deine Zauber treffen härter. <small>Zauberstärke, Zauberpotenz, Zauberschaden</small></li><li><b>Konzentration</b> Zauber sind schneller wieder bereit. <small>Abklingzeit, Zaubertempo</small></li></ul>
+      <p class="skpeak">Gipfel: <em>Chronicle-Magier</em>. Dein Zauberschaden steigt in allen Magiesystemen.</p></div></article><article class="way sk"><header style="background:#7a5a1c">Handwerk</header><div class="wb">
+      <p><em>Fleißige Hände</em> ist der Start: Alles geht etwas leichter von der Hand.</p>
+      <ul class="sklines"><li><b>Lernbegierde</b> Du sammelst mehr Erfahrung. <small>Erfahrung</small></li><li><b>Glückspilz</b> Mehr Glück bei Beute und beim Angeln. <small>Glück</small></li><li><b>Gute Küche</b> Ein gutes Essen stärkt dich dauerhaft. <small>Maximales Leben</small></li><li><b>Genesung</b> Heilung wirkt besser. <small>Erhaltene Heilung, Lebensraub</small></li></ul>
+      <p class="skpeak">Gipfel: <em>Chronicle-Meister</em>. Deine Arbeit trägt Früchte.</p></div></article><article class="way sk"><header style="background:#2f5e1d">Überleben</header><div class="wb">
+      <p><em>Abgehärtet</em> ist der Start: Du steckst mehr ein.</p>
+      <ul class="sklines"><li><b>Panzerung</b> Mehr Rüstung. <small>Rüstung</small></li><li><b>Standhaft</b> Mehr Härte und Rückstoßschutz. <small>Rüstungshärte, Rückstoßresistenz</small></li><li><b>Flink</b> Du weichst aus und fällst weicher. <small>Ausweichen, Weniger Fallschaden</small></li><li><b>Widerstand</b> Weniger Schaden durch Magie in allen Systemen. <small>Zauberresistenz</small></li></ul>
+      <p class="skpeak">Gipfel: <em>Chronicle-Wächter</em>. Fast nichts bringt dich mehr aus der Ruhe.</p></div></article><article class="way sk"><header style="background:#26457a">Technik</header><div class="wb">
+      <p><em>Geübte Hände</em> ist der Start: Maschinen und Werkzeuge gehorchen dir.</p>
+      <ul class="sklines"><li><b>Schürfer</b> Du baust schneller ab. <small>Abbautempo</small></li><li><b>Reichweite</b> Du erreichst Blöcke und Gegner weiter weg. <small>Reichweite Blöcke, Reichweite Angriff</small></li><li><b>Kraftakt</b> Mit schwerem Werkzeug schlägst du härter zu. <small>Nahkampfschaden, Rückstoßresistenz</small></li><li><b>Tiefseetechnik</b> Du arbeitest unter Wasser wie an Land. <small>Abbautempo unter Wasser, Bewegung im Wasser</small></li></ul>
+      <p class="skpeak">Gipfel: <em>Chronicle-Techniker</em>. Die Maschinen arbeiten für dich.</p></div></article></div>
+    </section>
+  </div>
+  <div id="mods" class="view" hidden>
+    <section style="padding-top:44px">
+      <p class="kicker">Modliste</p>
+      <h2 id="modtitle">Alle Mods im Pack</h2>
+      <div class="pixel-rule"></div>
+      <div class="msearch"><label for="q" class="vh">Mods suchen</label><input id="q" type="search" placeholder="Mod suchen, z. B. Create" autocomplete="off"><span id="qcount" aria-live="polite"></span></div>
+      <div class="chips" id="chips" role="group" aria-label="Kategorien"></div>
+      <div id="modout"><p class="lead">Die Liste wird geladen.</p></div>
+      <p class="vernote">Markierungen: <span class="tg client">Client</span> nur im Spiel, <span class="tg server">Server</span> nur auf dem Server, <span class="tg cf">CF</span> von CurseForge.</p>
+    </section>
+  </div>
+  <div id="log" class="view" hidden>
+    <section style="padding-top:44px">
+      <p class="kicker">Changelog</p>
+      <h2>Was sich seit 0.9.0 getan hat</h2>
+      <div class="pixel-rule"></div>
+      <ol class="timeline"><li><div class="ver"><b>0.9.18</b><span>Mods · Questbuch</span></div><ul><li>Neu: Deep Aether, Alshanex&#x27;s Familiars und Create: Wizardry, damit 314 Mods.</li><li>11 neue Quests, jetzt 1430. Der Bossführer kennt 73 Bosse.</li><li>Das Questbuch-Layout ist übersichtlicher, die Linien kreuzen sich weniger.</li></ul></li><li><div class="ver"><b>0.9.17</b><span>Mods · Bossführer</span></div><ul><li>Bossführer als Buch im Spiel, mit Eintrag für jeden Boss.</li><li>Sechs Cataclysm-Addons: Integrated Cataclysm, Goety Cataclysm, Mowzie&#x27;s Cataclysm, Cataclysm Delight, Boss UI und die Create-Integration.</li></ul></li><li><div class="ver"><b>0.9.16</b><span>Skilltree</span></div><ul><li>Der Skilltree mit Pufferfish&#x27;s Skills: 111 Knoten in fünf Ästen.</li><li>Punkte gibt es für Kills und Erze.</li></ul></li><li><div class="ver"><b>0.9.15</b><span>Questbuch</span></div><ul><li>Das Questbuch-Layout wurde entwirrt. Linienkreuzungen sanken von 199 auf 77.</li><li>Die Rezepte der Fragmente stehen jetzt im Questtext.</li></ul></li><li><div class="ver"><b>0.9.14</b><span>Komfort</span></div><ul><li>Startkiste beim ersten Login: Questbuch, Fleisch, Fackeln und Steinwerkzeug.</li><li>Fragmente erscheinen im Kreativ-Tab &quot;Zutaten&quot; und damit in JEI.</li><li>ModernFix mit dynamischem Laden der Ressourcen.</li></ul></li><li><div class="ver"><b>0.9.13</b><span>Mods · Questbuch</span></div><ul><li>JEI ersetzt EMI. Just Enough Resources zeigt Beute.</li><li>20 neue Mods, unter anderem Numismatics, TFMG, Goety, End Remastered, Enderscape, L2 Hostility, Tide und Serene Seasons.</li><li>Questbuch auf 38 Kapitel und 1419 Quests ausgebaut.</li></ul></li><li><div class="ver"><b>0.9.12</b><span>Endgame</span></div><ul><li>Almost Unified vereinheitlicht Erze und Metalle.</li><li>Der Chronicle-Kern mit drei Fragmenten als eigenes Endgame.</li></ul></li><li><div class="ver"><b>0.9.11</b><span>Name</span></div><ul><li>Das Pack heißt jetzt Chronicle.</li></ul></li><li><div class="ver"><b>0.9.10</b><span>Mods</span></div><ul><li>Lootr, Easy Villagers, Trade Cycling, Elevator Mod, Cooking for Blockheads, Pipez, Refined Storage und EvilCraft.</li></ul></li><li><div class="ver"><b>0.9.9</b><span>Leistung</span></div><ul><li>FastSuite, FastFurnace, FastWorkbench, Packet Fixer, dazu für den Client BadOptimizations, Dynamic FPS und More Culling.</li><li>Server mit 12 GB RAM und angepassten Java-Flags.</li></ul></li><li><div class="ver"><b>0.9.8</b><span>Questbuch</span></div><ul><li>Questbuch 2.0: 6 Gruppen, 33 Kapitel, 1178 Quests und vier Stufen Loot-Kisten.</li><li>Behoben: Quests hießen &quot;Unnamed&quot; und standen in falscher Reihenfolge.</li></ul></li><li><div class="ver"><b>0.9.7</b><span>Questbuch</span></div><ul><li>Erstes Questbuch mit 12 Kapiteln und 233 Quests.</li></ul></li><li><div class="ver"><b>0.9.6</b><span>Mods</span></div><ul><li>Technik-Paket: Draconic Evolution, Industrial Foregoing, PneumaticCraft, Immersive Engineering, Extreme Reactors, Oritech, Ender IO und mehr.</li></ul></li><li><div class="ver"><b>0.9.5</b><span>Test</span></div><ul><li>Client-Test: läuft einwandfrei.</li></ul></li><li><div class="ver"><b>0.9.4</b><span>Mods</span></div><ul><li>AllTheModium in der offiziellen CurseForge-Version.</li></ul></li><li><div class="ver"><b>0.9.3</b><span>Mods</span></div><ul><li>15 neue Mods, darunter Mekanism, Productive Bees, Mystical Agriculture, Carry On und Alex&#x27;s Caves.</li></ul></li><li><div class="ver"><b>0.9.2</b><span>Mods</span></div><ul><li>Create: Steam &#x27;n&#x27; Rails.</li></ul></li><li><div class="ver"><b>0.9.0</b><span>Start</span></div><ul><li>Erste Fassung als &quot;Unser Modpack&quot;: 180 Mods, Servertest ohne Fehler.</li></ul></li></ol>
     </section>
   </div>
   </div>
@@ -592,16 +704,50 @@
   });
 
   /* ---------- Tabs: Übersicht / Guide ---------- */
+  var VIEWS = ['home', 'guide', 'skills', 'mods', 'log'];
   function route() {
     var id = decodeURIComponent(location.hash.slice(1)), el = id ? document.getElementById(id) : null;
-    var guide = !!el && (el.id === 'guide' || !!el.closest('#guide'));
-    document.getElementById('guide').hidden = !guide; document.getElementById('home').hidden = guide;
-    document.getElementById('tab-guide').setAttribute('aria-current', guide ? 'page' : 'false');
-    document.getElementById('tab-home').setAttribute('aria-current', guide ? 'false' : 'page');
-    if (el && el.id !== 'guide') el.scrollIntoView(); else if (guide) document.getElementById('tab-guide').scrollIntoView();
-    else if (!id || id === 'top') window.scrollTo(0, 0);
+    var v = !el ? 'home' : (el.classList.contains('view') ? el.id : (el.closest('.view') || {}).id) || 'home';
+    VIEWS.forEach(function (n) { document.getElementById(n).hidden = n !== v;
+      document.getElementById('tab-' + n).setAttribute('aria-current', n === v ? 'page' : 'false'); });
+    if (el && !el.classList.contains('view')) el.scrollIntoView();
+    else if (v !== 'home') document.querySelector('.tabs').scrollIntoView();
+    else window.scrollTo(0, 0);
   }
   window.addEventListener('hashchange', route); route();
+
+  /* ---------- Modliste ---------- */
+  var mdata = null, mcat = '', mq = '', mout = document.getElementById('modout'), chips = document.getElementById('chips');
+  function renderMods() {
+    var q = mq.trim().toLowerCase(), total = 0, shown = 0; mout.textContent = '';
+    mdata.kategorien.forEach(function (c) {
+      total += c.mods.length;
+      if (mcat && c.name !== mcat) return;
+      var hide = !mcat && !q && /^Bibliotheken/.test(c.name);
+      var list = c.mods.filter(function (m) { return !q || m.n.toLowerCase().indexOf(q) > -1; });
+      shown += list.length; if (!list.length || hide) return;
+      var sec = document.createElement('section'); sec.className = 'mcat';
+      var h = document.createElement('h3'); h.textContent = c.name + ' '; var sp = document.createElement('span'); sp.textContent = '(' + list.length + ')'; h.appendChild(sp); sec.appendChild(h);
+      var g = document.createElement('div'); g.className = 'mgrid';
+      list.forEach(function (m) { var d = document.createElement('div'); d.className = 'mod'; var b = document.createElement('b'); b.textContent = m.n; d.appendChild(b);
+        if (m.t) { var t = document.createElement('span'); t.className = 'tg ' + m.t; t.textContent = { client: 'Client', server: 'Server', cf: 'CF' }[m.t]; d.appendChild(t); }
+        var v = document.createElement('small'); v.textContent = m.v; v.title = m.v; d.appendChild(v); g.appendChild(d); });
+      sec.appendChild(g); mout.appendChild(sec);
+    });
+    document.getElementById('qcount').textContent = q || mcat ? shown + ' Treffer' : total + ' Mods';
+    if (!mout.children.length) { var p = document.createElement('p'); p.className = 'lead'; p.textContent = 'Keine Mod gefunden.'; mout.appendChild(p); }
+    if (!mcat && !q) { var hint = document.createElement('p'); hint.className = 'vernote'; hint.textContent = 'Die Bibliotheken (Hilfsmods) blendest du über den Knopf oben ein.'; mout.appendChild(hint); }
+  }
+  fetch('modliste.json').then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (d) {
+    mdata = d; document.getElementById('modtitle').textContent = d.titel.replace(' - ', ': ');
+    var all = document.createElement('button'); all.className = 'chip'; all.type = 'button'; all.textContent = 'Alle'; all.setAttribute('aria-pressed', 'true'); chips.appendChild(all);
+    function press(b, name) { mcat = name; Array.prototype.forEach.call(chips.children, function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); }); renderMods(); }
+    all.onclick = function () { press(all, ''); };
+    d.kategorien.forEach(function (c) { var b = document.createElement('button'); b.className = 'chip'; b.type = 'button'; b.setAttribute('aria-pressed', 'false');
+      b.textContent = c.name.replace(/ \(.*$/, '') + ' ' + c.mods.length; b.onclick = function () { press(b, c.name); }; chips.appendChild(b); });
+    document.getElementById('q').addEventListener('input', function (ev) { mq = ev.target.value; renderMods(); });
+    renderMods();
+  }).catch(function () { mout.innerHTML = '<p class="lead">Die Liste konnte nicht geladen werden. <a href="https://github.com/Chronixx4/modpack26/blob/main/MODLISTE.txt">Hier gibt es sie als Textdatei.</a></p>'; });
 
   /* ---------- Downloads aus dem neuesten Release ---------- */
   var box = document.getElementById('dl');
