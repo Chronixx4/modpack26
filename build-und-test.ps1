@@ -9,7 +9,7 @@ $ProgressPreference = 'SilentlyContinue'
 $MC      = '1.21.1'
 $LOADER  = 'neoforge'
 $PACK    = 'Chronicle'
-$PACKVER = '0.9.19'
+$PACKVER = '0.9.20'
 $RAM     = '8G'
 $TIMEOUT_MIN = 20
 
@@ -125,6 +125,8 @@ moreculling|More Culling
 packet-fixer|Packet Fixer
 # Komfort und Oberflaeche
 jei|Just Enough Items (JEI)
+fancymenu|FancyMenu
+drippy-loading-screen|Drippy Loading Screen
 almostunified|Almost Unified
 jade|Jade
 xaeros-minimap|Xaero's Minimap
