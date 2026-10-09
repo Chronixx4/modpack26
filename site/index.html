@@ -273,6 +273,18 @@
   .sk .sklines b { color:#fff; font-weight:600; }
   .skpeak { padding-top:6px; }
 
+
+  .bcards { display:grid; gap:16px; grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr)); }
+  .bcard { display:flex; flex-direction:column; min-width:0; background:var(--panel); box-shadow:0 0 0 3px #000, inset 3px 3px 0 var(--hi), inset -3px -3px 0 #181a1f; }
+  .bcard header { padding:12px 16px; border-bottom:3px solid #000; background:var(--bc,#4a2a7a); }
+  .bcard h3 { margin:0; font:11px/1.6 var(--px); color:#fff; text-shadow:2px 2px 0 #000; }
+  .bcard .bmod { display:block; margin-top:3px; font:500 15px var(--body); color:rgba(255,255,255,.78); }
+  .bcard .bb { padding:12px 16px 16px; font-size:17px; line-height:1.4; display:flex; flex-direction:column; gap:9px; min-width:0; }
+  .bcard .bb p { margin:0; }
+  .bcard .bbeute { margin-top:auto; padding-top:6px; font-size:15px; color:var(--mute); }
+  .bcard .bbeute b { color:var(--gold); font-weight:600; }
+  .bcard .bid { font:9px/1.6 var(--px); color:var(--mute); overflow-wrap:anywhere; }
+
   /* Footer: Erdschicht */
   footer { margin-top:64px; padding-block:34px 40px; border-top:12px solid var(--grass); position:relative;
            background-color:#4a3320; background-image:var(--tx-dirt,none); background-size:80px; image-rendering:pixelated; }
@@ -326,6 +338,7 @@
 <div class="tabs"><div class="wrap" role="tablist" aria-label="Seitenbereiche">
   <a class="tab" id="tab-home" href="#top" aria-current="page">Übersicht</a>
   <a class="tab" id="tab-guide" href="#guide">Guide</a>
+  <a class="tab" id="tab-bosse" href="#bosse">Bosse</a>
   <a class="tab" id="tab-skills" href="#skills">Skilltree</a>
   <a class="tab" id="tab-mods" href="#mods">Modliste</a>
   <a class="tab" id="tab-log" href="#log">Changelog</a>
@@ -524,6 +537,17 @@
       <div class="pixel-rule"></div>
       <p class="lead">Im Spiel liegt der Bossführer als Buch in deiner Startkiste. Er listet alle 73 Bosse, hier sind die wichtigsten Gruppen.</p>
       <div class="bgroups"><details class="bg" open><summary>Vanilla<span>4 Bosse</span></summary><ul><li><b>Wither</b> Aus 4 Seelensand und 3 Witherskelettschädeln bauen, am besten tief unter der Erde. Er lässt einen Netherstern fallen.</li><li><b>Enderdrache</b> Zuerst die Endkristalle auf den Obsidiansäulen zerstören, sonst heilt er sich.</li><li><b>Großer Wächter</b> Je drei leben in einem Ozeanmonument. Wasseratmung hilft, Milch hebt die Abbaulähmung kurz auf.</li><li><b>Warden</b> Lebt in der Antiken Stadt. Schleichen ist meist klüger als Kämpfen.</li></ul></details><details class="bg"><summary>Cataclysm<span>8 Bosse</span></summary><ul><li><b>Auge-Prinzip</b> Die Cataclysm-Augen funktionieren wie Enderaugen: werfen, folgen, Struktur finden.</li><li><b>Netherit-Monstrosität</b> Bewacht die Seelenschmiede im Nether. Du brauchst das Auge der Monstrosität.</li><li><b>Ignis</b> Wartet in der Brennenden Arena im Nether. Das Flammenauge zeigt den Weg. Er lässt Ignitium fallen, das du fürs Abenteuer-Fragment brauchst.</li><li><b>Harbinger</b> Haust in der Alten Fabrik. Folge dem Mechanischen Auge.</li><li><b>Leviathan</b> Liegt tief in der versunkenen Stadt. Das Abgrundauge führt hin, Wasseratmung ist Pflicht.</li><li><b>Uraltes Relikt</b> Schläft in der Verfluchten Pyramide in der Wüste. Folge dem Wüstenauge.</li><li><b>Maledictus</b> Sitzt im Frostgefängnis. Das Auge des Fluchs führt hin, er lässt Cursium fallen.</li><li><b>Scylla</b> Herrscht über die Akropolis. Folge dem Sturmauge.</li><li><b>Endergolem und Enderwächter</b> Leben in der Zerfallenen Zitadelle im Ende.</li></ul></details><details class="bg"><summary>Aether<span>3 Bosse</span></summary><ul><li><b>Slider</b> Im Bronze-Dungeon. Nur mit einer Spitzhacke gut zu treffen.</li><li><b>Walküren-Königin</b> Im Silber-Dungeon. Sie kämpft erst, wenn du genug Siegesmedaillen von ihren Walküren hast.</li><li><b>Sonnengeist</b> Der letzte Boss im Gold-Dungeon. Feuerschutz ist Pflicht.</li></ul></details><details class="bg"><summary>Twilight Forest<span>feste Reihenfolge</span></summary><ul><li><b>Reihenfolge</b> Gebiete bleiben mit Flüchen (Dunkelheit, Hitze, Kälte) gesperrt, bis du den Boss davor besiegt hast. Im Questbuch von links nach rechts folgen, die Naga kommt zuerst.</li></ul></details><details class="bg"><summary>Mowzie&#x27;s Mobs<span>4 Bosse</span></summary><ul><li><b>Ferrous Wroughtnaut</b> Schläft in einer Kammer unter der Erde. Von vorne kaum zu verletzen, greif ihn von hinten an.</li><li><b>Frostmaw</b> Schläft in verschneiten Gebieten. Er lässt seinen Eiskristall fallen.</li><li><b>Umvuthi</b> Lebt in einem Hain in der Savanne, seine Krieger beschützen ihn.</li><li><b>Sculptor</b> Wartet mit einer Kletterprüfung. Er gibt den Earthrend Gauntlet.</li></ul></details><details class="bg"><summary>Ice and Fire<span>6 Bosse</span></summary><ul><li><b>Zyklop</b> Wohnt in Küstenhöhlen, oft mit einer Schafherde.</li><li><b>Gorgone</b> Schau sie nicht direkt an, sonst wirst du zu Stein.</li><li><b>Hydra</b> Lebt in Sümpfen. Abgeschlagene Köpfe wachsen nach.</li><li><b>Feuerdrache</b> In Höhlen oder auf Horsten mit viel Gold. Feuerschutz ist Pflicht.</li><li><b>Eisdrache</b> In verschneiten Gebieten. Sein Atem friert dich ein.</li><li><b>Blitzdrache</b> In warmen, trockenen Gegenden.</li></ul></details><details class="bg"><summary>Goety<span>2 Bosse</span></summary><ul><li><b>Apostel</b> Rufst du mit einem Sabbat-Ritual. Das Goety-Kapitel im Questbuch erklärt es.</li><li><b>Wesir</b> Erscheint, wenn du eine Dunkle Schriftrolle im Waldanwesen benutzt.</li></ul></details><details class="bg"><summary>Weitere Bosse<span>viele mehr</span></summary><ul><li><b>Aquamirae</b> Captain Cornelia rufst du mit dem Muschelhorn. Der Aal und die Labyrinthmutter lauern im Eislabyrinth gefrorener Ozeane.</li><li><b>Bosses&#x27; Rise</b> Eigene Arenen mit Bossen. Helvar wartet hinter einer Tür, die den Arenaschlüssel der Unterwelt braucht.</li><li><b>Mutant Monsters</b> Riesige Versionen von Zombie, Skelett, Creeper und Enderman.</li><li><b>Born in Chaos</b> Vom Leithund bis zum Gefallenen Chaosritter. Schilde und gute Rüstung lohnen sich.</li><li><b>Piglich</b> Untoter Piglin-Magier aus Allthemodium, er lässt sein Herz fallen.</li><li><b>Mimic</b> Manche Truhen in Höhlen und Strukturen beißen zu.</li></ul></details></div>
+    </section>
+  </div>
+  <div id="bosse" class="view" hidden>
+    <section style="padding-top:44px">
+      <p class="kicker">Boss-Datenbank</p>
+      <h2 id="bosstitle">Alle Bosse im Pack</h2>
+      <div class="pixel-rule"></div>
+      <p class="lead">Fundort, Beschwörung und Tipps zu jedem Boss. Die Texte stammen aus dem Questbuch und dem Bossführer im Spiel.</p>
+      <div class="msearch"><label for="bq" class="vh">Bosse suchen</label><input id="bq" type="search" placeholder="Boss suchen, z. B. Drache" autocomplete="off"><span id="bcount" aria-live="polite"></span></div>
+      <div class="chips" id="bchips" role="group" aria-label="Gruppen"></div>
+      <div class="bcards" id="bout"><p class="lead">Die Bosse werden geladen.</p></div>
     </section>
   </div>
   <div id="skills" class="view" hidden>
@@ -732,7 +756,7 @@
   });
 
   /* ---------- Tabs: Übersicht / Guide ---------- */
-  var VIEWS = ['home', 'guide', 'skills', 'mods', 'log'];
+  var VIEWS = ['home', 'guide', 'bosse', 'skills', 'mods', 'log'];
   function route() {
     var id = decodeURIComponent(location.hash.slice(1)), el = id ? document.getElementById(id) : null;
     var v = !el ? 'home' : (el.classList.contains('view') ? el.id : (el.closest('.view') || {}).id) || 'home';
@@ -777,6 +801,45 @@
     renderMods();
   }).catch(function () { mout.innerHTML = '<p class="lead">Die Liste konnte nicht geladen werden. <a href="https://github.com/Chronixx4/modpack26/blob/main/MODLISTE.txt">Hier gibt es sie als Textdatei.</a></p>'; });
 
+
+
+  /* ---------- Boss-Datenbank ---------- */
+  (function () {
+    var out = document.getElementById('bout'), chips = document.getElementById('bchips'), data, grp = '', q = '';
+    var COL = ['#4a2a7a', '#7a231a', '#26457a', '#2f5e1d', '#7a5a1c', '#1d5f66', '#6a2a5a', '#4a3513'];
+    function nice(id) { var n = id.split(':')[1].replace(/_/g, ' '); return n.charAt(0).toUpperCase() + n.slice(1); }
+    function render() {
+      out.textContent = ''; var n = 0, lq = q.trim().toLowerCase();
+      data.bosse.forEach(function (b) {
+        var gi = data.mods.findIndex(function (m) { return m.id === b.mod; }), g = data.mods[gi];
+        if (grp && b.mod !== grp) return;
+        if (lq && (b.name + ' ' + g.name + ' ' + b.id + ' ' + b.text.join(' ')).toLowerCase().indexOf(lq) < 0) return;
+        n++;
+        var c = document.createElement('article'); c.className = 'bcard';
+        var h = document.createElement('header'); h.style.setProperty('--bc', COL[gi % COL.length]);
+        var t = document.createElement('h3'); t.textContent = b.name; h.appendChild(t);
+        var m = document.createElement('span'); m.className = 'bmod'; m.textContent = g.name + (b.anzahl > 1 ? ' · ' + b.anzahl + 'x besiegen' : ''); h.appendChild(m); c.appendChild(h);
+        var body = document.createElement('div'); body.className = 'bb';
+        b.text.forEach(function (x) { var p = document.createElement('p'); p.textContent = x; body.appendChild(p); });
+        if (b.beute.length) { var d = document.createElement('p'); d.className = 'bbeute'; var l = document.createElement('b'); l.textContent = 'Beute: ';
+          d.appendChild(l); d.appendChild(document.createTextNode(b.beute.map(nice).join(', '))); body.appendChild(d); }
+        var id = document.createElement('span'); id.className = 'bid'; id.textContent = b.id; body.appendChild(id);
+        c.appendChild(body); out.appendChild(c);
+      });
+      document.getElementById('bcount').textContent = (q || grp) ? n + ' Treffer' : data.bosse.length + ' Bosse';
+      if (!n) { var p = document.createElement('p'); p.className = 'lead'; p.textContent = 'Kein Boss gefunden.'; out.appendChild(p); }
+    }
+    fetch('bosse.json').then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (d) {
+      data = d;
+      function press(b, id) { grp = id; Array.prototype.forEach.call(chips.children, function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); }); render(); }
+      var all = document.createElement('button'); all.className = 'chip'; all.type = 'button'; all.textContent = 'Alle ' + d.bosse.length; all.setAttribute('aria-pressed', 'true');
+      all.onclick = function () { press(all, ''); }; chips.appendChild(all);
+      d.mods.forEach(function (mm) { var k = d.bosse.filter(function (b) { return b.mod === mm.id; }).length; var b = document.createElement('button');
+        b.className = 'chip'; b.type = 'button'; b.setAttribute('aria-pressed', 'false'); b.textContent = mm.name + ' ' + k; b.onclick = function () { press(b, mm.id); }; chips.appendChild(b); });
+      document.getElementById('bq').addEventListener('input', function (ev) { q = ev.target.value; render(); });
+      render();
+    }).catch(function () { out.innerHTML = '<p class="lead">Die Bosse konnten nicht geladen werden.</p>'; });
+  })();
 
   /* ---------- Sperre ---------- */
   (function () {
