@@ -9,7 +9,7 @@ $ProgressPreference = 'SilentlyContinue'
 $MC      = '1.21.1'
 $LOADER  = 'neoforge'
 $PACK    = 'Chronicle'
-$PACKVER = '0.9.18'
+$PACKVER = '0.9.19'
 $RAM     = '8G'
 $TIMEOUT_MIN = 20
 
@@ -106,6 +106,7 @@ $out = New-Object System.Collections.Generic.List[string]
 $ModListRaw = @'
 # Performance und Grafik
 sodium|Sodium
+iris|Iris Shaders|^1\.8\.14
 modernfix|ModernFix
 ferrite-core|FerriteCore
 lithium|Lithium

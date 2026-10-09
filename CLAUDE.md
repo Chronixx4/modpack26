@@ -33,7 +33,7 @@ Kommunikation mit dem Nutzer: Deutsch, locker, kurz.
   - `pack/config/` landet in `overrides/config` (.mrpack) bzw. `config/` (beide ZIPs) und im lokalen Testserver. Der Servertest gibt die Zeile `Questbuch: Loaded ... quests` aus.
 - **Webseite:** `site/index.html` (statisch, Netlify-Projekt `chronicle-modpack`, Tabs Uebersicht/Guide/Skilltree/Modliste/Changelog; Item-Icons in `site/img/items/`). `python3 tools/modliste_json.py` schreibt `site/modliste.json` aus `MODLISTE.txt`, nach jedem Build mitlaufen lassen. Changelog, Zahlen und Guide-Rezepte stehen von Hand in `index.html`.
 - CurseForge-Jars holt das Skript automatisch aus `%USERPROFILE%\Downloads` (Dateinamen-Muster in `$cfPatterns`).
-- Aktuelle Version: **PACKVER 0.9.18**. Bei jeder Änderung `$PACKVER` hochzählen.
+- Aktuelle Version: **PACKVER 0.9.19**. Bei jeder Änderung `$PACKVER` hochzählen.
 
 ## Mods, die nur auf CurseForge sind (liegen in curseforge-mods\ bzw. Downloads)
 Alle für 1.21.1 NeoForge. Download-URL-Schema: `https://www.curseforge.com/minecraft/mc-mods/<slug>/download/<fileId>`
@@ -60,7 +60,7 @@ CurseForge blockt Downloads per Skript, auch über die interne `/api/v1`. Diese 
 - **Bibliotheken**, die Modrinth nicht als Abhängigkeit einträgt, stehen explizit in der Liste: Iron's Lib (`^1\.21\.1-2`), Bundle API, SmartBrainLib, Lithostitched, Structure Pool API, PolyLib, Atlas Api (fuer Iron's Gems 'n Jewelry) und RunicLib (fuer Dungeon's Delight).
 - **Chunky + Distant Horizons** zusammen crashen (`IllegalStateException: Chunky is not loaded` aus DHs ChunkyAccessor beim ersten Chunk), auch im Einzelspieler. Deshalb Chunky nur Server, DH nur Client.
 - **env client**: Viele Bibliotheken sind auf Modrinth als „nur Server“ markiert, werden im Client aber trotzdem gebraucht. Deshalb steht `client = 'required'` immer.
-- **Iris entfernt**: Iris 1.8.12 passt nicht zu Sodium 0.8.13 (Fehler `SodiumGameOptions$PerformanceSettings` ClassNotFound) und hat beim Betreten der Welt den Absturz ausgelöst.
+- **Iris** (0.9.19 wieder drin als 1.8.14-beta.1): Iris 1.8.12 passte nicht zu Sodium 0.8.13 (Fehler `SodiumGameOptions$PerformanceSettings` ClassNotFound) und hat beim Betreten der Welt den Absturz ausgelöst.
 - **Relics entfernt**: braucht OctoLib, das es nicht auf Modrinth gibt.
 - **Andere Slugs** als vermutet: `repurposed-structures-forge`, `betternether-neoforge`, `betterend-neoforge`.
 - Nicht für 1.21.1 verfügbar und deshalb gestrichen: Blue Skies, Lost Aether Content, T.O Magic 'n Extras.
@@ -120,6 +120,8 @@ CurseForge blockt Downloads per Skript, auch über die interne `/api/v1`. Diese 
 - 0.9.17 (Release geplant): Bossfuehrer als Modonomicon-Buch (siehe oben) und **6 Cataclysm-Addons** (310 Mods): Integrated Cataclysm (`integrated-catalcysm`, ueberarbeitet alle Cataclysm-Strukturen und einige Rezepte mit Create), Goety Cataclysm, Mowzie's Cataclysm, L_Ender's Cataclysm Delight, GTBC's Cataclysmic Boss UI, Cataclysm x Create Integration (`cataclysm_create`). Bewusst nicht: Cataclysm Dimension (jede Struktur in eigener Dimension, beta, aendert den Fortschritt ueber die Augen; ggf. spaeter mit Config "keep structures"), Cinematic Cataclysm, Waffen-/Werkzeug-Addons, Expeditions. Im Spiel pruefen: Cataclysm-Rezepte in Quests (Integrated Cataclysm und Create-Addon aendern Rezepte), Struktur-Aussehen.
 
 - 0.9.18 (Release geplant): **314 Mods**. Neu: Deep Aether (`deep-aether`, bringt AeroBlender per jar-in-jar mit), Alshanex's Familiars (`alshanexs-familiars`) plus Bibliothek Familiarslib, Create: Wizardry (`create-wizardry`). Questbuch: 11 neue Quests (Deep Aether im Kapitel dimensionen: Biom, Skyjade, Boss `deep_aether:eots_controller`; Create: Wizardry (5) und Familiars (3) im Kapitel irons_spells), 1430 Quests; Bossfuehrer um Deep Aether erweitert (73 Bosse, 17 Kategorien). **Questbuch-Layout** (`generator.py` `_entwirren`): Kosten jetzt mit echten Koordinaten, Linien durch fremde Quests werden bestraft (`NAH`), Linien-Laenge staerker gewichtet, danach deterministisches Simulated Annealing (Seed 7). Der Generator braucht dadurch ca. 2 Minuten. Mit `--bilder <ordner>` lassen sich die Kapitel als PNG ansehen. Im Spiel pruefen: Layout der grossen Kapitel (Create, Dimensionen, Draconic), neue Quests, Deep Aether/Familiars starten ohne Fehler.
+
+- 0.9.19 (Release auf Ansage): **Iris 1.8.14-beta.1** (`iris`, nur Client, 315 Mods) fuer Shader. Index von Hand ergaenzt (Cloud hat keinen Modrinth-Zugriff). Bekannte Iris-Issues: Startabsturz Sodium 0.8.13 (#3402, offen), Absturz nach Serverbeitritt (#3187), Aufloesung im Spiel aendern macht Bloecke unsichtbar (#3214), leeres Shader-Menue -> Hintergrund-Blur aus. **Im Client pruefen:** Start, Welt, Serverbeitritt, Shader an/aus. Wenn es crasht: Iris wieder raus (Zeile in `$ModList`, Index, MODLISTE).
 
 ## Offene Aufgaben
 1. **0.9.15 im Client testen:** kurz in eine neue Welt, auf Grafikfehler achten. Pruefen: Rezepte der drei Fragmente und des Chronicle-Kerns in JEI, Almost Unified (Mekanism-Stahl wird zu IE-Stahl), keine doppelten Erze, dazu die Punkte unter "Im Spiel pruefen" bei 0.9.13.
