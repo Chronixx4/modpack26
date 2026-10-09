@@ -6,5 +6,6 @@
   "icon": "minecraft:dragon_head",
   "boss": {
     "entity": "twilightforest:hydra"
-  }
+  },
+  "theme": "forest"
 }

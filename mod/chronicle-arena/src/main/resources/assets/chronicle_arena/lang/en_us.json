@@ -32,5 +32,22 @@
   "bar.chronicle_arena.pause": "Pause nach Welle %s / %s",
   "bar.chronicle_arena.boss": "%s",
   "bar.chronicle_arena.won": "Sieg!",
-  "bar.chronicle_arena.lost": "Niederlage"
+  "bar.chronicle_arena.lost": "Niederlage",
+  "item.chronicle_arena.arena_token": "Arena-Marke",
+  "gui.chronicle_arena.shop": "Shop",
+  "gui.chronicle_arena.shop_title": "Arena-Shop",
+  "gui.chronicle_arena.tokens": "Marken: %s",
+  "gui.chronicle_arena.buy": "Kaufen",
+  "gui.chronicle_arena.back": "Zurueck",
+  "gui.chronicle_arena.page": "Seite %s / %s",
+  "gui.chronicle_arena.tier_info": "Siege: %s, Bestzeit: %s",
+  "gui.chronicle_arena.tier_locked": "Gesperrt: erst %s schaffen",
+  "gui.chronicle_arena.tier_locked_short": "[gesperrt]",
+  "msg.chronicle_arena.not_enough": "Nicht genug Marken (%s noetig).",
+  "msg.chronicle_arena.bought": "Gekauft: %s fuer %s Marken.",
+  "msg.chronicle_arena.tokens": "+%s Arena-Marken",
+  "msg.chronicle_arena.unlocked": "Neue Stufe freigeschaltet: %s",
+  "msg.chronicle_arena.locked": "%s hat die Stufe %s noch nicht freigeschaltet (erst %s schaffen).",
+  "msg.chronicle_arena.stats": "%s: %s Siege, Bestzeit %s",
+  "msg.chronicle_arena.stats_tokens": "Marken im Inventar: %s"
 }

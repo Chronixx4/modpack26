@@ -12,5 +12,6 @@
       "entity": "minecraft:blaze",
       "count": 3
     }
-  ]
+  ],
+  "theme": "nether"
 }

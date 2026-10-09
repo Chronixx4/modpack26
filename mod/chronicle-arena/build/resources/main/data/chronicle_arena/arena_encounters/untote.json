@@ -8,32 +8,32 @@
     {
       "entity": "minecraft:zombie",
       "from_wave": 1,
-      "base": 4,
-      "per_wave": 0.6
+      "base": 2.8,
+      "per_wave": 0.42
     },
     {
       "entity": "minecraft:skeleton",
       "from_wave": 2,
-      "base": 2,
-      "per_wave": 0.5
+      "base": 1.4,
+      "per_wave": 0.35
     },
     {
       "entity": "minecraft:spider",
       "from_wave": 3,
-      "base": 2,
-      "per_wave": 0.4
+      "base": 1.4,
+      "per_wave": 0.28
     },
     {
       "entity": "minecraft:husk",
       "from_wave": 6,
-      "base": 2,
-      "per_wave": 0.4
+      "base": 1.4,
+      "per_wave": 0.28
     },
     {
       "entity": "minecraft:creeper",
       "from_wave": 4,
-      "base": 1,
-      "per_wave": 0.3
+      "base": 0.7,
+      "per_wave": 0.21
     }
   ],
   "elite": {
@@ -42,5 +42,6 @@
   },
   "finale": {
     "entity": "minecraft:wither_skeleton"
-  }
+  },
+  "theme": "default"
 }

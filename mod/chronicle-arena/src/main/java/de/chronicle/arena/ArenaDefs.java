@@ -4,7 +4,12 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.mojang.serialization.JsonOps;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.RegistryOps;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
@@ -30,7 +35,9 @@ public final class ArenaDefs {
 
     public record Tier(ResourceLocation id, int order, String name, String desc,
                        double health, double damage, double count, int waves,
-                       ResourceLocation loot, int xp, int bossRolls) {}
+                       ResourceLocation loot, int xp, int bossRolls,
+                       ResourceLocation requires, int tokens,
+                       double waveHealth, double waveDamage, double waveCount) {}
 
     /** Mob-Gruppe einer Welle: ab fromWave, Anzahl = base + (welle - fromWave) * perWave. */
     public record Pool(ResourceLocation entity, int fromWave, double base, double perWave) {}
@@ -39,7 +46,7 @@ public final class ArenaDefs {
 
     public record Encounter(ResourceLocation id, int order, boolean boss, String name, String desc,
                             ResourceLocation icon, List<Pool> pools, ResourceLocation elite, int eliteEvery,
-                            ResourceLocation finale, ResourceLocation bossEntity, List<Spawn> adds) {
+                            ResourceLocation finale, ResourceLocation bossEntity, List<Spawn> adds, String theme) {
 
         /** Alle Entity-IDs muessen in diesem Pack existieren, sonst wird die Begegnung ausgeblendet. */
         public boolean available() {
@@ -55,7 +62,26 @@ public final class ArenaDefs {
         }
     }
 
+    /** Shop-Angebot: Gegenstand gegen Arena-Marken. components ist ein optionales Komponenten-JSON. */
+    public record ShopOffer(ResourceLocation id, int order, String name, ResourceLocation item, int count, int price,
+                            JsonObject components) {
+        public boolean available() {
+            return BuiltInRegistries.ITEM.containsKey(item);
+        }
+
+        public ItemStack stack(HolderLookup.Provider registries) {
+            ItemStack stack = new ItemStack(BuiltInRegistries.ITEM.get(item), count);
+            if (components != null) {
+                DataComponentPatch.CODEC.parse(RegistryOps.create(JsonOps.INSTANCE, registries), components)
+                        .resultOrPartial(err -> LOGGER.error("Arena-Shop {}: Komponenten ungueltig: {}", id, err))
+                        .ifPresent(stack::applyComponents);
+            }
+            return stack;
+        }
+    }
+
     private static Map<ResourceLocation, Tier> tiers = new LinkedHashMap<>();
+    private static Map<ResourceLocation, ShopOffer> shop = new LinkedHashMap<>();
     private static Map<ResourceLocation, Encounter> encounters = new LinkedHashMap<>();
 
     private ArenaDefs() {}
@@ -68,6 +94,17 @@ public final class ArenaDefs {
         List<Encounter> out = new ArrayList<>();
         for (Encounter e : encounters.values()) if (e.available()) out.add(e);
         return out;
+    }
+
+    public static List<ShopOffer> shopOffers() {
+        List<ShopOffer> out = new ArrayList<>();
+        for (ShopOffer o : shop.values()) if (o.available()) out.add(o);
+        return out;
+    }
+
+    public static ShopOffer shopOffer(ResourceLocation id) {
+        ShopOffer o = id == null ? null : shop.get(id);
+        return o != null && o.available() ? o : null;
     }
 
     public static Tier tier(ResourceLocation id) {
@@ -86,6 +123,7 @@ public final class ArenaDefs {
     public static void onAddReloadListeners(AddReloadListenerEvent event) {
         event.addListener(new TierLoader());
         event.addListener(new EncounterLoader());
+        event.addListener(new ShopLoader());
     }
 
     private static ResourceLocation rl(JsonObject o, String key, ResourceLocation fallback) {
@@ -113,7 +151,12 @@ public final class ArenaDefs {
                             GsonHelper.getAsInt(o, "waves", 10),
                             rl(o, "loot", null),
                             GsonHelper.getAsInt(o, "xp", 0),
-                            GsonHelper.getAsInt(o, "boss_rolls", 2)));
+                            GsonHelper.getAsInt(o, "boss_rolls", 2),
+                            rl(o, "requires", null),
+                            GsonHelper.getAsInt(o, "tokens", 3),
+                            GsonHelper.getAsDouble(o, "wave_health", 1.0),
+                            GsonHelper.getAsDouble(o, "wave_damage", 1.0),
+                            GsonHelper.getAsDouble(o, "wave_count", 1.0)));
                 } catch (Exception ex) {
                     LOGGER.error("Arena-Stufe {} ungueltig: {}", e.getKey(), ex.toString());
                 }
@@ -123,6 +166,35 @@ public final class ArenaDefs {
             for (Tier t : list) out.put(t.id(), t);
             tiers = out;
             LOGGER.info("Arena: {} Stufen geladen", out.size());
+        }
+    }
+
+    private static final class ShopLoader extends SimpleJsonResourceReloadListener {
+        ShopLoader() {
+            super(new Gson(), "arena_shop");
+        }
+
+        @Override
+        protected void apply(Map<ResourceLocation, JsonElement> map, ResourceManager rm, ProfilerFiller profiler) {
+            List<ShopOffer> list = new ArrayList<>();
+            for (Map.Entry<ResourceLocation, JsonElement> e : map.entrySet()) {
+                try {
+                    JsonObject o = GsonHelper.convertToJsonObject(e.getValue(), "offer");
+                    list.add(new ShopOffer(e.getKey(), GsonHelper.getAsInt(o, "order", 0),
+                            GsonHelper.getAsString(o, "name", e.getKey().getPath()),
+                            ResourceLocation.parse(GsonHelper.getAsString(o, "item")),
+                            Math.max(1, GsonHelper.getAsInt(o, "count", 1)),
+                            Math.max(1, GsonHelper.getAsInt(o, "price", 1)),
+                            o.has("components") ? GsonHelper.getAsJsonObject(o, "components") : null));
+                } catch (Exception ex) {
+                    LOGGER.error("Arena-Shop {} ungueltig: {}", e.getKey(), ex.toString());
+                }
+            }
+            list.sort(Comparator.comparingInt(ShopOffer::order).thenComparing(t -> t.id().toString()));
+            Map<ResourceLocation, ShopOffer> out = new LinkedHashMap<>();
+            for (ShopOffer o : list) out.put(o.id(), o);
+            shop = out;
+            LOGGER.info("Arena: {} Shop-Angebote geladen", out.size());
         }
     }
 
@@ -195,7 +267,7 @@ public final class ArenaDefs {
                     GsonHelper.getAsString(o, "name", id.getPath()),
                     GsonHelper.getAsString(o, "description", ""),
                     rl(o, "icon", ResourceLocation.withDefaultNamespace("barrier")),
-                    pools, elite, eliteEvery, finale, bossEntity, adds);
+                    pools, elite, eliteEvery, finale, bossEntity, adds, GsonHelper.getAsString(o, "theme", "default"));
         }
     }
 }

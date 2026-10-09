@@ -6,5 +6,6 @@
   "icon": "minecraft:iron_axe",
   "boss": {
     "entity": "mowziesmobs:ferrous_wroughtnaut"
-  }
+  },
+  "theme": "default"
 }

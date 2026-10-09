@@ -12,5 +12,6 @@
       "entity": "minecraft:wither_skeleton",
       "count": 3
     }
-  ]
+  ],
+  "theme": "desert"
 }

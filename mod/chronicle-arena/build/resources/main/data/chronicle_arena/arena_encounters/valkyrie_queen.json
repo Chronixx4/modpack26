@@ -6,5 +6,6 @@
   "icon": "minecraft:golden_sword",
   "boss": {
     "entity": "aether:valkyrie_queen"
-  }
+  },
+  "theme": "sky"
 }

@@ -6,5 +6,6 @@
   "icon": "minecraft:sculk_shrieker",
   "boss": {
     "entity": "minecraft:warden"
-  }
+  },
+  "theme": "deepdark"
 }

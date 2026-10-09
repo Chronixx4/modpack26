@@ -78,3 +78,28 @@ png(os.path.join(OUT, 'arena_portal.png'), portal())
 open(os.path.join(OUT, 'arena_portal.png.mcmeta'), 'w').write('{"animation":{"frametime":3,"interpolate":true}}\n')
 png(os.path.join(OUT, 'arena_terminal_top.png'), terminal(True))
 png(os.path.join(OUT, 'arena_terminal_side.png'), terminal(False))
+
+
+def token():
+    px = []
+    for y in range(16):
+        row = []
+        for x in range(16):
+            dx, dy = x - 7.5, y - 7.5
+            d = math.hypot(dx, dy)
+            if d > 7.2:
+                row.append((0, 0, 0, 0))
+            elif d > 6.0:
+                row.append((196, 150, 40, 255))
+            elif d > 4.6:
+                row.append((240, 200, 70, 255))
+            else:
+                rune = abs(dx) < 1.2 or abs(dy) < 1.2 or abs(abs(dx) - abs(dy)) < 1.0
+                row.append((140, 70, 210, 255) if rune else (70, 30, 120, 255))
+        px.append(row)
+    return px
+
+
+ITEM_OUT = os.path.join(OUT, '..', 'item')
+os.makedirs(ITEM_OUT, exist_ok=True)
+png(os.path.join(ITEM_OUT, 'arena_token.png'), token())

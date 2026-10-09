@@ -6,5 +6,6 @@
   "icon": "minecraft:blaze_powder",
   "boss": {
     "entity": "aether:sun_spirit"
-  }
+  },
+  "theme": "sky"
 }

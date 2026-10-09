@@ -1,6 +1,7 @@
 package de.chronicle.arena.client;
 
 import de.chronicle.arena.Net;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
@@ -16,6 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TerminalScreen extends Screen {
+    private static final int[] TIER_COLORS = {0xCD7F32, 0xC0C0C0, 0xFFD700, 0xB366FF};
+
     private final Net.OpenTerminal data;
     private boolean bossMode;
     private int encIndex;
@@ -28,7 +31,6 @@ public class TerminalScreen extends Screen {
     public TerminalScreen(Net.OpenTerminal data) {
         super(Component.translatable("gui.chronicle_arena.title"));
         this.data = data;
-        this.tierIndex = 0;
     }
 
     private List<Net.EncInfo> current() {
@@ -37,11 +39,15 @@ public class TerminalScreen extends Screen {
         return out;
     }
 
+    private Net.TierInfo tier() {
+        return data.tiers().isEmpty() ? null : data.tiers().get(tierIndex);
+    }
+
     @Override
     protected void init() {
         int w = 200;
         int x = this.width / 2 - w / 2;
-        int y = this.height / 2 - 70;
+        int y = this.height / 2 - 82;
         modeButton = addRenderableWidget(Button.builder(Component.empty(), b -> {
             bossMode = !bossMode;
             encIndex = 0;
@@ -57,11 +63,14 @@ public class TerminalScreen extends Screen {
             refresh();
         }).bounds(x, y + 48, w, 20).build());
         startButton = addRenderableWidget(Button.builder(Component.translatable("gui.chronicle_arena.start"), b -> send(false))
-                .bounds(x, y + 120, 98, 20).build());
+                .bounds(x, y + 134, 98, 20).build());
         addRenderableWidget(Button.builder(Component.translatable("gui.chronicle_arena.spectate"), b -> send(true))
-                .bounds(x + 102, y + 120, 98, 20).build()).active = data.running();
+                .bounds(x + 102, y + 134, 98, 20).build()).active = data.running();
+        addRenderableWidget(Button.builder(Component.translatable("gui.chronicle_arena.shop"),
+                        b -> Minecraft.getInstance().setScreen(new ShopScreen(data, this)))
+                .bounds(x, y + 158, 98, 20).build());
         addRenderableWidget(Button.builder(Component.translatable("gui.chronicle_arena.close"), b -> onClose())
-                .bounds(x, y + 144, w, 20).build());
+                .bounds(x + 102, y + 158, 98, 20).build());
         refresh();
     }
 
@@ -71,30 +80,34 @@ public class TerminalScreen extends Screen {
         encButton.setMessage(list.isEmpty() ? Component.translatable("gui.chronicle_arena.none")
                 : Component.literal(list.get(Math.min(encIndex, list.size() - 1)).name()));
         encButton.active = list.size() > 0;
-        tierButton.setMessage(data.tiers().isEmpty() ? Component.translatable("gui.chronicle_arena.none")
-                : Component.translatable("gui.chronicle_arena.tier", data.tiers().get(tierIndex).name()));
-        startButton.active = !data.running() && !list.isEmpty() && !data.tiers().isEmpty();
+        Net.TierInfo t = tier();
+        if (t == null) {
+            tierButton.setMessage(Component.translatable("gui.chronicle_arena.none"));
+        } else {
+            Component name = Component.translatable("gui.chronicle_arena.tier", t.name());
+            if (t.locked()) name = name.copy().append(" ").append(Component.translatable("gui.chronicle_arena.tier_locked_short"));
+            tierButton.setMessage(name);
+        }
+        startButton.active = !data.running() && !list.isEmpty() && t != null && !t.locked();
     }
 
     private void send(boolean spectate) {
         List<Net.EncInfo> list = current();
         String enc = list.isEmpty() ? "" : list.get(Math.min(encIndex, list.size() - 1)).id();
-        String tier = data.tiers().isEmpty() ? "" : data.tiers().get(tierIndex).id();
-        PacketDistributor.sendToServer(new Net.Action(spectate, enc, tier));
+        Net.TierInfo t = tier();
+        PacketDistributor.sendToServer(new Net.Action(spectate, enc, t == null ? "" : t.id()));
         onClose();
     }
-
-    private static final int[] TIER_COLORS = {0xCD7F32, 0xC0C0C0, 0xFFD700, 0xB366FF};
 
     @Override
     public void renderBackground(GuiGraphics gfx, int mouseX, int mouseY, float partialTick) {
         super.renderBackground(gfx, mouseX, mouseY, partialTick);
         int cx = this.width / 2;
-        int top = this.height / 2 - 70;
+        int top = this.height / 2 - 82;
         int x0 = cx - 118;
         int x1 = cx + 118;
         int y0 = top - 44;
-        int y1 = top + 172;
+        int y1 = top + 186;
         gfx.fill(x0 - 2, y0 - 2, x1 + 2, y1 + 2, 0xFF7A3FD0);
         gfx.fill(x0, y0, x1, y1, 0xEE12101C);
         gfx.fill(x0, y0 + 26, x1, y0 + 27, 0xFF7A3FD0);
@@ -104,7 +117,7 @@ public class TerminalScreen extends Screen {
     public void render(GuiGraphics gfx, int mouseX, int mouseY, float partialTick) {
         super.render(gfx, mouseX, mouseY, partialTick);
         int cx = this.width / 2;
-        int top = this.height / 2 - 70;
+        int top = this.height / 2 - 82;
         gfx.drawCenteredString(this.font, this.title, cx, top - 38, 0xE0B8FF);
         gfx.drawCenteredString(this.font, Component.literal(data.status()), cx, top - 12, data.running() ? 0xFFAA00 : 0x55FF55);
 
@@ -124,14 +137,18 @@ public class TerminalScreen extends Screen {
                 ly += 10;
             }
         }
-        if (!data.tiers().isEmpty()) {
-            Net.TierInfo t = data.tiers().get(tierIndex);
+        Net.TierInfo t = tier();
+        if (t != null) {
+            int color = TIER_COLORS[Math.min(tierIndex, TIER_COLORS.length - 1)];
             int ly = y + 24;
             int n = 0;
             for (FormattedCharSequence line : this.font.split(FormattedText.of(t.desc()), 200)) {
                 if (n++ >= 2) break;
-                gfx.drawString(this.font, line, cx - 100, ly, TIER_COLORS[Math.min(tierIndex, TIER_COLORS.length - 1)]);
+                gfx.drawString(this.font, line, cx - 100, ly, color);
                 ly += 10;
+            }
+            if (!t.info().isEmpty()) {
+                gfx.drawString(this.font, Component.literal(t.info()), cx - 100, y + 46, t.locked() ? 0xFF7777 : 0x88DD88);
             }
         }
     }

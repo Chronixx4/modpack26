@@ -1,0 +1,16 @@
+{
+  "order": 13,
+  "name": "Arena-Hose",
+  "item": "minecraft:netherite_leggings",
+  "count": 1,
+  "price": 80,
+  "components": {
+    "minecraft:enchantments": {
+      "levels": {
+        "minecraft:protection": 4,
+        "minecraft:unbreaking": 3
+      }
+    },
+    "minecraft:custom_name": "{\"text\": \"Arena-Hose\", \"italic\": false, \"color\": \"light_purple\"}"
+  }
+}

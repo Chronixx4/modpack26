@@ -12,5 +12,6 @@
       "entity": "minecraft:enderman",
       "count": 3
     }
-  ]
+  ],
+  "theme": "end"
 }

@@ -76,6 +76,7 @@ public final class ArenaManager {
 
     private static final String TAG_ORIGIN = "chronicle_arena_origin";
     private static final String TAG_MODE = "chronicle_arena_mode";
+    private static final String TAG_PROGRESS = "chronicle_arena_progress";
 
     private static Run run;
     private static int tickCounter;
@@ -117,14 +118,17 @@ public final class ArenaManager {
         UUID bossId;
         boolean addsSpawned;
         boolean won;
+        boolean started;
+        int fightTicks;
 
         Run(ArenaDefs.Encounter encounter, ArenaDefs.Tier tier, int players) {
             this.encounter = encounter;
             this.tier = tier;
             int extra = Math.max(0, players - 1);
-            this.healthScale = tier.health() * (1.0 + 0.5 * extra);
-            this.damageScale = tier.damage() * (1.0 + 0.1 * extra);
-            this.countScale = tier.count() * (1.0 + 0.4 * extra);
+            boolean waves = !encounter.boss();
+            this.healthScale = tier.health() * (waves ? tier.waveHealth() : 1.0) * (1.0 + 0.5 * extra);
+            this.damageScale = tier.damage() * (waves ? tier.waveDamage() : 1.0) * (1.0 + 0.1 * extra);
+            this.countScale = tier.count() * (waves ? tier.waveCount() : 1.0) * (1.0 + 0.4 * extra);
             this.totalWaves = encounter.boss() ? 1 : tier.waves();
             bar.setProgress(1.0F);
         }
@@ -161,10 +165,24 @@ public final class ArenaManager {
     public static void openTerminal(ServerPlayer sp) {
         if (sp.level().dimension() != DIM) return;
         List<Net.TierInfo> tiers = new ArrayList<>();
-        for (ArenaDefs.Tier t : ArenaDefs.tiers()) tiers.add(new Net.TierInfo(t.id().toString(), t.name(), t.desc()));
+        for (ArenaDefs.Tier t : ArenaDefs.tiers()) {
+            int wins = wins(sp, t.id());
+            int best = best(sp, t.id());
+            String info = wins == 0 ? "" : Component.translatable("gui.chronicle_arena.tier_info", wins, formatTime(best)).getString();
+            boolean locked = !unlocked(sp, t);
+            if (locked) {
+                ArenaDefs.Tier req = ArenaDefs.tier(t.requires());
+                info = Component.translatable("gui.chronicle_arena.tier_locked", req == null ? "?" : req.name()).getString();
+            }
+            tiers.add(new Net.TierInfo(t.id().toString(), t.name(), t.desc(), locked, info));
+        }
         List<Net.EncInfo> encs = new ArrayList<>();
         for (ArenaDefs.Encounter e : ArenaDefs.encounters()) {
             encs.add(new Net.EncInfo(e.id().toString(), e.boss(), e.name(), e.desc(), e.icon().toString()));
+        }
+        List<Net.ShopInfo> shop = new ArrayList<>();
+        for (ArenaDefs.ShopOffer o : ArenaDefs.shopOffers()) {
+            shop.add(new Net.ShopInfo(o.id().toString(), o.name(), o.item().toString(), o.count(), o.price()));
         }
         String status;
         if (run == null) {
@@ -173,7 +191,21 @@ public final class ArenaManager {
             status = Component.translatable("gui.chronicle_arena.status_running", run.encounter.name(), run.tier.name(),
                     run.alive.size()).getString();
         }
-        PacketDistributor.sendToPlayer(sp, new Net.OpenTerminal(run != null, status, tiers, encs));
+        PacketDistributor.sendToPlayer(sp, new Net.OpenTerminal(run != null, status, countTokens(sp), tiers, encs, shop));
+    }
+
+    public static void handleBuy(ServerPlayer sp, Net.Buy buy) {
+        if (sp.level().dimension() != DIM) return;
+        ArenaDefs.ShopOffer offer = ArenaDefs.shopOffer(ResourceLocation.tryParse(buy.offer()));
+        if (offer == null) return;
+        if (countTokens(sp) < offer.price()) {
+            sp.sendSystemMessage(Component.translatable("msg.chronicle_arena.not_enough", offer.price()));
+            return;
+        }
+        removeTokens(sp, offer.price());
+        ItemHandlerHelper.giveItemToPlayer(sp, offer.stack(sp.server.registryAccess()));
+        sp.sendSystemMessage(Component.translatable("msg.chronicle_arena.bought", offer.name(), offer.price()));
+        PacketDistributor.sendToPlayer(sp, new Net.Tokens(countTokens(sp)));
     }
 
     public static void handleAction(ServerPlayer sp, Net.Action action) {
@@ -198,6 +230,16 @@ public final class ArenaManager {
         }
         List<ServerPlayer> group = playersInLobby(sp.server);
         if (!group.contains(sp)) group.add(sp);
+        for (ServerPlayer p : group) {
+            if (!unlocked(p, tier)) {
+                ArenaDefs.Tier req = ArenaDefs.tier(tier.requires());
+                for (ServerPlayer q : group) {
+                    q.sendSystemMessage(Component.translatable("msg.chronicle_arena.locked", p.getDisplayName(), tier.name(),
+                            req == null ? "?" : req.name()));
+                }
+                return;
+            }
+        }
         startRun(sp.server, enc, tier, group);
     }
 
@@ -207,6 +249,7 @@ public final class ArenaManager {
         ServerLevel level = server.getLevel(DIM);
         if (level == null) return;
         ArenaBuilder.ensureBuilt(level);
+        ArenaBuilder.applyTheme(level, enc.theme());
         Run r = new Run(enc, tier, group.size());
         run = r;
         int i = 0;
@@ -272,6 +315,7 @@ public final class ArenaManager {
             ServerPlayer p = server.getPlayerList().getPlayer(id);
             if (p == null || level == null) continue;
             if (won) {
+                recordWin(p, r);
                 reward(p, level, r);
             } else {
                 p.sendSystemMessage(Component.translatable("msg.chronicle_arena.lost"));
@@ -297,6 +341,18 @@ public final class ArenaManager {
             }
         }
         if (tier.xp() > 0) p.giveExperiencePoints(tier.xp());
+        int tokens = tier.tokens() * (r.encounter.boss() ? 2 : 1);
+        if (tokens > 0) {
+            ItemHandlerHelper.giveItemToPlayer(p, new ItemStack(ModRegistry.TOKEN.get(), tokens));
+            p.sendSystemMessage(Component.translatable("msg.chronicle_arena.tokens", tokens));
+        }
+        if (wins(p, tier.id()) == 1) {
+            for (ArenaDefs.Tier other : ArenaDefs.tiers()) {
+                if (tier.id().equals(other.requires())) {
+                    p.sendSystemMessage(Component.translatable("msg.chronicle_arena.unlocked", other.name()));
+                }
+            }
+        }
     }
 
     private static void endRun(MinecraftServer server) {
@@ -397,6 +453,7 @@ public final class ArenaManager {
             finish(server, false);
         }
 
+        if (r.started && r.state != State.ENDING) r.fightTicks++;
         switch (r.state) {
             case PREP -> {
                 if (r.timer == PREP_TICKS || r.timer % 20 == 0) {
@@ -414,6 +471,7 @@ public final class ArenaManager {
 
     private void beginNext(MinecraftServer server, ServerLevel level, Run r) {
         if (r.encounter.boss()) {
+            r.started = true;
             r.state = State.BOSS;
             r.wave = 1;
             r.queue.add(new Spawn(r.encounter.bossEntity(), false, true));
@@ -421,6 +479,7 @@ public final class ArenaManager {
             r.bar.setColor(BossEvent.BossBarColor.RED);
             return;
         }
+        r.started = true;
         r.state = State.WAVE;
         r.wave++;
         buildWave(level, r);
@@ -540,7 +599,7 @@ public final class ArenaManager {
             mob.finalizeSpawn(level, level.getCurrentDifficultyAt(le.blockPosition()), MobSpawnType.EVENT, null);
             mob.setPersistenceRequired();
         }
-        double h = r.healthScale * (s.elite ? 2.5 : 1.0);
+        double h = r.healthScale * (s.elite ? 2.0 : 1.0);
         scale(le, Attributes.MAX_HEALTH, h);
         scale(le, Attributes.ATTACK_DAMAGE, r.damageScale);
         le.setHealth(le.getMaxHealth());
@@ -729,6 +788,16 @@ public final class ArenaManager {
                     leave(p);
                     return 1;
                 }))
+                .then(Commands.literal("stats").executes(ctx -> {
+                    ServerPlayer p = ctx.getSource().getPlayerOrException();
+                    for (ArenaDefs.Tier t : ArenaDefs.tiers()) {
+                        int w = wins(p, t.id());
+                        p.sendSystemMessage(Component.translatable("msg.chronicle_arena.stats", t.name(), w,
+                                w == 0 ? "-" : formatTime(best(p, t.id()))));
+                    }
+                    p.sendSystemMessage(Component.translatable("msg.chronicle_arena.stats_tokens", countTokens(p)));
+                    return 1;
+                }))
                 .then(Commands.literal("debug").requires(src -> src.hasPermission(2)).executes(ctx -> {
                     debug(ctx.getSource().getServer());
                     return 1;
@@ -787,6 +856,22 @@ public final class ArenaManager {
             }
         }
         LOGGER.info("ARENA-DEBUG: Spawn-Test fertig, ok={} fehler={}", ok, fail);
+        int shopOk = 0;
+        for (ArenaDefs.ShopOffer o : ArenaDefs.shopOffers()) {
+            ItemStack st = o.stack(server.registryAccess());
+            if (st.isEmpty()) LOGGER.error("ARENA-DEBUG: Shop {} leer", o.id());
+            else shopOk++;
+            if (o.components() != null && st.getEnchantments().isEmpty()) LOGGER.error("ARENA-DEBUG: Shop {} ohne Verzauberung", o.id());
+        }
+        LOGGER.info("ARENA-DEBUG: Shop {} von {} Angeboten ok", shopOk, ArenaDefs.shopOffers().size());
+        for (String theme : ArenaBuilder.themes()) {
+            try {
+                ArenaBuilder.applyTheme(level, theme);
+            } catch (Throwable t) {
+                LOGGER.error("ARENA-DEBUG: Thema {} Fehler", theme, t);
+            }
+        }
+        LOGGER.info("ARENA-DEBUG: {} Themen gebaut", ArenaBuilder.themes().size());
     }
 
     // ------------------------------------------------------------------ Hilfen
@@ -811,6 +896,67 @@ public final class ArenaManager {
         sp.teleportTo(level, x, y, z, yaw, 0.0F);
         sp.resetFallDistance();
         sp.setDeltaMovement(Vec3.ZERO);
+    }
+
+    private static CompoundTag progress(ServerPlayer p) {
+        CompoundTag root = p.getPersistentData();
+        if (!root.contains(TAG_PROGRESS)) root.put(TAG_PROGRESS, new CompoundTag());
+        return root.getCompound(TAG_PROGRESS);
+    }
+
+    static int wins(ServerPlayer p, ResourceLocation tier) {
+        return progress(p).getCompound(tier.toString()).getInt("wins");
+    }
+
+    static int best(ServerPlayer p, ResourceLocation tier) {
+        return progress(p).getCompound(tier.toString()).getInt("best");
+    }
+
+    static boolean unlocked(ServerPlayer p, ArenaDefs.Tier tier) {
+        return tier.requires() == null || wins(p, tier.requires()) > 0;
+    }
+
+    private static void recordWin(ServerPlayer p, Run r) {
+        CompoundTag pr = progress(p);
+        String key = r.tier.id().toString();
+        CompoundTag t = pr.getCompound(key);
+        t.putInt("wins", t.getInt("wins") + 1);
+        int best = t.getInt("best");
+        if (best == 0 || r.fightTicks < best) t.putInt("best", Math.max(1, r.fightTicks));
+        pr.put(key, t);
+    }
+
+    static String formatTime(int ticks) {
+        int sec = ticks / 20;
+        return String.format("%d:%02d", sec / 60, sec % 60);
+    }
+
+    static int countTokens(ServerPlayer p) {
+        int n = 0;
+        for (ItemStack st : p.getInventory().items) if (st.is(ModRegistry.TOKEN.get())) n += st.getCount();
+        for (ItemStack st : p.getInventory().offhand) if (st.is(ModRegistry.TOKEN.get())) n += st.getCount();
+        return n;
+    }
+
+    static void removeTokens(ServerPlayer p, int amount) {
+        int left = amount;
+        for (ItemStack st : p.getInventory().items) {
+            if (left <= 0) break;
+            if (st.is(ModRegistry.TOKEN.get())) {
+                int take = Math.min(left, st.getCount());
+                st.shrink(take);
+                left -= take;
+            }
+        }
+        for (ItemStack st : p.getInventory().offhand) {
+            if (left <= 0) break;
+            if (st.is(ModRegistry.TOKEN.get())) {
+                int take = Math.min(left, st.getCount());
+                st.shrink(take);
+                left -= take;
+            }
+        }
+        p.getInventory().setChanged();
     }
 
     private static void rememberMode(ServerPlayer sp) {

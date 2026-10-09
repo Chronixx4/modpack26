@@ -12,5 +12,6 @@
       "entity": "minecraft:skeleton",
       "count": 4
     }
-  ]
+  ],
+  "theme": "deepdark"
 }

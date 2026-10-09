@@ -6,5 +6,6 @@
   "icon": "minecraft:heart_of_the_sea",
   "boss": {
     "entity": "cataclysm:the_leviathan"
-  }
+  },
+  "theme": "sea"
 }

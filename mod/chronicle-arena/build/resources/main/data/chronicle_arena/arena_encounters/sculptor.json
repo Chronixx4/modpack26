@@ -6,5 +6,6 @@
   "icon": "minecraft:chiseled_stone_bricks",
   "boss": {
     "entity": "mowziesmobs:sculptor"
-  }
+  },
+  "theme": "desert"
 }

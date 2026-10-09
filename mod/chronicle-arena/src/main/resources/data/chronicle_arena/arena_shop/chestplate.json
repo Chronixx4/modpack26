@@ -1,0 +1,16 @@
+{
+  "order": 12,
+  "name": "Arena-Brustpanzer",
+  "item": "minecraft:netherite_chestplate",
+  "count": 1,
+  "price": 90,
+  "components": {
+    "minecraft:enchantments": {
+      "levels": {
+        "minecraft:protection": 4,
+        "minecraft:unbreaking": 3
+      }
+    },
+    "minecraft:custom_name": "{\"text\": \"Arena-Brustpanzer\", \"italic\": false, \"color\": \"light_purple\"}"
+  }
+}

@@ -8,5 +8,10 @@
   "waves": 16,
   "loot": "chronicle_arena:rewards/gold",
   "xp": 1500,
-  "boss_rolls": 3
+  "boss_rolls": 3,
+  "requires": "chronicle_arena:silber",
+  "tokens": 10,
+  "wave_health": 0.75,
+  "wave_damage": 0.8,
+  "wave_count": 0.65
 }

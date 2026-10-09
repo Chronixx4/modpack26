@@ -6,5 +6,6 @@
   "icon": "minecraft:iron_block",
   "boss": {
     "entity": "cataclysm:the_harbinger"
-  }
+  },
+  "theme": "default"
 }

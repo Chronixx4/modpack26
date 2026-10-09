@@ -3,6 +3,8 @@ package de.chronicle.arena;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.SoundType;
@@ -34,6 +36,8 @@ public final class ModRegistry {
     public static final DeferredItem<BlockItem> PORTAL_ITEM = ITEMS.registerSimpleBlockItem(PORTAL);
     public static final DeferredItem<BlockItem> TERMINAL_ITEM = ITEMS.registerSimpleBlockItem(TERMINAL);
 
+    public static final DeferredItem<Item> TOKEN = ITEMS.registerSimpleItem("arena_token", new Item.Properties().rarity(Rarity.RARE));
+
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> TAB = TABS.register("main",
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.chronicle_arena"))
@@ -41,6 +45,7 @@ public final class ModRegistry {
                     .displayItems((params, out) -> {
                         out.accept(PORTAL_ITEM.get());
                         out.accept(TERMINAL_ITEM.get());
+                        out.accept(TOKEN.get());
                     })
                     .build());
 

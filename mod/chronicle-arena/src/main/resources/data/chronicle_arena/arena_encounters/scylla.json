@@ -12,5 +12,6 @@
       "entity": "minecraft:drowned",
       "count": 4
     }
-  ]
+  ],
+  "theme": "sea"
 }
