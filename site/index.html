@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
+<script>document.documentElement.classList.add('js');</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
@@ -293,6 +294,109 @@
   footer .box p { margin:0 0 6px; } footer .box p:last-child { margin:0; }
 
   @media (prefers-reduced-motion:reduce){ .splash,.out { animation:none; } html { scroll-behavior:auto; } }
+
+  /* ---------- Bewegung: Übergänge und Animationen ---------- */
+  .slot,.tab,.mc,.chip,.dl,.gnav a,.cat,.feat,.dim,.bcard,.recipe,.way,.stat,.toast,.mod,details.bg,.timeline > li
+    { transition:transform .18s steps(4), background-color .18s, box-shadow .18s, filter .18s; }
+  .slot:active,.mc:active,.chip:active,.gnav a:active,.tab:active { transform:translateY(3px); }
+  .hotbar { transition:box-shadow .25s, background-color .25s; }
+  .hotbar.stuck { box-shadow:0 6px 0 rgba(0,0,0,.35); background:rgba(14,15,18,.97); }
+  .tab { transition:top .18s steps(3), padding .18s steps(3), background-color .18s, color .18s; }
+  .slot .ico { transition:transform .18s steps(3); }
+  @media (hover:hover) {
+    .slot:hover { transform:translateY(-3px); }
+    .slot:hover .ico { transform:scale(1.15) rotate(-6deg); }
+    .mc:hover { transform:translateY(-3px); }
+    .dl:hover,.cat:hover,.feat:hover,.bcard:hover,.recipe:hover,.way:hover,.stat:hover,.toast:hover { transform:translateY(-4px); }
+    .dim:hover { transform:translateY(-4px) scale(1.02); }
+    .mod:hover { transform:translateX(3px); background:var(--panel2); }
+    .chip:hover,.gnav a:hover { transform:translateY(-2px); }
+    .rc:hover i { transform:scale(1.2) rotate(-4deg); }
+  }
+  .rc i { transition:transform .18s steps(3); }
+  .dim::before { transition:transform .6s ease-out; }
+  .dim:hover::before { transform:scale(1.12); }
+  details.bg > ul { animation:fadeDown .3s ease-out; }
+  details.bg summary::before { transition:background-color .2s, transform .2s steps(3); }
+  details.bg[open] summary::before { transform:rotate(180deg); }
+
+  @keyframes fadeUp { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:none; } }
+  @keyframes fadeDown { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:none; } }
+  @keyframes dropIn { 0% { opacity:0; transform:translateY(-40px) scale(1.06); } 60% { opacity:1; transform:translateY(4px); } 100% { opacity:1; transform:none; } }
+  @keyframes popIn { 0% { opacity:0; transform:scale(.85); } 100% { opacity:1; transform:none; } }
+  @keyframes bob { from { transform:translateY(0); } to { transform:translateY(-6px); } }
+  @keyframes shine { 0%,70% { background-position:-200% 0; } 100% { background-position:200% 0; } }
+
+  /* Hero-Intro */
+  .logo { animation:dropIn .8s cubic-bezier(.2,.8,.3,1) both, bob 3s ease-in-out 1s infinite alternate; }
+  .tag { animation:fadeUp .7s ease-out .35s both; }
+  .cta .mc { animation:fadeUp .6s ease-out both; position:relative; }
+  .cta .mc:nth-child(1) { animation-delay:.55s; } .cta .mc:nth-child(2) { animation-delay:.7s; }
+  .cta .mc.green::after { content:''; position:absolute; inset:0; pointer-events:none;
+      background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.35) 50%,transparent 65%) 0 0/200% 100%; animation:shine 3.5s linear 1.5s infinite; }
+  #scene { will-change:transform; inset:auto; top:-80px; height:calc(100% + 80px); }
+
+  /* Ansichtswechsel */
+  .view.enter { animation:fadeUp .45s ease-out both; }
+  .pixel-rule { transform-origin:left; }
+  .view.enter .pixel-rule,.rv.in .pixel-rule { animation:grow .6s steps(8) both; }
+  @keyframes grow { from { transform:scaleX(0); } to { transform:none; } }
+
+  /* Einblenden beim Scrollen (Grundzustand bleibt sichtbar, wenn JS fehlt) */
+  html.js .rv:not(.in) { opacity:0; transform:translateY(26px); }
+  html.js .rv { transition:opacity .55s ease-out, transform .55s ease-out, background-color .18s, box-shadow .18s; transition-delay:var(--d,0s),var(--d,0s),0s,0s; }
+  html.js .rv.in { opacity:1; }
+  @media (hover:hover) { html.js .rv.in:hover { transition-delay:0s; } }
+
+  /* Dynamische Karten (Mods, Bosse) */
+  .mod,.bcard { animation:popIn .3s ease-out both; animation-delay:calc(var(--i,0) * 18ms); }
+  .chip[aria-pressed="true"] { animation:popIn .25s ease-out; }
+  .tab[aria-current="page"] { animation:popIn .25s ease-out; }
+  .toast .ico,.feat .ico,.cat header .ico { transition:transform .25s steps(4); }
+  .toast:hover .ico,.feat:hover .ico,.cat:hover header .ico { transform:rotate(-8deg) scale(1.1); }
+
+  /* Handy */
+  .tabs .wrap { scroll-snap-type:x proximity; scroll-padding:16px; }
+  .tab { scroll-snap-align:start; }
+  .tabs { position:relative; }
+  .tabs::after { content:''; position:absolute; right:0; top:0; bottom:0; width:34px; pointer-events:none; background:linear-gradient(90deg,transparent,#0e0f12); transition:opacity .2s; }
+  .tabs.end::after { opacity:0; }
+  @media (max-width:760px) {
+    body { font-size:18px; }
+    main section { padding-block:40px 4px; }
+    .panel { padding:16px; }
+    .hero { height:clamp(430px,118vw,520px); }
+    .tag { margin-top:46px; }
+    .splash { right:2%; bottom:-34px; }
+    .mc { min-width:0; width:min(100%,290px); padding:15px 18px; }
+    .slot { padding:8px 11px; }
+    .tab { padding:14px 16px 13px; }
+    .chip { padding:11px 12px; font-size:9px; }
+    .gnav a { padding:12px 14px; }
+    .recipe { padding:16px; }
+    .rbody { justify-content:center; }
+    .dl,.toast,.feat { padding:14px; }
+    details.bg summary { padding:16px 14px; flex-wrap:wrap; }
+    details.bg summary span { margin-left:34px; white-space:normal; }
+    details.bg ul { padding-left:34px; }
+    .timeline { padding-left:18px; }
+    .timeline > li::before { left:-29px; }
+    .msearch input { font-size:18px; padding:14px; }
+    .mod small { max-width:40%; }
+    .stats { gap:10px; }
+    footer .box { padding:14px; }
+  }
+  @media (max-width:460px) {
+    .hotbar .wrap { gap:6px; padding-inline:10px; }
+    .hotbar .brand { font-size:10px; }
+    .slots { gap:3px; }
+    .slot { padding:7px 6px; }
+    .slot .ico { width:20px; height:20px; }
+  }
+  @media (prefers-reduced-motion:reduce) {
+    *,*::before,*::after { animation:none !important; transition:none !important; }
+    html.js .rv:not(.in) { opacity:1; transform:none; }
+  }
 </style>
 </head>
 <body>
@@ -781,7 +885,7 @@
       var sec = document.createElement('section'); sec.className = 'mcat';
       var h = document.createElement('h3'); h.textContent = c.name + ' '; var sp = document.createElement('span'); sp.textContent = '(' + list.length + ')'; h.appendChild(sp); sec.appendChild(h);
       var g = document.createElement('div'); g.className = 'mgrid';
-      list.forEach(function (m) { var d = document.createElement('div'); d.className = 'mod'; var b = document.createElement('b'); b.textContent = m.n; d.appendChild(b);
+      list.forEach(function (m) { var d = document.createElement('div'); d.className = 'mod'; d.style.setProperty('--i', Math.min(shown, 20)); var b = document.createElement('b'); b.textContent = m.n; d.appendChild(b);
         if (m.t) { var t = document.createElement('span'); t.className = 'tg ' + m.t; t.textContent = { client: 'Client', server: 'Server', cf: 'CF' }[m.t]; d.appendChild(t); }
         var v = document.createElement('small'); v.textContent = m.v; v.title = m.v; d.appendChild(v); g.appendChild(d); });
       sec.appendChild(g); mout.appendChild(sec);
@@ -815,7 +919,7 @@
         if (grp && b.mod !== grp) return;
         if (lq && (b.name + ' ' + g.name + ' ' + b.id + ' ' + b.text.join(' ')).toLowerCase().indexOf(lq) < 0) return;
         n++;
-        var c = document.createElement('article'); c.className = 'bcard';
+        var c = document.createElement('article'); c.className = 'bcard'; c.style.setProperty('--i', Math.min(n, 24));
         var h = document.createElement('header'); h.style.setProperty('--bc', COL[gi % COL.length]);
         var t = document.createElement('h3'); t.textContent = b.name; h.appendChild(t);
         var m = document.createElement('span'); m.className = 'bmod'; m.textContent = g.name + (b.anzahl > 1 ? ' · ' + b.anzahl + 'x besiegen' : ''); h.appendChild(m); c.appendChild(h);
@@ -839,6 +943,31 @@
       document.getElementById('bq').addEventListener('input', function (ev) { q = ev.target.value; render(); });
       render();
     }).catch(function () { out.innerHTML = '<p class="lead">Die Bosse konnten nicht geladen werden.</p>'; });
+  })();
+
+
+  /* ---------- Bewegung ---------- */
+  (function () {
+    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)').matches;
+    var hot = document.querySelector('.hotbar'), tabs = document.querySelector('.tabs'), tw = tabs.querySelector('.wrap');
+    function tick() { hot.classList.toggle('stuck', window.scrollY > 8);
+      tabs.classList.toggle('end', tw.scrollLeft + tw.clientWidth >= tw.scrollWidth - 4);
+      if (!reduce && window.scrollY < 700) document.getElementById('scene').style.transform = 'translateY(' + Math.min(80, Math.round(window.scrollY * .2)) + 'px)'; }
+    window.addEventListener('scroll', tick, { passive: true }); tw.addEventListener('scroll', tick, { passive: true }); window.addEventListener('resize', tick); tick();
+
+    var io = 'IntersectionObserver' in window && !reduce ? new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); if (e.target.classList.contains('stat')) count(e.target.querySelector('b')); } });
+    }, { threshold: .08, rootMargin: '0px 0px -30px 0px' }) : null;
+    function count(b) { var t = parseInt(b.textContent, 10); if (!t || t < 10 || reduce || String(t) !== b.textContent) return; var t0 = performance.now();
+      (function f(n) { var k = Math.min(1, (n - t0) / 900); b.textContent = k < 1 ? Math.round(t * (1 - Math.pow(1 - k, 3))) : t; if (k < 1) requestAnimationFrame(f); })(t0); }
+    document.querySelectorAll('.stat,.dl,.toast,.cat,.dim,.feat,.srv div,.recipe,.way,details.bg,.timeline > li,.core,.note,.gnav,section > h2,section > .kicker,section > .lead').forEach(function (el, i) {
+      el.classList.add('rv'); el.style.setProperty('--d', (i % 6) * 0.06 + 's'); if (io) io.observe(el); else el.classList.add('in'); });
+
+    var last = null;
+    function enter() { var v = document.querySelector('.view:not([hidden])'); if (!v || v === last) return; var first = !last; last = v;
+      if (!reduce && !first) { v.classList.remove('enter'); void v.offsetWidth; v.classList.add('enter'); }
+      var a = document.querySelector('.tab[aria-current="page"]'); if (a) { try { tw.scrollTo({ left: Math.max(0, a.offsetLeft - 16), behavior: reduce ? 'auto' : 'smooth' }); } catch (e) {} } }
+    window.addEventListener('hashchange', enter); enter();
   })();
 
   /* ---------- Sperre ---------- */
