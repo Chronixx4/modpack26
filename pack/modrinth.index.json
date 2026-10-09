@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
   "game": "minecraft",
-  "versionId": "0.9.17",
+  "versionId": "0.9.18",
   "name": "Chronicle",
   "files": [
     {
@@ -4488,6 +4488,66 @@
         "https://cdn.modrinth.com/data/pmUh6mZW/versions/6Km4SJcj/cataclysm_create-1.21.1-Neoforge.jar"
       ],
       "fileSize": 177219
+    },
+    {
+      "path": "mods/deep_aether-1.21.1-1.1.5.1.jar",
+      "hashes": {
+        "sha1": "2cffdb08d7cb068186cf0fe766fd937425889af1",
+        "sha512": "f848fee0a8a73d0696bf721753af1b752b067791900a19a949ce9faa0adcf1f03b29f44e5ea945404c4505891b14dadab89009253cd31cc85c241c07fe9c5684"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/gcHIih5B/versions/MSW5emg8/deep_aether-1.21.1-1.1.5.1.jar"
+      ],
+      "fileSize": 46236011
+    },
+    {
+      "path": "mods/alshanex_familiars-1.21.1_v4.0.3.jar",
+      "hashes": {
+        "sha1": "e5051c2385a426d05bf203ba8081a23d891f6686",
+        "sha512": "795c77002414c4bd39532fe97a31577f55a86e2d56d131d0abcb51dd8a68c2c99654f71ba3f0908cc54de094eac7fc72e1797531f7f68493380299344070a23c"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/GmF3uubs/versions/cnBuaArR/alshanex_familiars-1.21.1_v4.0.3.jar"
+      ],
+      "fileSize": 21848062
+    },
+    {
+      "path": "mods/create_wizardry-1.21.1-0.5.0.jar",
+      "hashes": {
+        "sha1": "b692265fb72866036f6e494bcdf477ac70c43088",
+        "sha512": "3a1f3f10300506aa3886454f60acde0369b3496106fff24ac590675b1113931864c7892f39ac8fa0db4ca305b4f283b0d4b2f416f80c48dc5057b58665844f81"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/OeGdeWEj/versions/BRpxKyDt/create_wizardry-1.21.1-0.5.0.jar"
+      ],
+      "fileSize": 604049
+    },
+    {
+      "path": "mods/familiarslib-1.21.1-1.7.1.jar",
+      "hashes": {
+        "sha1": "7fa3f3116e35c12456425ae195924ced33fcc2eb",
+        "sha512": "7f31b89d3402c32d427d0184fb6b19f3d23a879aa813a846d5fe912da0ca62100b6e8b797f46b5f64981c08ccce64cbb0e098f49bf810485df4df6b0893802af"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/dAPGqOME/versions/2gOPLUTN/familiarslib-1.21.1-1.7.1.jar"
+      ],
+      "fileSize": 341186
     }
   ],
   "dependencies": {

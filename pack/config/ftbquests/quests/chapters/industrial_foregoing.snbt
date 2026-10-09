@@ -225,7 +225,7 @@
 				}
 			]
 			x: 10.0d
-			y: 3.0d
+			y: -3.0d
 		}
 		{
 			dependencies: [
@@ -259,7 +259,7 @@
 				}
 			]
 			x: 10.0d
-			y: 4.5d
+			y: 3.0d
 		}
 		{
 			dependencies: [

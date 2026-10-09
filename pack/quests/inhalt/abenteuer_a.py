@@ -210,6 +210,17 @@ kapitel('dimensionen', '&2Dimensionen', 'minecraft:obsidian', 'Neue Welten entde
       'Der erste Aether-Dungeon. Am Ende wartet ein Boss (siehe Bosse-Kapitel), danach kommen Silber- und Gold-Dungeon.',
       nach=['aether'], belohnung=3, optional=True, zeile=-4, spalte=4),
 
+    # ---- Deep Aether (Addon fuer den Aether) ----
+    Q('da_start', 'Deep Aether', ('biome', 'deep_aether:golden_grove'),
+      '&eDeep Aether&r erweitert den Aether um neue Biome wie Goldene Haine, Aerglow-Wälder und Sümpfe, dazu neue Materialien und Dekoblöcke. Schau dich ruhig auf den Inseln um.',
+      nach=['gravitit'], belohnung=2, optional=True),
+    Q('da_skyjade', 'Skyjade', ('item', 'deep_aether:skyjade', 4),
+      'Skyjade ist ein neuer Edelstein aus Deep Aether. Daraus entstehen Rüstung und Werkzeuge; die Rezepte zeigt JEI.',
+      nach=['da_start'], belohnung=2, optional=True),
+    Q('da_sturm', 'Auge des Sturms', ('kill', 'deep_aether:eots_controller', 1),
+      'Der Boss von Deep Aether lauert in den Sturmwolken. Ein starker Wind weht dort: Schlag auf das Auge, um den Kampf zu starten.',
+      nach=['da_skyjade'], belohnung='loot3', optional=True, form='hexagon'),
+
     # ---- Allthemodium ----
     Q('atm_erz', 'Allthemodium', 'allthemodium:allthemodium_ingot',
       'Allthemodium-Erz steckt in Wänden und Decken der Höhlen im Tiefen Dunkel. Abbauen nur von Hand und mit &eNetherit-Spitzhacke&r.',

@@ -236,6 +236,10 @@
 		"Ein Fokus, mit dem Zauber Blöcke verwandeln. Was genau geht, steht im Handbuch."
 	]
 	quest.10C282A93513E701.title: "Fokus der Verwandlung"
+	quest.10CC68D74283D7F9.quest_desc: [
+		"Ein Rüstungsset, das auf Begleiter abgestimmt ist. Was es genau bringt, steht im Tooltip der Teile."
+	]
+	quest.10CC68D74283D7F9.title: "Familiologen-Set"
 	quest.10E44D1617AE4C33.quest_desc: [
 		"Samen plus Quelljuwel ergeben Magebloom-Saat. Die Blüten werden zu Fasern für Rüstungen und Pergament."
 	]
@@ -434,6 +438,10 @@
 		"Der Generator entsteht in einer Sequenziellen Montage mit Kondensator, Stahlblech, Kupferspule, Magnet und mehr. Er erzeugt aus Rotation Strom.\n\nWie Spannung, Leistung und Gruppen funktionieren, erklärt das Ponder."
 	]
 	quest.12A21B94464BB50C.title: "Generator"
+	quest.12C5B131074EA829.quest_desc: [
+		"&eDeep Aether&r erweitert den Aether um neue Biome wie Goldene Haine, Aerglow-Wälder und Sümpfe, dazu neue Materialien und Dekoblöcke. Schau dich ruhig auf den Inseln um."
+	]
+	quest.12C5B131074EA829.title: "Deep Aether"
 	quest.12CC94D9B77E7152.quest_desc: [
 		"&eFusion Crafting&r: Der Fusion Crafting Core steht in der Mitte, die &eInjektoren&r zeigen auf ihn. In den Kern kommt das Haupt-Item, in die Injektoren die Zutaten."
 		""
@@ -684,6 +692,10 @@
 		"Rakete auf die Startrampe stellen, betanken, einsteigen und mit Leertaste starten."
 	]
 	quest.1595B634D0C3F8EC.title: "Rakete Stufe 1"
+	quest.159862F72027B7BF.quest_desc: [
+		"Der Blaze Caster zaubert automatisch. Er entsteht in einer Montagelinie aus einem Lohenbrenner."
+	]
+	quest.159862F72027B7BF.title: "Blaze Caster"
 	quest.15998F5DBAED0897.quest_desc: [
 		"Der Herd ist eine bequeme Hitzequelle für den Kochtopf. Oben drauf kannst du auch direkt Fleisch braten."
 	]
@@ -1370,6 +1382,10 @@
 		"Leg ein Paket mit einem Spielernamen als Adresse und eine Robo-Biene in den Hafen: Die Biene fliegt das Paket zu diesem Spieler. Häfen können sich auch gegenseitig beliefern.\n\nMehr zeigt das Ponder (Taste &eW&r)."
 	]
 	quest.1C41923DA025078D.title: "Bienenhafen"
+	quest.1C4BB919EAF477EB.quest_desc: [
+		"Der Boss von Deep Aether lauert in den Sturmwolken. Ein starker Wind weht dort: Schlag auf das Auge, um den Kampf zu starten."
+	]
+	quest.1C4BB919EAF477EB.title: "Auge des Sturms"
 	quest.1C5A4F3B970A2D6D.quest_desc: [
 		"Eine Ablage für ein Item. Ideal unter der Presse oder für den Mechanischen Arm."
 	]
@@ -1672,6 +1688,10 @@
 		"Am Bergungstisch zerlegst du Affix-Ausrüstung in Seltenheitsmaterial und Edelsteine in Staub."
 	]
 	quest.1F7FD88943AE51EE.title: "Bergungstisch"
+	quest.1F834891370CF1E3.quest_desc: [
+		"Der Channeler fängt Blitze ein und liefert Flüssigen Blitz. Wie das Rezept aussieht, zeigt JEI."
+	]
+	quest.1F834891370CF1E3.title: "Channeler"
 	quest.1F86277D1DD01CEC.quest_desc: [
 		"Wie bei Vanilla: Kreuzritter-Rüstung, Netheritbarren und Netherit-Schmiedevorlage in den Schmiedetisch."
 	]
@@ -2288,6 +2308,10 @@
 		"Chaos-Barren, Hostility-Essenz und Wunderstaub: das stärkste Material von L2 Hostility."
 	]
 	quest.36220CBF70979320.title: "Wunder-Barren"
+	quest.36221C1746BAD737.quest_desc: [
+		"Mit Rohren und Pumpen transportierst du Mana wie eine Flüssigkeit. Halte die Leitungen kurz, über sehr lange Strecken kann es richtig schiefgehen."
+	]
+	quest.36221C1746BAD737.title: "Arkane Rohre"
 	quest.3629EF42FBA2B6A6.quest_desc: [
 		"Ein normaler Kompass ist die Grundlage für zwei viel bessere Kompasse."
 	]
@@ -4336,6 +4360,10 @@
 		"&eUndead Eye&r: Skelettpferde lassen eine &eUntote Seele&r fallen. Dazu kommen Phantomhaut, Knochen, verrottetes Fleisch und eine Ghast-Träne."
 	]
 	quest.5D34635C86FB6B81.title: "Untotes Auge"
+	quest.5D3B633A41DDC57E.quest_desc: [
+		"&eCreate: Wizardry&r verbindet beide Welten. Presse einen Arkanen Barren zum Arkanen Blech. Das Arkane Gehäuse entsteht aus Lapisblock und Arkanem Barren."
+	]
+	quest.5D3B633A41DDC57E.title: "Create trifft Magie"
 	quest.5D3CF0AEC395A3E0.quest_desc: [
 		"Leichte und schwere Ingenieursbausteine sind die Bauteile der großen Multiblöcke. Welche du wo brauchst, steht im Handbuch."
 	]
@@ -4822,6 +4850,10 @@
 		"Ohne Steuerung fährt kein Zug. Setz dich davor und fahr selbst, oder gib dem Zug einen Fahrplan."
 	]
 	quest.72B04CE4EC2ED1AC.title: "Zugsteuerung"
+	quest.72B528094A40A18F.quest_desc: [
+		"Skyjade ist ein neuer Edelstein aus Deep Aether. Daraus entstehen Rüstung und Werkzeuge; die Rezepte zeigt JEI."
+	]
+	quest.72B528094A40A18F.title: "Skyjade"
 	quest.72B5C24D234DA8D2.quest_desc: [
 		"Mit dem &eManometer&r siehst du den Druck in Rohren und Maschinen, mit dem &ePneumatischen Schraubenschlüssel&r drehst du Blöcke und baust sie schnell ab."
 	]
@@ -5020,6 +5052,10 @@
 		"Aether, Undergarden, Otherside, Bumblezone, Twilight Forest, The Beyond und der Mars: Du warst überall.\n\nWer das geschafft hat, hat wirklich alles gesehen. Hak ab und hol dir die Belohnung."
 	]
 	quest.7498B3A2F0CA0C8E.title: "Weltenbummler"
+	quest.749BC4227924635F.quest_desc: [
+		"Der Siphon zapft deine eigene Aura ab und liefert Mana als Flüssigkeit. Aus Mana-Kristallen bekommst du fast geschenkt Arkane Essenz."
+	]
+	quest.749BC4227924635F.title: "Mana-Siphon"
 	quest.74A943755402B2ED.quest_desc: [
 		"Universalkabel für Strom, Rohre für Flüssigkeiten, Druckschläuche für Gase."
 	]
@@ -5358,6 +5394,10 @@
 		"Acht Magische Smaragde um einen Leeren Fokus ergeben den &eSeelensmaragd&r. Du brauchst ihn für Krone, Arca und spätere Rituale."
 	]
 	quest.7811F8B0AD35590B.title: "Seelensmaragd"
+	quest.7815D6EB7D70038A.quest_desc: [
+		"Im Bett erholt sich ein Begleiter, den du vorher in einem Familiar-Tome verstaut hast."
+	]
+	quest.7815D6EB7D70038A.title: "Familiar-Bett"
 	quest.7819C21D91CD2373.quest_desc: [
 		"Kalksand, Sand, Kies und Wasser ergeben flüssigen Beton. Füll einen Eimer davon ab. Die Rezepte stehen in JEI."
 	]
@@ -5730,6 +5770,10 @@
 		"Macht aus Kohle langsam &eKoks&r. Nebenbei entstehen Kreosot und Kohlendioxid, die du abpumpen kannst.\n\nWeil er so langsam ist, lohnen sich lange Reihen aus vielen Öfen. Das Ponder (Taste &eW&r) zeigt den Aufbau."
 	]
 	quest.7C7F840D41265791.title: "Koksofen"
+	quest.7C8A3A132B24A3EE.quest_desc: [
+		"&eAlshanex's Familiars&r bringt zähmbare Begleiter (Familiars), die du in der Welt findest. Gezähmt werden sie mit Arkaner Essenz und kämpfen danach mit Zaubern an deiner Seite."
+	]
+	quest.7C8A3A132B24A3EE.title: "Begleiter zähmen"
 	quest.7C9248114790FDE0.quest_desc: [
 		"Ohne Anzug kein Weltall: Der Anzug hält dich am Leben, solange er Sauerstoff hat. Füllen kannst du ihn am Sauerstofflader."
 	]

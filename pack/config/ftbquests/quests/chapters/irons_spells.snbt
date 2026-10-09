@@ -34,6 +34,14 @@
 			x: 20.0d
 			y: 1.5d
 		}
+		{
+			id: "3AD9E0E121A137DC"
+			linked_quest: "19ADA048D98D80EE"
+			shape: "rsquare"
+			size: 1.0d
+			x: 16.0d
+			y: -3.0d
+		}
 	]
 	quests: [
 		{
@@ -401,7 +409,7 @@
 				}
 			]
 			x: 4.0d
-			y: 1.5d
+			y: -3.0d
 		}
 		{
 			dependencies: [
@@ -426,7 +434,7 @@
 				}
 			]
 			x: 10.0d
-			y: 3.0d
+			y: 15.0d
 		}
 		{
 			dependencies: [
@@ -459,7 +467,7 @@
 				}
 			]
 			x: 12.0d
-			y: 3.0d
+			y: 16.5d
 		}
 		{
 			dependencies: [
@@ -492,7 +500,7 @@
 				}
 			]
 			x: 14.0d
-			y: 3.0d
+			y: 16.5d
 		}
 		{
 			dependencies: [
@@ -517,7 +525,7 @@
 				}
 			]
 			x: 12.0d
-			y: 4.5d
+			y: 15.0d
 		}
 		{
 			dependencies: [
@@ -542,7 +550,7 @@
 				}
 			]
 			x: 6.0d
-			y: 9.0d
+			y: 4.5d
 		}
 		{
 			dependencies: [
@@ -567,7 +575,7 @@
 				}
 			]
 			x: 8.0d
-			y: 3.0d
+			y: 4.5d
 		}
 		{
 			dependencies: [
@@ -592,7 +600,7 @@
 				}
 			]
 			x: 6.0d
-			y: 3.0d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -618,7 +626,7 @@
 				}
 			]
 			x: 8.0d
-			y: 1.5d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -643,7 +651,7 @@
 				}
 			]
 			x: 6.0d
-			y: -4.5d
+			y: -6.0d
 		}
 		{
 			dependencies: [
@@ -684,7 +692,7 @@
 				}
 			]
 			x: 10.0d
-			y: -4.5d
+			y: -7.5d
 		}
 		{
 			dependencies: [
@@ -766,7 +774,7 @@
 				}
 			]
 			x: 8.0d
-			y: -7.5d
+			y: -10.5d
 		}
 		{
 			dependencies: [
@@ -791,7 +799,7 @@
 				}
 			]
 			x: 10.0d
-			y: -7.5d
+			y: -12.0d
 		}
 		{
 			dependencies: [
@@ -851,7 +859,7 @@
 				}
 			]
 			x: 20.0d
-			y: -4.5d
+			y: -9.0d
 		}
 		{
 			dependencies: [
@@ -918,7 +926,7 @@
 				}
 			]
 			x: 12.0d
-			y: -3.0d
+			y: -6.0d
 		}
 		{
 			dependencies: [
@@ -960,7 +968,7 @@
 				}
 			]
 			x: 12.0d
-			y: -4.5d
+			y: -3.0d
 		}
 		{
 			dependencies: [
@@ -994,7 +1002,7 @@
 				}
 			]
 			x: 12.0d
-			y: -6.0d
+			y: -9.0d
 		}
 		{
 			dependencies: [
@@ -1020,7 +1028,7 @@
 				}
 			]
 			x: 10.0d
-			y: -3.0d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -1078,7 +1086,7 @@
 				}
 			]
 			x: 16.0d
-			y: -1.5d
+			y: -4.5d
 		}
 		{
 			dependencies: [
@@ -1103,7 +1111,7 @@
 				}
 			]
 			x: 18.0d
-			y: -1.5d
+			y: -4.5d
 		}
 		{
 			dependencies: [
@@ -1132,7 +1140,7 @@
 				}
 			]
 			x: 10.0d
-			y: 6.0d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -1162,7 +1170,7 @@
 				}
 			]
 			x: 12.0d
-			y: 6.0d
+			y: 3.0d
 		}
 		{
 			dependencies: [
@@ -1191,7 +1199,7 @@
 				}
 			]
 			x: 14.0d
-			y: 7.5d
+			y: 4.5d
 		}
 		{
 			dependencies: [
@@ -1220,7 +1228,7 @@
 				}
 			]
 			x: 14.0d
-			y: 6.0d
+			y: 3.0d
 		}
 		{
 			dependencies: [
@@ -1269,7 +1277,7 @@
 				}
 			]
 			x: 24.0d
-			y: -1.5d
+			y: 3.0d
 		}
 		{
 			dependencies: [
@@ -1295,7 +1303,7 @@
 				}
 			]
 			x: 16.0d
-			y: 6.0d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -1348,7 +1356,7 @@
 				}
 			]
 			x: 22.0d
-			y: 3.0d
+			y: 4.5d
 		}
 		{
 			dependencies: [
@@ -1373,7 +1381,7 @@
 				}
 			]
 			x: 24.0d
-			y: 3.0d
+			y: 7.5d
 		}
 		{
 			dependencies: [
@@ -1431,7 +1439,7 @@
 				}
 			]
 			x: 2.0d
-			y: 4.5d
+			y: 3.0d
 		}
 		{
 			dependencies: [
@@ -1472,7 +1480,7 @@
 				}
 			]
 			x: 4.0d
-			y: 4.5d
+			y: 6.0d
 		}
 		{
 			dependencies: [
@@ -1505,7 +1513,253 @@
 				}
 			]
 			x: 6.0d
-			y: 10.5d
+			y: 6.0d
+		}
+		{
+			dependencies: [
+				"3776F194F2597E04"
+				"19ADA048D98D80EE"
+			]
+			id: "5D3B633A41DDC57E"
+			rewards: [
+				{
+					id: "57E206F800F43DEE"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "3A435457DC267757"
+					item: {
+						count: 1
+						id: "create_wizardry:arcane_sheet"
+					}
+					type: "item"
+				}
+				{
+					id: "54EE39252416DC60"
+					item: {
+						count: 1
+						id: "create_wizardry:arcane_casing"
+					}
+					type: "item"
+				}
+			]
+			x: 18.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"5D3B633A41DDC57E"
+			]
+			id: "36221C1746BAD737"
+			rewards: [
+				{
+					id: "12CE210E823ECA73"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "1AA1A9064A90D7F7"
+					item: {
+						count: 1
+						id: "create_wizardry:arcane_pipe"
+					}
+					type: "item"
+				}
+				{
+					id: "12903E2EF42FF91B"
+					item: {
+						count: 1
+						id: "create_wizardry:arcane_pump"
+					}
+					type: "item"
+				}
+			]
+			x: 20.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"36221C1746BAD737"
+			]
+			id: "749BC4227924635F"
+			rewards: [
+				{
+					id: "1AC8504351B1F72A"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "5CC018C9FA8E83F2"
+					item: {
+						count: 1
+						id: "create_wizardry:mana_siphon"
+					}
+					type: "item"
+				}
+			]
+			x: 22.0d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"5D3B633A41DDC57E"
+			]
+			id: "1F834891370CF1E3"
+			rewards: [
+				{
+					id: "572096B0CEC5FB60"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "3583BD3AA6133429"
+					item: {
+						count: 1
+						id: "create_wizardry:channeler"
+					}
+					type: "item"
+				}
+			]
+			x: 20.0d
+			y: -4.5d
+		}
+		{
+			dependencies: [
+				"749BC4227924635F"
+				"1F834891370CF1E3"
+			]
+			id: "159862F72027B7BF"
+			rewards: [
+				{
+					id: "12A217B91CDBF8A6"
+					table_id: 6783561722415423100L
+					type: "loot"
+				}
+			]
+			tasks: [
+				{
+					id: "1C62CCD9497C7332"
+					item: {
+						count: 1
+						id: "create_wizardry:blaze_caster"
+					}
+					type: "item"
+				}
+			]
+			x: 24.0d
+			y: -4.5d
+		}
+		{
+			dependencies: [
+				"3ACF79C17AA257E6"
+			]
+			id: "7C8A3A132B24A3EE"
+			optional: true
+			rewards: [
+				{
+					id: "5E8763C372EF2351"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					count: 4L
+					id: "5909A65863A7BF12"
+					item: {
+						count: 1
+						id: "irons_spellbooks:arcane_essence"
+					}
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"7C8A3A132B24A3EE"
+			]
+			id: "7815D6EB7D70038A"
+			optional: true
+			rewards: [
+				{
+					id: "50BCFC5A45CAC07F"
+					type: "xp_levels"
+					xp_levels: 2
+				}
+			]
+			tasks: [
+				{
+					id: "7C7D068CEF2648B7"
+					item: {
+						count: 1
+						id: "alshanex_familiars:pet_bed"
+					}
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"7815D6EB7D70038A"
+			]
+			id: "10CC68D74283D7F9"
+			optional: true
+			rewards: [
+				{
+					id: "7FF8228CFFDB1E5D"
+					type: "xp_levels"
+					xp_levels: 3
+				}
+			]
+			tasks: [
+				{
+					id: "136F794C8A3A9079"
+					item: {
+						count: 1
+						id: "alshanex_familiars:familiar_helmet"
+					}
+					type: "item"
+				}
+				{
+					id: "554067E6BDF6AB5E"
+					item: {
+						count: 1
+						id: "alshanex_familiars:familiar_chestplate"
+					}
+					type: "item"
+				}
+				{
+					id: "1AEA16EE54EFBF7A"
+					item: {
+						count: 1
+						id: "alshanex_familiars:familiar_leggings"
+					}
+					type: "item"
+				}
+				{
+					id: "76249ED52EE8EE47"
+					item: {
+						count: 1
+						id: "alshanex_familiars:familiar_boots"
+					}
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 4.5d
 		}
 		{
 			dependencies: [
@@ -1533,7 +1787,7 @@
 				}
 			]
 			x: 6.0d
-			y: -1.5d
+			y: -3.0d
 		}
 		{
 			dependencies: [
@@ -1561,7 +1815,7 @@
 				}
 			]
 			x: 16.0d
-			y: 1.5d
+			y: -1.5d
 		}
 	]
 }

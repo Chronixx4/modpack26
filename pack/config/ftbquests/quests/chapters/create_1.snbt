@@ -24,7 +24,7 @@
 			shape: "rsquare"
 			size: 1.0d
 			x: 8.0d
-			y: -4.5d
+			y: -7.5d
 		}
 		{
 			id: "51E5CF34A743B93E"
@@ -32,7 +32,7 @@
 			shape: "rsquare"
 			size: 1.0d
 			x: 8.0d
-			y: -6.0d
+			y: -4.5d
 		}
 		{
 			id: "714C2D7CF9BEB7F3"
@@ -40,7 +40,7 @@
 			shape: "rsquare"
 			size: 1.0d
 			x: 8.0d
-			y: -7.5d
+			y: -9.0d
 		}
 		{
 			id: "180F51F77CCEB090"
@@ -48,7 +48,7 @@
 			shape: "rsquare"
 			size: 1.0d
 			x: 10.0d
-			y: -3.0d
+			y: -1.5d
 		}
 	]
 	quests: [
@@ -138,7 +138,7 @@
 				}
 			]
 			x: 2.0d
-			y: -1.5d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -163,7 +163,7 @@
 				}
 			]
 			x: 4.0d
-			y: -1.5d
+			y: -3.0d
 		}
 		{
 			dependencies: [
@@ -189,7 +189,7 @@
 				}
 			]
 			x: 6.0d
-			y: -3.0d
+			y: -4.5d
 		}
 		{
 			dependencies: [
@@ -223,7 +223,7 @@
 				}
 			]
 			x: 6.0d
-			y: -1.5d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -342,7 +342,7 @@
 				}
 			]
 			x: 8.0d
-			y: -1.5d
+			y: -6.0d
 		}
 		{
 			dependencies: [
@@ -376,7 +376,7 @@
 				}
 			]
 			x: 10.0d
-			y: -1.5d
+			y: -6.0d
 		}
 		{
 			dependencies: [
@@ -409,7 +409,7 @@
 				}
 			]
 			x: 8.0d
-			y: -3.0d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -506,7 +506,7 @@
 				}
 			]
 			x: 12.0d
-			y: -3.0d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -531,7 +531,7 @@
 				}
 			]
 			x: 14.0d
-			y: -3.0d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -556,7 +556,7 @@
 				}
 			]
 			x: 8.0d
-			y: 1.5d
+			y: -3.0d
 		}
 		{
 			dependencies: [
@@ -583,7 +583,7 @@
 				}
 			]
 			x: 10.0d
-			y: 1.5d
+			y: -3.0d
 		}
 		{
 			dependencies: [
@@ -659,7 +659,7 @@
 				}
 			]
 			x: 8.0d
-			y: 3.0d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -685,7 +685,7 @@
 				}
 			]
 			x: 10.0d
-			y: 4.5d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -752,7 +752,7 @@
 				}
 			]
 			x: 14.0d
-			y: 4.5d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -785,7 +785,7 @@
 				}
 			]
 			x: 6.0d
-			y: 1.5d
+			y: 3.0d
 		}
 		{
 			dependencies: [
@@ -811,7 +811,7 @@
 				}
 			]
 			x: 12.0d
-			y: -4.5d
+			y: -3.0d
 		}
 		{
 			dependencies: [
@@ -836,7 +836,7 @@
 				}
 			]
 			x: 10.0d
-			y: 3.0d
+			y: 6.0d
 		}
 		{
 			dependencies: [
@@ -861,7 +861,7 @@
 				}
 			]
 			x: 12.0d
-			y: 4.5d
+			y: 6.0d
 		}
 		{
 			dependencies: [
@@ -895,7 +895,7 @@
 				}
 			]
 			x: 2.0d
-			y: 1.5d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -1012,7 +1012,7 @@
 				}
 			]
 			x: 16.0d
-			y: 3.0d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -1038,7 +1038,7 @@
 				}
 			]
 			x: 18.0d
-			y: 3.0d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -1124,7 +1124,7 @@
 				}
 			]
 			x: 12.0d
-			y: -1.5d
+			y: -6.0d
 		}
 		{
 			dependencies: [
@@ -1150,7 +1150,7 @@
 				}
 			]
 			x: 14.0d
-			y: -1.5d
+			y: -6.0d
 		}
 		{
 			dependencies: [
@@ -1176,7 +1176,7 @@
 				}
 			]
 			x: 16.0d
-			y: -1.5d
+			y: -6.0d
 		}
 		{
 			dependencies: [
@@ -1209,7 +1209,7 @@
 				}
 			]
 			x: 18.0d
-			y: -1.5d
+			y: -6.0d
 		}
 		{
 			dependencies: [
@@ -1237,7 +1237,7 @@
 				}
 			]
 			x: 16.0d
-			y: 1.5d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -1265,7 +1265,7 @@
 				}
 			]
 			x: 18.0d
-			y: 1.5d
+			y: -1.5d
 		}
 		{
 			dependencies: [
