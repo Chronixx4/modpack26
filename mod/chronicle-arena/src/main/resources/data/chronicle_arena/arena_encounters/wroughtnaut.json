@@ -1,0 +1,10 @@
+{
+  "type": "boss",
+  "order": 12,
+  "name": "Ferrous Wroughtnaut",
+  "description": "Eisen-Ritter mit Axt.",
+  "icon": "minecraft:iron_axe",
+  "boss": {
+    "entity": "mowziesmobs:ferrous_wroughtnaut"
+  }
+}

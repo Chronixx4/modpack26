@@ -11,7 +11,7 @@ on:
     paths: ['pack/modrinth.index.json']
     tags: ['v*']
   pull_request:
-    paths: ['pack/**', 'curseforge-mods/**', 'MODLISTE.txt', '.github/**']
+    paths: ['pack/**', 'curseforge-mods/**', 'mod/**', 'MODLISTE.txt', '.github/**']
   workflow_dispatch:
 
 permissions:

@@ -1,0 +1,16 @@
+{
+  "type": "boss",
+  "order": 11,
+  "name": "Frostmaw",
+  "description": "Eisbaer aus Mowzies Mobs.",
+  "icon": "minecraft:snowball",
+  "boss": {
+    "entity": "mowziesmobs:frostmaw"
+  },
+  "adds": [
+    {
+      "entity": "minecraft:stray",
+      "count": 3
+    }
+  ]
+}
