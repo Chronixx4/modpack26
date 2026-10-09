@@ -4631,7 +4631,7 @@
         "sha512": "03083f5f24093eb016627611c41f1d0b415584d8577da9cfc905db07a6f9c07f07dcdda93b31386f16e8f32b04f2971e2bc75951b38d378ddf9c38d36510f258"
       },
       "env": {
-        "client": "required",
+        "client": "unsupported",
         "server": "required"
       },
       "downloads": [
