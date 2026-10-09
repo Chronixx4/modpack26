@@ -1,0 +1,17 @@
+{
+  "order": 102,
+  "category": "waffen",
+  "name": "Sturmstreitkolben",
+  "item": "minecraft:mace",
+  "count": 1,
+  "price": 24,
+  "components": {
+    "minecraft:enchantments": {
+      "levels": {
+        "minecraft:density": 5,
+        "minecraft:breach": 4,
+        "minecraft:unbreaking": 3
+      }
+    }
+  }
+}

@@ -15,6 +15,6 @@ Eigene NeoForge-Mod (MC 1.21.1): Arena-Dimension mit Portal, Bosskaempfen und Mo
 - Wellen sind ueber `wave_health`, `wave_damage`, `wave_count` der Stufe abgeschwaecht (Bosse nicht).
 
 ## Arena gestalten
-- Jede Begegnung hat ein `theme` (default, nether, end, ice, desert, forest, sea, deepdark, sky); die Arena baut sich beim Start im passenden Stil um.
-- Eigene Arena: Bau im Spiel mit einem Struktur-Block (Ecke zu Ecke, max. 52 x 52, unterste Ebene = Boden, 15 Hoehe) speichern als `chronicle_arena:arena/<thema>` und die Datei als `data/chronicle_arena/structure/arena/<thema>.nbt` ins Datapack (z. B. `pack/kubejs/data/...`) legen. Sie ersetzt dann das generierte Thema.
+- Es gibt genau eine Prunk-Arena (Tribuene, Tuerme, Fenster, Torbogen, schwebende Inseln, Monde), dazu Lobby, Bruecke und eine Shop-Plattform mit Haendler und sechs Staenden.
+- Eigene Arena: Bau im Spiel mit einem Struktur-Block speichern als `chronicle_arena:arena/arena` (bzw. `shop`) und als `data/chronicle_arena/structure/arena/arena.nbt` ins Datapack legen. Sie ersetzt dann den generierten Teil.
 - Selbsttest: `gradle runServer -Dchronicle_arena.selftest=true`.

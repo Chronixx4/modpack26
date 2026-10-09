@@ -1,0 +1,15 @@
+{
+  "order": 261,
+  "category": "magie",
+  "name": "Buch: Windstoss III",
+  "item": "minecraft:enchanted_book",
+  "count": 1,
+  "price": 9,
+  "components": {
+    "minecraft:stored_enchantments": {
+      "levels": {
+        "minecraft:wind_burst": 3
+      }
+    }
+  }
+}

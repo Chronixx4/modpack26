@@ -1,0 +1,15 @@
+{
+  "order": 257,
+  "category": "magie",
+  "name": "Buch: Glueck III",
+  "item": "minecraft:enchanted_book",
+  "count": 1,
+  "price": 10,
+  "components": {
+    "minecraft:stored_enchantments": {
+      "levels": {
+        "minecraft:fortune": 3
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "order": 88,
+  "category": "verbrauch",
+  "name": "Feuerkugeln x16",
+  "item": "minecraft:fire_charge",
+  "count": 16,
+  "price": 1
+}

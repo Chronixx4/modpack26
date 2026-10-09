@@ -878,7 +878,8 @@ public final class ArenaManager {
             ItemStack st = o.stack(server.registryAccess());
             if (st.isEmpty()) LOGGER.error("ARENA-DEBUG: Shop {} leer", o.id());
             else shopOk++;
-            if (o.components() != null && st.getEnchantments().isEmpty()) LOGGER.error("ARENA-DEBUG: Shop {} ohne Verzauberung", o.id());
+            if (o.components() != null && st.getEnchantments().isEmpty()
+                    && !st.has(net.minecraft.core.component.DataComponents.STORED_ENCHANTMENTS)) LOGGER.error("ARENA-DEBUG: Shop {} ohne Verzauberung", o.id());
         }
         LOGGER.info("ARENA-DEBUG: Shop {} von {} Angeboten ok", shopOk, ArenaDefs.shopOffers().size());
         LOGGER.info("ARENA-DEBUG: Shop-Block={}", level.getBlockState(SHOP).getBlock());

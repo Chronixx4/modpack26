@@ -1,0 +1,15 @@
+{
+  "order": 254,
+  "category": "magie",
+  "name": "Buch: Schutz IV",
+  "item": "minecraft:enchanted_book",
+  "count": 1,
+  "price": 12,
+  "components": {
+    "minecraft:stored_enchantments": {
+      "levels": {
+        "minecraft:protection": 4
+      }
+    }
+  }
+}

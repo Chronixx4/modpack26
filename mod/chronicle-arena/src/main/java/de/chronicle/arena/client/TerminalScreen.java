@@ -104,9 +104,7 @@ public class TerminalScreen extends Screen {
         int x1 = cx + 118;
         int y0 = top - 44;
         int y1 = top + 186;
-        gfx.fill(x0 - 2, y0 - 2, x1 + 2, y1 + 2, 0xFF7A3FD0);
-        gfx.fill(x0, y0, x1, y1, 0xEE12101C);
-        gfx.fill(x0, y0 + 26, x1, y0 + 27, 0xFF7A3FD0);
+        Panel.draw(gfx, x0, y0, x1, y1, 26, TIER_COLORS[Math.min(tierIndex, TIER_COLORS.length - 1)]);
     }
 
     @Override

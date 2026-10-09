@@ -1,0 +1,17 @@
+{
+  "order": 101,
+  "category": "waffen",
+  "name": "Schnellarmbrust",
+  "item": "minecraft:crossbow",
+  "count": 1,
+  "price": 14,
+  "components": {
+    "minecraft:enchantments": {
+      "levels": {
+        "minecraft:quick_charge": 3,
+        "minecraft:piercing": 4,
+        "minecraft:unbreaking": 3
+      }
+    }
+  }
+}

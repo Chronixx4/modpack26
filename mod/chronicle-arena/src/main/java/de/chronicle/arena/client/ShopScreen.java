@@ -126,9 +126,7 @@ public class ShopScreen extends Screen {
     @Override
     public void renderBackground(GuiGraphics gfx, int mouseX, int mouseY, float partialTick) {
         super.renderBackground(gfx, mouseX, mouseY, partialTick);
-        gfx.fill(left - 2, top - 2, left + 382, top + 226, 0xFF7A3FD0);
-        gfx.fill(left, top, left + 380, top + 224, 0xF012101C);
-        gfx.fill(left, top + 28, left + 380, top + 29, 0xFF7A3FD0);
+        Panel.draw(gfx, left, top, left + 380, top + 224, 28, 0xFFD36B);
         gfx.fill(left + 94, top + 32, left + 96, top + 220, 0xFF2A2440);
     }
 

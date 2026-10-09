@@ -1,0 +1,17 @@
+{
+  "order": 139,
+  "category": "werkzeug",
+  "name": "Netherithacke",
+  "item": "minecraft:netherite_hoe",
+  "count": 1,
+  "price": 14,
+  "components": {
+    "minecraft:enchantments": {
+      "levels": {
+        "minecraft:efficiency": 5,
+        "minecraft:fortune": 3,
+        "minecraft:unbreaking": 3
+      }
+    }
+  }
+}

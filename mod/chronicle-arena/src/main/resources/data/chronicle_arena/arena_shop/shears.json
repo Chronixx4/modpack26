@@ -1,0 +1,16 @@
+{
+  "order": 140,
+  "category": "werkzeug",
+  "name": "Schere",
+  "item": "minecraft:shears",
+  "count": 1,
+  "price": 2,
+  "components": {
+    "minecraft:enchantments": {
+      "levels": {
+        "minecraft:efficiency": 5,
+        "minecraft:unbreaking": 3
+      }
+    }
+  }
+}
