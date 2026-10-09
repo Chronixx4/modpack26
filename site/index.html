@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Chronicle – Minecraft-Modpack</title>
+<style>
+  :root { --bg:#14161c; --card:#1e222b; --fg:#e8eaf0; --mute:#9aa3b5; --acc:#7c5cff; --acc2:#4cc9a0; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.6 system-ui,sans-serif; }
+  main { max-width:860px; margin:0 auto; padding:0 16px 64px; }
+  header { padding:56px 0 24px; text-align:center; }
+  h1 { font-size:2.6rem; margin:0; letter-spacing:.02em; }
+  .sub { color:var(--mute); margin-top:8px; }
+  .badges { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:16px; }
+  .badge { background:var(--card); border-radius:999px; padding:4px 14px; font-size:.9rem; }
+  section { background:var(--card); border-radius:14px; padding:20px 24px; margin-top:20px; }
+  h2 { margin:0 0 12px; font-size:1.25rem; }
+  .dl { display:grid; gap:12px; }
+  .dl a { display:block; padding:14px 18px; border-radius:10px; background:var(--bg); color:var(--fg);
+          text-decoration:none; border:1px solid #2c3140; }
+  .dl a:hover { border-color:var(--acc); }
+  .dl strong { color:var(--acc2); }
+  .dl small { display:block; color:var(--mute); }
+  ul { padding-left:20px; margin:0; }
+  a { color:var(--acc2); }
+  footer { color:var(--mute); text-align:center; font-size:.85rem; margin-top:32px; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Chronicle</h1>
+    <div class="sub">Magie, Create, AE2 und neue Dimensionen – das Modpack für Chronixx und Freunde</div>
+    <div class="badges">
+      <span class="badge">Minecraft 1.21.1</span>
+      <span class="badge">NeoForge 21.1</span>
+      <span class="badge">Java 21</span>
+      <span class="badge">~300 Mods</span>
+      <span class="badge">Questbuch mit 1400+ Quests</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>Download <span id="ver" class="sub"></span></h2>
+    <div class="dl" id="dl">
+      <a href="https://github.com/Chronixx4/modpack26/releases/latest">
+        <strong>Neueste Version auf GitHub öffnen</strong>
+        <small>Alle Dateien (.mrpack, Client-ZIP, Server-ZIP)</small>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Installation (Modrinth App)</h2>
+    <ul>
+      <li>Datei <code>Chronicle-&lt;Version&gt;.mrpack</code> herunterladen.</li>
+      <li>Modrinth App: <b>+</b> → <b>Aus Datei importieren</b>.</li>
+      <li>Mindestens 8 GB RAM zuweisen, Java 21.</li>
+      <li>Andere Launcher (Prism, CurseForge): die Client-ZIP nutzen.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Was steckt drin?</h2>
+    <ul>
+      <li><b>Magie:</b> Ars Nouveau, Iron's Spells, Goety</li>
+      <li><b>Technik:</b> Create mit vielen Addons, Mekanism, Draconic Evolution</li>
+      <li><b>Lager:</b> Applied Energistics 2 und Refined Storage</li>
+      <li><b>Abenteuer:</b> Twilight Forest, Aether, Cataclysm, viele Bosse und Strukturen</li>
+      <li><b>Chronicle-Kern:</b> eigenes Endgame mit Fragmenten, Skilltree und Bossführer</li>
+    </ul>
+    <p><a href="https://github.com/Chronixx4/modpack26/blob/main/MODLISTE.txt">Komplette Modliste</a></p>
+  </section>
+
+  <section>
+    <h2>Server</h2>
+    <p>Die Server-ZIP enthält Start-Skripte, Java-Flags und eine Anleitung. Ports: 25565/TCP und 24454/UDP (Voice Chat).</p>
+  </section>
+
+  <footer>Nur für Freunde. Einige Mods stammen von CurseForge, das Pack bitte nicht öffentlich weitergeben.</footer>
+</main>
+
+<script>
+(function () {
+  var box = document.getElementById('dl');
+  fetch('https://api.github.com/repos/Chronixx4/modpack26/releases/latest')
+    .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+    .then(function (rel) {
+      var labels = [
+        [/-Client\.zip$/, 'Client-ZIP', 'Für andere Launcher (mods-Ordner)'],
+        [/-Server\.zip$/, 'Server-ZIP', 'Dedizierter Server mit Start-Skripten'],
+        [/\.mrpack$/, 'Modrinth-Paket (.mrpack)', 'Empfohlen: in die Modrinth App importieren']
+      ];
+      var out = [];
+      (rel.assets || []).forEach(function (a) {
+        for (var i = 0; i < labels.length; i++) {
+          if (labels[i][0].test(a.name)) {
+            var mb = (a.size / 1048576).toFixed(0);
+            var el = document.createElement('a');
+            el.href = a.browser_download_url;
+            var s = document.createElement('strong'); s.textContent = labels[i][1];
+            var m = document.createElement('small');
+            m.textContent = a.name + ' · ' + mb + ' MB · ' + labels[i][2];
+            el.appendChild(s); el.appendChild(m);
+            out.push([i === 2 ? 0 : i + 1, el]);
+            return;
+          }
+        }
+      });
+      if (!out.length) return;
+      out.sort(function (a, b) { return a[0] - b[0]; });
+      box.textContent = '';
+      out.forEach(function (o) { box.appendChild(o[1]); });
+      document.getElementById('ver').textContent = rel.tag_name;
+    })
+    .catch(function () {});
+})();
+</script>
+</body>
+</html>
