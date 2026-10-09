@@ -1,0 +1,42 @@
+name: Webseite aktualisieren
+
+# Zieht site/ nach, sobald sich Modliste, Version, Quests oder CLAUDE.md auf main aendern.
+# Der Commit kommt vom GITHUB_TOKEN und loest deshalb keine weiteren Workflows aus (kein Release).
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'MODLISTE.txt'
+      - 'pack/modrinth.index.json'
+      - 'pack/quests/**'
+      - 'CLAUDE.md'
+      - 'tools/seite_aktualisieren.py'
+      - 'tools/bosse_json.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  seite:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Skripte laufen lassen
+        run: |
+          python3 tools/seite_aktualisieren.py
+          python3 tools/bosse_json.py
+      - name: Aenderungen committen
+        run: |
+          if [ -n "$(git status --porcelain site)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add site
+            git commit -m "Webseite: automatisch aktualisiert"
+            git push
+          else
+            echo "Seite ist aktuell."
+          fi
