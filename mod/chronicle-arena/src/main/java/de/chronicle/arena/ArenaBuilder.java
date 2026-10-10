@@ -24,7 +24,7 @@ final class ArenaBuilder {
     private static final Logger LOGGER = LogUtils.getLogger();
     /** Versionsmarker; ein anderer Block baut alles neu. */
     private static final BlockPos MARKER = new BlockPos(0, 60, 200);
-    private static final Block MARKER_BLOCK = Blocks.AMETHYST_BLOCK;
+    private static final Block MARKER_BLOCK = Blocks.PURPUR_BLOCK;
     private static final int ARENA_HEIGHT = 16;
 
     private ArenaBuilder() {}
@@ -32,12 +32,12 @@ final class ArenaBuilder {
     static void ensureBuilt(ServerLevel level) {
         if (level.getBlockState(MARKER).is(MARKER_BLOCK)) return;
         buildLobby(level);
-        buildBridge(level);
         buildShop(level);
+        buildBridge(level);   // nach dem Shop, sonst raeumt dessen Platz das Brueckenende wieder weg
         buildArena(level);
         ArenaDecor.lobby(level);
-        ArenaDecor.bridge(level);
         ArenaDecor.shop(level);
+        ArenaDecor.bridge(level);
         ArenaDecor.arena(level);
         level.setBlock(MARKER, MARKER_BLOCK.defaultBlockState(), 2);
         LOGGER.info("Arena: Lobby, Shop und Kampfplatz gebaut");

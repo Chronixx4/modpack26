@@ -4,7 +4,7 @@
   "name": "Netheritstiefel mit Schutz",
   "item": "minecraft:netherite_boots",
   "count": 1,
-  "price": 20,
+  "price": 105,
   "components": {
     "minecraft:enchantments": {
       "levels": {

@@ -48,20 +48,21 @@ public class HoloRenderer implements BlockEntityRenderer<HoloBlockEntity> {
         VertexConsumer vc = buffers.getBuffer(RenderType.gui());
         float pulse = 0.75F + 0.25F * (float) Math.sin(time * 0.15);
         int glowA = (int) (0x30 * pulse);
+        // Jede Ebene bekommt eine eigene Tiefe (z), sonst flackern die Flaechen gegeneinander ("Glitschen").
         quad(vc, m, -HALF_W - 5, -HALF_H - 5, HALF_W + 5, HALF_H + 5, argb(glowA, accent), 0.0F);
-        quad(vc, m, -HALF_W - 2, -HALF_H - 2, HALF_W + 2, HALF_H + 2, argb((int) (0x70 * pulse), accent), 0.0F);
-        quad(vc, m, -HALF_W, -HALF_H, HALF_W, 0, 0xD8201638, 0.0F);
-        quad(vc, m, -HALF_W, 0, HALF_W, HALF_H, 0xD80B0914, 0.0F);
-        quad(vc, m, -HALF_W, -HALF_H, HALF_W, -HALF_H + 12, shop ? 0xF06A4A10 : 0xF03A2370, 0.0F);
-        quad(vc, m, -HALF_W, -HALF_H + 12, HALF_W, -HALF_H + 13, 0xFFFFD36B, 0.0F);
+        quad(vc, m, -HALF_W - 2, -HALF_H - 2, HALF_W + 2, HALF_H + 2, argb((int) (0x70 * pulse), accent), 1.0F);
+        quad(vc, m, -HALF_W, -HALF_H, HALF_W, 0, 0xD8201638, 2.0F);
+        quad(vc, m, -HALF_W, 0, HALF_W, HALF_H, 0xD80B0914, 2.0F);
+        quad(vc, m, -HALF_W, -HALF_H, HALF_W, -HALF_H + 12, shop ? 0xF06A4A10 : 0xF03A2370, 3.0F);
+        quad(vc, m, -HALF_W, -HALF_H + 12, HALF_W, -HALF_H + 13, 0xFFFFD36B, 4.0F);
         // Scanlinie.
         float sy = -HALF_H + 13 + (time * 0.7F) % (HALF_H * 2 - 13);
-        quad(vc, m, -HALF_W, sy, HALF_W, sy + 1.5F, 0x38FFFFFF, 0.0F);
+        quad(vc, m, -HALF_W, sy, HALF_W, Math.min(sy + 1.5F, HALF_H), 0x38FFFFFF, 5.0F);
         // Ecken.
         for (int sx : new int[]{-1, 1}) for (int sy2 : new int[]{-1, 1}) {
             int cx = sx * HALF_W;
             int cy = sy2 * HALF_H;
-            quad(vc, m, cx - 3, cy - 3, cx + 3, cy + 3, 0xFFFFD36B, 0.0F);
+            quad(vc, m, cx - 3, cy - 3, cx + 3, cy + 3, 0xFFFFD36B, 6.0F);
         }
 
         Font font = mc.font;
@@ -114,9 +115,9 @@ public class HoloRenderer implements BlockEntityRenderer<HoloBlockEntity> {
     }
 
     private static void text(Font font, MultiBufferSource buffers, Matrix4f base, String s, float cx, float y, int color, float scale) {
-        Matrix4f m = new Matrix4f(base).translate(0.0F, 0.0F, -0.05F).scale(scale, scale, 1.0F);
+        Matrix4f m = new Matrix4f(base).translate(0.0F, 0.0F, 8.0F).scale(scale, scale, 1.0F);
         float x = cx / scale - font.width(s) / 2.0F;
-        font.drawInBatch(s, x, y / scale, color, false, m, buffers, Font.DisplayMode.SEE_THROUGH, 0, LightTexture.FULL_BRIGHT);
+        font.drawInBatch(s, x, y / scale, color, false, m, buffers, Font.DisplayMode.NORMAL, 0, LightTexture.FULL_BRIGHT);
     }
 
     @Override

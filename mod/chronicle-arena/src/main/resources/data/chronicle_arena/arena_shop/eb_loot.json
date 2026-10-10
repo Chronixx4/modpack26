@@ -4,7 +4,7 @@
   "name": "Buch: Pluenderung III",
   "item": "minecraft:enchanted_book",
   "count": 1,
-  "price": 10,
+  "price": 28,
   "components": {
     "minecraft:stored_enchantments": {
       "levels": {

@@ -4,7 +4,7 @@
   "name": "Netherithacke",
   "item": "minecraft:netherite_hoe",
   "count": 1,
-  "price": 14,
+  "price": 90,
   "components": {
     "minecraft:enchantments": {
       "levels": {

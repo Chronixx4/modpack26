@@ -4,7 +4,7 @@
   "name": "Gewitterdreizack",
   "item": "minecraft:trident",
   "count": 1,
-  "price": 20,
+  "price": 70,
   "components": {
     "minecraft:enchantments": {
       "levels": {

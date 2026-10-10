@@ -4,7 +4,7 @@
   "name": "Seidenhand-Spitzhacke",
   "item": "minecraft:netherite_pickaxe",
   "count": 1,
-  "price": 22,
+  "price": 130,
   "components": {
     "minecraft:enchantments": {
       "levels": {

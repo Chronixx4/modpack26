@@ -4,7 +4,7 @@
   "name": "Scharfes Netheritschwert",
   "item": "minecraft:netherite_sword",
   "count": 1,
-  "price": 22,
+  "price": 130,
   "components": {
     "minecraft:enchantments": {
       "levels": {

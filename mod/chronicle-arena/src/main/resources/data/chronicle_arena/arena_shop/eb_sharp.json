@@ -4,7 +4,7 @@
   "name": "Buch: Schaerfe V",
   "item": "minecraft:enchanted_book",
   "count": 1,
-  "price": 12,
+  "price": 30,
   "components": {
     "minecraft:stored_enchantments": {
       "levels": {

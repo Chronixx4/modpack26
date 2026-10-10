@@ -4,7 +4,7 @@
   "name": "Arena-Hose",
   "item": "minecraft:netherite_leggings",
   "count": 1,
-  "price": 80,
+  "price": 200,
   "components": {
     "minecraft:enchantments": {
       "levels": {

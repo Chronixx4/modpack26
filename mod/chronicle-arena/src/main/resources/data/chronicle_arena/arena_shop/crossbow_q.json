@@ -4,7 +4,7 @@
   "name": "Schnellarmbrust",
   "item": "minecraft:crossbow",
   "count": 1,
-  "price": 14,
+  "price": 40,
   "components": {
     "minecraft:enchantments": {
       "levels": {

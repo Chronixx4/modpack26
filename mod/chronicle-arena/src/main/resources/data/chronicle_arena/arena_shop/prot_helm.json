@@ -4,7 +4,7 @@
   "name": "Netherithelm mit Schutz",
   "item": "minecraft:netherite_helmet",
   "count": 1,
-  "price": 20,
+  "price": 110,
   "components": {
     "minecraft:enchantments": {
       "levels": {

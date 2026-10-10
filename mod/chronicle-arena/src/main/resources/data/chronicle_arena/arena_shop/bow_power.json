@@ -4,7 +4,7 @@
   "name": "Machtbogen",
   "item": "minecraft:bow",
   "count": 1,
-  "price": 14,
+  "price": 45,
   "components": {
     "minecraft:enchantments": {
       "levels": {
