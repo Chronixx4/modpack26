@@ -167,7 +167,7 @@ public class TerminalScreen extends Screen {
         gfx.drawCenteredString(this.font, Component.literal(data.status()), cx, top - 12, data.running() ? 0xFFAA00 : 0x55FF55);
 
         List<Net.EncInfo> list = current();
-        int y = top + 74;
+        int y = top + 98;
         if (!list.isEmpty()) {
             Net.EncInfo e = list.get(Math.min(encIndex, list.size() - 1));
             ResourceLocation icon = ResourceLocation.tryParse(e.icon());
@@ -187,7 +187,7 @@ public class TerminalScreen extends Screen {
         Net.TierInfo t = tier();
         if (t != null) {
             int color = TIER_COLORS[Math.min(tierIndex, TIER_COLORS.length - 1)];
-            int ly = y + 34;
+            int ly = y + 30;
             int n = 0;
             for (FormattedCharSequence line : this.font.split(FormattedText.of(t.desc()), 150)) {
                 if (n++ >= 2) break;
@@ -195,7 +195,7 @@ public class TerminalScreen extends Screen {
                 ly += 10;
             }
             if (!t.info().isEmpty()) {
-                gfx.drawString(this.font, Component.literal(t.info()), lx, y + 56, t.locked() ? 0xFF7777 : 0x88DD88);
+                gfx.drawString(this.font, Component.literal(t.info()), lx, y + 50, t.locked() ? 0xFF7777 : 0x88DD88);
             }
         }
 

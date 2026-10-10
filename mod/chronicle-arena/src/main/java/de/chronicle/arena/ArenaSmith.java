@@ -31,15 +31,15 @@ public final class ArenaSmith {
     public static final String GLUT = "glut";
 
     public static final List<Up> UPS = List.of(
-            new Up("schaerfe", "Schaerfe", "+6 % Schaden pro Stufe", 5, 60, Attributes.ATTACK_DAMAGE, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL, 0.06),
-            new Up("haertung", "Haertung", "+1 Ruestung pro Stufe", 5, 60, Attributes.ARMOR, AttributeModifier.Operation.ADD_VALUE, 1.0),
-            new Up("lebenskraft", "Lebenskraft", "+1 Herz pro Stufe", 5, 80, Attributes.MAX_HEALTH, AttributeModifier.Operation.ADD_VALUE, 2.0),
-            new Up("windlaeufer", "Windlaeufer", "+4 % Tempo pro Stufe", 3, 70, Attributes.MOVEMENT_SPEED, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL, 0.04),
-            new Up("schlagtempo", "Schlagtempo", "+5 % Angriffstempo pro Stufe", 3, 90, Attributes.ATTACK_SPEED, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL, 0.05),
-            new Up("standfest", "Standfest", "+10 % Rueckstossresistenz pro Stufe", 3, 70, Attributes.KNOCKBACK_RESISTANCE, AttributeModifier.Operation.ADD_VALUE, 0.1),
-            new Up("reichweite", "Reichweite", "+0,4 Bloecke Reichweite pro Stufe", 3, 100, Attributes.ENTITY_INTERACTION_RANGE, AttributeModifier.Operation.ADD_VALUE, 0.4),
-            new Up(LEBENSFUNKE, "Lebensfunke", "Kills heilen 0,5 Herz pro Stufe", 3, 120, null, null, 0),
-            new Up(GLUT, "Schmiedeglut", "Treffer setzen Gegner 2 s pro Stufe in Brand", 3, 120, null, null, 0));
+            new Up("schaerfe", "Schaerfe", "+6 % Schaden pro Stufe", 5, 25, Attributes.ATTACK_DAMAGE, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL, 0.06),
+            new Up("haertung", "Haertung", "+1 Ruestung pro Stufe", 5, 25, Attributes.ARMOR, AttributeModifier.Operation.ADD_VALUE, 1.0),
+            new Up("lebenskraft", "Lebenskraft", "+1 Herz pro Stufe", 5, 30, Attributes.MAX_HEALTH, AttributeModifier.Operation.ADD_VALUE, 2.0),
+            new Up("windlaeufer", "Windlaeufer", "+4 % Tempo pro Stufe", 3, 25, Attributes.MOVEMENT_SPEED, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL, 0.04),
+            new Up("schlagtempo", "Schlagtempo", "+5 % Angriffstempo pro Stufe", 3, 35, Attributes.ATTACK_SPEED, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL, 0.05),
+            new Up("standfest", "Standfest", "+10 % Rueckstossresistenz pro Stufe", 3, 25, Attributes.KNOCKBACK_RESISTANCE, AttributeModifier.Operation.ADD_VALUE, 0.1),
+            new Up("reichweite", "Reichweite", "+0,4 Bloecke Reichweite pro Stufe", 3, 40, Attributes.ENTITY_INTERACTION_RANGE, AttributeModifier.Operation.ADD_VALUE, 0.4),
+            new Up(LEBENSFUNKE, "Lebensfunke", "Kills heilen 0,5 Herz pro Stufe", 3, 45, null, null, 0),
+            new Up(GLUT, "Schmiedeglut", "Treffer setzen Gegner 2 s pro Stufe in Brand", 3, 45, null, null, 0));
 
     public static int level(ServerPlayer p, String id) {
         return ArenaStats.smithLevel(p, id);
