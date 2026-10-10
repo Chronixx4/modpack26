@@ -27,3 +27,6 @@ Eigene NeoForge-Mod (MC 1.21.1): Arena-Dimension mit Portal, Bosskaempfen und Mo
 ## Zweite Ebene und Wiederbeleben
 - Die Arena hat Radius 40. Rundherum liegt ein Balkon (zweite Ebene, 8 Bloecke ueber dem Boden) mit flacher Innenkante: von dort kann man nach unten springen oder schiessen. Vier Treppen fuehren hinauf.
 - Gefallene bleiben als Zuschauer am Fleck liegen (Seelenfeuer-Saeule). Wer lebt, schleicht ca. 4 Sekunden daneben (Umschalt-Taste) und holt sie mit halber Gesundheit zurueck.
+
+## L2 Hostility
+In der Arena-Dimension gibt es keine Hostility-Levels (Datapack `l2hostility_config/difficulty/chronicle_arena.json`, apply_chance 0). Die Schwierigkeit kommt nur aus den Arena-Stufen.
