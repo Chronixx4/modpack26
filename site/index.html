@@ -327,6 +327,7 @@
   <a class="tab" id="tab-home" href="#top" aria-current="page">Übersicht</a>
   <a class="tab" id="tab-guide" href="#guide">Guide</a>
   <a class="tab" id="tab-skills" href="#skills">Skilltree</a>
+  <a class="tab" id="tab-arena" href="#arena">Arena</a>
   <a class="tab" id="tab-mods" href="#mods">Modliste</a>
   <a class="tab" id="tab-log" href="#log">Changelog</a>
 </div></div>
@@ -399,7 +400,7 @@
         </article>
         <article class="cat c-boss">
           <header><canvas class="ico" data-i="skull" width="10" height="10"></canvas><div><h3>Bosse</h3><span>73 Gegner, die sich lohnen</span></div></header>
-          <ul><li>Eigener Bossführer als Buch im Spiel</li><li>Mowzie's und Goety-Bosse</li><li>L2 Hostility mit Gefahrenstufen</li><li>Skilltree-Punkte für Bosskills</li></ul>
+          <ul><li>Eigener Bossführer als Buch im Spiel</li><li>Mowzie's und Goety-Bosse</li><li>L2 Hostility mit Gefahrenstufen</li><li>Skilltree-Punkte für Bosskills</li><li>Eigene Arena für Boss- und Wellenkämpfe</li></ul>
         </article>
       </div>
 
@@ -572,6 +573,50 @@
       <p class="skpeak">Gipfel: <em>Chronicle-Techniker</em>. Die Maschinen arbeiten für dich.</p></div></article></div>
     </section>
   </div>
+  <div id="arena" class="view" hidden>
+    <section style="padding-top:44px">
+      <p class="kicker">Arena</p>
+      <h2>Die Chronicle Arena</h2>
+      <div class="pixel-rule"></div>
+      <p class="lead">Eine eigene Dimension für Bosskämpfe und Monsterwellen, allein oder zusammen. Das Portal baust du aus 4 Obsidian, 4 Diamanten und einem Enderauge. Ein Rechtsklick bringt dich in die Lobby, am Terminal wählst du Modus, Begegnung und Stufe.</p>
+      <div class="stats" style="margin:0 0 6px">
+        <div class="stat"><b>2</b><span>Modi: Wellen oder Boss</span></div>
+        <div class="stat"><b>4+</b><span>Stufen, dazu der endlose Abgrund</span></div>
+        <div class="stat"><b>3</b><span>Arenen: Klassisch, Glut und Eis</span></div>
+        <div class="stat"><b>9</b><span>Schmied-Verbesserungen</span></div>
+      </div>
+    </section>
+    <section>
+      <p class="kicker">Ablauf</p>
+      <h2>So läuft ein Kampf</h2>
+      <div class="pixel-rule"></div>
+      <div class="feats">
+<div class="feat"><canvas class="ico" data-i="portal" width="10" height="10"></canvas><div><h3>Eine Arena für alle</h3><p>Wer beim Start in der Lobby steht, kämpft mit. Wer später kommt, schaut zu. Mit mehr Spielern werden Gegner zahlreicher, zäher und stärker.</p></div></div><div class="feat"><canvas class="ico" data-i="skull" width="10" height="10"></canvas><div><h3>Stärke passt sich an</h3><p>Zu Beginn jeder Welle misst die Arena Rüstung, Waffe, Skilltree und Leben der Lebenden. Die Gegner skalieren damit, der Titel zeigt „Stärke xN“.</p></div></div><div class="feat"><canvas class="ico" data-i="star" width="10" height="10"></canvas><div><h3>Segen</h3><p>Nach jeder 5. Welle wählst du einen von drei Segen, die bis zum Ende des Laufs gelten. Die Runde pausiert, bis alle gewählt haben. Neu sind Vampir und Zweite Chance.</p></div></div><div class="feat"><canvas class="ico" data-i="core" width="10" height="10"></canvas><div><h3>Wiederbeleben</h3><p>Gefallene bleiben als Zuschauer liegen. Wer lebt, schleicht ein paar Sekunden daneben und holt sie zurück. 2 Wiederbelebungen pro Lauf, +1 nach jeder 5. Welle.</p></div></div><div class="feat"><canvas class="ico" data-i="sword" width="10" height="10"></canvas><div><h3>Mini-Bosse</h3><p>Mitten im Lauf (bei langen Stufen alle 10 Wellen) wartet ein Mini-Boss mit 5-fachen Leben und Bonus-Coins.</p></div></div><div class="feat"><canvas class="ico" data-i="skull" width="10" height="10"></canvas><div><h3>Kill-Cam</h3><p>Wer fällt, sieht 5 Sekunden durch die Augen des Bezwingers und bekommt den Titel „BESIEGT von …“. PvP ist in der Arena aus.</p></div></div>
+      </div>
+    </section>
+    <section>
+      <p class="kicker">Modi und Orte</p>
+      <h2>Wohin soll es gehen?</h2>
+      <div class="pixel-rule"></div>
+      <div class="wgrid"><article class="way sk"><header style="background:#7a231a">Abgrund</header><div class="wb"><p>Endlos im Wellen-Modus, freigeschaltet mit Gold.</p><ul class="sklines"><li><b>Immer härter</b> Mit jeder Welle mehr, zähere und stärkere Gegner, ab Welle 20 zusätzlich ein Aufschlag.</li><li><b>Mini-Boss alle 10</b> Alle 25 Wellen kommen zwei Finale-Mobs. Beute gibt es alle 5 Wellen.</li><li><b>Rekord</b> Dein persönlicher Rekord steht unter /arena stats und in der Rangliste.</li></ul></div></article><article class="way sk"><header style="background:#8a3a14">Glut und Eis</header><div class="wb"><p>Die Arena wechselt ihr Gesicht.</p><ul class="sklines"><li><b>Glut-Arena</b> Für Gegner aus dem Nether, in Nether-Farben umgefärbt.</li><li><b>Eis-Arena</b> Für Eis-Gegner, mit Schnee und Eis.</li><li><b>Wahl im Terminal</b> Der Knopf „Arena“ stellt Auto, Klassisch, Glut oder Eis ein. Auto passt sich den Gegnern an.</li></ul></div></article><article class="way sk"><header style="background:#26457a">Schmied</header><div class="wb"><p>Ein Amboss an der Ostseite des Shops.</p><ul class="sklines"><li><b>9 Verbesserungen</b> Schärfe, Härtung, Lebenskraft, Windläufer, Schlagtempo, Standfest, Reichweite, Lebensfunke und Schmiedeglut.</li><li><b>Nur in der Arena</b> Die Boni gelten nur in der Arena-Dimension und fallen beim Verlassen weg.</li></ul></div></article><article class="way sk"><header style="background:#2f5e1d">Karte</header><div class="wb"><p>Die Arena ist größer und hat zwei Ebenen.</p><ul class="sklines"><li><b>Balkon</b> Eine zweite Ebene rund um die Arena, über vier Treppen erreichbar. Von dort kann man springen oder schießen.</li><li><b>Heilbrunnen</b> Vier Brunnen laden nach 45 Sekunden wieder auf.</li><li><b>Flammenfallen</b> Rote Druckplatten treffen Gegner hart, Spieler nur leicht.</li></ul></div></article></div>
+    </section>
+    <section>
+      <p class="kicker">Gegner und Ereignisse</p>
+      <h2>Was dir begegnet</h2>
+      <div class="pixel-rule"></div>
+      <div class="feats">
+<div class="feat"><canvas class="ico" data-i="wand" width="10" height="10"></canvas><div><h3>Gegner-Klassen</h3><p>Ab Welle 3: Sanitäter heilen, Schildträger halten durch, Bombenleger explodieren beim Tod, Schützen schießen vom Balkon.</p></div></div><div class="feat"><canvas class="ico" data-i="star" width="10" height="10"></canvas><div><h3>Ereignisse</h3><p>Ab Welle 3 mit 30 Prozent Chance: Blutmond, Gewitter oder Mondsprung.</p></div></div><div class="feat"><canvas class="ico" data-i="skull" width="10" height="10"></canvas><div><h3>Keine Hostility-Stufen</h3><p>In der Arena gibt es keine L2-Hostility-Level. Die Schwierigkeit kommt nur aus den Arena-Stufen.</p></div></div>
+      </div>
+    </section>
+    <section>
+      <p class="kicker">Belohnungen</p>
+      <h2>Coins, Shop und Rang</h2>
+      <div class="pixel-rule"></div>
+      <div class="feats">
+<div class="feat"><canvas class="ico" data-i="chest" width="10" height="10"></canvas><div><h3>Coins und Shop</h3><p>Coins liegen auf deinem Konto. Im Shop gibt es Ausrüstung, Ressourcen, Titel und Partikelspuren.</p></div></div><div class="feat"><canvas class="ico" data-i="book" width="10" height="10"></canvas><div><h3>Rang und Rangliste</h3><p>Vom Rekruten bis zur Legende, nach insgesamt verdienten Coins. Die Rangliste zeigt die Top 10, auch den Abgrund.</p></div></div><div class="feat"><canvas class="ico" data-i="gear" width="10" height="10"></canvas><div><h3>Modifikatoren</h3><p>Elite-Horde, Kein Heilen, Glaskanone und Hetzjagd geben Bonus-Coins. Die Tages-Challenge gibt einmal täglich extra.</p></div></div><div class="feat"><canvas class="ico" data-i="core" width="10" height="10"></canvas><div><h3>Siegertafel</h3><p>Nach jedem Lauf zeigt eine Tafel in der Lobby Schaden, Kills und Wiederbelebungen pro Spieler.</p></div></div>
+      </div>
+    </section>
+  </div>
   <div id="mods" class="view" hidden>
     <section style="padding-top:44px">
       <p class="kicker">Modliste</p>
@@ -732,7 +777,7 @@
   });
 
   /* ---------- Tabs: Übersicht / Guide ---------- */
-  var VIEWS = ['home', 'guide', 'skills', 'mods', 'log'];
+  var VIEWS = ['home', 'guide', 'skills', 'arena', 'mods', 'log'];
   function route() {
     var id = decodeURIComponent(location.hash.slice(1)), el = id ? document.getElementById(id) : null;
     var v = !el ? 'home' : (el.classList.contains('view') ? el.id : (el.closest('.view') || {}).id) || 'home';
