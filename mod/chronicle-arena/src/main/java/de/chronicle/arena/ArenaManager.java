@@ -210,6 +210,9 @@ public final class ArenaManager {
         boolean miniThisWave;
         int revives = 2;
         double powerMul = 1.0;
+        int offerWait;
+        final Map<UUID, UUID> killcamTarget = new HashMap<>();
+        final Map<UUID, Integer> killcamTicks = new HashMap<>();
         int event;
         final Map<UUID, Integer> classes = new HashMap<>();
         final long[] fountainReady = new long[4];
@@ -469,6 +472,11 @@ public final class ArenaManager {
         r.won = won;
         discardMobs(server, r);
         r.queue.clear();
+        for (UUID kc : r.killcamTicks.keySet()) {
+            ServerPlayer kp = server.getPlayerList().getPlayer(kc);
+            if (kp != null) kp.setCamera(kp);
+        }
+        r.killcamTicks.clear();
         ArenaShow.stopMusic(runPlayers(server, r));
         r.bar.setProgress(won ? 1.0F : 0.0F);
         r.bar.setName(Component.translatable(won ? "bar.chronicle_arena.won" : "bar.chronicle_arena.lost"));
@@ -699,9 +707,29 @@ public final class ArenaManager {
         }
         switch (r.state) {
             case PREP -> {
-                if (!r.offer.isEmpty() && r.picked.containsAll(r.alive)) {
-                    r.offer.clear();
-                    r.timer = Math.min(r.timer, 60);
+                if (!r.offer.isEmpty()) {
+                    if (r.picked.containsAll(r.alive)) {
+                        r.offer.clear();
+                        r.timer = Math.min(r.timer, 60);
+                    } else {
+                        // Die Runde wartet, bis alle Lebenden gewaehlt haben (nach 2 Minuten waehlt der Zufall).
+                        r.offerWait++;
+                        if (r.offerWait > 2400) {
+                            for (UUID id : new ArrayList<>(r.alive)) {
+                                ServerPlayer lazy = server.getPlayerList().getPlayer(id);
+                                if (lazy != null && !r.picked.contains(id)) chooseBlessing(lazy, 1 + level.getRandom().nextInt(r.offer.size()));
+                            }
+                        } else if (r.offerWait % 20 == 0) {
+                            StringBuilder waiting = new StringBuilder();
+                            for (UUID id : r.alive) {
+                                ServerPlayer wp = server.getPlayerList().getPlayer(id);
+                                if (wp != null && !r.picked.contains(id)) waiting.append(waiting.length() > 0 ? ", " : "").append(wp.getGameProfile().getName());
+                            }
+                            actionbar(server, r, Component.literal("Segen waehlen (Chat anklicken oder /arena segen 1-" + r.offer.size() + ")  |  Warte auf: " + waiting)
+                                    .withStyle(net.minecraft.ChatFormatting.AQUA));
+                        }
+                        break;
+                    }
                 }
                 if (r.started && r.timer > 0 && r.timer <= 60 && r.timer % 20 == 0) {
                     ArenaShow.title(runPlayers(server, r), ArenaShow.big(String.valueOf(r.timer / 20), net.minecraft.ChatFormatting.GOLD),
@@ -878,6 +906,28 @@ public final class ArenaManager {
         }
     }
 
+    /** Gefallene sehen 5 Sekunden lang durch die Augen ihres Bezwingers. */
+    private void tickKillcam(MinecraftServer server, ServerLevel level, Run r) {
+        if (r.killcamTicks.isEmpty()) return;
+        for (Iterator<Map.Entry<UUID, Integer>> it = r.killcamTicks.entrySet().iterator(); it.hasNext(); ) {
+            Map.Entry<UUID, Integer> en = it.next();
+            ServerPlayer sp = server.getPlayerList().getPlayer(en.getKey());
+            Entity target = level.getEntity(r.killcamTarget.get(en.getKey()));
+            if (sp == null || !r.spectators.contains(sp.getUUID())) {
+                it.remove();
+                continue;
+            }
+            int left = en.getValue() - 1;
+            if (left <= 0 || target == null || !target.isAlive()) {
+                sp.setCamera(sp);
+                it.remove();
+                continue;
+            }
+            if (sp.getCamera() != target) sp.setCamera(target);
+            en.setValue(left);
+        }
+    }
+
     private void tickFight(MinecraftServer server, ServerLevel level, Run r) {
         // Lebende Mobs zaehlen.
         r.mobs.removeIf(id -> {
@@ -917,6 +967,7 @@ public final class ArenaManager {
         // Wiederbeleben: neben einem Gefallenen schleichen (ca. 4 Sekunden).
         tickRevive(server, level, r);
         ArenaExtras.tick(server, level, r, tickCounter);
+        tickKillcam(server, level, r);
 
         // Aggro halten.
         if (tickCounter % 40 == 0) {
@@ -1140,6 +1191,7 @@ public final class ArenaManager {
         java.util.Collections.shuffle(all);
         r.offer = new ArrayList<>(all.subList(0, 3));
         r.picked.clear();
+        r.offerWait = 0;
         for (UUID id : r.alive) {
             ServerPlayer p = server.getPlayerList().getPlayer(id);
             if (p == null) continue;
@@ -1160,6 +1212,7 @@ public final class ArenaManager {
         st[b.ordinal()]++;
         ArenaShow.apply(p, st);
         r.picked.add(p.getUUID());
+        if (b == ArenaShow.Blessing.LIFE) r.revives = Math.min(9, r.revives + 1);
         p.sendSystemMessage(Component.literal("Segen: " + b.label + " (" + b.desc + ")").withStyle(net.minecraft.ChatFormatting.GOLD));
         return 1;
     }
@@ -1230,7 +1283,14 @@ public final class ArenaManager {
         if (event.getAmount() >= sp.getHealth() + sp.getAbsorptionAmount()
                 && !event.getSource().is(DamageTypes.GENERIC_KILL)) {
             event.setCanceled(true);
+            net.minecraft.world.entity.Entity slayer = event.getSource().getEntity();
             makeSpectator(sp);
+            if (slayer instanceof LivingEntity && !(slayer instanceof Player) && slayer.isAlive()) {
+                r.killcamTarget.put(sp.getUUID(), slayer.getUUID());
+                r.killcamTicks.put(sp.getUUID(), 100);
+                ArenaShow.title(List.of(sp), ArenaShow.big("BESIEGT", net.minecraft.ChatFormatting.DARK_RED),
+                        Component.literal("von " + slayer.getDisplayName().getString()).withStyle(net.minecraft.ChatFormatting.GRAY), 5, 70, 15);
+            }
             if (r.alive.isEmpty()) finish(sp.server, false);
         }
     }
@@ -1263,6 +1323,8 @@ public final class ArenaManager {
         if (r == null || event.getEntity() instanceof Player || event.getEntity().level().dimension() != DIM) return;
         if (event.getSource().getEntity() instanceof ServerPlayer p && r.alive.contains(p.getUUID())) {
             r.stat(p.getUUID())[0] += Math.round(event.getNewDamage());
+            int vamp = stack(r, p.getUUID(), ArenaShow.Blessing.VAMPIR);
+            if (vamp > 0 && (r.mask & MOD_NOHEAL) == 0) p.heal(event.getNewDamage() * 0.06F * vamp);
         }
     }
 

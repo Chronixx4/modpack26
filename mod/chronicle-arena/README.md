@@ -54,3 +54,7 @@ Zu Beginn jeder Welle (und beim Boss) wird die Staerke der lebenden Spieler geme
 - Arena-Wechsel: Thema "nether" -> Glutarena (Z 500), "ice" -> Eisarena (Z 800), sonst Standardarena. Die Varianten werden beim ersten Bedarf gebaut und per `ArenaPalette` umgefaerbt.
 - Arena-Rang (Rekrut bis Legende) nach insgesamt verdienten Coins, mit Bonus-Coins beim Aufstieg; im HUD mit Fortschrittsbalken. Rangliste um die Abgrund-Spalte (A) ergaenzt.
 - Siegertafel: Nach jedem Run zeigt ein Textfeld in der Lobby Schaden, Kills und Wiederbelebungen pro Spieler.
+
+## Kill-Cam und Perk-Pause
+- Gefallene sehen 5 Sekunden durch die Augen ihres Bezwingers (Spectator-Kamera) und bekommen den Titel "BESIEGT von ...".
+- Segen nach jeder 5. Welle: die Runde pausiert, bis alle Lebenden gewaehlt haben (Anzeige "Warte auf: ..."; nach 2 Minuten waehlt der Zufall). Neu: Vampir (6 % Schaden als Leben) und Zweite Chance (+1 Wiederbelebung).
