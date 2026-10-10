@@ -191,18 +191,15 @@ final class ArenaExtras {
             double tz = c.getZ() + 0.5 + TRAPS[i][1];
             AABB plate = new AABB(tx - 0.8, c.getY() - 0.5, tz - 0.8, tx + 0.8, c.getY() + 1.5, tz + 0.8);
             List<LivingEntity> on = level.getEntitiesOfClass(LivingEntity.class, plate,
-                    e -> e.isAlive() && e.onGround() && (e instanceof ServerPlayer sp ? r.alive.contains(sp.getUUID()) : r.mobs.contains(e.getUUID())));
+                    e -> e.isAlive() && e.onGround() && !(e instanceof ServerPlayer) && r.mobs.contains(e.getUUID()));
             if (on.isEmpty()) continue;
             r.trapReady[i] = tick + 200;
             level.sendParticles(ParticleTypes.FLAME, tx, c.getY() + 0.5, tz, 70, 1.6, 0.8, 1.6, 0.04);
             level.sendParticles(ParticleTypes.LAVA, tx, c.getY() + 1.0, tz, 14, 1.2, 0.5, 1.2, 0.0);
             level.playSound(null, tx, c.getY(), tz, SoundEvents.BLAZE_SHOOT, SoundSource.BLOCKS, 1.5F, 0.7F);
             for (LivingEntity e : level.getEntitiesOfClass(LivingEntity.class, new AABB(tx - 3.2, c.getY() - 1, tz - 3.2, tx + 3.2, c.getY() + 4, tz + 3.2))) {
-                if (e instanceof ServerPlayer sp) {
-                    if (r.alive.contains(sp.getUUID())) {
-                        sp.hurt(level.damageSources().inFire(), 3.0F);
-                        sp.igniteForSeconds(2);
-                    }
+                if (e instanceof ServerPlayer) {
+                    continue;   // Fallen treffen nur Gegner
                 } else if (r.mobs.contains(e.getUUID())) {
                     e.hurt(level.damageSources().inFire(), 14.0F);
                     e.igniteForSeconds(4);
@@ -274,7 +271,7 @@ final class ArenaExtras {
             server.getCommands().performPrefixedCommand(s, "kill @e[type=minecraft:text_display,tag=" + tag + "]");
             server.getCommands().performPrefixedCommand(s, String.format(java.util.Locale.ROOT,
                     "summon minecraft:text_display %.1f %.1f %.1f {Tags:[\"%s\",\"chronicle_fountain\"],billboard:\"center\",alignment:\"center\",line_width:200,background:1275068416,text:'%s',"
-                            + "transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[0f,0f,0f],scale:[1.5f,1.5f,1.5f]}}", x, y, z, tag, text));
+                            + "transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[0f,0f,0f],scale:[2.0f,2.0f,2.0f]}}", x, y, z, tag, text));
         }
         else server.getCommands().performPrefixedCommand(s, "data merge entity @e[type=minecraft:text_display,tag=" + tag + ",limit=1,distance=..6] {text:'" + text + "'}");
     }

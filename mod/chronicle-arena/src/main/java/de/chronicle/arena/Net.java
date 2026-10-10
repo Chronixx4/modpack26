@@ -155,7 +155,7 @@ public final class Net {
 
     /** Server -> Client: Konto, Kosmetik und Rangliste (fuer die Anzeige in der Arena und den Shop). */
     public record Stats(int coins, int kills, int bosses, int wins, String title, String titleId, String trailId,
-                        List<String> owned, List<BoardLine> board, boolean showHud, String rank, int earned, int nextRankAt) implements CustomPacketPayload {
+                        List<String> owned, List<BoardLine> board, boolean showHud, String rank, int earned, int nextRankAt, List<String> perks) implements CustomPacketPayload {
         public static final Type<Stats> TYPE = new Type<>(ChronicleArena.id("stats"));
         public static final StreamCodec<FriendlyByteBuf, Stats> CODEC = StreamCodec.of(Stats::write, Stats::read);
 
@@ -182,6 +182,8 @@ public final class Net {
             buf.writeUtf(p.rank);
             buf.writeVarInt(p.earned);
             buf.writeVarInt(p.nextRankAt);
+            buf.writeVarInt(p.perks.size());
+            for (String k : p.perks) buf.writeUtf(k);
         }
 
         private static Stats read(FriendlyByteBuf buf) {
@@ -199,7 +201,13 @@ public final class Net {
             List<BoardLine> board = new ArrayList<>();
             for (int i = 0; i < nb; i++) board.add(new BoardLine(buf.readUtf(), buf.readUtf(), buf.readVarInt(), buf.readVarInt(), buf.readVarInt(), buf.readVarInt()));
             boolean hud = buf.readBoolean();
-            return new Stats(coins, kills, bosses, wins, title, titleId, trailId, owned, board, hud, buf.readUtf(), buf.readVarInt(), buf.readVarInt());
+            String rank = buf.readUtf();
+            int earned = buf.readVarInt();
+            int next = buf.readVarInt();
+            int np = buf.readVarInt();
+            List<String> perks = new ArrayList<>();
+            for (int i = 0; i < np; i++) perks.add(buf.readUtf());
+            return new Stats(coins, kills, bosses, wins, title, titleId, trailId, owned, board, hud, rank, earned, next, perks);
         }
 
         @Override

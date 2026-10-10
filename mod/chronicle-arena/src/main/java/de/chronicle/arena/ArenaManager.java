@@ -1225,6 +1225,7 @@ public final class ArenaManager {
         st[b.ordinal()]++;
         ArenaShow.apply(p, st);
         r.picked.add(p.getUUID());
+        statsDirty.add(p.getUUID());
         if (b == ArenaShow.Blessing.LIFE) r.revives = Math.min(9, r.revives + 1);
         p.sendSystemMessage(Component.literal("Segen: " + b.label + " (" + b.desc + ")").withStyle(net.minecraft.ChatFormatting.GOLD));
         return 1;
@@ -1287,6 +1288,11 @@ public final class ArenaManager {
     @SubscribeEvent
     public void onIncomingDamage(LivingIncomingDamageEvent event) {
         if (!(event.getEntity() instanceof ServerPlayer sp) || sp.level().dimension() != DIM) return;
+        // Kein PvP (auch nicht per Pfeil oder Wurfwaffe).
+        if (event.getSource().getEntity() instanceof Player attacker && attacker != sp) {
+            event.setCanceled(true);
+            return;
+        }
         Run r = run;
         boolean fighting = r != null && r.alive.contains(sp.getUUID());
         if (!fighting) {
@@ -1698,6 +1704,23 @@ public final class ArenaManager {
         checkRank(p);
     }
 
+    /** Kurze Liste der aktiven Verstaerkungen (Schmied und Segen dieses Laufs) fuer die Anzeige. */
+    private static List<String> perkLines(ServerPlayer p) {
+        List<String> out = new ArrayList<>();
+        for (ArenaSmith.Up u : ArenaSmith.UPS) {
+            int lv = ArenaSmith.level(p, u.id());
+            if (lv > 0) out.add("S " + u.name() + " " + lv);
+        }
+        Run r = run;
+        int[] st = r == null ? null : r.bless.get(p.getUUID());
+        if (st != null) {
+            for (ArenaShow.Blessing b : ArenaShow.Blessing.values()) {
+                if (b.ordinal() < st.length && st[b.ordinal()] > 0) out.add("+ " + b.label + " x" + st[b.ordinal()]);
+            }
+        }
+        return out;
+    }
+
     static void sendStats(ServerPlayer p) {
         checkRank(p);
         String titleId = ArenaStats.title(p);
@@ -1709,7 +1732,7 @@ public final class ArenaManager {
         PacketDistributor.sendToPlayer(p, new Net.Stats(ArenaStats.coins(p), ArenaStats.kills(p), ArenaStats.bosses(p),
                 ArenaStats.wins(p), titleId.isEmpty() ? "" : ArenaDefs.cosmeticName(titleId), titleId, ArenaStats.trail(p),
                 ArenaStats.owned(p), board, true, ArenaStats.RANKS[rk], ArenaStats.earned(p),
-                rk + 1 < ArenaStats.RANK_AT.length ? ArenaStats.RANK_AT[rk + 1] : 0));
+                rk + 1 < ArenaStats.RANK_AT.length ? ArenaStats.RANK_AT[rk + 1] : 0, perkLines(p)));
     }
 
     private static void rememberMode(ServerPlayer sp) {

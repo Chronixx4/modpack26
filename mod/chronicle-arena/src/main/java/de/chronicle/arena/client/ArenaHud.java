@@ -55,6 +55,25 @@ public final class ArenaHud {
             g.fill(x + 4, y + 61, x + 4 + fill, y + 63, 0xFFB388FF);
         }
 
+        // Links unten: aktive Verstaerkungen (klein).
+        List<String> perks = s.perks();
+        if (!perks.isEmpty()) {
+            int py = y + h + 6;
+            int pw = 112;
+            int ph = 12 + Math.min(perks.size(), 14) * 9 + 3;
+            g.fill(x - 1, py - 1, x + pw + 1, py + ph + 1, 0xFF6B4BB0);
+            g.fillGradient(x, py, x + pw, py + ph, 0xC0201638, 0xC00B0914);
+            g.drawString(f, "Verstaerkungen", x + 3, py + 2, 0xFFE0B8FF);
+            int ky = py + 13;
+            int shown = 0;
+            for (String k : perks) {
+                if (shown++ >= 14) break;
+                boolean smith = k.startsWith("S ");
+                g.drawString(f, f.plainSubstrByWidth(k.substring(2), pw - 8), x + 4, ky, smith ? 0xFFFFD36B : 0xFF7FE0FF);
+                ky += 9;
+            }
+        }
+
         // Rechts: Rangliste.
         List<Net.BoardLine> board = s.board();
         if (board.isEmpty()) return;
