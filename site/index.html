@@ -394,6 +394,21 @@
     .slot .ico { width:20px; height:20px; }
   }
 
+
+  /* Arena */
+  .soon { margin:0 0 18px; padding:12px 14px; background:#2d2412; font-size:17px; box-shadow:0 0 0 3px #000, inset 0 0 0 3px #7a5a1c; }
+  .soon b { font:10px var(--px); color:#000; background:var(--gold); padding:4px 7px; margin-right:10px; }
+  #atiers { grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); align-items:start; }
+  .atier header { display:block; }
+  .atier .ico2 { font:9px var(--px); color:rgba(255,255,255,.8); margin-top:4px; display:block; }
+  .t-bronze header { background:#7a4a1c; } .t-silber header { background:#5a5f6b; } .t-gold header { background:#7a5a1c; } .t-chronicle header { background:#4a2a7a; }
+  .atier ul li::before { display:none; } .atier ul li { justify-content:space-between; gap:12px; }
+  .atier ul li span { color:var(--mute); } .atier ul li b { font-weight:500; color:var(--text); }
+  .bcard.kill header { --bc:#7a231a; } .bcard.wave header { --bc:#26457a; }
+  .agal { display:grid; gap:16px; grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr)); }
+  .agal figure { margin:0; background:var(--panel); box-shadow:0 0 0 3px #000, inset 3px 3px 0 var(--hi), inset -3px -3px 0 #181a1f; padding:8px; }
+  .agal img { display:block; width:100%; height:auto; image-rendering:auto; background:#000; }
+  .agal figcaption { padding:8px 4px 2px; font-size:16px; color:var(--mute); }
   /* Suche */
   button.slot { border:0; cursor:pointer; font-family:var(--px); }
   #sov { position:fixed; inset:0; z-index:60; background:rgba(0,0,0,.7); padding:max(12px,env(safe-area-inset-top)) 12px 12px; overflow-y:auto; }
@@ -476,6 +491,7 @@
   <a class="tab" id="tab-home" href="#top" aria-current="page">Übersicht</a>
   <a class="tab" id="tab-guide" href="#guide">Guide</a>
   <a class="tab" id="tab-bosse" href="#bosse">Bosse</a>
+  <a class="tab" id="tab-arena" href="#arena">Arena</a>
   <a class="tab" id="tab-skills" href="#skills">Skilltree</a>
   <a class="tab" id="tab-mods" href="#mods">Modliste</a>
   <a class="tab" id="tab-log" href="#log">Changelog</a>
@@ -688,6 +704,94 @@
       <div class="bcards" id="bout"><p class="lead">Die Bosse werden geladen.</p></div>
     </section>
   </div>
+  <div id="arena" class="view" hidden>
+    <section style="padding-top:44px">
+      <p class="kicker">Arena-Modus</p>
+      <h2>Kämpfe, Coins und Shop</h2>
+      <div class="pixel-rule"></div>
+      <p class="soon"><b>Testphase</b> Die Arena-Mod ist noch nicht im Pack. Alles hier ist der aktuelle Stand der Entwicklung und kann sich noch ändern.</p>
+      <p class="lead">Ein eigenes Portal führt in die Arena-Dimension. Dort wählst du Bosskampf oder Monsterwellen, die Stufe und optional Modifikatoren. Für jeden Sieg gibt es Coins, die du im Shop gegen Items ausgibst.</p>
+      <div class="stats" id="astats"></div>
+    </section>
+
+    <section>
+      <p class="kicker">Ablauf</p>
+      <h2>Vom Portal zum Sieg</h2>
+      <div class="pixel-rule"></div>
+      <div class="steps">
+        <div class="toast"><canvas class="ico" data-i="portal" width="10" height="10"></canvas><div><p class="t">1. Portal</p><p>Craften: 4 Obsidian, 4 Diamanten und ein Enderauge. Rechtsklick bringt dich in die Lobby, dort geht es genauso zurück.</p></div></div>
+        <div class="toast"><canvas class="ico" data-i="book" width="10" height="10"></canvas><div><p class="t">2. Terminal</p><p>In der Lobby stellst du Modus, Begegnung, Stufe und Modifikatoren ein und startest oder schaust nur zu.</p></div></div>
+        <div class="toast"><canvas class="ico" data-i="sword" width="10" height="10"></canvas><div><p class="t">3. Kampf</p><p>Es gibt genau eine Arena. Alle, die beim Start in der Lobby stehen, kämpfen mit. Wer später kommt oder fällt, schaut zu.</p></div></div>
+        <div class="toast"><canvas class="ico" data-i="chest" width="10" height="10"></canvas><div><p class="t">4. Belohnung</p><p>Coins aufs Konto, XP und eine Loot-Kiste der Stufe. Mit den Coins gehst du zur Shop-Plattform.</p></div></div>
+      </div>
+      <p class="note"><b>Mehrspieler:</b> Pro zusätzlichem Spieler steigen Leben der Gegner um 50 %, Schaden um 10 % und die Zahl der Mobs um 40 %, dazu kommen die Faktoren der Stufe. Befehle: <code>/arena leave</code> zum Verlassen, <code>/arena stats</code> für deine Werte, Ops können mit <code>/arena stop</code> abbrechen.</p>
+    </section>
+
+    <section>
+      <p class="kicker">Stufen</p>
+      <h2>Bronze bis Chronicle</h2>
+      <div class="pixel-rule"></div>
+      <p class="lead">Die Stufen schaltest du nacheinander frei. Siege und Bestzeit pro Stufe stehen im Terminal.</p>
+      <div class="cats" id="atiers"></div>
+      <p class="note">In den Wellen sind die Gegner gegenüber dem Boss-Wert abgeschwächt, Bosse nicht. Coins gibt es pro Welle und einen Bonus für den Sieg (Boss: doppelt).</p>
+    </section>
+
+    <section>
+      <p class="kicker">Begegnungen</p>
+      <h2 id="aenctitle">Bosse und Wellen</h2>
+      <div class="pixel-rule"></div>
+      <p class="lead">Begegnungen sind Datapack-Dateien. Gegner von Mods, die im Pack fehlen, werden automatisch ausgeblendet.</p>
+      <div class="chips" id="achips" role="group" aria-label="Filter"></div>
+      <div class="bcards" id="aenc"></div>
+    </section>
+
+    <section>
+      <p class="kicker">Extras</p>
+      <h2>Modifikatoren und Tages-Challenge</h2>
+      <div class="pixel-rule"></div>
+      <div class="feats" id="amods"></div>
+      <p class="note"><b>Tages-Challenge:</b> Jeden Tag gibt es eine feste Kombination aus Begegnung, Stufe und Modifikatoren. Wer sie schafft, bekommt einmal pro Tag Bonus-Coins. Der Coins-Bonus der Modifikatoren wird addiert.</p>
+    </section>
+
+    <section>
+      <p class="kicker">Konto und Rangliste</p>
+      <h2>Was du in der Arena siehst</h2>
+      <div class="pixel-rule"></div>
+      <div class="feats">
+        <div class="feat"><canvas class="ico" data-i="star" width="10" height="10"></canvas><div><h3>Konto</h3><p>Links im Bild: Coins, Kills, Bosse, Siege und dein Titel. Die Coins liegen auf dem Konto, nicht im Inventar.</p></div></div>
+        <div class="feat"><canvas class="ico" data-i="skull" width="10" height="10"></canvas><div><h3>Rangliste</h3><p>Rechts im Bild: die Top 10, serverweit gespeichert.</p></div></div>
+        <div class="feat"><canvas class="ico" data-i="portal" width="10" height="10"></canvas><div><h3>Siegesfeier</h3><p>Siege lösen Feuerwerk und Fanfare aus.</p></div></div>
+      </div>
+    </section>
+
+    <section>
+      <p class="kicker">Shop</p>
+      <h2 id="ashoptitle">Coins ausgeben</h2>
+      <div class="pixel-rule"></div>
+      <p class="lead">Der Shop steht auf einer eigenen Plattform mit Händler und sechs Ständen. Preise sind in Coins.</p>
+      <div class="msearch"><label for="asq" class="vh">Shop durchsuchen</label><input id="asq" type="search" placeholder="Angebot suchen, z. B. Spitzhacke" autocomplete="off"><span id="ascount" aria-live="polite"></span></div>
+      <div class="chips" id="ashopchips" role="group" aria-label="Shop-Kategorie"></div>
+      <div class="mgrid" id="ashop"></div>
+      <p class="note"><b>Kosmetik:</b> Titel erscheinen in der Anzeige und in der Rangliste, dazu gibt es Partikelspuren für das ganze Spiel.</p>
+    </section>
+
+    <section>
+      <p class="kicker">Vorschau</p>
+      <h2>So soll es aussehen</h2>
+      <div class="pixel-rule"></div>
+      <p class="lead">Das sind Vorschau-Renderings aus der Entwicklung, keine Spielbilder.</p>
+      <div class="agal">
+        <figure><img src="img/arena/arena-gesamt.png" alt="Die Arena von außen mit Ringen und schwebenden Inseln" loading="lazy"><figcaption>Die Arena von außen</figcaption></figure>
+        <figure><img src="img/arena/arena-innen.png" alt="Das Innere der Arena" loading="lazy"><figcaption>Innen: Tribüne und Kampffläche</figcaption></figure>
+        <figure><img src="img/arena/lobby-bruecke-shop.png" alt="Lobby, Brücke und Shop-Plattform" loading="lazy"><figcaption>Lobby, Brücke und Shop</figcaption></figure>
+        <figure><img src="img/arena/shop.png" alt="Die Shop-Plattform" loading="lazy"><figcaption>Die Shop-Plattform</figcaption></figure>
+        <figure><img src="img/arena/gui-terminal.png" alt="Das Arena-Terminal" loading="lazy"><figcaption>Terminal</figcaption></figure>
+        <figure><img src="img/arena/gui-shop.png" alt="Das Shop-Menü" loading="lazy"><figcaption>Shop-Menü</figcaption></figure>
+        <figure><img src="img/arena/gui-hud.png" alt="Konto und Rangliste im Bild" loading="lazy"><figcaption>Konto und Rangliste</figcaption></figure>
+      </div>
+    </section>
+  </div>
+
   <div id="skills" class="view" hidden>
     <section style="padding-top:44px">
       <p class="kicker">Skilltree</p>
@@ -895,7 +999,7 @@
   });
 
   /* ---------- Tabs: Übersicht / Guide ---------- */
-  var VIEWS = ['home', 'guide', 'bosse', 'skills', 'mods', 'log'];
+  var VIEWS = ['home', 'guide', 'bosse', 'arena', 'skills', 'mods', 'log'];
   function route() {
     var id = decodeURIComponent(location.hash.slice(1)), el = id ? document.getElementById(id) : null;
     var v = !el ? 'home' : (el.classList.contains('view') ? el.id : (el.closest('.view') || {}).id) || 'home';
@@ -981,6 +1085,55 @@
   })();
 
 
+
+
+  /* ---------- Arena ---------- */
+  (function () {
+    var D = null;
+    function el(t, c, x) { var e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; }
+    function init(d) {
+      D = d; var st = document.getElementById('astats');
+      [[d.tiers.length, 'Stufen'], [d.begegnungen.filter(function (e) { return e.typ === 'boss'; }).length, 'Boss-Kämpfe'], [d.begegnungen.filter(function (e) { return e.typ !== 'boss'; }).length, 'Wellen-Modi'], [d.shop.angebote.length, 'Shop-Angebote']]
+        .forEach(function (x) { var s = el('div', 'stat'); s.appendChild(el('b', '', x[0])); s.appendChild(el('span', '', x[1])); st.appendChild(s); });
+      var ti = document.getElementById('atiers');
+      d.tiers.forEach(function (t) { var c = el('article', 'cat atier t-' + t.name.toLowerCase()); var h = el('header'); h.appendChild(el('h3', '', t.name));
+        h.appendChild(el('span', '', t.description)); c.appendChild(h); var u = el('ul');
+        [['Wellen', t.waves], ['Gegner-Leben', 'x' + t.health], ['Gegner-Schaden', 'x' + t.damage], ['Gegner-Anzahl', 'x' + t.count], ['Coins pro Welle', t.tokens_per_wave], ['Coins für den Sieg', t.tokens], ['XP', t.xp],
+          ['Freischaltung', t.requires ? 'Sieg in ' + t.requires.charAt(0).toUpperCase() + t.requires.slice(1) : 'von Anfang an']].forEach(function (r) {
+          var li = el('li'); li.appendChild(el('span', '', r[0])); li.appendChild(el('b', '', r[1])); u.appendChild(li); });
+        c.appendChild(u); ti.appendChild(c); });
+      var am = document.getElementById('amods');
+      d.modifikatoren.forEach(function (m) { var f = el('div', 'feat'); var tx = el('div'); tx.appendChild(el('h3', '', m.name + ' (+' + m.bonus + ' % Coins)')); tx.appendChild(el('p', '', m.text)); f.appendChild(tx); am.appendChild(f); });
+      encUi(); shopUi();
+    }
+    function encUi() {
+      var out = document.getElementById('aenc'), ch = document.getElementById('achips'), f = '';
+      var mods = []; D.begegnungen.forEach(function (e) { if (e.typ === 'boss' && e.mod && mods.indexOf(e.mod) < 0) mods.push(e.mod); });
+      function render() { out.textContent = ''; D.begegnungen.forEach(function (e) {
+        if (f === '__w' ? e.typ === 'boss' : (f === '__b' ? e.typ !== 'boss' : (f && e.mod !== f))) return;
+        var c = el('article', 'bcard ' + (e.typ === 'boss' ? 'kill' : 'wave')); var h = el('header'); h.appendChild(el('h3', '', e.name));
+        h.appendChild(el('span', 'bmod', e.typ === 'boss' ? 'Boss · ' + e.mod : 'Monsterwellen')); c.appendChild(h);
+        var b = el('div', 'bb'); b.appendChild(el('p', '', e.text)); if (e.adds) b.appendChild(el('p', 'bbeute', 'Dazu ' + e.adds + ' Begleiter')); c.appendChild(b); out.appendChild(c); }); }
+      function chip(label, val) { var b = el('button', 'chip', label); b.type = 'button'; b.setAttribute('aria-pressed', val === '' ? 'true' : 'false');
+        b.onclick = function () { f = val; Array.prototype.forEach.call(ch.children, function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); }); render(); }; ch.appendChild(b); }
+      chip('Alle ' + D.begegnungen.length, ''); chip('Wellen ' + D.begegnungen.filter(function (e) { return e.typ !== 'boss'; }).length, '__b');
+      chip('Bosse ' + D.begegnungen.filter(function (e) { return e.typ === 'boss'; }).length, '__w');
+      mods.forEach(function (m) { chip(m + ' ' + D.begegnungen.filter(function (e) { return e.mod === m; }).length, m); }); render();
+    }
+    function shopUi() {
+      var out = document.getElementById('ashop'), ch = document.getElementById('ashopchips'), cat = '', q = '', inp = document.getElementById('asq');
+      function render() { out.textContent = ''; var n = 0, lq = q.trim().toLowerCase();
+        D.shop.angebote.forEach(function (a) { if (cat && a.k !== cat) return; if (lq && a.n.toLowerCase().indexOf(lq) < 0) return; n++;
+          var d = el('div', 'mod'); d.style.setProperty('--i', Math.min(n, 20)); d.appendChild(el('b', '', (a.c > 1 ? a.c + 'x ' : '') + a.n)); d.appendChild(el('small', '', a.p + ' Coins')); out.appendChild(d); });
+        document.getElementById('ascount').textContent = n + (n === 1 ? ' Angebot' : ' Angebote'); if (!n) out.appendChild(el('p', 'lead', 'Nichts gefunden.')); }
+      function chip(label, val) { var b = el('button', 'chip', label); b.type = 'button'; b.setAttribute('aria-pressed', val === '' ? 'true' : 'false');
+        b.onclick = function () { cat = val; Array.prototype.forEach.call(ch.children, function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); }); render(); }; ch.appendChild(b); }
+      chip('Alle ' + D.shop.angebote.length, ''); D.shop.kategorien.forEach(function (k) { chip(k.name + ' ' + k.anzahl, k.id); });
+      inp.addEventListener('input', function () { q = inp.value; render(); }); render();
+    }
+    fetch('arena.json').then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(init).catch(function () {
+      document.getElementById('aenc').textContent = 'Die Arena-Daten konnten nicht geladen werden.'; });
+  })();
 
   /* ---------- Globale Suche ---------- */
   (function () {
