@@ -43,3 +43,6 @@ In der Arena-Dimension gibt es keine Hostility-Levels (Datapack `l2hostility_con
 - Pro Welle: Anzahl +6 %, Leben +4 %, Schaden +2 %. Koop pro Spieler: +35 % Anzahl, +25 % Leben, +8 % Schaden; Mob-Limit 30 + 8 pro Spieler (max. 70).
 - Mini-Boss mit Lebens-Cap pro Stufe (200 / 350 / 600 / 1000).
 - Stufe "Abgrund" (`arena_tiers/abgrund.json`, `waves: 0`, braucht Gold): Endlos nur im Wellen-Modus, Wachstum +5 % Anzahl / +6 % Leben / +3 % Schaden pro Welle, ab Welle 20 zusaetzlich x1,02 pro Welle. Mini-Boss alle 10 Wellen, alle 25 zwei Finale-Mobs. Run endet bei Niederlage; Beute je 5 Wellen, persoenlicher Rekord (`/arena stats`).
+
+## Anpassung an die Spielerstaerke
+Zu Beginn jeder Welle (und beim Boss) wird die Staerke der lebenden Spieler gemessen (Ruestung + Haerte, Angriffswert inkl. Waffe, Skilltree und Segen, maximale Leben). Die Gegner-Leben werden mit `(Staerke / 0,91)^0,7` skaliert (0,8x bis 1,8x); der Wellen-Titel zeigt "Staerke xN". Mini-Boss solo: 1,75x statt 2,5x Leben.

@@ -195,6 +195,7 @@ public final class ArenaManager {
         boolean musicBoss;
         boolean miniThisWave;
         int revives = 2;
+        double powerMul = 1.0;
 
         Run(ArenaDefs.Encounter encounter, ArenaDefs.Tier tier, int players, int mask) {
             this.mask = mask;
@@ -704,6 +705,7 @@ public final class ArenaManager {
             r.started = true;
             r.state = State.BOSS;
             r.wave = 1;
+            r.powerMul = computePower(server, r);
             r.queue.add(new Spawn(r.encounter.bossEntity(), false, true));
             r.bar.setName(Component.translatable("bar.chronicle_arena.boss", r.encounter.name()));
             r.bar.setColor(BossEvent.BossBarColor.RED);
@@ -716,11 +718,13 @@ public final class ArenaManager {
         r.wave++;
         buildWave(level, r);
         r.waveTotal = Math.max(1, r.queue.size());
+        r.powerMul = computePower(server, r);
         r.offer.clear();
         r.bar.setColor(BossEvent.BossBarColor.PURPLE);
         ArenaShow.title(runPlayers(server, r), ArenaShow.big("WELLE " + r.wave + " / " + r.totalStr(),
                         r.miniThisWave ? net.minecraft.ChatFormatting.RED : net.minecraft.ChatFormatting.LIGHT_PURPLE),
-                Component.literal(r.waveTotal + " Gegner" + (r.miniThisWave ? " - MINI-BOSS!" : "")).withStyle(
+                Component.literal(r.waveTotal + " Gegner" + (r.miniThisWave ? " - MINI-BOSS!" : "")
+                        + (Math.abs(r.powerMul - 1.0) > 0.05 ? String.format(" | Staerke x%.2f", r.powerMul) : "")).withStyle(
                         r.miniThisWave ? net.minecraft.ChatFormatting.RED : net.minecraft.ChatFormatting.GRAY), 8, 45, 12);
         r.bar.setName(Component.translatable("bar.chronicle_arena.wave", r.wave, r.totalStr()));
         actionbar(server, r, Component.translatable("msg.chronicle_arena.wave", r.wave, r.totalStr()));
@@ -958,7 +962,8 @@ public final class ArenaManager {
             mob.finalizeSpawn(level, level.getCurrentDifficultyAt(le.blockPosition()), MobSpawnType.EVENT, null);
             mob.setPersistenceRequired();
         }
-        double h = r.healthScale * (1.0 + 0.25 * r.extra) * r.growth(0.04, 0.06) * (s.mini ? 2.5 : s.elite ? 2.0 : 1.0);
+        double h = r.healthScale * (1.0 + 0.25 * r.extra) * r.growth(0.04, 0.06) * r.powerMul
+                * (s.mini ? (r.extra == 0 ? 1.75 : 2.5) : s.elite ? 2.0 : 1.0);
         if (s.mini) {
             double cap = switch (r.tier.order()) {
                 case 0 -> 200.0;
@@ -1009,6 +1014,25 @@ public final class ArenaManager {
             }
         }
         return best;
+    }
+
+    /** Gegner-Anpassung an die Staerke der Lebenden: Ruestung, Angriff (Waffe, Skilltree, Segen) und Leben. */
+    private static double computePower(MinecraftServer server, Run r) {
+        double sum = 0;
+        int n = 0;
+        for (UUID id : r.alive) {
+            ServerPlayer p = server.getPlayerList().getPlayer(id);
+            if (p == null) continue;
+            double armor = p.getAttributeValue(Attributes.ARMOR) + p.getAttributeValue(Attributes.ARMOR_TOUGHNESS);
+            double dmg = p.getAttributeValue(Attributes.ATTACK_DAMAGE);
+            double hp = p.getMaxHealth();
+            sum += 0.35 * (1.0 + armor / 10.0) + 0.45 * (dmg / 5.0) + 0.2 * (hp / 20.0);
+            n++;
+        }
+        if (n == 0) return 1.0;
+        double power = sum / n;
+        // 0,91 = Spieler mit Eisenwaffe ohne Ruestung; staerkere Spieler bekommen etwas mehr Leben auf der Gegnerseite.
+        return Math.max(0.8, Math.min(1.8, Math.pow(power / 0.91, 0.7)));
     }
 
     private static List<ServerPlayer> runPlayers(MinecraftServer server, Run r) {
