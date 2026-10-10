@@ -4,7 +4,7 @@
   "name": "Titel: Chronist",
   "item": "minecraft:written_book",
   "count": 1,
-  "price": 500,
+  "price": 1000,
   "cosmetic": "title",
   "value": "Chronist"
 }

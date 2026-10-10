@@ -16,6 +16,7 @@ import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import org.joml.Matrix4f;
 
 /** Schwebendes Holo-Fenster ueber Terminal und Shop: leuchtender Rahmen, Scanlinie, kreisende Gegenstaende. */
@@ -45,35 +46,39 @@ public class HoloRenderer implements BlockEntityRenderer<HoloBlockEntity> {
         pose.mulPose(mc.gameRenderer.getMainCamera().rotation());
         pose.scale(-0.02F, -0.02F, 0.02F);
         Matrix4f m = pose.last().pose();
+        // Schichten werden in Richtung Kamera (Weltraum) verschoben, so stimmt die Reihenfolge immer.
+        Vec3 cam = mc.gameRenderer.getMainCamera().getPosition();
+        Vec3 d = cam.subtract(be.getBlockPos().getX() + 0.5, be.getBlockPos().getY() + 2.3 + bob, be.getBlockPos().getZ() + 0.5);
+        d = d.lengthSqr() < 1.0E-6 ? Vec3.ZERO : d.normalize().scale(0.02);
         VertexConsumer vc = buffers.getBuffer(RenderType.gui());
         float pulse = 0.75F + 0.25F * (float) Math.sin(time * 0.15);
         int glowA = (int) (0x30 * pulse);
         // Jede Ebene bekommt eine eigene Tiefe (z), sonst flackern die Flaechen gegeneinander ("Glitschen").
-        quad(vc, m, -HALF_W - 5, -HALF_H - 5, HALF_W + 5, HALF_H + 5, argb(glowA, accent), 0.0F);
-        quad(vc, m, -HALF_W - 2, -HALF_H - 2, HALF_W + 2, HALF_H + 2, argb((int) (0x70 * pulse), accent), 1.0F);
-        quad(vc, m, -HALF_W, -HALF_H, HALF_W, 0, 0xD8201638, 2.0F);
-        quad(vc, m, -HALF_W, 0, HALF_W, HALF_H, 0xD80B0914, 2.0F);
-        quad(vc, m, -HALF_W, -HALF_H, HALF_W, -HALF_H + 12, shop ? 0xF06A4A10 : 0xF03A2370, 3.0F);
-        quad(vc, m, -HALF_W, -HALF_H + 12, HALF_W, -HALF_H + 13, 0xFFFFD36B, 4.0F);
+        quad(vc, lm(m, d, 0.0F), -HALF_W - 5, -HALF_H - 5, HALF_W + 5, HALF_H + 5, argb(glowA, accent), 0.0F);
+        quad(vc, lm(m, d, 1.0F), -HALF_W - 2, -HALF_H - 2, HALF_W + 2, HALF_H + 2, argb((int) (0x70 * pulse), accent), 0.0F);
+        quad(vc, lm(m, d, 2.0F), -HALF_W, -HALF_H, HALF_W, 0, 0xD8201638, 0.0F);
+        quad(vc, lm(m, d, 2.0F), -HALF_W, 0, HALF_W, HALF_H, 0xD80B0914, 0.0F);
+        quad(vc, lm(m, d, 3.0F), -HALF_W, -HALF_H, HALF_W, -HALF_H + 12, shop ? 0xF06A4A10 : 0xF03A2370, 0.0F);
+        quad(vc, lm(m, d, 4.0F), -HALF_W, -HALF_H + 12, HALF_W, -HALF_H + 13, 0xFFFFD36B, 0.0F);
         // Scanlinie.
         float sy = -HALF_H + 13 + (time * 0.7F) % (HALF_H * 2 - 13);
-        quad(vc, m, -HALF_W, sy, HALF_W, Math.min(sy + 1.5F, HALF_H), 0x38FFFFFF, 5.0F);
+        quad(vc, lm(m, d, 5.0F), -HALF_W, sy, HALF_W, Math.min(sy + 1.5F, HALF_H), 0x38FFFFFF, 0.0F);
         // Ecken.
         for (int sx : new int[]{-1, 1}) for (int sy2 : new int[]{-1, 1}) {
             int cx = sx * HALF_W;
             int cy = sy2 * HALF_H;
-            quad(vc, m, cx - 3, cy - 3, cx + 3, cy + 3, 0xFFFFD36B, 6.0F);
+            quad(vc, lm(m, d, 6.0F), cx - 3, cy - 3, cx + 3, cy + 3, 0xFFFFD36B, 0.0F);
         }
 
         Font font = mc.font;
         String title = shop ? "ARENA-SHOP" : "ARENA-TERMINAL";
-        text(font, buffers, m, title, 0, -HALF_H + 2, 0xFFFFE9A8, 1.0F);
+        text(font, buffers, lm(m, d, 8.0F), title, 0, -HALF_H + 2, 0xFFFFE9A8, 1.0F);
         String l1 = shop ? "Items, Titel, Spuren" : "Wellen oder Boss";
         String l2 = shop ? "Bezahlt mit Coins" : "Stufen und Modifikatoren";
-        text(font, buffers, m, l1, 0, -8, 0xFFFFFFFF, 0.9F);
-        text(font, buffers, m, l2, 0, 3, 0xFFB8A8E8, 0.8F);
+        text(font, buffers, lm(m, d, 8.0F), l1, 0, -8, 0xFFFFFFFF, 0.9F);
+        text(font, buffers, lm(m, d, 8.0F), l2, 0, 3, 0xFFB8A8E8, 0.8F);
         boolean blink = ((int) (time / 20)) % 2 == 0;
-        text(font, buffers, m, blink ? "> Rechtsklick <" : "  Rechtsklick  ", 0, 17, shop ? 0xFFFFD700 : 0xFF88DDFF, 0.9F);
+        text(font, buffers, lm(m, d, 8.0F), blink ? "> Rechtsklick <" : "  Rechtsklick  ", 0, 17, shop ? 0xFFFFD700 : 0xFF88DDFF, 0.9F);
         pose.popPose();
 
         // Kreisende Gegenstaende um das Fenster.
@@ -98,6 +103,10 @@ public class HoloRenderer implements BlockEntityRenderer<HoloBlockEntity> {
         pose.popPose();
     }
 
+    private static Matrix4f lm(Matrix4f m, Vec3 d, float z) {
+        return new Matrix4f().translate((float) (d.x * z), (float) (d.y * z), (float) (d.z * z)).mul(m);
+    }
+
     private static int argb(int a, int rgb) {
         return (Math.max(0, Math.min(255, a)) << 24) | (rgb & 0xFFFFFF);
     }
@@ -115,7 +124,7 @@ public class HoloRenderer implements BlockEntityRenderer<HoloBlockEntity> {
     }
 
     private static void text(Font font, MultiBufferSource buffers, Matrix4f base, String s, float cx, float y, int color, float scale) {
-        Matrix4f m = new Matrix4f(base).translate(0.0F, 0.0F, 8.0F).scale(scale, scale, 1.0F);
+        Matrix4f m = new Matrix4f(base).translate(0.0F, 0.0F, 0.0F).scale(scale, scale, 1.0F);
         float x = cx / scale - font.width(s) / 2.0F;
         font.drawInBatch(s, x, y / scale, color, false, m, buffers, Font.DisplayMode.NORMAL, 0, LightTexture.FULL_BRIGHT);
     }

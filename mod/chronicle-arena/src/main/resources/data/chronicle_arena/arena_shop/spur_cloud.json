@@ -4,7 +4,7 @@
   "name": "Spur: Wolkenspur",
   "item": "minecraft:white_wool",
   "count": 1,
-  "price": 40,
+  "price": 80,
   "cosmetic": "trail",
   "value": "cloud"
 }

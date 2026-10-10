@@ -4,7 +4,7 @@
   "name": "Buch: Windstoss III",
   "item": "minecraft:enchanted_book",
   "count": 1,
-  "price": 20,
+  "price": 50,
   "components": {
     "minecraft:stored_enchantments": {
       "levels": {

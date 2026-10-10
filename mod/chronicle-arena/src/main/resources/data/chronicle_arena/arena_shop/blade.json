@@ -4,7 +4,7 @@
   "name": "Arena-Klinge",
   "item": "minecraft:netherite_sword",
   "count": 1,
-  "price": 220,
+  "price": 440,
   "components": {
     "minecraft:enchantments": {
       "levels": {

@@ -28,12 +28,6 @@
       "from_wave": 4,
       "base": 0.7,
       "per_wave": 0.17
-    },
-    {
-      "entity": "minecraft:vex",
-      "from_wave": 6,
-      "base": 2.1,
-      "per_wave": 0.35
     }
   ],
   "elite": {

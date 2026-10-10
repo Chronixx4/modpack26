@@ -4,7 +4,7 @@
   "name": "Netherithose mit Schutz",
   "item": "minecraft:netherite_leggings",
   "count": 1,
-  "price": 125,
+  "price": 250,
   "components": {
     "minecraft:enchantments": {
       "levels": {

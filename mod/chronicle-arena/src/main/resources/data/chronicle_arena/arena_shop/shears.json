@@ -4,7 +4,7 @@
   "name": "Schere",
   "item": "minecraft:shears",
   "count": 1,
-  "price": 10,
+  "price": 25,
   "components": {
     "minecraft:enchantments": {
       "levels": {

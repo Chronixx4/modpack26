@@ -4,7 +4,7 @@
   "name": "Arena-Streitkolben",
   "item": "minecraft:mace",
   "count": 1,
-  "price": 140,
+  "price": 280,
   "components": {
     "minecraft:enchantments": {
       "levels": {

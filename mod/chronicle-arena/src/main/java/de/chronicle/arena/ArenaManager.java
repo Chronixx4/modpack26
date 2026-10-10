@@ -34,8 +34,11 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.monster.Vex;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
+import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.EntityMobGriefingEvent;
 import net.neoforged.neoforge.event.entity.EntityTeleportEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
@@ -756,7 +759,7 @@ public final class ArenaManager {
         if ((r.mask & MOD_SPEED) != 0) scale(le, Attributes.MOVEMENT_SPEED, 1.3);
         le.setHealth(le.getMaxHealth());
         if (s.elite || s.boss) le.setGlowingTag(true);
-        level.addFreshEntity(le);
+        if (!level.addFreshEntity(le)) return null;
         if (le instanceof Mob mob) {
             ServerPlayer target = nearestAlive(level.getServer(), r, le.position());
             if (target != null) mob.setTarget(target);
@@ -825,6 +828,18 @@ public final class ArenaManager {
     }
 
     // ------------------------------------------------------------------ Ereignisse
+
+    /** Keine Vexe (schwer zu sehen, fliegen durch Waende) und keine unsichtbaren Gegner in der Arena. */
+    @SubscribeEvent
+    public void onJoin(EntityJoinLevelEvent event) {
+        if (event.getLevel().isClientSide() || event.getLevel().dimension() != DIM) return;
+        if (event.getEntity() instanceof Vex) {
+            event.setCanceled(true);
+        } else if (event.getEntity() instanceof LivingEntity le && !(le instanceof Player)) {
+            le.removeEffect(MobEffects.INVISIBILITY);
+            le.setInvisible(false);
+        }
+    }
 
     @SubscribeEvent
     public void onIncomingDamage(LivingIncomingDamageEvent event) {

@@ -4,7 +4,7 @@
   "name": "Arena-Axt",
   "item": "minecraft:netherite_axe",
   "count": 1,
-  "price": 170,
+  "price": 340,
   "components": {
     "minecraft:enchantments": {
       "levels": {

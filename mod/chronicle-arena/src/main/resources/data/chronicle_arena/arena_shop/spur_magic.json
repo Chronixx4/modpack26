@@ -4,7 +4,7 @@
   "name": "Spur: Zauberstaub",
   "item": "minecraft:lapis_lazuli",
   "count": 1,
-  "price": 70,
+  "price": 140,
   "cosmetic": "trail",
   "value": "magic"
 }

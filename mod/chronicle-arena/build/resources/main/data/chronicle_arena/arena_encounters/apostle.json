@@ -9,7 +9,7 @@
   },
   "adds": [
     {
-      "entity": "minecraft:vex",
+      "entity": "minecraft:wither_skeleton",
       "count": 4
     }
   ],

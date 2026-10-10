@@ -4,7 +4,7 @@
   "name": "Arena-Dreizack",
   "item": "minecraft:trident",
   "count": 1,
-  "price": 110,
+  "price": 220,
   "components": {
     "minecraft:enchantments": {
       "levels": {

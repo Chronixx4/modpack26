@@ -4,7 +4,7 @@
   "name": "Spur: Glitzerspur",
   "item": "minecraft:emerald",
   "count": 1,
-  "price": 50,
+  "price": 100,
   "cosmetic": "trail",
   "value": "glitter"
 }
