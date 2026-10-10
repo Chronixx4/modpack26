@@ -300,8 +300,8 @@ final class ArenaBuilder {
         for (int dx = -r; dx <= r; dx++) {
             for (int dz = -r; dz <= r; dz++) {
                 double d = Math.sqrt(dx * dx + dz * dz);
-                if (d < 35.0 || d > r + 0.4) continue;
-                int steps = d < 36.0 ? 1 : d < 37.0 ? 2 : d < 38.0 ? 3 : 4;
+                if (d < 34.0 || d > r + 0.4) continue;
+                int steps = d < 35.0 ? 0 : d < 36.0 ? 1 : d < 37.0 ? 2 : d < 38.0 ? 3 : 4;
                 int x = cx + dx;
                 int z = cz + dz;
                 for (int h = 1; h <= steps; h++) {
@@ -314,7 +314,7 @@ final class ArenaBuilder {
                 } else {
                     // Zweite Ebene: Balkon rundherum, innen nur eine flache Kante (Springen oder Schiessen nach unten).
                     set(level, x, fy + 8, z, ((dx + dz) & 1) == 0 ? Blocks.DEEPSLATE_TILES : Blocks.POLISHED_DEEPSLATE);
-                    if (d < 35.5) set(level, x, fy + 9, z, Blocks.POLISHED_BLACKSTONE_BRICK_SLAB);
+                    if (d < 34.6) set(level, x, fy + 9, z, Blocks.POLISHED_BLACKSTONE_BRICK_SLAB);
                     if (d >= 36.0 && d < 37.0 && ((int) Math.round(Math.atan2(dz, dx) * 40.0) & 3) == 0) set(level, x, fy + 7, z, Blocks.SEA_LANTERN);
                 }
             }
@@ -365,13 +365,12 @@ final class ArenaBuilder {
                 Direction up = sx > 0 ? Direction.EAST : Direction.WEST;
                 for (int i = 0; i < 8; i++) {
                     for (int w = -1; w <= 1; w++) {
-                        int x = cx + sx * (27 + i);
+                        int x = cx + sx * (25 + i);
                         int z = cz + sz * 12 + w;
                         for (int y = fy + 1; y < fy + 1 + i; y++) set(level, x, y, z, Blocks.DEEPSLATE_BRICKS);
                         set(level, x, fy + 1 + i, z, stairs(Blocks.POLISHED_BLACKSTONE_BRICK_STAIRS, up));
                         if (i == 7) {
-                            set(level, x, fy + 9, z, Blocks.AIR);
-                            set(level, x + sx, fy + 9, z, Blocks.AIR);
+                            for (int k = 0; k <= 3; k++) set(level, x + sx * k, fy + 9, z, Blocks.AIR);
                         }
                     }
                 }

@@ -1066,7 +1066,7 @@ public final class ArenaManager {
         String path = System.getProperty("chronicle_arena.dump");
         if (path == null || path.isEmpty()) return;
         try (java.io.PrintWriter w = new java.io.PrintWriter(path)) {
-            int[][] boxes = {{-20, 55, -20, 82, 100, 20}, {-52, 55, 148, 52, 140, 252}};
+            int[][] boxes = {{-20, 55, -20, 82, 100, 20}, {-52, 55, 148, 52, 140, 252}, {-6, 0, -6, 6, 54, 6}, {-6, 0, 194, 6, 54, 206}};
             for (int[] b : boxes) {
                 for (int x = b[0]; x <= b[3]; x++) for (int y = b[1]; y <= b[4]; y++) for (int z = b[2]; z <= b[5]; z++) {
                     var st = level.getBlockState(new BlockPos(x, y, z));
