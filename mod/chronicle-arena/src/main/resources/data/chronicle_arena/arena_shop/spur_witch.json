@@ -4,7 +4,7 @@
   "name": "Spur: Hexenzauber",
   "item": "minecraft:fermented_spider_eye",
   "count": 1,
-  "price": 120,
+  "price": 300,
   "cosmetic": "trail",
   "value": "witch"
 }

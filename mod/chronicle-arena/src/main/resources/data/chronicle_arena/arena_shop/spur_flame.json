@@ -4,7 +4,7 @@
   "name": "Spur: Flammenspur",
   "item": "minecraft:flint_and_steel",
   "count": 1,
-  "price": 60,
+  "price": 150,
   "cosmetic": "trail",
   "value": "flame"
 }

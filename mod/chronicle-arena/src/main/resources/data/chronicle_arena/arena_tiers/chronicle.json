@@ -10,9 +10,9 @@
   "xp": 3500,
   "boss_rolls": 3,
   "requires": "chronicle_arena:gold",
-  "tokens": 16,
+  "tokens": 40,
   "wave_health": 0.75,
   "wave_damage": 0.8,
   "wave_count": 0.7,
-  "tokens_per_wave": 3
+  "tokens_per_wave": 8
 }

@@ -57,10 +57,12 @@ import org.slf4j.Logger;
 import java.time.LocalDate;
 import java.time.ZoneOffset;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
@@ -78,7 +80,7 @@ public final class ArenaManager {
     static final BlockPos SHOP = new BlockPos(60, 64, 0);
     static final int LOBBY_RADIUS = 12;
     static final int SHOP_RADIUS = 12;
-    static final int ARENA_RADIUS = 26;
+    static final int ARENA_RADIUS = 40;
     static final int MAX_ALIVE_MOBS = 30;
     static final int PREP_TICKS = 100;
     static final int END_TICKS = 200;
@@ -162,6 +164,8 @@ public final class ArenaManager {
         final Set<UUID> alive = new LinkedHashSet<>();
         final Set<UUID> spectators = new LinkedHashSet<>();
         final Set<UUID> participants = new HashSet<>();
+        final Map<UUID, net.minecraft.world.phys.Vec3> fallen = new HashMap<>();
+        final Map<UUID, Integer> reviving = new HashMap<>();
         final List<UUID> mobs = new ArrayList<>();
         final List<Spawn> queue = new ArrayList<>();
         final ServerBossEvent bar = new ServerBossEvent(Component.empty(), BossEvent.BossBarColor.PURPLE,
@@ -386,6 +390,7 @@ public final class ArenaManager {
         if (r == null) return;
         r.alive.remove(sp.getUUID());
         r.spectators.add(sp.getUUID());
+        r.fallen.put(sp.getUUID(), sp.position());
         sp.setGameMode(GameType.SPECTATOR);
         sp.setHealth(sp.getMaxHealth());
         sp.clearFire();
@@ -647,6 +652,59 @@ public final class ArenaManager {
         java.util.Collections.shuffle(r.queue, new java.util.Random(level.getRandom().nextLong()));
     }
 
+    private static final int REVIVE_TICKS = 80;
+
+    private void tickRevive(MinecraftServer server, ServerLevel level, Run r) {
+        if (r.fallen.isEmpty()) return;
+        for (var it = r.fallen.entrySet().iterator(); it.hasNext(); ) {
+            var en = it.next();
+            UUID id = en.getKey();
+            ServerPlayer down = server.getPlayerList().getPlayer(id);
+            if (down == null || !r.spectators.contains(id)) {
+                it.remove();
+                r.reviving.remove(id);
+                continue;
+            }
+            net.minecraft.world.phys.Vec3 pos = en.getValue();
+            if (tickCounter % 6 == 0) {
+                level.sendParticles(net.minecraft.core.particles.ParticleTypes.SOUL_FIRE_FLAME, pos.x, pos.y + 0.3, pos.z, 4, 0.25, 0.6, 0.25, 0.01);
+                level.sendParticles(net.minecraft.core.particles.ParticleTypes.END_ROD, pos.x, pos.y + 1.6, pos.z, 1, 0.1, 0.4, 0.1, 0.0);
+            }
+            ServerPlayer helper = null;
+            for (UUID aid : r.alive) {
+                ServerPlayer a = server.getPlayerList().getPlayer(aid);
+                if (a != null && a.isShiftKeyDown() && a.level() == level
+                        && a.distanceToSqr(pos.x, pos.y, pos.z) <= 3.0 * 3.0) {
+                    helper = a;
+                    break;
+                }
+            }
+            int prog = r.reviving.getOrDefault(id, 0);
+            if (helper == null) {
+                if (prog > 0) r.reviving.put(id, Math.max(0, prog - 2));
+                continue;
+            }
+            prog++;
+            if (prog >= REVIVE_TICKS) {
+                r.reviving.remove(id);
+                it.remove();
+                r.spectators.remove(id);
+                r.alive.add(id);
+                down.setGameMode(GameType.SURVIVAL);
+                teleport(down, level, pos.x, pos.y, pos.z, down.getYRot());
+                down.setHealth(Math.max(1.0F, down.getMaxHealth() * 0.5F));
+                ArenaFx.burst(level, pos.x, pos.y + 1.0, pos.z, 2, 3.0);
+                for (UUID pid : r.alive) {
+                    ServerPlayer p = server.getPlayerList().getPlayer(pid);
+                    if (p != null) p.sendSystemMessage(Component.literal(down.getDisplayName().getString() + " wurde von " + helper.getDisplayName().getString() + " wiederbelebt!"));
+                }
+            } else {
+                r.reviving.put(id, prog);
+                helper.displayClientMessage(Component.literal("Wiederbeleben: " + down.getDisplayName().getString() + " " + (prog * 100 / REVIVE_TICKS) + "%"), true);
+            }
+        }
+    }
+
     private void tickFight(MinecraftServer server, ServerLevel level, Run r) {
         // Lebende Mobs zaehlen.
         r.mobs.removeIf(id -> {
@@ -682,6 +740,9 @@ public final class ArenaManager {
                 }
             }
         }
+
+        // Wiederbeleben: neben einem Gefallenen schleichen (ca. 4 Sekunden).
+        tickRevive(server, level, r);
 
         // Aggro halten.
         if (tickCounter % 40 == 0) {
@@ -745,7 +806,7 @@ public final class ArenaManager {
             return null;
         }
         double angle = level.getRandom().nextDouble() * Math.PI * 2.0;
-        double dist = s.boss ? 8.0 : 13.0 + level.getRandom().nextDouble() * 6.5;
+        double dist = s.boss ? 8.0 : 14.0 + level.getRandom().nextDouble() * 12.0;
         double x = ARENA.getX() + 0.5 + Math.cos(angle) * dist;
         double z = ARENA.getZ() + 0.5 + Math.sin(angle) * dist;
         le.moveTo(x, ARENA.getY(), z, level.getRandom().nextFloat() * 360.0F, 0.0F);
@@ -818,7 +879,7 @@ public final class ArenaManager {
             if (p.isSpectator() && run != null && run.spectators.contains(p.getUUID())) {
                 double dx = p.getX() - (ARENA.getX() + 0.5);
                 double dz = p.getZ() - (ARENA.getZ() + 0.5);
-                if (dx * dx + dz * dz > 30.0 * 30.0 || p.getY() > 95.0 || p.getY() < 55.0) {
+                if (dx * dx + dz * dz > 46.0 * 46.0 || p.getY() > 95.0 || p.getY() < 55.0) {
                     teleport(p, level, ARENA.getX() + 0.5, 80.0, ARENA.getZ() + 0.5, 0.0F);
                 }
             } else if (!inRun && p.isSpectator() && !p.isCreative()) {
@@ -1005,7 +1066,7 @@ public final class ArenaManager {
         String path = System.getProperty("chronicle_arena.dump");
         if (path == null || path.isEmpty()) return;
         try (java.io.PrintWriter w = new java.io.PrintWriter(path)) {
-            int[][] boxes = {{-20, 55, -20, 82, 100, 20}, {-40, 55, 160, 40, 135, 240}};
+            int[][] boxes = {{-20, 55, -20, 82, 100, 20}, {-52, 55, 148, 52, 140, 252}};
             for (int[] b : boxes) {
                 for (int x = b[0]; x <= b[3]; x++) for (int y = b[1]; y <= b[4]; y++) for (int z = b[2]; z <= b[5]; z++) {
                     var st = level.getBlockState(new BlockPos(x, y, z));

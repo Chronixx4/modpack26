@@ -23,3 +23,7 @@ Eigene NeoForge-Mod (MC 1.21.1): Arena-Dimension mit Portal, Bosskaempfen und Mo
 - Coins liegen auf dem Konto (nicht im Inventar). Links im Bild steht in der Arena das Konto (Coins, Kills, Bosse, Siege, Titel), rechts die Rangliste (Top 10, serverweit gespeichert).
 - Modifikatoren (Elite-Horde, Kein Heilen, Glaskanone, Hetzjagd) geben Coins-Bonus; die Tages-Challenge (feste Begegnung + Stufe + Modifikatoren pro Tag) gibt einmal taeglich Bonus-Coins.
 - Shop-Kategorie Kosmetik: Titel (in Anzeige und Rangliste) und Partikelspuren. Siege loesen Feuerwerk und Fanfare aus.
+
+## Zweite Ebene und Wiederbeleben
+- Die Arena hat Radius 40. Rundherum liegt ein Balkon (zweite Ebene, 8 Bloecke ueber dem Boden) mit flacher Innenkante: von dort kann man nach unten springen oder schiessen. Vier Treppen fuehren hinauf.
+- Gefallene bleiben als Zuschauer am Fleck liegen (Seelenfeuer-Saeule). Wer lebt, schleicht ca. 4 Sekunden daneben (Umschalt-Taste) und holt sie mit halber Gesundheit zurueck.

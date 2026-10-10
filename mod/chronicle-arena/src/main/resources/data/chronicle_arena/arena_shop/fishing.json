@@ -4,7 +4,7 @@
   "name": "Arena-Angel",
   "item": "minecraft:fishing_rod",
   "count": 1,
-  "price": 70,
+  "price": 150,
   "components": {
     "minecraft:enchantments": {
       "levels": {

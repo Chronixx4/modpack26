@@ -4,7 +4,7 @@
   "name": "Spur: Notenspur",
   "item": "minecraft:note_block",
   "count": 1,
-  "price": 80,
+  "price": 200,
   "cosmetic": "trail",
   "value": "note"
 }

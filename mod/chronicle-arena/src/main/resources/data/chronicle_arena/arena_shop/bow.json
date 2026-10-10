@@ -4,7 +4,7 @@
   "name": "Arena-Bogen",
   "item": "minecraft:bow",
   "count": 1,
-  "price": 180,
+  "price": 200,
   "components": {
     "minecraft:enchantments": {
       "levels": {

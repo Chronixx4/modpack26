@@ -4,7 +4,7 @@
   "name": "Spur: Elektro-Spur",
   "item": "minecraft:lightning_rod",
   "count": 1,
-  "price": 180,
+  "price": 450,
   "cosmetic": "trail",
   "value": "electric"
 }

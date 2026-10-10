@@ -4,7 +4,7 @@
   "name": "Spur: Seelenfeuer-Spur",
   "item": "minecraft:soul_lantern",
   "count": 1,
-  "price": 100,
+  "price": 250,
   "cosmetic": "trail",
   "value": "soul"
 }

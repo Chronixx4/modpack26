@@ -340,15 +340,16 @@ final class ArenaDecor {
         if (level.getStructureManager().get(ChronicleArena.id("arena/arena")).isPresent()) return;
 
         // Speichen im Boden aus Gold (8 Richtungen) und ein Amethystring.
-        for (int dx = -21; dx <= 21; dx++) {
-            for (int dz = -21; dz <= 21; dz++) {
+        for (int dx = -33; dx <= 33; dx++) {
+            for (int dz = -33; dz <= 33; dz++) {
                 double d = Math.sqrt(dx * dx + dz * dz);
-                if (d < 7.5 || d > 21.0) continue;
+                if (d < 7.5 || d > 33.0) continue;
                 double a = Math.atan2(dz, dx);
                 double k = Math.abs(((a / (Math.PI / 4.0)) % 1.0 + 1.0) % 1.0);
                 boolean spoke = k < 0.025 || k > 0.975 || Math.abs(k - 0.5) < 0.012 && d > 15;
                 if (Math.abs(d - 11.0) < 0.55) set(level, cx + dx, fy, cz + dz, Blocks.AMETHYST_BLOCK);
                 else if (Math.abs(d - 19.5) < 0.5) set(level, cx + dx, fy, cz + dz, ((dx + dz) & 1) == 0 ? Blocks.CHISELED_POLISHED_BLACKSTONE : Blocks.GILDED_BLACKSTONE);
+                else if (Math.abs(d - 31.5) < 0.5) set(level, cx + dx, fy, cz + dz, ((dx + dz) & 1) == 0 ? Blocks.CHISELED_POLISHED_BLACKSTONE : Blocks.GILDED_BLACKSTONE);
                 else if (spoke && Math.abs(d - 14.0) > 0.6) set(level, cx + dx, fy, cz + dz, Blocks.GILDED_BLACKSTONE);
             }
         }
@@ -363,61 +364,56 @@ final class ArenaDecor {
         for (int[] c : new int[][]{{3, 3}, {-3, 3}, {3, -3}, {-3, -3}}) set(level, cx + c[0], fy + 1, cz + c[1], Blocks.AMETHYST_CLUSTER);
 
         // Fenster in der Tribuenenmauer: Glas mit Licht dahinter, Bogen darueber.
-        for (int i = 0; i < 24; i++) {
-            double a = Math.PI * 2.0 * (i + 0.5) / 24.0;
+        for (int i = 0; i < 40; i++) {
+            double a = Math.PI * 2.0 * (i + 0.5) / 40.0;
             for (int h = 5; h <= 8; h++) {
-                int gx = cx + (int) Math.round(Math.cos(a) * 25.2);
-                int gz = cz + (int) Math.round(Math.sin(a) * 25.2);
-                set(level, gx, fy + h, gz, h == 8 ? Blocks.AMETHYST_BLOCK : (i & 1) == 0 ? Blocks.PURPLE_STAINED_GLASS : Blocks.MAGENTA_STAINED_GLASS);
-                int lx = cx + (int) Math.round(Math.cos(a) * 26.1);
-                int lz = cz + (int) Math.round(Math.sin(a) * 26.1);
-                set(level, lx, fy + h, lz, Blocks.SEA_LANTERN);
+                int gx = cx + (int) Math.round(Math.cos(a) * 38.6);
+                int gz = cz + (int) Math.round(Math.sin(a) * 38.6);
+                set(level, gx, fy + h + 5, gz, h == 8 ? Blocks.AMETHYST_BLOCK : (i & 1) == 0 ? Blocks.PURPLE_STAINED_GLASS : Blocks.MAGENTA_STAINED_GLASS);
+                int lx = cx + (int) Math.round(Math.cos(a) * 39.6);
+                int lz = cz + (int) Math.round(Math.sin(a) * 39.6);
+                set(level, lx, fy + h + 5, lz, Blocks.SEA_LANTERN);
             }
         }
         // Acht Tuerme auf der Mauer mit Flammenschalen.
         for (int i = 0; i < 8; i++) {
             double a = Math.PI * 2.0 * i / 8.0 + Math.PI / 8.0;
-            int tx = cx + (int) Math.round(Math.cos(a) * 24.5);
-            int tz = cz + (int) Math.round(Math.sin(a) * 24.5);
+            int tx = cx + (int) Math.round(Math.cos(a) * 41.5);
+            int tz = cz + (int) Math.round(Math.sin(a) * 41.5);
             for (int dx = -1; dx <= 1; dx++) {
                 for (int dz = -1; dz <= 1; dz++) {
-                    for (int h = 1; h <= 14; h++) {
+                    for (int h = 1; h <= 20; h++) {
                         boolean edge = Math.abs(dx) == 1 && Math.abs(dz) == 1;
-                        set(level, tx + dx, fy + h, tz + dz, h == 14 ? Blocks.POLISHED_BLACKSTONE_BRICKS
-                                : h >= 12 && !edge ? Blocks.CRYING_OBSIDIAN : Blocks.DEEPSLATE_BRICKS);
+                        set(level, tx + dx, fy + h, tz + dz, h == 20 ? Blocks.POLISHED_BLACKSTONE_BRICKS
+                                : h >= 18 && !edge ? Blocks.CRYING_OBSIDIAN : Blocks.DEEPSLATE_BRICKS);
                     }
-                    set(level, tx + dx, fy + 15, tz + dz, Math.abs(dx) == 1 && Math.abs(dz) == 1 ? Blocks.POLISHED_BLACKSTONE_BRICK_WALL : Blocks.AIR);
+                    set(level, tx + dx, fy + 21, tz + dz, Math.abs(dx) == 1 && Math.abs(dz) == 1 ? Blocks.POLISHED_BLACKSTONE_BRICK_WALL : Blocks.AIR);
                 }
             }
-            set(level, tx, fy + 14, tz, Blocks.GOLD_BLOCK);
-            set(level, tx, fy + 15, tz, Blocks.SOUL_CAMPFIRE);
-            for (int h = 16; h <= 19; h++) set(level, tx, fy + h, tz, Blocks.END_ROD);
+            set(level, tx, fy + 20, tz, Blocks.GOLD_BLOCK);
+            set(level, tx, fy + 21, tz, Blocks.SOUL_CAMPFIRE);
+            for (int h = 22; h <= 25; h++) set(level, tx, fy + h, tz, Blocks.END_ROD);
             // Fahne an der Innenseite.
             int bx = tx - (int) Math.signum(Math.cos(a)) * 2;
             int bz = tz - (int) Math.signum(Math.sin(a)) * 2;
             if (Math.abs(Math.cos(a)) >= Math.abs(Math.sin(a))) bz = tz; else bx = tx;
-            for (int h = 7; h <= 13; h++) set(level, bx, fy + h, bz, i % 2 == 0 ? Blocks.RED_WOOL : Blocks.PURPLE_WOOL);
-            set(level, bx, fy + 14, bz, Blocks.GOLD_BLOCK);
+            
         }
         // Torbogen auf den Achsen: Saeulen, Balken, Stufen, haengende Laternen.
         for (int axis = 0; axis < 4; axis++) {
             int ax = (int) Math.round(Math.cos(axis * Math.PI / 2.0));
             int az = (int) Math.round(Math.sin(axis * Math.PI / 2.0));
             for (int s : new int[]{-3, 3}) {
-                int x = cx + ax * 23 + (az != 0 ? s : 0);
-                int z = cz + az * 23 + (ax != 0 ? s : 0);
+                int x = cx + ax * 35 + (az != 0 ? s : 0);
+                int z = cz + az * 35 + (ax != 0 ? s : 0);
                 pillar(level, x, fy + 1, z, 6, Blocks.POLISHED_BLACKSTONE_BRICKS, Blocks.CHISELED_POLISHED_BLACKSTONE);
                 set(level, x, fy + 8, z, Blocks.SEA_LANTERN);
             }
             for (int w = -3; w <= 3; w++) {
-                int x = cx + ax * 23 + (az != 0 ? w : 0);
-                int z = cz + az * 23 + (ax != 0 ? w : 0);
+                int x = cx + ax * 35 + (az != 0 ? w : 0);
+                int z = cz + az * 35 + (ax != 0 ? w : 0);
                 set(level, x, fy + 7, z, Blocks.POLISHED_BLACKSTONE_BRICK_SLAB);
-                if (w == 0) {
-                    set(level, x, fy + 8, z, Blocks.GOLD_BLOCK);
-                    set(level, x, fy + 5, z, hanging(Blocks.SOUL_LANTERN));
-                    set(level, x, fy + 9, z, Blocks.END_ROD);
-                }
+                if (w == 0) set(level, x, fy + 5, z, hanging(Blocks.SOUL_LANTERN));
             }
         }
         // Kronleuchter an Ketten, hoch ueber dem Kampffeld (unter der Decke).
@@ -431,9 +427,9 @@ final class ArenaDecor {
         for (int h = 0; h < 8; h++) set(level, cx, fy + 40 - h, cz, Blocks.CHAIN);
         set(level, cx, fy + 31, cz, Blocks.SEA_LANTERN);
         // Himmel: Inseln, Halos, Mond.
-        floatingIslands(level, cx, fy, cz, 14, 36, 64, 53L);
-        halo(level, cx, fy + 48, cz, 30);
-        halo(level, cx, fy + 54, cz, 40);
+        floatingIslands(level, cx, fy, cz, 18, 50, 80, 53L);
+        halo(level, cx, fy + 48, cz, 42);
+        halo(level, cx, fy + 54, cz, 52);
         moon(level, cx + 70, fy + 62, cz - 70, 9);
         moon(level, cx - 85, fy + 78, cz - 20, 5);
     }
