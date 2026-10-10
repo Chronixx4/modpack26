@@ -176,6 +176,8 @@ public final class ArenaManager {
         final double damageScale;
         final double countScale;
         final int totalWaves;
+        final boolean endless;
+        final int extra;
         final int mask;
         State state = State.PREP;
         int wave;
@@ -199,12 +201,30 @@ public final class ArenaManager {
             this.encounter = encounter;
             this.tier = tier;
             int extra = Math.max(0, players - 1);
+            this.extra = extra;
+            this.endless = tier.waves() <= 0 && !encounter.boss();
             boolean waves = !encounter.boss();
-            this.healthScale = tier.health() * (waves ? tier.waveHealth() : 1.0) * (1.0 + 0.5 * extra);
-            this.damageScale = tier.damage() * (waves ? tier.waveDamage() : 1.0) * (1.0 + 0.1 * extra);
-            this.countScale = tier.count() * (waves ? tier.waveCount() : 1.0) * (1.0 + 0.4 * extra);
-            this.totalWaves = encounter.boss() ? 1 : tier.waves();
+            this.healthScale = tier.health() * (waves ? tier.waveHealth() : 1.0);
+            this.damageScale = tier.damage() * (waves ? tier.waveDamage() : 1.0);
+            this.countScale = tier.count() * (waves ? tier.waveCount() : 1.0) * (1.0 + 0.35 * extra);
+            this.totalWaves = encounter.boss() ? 1 : tier.waves() <= 0 ? Integer.MAX_VALUE : tier.waves();
             bar.setProgress(1.0F);
+        }
+
+        String totalStr() {
+            return endless ? "\u221e" : String.valueOf(totalWaves);
+        }
+
+        /** Wachstum pro Welle; im Endlos-Modus staerker und ab Welle 20 zusaetzlich exponentiell. */
+        double growth(double perWave, double endlessPerWave) {
+            int w = Math.max(1, wave);
+            double g = 1.0 + (endless ? endlessPerWave : perWave) * (w - 1);
+            if (endless && w > 20) g *= Math.pow(1.02, w - 20);
+            return g;
+        }
+
+        int maxAlive() {
+            return Math.min(70, MAX_ALIVE_MOBS + 8 * extra);
         }
 
         boolean involves(UUID id) {
@@ -337,6 +357,10 @@ public final class ArenaManager {
             sp.sendSystemMessage(Component.translatable("msg.chronicle_arena.bad_choice"));
             return;
         }
+        if (tier.waves() <= 0 && enc.boss()) {
+            sp.sendSystemMessage(Component.literal("Der Abgrund (Endlos) geht nur im Wellen-Modus."));
+            return;
+        }
         List<ServerPlayer> group = playersInLobby(sp.server);
         if (!group.contains(sp)) group.add(sp);
         for (ServerPlayer p : group) {
@@ -433,12 +457,38 @@ public final class ArenaManager {
                 reward(p, level, r);
                 ArenaFx.fanfare(p);
                 ArenaFx.burst(level, p.getX(), p.getY() + 1.0, p.getZ(), 3, 5.0);
+            } else if (r.endless) {
+                endlessResult(p, level, r);
             } else {
                 ArenaShow.title(List.of(p), ArenaShow.big("NIEDERLAGE", net.minecraft.ChatFormatting.DARK_RED),
                         Component.literal("Welle " + r.wave + " erreicht").withStyle(net.minecraft.ChatFormatting.GRAY), 10, 60, 20);
                 p.sendSystemMessage(Component.translatable("msg.chronicle_arena.lost"));
             }
         }
+    }
+
+    private static void endlessResult(ServerPlayer p, ServerLevel level, Run r) {
+        int reached = Math.max(0, r.wave - 1);
+        int old = ArenaStats.endlessBest(p);
+        boolean record = reached > old;
+        if (record) ArenaStats.setEndlessBest(p, reached);
+        ArenaShow.title(List.of(p), ArenaShow.big("ABGRUND: WELLE " + reached, net.minecraft.ChatFormatting.DARK_PURPLE),
+                Component.literal(record ? "Neuer Rekord!" : "Rekord: Welle " + old).withStyle(net.minecraft.ChatFormatting.YELLOW), 10, 80, 20);
+        if (r.tier.loot() != null) {
+            ResourceKey<LootTable> key = ResourceKey.create(Registries.LOOT_TABLE, r.tier.loot());
+            LootTable table = p.server.reloadableRegistries().getLootTable(key);
+            int rolls = reached / 5;
+            for (int i = 0; i < rolls; i++) {
+                LootParams params = new LootParams.Builder(level)
+                        .withParameter(LootContextParams.ORIGIN, p.position())
+                        .create(LootContextParamSets.CHEST);
+                for (ItemStack stack : table.getRandomItems(params)) ItemHandlerHelper.giveItemToPlayer(p, stack);
+            }
+            p.sendSystemMessage(Component.literal("Abgrund-Beute: " + rolls + " Kisten fuer " + reached + " Wellen."));
+        }
+        if (r.tier.xp() > 0 && reached > 0) p.giveExperiencePoints(r.tier.xp() * reached / 10);
+        ArenaStats.publish(p);
+        sendStats(p);
     }
 
     private static void reward(ServerPlayer p, ServerLevel level, Run r) {
@@ -668,12 +718,12 @@ public final class ArenaManager {
         r.waveTotal = Math.max(1, r.queue.size());
         r.offer.clear();
         r.bar.setColor(BossEvent.BossBarColor.PURPLE);
-        ArenaShow.title(runPlayers(server, r), ArenaShow.big("WELLE " + r.wave + " / " + r.totalWaves,
+        ArenaShow.title(runPlayers(server, r), ArenaShow.big("WELLE " + r.wave + " / " + r.totalStr(),
                         r.miniThisWave ? net.minecraft.ChatFormatting.RED : net.minecraft.ChatFormatting.LIGHT_PURPLE),
                 Component.literal(r.waveTotal + " Gegner" + (r.miniThisWave ? " - MINI-BOSS!" : "")).withStyle(
                         r.miniThisWave ? net.minecraft.ChatFormatting.RED : net.minecraft.ChatFormatting.GRAY), 8, 45, 12);
-        r.bar.setName(Component.translatable("bar.chronicle_arena.wave", r.wave, r.totalWaves));
-        actionbar(server, r, Component.translatable("msg.chronicle_arena.wave", r.wave, r.totalWaves));
+        r.bar.setName(Component.translatable("bar.chronicle_arena.wave", r.wave, r.totalStr()));
+        actionbar(server, r, Component.translatable("msg.chronicle_arena.wave", r.wave, r.totalStr()));
     }
 
     private void buildWave(ServerLevel level, Run r) {
@@ -683,17 +733,26 @@ public final class ArenaManager {
         for (ArenaDefs.Pool p : e.pools()) {
             if (w < p.fromWave()) continue;
             double base = p.base() + (w - p.fromWave()) * p.perWave();
-            int count = Math.max(1, (int) Math.round(base * r.countScale));
+            int count = Math.max(1, (int) Math.round(base * r.countScale * r.growth(0.06, 0.05)));
             for (int i = 0; i < count; i++) r.queue.add(new Spawn(p.entity(), eliteRoll(level, r), false));
         }
         if (e.elite() != null && w % e.eliteEvery() == 0 && w < r.totalWaves) {
             r.queue.add(new Spawn(e.elite(), true, false));
         }
         boolean mini = w > 1 && w < r.totalWaves && (r.totalWaves >= 15 ? w % 10 == 0 : w == (r.totalWaves + 1) / 2);
+        boolean bigBoss = r.endless && w % 25 == 0 && e.finale() != null;
         if (mini && (e.elite() != null || !e.pools().isEmpty())) {
             Spawn m = new Spawn(e.elite() != null ? e.elite() : e.pools().get(0).entity(), true, false);
             m.mini = true;
             r.queue.add(m);
+            r.miniThisWave = true;
+        }
+        if (bigBoss) {
+            for (int i = 0; i < 2; i++) {
+                Spawn m = new Spawn(e.finale(), true, false);
+                m.mini = true;
+                r.queue.add(m);
+            }
             r.miniThisWave = true;
         }
         if (w == r.totalWaves && e.finale() != null) {
@@ -772,7 +831,7 @@ public final class ArenaManager {
         // Nachspawnen.
         if (!r.queue.isEmpty() && tickCounter % 10 == 0) {
             int spawned = 0;
-            while (!r.queue.isEmpty() && r.mobs.size() < MAX_ALIVE_MOBS && spawned < 4) {
+            while (!r.queue.isEmpty() && r.mobs.size() < r.maxAlive() && spawned < 4) {
                 Spawn s = r.queue.remove(0);
                 LivingEntity le = spawnMob(level, r, s);
                 if (le != null) {
@@ -815,7 +874,7 @@ public final class ArenaManager {
         if (tickCounter % 10 == 0) {
             int remaining = r.queue.size() + r.mobs.size();
             if (r.state == State.WAVE) {
-                r.bar.setName(Component.literal("Welle " + r.wave + " / " + r.totalWaves + "  |  Gegner: " + remaining
+                r.bar.setName(Component.literal("Welle " + r.wave + " / " + r.totalStr() + "  |  Gegner: " + remaining
                         + "  |  Wiederbelebungen: " + r.revives));
             } else {
                 r.bar.setName(Component.literal("Boss: " + r.encounter.name() + (remaining > 1 ? "  |  Gegner: " + remaining : "")));
@@ -874,7 +933,7 @@ public final class ArenaManager {
                 if (p != null && (r.mask & MOD_NOHEAL) == 0) p.heal(r.wave % 5 == 0 ? p.getMaxHealth() : 6.0F);
             }
             r.bar.setProgress(1.0F);
-            r.bar.setName(Component.translatable("bar.chronicle_arena.pause", r.wave, r.totalWaves));
+            r.bar.setName(Component.translatable("bar.chronicle_arena.pause", r.wave, r.totalStr()));
         }
     }
 
@@ -899,9 +958,20 @@ public final class ArenaManager {
             mob.finalizeSpawn(level, level.getCurrentDifficultyAt(le.blockPosition()), MobSpawnType.EVENT, null);
             mob.setPersistenceRequired();
         }
-        double h = r.healthScale * (s.mini ? 2.5 : s.elite ? 2.0 : 1.0);
+        double h = r.healthScale * (1.0 + 0.25 * r.extra) * r.growth(0.04, 0.06) * (s.mini ? 2.5 : s.elite ? 2.0 : 1.0);
+        if (s.mini) {
+            double cap = switch (r.tier.order()) {
+                case 0 -> 200.0;
+                case 1 -> 350.0;
+                case 2 -> 600.0;
+                case 3 -> 1000.0;
+                default -> 1500.0 + 40.0 * r.wave;
+            };
+            double base = Math.max(1.0, le.getMaxHealth());
+            if (base * h > cap) h = cap / base;
+        }
         scale(le, Attributes.MAX_HEALTH, h);
-        scale(le, Attributes.ATTACK_DAMAGE, r.damageScale * (s.mini ? 1.15 : 1.0));
+        scale(le, Attributes.ATTACK_DAMAGE, r.damageScale * (1.0 + 0.08 * r.extra) * r.growth(0.02, 0.03) * (s.mini ? 1.15 : 1.0));
         if ((r.mask & MOD_SPEED) != 0) scale(le, Attributes.MOVEMENT_SPEED, 1.3);
         le.setHealth(le.getMaxHealth());
         if (s.elite || s.boss) le.setGlowingTag(true);
@@ -1180,6 +1250,7 @@ public final class ArenaManager {
                         p.sendSystemMessage(Component.translatable("msg.chronicle_arena.stats", t.name(), w,
                                 w == 0 ? "-" : formatTime(best(p, t.id()))));
                     }
+                    p.sendSystemMessage(Component.literal("Abgrund-Rekord: Welle " + ArenaStats.endlessBest(p)));
                     p.sendSystemMessage(Component.literal("Coins: " + ArenaStats.coins(p) + ", Kills: " + ArenaStats.kills(p)
                             + ", Bosse: " + ArenaStats.bosses(p) + ", Siege: " + ArenaStats.wins(p)));
                     return 1;

@@ -38,3 +38,8 @@ In der Arena-Dimension gibt es keine Hostility-Levels (Datapack `l2hostility_con
 - Segen: nach jeder 5. Welle 3 zur Auswahl (klickbar im Chat, `/arena segen 1-3`), gelten bis zum Run-Ende, stapelbar.
 - Wiederbeleben: 2 pro Run, +1 nach jeder 5. Welle (max 5), dazu volle Heilung.
 - Musik: Pigstep bei Wellen, Precipice beim Boss (Vanilla-Platten, Kategorie Musik, Schleife).
+
+## Scaling und Abgrund (Endlos)
+- Pro Welle: Anzahl +6 %, Leben +4 %, Schaden +2 %. Koop pro Spieler: +35 % Anzahl, +25 % Leben, +8 % Schaden; Mob-Limit 30 + 8 pro Spieler (max. 70).
+- Mini-Boss mit Lebens-Cap pro Stufe (200 / 350 / 600 / 1000).
+- Stufe "Abgrund" (`arena_tiers/abgrund.json`, `waves: 0`, braucht Gold): Endlos nur im Wellen-Modus, Wachstum +5 % Anzahl / +6 % Leben / +3 % Schaden pro Welle, ab Welle 20 zusaetzlich x1,02 pro Welle. Mini-Boss alle 10 Wellen, alle 25 zwei Finale-Mobs. Run endet bei Niederlage; Beute je 5 Wellen, persoenlicher Rekord (`/arena stats`).

@@ -36,6 +36,10 @@ public final class ArenaStats {
     public static String trail(ServerPlayer p) { return tag(p).getString("trail"); }
     public static int challengeDay(ServerPlayer p) { return tag(p).getInt("challenge_day"); }
 
+    public static int endlessBest(ServerPlayer p) { return tag(p).getInt("endless_best"); }
+
+    public static void setEndlessBest(ServerPlayer p, int w) { tag(p).putInt("endless_best", w); }
+
     public static void setChallengeDay(ServerPlayer p, int day) { tag(p).putInt("challenge_day", day); }
 
     public static void addCoins(ServerPlayer p, int n) {
