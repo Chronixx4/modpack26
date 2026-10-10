@@ -200,6 +200,8 @@ public final class ArenaManager {
         UUID bossId;
         boolean addsSpawned;
         boolean won;
+        int lossDelay;
+        boolean fountTexts;
         boolean started;
         int fightTicks;
         final Map<UUID, int[]> bless = new HashMap<>();
@@ -223,8 +225,8 @@ public final class ArenaManager {
             return stat.computeIfAbsent(id, k -> new long[4]);
         }
 
-        Run(ArenaDefs.Encounter encounter, ArenaDefs.Tier tier, int players, int mask) {
-            this.variant = variantFor(encounter.theme());
+        Run(ArenaDefs.Encounter encounter, ArenaDefs.Tier tier, int players, int mask, int variant) {
+            this.variant = variant;
             this.center = centerFor(variant);
             this.mask = mask;
             this.encounter = encounter;
@@ -402,17 +404,18 @@ public final class ArenaManager {
                 return;
             }
         }
-        startRun(sp.server, enc, tier, group, action.mask() & 15);
+        int choice = (action.mask() >> 4) & 3;
+        startRun(sp.server, enc, tier, group, action.mask() & 15, choice == 0 ? variantFor(enc.theme()) : choice - 1);
     }
 
     // ------------------------------------------------------------------ Start und Ende
 
-    private static void startRun(MinecraftServer server, ArenaDefs.Encounter enc, ArenaDefs.Tier tier, List<ServerPlayer> group, int mask) {
+    private static void startRun(MinecraftServer server, ArenaDefs.Encounter enc, ArenaDefs.Tier tier, List<ServerPlayer> group, int mask, int variant) {
         ServerLevel level = server.getLevel(DIM);
         if (level == null) return;
         ArenaBuilder.ensureBuilt(level);
-        ArenaBuilder.ensureArena(level, centerFor(variantFor(enc.theme())), variantFor(enc.theme()));
-        Run r = new Run(enc, tier, group.size(), mask);
+        ArenaBuilder.ensureArena(level, centerFor(variant), variant);
+        Run r = new Run(enc, tier, group.size(), mask, variant);
         run = r;
         int i = 0;
         for (ServerPlayer p : group) {
@@ -575,6 +578,7 @@ public final class ArenaManager {
         r.bar.removeAllPlayers();
         discardMobs(server, r);
         ServerLevel level = server.getLevel(DIM);
+        if (level != null) ArenaExtras.clearFountainLabels(server, level);
         Set<UUID> all = new HashSet<>(r.alive);
         all.addAll(r.spectators);
         for (UUID id : all) {
@@ -647,6 +651,7 @@ public final class ArenaManager {
         Run r = run;
         if (r != null) tickRun(server, r);
         if (tickCounter % 20 == 0) safetyCheck(server);
+        if (tickCounter % 20 == 7) for (ServerPlayer sm : server.getPlayerList().getPlayers()) ArenaSmith.apply(sm);
         if (tickCounter % 4 == 0) trails(server);
         if (tickCounter % 20 == 0 || tickCounter % 100 == 0) syncStats(server);
     }
@@ -689,7 +694,9 @@ public final class ArenaManager {
                 if (p != null) r.bar.removePlayer(p);
             }
         }
-        if (r.alive.isEmpty() && r.state != State.ENDING) {
+        if (r.lossDelay > 0) {
+            if (--r.lossDelay == 0) finish(server, false);
+        } else if (r.alive.isEmpty() && r.state != State.ENDING) {
             finish(server, false);
         }
 
@@ -1052,6 +1059,9 @@ public final class ArenaManager {
         return (r.mask & MOD_ELITE) != 0 && level.getRandom().nextFloat() < 0.3F;
     }
 
+    private static final java.util.regex.Pattern WORMS = java.util.regex.Pattern.compile("silverfish|endermite|worm|maggot|larva|grub|parasite|leech|mite");
+    private static boolean spawningMob;
+
     private LivingEntity spawnMob(ServerLevel level, Run r, Spawn s) {
         EntityType<?> type = BuiltInRegistries.ENTITY_TYPE.getOptional(s.entity).orElse(null);
         if (type == null) return null;
@@ -1111,7 +1121,10 @@ public final class ArenaManager {
             le.setCustomName(Component.literal("Mini-Boss").withStyle(net.minecraft.ChatFormatting.RED));
             le.setCustomNameVisible(true);
         }
-        if (!level.addFreshEntity(le)) return null;
+        spawningMob = true;
+        boolean added;
+        try { added = level.addFreshEntity(le); } finally { spawningMob = false; }
+        if (!added) return null;
         if (le instanceof Mob mob) {
             ServerPlayer target = nearestAlive(level.getServer(), r, le.position());
             if (target != null) mob.setTarget(target);
@@ -1261,6 +1274,10 @@ public final class ArenaManager {
         if (event.getLevel().isClientSide() || event.getLevel().dimension() != DIM) return;
         if (event.getEntity() instanceof Vex) {
             event.setCanceled(true);
+        } else if (!spawningMob && event.getEntity() instanceof LivingEntity && !(event.getEntity() instanceof Player)
+                && WORMS.matcher(net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(event.getEntity().getType()).getPath()).find()) {
+            // Keine Wuermer/Silberfischchen (z. B. aus Mod-Drops von Zombies) in der Arena.
+            event.setCanceled(true);
         } else if (event.getEntity() instanceof LivingEntity le && !(le instanceof Player)) {
             le.removeEffect(MobEffects.INVISIBILITY);
             le.setInvisible(false);
@@ -1291,8 +1308,20 @@ public final class ArenaManager {
                 ArenaShow.title(List.of(sp), ArenaShow.big("BESIEGT", net.minecraft.ChatFormatting.DARK_RED),
                         Component.literal("von " + slayer.getDisplayName().getString()).withStyle(net.minecraft.ChatFormatting.GRAY), 5, 70, 15);
             }
-            if (r.alive.isEmpty()) finish(sp.server, false);
+            if (r.alive.isEmpty()) {
+                // Solo: Killcam erst noch zeigen, dann Niederlage.
+                if (r.killcamTicks.isEmpty()) finish(sp.server, false);
+                else r.lossDelay = 105;
+            }
         }
+    }
+
+    @SubscribeEvent
+    public void onRightClickBlock(net.neoforged.neoforge.event.entity.player.PlayerInteractEvent.RightClickBlock event) {
+        if (event.getLevel().dimension() != DIM || !event.getPos().equals(ArenaDecor.SMITH_ANVIL)) return;
+        event.setCanceled(true);
+        event.setCancellationResult(net.minecraft.world.InteractionResult.SUCCESS);
+        if (!event.getLevel().isClientSide() && event.getEntity() instanceof ServerPlayer sp) ArenaSmith.open(sp);
     }
 
     @SubscribeEvent
@@ -1313,6 +1342,10 @@ public final class ArenaManager {
             statsDirty.add(killer.getUUID());
             r.stat(killer.getUUID())[1]++;
         }
+        if (event.getSource().getEntity() instanceof ServerPlayer sk && r.alive.contains(sk.getUUID())) {
+            int fun = ArenaSmith.level(sk, ArenaSmith.LEBENSFUNKE);
+            if (fun > 0 && (r.mask & MOD_NOHEAL) == 0) sk.heal(1.0F * fun);
+        }
         Integer cls = r.classes.remove(dead.getUUID());
         if (cls != null && cls == ArenaExtras.CL_BOMBE && dead.level() instanceof ServerLevel dl) ArenaExtras.bombDeath(dl, r, dead);
     }
@@ -1323,6 +1356,8 @@ public final class ArenaManager {
         if (r == null || event.getEntity() instanceof Player || event.getEntity().level().dimension() != DIM) return;
         if (event.getSource().getEntity() instanceof ServerPlayer p && r.alive.contains(p.getUUID())) {
             r.stat(p.getUUID())[0] += Math.round(event.getNewDamage());
+            int glut = ArenaSmith.level(p, ArenaSmith.GLUT);
+            if (glut > 0) event.getEntity().igniteForSeconds(2.0F * glut);
             int vamp = stack(r, p.getUUID(), ArenaShow.Blessing.VAMPIR);
             if (vamp > 0 && (r.mask & MOD_NOHEAL) == 0) p.heal(event.getNewDamage() * 0.06F * vamp);
         }
@@ -1487,7 +1522,7 @@ public final class ArenaManager {
         List<ArenaDefs.Tier> tiers = ArenaDefs.tiers();
         LOGGER.info("ARENA-DEBUG: Musik Wellen={} Boss={}", BuiltInRegistries.SOUND_EVENT.containsKey(ArenaShow.WAVE_MUSIC), BuiltInRegistries.SOUND_EVENT.containsKey(ArenaShow.BOSS_MUSIC));
         LOGGER.info("ARENA-DEBUG: {} Stufen, {} Begegnungen verfuegbar", tiers.size(), ArenaDefs.encounters().size());
-        Run dummy = new Run(ArenaDefs.encounters().get(0), tiers.get(tiers.size() - 1), 3, 15);
+        Run dummy = new Run(ArenaDefs.encounters().get(0), tiers.get(tiers.size() - 1), 3, 15, 0);
         int ok = 0;
         int fail = 0;
         for (ArenaDefs.Encounter e : ArenaDefs.encounters()) {
@@ -1519,7 +1554,7 @@ public final class ArenaManager {
         LOGGER.info("ARENA-DEBUG: Spawn-Test fertig, ok={} fehler={}", ok, fail);
         // Klassen, Ereignisse, Brunnen/Fallen und Siegertafel einmal durchspielen.
         try {
-            Run xr = new Run(ArenaDefs.encounters().get(0), tiers.get(0), 1, 0);
+            Run xr = new Run(ArenaDefs.encounters().get(0), tiers.get(0), 1, 0, 0);
             xr.wave = 6;
             new ArenaManager().buildWave(level, xr);
             int withClass = 0;

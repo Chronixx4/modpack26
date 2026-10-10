@@ -58,3 +58,9 @@ Zu Beginn jeder Welle (und beim Boss) wird die Staerke der lebenden Spieler geme
 ## Kill-Cam und Perk-Pause
 - Gefallene sehen 5 Sekunden durch die Augen ihres Bezwingers (Spectator-Kamera) und bekommen den Titel "BESIEGT von ...".
 - Segen nach jeder 5. Welle: die Runde pausiert, bis alle Lebenden gewaehlt haben (Anzeige "Warte auf: ..."; nach 2 Minuten waehlt der Zufall). Neu: Vampir (6 % Schaden als Leben) und Zweite Chance (+1 Wiederbelebung).
+
+## Schmied, Arena-Wahl, Killcam (neu)
+- **Schmied:** Amboss an der Ostseite des Shops (Rechtsklick). 9 Verbesserungen gegen Coins (Schaerfe, Haertung, Lebenskraft, Windlaeufer, Schlagtempo, Standfest, Reichweite, Lebensfunke, Schmiedeglut). Wirken nur in der Arena-Dimension (Attribute werden beim Verlassen entfernt). Wird auch in bestehenden Welten nachgebaut.
+- **Arena-Wahl:** Im Terminal gibt es einen Knopf "Arena: Auto / Klassisch / Glut / Eis". Auto = Glut bei Nether-, Eis bei Eis-Gegnern, sonst klassisch.
+- **Killcam:** Solo wird die Niederlage um 5 Sekunden verzoegert, damit die Killcam laeuft.
+- Wuermer/Silberfischchen werden in der Dimension nicht gespawnt. Heilbrunnen haben Lichtsaeule, Ring und Timer-Text. Neue 3D-Modelle fuer Terminal, Shop und Portal.

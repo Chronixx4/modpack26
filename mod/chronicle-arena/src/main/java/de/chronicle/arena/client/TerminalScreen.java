@@ -23,6 +23,8 @@ public class TerminalScreen extends Screen {
     private int encIndex;
     private int tierIndex;
     private int mask;
+    private int arenaChoice;
+    private Button arenaButton;
     private Button modeButton;
     private Button encButton;
     private Button tierButton;
@@ -73,6 +75,10 @@ public class TerminalScreen extends Screen {
             if (!data.tiers().isEmpty()) tierIndex = (tierIndex + 1) % data.tiers().size();
             refresh();
         }).bounds(lx, y + 48, w, 20).build());
+        arenaButton = addRenderableWidget(Button.builder(Component.empty(), b -> {
+            arenaChoice = (arenaChoice + 1) % 4;
+            refresh();
+        }).bounds(lx, y + 72, w, 20).build());
         for (int i = 0; i < data.mods().size(); i++) {
             final Net.ModInfo m = data.mods().get(i);
             Button b = Button.builder(Component.empty(), btn -> {
@@ -121,6 +127,7 @@ public class TerminalScreen extends Screen {
             if (t.locked()) name = name.copy().append(" ").append(Component.translatable("gui.chronicle_arena.tier_locked_short"));
             tierButton.setMessage(name);
         }
+        arenaButton.setMessage(Component.literal("Arena: " + new String[]{"Auto (nach Gegner)", "Klassisch", "Glut", "Eis"}[arenaChoice]));
         for (int i = 0; i < modButtons.size(); i++) {
             Net.ModInfo m = data.mods().get(i);
             boolean on = (mask & m.bit()) != 0;
@@ -136,7 +143,7 @@ public class TerminalScreen extends Screen {
         List<Net.EncInfo> list = current();
         String enc = list.isEmpty() ? "" : list.get(Math.min(encIndex, list.size() - 1)).id();
         Net.TierInfo t = tier();
-        PacketDistributor.sendToServer(new Net.Action(spectate, enc, t == null ? "" : t.id(), mask));
+        PacketDistributor.sendToServer(new Net.Action(spectate, enc, t == null ? "" : t.id(), mask | (arenaChoice << 4)));
         onClose();
     }
 

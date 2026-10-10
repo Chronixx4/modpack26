@@ -252,6 +252,45 @@ final class ArenaDecor {
 
     // ------------------------------------------------------------------ Shop
 
+    /** Amboss des Schmieds (Ostseite des Shops). */
+    static final BlockPos SMITH_ANVIL = new BlockPos(ArenaManager.SHOP.getX() + 9, ArenaManager.SHOP.getY(), ArenaManager.SHOP.getZ());
+    private static final BlockPos SMITH_MARKER = new BlockPos(ArenaManager.SHOP.getX() + 9, 59, ArenaManager.SHOP.getZ());
+
+    /** Schmiede im Shop; eigener Marker, damit sie auch in bestehenden Welten nachgebaut wird. */
+    static void ensureSmith(ServerLevel level) {
+        if (level.getBlockState(SMITH_MARKER).is(Blocks.PURPUR_PILLAR)) return;
+        int x = SMITH_ANVIL.getX();
+        int z = SMITH_ANVIL.getZ();
+        int y = SMITH_ANVIL.getY();
+        for (int dz = -3; dz <= 3; dz++) for (int dx = -1; dx <= 2; dx++) for (int dy = 0; dy <= 4; dy++) set(level, x + dx, y + dy, z + dz, Blocks.AIR);
+        for (int dz = -3; dz <= 3; dz++) for (int dx = -1; dx <= 2; dx++) set(level, x + dx, y - 1, z + dz, dx == 0 && Math.abs(dz) <= 1 ? Blocks.POLISHED_BLACKSTONE_BRICKS : Blocks.DEEPSLATE_TILES);
+        for (int dz = -3; dz <= 3; dz++) {
+            for (int dy = 0; dy <= 3; dy++) set(level, x + 2, y + dy, z + dz, dy == 3 ? Blocks.POLISHED_BLACKSTONE_BRICK_SLAB : Blocks.POLISHED_BLACKSTONE_BRICKS);
+        }
+        for (int dz : new int[]{-3, 3}) for (int dy = 0; dy <= 2; dy++) set(level, x + 1, y + dy, z + dz, Blocks.POLISHED_BLACKSTONE_BRICK_WALL);
+        for (int dz = -3; dz <= 3; dz++) for (int dx = -1; dx <= 2; dx++) set(level, x + dx, y + 4, z + dz, Blocks.DEEPSLATE_BRICK_SLAB);
+        set(level, x, y, z, Blocks.ANVIL);
+        set(level, x + 1, y, z - 2, Blocks.BLAST_FURNACE.defaultBlockState().setValue(net.minecraft.world.level.block.BlastFurnaceBlock.FACING, Direction.WEST));
+        set(level, x + 1, y, z + 2, Blocks.GRINDSTONE.defaultBlockState().setValue(net.minecraft.world.level.block.GrindstoneBlock.FACE, net.minecraft.world.level.block.state.properties.AttachFace.FLOOR).setValue(net.minecraft.world.level.block.GrindstoneBlock.FACING, Direction.WEST));
+        set(level, x + 1, y, z, Blocks.LAVA_CAULDRON);
+        set(level, x + 1, y + 1, z - 3, Blocks.CHAIN);
+        set(level, x, y + 3, z - 2, hanging(Blocks.LANTERN));
+        set(level, x, y + 3, z + 2, hanging(Blocks.LANTERN));
+        set(level, x, y + 3, z, hanging(Blocks.SOUL_LANTERN));
+        set(level, x - 1, y, z - 3, Blocks.SMITHING_TABLE);
+        set(level, x - 1, y, z + 3, Blocks.CRAFTER);
+        level.setBlock(SMITH_MARKER, Blocks.PURPUR_PILLAR.defaultBlockState(), 2);
+        net.minecraft.server.MinecraftServer server = level.getServer();
+        net.minecraft.commands.CommandSourceStack src = server.createCommandSourceStack().withSuppressedOutput().withLevel(level)
+                .withPosition(new net.minecraft.world.phys.Vec3(x + 0.5, y, z + 0.5)).withPermission(4);
+        server.getCommands().performPrefixedCommand(src, "kill @e[type=minecraft:text_display,tag=chronicle_smith]");
+        server.getCommands().performPrefixedCommand(src, String.format(java.util.Locale.ROOT,
+                "summon minecraft:text_display %.1f %.1f %.1f {Tags:[\"chronicle_smith\"],billboard:\"vertical\",alignment:\"center\",line_width:200,background:1275068416,"
+                        + "text:'{\"text\":\"SCHMIED\",\"color\":\"gold\",\"bold\":true,\"extra\":[{\"text\":\"\\nAmboss anklicken\",\"color\":\"gray\",\"bold\":false}]}',"
+                        + "transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[0f,0f,0f],scale:[1.6f,1.6f,1.6f]}}",
+                x + 0.5, y + 2.2, z + 0.5));
+    }
+
     static void shop(ServerLevel level) {
         int cx = ArenaManager.SHOP.getX();
         int cz = ArenaManager.SHOP.getZ();

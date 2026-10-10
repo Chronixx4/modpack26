@@ -151,9 +151,21 @@ final class ArenaExtras {
             double fx = c.getX() + 0.5 + FOUNTAINS[i][0];
             double fz = c.getZ() + 0.5 + FOUNTAINS[i][1];
             boolean ready = r.fountainReady[i] <= tick;
-            if (ready && tick % 10 == 0) {
-                level.sendParticles(ParticleTypes.HAPPY_VILLAGER, fx, c.getY() + 3.2, fz, 3, 0.4, 0.3, 0.4, 0.0);
+            if (ready) {
+                // Gut sichtbar: Lichtsaeule, Ring am Boden, Herzen.
+                if (tick % 4 == 0) {
+                    for (int k = 0; k < 10; k++) level.sendParticles(ParticleTypes.END_ROD, fx, c.getY() + 1.0 + k * 0.7, fz, 1, 0.05, 0.0, 0.05, 0.0);
+                    double a = tick * 0.15;
+                    for (int k = 0; k < 6; k++) {
+                        double ang = a + k * Math.PI / 3.0;
+                        level.sendParticles(ParticleTypes.HAPPY_VILLAGER, fx + Math.cos(ang) * 2.4, c.getY() + 0.3, fz + Math.sin(ang) * 2.4, 1, 0, 0, 0, 0.0);
+                    }
+                }
+                if (tick % 20 == 0) level.sendParticles(ParticleTypes.HEART, fx, c.getY() + 3.0, fz, 2, 0.3, 0.2, 0.3, 0.0);
+            } else if (tick % 10 == 0) {
+                level.sendParticles(ParticleTypes.SMOKE, fx, c.getY() + 1.2, fz, 2, 0.3, 0.2, 0.3, 0.0);
             }
+            if (tick % 20 == 0) fountainLabel(server, level, i, fx, c.getY() + 4.2, fz, ready, (int) ((r.fountainReady[i] - tick + 19) / 20), !r.fountTexts);
             if (!ready) continue;
             for (UUID id : r.alive) {
                 ServerPlayer p = server.getPlayerList().getPlayer(id);
@@ -171,6 +183,7 @@ final class ArenaExtras {
                 }
             }
         }
+        r.fountTexts = true;
         // Fallen: Druckplatten loesen Flammenstoesse aus (treffen Gegner hart, Spieler leicht).
         for (int i = 0; i < TRAPS.length; i++) {
             if (r.trapReady[i] > tick) continue;
@@ -245,5 +258,28 @@ final class ArenaExtras {
                         + "line_width:260,background:1275068416,text:%s,"
                         + "transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[0f,0f,0f],scale:[1.6f,1.6f,1.6f]}}",
                 at.getX() + 0.5, at.getY() + 4.5, at.getZ() - 9.5, snbt));
+    }
+
+    private static CommandSourceStack src(MinecraftServer server, ServerLevel level, double x, double y, double z) {
+        return server.createCommandSourceStack().withSuppressedOutput().withLevel(level).withPosition(new Vec3(x, y, z)).withPermission(4);
+    }
+
+    /** Schwebender Text ueber dem Heilbrunnen: "Bereit" oder Aufladezeit. */
+    private static void fountainLabel(MinecraftServer server, ServerLevel level, int i, double x, double y, double z, boolean ready, int secs, boolean create) {
+        String text = ready ? "{\"text\":\"+ HEILBRUNNEN +\",\"color\":\"green\",\"bold\":true}"
+                : "{\"text\":\"Laedt: " + secs + " s\",\"color\":\"yellow\"}";
+        String tag = "chronicle_fount" + i;
+        CommandSourceStack s = src(server, level, x, y, z);
+        if (create) {
+            server.getCommands().performPrefixedCommand(s, "kill @e[type=minecraft:text_display,tag=" + tag + "]");
+            server.getCommands().performPrefixedCommand(s, String.format(java.util.Locale.ROOT,
+                    "summon minecraft:text_display %.1f %.1f %.1f {Tags:[\"%s\",\"chronicle_fountain\"],billboard:\"center\",alignment:\"center\",line_width:200,background:1275068416,text:'%s',"
+                            + "transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[0f,0f,0f],scale:[1.5f,1.5f,1.5f]}}", x, y, z, tag, text));
+        }
+        else server.getCommands().performPrefixedCommand(s, "data merge entity @e[type=minecraft:text_display,tag=" + tag + ",limit=1,distance=..6] {text:'" + text + "'}");
+    }
+
+    static void clearFountainLabels(MinecraftServer server, ServerLevel level) {
+        server.getCommands().performPrefixedCommand(src(server, level, 0, 80, 0), "kill @e[type=minecraft:text_display,tag=chronicle_fountain]");
     }
 }

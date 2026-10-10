@@ -30,7 +30,10 @@ final class ArenaBuilder {
     private ArenaBuilder() {}
 
     static void ensureBuilt(ServerLevel level) {
-        if (level.getBlockState(MARKER).is(MARKER_BLOCK)) return;
+        if (level.getBlockState(MARKER).is(MARKER_BLOCK)) {
+            ArenaDecor.ensureSmith(level);
+            return;
+        }
         buildLobby(level);
         buildShop(level);
         buildBridge(level);   // nach dem Shop, sonst raeumt dessen Platz das Brueckenende wieder weg
@@ -40,6 +43,7 @@ final class ArenaBuilder {
         ArenaDecor.bridge(level);
         ArenaDecor.arena(level, ArenaManager.ARENA);
         level.setBlock(MARKER, MARKER_BLOCK.defaultBlockState(), 2);
+        ArenaDecor.ensureSmith(level);
         LOGGER.info("Arena: Lobby, Shop und Kampfplatz gebaut");
     }
 

@@ -16,7 +16,7 @@ public final class Net {
     private Net() {}
 
     public static void register(RegisterPayloadHandlersEvent event) {
-        PayloadRegistrar reg = event.registrar("4");
+        PayloadRegistrar reg = event.registrar("5");
         reg.playToClient(OpenTerminal.TYPE, OpenTerminal.CODEC,
                 (payload, ctx) -> ctx.enqueueWork(() -> de.chronicle.arena.client.ClientHooks.openTerminal(payload)));
         reg.playToClient(OpenShop.TYPE, OpenShop.CODEC,
@@ -26,6 +26,12 @@ public final class Net {
         reg.playToServer(Action.TYPE, Action.CODEC,
                 (payload, ctx) -> ctx.enqueueWork(() -> {
                     if (ctx.player() instanceof ServerPlayer sp) ArenaManager.handleAction(sp, payload);
+                }));
+        reg.playToClient(OpenSmith.TYPE, OpenSmith.CODEC,
+                (payload, ctx) -> ctx.enqueueWork(() -> de.chronicle.arena.client.ClientHooks.openSmith(payload)));
+        reg.playToServer(SmithBuy.TYPE, SmithBuy.CODEC,
+                (payload, ctx) -> ctx.enqueueWork(() -> {
+                    if (ctx.player() instanceof ServerPlayer sp) ArenaSmith.buy(sp, payload.id());
                 }));
         reg.playToServer(Buy.TYPE, Buy.CODEC,
                 (payload, ctx) -> ctx.enqueueWork(() -> {
@@ -225,6 +231,52 @@ public final class Net {
         public static final Type<Buy> TYPE = new Type<>(ChronicleArena.id("buy"));
         public static final StreamCodec<FriendlyByteBuf, Buy> CODEC = StreamCodec.of(
                 (buf, p) -> buf.writeUtf(p.offer), buf -> new Buy(buf.readUtf()));
+
+        @Override
+        public Type<? extends CustomPacketPayload> type() {
+            return TYPE;
+        }
+    }
+
+    public record SmithInfo(String id, String name, String desc, int level, int max, int price) {}
+
+    /** Server -> Client: Schmied mit allen Verbesserungen. */
+    public record OpenSmith(int coins, List<SmithInfo> ups) implements CustomPacketPayload {
+        public static final Type<OpenSmith> TYPE = new Type<>(ChronicleArena.id("open_smith"));
+        public static final StreamCodec<FriendlyByteBuf, OpenSmith> CODEC = StreamCodec.of(
+                (buf, p) -> {
+                    buf.writeVarInt(p.coins);
+                    buf.writeVarInt(p.ups.size());
+                    for (SmithInfo u : p.ups) {
+                        buf.writeUtf(u.id);
+                        buf.writeUtf(u.name);
+                        buf.writeUtf(u.desc);
+                        buf.writeVarInt(u.level);
+                        buf.writeVarInt(u.max);
+                        buf.writeVarInt(u.price);
+                    }
+                },
+                buf -> {
+                    int coins = buf.readVarInt();
+                    int n = buf.readVarInt();
+                    List<SmithInfo> list = new ArrayList<>();
+                    for (int i = 0; i < n; i++) {
+                        list.add(new SmithInfo(buf.readUtf(), buf.readUtf(), buf.readUtf(), buf.readVarInt(), buf.readVarInt(), buf.readVarInt()));
+                    }
+                    return new OpenSmith(coins, list);
+                });
+
+        @Override
+        public Type<? extends CustomPacketPayload> type() {
+            return TYPE;
+        }
+    }
+
+    /** Client -> Server: Verbesserung beim Schmied kaufen. */
+    public record SmithBuy(String id) implements CustomPacketPayload {
+        public static final Type<SmithBuy> TYPE = new Type<>(ChronicleArena.id("smith_buy"));
+        public static final StreamCodec<FriendlyByteBuf, SmithBuy> CODEC = StreamCodec.of(
+                (buf, p) -> buf.writeUtf(p.id), buf -> new SmithBuy(buf.readUtf()));
 
         @Override
         public Type<? extends CustomPacketPayload> type() {

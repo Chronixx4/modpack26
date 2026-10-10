@@ -28,6 +28,17 @@ public final class ArenaStats {
         return root.getCompound(TAG);
     }
 
+    public static int smithLevel(ServerPlayer p, String id) {
+        return tag(p).getCompound("smith").getInt(id);
+    }
+
+    public static void setSmithLevel(ServerPlayer p, String id, int lv) {
+        CompoundTag t = tag(p);
+        CompoundTag sm = t.getCompound("smith");
+        sm.putInt(id, lv);
+        t.put("smith", sm);
+    }
+
     public static int coins(ServerPlayer p) { return tag(p).getInt("coins"); }
     public static int kills(ServerPlayer p) { return tag(p).getInt("kills"); }
     public static int bosses(ServerPlayer p) { return tag(p).getInt("bosses"); }
