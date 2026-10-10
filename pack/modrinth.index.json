@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
   "game": "minecraft",
-  "versionId": "0.9.23",
+  "versionId": "0.9.24",
   "name": "Chronicle",
   "files": [
     {
@@ -4578,6 +4578,111 @@
         "https://cdn.modrinth.com/data/PcexUBVK/versions/muGr2AV7/notimeout-1.21.1-1.0.0.jar"
       ],
       "fileSize": 20590
+    },
+    {
+      "path": "mods/create-automotives-1.21.1-V2.jar",
+      "hashes": {
+        "sha1": "a1d42205b3411493620b0335e3af01254b599e08",
+        "sha512": "289faffdda9d237adbdadd44779c049451dd779b9223927ccd6ebc1aeb95e43544aae182ee052324058734181264f8bfe4034a9d3157fc8a576a591e176f0157"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/yipFHNZ2/versions/ZmFiU3eC/create-automotives-1.21.1-V2.jar"
+      ],
+      "fileSize": 8195469
+    },
+    {
+      "path": "mods/Immersive Vehicles-1.21.1-24.0.0.jar",
+      "hashes": {
+        "sha1": "7050a332f18d390610029de28c13fb6139786607",
+        "sha512": "085c23a22e56fa3c2da1219cf6a8f2ff90974ae8fbc07d2efc2d11d258927075c32e2c645911db3055612d28b42556281f6711b6cc2455dc0da3e7371a505efc"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/BCzBuhJ5/versions/B9xnlDrC/Immersive%20Vehicles-1.21.1-24.0.0.jar"
+      ],
+      "fileSize": 6131756
+    },
+    {
+      "path": "mods/another_furniture-neoforge-4.0.3.jar",
+      "hashes": {
+        "sha1": "36e2b147d86c31262bf8f7c571aeea683d71173d",
+        "sha512": "790a07c354b4e729553150cdc8e7129ca7ab1260d5db5b46ced852edf284789ab69e125071bf78a3214d05c09909bea4a780a5b5b477598af78eca37c4c6c033"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/ulloLmqG/versions/cugGiMKt/another_furniture-neoforge-4.0.3.jar"
+      ],
+      "fileSize": 2422436
+    },
+    {
+      "path": "mods/effortlessbuilding-4.2+1.21.1.jar",
+      "hashes": {
+        "sha1": "34af0d5e57f771fa9a37e6b1b5e59c38a03afd01",
+        "sha512": "bc1fccb3b2bae54119f4fd32030d88b32bfb362e706d8c75600f7909d15ca5db9b7cbd08e9e7fa71c79275f6b19e4c1a358586fefb24008e6b002ccb482a4a18"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/DYtfQEYj/versions/YxnBXtLv/effortlessbuilding-4.2%2B1.21.1.jar"
+      ],
+      "fileSize": 958842
+    },
+    {
+      "path": "mods/decocraft-3.0.11-1.21.1-neoforge.jar",
+      "hashes": {
+        "sha1": "6704940aa352d1acf3cf9362e5ef8dd4e65b563c",
+        "sha512": "0d7c71592760a95113d38d5d8f4bd7b247ab0e9e0c8b4230ed0f3a9170ba08c70f8b0b17eea9794e8faa46a7c94461a01a72fcc2574eb751aec5540f04f6ffb5"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/IZJSgKZe/versions/Z8xm2POI/decocraft-3.0.11-1.21.1-neoforge.jar"
+      ],
+      "fileSize": 93170262
+    },
+    {
+      "path": "mods/smallships-neoforge-1.21.1-2.0.0-b2.1.jar",
+      "hashes": {
+        "sha1": "aa586dc4339d49db1c988497415d197195849fb9",
+        "sha512": "e5f9e7efd537330e41253696827d72de0662fd46b83a4a3b2983b2de105718125af53e237af5047c1660c45a872486278375a65a71ce39788632993907900120"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/rGWEHQrP/versions/6poGZvvr/smallships-neoforge-1.21.1-2.0.0-b2.1.jar"
+      ],
+      "fileSize": 1914804
+    },
+    {
+      "path": "mods/owplushies-0.3.1-neoforge-1.21.1.jar",
+      "hashes": {
+        "sha1": "d77faa509f0951c1b82394a1f116cfdc70e02aab",
+        "sha512": "37df1b695f7d1fc69f5d3eac7bd5f45c4edc8384b21de6ca579bef7a60c479f72182efeab3fe85c6e49a4db8a7dfce47b0fb6122fe009bbe389a6138d5335aa9"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/iA53FlJE/versions/fyqUHsGY/owplushies-0.3.1-neoforge-1.21.1.jar"
+      ],
+      "fileSize": 2129301
     }
   ],
   "dependencies": {

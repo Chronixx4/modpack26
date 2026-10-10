@@ -9,7 +9,7 @@ $ProgressPreference = 'SilentlyContinue'
 $MC      = '1.21.1'
 $LOADER  = 'neoforge'
 $PACK    = 'Chronicle'
-$PACKVER = '0.9.23'
+$PACKVER = '0.9.24'
 $RAM     = '8G'
 $TIMEOUT_MIN = 20
 
@@ -128,6 +128,7 @@ notimeout|NoTimeOut
 jei|Just Enough Items (JEI)
 almostunified|Almost Unified
 jade|Jade
+effortless-building|Effortless Building
 xaeros-minimap|Xaero's Minimap
 xaeros-world-map|Xaero's World Map
 appleskin|AppleSkin
@@ -188,6 +189,7 @@ alshanexs-familiars|Alshanex's Familiars
 create|Create
 createaddition|Create Crafts & Additions
 create-steam-n-rails-1.21.1|Create: Steam 'n' Rails
+create-automotives|Create: Automotives
 create-enchantment-industry|Create Enchantment Industry
 create-new-age|Create: New Age
 slice-and-dice|Create Slice & Dice
@@ -338,6 +340,7 @@ grappling-hook-mod|Grappling Hook Mod
 # Transport
 waystones|Waystones
 elevatormod|Elevator Mod
+small-ships|Small Ships
 # Deko und Bauen
 supplementaries|Supplementaries
 amendments|Amendments
@@ -351,6 +354,9 @@ macaws-lights-and-lamps|Macaw's Lights and Lamps
 chipped|Chipped
 handcrafted|Handcrafted
 framedblocks|FramedBlocks
+another-furniture|Another Furniture
+decocraft|Decocraft
+overwatch-plushies|Illarilover17's Overwatch Plushies!
 # Bibliotheken (fehlen auf Modrinth als Abhaengigkeit)
 irons-lib|Iron's Lib|^1\.21\.1-2
 bundle-api|Bundle API
