@@ -33,7 +33,7 @@ Kommunikation mit dem Nutzer: Deutsch, locker, kurz.
   - `pack/config/` landet in `overrides/config` (.mrpack) bzw. `config/` (beide ZIPs) und im lokalen Testserver. Der Servertest gibt die Zeile `Questbuch: Loaded ... quests` aus.
 - **Webseite:** `site/index.html` (statisch, Netlify-Projekt `chronicle-modpack`, Tabs Uebersicht/Guide/Skilltree/Modliste/Changelog; Item-Icons in `site/img/items/`). `python3 tools/seite_aktualisieren.py` schreibt `site/modliste.json` aus `MODLISTE.txt` und setzt die Mod-Anzahl in `index.html`, nach jedem Build mitlaufen lassen und committen. Von Hand bleiben Changelog, Questzahlen und Guide-Rezepte in `index.html`. `netlify.toml` setzt `site/` als Veroeffentlichungsordner.
 - CurseForge-Jars holt das Skript automatisch aus `%USERPROFILE%\Downloads` (Dateinamen-Muster in `$cfPatterns`).
-- Aktuelle Version: **PACKVER 0.9.22**. Bei jeder Änderung `$PACKVER` hochzählen.
+- Aktuelle Version: **PACKVER 0.9.23**. Bei jeder Änderung `$PACKVER` hochzählen.
 
 ## Mods, die nur auf CurseForge sind (liegen in curseforge-mods\ bzw. Downloads)
 Alle für 1.21.1 NeoForge. Download-URL-Schema: `https://www.curseforge.com/minecraft/mc-mods/<slug>/download/<fileId>`
@@ -128,6 +128,8 @@ CurseForge blockt Downloads per Skript, auch über die interne `/api/v1`. Diese 
 - 0.9.21 (Release auf Ansage): **NoTimeOut** (`notimeout`, 1.0.0) verlaengert Login-, Keep-Alive- und Read-Timeout des Servers. Grund: Nach einem Server-Neustart flog man kurz nach dem Joinen mit "Timed out" raus (Server-Log: 40 s nach dem Login, Server dabei 9 s im Rueckstand). Index von Hand ergaenzt. Ungetestet; wenn es nicht hilft, Client-`latest.log` anschauen, ggf. `view-distance` 8.
 
 - 0.9.22 (Release auf Ansage, erst wenn die Arena-Fixes fertig sind): **Minebohrer** 0.5.2 (eigene Mod von Chronixx, Jar liegt in `curseforge-mods/`, Muster in `$cfPatterns`, Kategorie in `$cfCat`) und die **Chronicle Arena** (`mod/chronicle-arena`, wird von `pakete-bauen.sh` gebaut). **FancyMenu, Drippy Loading Screen, Konkrete und Melody entfernt** (der eigene Ladebildschirm aus 0.9.20 ist damit gestrichen; die Texturen `mojangstudios.png`/`menu_background.png` in `pack/kubejs/assets` bleiben vorerst). 317 Mods.
+
+- 0.9.23 (Release): **Arena-Update** (groessere Arena, Balkon, Wiederbeleben, Segen, Mini-Bosse, Abgrund-Modus, Glut-/Eis-Arenen, Schmied, Kill-Cam, PvP aus, Hostility-Datapack). Mod-Stand siehe Branch `claude/project-thread-vy4xq5`. Keine Aenderung an der Modliste (317 Mods).
 
 ## Offene Aufgaben
 1. **0.9.15 im Client testen:** kurz in eine neue Welt, auf Grafikfehler achten. Pruefen: Rezepte der drei Fragmente und des Chronicle-Kerns in JEI, Almost Unified (Mekanism-Stahl wird zu IE-Stahl), keine doppelten Erze, dazu die Punkte unter "Im Spiel pruefen" bei 0.9.13.
