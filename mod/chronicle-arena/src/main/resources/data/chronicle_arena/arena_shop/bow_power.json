@@ -1,0 +1,19 @@
+{
+  "order": 100,
+  "category": "waffen",
+  "name": "Machtbogen",
+  "item": "minecraft:bow",
+  "count": 1,
+  "price": 90,
+  "components": {
+    "minecraft:enchantments": {
+      "levels": {
+        "minecraft:power": 5,
+        "minecraft:punch": 2,
+        "minecraft:flame": 1,
+        "minecraft:unbreaking": 3,
+        "minecraft:infinity": 1
+      }
+    }
+  }
+}

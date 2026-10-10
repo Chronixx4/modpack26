@@ -1,0 +1,17 @@
+{
+  "order": 138,
+  "category": "werkzeug",
+  "name": "Netheritschaufel",
+  "item": "minecraft:netherite_shovel",
+  "count": 1,
+  "price": 200,
+  "components": {
+    "minecraft:enchantments": {
+      "levels": {
+        "minecraft:efficiency": 5,
+        "minecraft:unbreaking": 3,
+        "minecraft:mending": 1
+      }
+    }
+  }
+}

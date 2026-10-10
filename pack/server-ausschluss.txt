@@ -7,7 +7,3 @@ sound-physics-remastered-*
 iris-*
 # Distant Horizons: auf dem Server nur optional und crasht zusammen mit Chunky
 DistantHorizons-*
-fancymenu_*
-melody_*
-konkrete_*
-drippyloadingscreen_*

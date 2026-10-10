@@ -1,0 +1,15 @@
+{
+  "order": 255,
+  "category": "magie",
+  "name": "Buch: Reparatur",
+  "item": "minecraft:enchanted_book",
+  "count": 1,
+  "price": 80,
+  "components": {
+    "minecraft:stored_enchantments": {
+      "levels": {
+        "minecraft:mending": 1
+      }
+    }
+  }
+}

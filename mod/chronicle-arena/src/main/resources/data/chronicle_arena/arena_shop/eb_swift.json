@@ -1,0 +1,15 @@
+{
+  "order": 260,
+  "category": "magie",
+  "name": "Buch: Schneller Schleicher III",
+  "item": "minecraft:enchanted_book",
+  "count": 1,
+  "price": 45,
+  "components": {
+    "minecraft:stored_enchantments": {
+      "levels": {
+        "minecraft:swift_sneak": 3
+      }
+    }
+  }
+}

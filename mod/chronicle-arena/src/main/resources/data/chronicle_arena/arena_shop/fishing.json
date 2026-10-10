@@ -1,0 +1,19 @@
+{
+  "order": 35,
+  "category": "werkzeug",
+  "name": "Arena-Angel",
+  "item": "minecraft:fishing_rod",
+  "count": 1,
+  "price": 70,
+  "components": {
+    "minecraft:enchantments": {
+      "levels": {
+        "minecraft:luck_of_the_sea": 3,
+        "minecraft:lure": 3,
+        "minecraft:unbreaking": 3,
+        "minecraft:mending": 1
+      }
+    },
+    "minecraft:custom_name": "{\"text\": \"Arena-Angel\", \"italic\": false, \"color\": \"light_purple\"}"
+  }
+}

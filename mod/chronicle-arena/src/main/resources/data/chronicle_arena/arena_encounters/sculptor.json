@@ -1,0 +1,11 @@
+{
+  "type": "boss",
+  "order": 14,
+  "name": "Der Bildhauer",
+  "description": "Waechter mit Steinfaeusten.",
+  "icon": "minecraft:chiseled_stone_bricks",
+  "boss": {
+    "entity": "mowziesmobs:sculptor"
+  },
+  "theme": "desert"
+}

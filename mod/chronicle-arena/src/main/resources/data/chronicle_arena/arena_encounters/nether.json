@@ -1,0 +1,47 @@
+{
+  "type": "waves",
+  "order": 1,
+  "name": "Nether-Sturm",
+  "description": "Blazes, Wither-Skelette und Piglin-Brutes.",
+  "icon": "minecraft:blaze_rod",
+  "pools": [
+    {
+      "entity": "minecraft:blaze",
+      "from_wave": 1,
+      "base": 1.4,
+      "per_wave": 0.28
+    },
+    {
+      "entity": "minecraft:wither_skeleton",
+      "from_wave": 2,
+      "base": 1.4,
+      "per_wave": 0.35
+    },
+    {
+      "entity": "minecraft:piglin_brute",
+      "from_wave": 3,
+      "base": 0.7,
+      "per_wave": 0.28
+    },
+    {
+      "entity": "minecraft:magma_cube",
+      "from_wave": 1,
+      "base": 1.4,
+      "per_wave": 0.21
+    },
+    {
+      "entity": "minecraft:ghast",
+      "from_wave": 8,
+      "base": 0.7,
+      "per_wave": 0.1
+    }
+  ],
+  "elite": {
+    "entity": "minecraft:piglin_brute",
+    "every": 5
+  },
+  "finale": {
+    "entity": "minecraft:wither"
+  },
+  "theme": "nether"
+}

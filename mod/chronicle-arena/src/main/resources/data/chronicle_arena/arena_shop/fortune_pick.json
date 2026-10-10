@@ -1,0 +1,18 @@
+{
+  "order": 136,
+  "category": "werkzeug",
+  "name": "Gluecksspitzhacke",
+  "item": "minecraft:netherite_pickaxe",
+  "count": 1,
+  "price": 260,
+  "components": {
+    "minecraft:enchantments": {
+      "levels": {
+        "minecraft:efficiency": 5,
+        "minecraft:fortune": 3,
+        "minecraft:unbreaking": 3,
+        "minecraft:mending": 1
+      }
+    }
+  }
+}

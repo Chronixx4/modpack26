@@ -1,0 +1,11 @@
+{
+  "type": "boss",
+  "order": 22,
+  "name": "Feuerdrache",
+  "description": "Ice and Fire.",
+  "icon": "minecraft:fire_charge",
+  "boss": {
+    "entity": "iceandfire:fire_dragon"
+  },
+  "theme": "nether"
+}

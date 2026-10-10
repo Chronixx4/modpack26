@@ -1,0 +1,19 @@
+{
+  "order": 14,
+  "category": "waffen",
+  "name": "Arena-Armbrust",
+  "item": "minecraft:crossbow",
+  "count": 1,
+  "price": 160,
+  "components": {
+    "minecraft:enchantments": {
+      "levels": {
+        "minecraft:quick_charge": 3,
+        "minecraft:multishot": 1,
+        "minecraft:unbreaking": 3,
+        "minecraft:mending": 1
+      }
+    },
+    "minecraft:custom_name": "{\"text\": \"Arena-Armbrust\", \"italic\": false, \"color\": \"light_purple\"}"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "boss",
+  "order": 17,
+  "name": "Hydra (Twilight)",
+  "description": "Mehrkoepfiger Drache.",
+  "icon": "minecraft:dragon_head",
+  "boss": {
+    "entity": "twilightforest:hydra"
+  },
+  "theme": "forest"
+}
