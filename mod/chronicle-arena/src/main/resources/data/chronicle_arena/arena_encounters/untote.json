@@ -2,7 +2,7 @@
   "type": "waves",
   "order": 0,
   "name": "Untote Horde",
-  "description": "Zombies, Skelette und Spinnen. Alle fuenf Wellen kommt ein Verwuester.",
+  "description": "Zombies, Skelette und Spinnen. Alle fuenf Wellen kommt ein Wither-Skelett.",
   "icon": "minecraft:zombie_head",
   "pools": [
     {
