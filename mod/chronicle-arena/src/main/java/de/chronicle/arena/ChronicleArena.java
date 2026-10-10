@@ -18,6 +18,7 @@ public class ChronicleArena {
         ModRegistry.BLOCKS.register(modBus);
         ModRegistry.ITEMS.register(modBus);
         ModRegistry.TABS.register(modBus);
+        ModRegistry.BLOCK_ENTITIES.register(modBus);
         modBus.addListener(Net::register);
         NeoForge.EVENT_BUS.addListener(ArenaDefs::onAddReloadListeners);
         NeoForge.EVENT_BUS.register(new ArenaManager());

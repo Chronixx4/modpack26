@@ -8,6 +8,7 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -38,6 +39,23 @@ public final class ModRegistry {
                     .strength(-1.0F, 3600000.0F)
                     .lightLevel(state -> 12)
                     .sound(SoundType.METAL)));
+
+    public static final DeferredBlock<ArenaHoloBlock> HOLO_TERMINAL = BLOCKS.register("arena_holo_terminal",
+            () -> new ArenaHoloBlock(holoProps(), false));
+
+    public static final DeferredBlock<ArenaHoloBlock> HOLO_SHOP = BLOCKS.register("arena_holo_shop",
+            () -> new ArenaHoloBlock(holoProps(), true));
+
+    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
+            DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, ChronicleArena.MOD_ID);
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<HoloBlockEntity>> HOLO = BLOCK_ENTITIES.register("holo",
+            () -> BlockEntityType.Builder.of(HoloBlockEntity::new, TERMINAL.get(), SHOP.get()).build(null));
+
+    private static BlockBehaviour.Properties holoProps() {
+        return BlockBehaviour.Properties.of().strength(-1.0F, 3600000.0F).noCollission().noOcclusion().noLootTable()
+                .pushReaction(net.minecraft.world.level.material.PushReaction.BLOCK);
+    }
 
     public static final DeferredItem<BlockItem> PORTAL_ITEM = ITEMS.registerSimpleBlockItem(PORTAL);
     public static final DeferredItem<BlockItem> TERMINAL_ITEM = ITEMS.registerSimpleBlockItem(TERMINAL);

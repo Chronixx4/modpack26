@@ -24,7 +24,7 @@ final class ArenaBuilder {
     private static final Logger LOGGER = LogUtils.getLogger();
     /** Versionsmarker; ein anderer Block baut alles neu. */
     private static final BlockPos MARKER = new BlockPos(0, 60, 200);
-    private static final Block MARKER_BLOCK = Blocks.CRYING_OBSIDIAN;
+    private static final Block MARKER_BLOCK = Blocks.AMETHYST_BLOCK;
     private static final int ARENA_HEIGHT = 16;
 
     private ArenaBuilder() {}
@@ -123,6 +123,8 @@ final class ArenaBuilder {
         }
         set(level, cx, fy, cz, Blocks.CHISELED_POLISHED_BLACKSTONE);
         level.setBlock(ArenaManager.LOBBY, ModRegistry.TERMINAL.get().defaultBlockState(), 2);
+        level.setBlock(ArenaManager.LOBBY.above(1), ModRegistry.HOLO_TERMINAL.get().defaultBlockState(), 2);
+        level.setBlock(ArenaManager.LOBBY.above(2), ModRegistry.HOLO_TERMINAL.get().defaultBlockState(), 2);
         // Ausgangsportal.
         set(level, cx, fy, cz + 8, Blocks.CHISELED_POLISHED_BLACKSTONE);
         level.setBlock(new BlockPos(cx, fy + 1, cz + 8), ModRegistry.PORTAL.get().defaultBlockState(), 2);
@@ -188,6 +190,8 @@ final class ArenaBuilder {
         }
         // Haendler in der Mitte.
         level.setBlock(ArenaManager.SHOP, ModRegistry.SHOP.get().defaultBlockState(), 2);
+        level.setBlock(ArenaManager.SHOP.above(1), ModRegistry.HOLO_SHOP.get().defaultBlockState(), 2);
+        level.setBlock(ArenaManager.SHOP.above(2), ModRegistry.HOLO_SHOP.get().defaultBlockState(), 2);
         for (int[] c : new int[][]{{-2, -2}, {2, -2}, {-2, 2}, {2, 2}}) {
             pillar(level, cx + c[0], fy + 1, cz + c[1], 3, Blocks.CUT_SANDSTONE_SLAB, Blocks.LANTERN);
         }

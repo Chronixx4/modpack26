@@ -57,6 +57,8 @@
   "gui.chronicle_arena.cat_werkzeug": "Werkzeug",
   "gui.chronicle_arena.cat_material": "Material",
   "gui.chronicle_arena.cat_magie": "Magie",
+  "block.chronicle_arena.arena_holo_terminal": "Arena-Holo-Fenster",
+  "block.chronicle_arena.arena_holo_shop": "Shop-Holo-Fenster",
   "gui.chronicle_arena.cat_kosmetik": "Kosmetik",
   "gui.chronicle_arena.pick": "Waehle ein Angebot",
   "msg.chronicle_arena.wave_tokens": "Welle %s geschafft: +%s Coins"
