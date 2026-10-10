@@ -34,6 +34,7 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.monster.Vex;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -150,6 +151,7 @@ public final class ArenaManager {
         final ResourceLocation entity;
         final boolean elite;
         final boolean boss;
+        boolean mini;
 
         Spawn(ResourceLocation entity, boolean elite, boolean boss) {
             this.entity = entity;
@@ -184,6 +186,12 @@ public final class ArenaManager {
         boolean won;
         boolean started;
         int fightTicks;
+        final Map<UUID, int[]> bless = new HashMap<>();
+        List<ArenaShow.Blessing> offer = new ArrayList<>();
+        final Set<UUID> picked = new HashSet<>();
+        int musicTimer;
+        boolean musicBoss;
+        boolean miniThisWave;
 
         Run(ArenaDefs.Encounter encounter, ArenaDefs.Tier tier, int players, int mask) {
             this.mask = mask;
@@ -409,18 +417,24 @@ public final class ArenaManager {
         r.won = won;
         discardMobs(server, r);
         r.queue.clear();
+        ArenaShow.stopMusic(runPlayers(server, r));
         r.bar.setProgress(won ? 1.0F : 0.0F);
         r.bar.setName(Component.translatable(won ? "bar.chronicle_arena.won" : "bar.chronicle_arena.lost"));
         ServerLevel level = server.getLevel(DIM);
         for (UUID id : r.participants) {
             ServerPlayer p = server.getPlayerList().getPlayer(id);
             if (p == null || level == null) continue;
+            ArenaShow.clear(p);
             if (won) {
                 recordWin(p, r);
+                ArenaShow.title(List.of(p), ArenaShow.big("SIEG!", net.minecraft.ChatFormatting.GOLD),
+                        Component.literal("Zeit " + formatTime(r.fightTicks) + "  |  Bestzeit " + formatTime(best(p, r.tier.id()))).withStyle(net.minecraft.ChatFormatting.YELLOW), 10, 80, 20);
                 reward(p, level, r);
                 ArenaFx.fanfare(p);
                 ArenaFx.burst(level, p.getX(), p.getY() + 1.0, p.getZ(), 3, 5.0);
             } else {
+                ArenaShow.title(List.of(p), ArenaShow.big("NIEDERLAGE", net.minecraft.ChatFormatting.DARK_RED),
+                        Component.literal("Welle " + r.wave + " erreicht").withStyle(net.minecraft.ChatFormatting.GRAY), 10, 60, 20);
                 p.sendSystemMessage(Component.translatable("msg.chronicle_arena.lost"));
             }
         }
@@ -527,6 +541,8 @@ public final class ArenaManager {
     private static void removeFromRun(ServerPlayer sp) {
         Run r = run;
         if (r == null) return;
+        ArenaShow.clear(sp);
+        if (r.state != State.ENDING) ArenaShow.stopMusic(List.of(sp));
         boolean wasAlive = r.alive.remove(sp.getUUID());
         r.spectators.remove(sp.getUUID());
         r.bar.removePlayer(sp);
@@ -591,8 +607,27 @@ public final class ArenaManager {
         }
 
         if (r.started && r.state != State.ENDING) r.fightTicks++;
+        if (r.started && r.state != State.ENDING && tickCounter % 20 == 0) {
+            boolean boss = r.state == State.BOSS;
+            r.musicTimer -= 20;
+            if (r.musicTimer <= 0 || boss != r.musicBoss) {
+                List<ServerPlayer> pl = runPlayers(server, r);
+                ArenaShow.stopMusic(pl);
+                ArenaShow.playMusic(pl, boss ? ArenaShow.BOSS_MUSIC : ArenaShow.WAVE_MUSIC);
+                r.musicBoss = boss;
+                r.musicTimer = boss ? ArenaShow.BOSS_MUSIC_TICKS : ArenaShow.WAVE_MUSIC_TICKS;
+            }
+        }
         switch (r.state) {
             case PREP -> {
+                if (!r.offer.isEmpty() && r.picked.containsAll(r.alive)) {
+                    r.offer.clear();
+                    r.timer = Math.min(r.timer, 60);
+                }
+                if (r.started && r.timer > 0 && r.timer <= 60 && r.timer % 20 == 0) {
+                    ArenaShow.title(runPlayers(server, r), ArenaShow.big(String.valueOf(r.timer / 20), net.minecraft.ChatFormatting.GOLD),
+                            Component.literal("Naechste Welle"), 0, 18, 2);
+                }
                 if (r.timer == PREP_TICKS || r.timer % 20 == 0) {
                     int sec = Math.max(1, (r.timer + 19) / 20);
                     actionbar(server, r, Component.translatable("msg.chronicle_arena.countdown", sec));
@@ -621,6 +656,8 @@ public final class ArenaManager {
             r.queue.add(new Spawn(r.encounter.bossEntity(), false, true));
             r.bar.setName(Component.translatable("bar.chronicle_arena.boss", r.encounter.name()));
             r.bar.setColor(BossEvent.BossBarColor.RED);
+            ArenaShow.title(runPlayers(server, r), ArenaShow.big("BOSSKAMPF", net.minecraft.ChatFormatting.DARK_RED),
+                    Component.literal(String.valueOf(r.encounter.name())).withStyle(net.minecraft.ChatFormatting.RED), 10, 60, 20);
             return;
         }
         r.started = true;
@@ -628,7 +665,12 @@ public final class ArenaManager {
         r.wave++;
         buildWave(level, r);
         r.waveTotal = Math.max(1, r.queue.size());
+        r.offer.clear();
         r.bar.setColor(BossEvent.BossBarColor.PURPLE);
+        ArenaShow.title(runPlayers(server, r), ArenaShow.big("WELLE " + r.wave + " / " + r.totalWaves,
+                        r.miniThisWave ? net.minecraft.ChatFormatting.RED : net.minecraft.ChatFormatting.LIGHT_PURPLE),
+                Component.literal(r.waveTotal + " Gegner" + (r.miniThisWave ? " - MINI-BOSS!" : "")).withStyle(
+                        r.miniThisWave ? net.minecraft.ChatFormatting.RED : net.minecraft.ChatFormatting.GRAY), 8, 45, 12);
         r.bar.setName(Component.translatable("bar.chronicle_arena.wave", r.wave, r.totalWaves));
         actionbar(server, r, Component.translatable("msg.chronicle_arena.wave", r.wave, r.totalWaves));
     }
@@ -636,6 +678,7 @@ public final class ArenaManager {
     private void buildWave(ServerLevel level, Run r) {
         ArenaDefs.Encounter e = r.encounter;
         int w = r.wave;
+        r.miniThisWave = false;
         for (ArenaDefs.Pool p : e.pools()) {
             if (w < p.fromWave()) continue;
             double base = p.base() + (w - p.fromWave()) * p.perWave();
@@ -644,6 +687,13 @@ public final class ArenaManager {
         }
         if (e.elite() != null && w % e.eliteEvery() == 0 && w < r.totalWaves) {
             r.queue.add(new Spawn(e.elite(), true, false));
+        }
+        boolean mini = w > 1 && w < r.totalWaves && (r.totalWaves >= 15 ? w % 10 == 0 : w == (r.totalWaves + 1) / 2);
+        if (mini && (e.elite() != null || !e.pools().isEmpty())) {
+            Spawn m = new Spawn(e.elite() != null ? e.elite() : e.pools().get(0).entity(), true, false);
+            m.mini = true;
+            r.queue.add(m);
+            r.miniThisWave = true;
         }
         if (w == r.totalWaves && e.finale() != null) {
             r.queue.add(new Spawn(e.finale(), true, false));
@@ -754,6 +804,24 @@ public final class ArenaManager {
             }
         }
 
+        // Gegner-Zaehler in der Bossleiste, Regeneration-Segen.
+        if (tickCounter % 10 == 0) {
+            int remaining = r.queue.size() + r.mobs.size();
+            if (r.state == State.WAVE) {
+                r.bar.setName(Component.literal("Welle " + r.wave + " / " + r.totalWaves + "  |  Gegner: " + remaining));
+            } else {
+                r.bar.setName(Component.literal("Boss: " + r.encounter.name() + (remaining > 1 ? "  |  Gegner: " + remaining : "")));
+            }
+        }
+        if (tickCounter % 40 == 0) {
+            for (UUID id : r.alive) {
+                if (stack(r, id, ArenaShow.Blessing.REGEN) > 0 && server.getPlayerList().getPlayer(id) instanceof ServerPlayer rp) {
+                    rp.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 60,
+                            stack(r, id, ArenaShow.Blessing.REGEN) > 1 ? 1 : 0, true, false));
+                }
+            }
+        }
+
         // Fortschrittsbalken.
         if (r.state == State.WAVE) {
             int left = r.queue.size() + r.mobs.size();
@@ -766,10 +834,12 @@ public final class ArenaManager {
         if (!cleared) return;
 
         if (r.state == State.WAVE && r.tier.tokensPerWave() > 0) {
-            int perWave = (int) Math.round(r.tier.tokensPerWave() * coinMult(r.mask));
+            int basePerWave = (int) Math.round(r.tier.tokensPerWave() * coinMult(r.mask));
             for (UUID id : r.alive) {
                 ServerPlayer p = server.getPlayerList().getPlayer(id);
                 if (p == null) continue;
+                int perWave = (int) Math.round(basePerWave * (1.0 + 0.25 * stack(r, id, ArenaShow.Blessing.GOLD)))
+                        + (r.miniThisWave ? basePerWave * 3 : 0);
                 ArenaStats.addCoins(p, perWave);
                 statsDirty.add(id);
                 p.displayClientMessage(Component.translatable("msg.chronicle_arena.wave_tokens", r.wave, perWave), true);
@@ -783,7 +853,11 @@ public final class ArenaManager {
         } else {
             // Kleine Pause, Spieler werden etwas geheilt.
             r.state = State.PREP;
-            r.timer = 100;
+            boolean offer = r.wave % 5 == 0;
+            r.timer = offer ? 400 : 100;
+            ArenaShow.title(runPlayers(server, r), ArenaShow.big("WELLE " + r.wave + " GESCHAFFT", net.minecraft.ChatFormatting.GREEN),
+                    Component.literal(offer ? "Waehle einen Segen" : "Kurze Pause").withStyle(net.minecraft.ChatFormatting.GRAY), 5, 40, 10);
+            if (offer) offerBlessings(server, r);
             for (UUID id : r.alive) {
                 ServerPlayer p = server.getPlayerList().getPlayer(id);
                 if (p != null && (r.mask & MOD_NOHEAL) == 0) p.heal(6.0F);
@@ -814,12 +888,16 @@ public final class ArenaManager {
             mob.finalizeSpawn(level, level.getCurrentDifficultyAt(le.blockPosition()), MobSpawnType.EVENT, null);
             mob.setPersistenceRequired();
         }
-        double h = r.healthScale * (s.elite ? 2.0 : 1.0);
+        double h = r.healthScale * (s.mini ? 5.0 : s.elite ? 2.0 : 1.0);
         scale(le, Attributes.MAX_HEALTH, h);
-        scale(le, Attributes.ATTACK_DAMAGE, r.damageScale);
+        scale(le, Attributes.ATTACK_DAMAGE, r.damageScale * (s.mini ? 1.3 : 1.0));
         if ((r.mask & MOD_SPEED) != 0) scale(le, Attributes.MOVEMENT_SPEED, 1.3);
         le.setHealth(le.getMaxHealth());
         if (s.elite || s.boss) le.setGlowingTag(true);
+        if (s.mini) {
+            le.setCustomName(Component.literal("Mini-Boss").withStyle(net.minecraft.ChatFormatting.RED));
+            le.setCustomNameVisible(true);
+        }
         if (!level.addFreshEntity(le)) return null;
         if (le instanceof Mob mob) {
             ServerPlayer target = nearestAlive(level.getServer(), r, le.position());
@@ -850,6 +928,51 @@ public final class ArenaManager {
             }
         }
         return best;
+    }
+
+    private static List<ServerPlayer> runPlayers(MinecraftServer server, Run r) {
+        List<ServerPlayer> out = new ArrayList<>();
+        Set<UUID> all = new HashSet<>(r.alive);
+        all.addAll(r.spectators);
+        for (UUID id : all) {
+            ServerPlayer p = server.getPlayerList().getPlayer(id);
+            if (p != null) out.add(p);
+        }
+        return out;
+    }
+
+    private static int stack(Run r, UUID id, ArenaShow.Blessing b) {
+        int[] st = r.bless.get(id);
+        return st == null ? 0 : st[b.ordinal()];
+    }
+
+    private static void offerBlessings(MinecraftServer server, Run r) {
+        List<ArenaShow.Blessing> all = new ArrayList<>(List.of(ArenaShow.Blessing.values()));
+        java.util.Collections.shuffle(all);
+        r.offer = new ArrayList<>(all.subList(0, 3));
+        r.picked.clear();
+        for (UUID id : r.alive) {
+            ServerPlayer p = server.getPlayerList().getPlayer(id);
+            if (p == null) continue;
+            p.sendSystemMessage(Component.literal("Waehle einen Segen (gilt bis zum Ende des Runs):").withStyle(net.minecraft.ChatFormatting.AQUA));
+            for (int i = 0; i < r.offer.size(); i++) p.sendSystemMessage(ArenaShow.offerLine(i, r.offer.get(i)));
+        }
+    }
+
+    private static int chooseBlessing(ServerPlayer p, int slot) {
+        Run r = run;
+        if (r == null || !r.alive.contains(p.getUUID()) || r.offer.isEmpty() || r.picked.contains(p.getUUID())
+                || slot < 1 || slot > r.offer.size()) {
+            p.sendSystemMessage(Component.literal("Gerade gibt es keinen Segen zur Auswahl."));
+            return 0;
+        }
+        ArenaShow.Blessing b = r.offer.get(slot - 1);
+        int[] st = r.bless.computeIfAbsent(p.getUUID(), k -> new int[ArenaShow.Blessing.values().length]);
+        st[b.ordinal()]++;
+        ArenaShow.apply(p, st);
+        r.picked.add(p.getUUID());
+        p.sendSystemMessage(Component.literal("Segen: " + b.label + " (" + b.desc + ")").withStyle(net.minecraft.ChatFormatting.GOLD));
+        return 1;
     }
 
     private static void actionbar(MinecraftServer server, Run r, Component msg) {
@@ -1036,6 +1159,9 @@ public final class ArenaManager {
                     leave(p);
                     return 1;
                 }))
+                .then(Commands.literal("segen").then(Commands.argument("nr", com.mojang.brigadier.arguments.IntegerArgumentType.integer(1, 3))
+                        .executes(ctx -> chooseBlessing(ctx.getSource().getPlayerOrException(),
+                                com.mojang.brigadier.arguments.IntegerArgumentType.getInteger(ctx, "nr")))))
                 .then(Commands.literal("stats").executes(ctx -> {
                     ServerPlayer p = ctx.getSource().getPlayerOrException();
                     for (ArenaDefs.Tier t : ArenaDefs.tiers()) {
@@ -1093,6 +1219,7 @@ public final class ArenaManager {
                 level.getBlockState(LOBBY).getBlock(),
                 level.getBlockState(new BlockPos(0, 64, 8)).getBlock());
         List<ArenaDefs.Tier> tiers = ArenaDefs.tiers();
+        LOGGER.info("ARENA-DEBUG: Musik Wellen={} Boss={}", BuiltInRegistries.SOUND_EVENT.containsKey(ArenaShow.WAVE_MUSIC), BuiltInRegistries.SOUND_EVENT.containsKey(ArenaShow.BOSS_MUSIC));
         LOGGER.info("ARENA-DEBUG: {} Stufen, {} Begegnungen verfuegbar", tiers.size(), ArenaDefs.encounters().size());
         Run dummy = new Run(ArenaDefs.encounters().get(0), tiers.get(tiers.size() - 1), 3, 15);
         int ok = 0;

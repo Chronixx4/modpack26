@@ -30,3 +30,10 @@ Eigene NeoForge-Mod (MC 1.21.1): Arena-Dimension mit Portal, Bosskaempfen und Mo
 
 ## L2 Hostility
 In der Arena-Dimension gibt es keine Hostility-Levels (Datapack `l2hostility_config/difficulty/chronicle_arena.json`, apply_chance 0). Die Schwierigkeit kommt nur aus den Arena-Stufen.
+
+## Show-Elemente (Titel, Zaehler, Segen, Musik)
+- Titel bei Wellenstart ("WELLE 3 / 12", Gegnerzahl), Countdown 3-2-1, "WELLE GESCHAFFT", Sieg (mit Zeit und Bestzeit) und Niederlage.
+- Bossleiste zeigt die verbleibenden Gegner.
+- Mini-Boss: bei Stufen ab 15 Wellen alle 10 Wellen, sonst in der Mitte (5-fache Leben, 3 Wellen-Coins Bonus).
+- Segen: nach jeder 5. Welle 3 zur Auswahl (klickbar im Chat, `/arena segen 1-3`), gelten bis zum Run-Ende, stapelbar.
+- Musik: Pigstep bei Wellen, Precipice beim Boss (Vanilla-Platten, Kategorie Musik, Schleife).
