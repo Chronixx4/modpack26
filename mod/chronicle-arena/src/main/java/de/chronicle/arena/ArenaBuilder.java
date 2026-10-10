@@ -34,13 +34,25 @@ final class ArenaBuilder {
         buildLobby(level);
         buildShop(level);
         buildBridge(level);   // nach dem Shop, sonst raeumt dessen Platz das Brueckenende wieder weg
-        buildArena(level);
+        buildArena(level, ArenaManager.ARENA);
         ArenaDecor.lobby(level);
         ArenaDecor.shop(level);
         ArenaDecor.bridge(level);
-        ArenaDecor.arena(level);
+        ArenaDecor.arena(level, ArenaManager.ARENA);
         level.setBlock(MARKER, MARKER_BLOCK.defaultBlockState(), 2);
         LOGGER.info("Arena: Lobby, Shop und Kampfplatz gebaut");
+    }
+
+    /** Zusaetzliche Kampfarenen (Glut- und Eisarena) werden beim ersten Bedarf gebaut und umgefaerbt. */
+    static void ensureArena(ServerLevel level, BlockPos center, int variant) {
+        if (variant == 0) return;
+        BlockPos marker = new BlockPos(center.getX(), 60, center.getZ());
+        if (level.getBlockState(marker).is(MARKER_BLOCK)) return;
+        buildArena(level, center);
+        ArenaDecor.arena(level, center);
+        ArenaPalette.apply(level, center, variant);
+        level.setBlock(marker, MARKER_BLOCK.defaultBlockState(), 2);
+        LOGGER.info("Arena: Variante {} bei {} gebaut", variant, center);
     }
 
     // ------------------------------------------------------------------ Helfer
@@ -230,10 +242,10 @@ final class ArenaBuilder {
 
     // ------------------------------------------------------------------ Kampfarena
 
-    private static void buildArena(ServerLevel level) {
-        int cx = ArenaManager.ARENA.getX();
-        int cz = ArenaManager.ARENA.getZ();
-        int fy = ArenaManager.ARENA.getY() - 1;
+    private static void buildArena(ServerLevel level, BlockPos center) {
+        int cx = center.getX();
+        int cz = center.getZ();
+        int fy = center.getY() - 1;
         int r = ArenaManager.ARENA_RADIUS;
         clear(level, cx, cz, fy, r + 3, 44);
 

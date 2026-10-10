@@ -46,3 +46,11 @@ In der Arena-Dimension gibt es keine Hostility-Levels (Datapack `l2hostility_con
 
 ## Anpassung an die Spielerstaerke
 Zu Beginn jeder Welle (und beim Boss) wird die Staerke der lebenden Spieler gemessen (Ruestung + Haerte, Angriffswert inkl. Waffe, Skilltree und Segen, maximale Leben). Die Gegner-Leben werden mit `(Staerke / 0,91)^0,7` skaliert (0,8x bis 1,8x); der Wellen-Titel zeigt "Staerke xN". Mini-Boss solo: 1,75x statt 2,5x Leben.
+
+## Ereignisse, Klassen, Karte, Rang, Siegertafel
+- Ereignisse ab Welle 3 (30 %): Blutmond (Gegner schneller, +50 % Coins), Gewitter (Blitze treffen Gegner), Mondsprung (Spieler springen hoeher, schweben).
+- Gegner-Klassen ab Welle 3: Sanitaeter (heilt Gegner), Schildtraeger (Ruestung, Rueckstoss-Resistenz), Bombenleger (explodiert beim Tod), Schuetze (Skelett auf dem Balkon, ab Welle 4).
+- Karte: 4 Heilbrunnen (laden 45 s auf), 8 Flammenfallen (rote Druckplatten, treffen Gegner hart, Spieler leicht).
+- Arena-Wechsel: Thema "nether" -> Glutarena (Z 500), "ice" -> Eisarena (Z 800), sonst Standardarena. Die Varianten werden beim ersten Bedarf gebaut und per `ArenaPalette` umgefaerbt.
+- Arena-Rang (Rekrut bis Legende) nach insgesamt verdienten Coins, mit Bonus-Coins beim Aufstieg; im HUD mit Fortschrittsbalken. Rangliste um die Abgrund-Spalte (A) ergaenzt.
+- Siegertafel: Nach jedem Run zeigt ein Textfeld in der Lobby Schaden, Kills und Wiederbelebungen pro Spieler.

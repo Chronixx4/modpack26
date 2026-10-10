@@ -43,7 +43,7 @@ public final class Net {
 
     public record ChallengeInfo(String encounter, String tier, int mask, boolean claimed, int bonusCoins, String text) {}
 
-    public record BoardLine(String name, String title, int wins, int bosses, int kills) {}
+    public record BoardLine(String name, String title, int wins, int bosses, int kills, int endless) {}
 
     /** Server -> Client: Inhalt des Kampf-Menues. */
     public record OpenTerminal(boolean running, String status, List<TierInfo> tiers, List<EncInfo> encounters,
@@ -149,7 +149,7 @@ public final class Net {
 
     /** Server -> Client: Konto, Kosmetik und Rangliste (fuer die Anzeige in der Arena und den Shop). */
     public record Stats(int coins, int kills, int bosses, int wins, String title, String titleId, String trailId,
-                        List<String> owned, List<BoardLine> board, boolean showHud) implements CustomPacketPayload {
+                        List<String> owned, List<BoardLine> board, boolean showHud, String rank, int earned, int nextRankAt) implements CustomPacketPayload {
         public static final Type<Stats> TYPE = new Type<>(ChronicleArena.id("stats"));
         public static final StreamCodec<FriendlyByteBuf, Stats> CODEC = StreamCodec.of(Stats::write, Stats::read);
 
@@ -170,8 +170,12 @@ public final class Net {
                 buf.writeVarInt(l.wins);
                 buf.writeVarInt(l.bosses);
                 buf.writeVarInt(l.kills);
+                buf.writeVarInt(l.endless);
             }
             buf.writeBoolean(p.showHud);
+            buf.writeUtf(p.rank);
+            buf.writeVarInt(p.earned);
+            buf.writeVarInt(p.nextRankAt);
         }
 
         private static Stats read(FriendlyByteBuf buf) {
@@ -187,8 +191,9 @@ public final class Net {
             for (int i = 0; i < no; i++) owned.add(buf.readUtf());
             int nb = buf.readVarInt();
             List<BoardLine> board = new ArrayList<>();
-            for (int i = 0; i < nb; i++) board.add(new BoardLine(buf.readUtf(), buf.readUtf(), buf.readVarInt(), buf.readVarInt(), buf.readVarInt()));
-            return new Stats(coins, kills, bosses, wins, title, titleId, trailId, owned, board, buf.readBoolean());
+            for (int i = 0; i < nb; i++) board.add(new BoardLine(buf.readUtf(), buf.readUtf(), buf.readVarInt(), buf.readVarInt(), buf.readVarInt(), buf.readVarInt()));
+            boolean hud = buf.readBoolean();
+            return new Stats(coins, kills, bosses, wins, title, titleId, trailId, owned, board, hud, buf.readUtf(), buf.readVarInt(), buf.readVarInt());
         }
 
         @Override

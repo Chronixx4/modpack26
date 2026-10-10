@@ -78,6 +78,17 @@ public final class ArenaManager {
 
     static final BlockPos LOBBY = new BlockPos(0, 64, 0);
     static final BlockPos ARENA = new BlockPos(0, 64, 200);
+    /** Glutarena (Nether-Thema) und Eisarena (Eis-Thema): gleicher Grundriss, andere Bausteine. */
+    static final BlockPos ARENA_B = new BlockPos(0, 64, 500);
+    static final BlockPos ARENA_C = new BlockPos(0, 64, 800);
+
+    static int variantFor(String theme) {
+        return "nether".equals(theme) ? 1 : "ice".equals(theme) ? 2 : 0;
+    }
+
+    static BlockPos centerFor(int variant) {
+        return variant == 1 ? ARENA_B : variant == 2 ? ARENA_C : ARENA;
+    }
     static final BlockPos SHOP = new BlockPos(60, 64, 0);
     static final int LOBBY_RADIUS = 12;
     static final int SHOP_RADIUS = 12;
@@ -147,11 +158,12 @@ public final class ArenaManager {
 
     private enum State { PREP, WAVE, BOSS, ENDING }
 
-    private static final class Spawn {
+    static final class Spawn {
         final ResourceLocation entity;
         final boolean elite;
         final boolean boss;
         boolean mini;
+        int cls;
 
         Spawn(ResourceLocation entity, boolean elite, boolean boss) {
             this.entity = entity;
@@ -160,7 +172,7 @@ public final class ArenaManager {
         }
     }
 
-    private static final class Run {
+    static final class Run {
         final ArenaDefs.Encounter encounter;
         final ArenaDefs.Tier tier;
         final Set<UUID> alive = new LinkedHashSet<>();
@@ -176,6 +188,8 @@ public final class ArenaManager {
         final double damageScale;
         final double countScale;
         final int totalWaves;
+        final BlockPos center;
+        final int variant;
         final boolean endless;
         final int extra;
         final int mask;
@@ -196,8 +210,19 @@ public final class ArenaManager {
         boolean miniThisWave;
         int revives = 2;
         double powerMul = 1.0;
+        int event;
+        final Map<UUID, Integer> classes = new HashMap<>();
+        final long[] fountainReady = new long[4];
+        final long[] trapReady = new long[8];
+        final Map<UUID, long[]> stat = new HashMap<>();
+
+        long[] stat(UUID id) {
+            return stat.computeIfAbsent(id, k -> new long[4]);
+        }
 
         Run(ArenaDefs.Encounter encounter, ArenaDefs.Tier tier, int players, int mask) {
+            this.variant = variantFor(encounter.theme());
+            this.center = centerFor(variant);
             this.mask = mask;
             this.encounter = encounter;
             this.tier = tier;
@@ -383,6 +408,7 @@ public final class ArenaManager {
         ServerLevel level = server.getLevel(DIM);
         if (level == null) return;
         ArenaBuilder.ensureBuilt(level);
+        ArenaBuilder.ensureArena(level, centerFor(variantFor(enc.theme())), variantFor(enc.theme()));
         Run r = new Run(enc, tier, group.size(), mask);
         run = r;
         int i = 0;
@@ -393,8 +419,8 @@ public final class ArenaManager {
             p.getFoodData().setFoodLevel(20);
             p.removeAllEffects();
             double angle = (Math.PI * 2.0 * i) / group.size();
-            teleport(p, level, ARENA.getX() + 0.5 + Math.cos(angle) * 4.0, ARENA.getY(),
-                    ARENA.getZ() + 0.5 + Math.sin(angle) * 4.0, 0.0F);
+            teleport(p, level, r.center.getX() + 0.5 + Math.cos(angle) * 4.0, r.center.getY(),
+                    r.center.getZ() + 0.5 + Math.sin(angle) * 4.0, 0.0F);
             r.alive.add(p.getUUID());
             r.participants.add(p.getUUID());
             r.bar.addPlayer(p);
@@ -415,7 +441,7 @@ public final class ArenaManager {
         r.spectators.add(sp.getUUID());
         r.bar.addPlayer(sp);
         sp.setGameMode(GameType.SPECTATOR);
-        teleport(sp, level, ARENA.getX() + 0.5, 80.0, ARENA.getZ() + 0.5, 0.0F);
+        teleport(sp, level, r.center.getX() + 0.5, 80.0, r.center.getZ() + 0.5, 0.0F);
         sp.sendSystemMessage(Component.translatable("msg.chronicle_arena.spectating"));
     }
 
@@ -447,6 +473,7 @@ public final class ArenaManager {
         r.bar.setProgress(won ? 1.0F : 0.0F);
         r.bar.setName(Component.translatable(won ? "bar.chronicle_arena.won" : "bar.chronicle_arena.lost"));
         ServerLevel level = server.getLevel(DIM);
+        ArenaExtras.updateBoard(server, r, won);
         for (UUID id : r.participants) {
             ServerPlayer p = server.getPlayerList().getPlayer(id);
             if (p == null || level == null) continue;
@@ -693,7 +720,7 @@ public final class ArenaManager {
                         ServerPlayer p = server.getPlayerList().getPlayer(id);
                         if (p != null) ArenaFx.burst(level, p.getX(), p.getY() + 1.0, p.getZ(), 2, 6.0);
                     }
-                    ArenaFx.burst(level, ARENA.getX() + 0.5, ARENA.getY() + 4.0, ARENA.getZ() + 0.5, 3, 14.0);
+                    ArenaFx.burst(level, r.center.getX() + 0.5, r.center.getY() + 4.0, r.center.getZ() + 0.5, 3, 14.0);
                 }
                 if (--r.timer <= 0) endRun(server);
             }
@@ -720,11 +747,21 @@ public final class ArenaManager {
         r.waveTotal = Math.max(1, r.queue.size());
         r.powerMul = computePower(server, r);
         r.offer.clear();
-        r.bar.setColor(BossEvent.BossBarColor.PURPLE);
+        r.event = ArenaExtras.rollEvent(level, r.wave, false);
+        r.bar.setColor(r.event == ArenaExtras.EV_BLUTMOND ? BossEvent.BossBarColor.RED
+                : r.event == ArenaExtras.EV_GEWITTER ? BossEvent.BossBarColor.YELLOW
+                : r.event == ArenaExtras.EV_MONDSPRUNG ? BossEvent.BossBarColor.BLUE : BossEvent.BossBarColor.PURPLE);
+        if (r.event != ArenaExtras.EV_NONE) {
+            for (ServerPlayer ep : runPlayers(server, r)) {
+                ep.sendSystemMessage(Component.literal("EREIGNIS: " + ArenaExtras.eventName(r.event) + " - " + ArenaExtras.eventText(r.event))
+                        .withStyle(net.minecraft.ChatFormatting.LIGHT_PURPLE));
+            }
+        }
         ArenaShow.title(runPlayers(server, r), ArenaShow.big("WELLE " + r.wave + " / " + r.totalStr(),
                         r.miniThisWave ? net.minecraft.ChatFormatting.RED : net.minecraft.ChatFormatting.LIGHT_PURPLE),
                 Component.literal(r.waveTotal + " Gegner" + (r.miniThisWave ? " - MINI-BOSS!" : "")
-                        + (Math.abs(r.powerMul - 1.0) > 0.05 ? String.format(" | Staerke x%.2f", r.powerMul) : "")).withStyle(
+                        + (Math.abs(r.powerMul - 1.0) > 0.05 ? String.format(" | Staerke x%.2f", r.powerMul) : "")
+                        + (r.event != ArenaExtras.EV_NONE ? " | " + ArenaExtras.eventName(r.event).toUpperCase() : "")).withStyle(
                         r.miniThisWave ? net.minecraft.ChatFormatting.RED : net.minecraft.ChatFormatting.GRAY), 8, 45, 12);
         r.bar.setName(Component.translatable("bar.chronicle_arena.wave", r.wave, r.totalStr()));
         actionbar(server, r, Component.translatable("msg.chronicle_arena.wave", r.wave, r.totalStr()));
@@ -742,6 +779,21 @@ public final class ArenaManager {
         }
         if (e.elite() != null && w % e.eliteEvery() == 0 && w < r.totalWaves) {
             r.queue.add(new Spawn(e.elite(), true, false));
+        }
+        // Gegner-Klassen ab Welle 3 und Schuetzen auf dem Balkon ab Welle 4.
+        if (w >= 3) {
+            float chance = Math.min(0.28F, 0.08F + 0.015F * w);
+            for (Spawn sp : r.queue) {
+                if (!sp.elite && !sp.boss && level.getRandom().nextFloat() < chance) sp.cls = 1 + level.getRandom().nextInt(3);
+            }
+        }
+        if (w >= 4) {
+            int shooters = Math.min(4, 1 + (w - 4) / 6);
+            for (int i = 0; i < shooters; i++) {
+                Spawn sh = new Spawn(ResourceLocation.withDefaultNamespace("skeleton"), false, false);
+                sh.cls = ArenaExtras.CL_SCHUETZE;
+                r.queue.add(sh);
+            }
         }
         boolean mini = w > 1 && w < r.totalWaves && (r.totalWaves >= 15 ? w % 10 == 0 : w == (r.totalWaves + 1) / 2);
         boolean bigBoss = r.endless && w % 25 == 0 && e.finale() != null;
@@ -808,6 +860,7 @@ public final class ArenaManager {
                 r.revives--;
                 r.reviving.remove(id);
                 it.remove();
+                r.stat(helper.getUUID())[2]++;
                 r.spectators.remove(id);
                 r.alive.add(id);
                 down.setGameMode(GameType.SURVIVAL);
@@ -863,6 +916,7 @@ public final class ArenaManager {
 
         // Wiederbeleben: neben einem Gefallenen schleichen (ca. 4 Sekunden).
         tickRevive(server, level, r);
+        ArenaExtras.tick(server, level, r, tickCounter);
 
         // Aggro halten.
         if (tickCounter % 40 == 0) {
@@ -905,7 +959,7 @@ public final class ArenaManager {
         if (!cleared) return;
 
         if (r.state == State.WAVE && r.tier.tokensPerWave() > 0) {
-            int basePerWave = (int) Math.round(r.tier.tokensPerWave() * coinMult(r.mask));
+            int basePerWave = (int) Math.round(r.tier.tokensPerWave() * coinMult(r.mask) * ArenaExtras.eventCoinMult(r.event));
             for (UUID id : r.alive) {
                 ServerPlayer p = server.getPlayerList().getPlayer(id);
                 if (p == null) continue;
@@ -917,6 +971,8 @@ public final class ArenaManager {
             }
         }
 
+        r.event = ArenaExtras.EV_NONE;
+        r.classes.clear();
         if (r.state == State.BOSS) {
             finish(server, true);
         } else if (r.wave >= r.totalWaves) {
@@ -955,9 +1011,15 @@ public final class ArenaManager {
         }
         double angle = level.getRandom().nextDouble() * Math.PI * 2.0;
         double dist = s.boss ? 8.0 : 14.0 + level.getRandom().nextDouble() * 12.0;
-        double x = ARENA.getX() + 0.5 + Math.cos(angle) * dist;
-        double z = ARENA.getZ() + 0.5 + Math.sin(angle) * dist;
-        le.moveTo(x, ARENA.getY(), z, level.getRandom().nextFloat() * 360.0F, 0.0F);
+        double x = r.center.getX() + 0.5 + Math.cos(angle) * dist;
+        double z = r.center.getZ() + 0.5 + Math.sin(angle) * dist;
+        double y = r.center.getY();
+        if (s.cls == ArenaExtras.CL_SCHUETZE) {
+            x = r.center.getX() + 0.5 + Math.cos(angle) * 35.6;
+            z = r.center.getZ() + 0.5 + Math.sin(angle) * 35.6;
+            y = r.center.getY() + 8.0;
+        }
+        le.moveTo(x, y, z, level.getRandom().nextFloat() * 360.0F, 0.0F);
         if (le instanceof Mob mob) {
             mob.finalizeSpawn(level, level.getCurrentDifficultyAt(le.blockPosition()), MobSpawnType.EVENT, null);
             mob.setPersistenceRequired();
@@ -980,6 +1042,20 @@ public final class ArenaManager {
         if ((r.mask & MOD_SPEED) != 0) scale(le, Attributes.MOVEMENT_SPEED, 1.3);
         le.setHealth(le.getMaxHealth());
         if (s.elite || s.boss) le.setGlowingTag(true);
+        if (s.cls != ArenaExtras.CL_NONE) {
+            le.setCustomName(Component.literal(ArenaExtras.className(s.cls)).withStyle(ArenaExtras.classColor(s.cls)));
+            le.setCustomNameVisible(true);
+            if (s.cls == ArenaExtras.CL_SCHILD) {
+                scaleAdd(le, Attributes.ARMOR, 12.0);
+                scaleAdd(le, Attributes.KNOCKBACK_RESISTANCE, 0.9);
+                le.setItemSlot(net.minecraft.world.entity.EquipmentSlot.OFFHAND, new ItemStack(net.minecraft.world.item.Items.SHIELD));
+            } else if (s.cls == ArenaExtras.CL_BOMBE) {
+                le.setItemSlot(net.minecraft.world.entity.EquipmentSlot.HEAD, new ItemStack(net.minecraft.world.item.Items.TNT));
+                scale(le, Attributes.MOVEMENT_SPEED, 1.2);
+            }
+            r.classes.put(le.getUUID(), s.cls);
+        }
+        if (r.event == ArenaExtras.EV_BLUTMOND) scale(le, Attributes.MOVEMENT_SPEED, 1.25);
         if (s.mini) {
             le.setCustomName(Component.literal("Mini-Boss").withStyle(net.minecraft.ChatFormatting.RED));
             le.setCustomNameVisible(true);
@@ -990,6 +1066,14 @@ public final class ArenaManager {
             if (target != null) mob.setTarget(target);
         }
         return le;
+    }
+
+    private static void scaleAdd(LivingEntity le, net.minecraft.core.Holder<net.minecraft.world.entity.ai.attributes.Attribute> attr, double add) {
+        AttributeInstance inst = le.getAttribute(attr);
+        if (inst == null) return;
+        inst.removeModifier(ChronicleArena.id("class_" + attr.value().getDescriptionId()));
+        inst.addPermanentModifier(new AttributeModifier(ChronicleArena.id("class_" + attr.value().getDescriptionId()), add,
+                AttributeModifier.Operation.ADD_VALUE));
     }
 
     private static void scale(LivingEntity le, net.minecraft.core.Holder<net.minecraft.world.entity.ai.attributes.Attribute> attr, double factor) {
@@ -1098,17 +1182,17 @@ public final class ArenaManager {
             boolean inRun = run != null && run.involves(p.getUUID());
             if (p.getY() < 40.0) {
                 if (run != null && run.alive.contains(p.getUUID())) {
-                    teleport(p, level, ARENA.getX() + 0.5, ARENA.getY(), ARENA.getZ() + 0.5, 0.0F);
+                    teleport(p, level, run.center.getX() + 0.5, run.center.getY(), run.center.getZ() + 0.5, 0.0F);
                 } else {
                     teleport(p, level, LOBBY.getX() + 0.5, LOBBY.getY(), LOBBY.getZ() + 5.5, 180.0F);
                 }
                 continue;
             }
             if (p.isSpectator() && run != null && run.spectators.contains(p.getUUID())) {
-                double dx = p.getX() - (ARENA.getX() + 0.5);
-                double dz = p.getZ() - (ARENA.getZ() + 0.5);
+                double dx = p.getX() - (run.center.getX() + 0.5);
+                double dz = p.getZ() - (run.center.getZ() + 0.5);
                 if (dx * dx + dz * dz > 46.0 * 46.0 || p.getY() > 95.0 || p.getY() < 55.0) {
-                    teleport(p, level, ARENA.getX() + 0.5, 80.0, ARENA.getZ() + 0.5, 0.0F);
+                    teleport(p, level, run.center.getX() + 0.5, 80.0, run.center.getZ() + 0.5, 0.0F);
                 }
             } else if (!inRun && p.isSpectator() && !p.isCreative()) {
                 restoreMode(p);
@@ -1167,6 +1251,18 @@ public final class ArenaManager {
                 && r.mobs.contains(dead.getUUID())) {
             ArenaStats.addKill(killer);
             statsDirty.add(killer.getUUID());
+            r.stat(killer.getUUID())[1]++;
+        }
+        Integer cls = r.classes.remove(dead.getUUID());
+        if (cls != null && cls == ArenaExtras.CL_BOMBE && dead.level() instanceof ServerLevel dl) ArenaExtras.bombDeath(dl, r, dead);
+    }
+
+    @SubscribeEvent
+    public void onDamageDone(net.neoforged.neoforge.event.entity.living.LivingDamageEvent.Post event) {
+        Run r = run;
+        if (r == null || event.getEntity() instanceof Player || event.getEntity().level().dimension() != DIM) return;
+        if (event.getSource().getEntity() instanceof ServerPlayer p && r.alive.contains(p.getUUID())) {
+            r.stat(p.getUUID())[0] += Math.round(event.getNewDamage());
         }
     }
 
@@ -1298,7 +1394,7 @@ public final class ArenaManager {
         String path = System.getProperty("chronicle_arena.dump");
         if (path == null || path.isEmpty()) return;
         try (java.io.PrintWriter w = new java.io.PrintWriter(path)) {
-            int[][] boxes = {{-20, 55, -20, 82, 100, 20}, {-52, 55, 148, 52, 140, 252}, {-6, 0, -6, 6, 54, 6}, {-6, 0, 194, 6, 54, 206}};
+            int[][] boxes = {{-20, 55, -20, 82, 100, 20}, {-52, 55, 148, 52, 140, 252}, {-6, 0, -6, 6, 54, 6}, {-6, 0, 194, 6, 54, 206}, {-52, 55, 448, 52, 140, 552}, {-52, 55, 748, 52, 140, 852}};
             for (int[] b : boxes) {
                 for (int x = b[0]; x <= b[3]; x++) for (int y = b[1]; y <= b[4]; y++) for (int z = b[2]; z <= b[5]; z++) {
                     var st = level.getBlockState(new BlockPos(x, y, z));
@@ -1319,6 +1415,8 @@ public final class ArenaManager {
             return;
         }
         ArenaBuilder.ensureBuilt(level);
+        ArenaBuilder.ensureArena(level, ARENA_B, 1);
+        ArenaBuilder.ensureArena(level, ARENA_C, 2);
         dumpBlocks(level);
         LOGGER.info("ARENA-DEBUG: Arena gebaut, Marker={}, Terminal={}, Portal={}",
                 level.getBlockState(new BlockPos(0, 60, 200)).getBlock(),
@@ -1357,6 +1455,38 @@ public final class ArenaManager {
             }
         }
         LOGGER.info("ARENA-DEBUG: Spawn-Test fertig, ok={} fehler={}", ok, fail);
+        // Klassen, Ereignisse, Brunnen/Fallen und Siegertafel einmal durchspielen.
+        try {
+            Run xr = new Run(ArenaDefs.encounters().get(0), tiers.get(0), 1, 0);
+            xr.wave = 6;
+            new ArenaManager().buildWave(level, xr);
+            int withClass = 0;
+            for (Spawn sp : xr.queue) if (sp.cls != 0) withClass++;
+            LOGGER.info("ARENA-DEBUG: Welle 6: {} Spawns, {} mit Klasse", xr.queue.size(), withClass);
+            List<LivingEntity> made = new ArrayList<>();
+            for (int cl = 1; cl <= 4; cl++) {
+                Spawn sp = new Spawn(ResourceLocation.withDefaultNamespace("zombie"), false, false);
+                sp.cls = cl;
+                LivingEntity le = new ArenaManager().spawnMob(level, xr, sp);
+                if (le == null) LOGGER.error("ARENA-DEBUG: Klasse {} ergab null", cl);
+                else { made.add(le); xr.mobs.add(le.getUUID()); }
+            }
+            for (int ev = 1; ev <= 3; ev++) {
+                xr.event = ev;
+                for (int t = 0; t < 400; t += 10) ArenaExtras.tick(server, level, xr, t);
+            }
+            for (LivingEntity le : made) {
+                if (xr.classes.get(le.getUUID()) != null && xr.classes.get(le.getUUID()) == ArenaExtras.CL_BOMBE) ArenaExtras.bombDeath(level, xr, le);
+                le.discard();
+            }
+            xr.stat(java.util.UUID.randomUUID())[0] = 1234;
+            ArenaExtras.updateBoard(server, xr, true);
+            int boards = level.getEntities(net.minecraft.world.entity.EntityType.TEXT_DISPLAY, e -> e.getTags().contains("chronicle_board")).size();
+            LOGGER.info("ARENA-DEBUG: Siegertafel-Eintraege: {}", boards);
+        } catch (Throwable t) {
+            LOGGER.error("ARENA-DEBUG: Extras-Test Fehler", t);
+        }
+
         int shopOk = 0;
         for (ArenaDefs.ShopOffer o : ArenaDefs.shopOffers()) {
             ItemStack st = o.stack(server.registryAccess());
@@ -1455,15 +1585,34 @@ public final class ArenaManager {
         }
     }
 
+    /** Arena-Rang aus den insgesamt verdienten Coins; beim Aufstieg gibt es Bonus-Coins und eine Meldung. */
+    private static void checkRank(ServerPlayer p) {
+        int now = ArenaStats.rankFor(ArenaStats.earned(p));
+        int old = ArenaStats.rankIdx(p);
+        if (now <= old) return;
+        ArenaStats.setRankIdx(p, now);
+        int bonus = ArenaStats.RANK_BONUS[now];
+        ArenaStats.addCoins(p, bonus);
+        ArenaShow.title(List.of(p), ArenaShow.big("RANG: " + ArenaStats.RANKS[now].toUpperCase(), net.minecraft.ChatFormatting.GOLD),
+                Component.literal("+" + bonus + " Coins").withStyle(net.minecraft.ChatFormatting.YELLOW), 10, 70, 20);
+        p.sendSystemMessage(Component.literal("Neuer Arena-Rang: " + ArenaStats.RANKS[now] + " (+" + bonus + " Coins)")
+                .withStyle(net.minecraft.ChatFormatting.GOLD));
+        if (p.level() instanceof ServerLevel sl) ArenaFx.burst(sl, p.getX(), p.getY() + 1.0, p.getZ(), 3, 4.0);
+        checkRank(p);
+    }
+
     static void sendStats(ServerPlayer p) {
+        checkRank(p);
         String titleId = ArenaStats.title(p);
         List<Net.BoardLine> board = new ArrayList<>();
         for (ArenaStats.Line l : ArenaStats.top(p.server, 10)) {
-            board.add(new Net.BoardLine(l.name(), l.title(), l.wins(), l.bosses(), l.kills()));
+            board.add(new Net.BoardLine(l.name(), l.title(), l.wins(), l.bosses(), l.kills(), l.endless()));
         }
+        int rk = ArenaStats.rankFor(ArenaStats.earned(p));
         PacketDistributor.sendToPlayer(p, new Net.Stats(ArenaStats.coins(p), ArenaStats.kills(p), ArenaStats.bosses(p),
                 ArenaStats.wins(p), titleId.isEmpty() ? "" : ArenaDefs.cosmeticName(titleId), titleId, ArenaStats.trail(p),
-                ArenaStats.owned(p), board, true));
+                ArenaStats.owned(p), board, true, ArenaStats.RANKS[rk], ArenaStats.earned(p),
+                rk + 1 < ArenaStats.RANK_AT.length ? ArenaStats.RANK_AT[rk + 1] : 0));
     }
 
     private static void rememberMode(ServerPlayer sp) {

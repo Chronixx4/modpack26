@@ -36,6 +36,22 @@ public final class ArenaStats {
     public static String trail(ServerPlayer p) { return tag(p).getString("trail"); }
     public static int challengeDay(ServerPlayer p) { return tag(p).getInt("challenge_day"); }
 
+    public static int earned(ServerPlayer p) { return tag(p).getInt("earned"); }
+
+    public static int rankIdx(ServerPlayer p) { return tag(p).getInt("rank_idx"); }
+
+    public static void setRankIdx(ServerPlayer p, int i) { tag(p).putInt("rank_idx", i); }
+
+    public static final String[] RANKS = {"Rekrut", "Kaempfer", "Veteran", "Elite", "Champion", "Legende"};
+    public static final int[] RANK_AT = {0, 300, 1200, 3500, 8000, 18000};
+    public static final int[] RANK_BONUS = {0, 100, 200, 400, 800, 1500};
+
+    public static int rankFor(int earned) {
+        int idx = 0;
+        for (int i = 0; i < RANK_AT.length; i++) if (earned >= RANK_AT[i]) idx = i;
+        return idx;
+    }
+
     public static int endlessBest(ServerPlayer p) { return tag(p).getInt("endless_best"); }
 
     public static void setEndlessBest(ServerPlayer p, int w) { tag(p).putInt("endless_best", w); }
@@ -91,7 +107,7 @@ public final class ArenaStats {
 
     // ------------------------------------------------------------------ Rangliste
 
-    public record Line(String name, String title, int wins, int bosses, int kills) {}
+    public record Line(String name, String title, int wins, int bosses, int kills, int endless) {}
 
     public static final class Board extends SavedData {
         final Map<UUID, Line> lines = new LinkedHashMap<>();
@@ -101,7 +117,7 @@ public final class ArenaStats {
             for (Tag e : in.getList("lines", Tag.TAG_COMPOUND)) {
                 CompoundTag c = (CompoundTag) e;
                 b.lines.put(c.getUUID("id"), new Line(c.getString("name"), c.getString("title"), c.getInt("wins"),
-                        c.getInt("bosses"), c.getInt("kills")));
+                        c.getInt("bosses"), c.getInt("kills"), c.getInt("endless")));
             }
             return b;
         }
@@ -117,6 +133,7 @@ public final class ArenaStats {
                 c.putInt("wins", en.getValue().wins());
                 c.putInt("bosses", en.getValue().bosses());
                 c.putInt("kills", en.getValue().kills());
+                c.putInt("endless", en.getValue().endless());
                 list.add(c);
             }
             out.put("lines", list);
@@ -134,7 +151,7 @@ public final class ArenaStats {
         Board b = board(p.server);
         String titleId = title(p);
         String titleName = titleId.isEmpty() ? "" : ArenaDefs.cosmeticName(titleId);
-        b.lines.put(p.getUUID(), new Line(p.getGameProfile().getName(), titleName, wins(p), bosses(p), kills(p)));
+        b.lines.put(p.getUUID(), new Line(p.getGameProfile().getName(), titleName, wins(p), bosses(p), kills(p), endlessBest(p)));
         b.setDirty();
     }
 

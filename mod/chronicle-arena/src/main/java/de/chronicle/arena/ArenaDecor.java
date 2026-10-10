@@ -332,10 +332,10 @@ final class ArenaDecor {
 
     // ------------------------------------------------------------------ Arena
 
-    static void arena(ServerLevel level) {
-        int cx = ArenaManager.ARENA.getX();
-        int cz = ArenaManager.ARENA.getZ();
-        int fy = ArenaManager.ARENA.getY() - 1;
+    static void arena(ServerLevel level, BlockPos center) {
+        int cx = center.getX();
+        int cz = center.getZ();
+        int fy = center.getY() - 1;
         int r = ArenaManager.ARENA_RADIUS;
         if (level.getStructureManager().get(ChronicleArena.id("arena/arena")).isPresent()) return;
 
@@ -376,6 +376,29 @@ final class ArenaDecor {
             set(level, x, fy + 3, z, Blocks.POLISHED_BLACKSTONE_BRICK_WALL);
             set(level, x, fy + 4, z, Blocks.AMETHYST_BLOCK);
             set(level, x, fy + 5, z, Blocks.END_ROD);
+        }
+        // Vier Heilbrunnen (laden nach Benutzung 45 s auf) und acht Flammenfallen (Druckplatten).
+        for (int[] f : ArenaExtras.FOUNTAINS) {
+            int fx = cx + f[0];
+            int fz = cz + f[1];
+            for (int dx = -1; dx <= 1; dx++) for (int dz = -1; dz <= 1; dz++) {
+                set(level, fx + dx, fy, fz + dz, Blocks.POLISHED_BLACKSTONE_BRICKS);
+                set(level, fx + dx, fy + 1, fz + dz, Blocks.AIR);
+            }
+            for (int[] e : new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}}) {
+                set(level, fx + e[0], fy + 1, fz + e[1], Blocks.WATER_CAULDRON.defaultBlockState()
+                        .setValue(net.minecraft.world.level.block.LayeredCauldronBlock.LEVEL, 3));
+            }
+            for (int[] k : new int[][]{{1, 1}, {-1, 1}, {1, -1}, {-1, -1}}) {
+                set(level, fx + k[0], fy + 1, fz + k[1], litCandle(Blocks.LIGHT_BLUE_CANDLE));
+            }
+            set(level, fx, fy + 1, fz, Blocks.PRISMARINE_BRICKS);
+            set(level, fx, fy + 2, fz, Blocks.PRISMARINE_BRICKS);
+            set(level, fx, fy + 3, fz, Blocks.SEA_LANTERN);
+        }
+        for (int[] t : ArenaExtras.TRAPS) {
+            set(level, cx + t[0], fy, cz + t[1], Blocks.GILDED_BLACKSTONE);
+            set(level, cx + t[0], fy + 1, cz + t[1], Blocks.CRIMSON_PRESSURE_PLATE);
         }
         // Amethyst um die goldene Mitte.
         for (int[] c : new int[][]{{3, 3}, {-3, 3}, {3, -3}, {-3, -3}}) set(level, cx + c[0], fy + 1, cz + c[1], Blocks.AMETHYST_CLUSTER);
