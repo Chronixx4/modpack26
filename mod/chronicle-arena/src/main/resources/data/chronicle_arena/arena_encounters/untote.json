@@ -37,7 +37,7 @@
     }
   ],
   "elite": {
-    "entity": "minecraft:ravager",
+    "entity": "minecraft:wither_skeleton",
     "every": 5
   },
   "finale": {
