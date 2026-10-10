@@ -32,6 +32,7 @@ final class ArenaBuilder {
     static void ensureBuilt(ServerLevel level) {
         if (level.getBlockState(MARKER).is(MARKER_BLOCK)) {
             ArenaDecor.ensureSmith(level);
+            ArenaDecor.ensureGadgets(level);
             return;
         }
         buildLobby(level);
@@ -44,6 +45,7 @@ final class ArenaBuilder {
         ArenaDecor.arena(level, ArenaManager.ARENA);
         level.setBlock(MARKER, MARKER_BLOCK.defaultBlockState(), 2);
         ArenaDecor.ensureSmith(level);
+        ArenaDecor.ensureGadgets(level);
         LOGGER.info("Arena: Lobby, Shop und Kampfplatz gebaut");
     }
 
