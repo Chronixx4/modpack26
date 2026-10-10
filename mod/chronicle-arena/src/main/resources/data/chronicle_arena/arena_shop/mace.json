@@ -1,0 +1,18 @@
+{
+  "order": 16,
+  "category": "waffen",
+  "name": "Arena-Streitkolben",
+  "item": "minecraft:mace",
+  "count": 1,
+  "price": 280,
+  "components": {
+    "minecraft:enchantments": {
+      "levels": {
+        "minecraft:density": 5,
+        "minecraft:unbreaking": 3,
+        "minecraft:mending": 1
+      }
+    },
+    "minecraft:custom_name": "{\"text\": \"Arena-Streitkolben\", \"italic\": false, \"color\": \"light_purple\"}"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "order": 259,
+  "category": "magie",
+  "name": "Buch: Effizienz V",
+  "item": "minecraft:enchanted_book",
+  "count": 1,
+  "price": 50,
+  "components": {
+    "minecraft:stored_enchantments": {
+      "levels": {
+        "minecraft:efficiency": 5
+      }
+    }
+  }
+}

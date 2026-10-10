@@ -1,0 +1,8 @@
+{
+  "order": 1,
+  "category": "verbrauch",
+  "name": "Erfahrungsflaschen",
+  "item": "minecraft:experience_bottle",
+  "count": 16,
+  "price": 10
+}

@@ -1,0 +1,10 @@
+{
+  "order": 317,
+  "category": "kosmetik",
+  "name": "Spur: Notenspur",
+  "item": "minecraft:note_block",
+  "count": 1,
+  "price": 80,
+  "cosmetic": "trail",
+  "value": "note"
+}

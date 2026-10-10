@@ -1,0 +1,10 @@
+{
+  "order": 312,
+  "category": "kosmetik",
+  "name": "Spur: Herzchen-Spur",
+  "item": "minecraft:poppy",
+  "count": 1,
+  "price": 80,
+  "cosmetic": "trail",
+  "value": "heart"
+}

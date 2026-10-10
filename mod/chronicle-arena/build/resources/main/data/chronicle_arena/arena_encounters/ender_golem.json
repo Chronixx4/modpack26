@@ -1,0 +1,17 @@
+{
+  "type": "boss",
+  "order": 5,
+  "name": "Ender-Golem",
+  "description": "Ein Endstein-Riese.",
+  "icon": "minecraft:end_stone",
+  "boss": {
+    "entity": "cataclysm:ender_golem"
+  },
+  "adds": [
+    {
+      "entity": "minecraft:enderman",
+      "count": 3
+    }
+  ],
+  "theme": "end"
+}

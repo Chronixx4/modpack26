@@ -1,0 +1,10 @@
+{
+  "order": 321,
+  "category": "kosmetik",
+  "name": "Spur: Drachenatem-Spur",
+  "item": "minecraft:dragon_breath",
+  "count": 1,
+  "price": 300,
+  "cosmetic": "trail",
+  "value": "dragon"
+}

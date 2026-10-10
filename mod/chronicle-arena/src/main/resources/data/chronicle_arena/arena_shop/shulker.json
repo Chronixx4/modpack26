@@ -1,0 +1,8 @@
+{
+  "order": 97,
+  "category": "verbrauch",
+  "name": "Shulkerkiste",
+  "item": "minecraft:shulker_box",
+  "count": 1,
+  "price": 20
+}

@@ -1,0 +1,17 @@
+{
+  "type": "boss",
+  "order": 18,
+  "name": "Schneekoenigin",
+  "description": "Twilight Forest.",
+  "icon": "minecraft:packed_ice",
+  "boss": {
+    "entity": "twilightforest:snow_queen"
+  },
+  "adds": [
+    {
+      "entity": "minecraft:stray",
+      "count": 3
+    }
+  ],
+  "theme": "ice"
+}

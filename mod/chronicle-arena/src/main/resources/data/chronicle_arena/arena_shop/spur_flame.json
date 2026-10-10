@@ -1,0 +1,10 @@
+{
+  "order": 310,
+  "category": "kosmetik",
+  "name": "Spur: Flammenspur",
+  "item": "minecraft:flint_and_steel",
+  "count": 1,
+  "price": 60,
+  "cosmetic": "trail",
+  "value": "flame"
+}

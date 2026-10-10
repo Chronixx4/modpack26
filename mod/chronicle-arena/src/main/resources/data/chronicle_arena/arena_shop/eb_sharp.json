@@ -1,0 +1,15 @@
+{
+  "order": 253,
+  "category": "magie",
+  "name": "Buch: Schaerfe V",
+  "item": "minecraft:enchanted_book",
+  "count": 1,
+  "price": 60,
+  "components": {
+    "minecraft:stored_enchantments": {
+      "levels": {
+        "minecraft:sharpness": 5
+      }
+    }
+  }
+}

@@ -23,10 +23,19 @@ fill() {  # Platzhalter in Vorlagen ersetzen
 
 echo "== $NAME (Minecraft $MC, NeoForge $NF)"
 
+# 0) Eigene Mods aus mod/* bauen (Chronicle Arena); die Jars landen wie die CurseForge-Jars in mods/
+OWN="$OUT/eigene-mods" && rm -rf "$OWN" && mkdir -p "$OWN"
+for d in "$ROOT"/mod/*/; do
+  [ -f "$d/build.gradle" ] || continue
+  echo "  baue eigene Mod $(basename "$d") ..."
+  gradle --no-daemon -q -p "$d" build -x test >&2
+  cp "$d"/build/libs/*.jar "$OWN/"
+done
+
 # 1) .mrpack
 rm -rf "$OUT/mrpack" && mkdir -p "$OUT/mrpack/overrides/mods"
 cp "$IDX" "$OUT/mrpack/"
-cp "$ROOT"/curseforge-mods/*.jar "$OUT/mrpack/overrides/mods/"
+cp "$ROOT"/curseforge-mods/*.jar "$OWN"/*.jar "$OUT/mrpack/overrides/mods/"
 [ -d "$ROOT/pack/config" ] && cp -r "$ROOT/pack/config" "$OUT/mrpack/overrides/"   # Questbuch
 [ -d "$ROOT/pack/kubejs" ] && cp -r "$ROOT/pack/kubejs" "$OUT/mrpack/overrides/"   # Chronicle-Kern
 [ -d "$ROOT/pack/defaultconfigs" ] && cp -r "$ROOT/pack/defaultconfigs" "$OUT/mrpack/overrides/"   # Server-Configs fuer neue Welten
@@ -57,7 +66,7 @@ C="$OUT/client" && rm -rf "$C" && mkdir -p "$C/mods"
 jq -r '.files[] | select(.env.client != "unsupported") | .path' "$IDX" | while read -r path; do
   cp "$CACHE/$(basename "$path")" "$C/mods/"
 done
-cp "$ROOT"/curseforge-mods/*.jar "$C/mods/"
+cp "$ROOT"/curseforge-mods/*.jar "$OWN"/*.jar "$C/mods/"
 [ -d "$ROOT/pack/config" ] && cp -r "$ROOT/pack/config" "$C/"
 [ -d "$ROOT/pack/kubejs" ] && cp -r "$ROOT/pack/kubejs" "$C/"
 [ -d "$ROOT/pack/defaultconfigs" ] && cp -r "$ROOT/pack/defaultconfigs" "$C/"
@@ -74,7 +83,7 @@ jq -r '.files[] | select(.env.server != "unsupported") | .path' "$IDX" | while r
   if excluded "$n"; then echo "    ohne (Client-Mod): $n"; continue; fi
   cp "$CACHE/$n" "$S/mods/"
 done
-cp "$ROOT"/curseforge-mods/*.jar "$S/mods/"
+cp "$ROOT"/curseforge-mods/*.jar "$OWN"/*.jar "$S/mods/"
 [ -d "$ROOT/pack/config" ] && cp -r "$ROOT/pack/config" "$S/"
 [ -d "$ROOT/pack/kubejs" ] && cp -r "$ROOT/pack/kubejs" "$S/"
 [ -d "$ROOT/pack/defaultconfigs" ] && cp -r "$ROOT/pack/defaultconfigs" "$S/"

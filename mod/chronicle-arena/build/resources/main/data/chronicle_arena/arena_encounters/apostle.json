@@ -1,0 +1,17 @@
+{
+  "type": "boss",
+  "order": 15,
+  "name": "Der Apostel",
+  "description": "Goety-Endboss mit Magie.",
+  "icon": "minecraft:totem_of_undying",
+  "boss": {
+    "entity": "goety:apostle"
+  },
+  "adds": [
+    {
+      "entity": "minecraft:wither_skeleton",
+      "count": 4
+    }
+  ],
+  "theme": "deepdark"
+}

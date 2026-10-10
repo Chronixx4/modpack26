@@ -1,0 +1,37 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.moddev' version '2.0.78'
+}
+
+version = mod_version
+group = 'de.chronicle'
+base.archivesName = 'chronicle-arena'
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+neoForge {
+    version = neo_version
+    mods {
+        "${mod_id}" {
+            sourceSet sourceSets.main
+        }
+    }
+    runs {
+        server {
+            server()
+            systemProperty 'chronicle_arena.selftest', System.getProperty('chronicle_arena.selftest', 'false')
+            systemProperty 'chronicle_arena.dump', System.getProperty('chronicle_arena.dump', '')
+        }
+        client {
+            client()
+        }
+    }
+}
+
+processResources {
+    var props = [mod_id: mod_id, mod_version: mod_version, neo_version: neo_version]
+    inputs.properties props
+    filesMatching('META-INF/neoforge.mods.toml') {
+        expand props
+    }
+}

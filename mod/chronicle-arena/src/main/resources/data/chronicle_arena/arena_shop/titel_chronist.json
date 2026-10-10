@@ -1,0 +1,10 @@
+{
+  "order": 309,
+  "category": "kosmetik",
+  "name": "Titel: Chronist",
+  "item": "minecraft:written_book",
+  "count": 1,
+  "price": 1000,
+  "cosmetic": "title",
+  "value": "Chronist"
+}

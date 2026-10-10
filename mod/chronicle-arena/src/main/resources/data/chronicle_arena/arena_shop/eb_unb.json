@@ -1,0 +1,15 @@
+{
+  "order": 256,
+  "category": "magie",
+  "name": "Buch: Haltbarkeit III",
+  "item": "minecraft:enchanted_book",
+  "count": 1,
+  "price": 45,
+  "components": {
+    "minecraft:stored_enchantments": {
+      "levels": {
+        "minecraft:unbreaking": 3
+      }
+    }
+  }
+}

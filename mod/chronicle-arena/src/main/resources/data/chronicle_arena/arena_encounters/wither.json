@@ -1,0 +1,17 @@
+{
+  "type": "boss",
+  "order": 0,
+  "name": "Der Wither",
+  "description": "Der Klassiker. Bei halber Gesundheit kommen Untote dazu.",
+  "icon": "minecraft:nether_star",
+  "boss": {
+    "entity": "minecraft:wither"
+  },
+  "adds": [
+    {
+      "entity": "minecraft:wither_skeleton",
+      "count": 4
+    }
+  ],
+  "theme": "nether"
+}

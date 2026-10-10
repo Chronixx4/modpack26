@@ -1,0 +1,256 @@
+[10Oct2026 07:51:32.699] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeserverdev, --gameDir, ., --fml.fmlVersion, 4.0.45, --fml.mcVersion, 1.21.1, --fml.neoForgeVersion, 21.1.255, --fml.neoFormVersion, 20240808.144430]
+[10Oct2026 07:51:32.710] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: JVM identified as Ubuntu OpenJDK 64-Bit Server VM 21.0.12.1+1-1-24.04.4-Ubuntu
+[10Oct2026 07:51:32.713] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 11.0.5+main.901c6ea8 starting: java version 21.0.12.1 by Ubuntu; OS Linux arch amd64 version 6.18.44-fc-v114
+[10Oct2026 07:51:32.910] [main/INFO] [net.neoforged.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgeserverdev
+[10Oct2026 07:51:33.009] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=union:/root/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.16.4+mixin.0.8.7/26d01f0567ab46e9ca0d2ed89d0ecc11aadbd433/sponge-mixin-0.16.4+mixin.0.8.7.jar%2394!/ Service=ModLauncher Env=SERVER
+[10Oct2026 07:51:33.702] [main/INFO] [net.neoforged.fml.loading.moddiscovery.locators.JarInJarDependencyLocator/]: Found 2 dependencies adding them to mods collection
+[10Oct2026 07:51:33.706] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/]: 
+     Mod List:
+		Name Version (Mod Id)
+
+		Chronicle Arena 0.1.0 (chronicle_arena)
+		Minecraft 1.21.1 (minecraft)
+		NeoForge 21.1.255 (neoforge)
+[10Oct2026 07:51:34.366] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeserverdev' with arguments [--gameDir, .]
+[10Oct2026 07:51:36.023] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.5).
+[10Oct2026 07:51:42.742] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[10Oct2026 07:51:42.743] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, targets] with inputs: [0.1 -0.5 .9, 0 0 0]
+[10Oct2026 07:51:42.746] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, destination] and [teleport, targets] with inputs: [Player, 0123, @e, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[10Oct2026 07:51:42.747] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets] and [teleport, destination] with inputs: [Player, 0123, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[10Oct2026 07:51:42.748] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets, location] and [teleport, targets, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[10Oct2026 07:51:42.806] [modloading-worker-0/INFO] [net.neoforged.neoforge.common.NeoForgeMod/NEOFORGE-MOD]: NeoForge mod loading, version 21.1.255, for MC 1.21.1
+[10Oct2026 07:51:43.286] [main/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[10Oct2026 07:51:43.400] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/home/user/modpack26/mod/chronicle-arena/build/moddev/artifacts/neoforge-21.1.255.jar%23125!/assets/.mcassetsroot' uses unexpected schema
+[10Oct2026 07:51:43.401] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/home/user/modpack26/mod/chronicle-arena/build/moddev/artifacts/neoforge-21.1.255.jar%23125!/data/.mcassetsroot' uses unexpected schema
+[10Oct2026 07:51:44.594] [main/INFO] [net.minecraft.world.item.crafting.RecipeManager/]: Loaded 1291 recipes
+[10Oct2026 07:51:44.828] [main/INFO] [net.minecraft.advancements.AdvancementTree/]: Loaded 1399 advancements
+[10Oct2026 07:51:44.833] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: 4 Stufen geladen
+[10Oct2026 07:51:44.835] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:chaos ausgeblendet (Mob fehlt im Pack)
+[10Oct2026 07:51:44.835] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:ignis ausgeblendet (Mob fehlt im Pack)
+[10Oct2026 07:51:44.836] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:netherite_monstrosity ausgeblendet (Mob fehlt im Pack)
+[10Oct2026 07:51:44.836] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:ender_golem ausgeblendet (Mob fehlt im Pack)
+[10Oct2026 07:51:44.836] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:ender_guardian ausgeblendet (Mob fehlt im Pack)
+[10Oct2026 07:51:44.836] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:maledictus ausgeblendet (Mob fehlt im Pack)
+[10Oct2026 07:51:44.836] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:harbinger ausgeblendet (Mob fehlt im Pack)
+[10Oct2026 07:51:44.836] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:scylla ausgeblendet (Mob fehlt im Pack)
+[10Oct2026 07:51:44.836] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:leviathan ausgeblendet (Mob fehlt im Pack)
+[10Oct2026 07:51:44.837] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:frostmaw ausgeblendet (Mob fehlt im Pack)
+[10Oct2026 07:51:44.837] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:wroughtnaut ausgeblendet (Mob fehlt im Pack)
+[10Oct2026 07:51:44.837] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:umvuthi ausgeblendet (Mob fehlt im Pack)
+[10Oct2026 07:51:44.837] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:sculptor ausgeblendet (Mob fehlt im Pack)
+[10Oct2026 07:51:44.837] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:apostle ausgeblendet (Mob fehlt im Pack)
+[10Oct2026 07:51:44.837] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:lich ausgeblendet (Mob fehlt im Pack)
+[10Oct2026 07:51:44.838] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:hydra ausgeblendet (Mob fehlt im Pack)
+[10Oct2026 07:51:44.838] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:snow_queen ausgeblendet (Mob fehlt im Pack)
+[10Oct2026 07:51:44.838] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:sun_spirit ausgeblendet (Mob fehlt im Pack)
+[10Oct2026 07:51:44.838] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:valkyrie_queen ausgeblendet (Mob fehlt im Pack)
+[10Oct2026 07:51:44.838] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:ice_dragon ausgeblendet (Mob fehlt im Pack)
+[10Oct2026 07:51:44.838] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:fire_dragon ausgeblendet (Mob fehlt im Pack)
+[10Oct2026 07:51:44.838] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: Begegnung chronicle_arena:piglich ausgeblendet (Mob fehlt im Pack)
+[10Oct2026 07:51:44.839] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: 28 Begegnungen geladen, 22 ausgeblendet
+[10Oct2026 07:51:44.842] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:stroganoff ausgeblendet (Item twilightforest:meef_stroganoff fehlt im Pack)
+[10Oct2026 07:51:44.842] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:honey_treat ausgeblendet (Item productivebees:honey_treat fehlt im Pack)
+[10Oct2026 07:51:44.842] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:atm_apple ausgeblendet (Item allthemodium:allthemodium_apple fehlt im Pack)
+[10Oct2026 07:51:44.842] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:wrought_axe ausgeblendet (Item mowziesmobs:wrought_axe fehlt im Pack)
+[10Oct2026 07:51:44.842] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:railgun ausgeblendet (Item immersiveengineering:railgun fehlt im Pack)
+[10Oct2026 07:51:44.842] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:scythe ausgeblendet (Item goety:death_scythe fehlt im Pack)
+[10Oct2026 07:51:44.843] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:dark_wand ausgeblendet (Item goety:dark_wand fehlt im Pack)
+[10Oct2026 07:51:44.843] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:bi_helmet ausgeblendet (Item goety:black_iron_helmet fehlt im Pack)
+[10Oct2026 07:51:44.843] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:bi_chest ausgeblendet (Item goety:black_iron_chestplate fehlt im Pack)
+[10Oct2026 07:51:44.843] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:bi_legs ausgeblendet (Item goety:black_iron_leggings fehlt im Pack)
+[10Oct2026 07:51:44.843] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:bi_boots ausgeblendet (Item goety:black_iron_boots fehlt im Pack)
+[10Oct2026 07:51:44.843] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:naga_chest ausgeblendet (Item twilightforest:naga_chestplate fehlt im Pack)
+[10Oct2026 07:51:44.843] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:naga_legs ausgeblendet (Item twilightforest:naga_leggings fehlt im Pack)
+[10Oct2026 07:51:44.843] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:atm_helmet ausgeblendet (Item allthemodium:allthemodium_helmet fehlt im Pack)
+[10Oct2026 07:51:44.843] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:backpack_iron ausgeblendet (Item sophisticatedbackpacks:iron_backpack fehlt im Pack)
+[10Oct2026 07:51:44.843] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:backpack_gold ausgeblendet (Item sophisticatedbackpacks:gold_backpack fehlt im Pack)
+[10Oct2026 07:51:44.844] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:backpack_diamond ausgeblendet (Item sophisticatedbackpacks:diamond_backpack fehlt im Pack)
+[10Oct2026 07:51:44.844] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:traveler ausgeblendet (Item travelersbackpack:standard fehlt im Pack)
+[10Oct2026 07:51:44.844] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:watering_can ausgeblendet (Item mysticalagriculture:watering_can fehlt im Pack)
+[10Oct2026 07:51:44.844] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:infused_pick ausgeblendet (Item occultism:infused_pickaxe fehlt im Pack)
+[10Oct2026 07:51:44.844] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:atm_pick ausgeblendet (Item allthemodium:allthemodium_pickaxe fehlt im Pack)
+[10Oct2026 07:51:44.845] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:teleport_pad ausgeblendet (Item allthemodium:teleport_pad fehlt im Pack)
+[10Oct2026 07:51:44.845] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:magic_map ausgeblendet (Item twilightforest:magic_map fehlt im Pack)
+[10Oct2026 07:51:44.845] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:steel ausgeblendet (Item immersiveengineering:ingot_steel fehlt im Pack)
+[10Oct2026 07:51:44.845] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:brass ausgeblendet (Item create:brass_ingot fehlt im Pack)
+[10Oct2026 07:51:44.846] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:precision ausgeblendet (Item create:precision_mechanism fehlt im Pack)
+[10Oct2026 07:51:44.847] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:fluix ausgeblendet (Item ae2:fluix_crystal fehlt im Pack)
+[10Oct2026 07:51:44.847] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:certus ausgeblendet (Item ae2:certus_quartz_crystal fehlt im Pack)
+[10Oct2026 07:51:44.847] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:osmium ausgeblendet (Item mekanism:ingot_osmium fehlt im Pack)
+[10Oct2026 07:51:44.847] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:knightmetal ausgeblendet (Item twilightforest:knightmetal_ingot fehlt im Pack)
+[10Oct2026 07:51:44.847] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:ignitium ausgeblendet (Item cataclysm:ignitium_ingot fehlt im Pack)
+[10Oct2026 07:51:44.848] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:cursium ausgeblendet (Item cataclysm:cursium_ingot fehlt im Pack)
+[10Oct2026 07:51:44.848] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:witherite ausgeblendet (Item cataclysm:witherite_ingot fehlt im Pack)
+[10Oct2026 07:51:44.848] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:dark_ingot ausgeblendet (Item goety:dark_ingot fehlt im Pack)
+[10Oct2026 07:51:44.849] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:atm_ingot ausgeblendet (Item allthemodium:allthemodium_ingot fehlt im Pack)
+[10Oct2026 07:51:44.849] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:vibranium ausgeblendet (Item allthemodium:vibranium_ingot fehlt im Pack)
+[10Oct2026 07:51:44.849] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:unobtainium ausgeblendet (Item allthemodium:unobtainium_ingot fehlt im Pack)
+[10Oct2026 07:51:44.849] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:inferium ausgeblendet (Item mysticalagriculture:inferium_essence fehlt im Pack)
+[10Oct2026 07:51:44.849] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:prudentium ausgeblendet (Item mysticalagriculture:prudentium_essence fehlt im Pack)
+[10Oct2026 07:51:44.849] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:neodymium ausgeblendet (Item alexscaves:azure_neodymium_ingot fehlt im Pack)
+[10Oct2026 07:51:44.850] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:novice_book ausgeblendet (Item ars_nouveau:novice_spell_book fehlt im Pack)
+[10Oct2026 07:51:44.850] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:archmage_book ausgeblendet (Item ars_nouveau:archmage_spell_book fehlt im Pack)
+[10Oct2026 07:51:44.850] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:source_gem ausgeblendet (Item ars_nouveau:source_gem fehlt im Pack)
+[10Oct2026 07:51:44.850] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:legendary_ink ausgeblendet (Item irons_spellbooks:legendary_ink fehlt im Pack)
+[10Oct2026 07:51:44.850] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:sigil_socket ausgeblendet (Item apotheosis:sigil_of_socketing fehlt im Pack)
+[10Oct2026 07:51:44.850] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:sigil_enhance ausgeblendet (Item apotheosis:sigil_of_enhancement fehlt im Pack)
+[10Oct2026 07:51:44.850] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:gem_dust ausgeblendet (Item apotheosis:gem_dust fehlt im Pack)
+[10Oct2026 07:51:44.850] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:godforged ausgeblendet (Item apotheosis:godforged_pearl fehlt im Pack)
+[10Oct2026 07:51:44.850] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:hellshelf ausgeblendet (Item apothic_enchanting:hellshelf fehlt im Pack)
+[10Oct2026 07:51:44.850] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:soul_gem ausgeblendet (Item occultism:soul_gem fehlt im Pack)
+[10Oct2026 07:51:44.851] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:magic_emerald ausgeblendet (Item goety:magic_emerald fehlt im Pack)
+[10Oct2026 07:51:44.851] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:dragon_heart_ice ausgeblendet (Item iceandfire:ice_dragon_heart fehlt im Pack)
+[10Oct2026 07:51:44.851] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:blaze_cake ausgeblendet (Item create:blaze_cake fehlt im Pack)
+[10Oct2026 07:51:44.851] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:sweet_tooth_honey ausgeblendet (Item productivebees:honey_treat fehlt im Pack)
+[10Oct2026 07:51:44.851] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:soul_jar ausgeblendet (Item mysticalagriculture:soul_jar fehlt im Pack)
+[10Oct2026 07:51:44.851] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:fert ausgeblendet (Item mysticalagriculture:mystical_fertilizer fehlt im Pack)
+[10Oct2026 07:51:44.851] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:nameless ausgeblendet (Item goety:nameless_staff fehlt im Pack)
+[10Oct2026 07:51:44.851] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:meka_tool ausgeblendet (Item mekanism:meka_tool fehlt im Pack)
+[10Oct2026 07:51:44.852] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:disassembler ausgeblendet (Item mekanism:atomic_disassembler fehlt im Pack)
+[10Oct2026 07:51:44.852] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:wrought_axe2 ausgeblendet (Item mowziesmobs:wrought_axe fehlt im Pack)
+[10Oct2026 07:51:44.852] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:atm_chest ausgeblendet (Item allthemodium:allthemodium_chestplate fehlt im Pack)
+[10Oct2026 07:51:44.852] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:atm_legs ausgeblendet (Item allthemodium:allthemodium_leggings fehlt im Pack)
+[10Oct2026 07:51:44.852] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:atm_boots ausgeblendet (Item allthemodium:allthemodium_boots fehlt im Pack)
+[10Oct2026 07:51:44.852] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:vib_helm ausgeblendet (Item allthemodium:vibranium_helmet fehlt im Pack)
+[10Oct2026 07:51:44.852] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:vib_chest ausgeblendet (Item allthemodium:vibranium_chestplate fehlt im Pack)
+[10Oct2026 07:51:44.852] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:unob_chest ausgeblendet (Item allthemodium:unobtainium_chestplate fehlt im Pack)
+[10Oct2026 07:51:44.852] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:meka_helm ausgeblendet (Item mekanism:mekasuit_helmet fehlt im Pack)
+[10Oct2026 07:51:44.853] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:meka_body ausgeblendet (Item mekanism:mekasuit_bodyarmor fehlt im Pack)
+[10Oct2026 07:51:44.853] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:meka_legs ausgeblendet (Item mekanism:mekasuit_pants fehlt im Pack)
+[10Oct2026 07:51:44.853] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:meka_boots ausgeblendet (Item mekanism:mekasuit_boots fehlt im Pack)
+[10Oct2026 07:51:44.853] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:yeti ausgeblendet (Item twilightforest:yeti_chestplate fehlt im Pack)
+[10Oct2026 07:51:44.855] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:necro_cape ausgeblendet (Item goety:necro_cape fehlt im Pack)
+[10Oct2026 07:51:44.855] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:dark_helm ausgeblendet (Item goety:dark_helmet fehlt im Pack)
+[10Oct2026 07:51:44.856] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:sol ausgeblendet (Item mowziesmobs:sol_visage fehlt im Pack)
+[10Oct2026 07:51:44.856] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:jetpack ausgeblendet (Item mekanism:jetpack fehlt im Pack)
+[10Oct2026 07:51:44.856] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:backtank ausgeblendet (Item create:copper_backtank fehlt im Pack)
+[10Oct2026 07:51:44.857] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:wrench ausgeblendet (Item create:wrench fehlt im Pack)
+[10Oct2026 07:51:44.857] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:goggles ausgeblendet (Item create:goggles fehlt im Pack)
+[10Oct2026 07:51:44.857] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:super_glue ausgeblendet (Item create:super_glue fehlt im Pack)
+[10Oct2026 07:51:44.857] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:linked ausgeblendet (Item create:linked_controller fehlt im Pack)
+[10Oct2026 07:51:44.858] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:configurator ausgeblendet (Item mekanism:configurator fehlt im Pack)
+[10Oct2026 07:51:44.858] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:ae_wrench ausgeblendet (Item ae2:certus_quartz_wrench fehlt im Pack)
+[10Oct2026 07:51:44.858] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:wireless ausgeblendet (Item ae2:wireless_terminal fehlt im Pack)
+[10Oct2026 07:51:44.858] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:divination ausgeblendet (Item occultism:divination_rod fehlt im Pack)
+[10Oct2026 07:51:44.858] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:goggles_oc ausgeblendet (Item occultism:otherworld_goggles fehlt im Pack)
+[10Oct2026 07:51:44.858] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:vib_pick ausgeblendet (Item allthemodium:vibranium_pickaxe fehlt im Pack)
+[10Oct2026 07:51:44.859] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:unob_pick ausgeblendet (Item allthemodium:unobtainium_pickaxe fehlt im Pack)
+[10Oct2026 07:51:44.859] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:backpack_copper ausgeblendet (Item sophisticatedbackpacks:copper_backpack fehlt im Pack)
+[10Oct2026 07:51:44.859] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:backpack ausgeblendet (Item sophisticatedbackpacks:backpack fehlt im Pack)
+[10Oct2026 07:51:44.859] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:magnet ausgeblendet (Item sophisticatedbackpacks:magnet_upgrade fehlt im Pack)
+[10Oct2026 07:51:44.859] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:feeding ausgeblendet (Item sophisticatedbackpacks:feeding_upgrade fehlt im Pack)
+[10Oct2026 07:51:44.859] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:pickup ausgeblendet (Item sophisticatedbackpacks:pickup_upgrade fehlt im Pack)
+[10Oct2026 07:51:44.859] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:traveler_iron ausgeblendet (Item travelersbackpack:iron fehlt im Pack)
+[10Oct2026 07:51:44.859] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:zinc ausgeblendet (Item create:zinc_ingot fehlt im Pack)
+[10Oct2026 07:51:44.859] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:andesite ausgeblendet (Item create:andesite_alloy fehlt im Pack)
+[10Oct2026 07:51:44.859] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:sturdy ausgeblendet (Item create:sturdy_sheet fehlt im Pack)
+[10Oct2026 07:51:44.859] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:electron ausgeblendet (Item create:electron_tube fehlt im Pack)
+[10Oct2026 07:51:44.860] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:rose ausgeblendet (Item create:rose_quartz fehlt im Pack)
+[10Oct2026 07:51:44.860] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:silicon ausgeblendet (Item ae2:silicon fehlt im Pack)
+[10Oct2026 07:51:44.860] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:logic ausgeblendet (Item ae2:printed_silicon fehlt im Pack)
+[10Oct2026 07:51:44.860] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:engproc ausgeblendet (Item ae2:engineering_processor fehlt im Pack)
+[10Oct2026 07:51:44.860] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:calcproc ausgeblendet (Item ae2:calculation_processor fehlt im Pack)
+[10Oct2026 07:51:44.860] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:cell64 ausgeblendet (Item ae2:item_storage_cell_64k fehlt im Pack)
+[10Oct2026 07:51:44.860] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:cell16 ausgeblendet (Item ae2:item_storage_cell_16k fehlt im Pack)
+[10Oct2026 07:51:44.860] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:singul ausgeblendet (Item ae2:singularity fehlt im Pack)
+[10Oct2026 07:51:44.861] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:charged ausgeblendet (Item ae2:charged_certus_quartz_crystal fehlt im Pack)
+[10Oct2026 07:51:44.861] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:alloy_atomic ausgeblendet (Item mekanism:alloy_atomic fehlt im Pack)
+[10Oct2026 07:51:44.861] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:alloy_reinf ausgeblendet (Item mekanism:alloy_reinforced fehlt im Pack)
+[10Oct2026 07:51:44.861] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:refobs ausgeblendet (Item mekanism:ingot_refined_obsidian fehlt im Pack)
+[10Oct2026 07:51:44.862] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:refglow ausgeblendet (Item mekanism:ingot_refined_glowstone fehlt im Pack)
+[10Oct2026 07:51:44.863] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:tin ausgeblendet (Item mekanism:ingot_tin fehlt im Pack)
+[10Oct2026 07:51:44.864] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:tele_core ausgeblendet (Item mekanism:teleportation_core fehlt im Pack)
+[10Oct2026 07:51:44.864] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:energy_tab ausgeblendet (Item mekanism:energy_tablet fehlt im Pack)
+[10Oct2026 07:51:44.864] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:aluminum ausgeblendet (Item immersiveengineering:ingot_aluminum fehlt im Pack)
+[10Oct2026 07:51:44.864] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:nickel ausgeblendet (Item immersiveengineering:ingot_nickel fehlt im Pack)
+[10Oct2026 07:51:44.864] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:electrum ausgeblendet (Item immersiveengineering:ingot_electrum fehlt im Pack)
+[10Oct2026 07:51:44.865] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:silver ausgeblendet (Item immersiveengineering:ingot_silver fehlt im Pack)
+[10Oct2026 07:51:44.865] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:lead ausgeblendet (Item immersiveengineering:ingot_lead fehlt im Pack)
+[10Oct2026 07:51:44.865] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:fiery ausgeblendet (Item twilightforest:fiery_ingot fehlt im Pack)
+[10Oct2026 07:51:44.865] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:ironwood ausgeblendet (Item twilightforest:ironwood_ingot fehlt im Pack)
+[10Oct2026 07:51:44.865] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:steeleaf ausgeblendet (Item twilightforest:steeleaf_ingot fehlt im Pack)
+[10Oct2026 07:51:44.865] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:naga_scale ausgeblendet (Item twilightforest:naga_scale fehlt im Pack)
+[10Oct2026 07:51:44.865] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:carminite ausgeblendet (Item twilightforest:carminite fehlt im Pack)
+[10Oct2026 07:51:44.866] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:scarlet ausgeblendet (Item alexscaves:scarlet_neodymium_ingot fehlt im Pack)
+[10Oct2026 07:51:44.866] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:uranium ausgeblendet (Item alexscaves:uranium fehlt im Pack)
+[10Oct2026 07:51:44.866] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:fire_heart ausgeblendet (Item iceandfire:fire_dragon_heart fehlt im Pack)
+[10Oct2026 07:51:44.866] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:light_heart ausgeblendet (Item iceandfire:lightning_dragon_heart fehlt im Pack)
+[10Oct2026 07:51:44.866] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:piglich ausgeblendet (Item allthemodium:piglich_heart fehlt im Pack)
+[10Oct2026 07:51:44.866] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:soul_ruby ausgeblendet (Item goety:soul_ruby fehlt im Pack)
+[10Oct2026 07:51:44.866] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:soul_emerald ausgeblendet (Item goety:soul_emerald fehlt im Pack)
+[10Oct2026 07:51:44.866] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:totem_souls ausgeblendet (Item goety:totem_of_souls fehlt im Pack)
+[10Oct2026 07:51:44.866] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:arcane ausgeblendet (Item irons_spellbooks:arcane_essence fehlt im Pack)
+[10Oct2026 07:51:44.866] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:awakened ausgeblendet (Item mysticalagriculture:awakened_supremium_ingot fehlt im Pack)
+[10Oct2026 07:51:44.866] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:master_crystal ausgeblendet (Item mysticalagriculture:master_infusion_crystal fehlt im Pack)
+[10Oct2026 07:51:44.867] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:imperium ausgeblendet (Item mysticalagriculture:imperium_essence fehlt im Pack)
+[10Oct2026 07:51:44.867] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:supremium ausgeblendet (Item mysticalagriculture:supremium_essence fehlt im Pack)
+[10Oct2026 07:51:44.867] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:tertium ausgeblendet (Item mysticalagriculture:tertium_essence fehlt im Pack)
+[10Oct2026 07:51:44.867] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:soulium ausgeblendet (Item mysticalagriculture:soulium_ingot fehlt im Pack)
+[10Oct2026 07:51:44.867] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:inf_ingot ausgeblendet (Item mysticalagriculture:inferium_ingot fehlt im Pack)
+[10Oct2026 07:51:44.867] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:prosperity ausgeblendet (Item mysticalagriculture:prosperity_shard fehlt im Pack)
+[10Oct2026 07:51:44.867] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:iesnium ausgeblendet (Item occultism:iesnium_ingot fehlt im Pack)
+[10Oct2026 07:51:44.867] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:afrit ausgeblendet (Item occultism:afrit_essence fehlt im Pack)
+[10Oct2026 07:51:44.867] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:spirit_gem ausgeblendet (Item occultism:spirit_attuned_gem fehlt im Pack)
+[10Oct2026 07:51:44.867] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:otherstone ausgeblendet (Item occultism:otherstone fehlt im Pack)
+[10Oct2026 07:51:44.867] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:wilden_horn ausgeblendet (Item ars_nouveau:wilden_horn fehlt im Pack)
+[10Oct2026 07:51:44.867] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:gem_slate ausgeblendet (Item apotheosis:gem_fused_slate fehlt im Pack)
+[10Oct2026 07:51:44.867] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:oc_matrix ausgeblendet (Item occultism:dimensional_matrix fehlt im Pack)
+[10Oct2026 07:51:44.868] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:oc_mineshaft ausgeblendet (Item occultism:dimensional_mineshaft fehlt im Pack)
+[10Oct2026 07:51:44.868] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:oc_lamp ausgeblendet (Item occultism:magic_lamp_empty fehlt im Pack)
+[10Oct2026 07:51:44.868] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:oc_foliot ausgeblendet (Item occultism:miner_foliot_unspecialized fehlt im Pack)
+[10Oct2026 07:51:44.868] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:oc_djinni ausgeblendet (Item occultism:miner_djinni_ores fehlt im Pack)
+[10Oct2026 07:51:44.868] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:oc_lenses ausgeblendet (Item occultism:infused_lenses fehlt im Pack)
+[10Oct2026 07:51:44.868] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:oc_chalk_w ausgeblendet (Item occultism:chalk_white fehlt im Pack)
+[10Oct2026 07:51:44.868] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:oc_chalk_p ausgeblendet (Item occultism:chalk_purple fehlt im Pack)
+[10Oct2026 07:51:44.868] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:oc_chalk_r ausgeblendet (Item occultism:chalk_red fehlt im Pack)
+[10Oct2026 07:51:44.868] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:oc_datura ausgeblendet (Item occultism:datura fehlt im Pack)
+[10Oct2026 07:51:44.868] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:oc_sapling ausgeblendet (Item occultism:otherworld_sapling_natural fehlt im Pack)
+[10Oct2026 07:51:44.868] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:oc_storage ausgeblendet (Item occultism:storage_controller_base fehlt im Pack)
+[10Oct2026 07:51:44.868] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:ap_gem ausgeblendet (Item apotheosis:gem fehlt im Pack)
+[10Oct2026 07:51:44.869] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:ap_reforge ausgeblendet (Item apotheosis:simple_reforging_table fehlt im Pack)
+[10Oct2026 07:51:44.869] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:ap_reforge2 ausgeblendet (Item apotheosis:reforging_table fehlt im Pack)
+[10Oct2026 07:51:44.869] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:ap_salvage ausgeblendet (Item apotheosis:salvaging_table fehlt im Pack)
+[10Oct2026 07:51:44.869] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:ap_augment ausgeblendet (Item apotheosis:augmenting_table fehlt im Pack)
+[10Oct2026 07:51:44.869] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:ink ausgeblendet (Item irons_spellbooks:legendary_ink fehlt im Pack)
+[10Oct2026 07:51:44.869] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:wilden_horn2 ausgeblendet (Item ars_nouveau:source_gem fehlt im Pack)
+[10Oct2026 07:51:44.869] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:lens ausgeblendet (Item occultism:soul_gem fehlt im Pack)
+[10Oct2026 07:51:44.869] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:bee_cage ausgeblendet (Item productivebees:bee_cage fehlt im Pack)
+[10Oct2026 07:51:44.869] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena-Shop: chronicle_arena:honey_gen ausgeblendet (Item productivebees:honey_generator fehlt im Pack)
+[10Oct2026 07:51:44.869] [main/INFO] [de.chronicle.arena.ArenaDefs/]: Arena: 290 Shop-Angebote geladen, 168 ausgeblendet
+[10Oct2026 07:51:45.278] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Starting minecraft server version 1.21.1
+[10Oct2026 07:51:45.283] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Loading properties
+[10Oct2026 07:51:45.283] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Default game type: SURVIVAL
+[10Oct2026 07:51:45.283] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Generating keypair
+[10Oct2026 07:51:45.343] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Starting Minecraft server on *:25565
+[10Oct2026 07:51:45.409] [Server thread/INFO] [net.minecraft.server.network.ServerConnectionListener/]: Using epoll channel type
+[10Oct2026 07:51:45.459] [Server thread/WARN] [net.minecraft.server.dedicated.DedicatedServer/]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[10Oct2026 07:51:45.459] [Server thread/WARN] [net.minecraft.server.dedicated.DedicatedServer/]: The server will make no attempt to authenticate usernames. Beware.
+[10Oct2026 07:51:45.460] [Server thread/WARN] [net.minecraft.server.dedicated.DedicatedServer/]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[10Oct2026 07:51:45.460] [Server thread/WARN] [net.minecraft.server.dedicated.DedicatedServer/]: To change this, set "online-mode" to "true" in the server.properties file.
+[10Oct2026 07:51:45.513] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Preparing level "world"
+[10Oct2026 07:51:47.526] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Preparing start region for dimension minecraft:overworld
+[10Oct2026 07:51:47.981] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[10Oct2026 07:51:48.036] [worldgen/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 2%
+[10Oct2026 07:51:48.220] [Server thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Time elapsed: 694 ms
+[10Oct2026 07:51:48.222] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Done (2.736s)! For help, type "help"
+[10Oct2026 07:51:48.254] [Server thread/INFO] [net.neoforged.neoforge.gametest.GameTestHooks/]: Enabled Gametest Namespaces: []
+[10Oct2026 07:51:48.260] [Server thread/INFO] [net.neoforged.neoforge.server.permission.PermissionAPI/]: Successfully initialized permission handler neoforge:default_handler
+[10Oct2026 07:51:49.135] [Server thread/INFO] [de.chronicle.arena.ArenaBuilder/]: Arena: Lobby, Shop und Kampfplatz gebaut
+[10Oct2026 07:51:49.227] [Server thread/INFO] [de.chronicle.arena.ArenaManager/]: ARENA-DEBUG: Arena gebaut, Marker=Block{minecraft:amethyst_block}, Terminal=Block{chronicle_arena:arena_terminal}, Portal=Block{chronicle_arena:arena_portal}
+[10Oct2026 07:51:49.227] [Server thread/INFO] [de.chronicle.arena.ArenaManager/]: ARENA-DEBUG: 4 Stufen, 6 Begegnungen verfuegbar
+[10Oct2026 07:51:49.299] [Server thread/INFO] [de.chronicle.arena.ArenaManager/]: ARENA-DEBUG: Spawn-Test fertig, ok=26 fehler=0
+[10Oct2026 07:51:49.304] [Server thread/INFO] [de.chronicle.arena.ArenaManager/]: ARENA-DEBUG: Shop 122 von 122 Angeboten ok
+[10Oct2026 07:51:49.304] [Server thread/INFO] [de.chronicle.arena.ArenaManager/]: ARENA-DEBUG: Shop-Block=Block{chronicle_arena:arena_shop}
+[10Oct2026 07:51:49.308] [Server thread/INFO] [de.chronicle.arena.ArenaManager/]: ARENA-DEBUG: Tages-Challenge chronicle_arena:nether / chronicle_arena:gold / Elite-Horde, Glaskanone, Hetzjagd (Bonus 35), Rangliste 0 Eintraege
+[10Oct2026 07:51:49.322] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Stopping server
+[10Oct2026 07:51:49.323] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving players
+[10Oct2026 07:51:49.323] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving worlds
+[10Oct2026 07:51:49.710] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[10Oct2026 07:51:49.735] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[10Oct2026 07:51:49.740] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/chronicle_arena:arena
+[10Oct2026 07:51:49.862] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[10Oct2026 07:51:49.873] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[10Oct2026 07:51:49.873] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[10Oct2026 07:51:49.873] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (arena): All chunks are saved
+[10Oct2026 07:51:49.873] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[10Oct2026 07:51:49.873] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage: All dimensions are saved
