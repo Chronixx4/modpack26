@@ -24,7 +24,7 @@ final class ArenaBuilder {
     private static final Logger LOGGER = LogUtils.getLogger();
     /** Versionsmarker; ein anderer Block baut alles neu. */
     private static final BlockPos MARKER = new BlockPos(0, 60, 200);
-    private static final Block MARKER_BLOCK = Blocks.PURPUR_BLOCK;
+    private static final Block MARKER_BLOCK = Blocks.PURPUR_PILLAR;
     private static final int ARENA_HEIGHT = 16;
 
     private ArenaBuilder() {}
@@ -205,6 +205,7 @@ final class ArenaBuilder {
         }
         // Lichtsaeulen am Rand.
         for (int i = 0; i < 8; i++) {
+            if (i == 4) continue; // Westseite: dort ist der Eingang von der Bruecke
             double a = Math.PI * 2.0 * i / 8.0;
             pillar(level, cx + (int) Math.round(Math.cos(a) * (r - 1)), fy + 1,
                     cz + (int) Math.round(Math.sin(a) * (r - 1)), 4, Blocks.SANDSTONE_WALL, Blocks.GLOWSTONE);

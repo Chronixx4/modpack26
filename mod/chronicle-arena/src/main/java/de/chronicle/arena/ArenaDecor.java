@@ -360,6 +360,23 @@ final class ArenaDecor {
             int z = cz + (int) Math.round(Math.sin(a) * 12.5);
             set(level, x, fy + 1, z, litCandle(i % 2 == 0 ? Blocks.PURPLE_CANDLE : Blocks.RED_CANDLE));
         }
+        // Kristallkranz: Amethyst und Kerzen im Wechsel, dazu 8 niedrige Obelisken.
+        for (int i = 0; i < 32; i++) {
+            double ang = Math.PI * 2.0 * (i + 0.5) / 32.0;
+            int x = cx + (int) Math.round(Math.cos(ang) * 27.5);
+            int z = cz + (int) Math.round(Math.sin(ang) * 27.5);
+            set(level, x, fy + 1, z, i % 2 == 0 ? Blocks.AMETHYST_CLUSTER.defaultBlockState() : litCandle(Blocks.PURPLE_CANDLE));
+        }
+        for (int i = 0; i < 8; i++) {
+            double ang = Math.PI * 2.0 * i / 8.0 + Math.PI / 8.0;
+            int x = cx + (int) Math.round(Math.cos(ang) * 22.0);
+            int z = cz + (int) Math.round(Math.sin(ang) * 22.0);
+            set(level, x, fy + 1, z, Blocks.POLISHED_BLACKSTONE_BRICKS);
+            set(level, x, fy + 2, z, Blocks.CHISELED_POLISHED_BLACKSTONE);
+            set(level, x, fy + 3, z, Blocks.POLISHED_BLACKSTONE_BRICK_WALL);
+            set(level, x, fy + 4, z, Blocks.AMETHYST_BLOCK);
+            set(level, x, fy + 5, z, Blocks.END_ROD);
+        }
         // Amethyst um die goldene Mitte.
         for (int[] c : new int[][]{{3, 3}, {-3, 3}, {3, -3}, {-3, -3}}) set(level, cx + c[0], fy + 1, cz + c[1], Blocks.AMETHYST_CLUSTER);
 
