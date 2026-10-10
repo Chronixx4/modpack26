@@ -9,7 +9,7 @@ $ProgressPreference = 'SilentlyContinue'
 $MC      = '1.21.1'
 $LOADER  = 'neoforge'
 $PACK    = 'Chronicle'
-$PACKVER = '0.9.21'
+$PACKVER = '0.9.22'
 $RAM     = '8G'
 $TIMEOUT_MIN = 20
 
@@ -25,7 +25,7 @@ New-Item -ItemType Directory -Force -Path $Work, $Cache, $CfDir | Out-Null
 # CurseForge-Mods automatisch aus dem Download-Ordner holen (falls dort vorhanden)
 $dl = Join-Path $env:USERPROFILE 'Downloads'
 $cfPatterns = @('*twilightforest*1.21.1*.jar','ExtendedAE-1.21-*neoforge*.jar','ars_elemental-1.21.1-*.jar','ars_technica-1.21.1-*.jar',
-                '*ftb*quests*2101*.jar','*ftb*library*2101*.jar','*ftb*teams*2101*.jar','*ftbbackups2*neoforge*.jar','AE2NetworkAnalyzer-1.21-*neoforge*.jar','allthemodium-*_mc_1.21.1.jar','alltheleaks-*neoforge*.jar')
+                '*ftb*quests*2101*.jar','*ftb*library*2101*.jar','*ftb*teams*2101*.jar','*ftbbackups2*neoforge*.jar','AE2NetworkAnalyzer-1.21-*neoforge*.jar','allthemodium-*_mc_1.21.1.jar','alltheleaks-*neoforge*.jar','minebohrer-*neoforge*.jar')
 if (Test-Path $dl) {
   foreach ($pat in $cfPatterns) {
     $hit = Get-ChildItem -Path $dl -Filter $pat -ErrorAction SilentlyContinue | Where-Object { $_.Name -notmatch 'fabric' } | Sort-Object LastWriteTime | Select-Object -Last 1
@@ -126,8 +126,6 @@ packet-fixer|Packet Fixer
 notimeout|NoTimeOut
 # Komfort und Oberflaeche
 jei|Just Enough Items (JEI)
-fancymenu|FancyMenu
-drippy-loading-screen|Drippy Loading Screen
 almostunified|Almost Unified
 jade|Jade
 xaeros-minimap|Xaero's Minimap
@@ -374,7 +372,7 @@ familiarslib|Familiarslib
 # Kategorien der CurseForge-Jars (Dateiname -> Kategorie)
 $cfCat = [ordered]@{
   'twilightforest' = 'Dimensionen'; 'ExtendedAE' = 'AE2 und Technik'; 'AE2NetworkAnalyzer' = 'AE2 und Technik'
-  'ars_' = 'Magie'; 'ftb' = 'Multiplayer, Quests und Verwaltung'; 'allthemodium' = 'Dimensionen'; 'alltheleaks' = 'Performance und Grafik'
+  'ars_' = 'Magie'; 'ftb' = 'Multiplayer, Quests und Verwaltung'; 'allthemodium' = 'Dimensionen'; 'alltheleaks' = 'Performance und Grafik'; 'minebohrer' = 'Ressourcen und Landwirtschaft'
 }
 
 $vq = '?loaders=' + [uri]::EscapeDataString('["neoforge"]') + '&game_versions=' + [uri]::EscapeDataString('["1.21.1"]')
