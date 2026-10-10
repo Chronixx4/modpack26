@@ -36,4 +36,5 @@ In der Arena-Dimension gibt es keine Hostility-Levels (Datapack `l2hostility_con
 - Bossleiste zeigt die verbleibenden Gegner.
 - Mini-Boss: bei Stufen ab 15 Wellen alle 10 Wellen, sonst in der Mitte (5-fache Leben, 3 Wellen-Coins Bonus).
 - Segen: nach jeder 5. Welle 3 zur Auswahl (klickbar im Chat, `/arena segen 1-3`), gelten bis zum Run-Ende, stapelbar.
+- Wiederbeleben: 2 pro Run, +1 nach jeder 5. Welle (max 5), dazu volle Heilung.
 - Musik: Pigstep bei Wellen, Precipice beim Boss (Vanilla-Platten, Kategorie Musik, Schleife).

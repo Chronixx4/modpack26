@@ -192,6 +192,7 @@ public final class ArenaManager {
         int musicTimer;
         boolean musicBoss;
         boolean miniThisWave;
+        int revives = 2;
 
         Run(ArenaDefs.Encounter encounter, ArenaDefs.Tier tier, int players, int mask) {
             this.mask = mask;
@@ -735,7 +736,13 @@ public final class ArenaManager {
                 continue;
             }
             prog++;
+            if (prog >= REVIVE_TICKS && r.revives <= 0) {
+                r.reviving.put(id, REVIVE_TICKS - 1);
+                helper.displayClientMessage(Component.literal("Keine Wiederbelebungen mehr! Es gibt neue nach Welle 5, 10, ..."), true);
+                continue;
+            }
             if (prog >= REVIVE_TICKS) {
+                r.revives--;
                 r.reviving.remove(id);
                 it.remove();
                 r.spectators.remove(id);
@@ -808,7 +815,8 @@ public final class ArenaManager {
         if (tickCounter % 10 == 0) {
             int remaining = r.queue.size() + r.mobs.size();
             if (r.state == State.WAVE) {
-                r.bar.setName(Component.literal("Welle " + r.wave + " / " + r.totalWaves + "  |  Gegner: " + remaining));
+                r.bar.setName(Component.literal("Welle " + r.wave + " / " + r.totalWaves + "  |  Gegner: " + remaining
+                        + "  |  Wiederbelebungen: " + r.revives));
             } else {
                 r.bar.setName(Component.literal("Boss: " + r.encounter.name() + (remaining > 1 ? "  |  Gegner: " + remaining : "")));
             }
@@ -856,11 +864,14 @@ public final class ArenaManager {
             boolean offer = r.wave % 5 == 0;
             r.timer = offer ? 400 : 100;
             ArenaShow.title(runPlayers(server, r), ArenaShow.big("WELLE " + r.wave + " GESCHAFFT", net.minecraft.ChatFormatting.GREEN),
-                    Component.literal(offer ? "Waehle einen Segen" : "Kurze Pause").withStyle(net.minecraft.ChatFormatting.GRAY), 5, 40, 10);
-            if (offer) offerBlessings(server, r);
+                    Component.literal(offer ? "Waehle einen Segen, +1 Wiederbelebung, volle Heilung" : "Kurze Pause").withStyle(net.minecraft.ChatFormatting.GRAY), 5, 40, 10);
+            if (offer) {
+                offerBlessings(server, r);
+                r.revives = Math.min(5, r.revives + 1);
+            }
             for (UUID id : r.alive) {
                 ServerPlayer p = server.getPlayerList().getPlayer(id);
-                if (p != null && (r.mask & MOD_NOHEAL) == 0) p.heal(6.0F);
+                if (p != null && (r.mask & MOD_NOHEAL) == 0) p.heal(r.wave % 5 == 0 ? p.getMaxHealth() : 6.0F);
             }
             r.bar.setProgress(1.0F);
             r.bar.setName(Component.translatable("bar.chronicle_arena.pause", r.wave, r.totalWaves));
