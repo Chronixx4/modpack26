@@ -4,7 +4,7 @@
   "name": "Spur: Herzchen-Spur",
   "item": "minecraft:poppy",
   "count": 1,
-  "price": 80,
+  "price": 200,
   "cosmetic": "trail",
   "value": "heart"
 }

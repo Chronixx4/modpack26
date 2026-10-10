@@ -23,6 +23,8 @@ public class TerminalScreen extends Screen {
     private int encIndex;
     private int tierIndex;
     private int mask;
+    private int arenaChoice;
+    private Button arenaButton;
     private Button modeButton;
     private Button encButton;
     private Button tierButton;
@@ -73,6 +75,10 @@ public class TerminalScreen extends Screen {
             if (!data.tiers().isEmpty()) tierIndex = (tierIndex + 1) % data.tiers().size();
             refresh();
         }).bounds(lx, y + 48, w, 20).build());
+        arenaButton = addRenderableWidget(Button.builder(Component.empty(), b -> {
+            arenaChoice = (arenaChoice + 1) % 4;
+            refresh();
+        }).bounds(lx, y + 72, w, 20).build());
         for (int i = 0; i < data.mods().size(); i++) {
             final Net.ModInfo m = data.mods().get(i);
             Button b = Button.builder(Component.empty(), btn -> {
@@ -121,6 +127,7 @@ public class TerminalScreen extends Screen {
             if (t.locked()) name = name.copy().append(" ").append(Component.translatable("gui.chronicle_arena.tier_locked_short"));
             tierButton.setMessage(name);
         }
+        arenaButton.setMessage(Component.literal("Arena: " + new String[]{"Auto (nach Gegner)", "Klassisch", "Glut", "Eis"}[arenaChoice]));
         for (int i = 0; i < modButtons.size(); i++) {
             Net.ModInfo m = data.mods().get(i);
             boolean on = (mask & m.bit()) != 0;
@@ -136,7 +143,7 @@ public class TerminalScreen extends Screen {
         List<Net.EncInfo> list = current();
         String enc = list.isEmpty() ? "" : list.get(Math.min(encIndex, list.size() - 1)).id();
         Net.TierInfo t = tier();
-        PacketDistributor.sendToServer(new Net.Action(spectate, enc, t == null ? "" : t.id(), mask));
+        PacketDistributor.sendToServer(new Net.Action(spectate, enc, t == null ? "" : t.id(), mask | (arenaChoice << 4)));
         onClose();
     }
 
@@ -160,7 +167,7 @@ public class TerminalScreen extends Screen {
         gfx.drawCenteredString(this.font, Component.literal(data.status()), cx, top - 12, data.running() ? 0xFFAA00 : 0x55FF55);
 
         List<Net.EncInfo> list = current();
-        int y = top + 74;
+        int y = top + 98;
         if (!list.isEmpty()) {
             Net.EncInfo e = list.get(Math.min(encIndex, list.size() - 1));
             ResourceLocation icon = ResourceLocation.tryParse(e.icon());
@@ -180,7 +187,7 @@ public class TerminalScreen extends Screen {
         Net.TierInfo t = tier();
         if (t != null) {
             int color = TIER_COLORS[Math.min(tierIndex, TIER_COLORS.length - 1)];
-            int ly = y + 34;
+            int ly = y + 30;
             int n = 0;
             for (FormattedCharSequence line : this.font.split(FormattedText.of(t.desc()), 150)) {
                 if (n++ >= 2) break;
@@ -188,7 +195,7 @@ public class TerminalScreen extends Screen {
                 ly += 10;
             }
             if (!t.info().isEmpty()) {
-                gfx.drawString(this.font, Component.literal(t.info()), lx, y + 56, t.locked() ? 0xFF7777 : 0x88DD88);
+                gfx.drawString(this.font, Component.literal(t.info()), lx, y + 50, t.locked() ? 0xFF7777 : 0x88DD88);
             }
         }
 

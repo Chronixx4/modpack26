@@ -24,23 +24,41 @@ final class ArenaBuilder {
     private static final Logger LOGGER = LogUtils.getLogger();
     /** Versionsmarker; ein anderer Block baut alles neu. */
     private static final BlockPos MARKER = new BlockPos(0, 60, 200);
-    private static final Block MARKER_BLOCK = Blocks.PURPUR_BLOCK;
+    private static final Block MARKER_BLOCK = Blocks.PURPUR_PILLAR;
     private static final int ARENA_HEIGHT = 16;
 
     private ArenaBuilder() {}
 
     static void ensureBuilt(ServerLevel level) {
-        if (level.getBlockState(MARKER).is(MARKER_BLOCK)) return;
+        if (level.getBlockState(MARKER).is(MARKER_BLOCK)) {
+            ArenaDecor.ensureSmith(level);
+            ArenaDecor.ensureGadgets(level);
+            return;
+        }
         buildLobby(level);
         buildShop(level);
         buildBridge(level);   // nach dem Shop, sonst raeumt dessen Platz das Brueckenende wieder weg
-        buildArena(level);
+        buildArena(level, ArenaManager.ARENA);
         ArenaDecor.lobby(level);
         ArenaDecor.shop(level);
         ArenaDecor.bridge(level);
-        ArenaDecor.arena(level);
+        ArenaDecor.arena(level, ArenaManager.ARENA);
         level.setBlock(MARKER, MARKER_BLOCK.defaultBlockState(), 2);
+        ArenaDecor.ensureSmith(level);
+        ArenaDecor.ensureGadgets(level);
         LOGGER.info("Arena: Lobby, Shop und Kampfplatz gebaut");
+    }
+
+    /** Zusaetzliche Kampfarenen (Glut- und Eisarena) werden beim ersten Bedarf gebaut und umgefaerbt. */
+    static void ensureArena(ServerLevel level, BlockPos center, int variant) {
+        if (variant == 0) return;
+        BlockPos marker = new BlockPos(center.getX(), 60, center.getZ());
+        if (level.getBlockState(marker).is(MARKER_BLOCK)) return;
+        buildArena(level, center);
+        ArenaDecor.arena(level, center);
+        ArenaPalette.apply(level, center, variant);
+        level.setBlock(marker, MARKER_BLOCK.defaultBlockState(), 2);
+        LOGGER.info("Arena: Variante {} bei {} gebaut", variant, center);
     }
 
     // ------------------------------------------------------------------ Helfer
@@ -205,6 +223,7 @@ final class ArenaBuilder {
         }
         // Lichtsaeulen am Rand.
         for (int i = 0; i < 8; i++) {
+            if (i == 4) continue; // Westseite: dort ist der Eingang von der Bruecke
             double a = Math.PI * 2.0 * i / 8.0;
             pillar(level, cx + (int) Math.round(Math.cos(a) * (r - 1)), fy + 1,
                     cz + (int) Math.round(Math.sin(a) * (r - 1)), 4, Blocks.SANDSTONE_WALL, Blocks.GLOWSTONE);
@@ -229,10 +248,10 @@ final class ArenaBuilder {
 
     // ------------------------------------------------------------------ Kampfarena
 
-    private static void buildArena(ServerLevel level) {
-        int cx = ArenaManager.ARENA.getX();
-        int cz = ArenaManager.ARENA.getZ();
-        int fy = ArenaManager.ARENA.getY() - 1;
+    private static void buildArena(ServerLevel level, BlockPos center) {
+        int cx = center.getX();
+        int cz = center.getZ();
+        int fy = center.getY() - 1;
         int r = ArenaManager.ARENA_RADIUS;
         clear(level, cx, cz, fy, r + 3, 44);
 
@@ -266,11 +285,11 @@ final class ArenaBuilder {
                     floor = Blocks.GILDED_BLACKSTONE;
                 } else if (d <= 7.0) {
                     floor = Blocks.CRYING_OBSIDIAN;
-                } else if (d <= 21.0) {
-                    boolean ring = Math.abs(d - 14.0) < 0.6;
+                } else if (d <= 33.0) {
+                    boolean ring = Math.abs(d - 14.0) < 0.6 || Math.abs(d - 26.0) < 0.6;
                     floor = ring ? Blocks.POLISHED_BLACKSTONE_BRICKS
                             : ((dx + dz) & 1) == 0 ? Blocks.DEEPSLATE_TILES : Blocks.POLISHED_DEEPSLATE;
-                } else if (d <= 22.0) {
+                } else if (d <= 34.0) {
                     floor = Blocks.CRYING_OBSIDIAN;
                 } else {
                     floor = Blocks.DEEPSLATE_BRICKS;
@@ -292,38 +311,47 @@ final class ArenaBuilder {
             double a = Math.PI * 2.0 * (i + 0.5) / 16.0;
             set(level, cx + (int) Math.round(Math.cos(a) * 17.5), fy, cz + (int) Math.round(Math.sin(a) * 17.5), Blocks.SEA_LANTERN);
         }
+        for (int i = 0; i < 24; i++) {
+            double a = Math.PI * 2.0 * (i + 0.5) / 24.0;
+            set(level, cx + (int) Math.round(Math.cos(a) * 29.5), fy, cz + (int) Math.round(Math.sin(a) * 29.5), Blocks.SEA_LANTERN);
+        }
         // Tribuene: vier Stufen aussen (Zuschauer, Gaeste), dahinter eine hohe Mauer.
         for (int dx = -r; dx <= r; dx++) {
             for (int dz = -r; dz <= r; dz++) {
                 double d = Math.sqrt(dx * dx + dz * dz);
-                if (d < 22.0 || d > r + 0.4) continue;
-                int steps = d < 23.0 ? 1 : d < 24.0 ? 2 : d < 25.0 ? 3 : 4;
+                if (d < 34.0 || d > r + 0.4) continue;
+                int steps = d < 35.0 ? 0 : d < 36.0 ? 1 : d < 37.0 ? 2 : d < 38.0 ? 3 : 4;
                 int x = cx + dx;
                 int z = cz + dz;
                 for (int h = 1; h <= steps; h++) {
                     set(level, x, fy + h, z, h == steps && ((dx + dz) & 1) == 0 ? Blocks.POLISHED_DEEPSLATE : Blocks.DEEPSLATE_BRICKS);
                 }
-                if (d >= 25.0) {
-                    for (int h = steps + 1; h <= 9; h++) {
-                        set(level, x, fy + h, z, h == 9 ? Blocks.POLISHED_BLACKSTONE_BRICKS : Blocks.DEEPSLATE_BRICKS);
+                if (d >= 38.0) {
+                    for (int h = steps + 1; h <= 14; h++) {
+                        set(level, x, fy + h, z, h == 14 ? Blocks.POLISHED_BLACKSTONE_BRICKS : Blocks.DEEPSLATE_BRICKS);
                     }
+                } else {
+                    // Zweite Ebene: Balkon rundherum, innen nur eine flache Kante (Springen oder Schiessen nach unten).
+                    set(level, x, fy + 8, z, ((dx + dz) & 1) == 0 ? Blocks.DEEPSLATE_TILES : Blocks.POLISHED_DEEPSLATE);
+                    if (d < 34.6) set(level, x, fy + 9, z, Blocks.POLISHED_BLACKSTONE_BRICK_SLAB);
+                    if (d >= 36.0 && d < 37.0 && ((int) Math.round(Math.atan2(dz, dx) * 40.0) & 3) == 0) set(level, x, fy + 7, z, Blocks.SEA_LANTERN);
                 }
             }
         }
         // Zinnen auf der Mauer.
-        for (int i = 0; i < 96; i++) {
+        for (int i = 0; i < 160; i++) {
             if ((i & 1) == 1) continue;
-            double a = Math.PI * 2.0 * i / 96.0;
-            int x = cx + (int) Math.round(Math.cos(a) * 25.5);
-            int z = cz + (int) Math.round(Math.sin(a) * 25.5);
-            set(level, x, fy + 10, z, Blocks.POLISHED_BLACKSTONE_BRICK_WALL);
+            double a = Math.PI * 2.0 * i / 160.0;
+            int x = cx + (int) Math.round(Math.cos(a) * 39.5);
+            int z = cz + (int) Math.round(Math.sin(a) * 39.5);
+            set(level, x, fy + 15, z, Blocks.POLISHED_BLACKSTONE_BRICK_WALL);
         }
         // Sechzehn Saeulen vor der Tribuene mit Fahnen (Wolle), Ketten und Laternen.
         Block[] banner = {Blocks.RED_WOOL, Blocks.PURPLE_WOOL};
-        for (int i = 0; i < 16; i++) {
-            double a = Math.PI * 2.0 * i / 16.0;
-            int px = cx + (int) Math.round(Math.cos(a) * 21.0);
-            int pz = cz + (int) Math.round(Math.sin(a) * 21.0);
+        for (int i = 0; i < 24; i++) {
+            double a = Math.PI * 2.0 * i / 24.0;
+            int px = cx + (int) Math.round(Math.cos(a) * 33.0);
+            int pz = cz + (int) Math.round(Math.sin(a) * 33.0);
             pillar(level, px, fy + 1, pz, 8, Blocks.POLISHED_BLACKSTONE_BRICKS, Blocks.CHISELED_POLISHED_BLACKSTONE);
             set(level, px, fy + 10, pz, Blocks.SEA_LANTERN);
             // Fahne an der Innenseite der Saeule.
@@ -342,13 +370,38 @@ final class ArenaBuilder {
             set(level, bx, fy + 2, bz, Blocks.POLISHED_BLACKSTONE_BRICKS);
             set(level, bx, fy + 3, bz, Blocks.CAMPFIRE);
         }
+        for (int i = 0; i < 12; i++) {
+            double a = Math.PI * 2.0 * i / 12.0 + Math.PI / 12.0;
+            int bx = cx + (int) Math.round(Math.cos(a) * 24.0);
+            int bz = cz + (int) Math.round(Math.sin(a) * 24.0);
+            set(level, bx, fy + 1, bz, Blocks.POLISHED_BLACKSTONE_BRICKS);
+            set(level, bx, fy + 2, bz, Blocks.POLISHED_BLACKSTONE_BRICKS);
+            set(level, bx, fy + 3, bz, Blocks.CAMPFIRE);
+        }
+        // Vier Treppen (je zwei Breite 3) hinauf zum Balkon.
+        for (int sx : new int[]{-1, 1}) {
+            for (int sz : new int[]{-1, 1}) {
+                Direction up = sx > 0 ? Direction.EAST : Direction.WEST;
+                for (int i = 0; i < 8; i++) {
+                    for (int w = -1; w <= 1; w++) {
+                        int x = cx + sx * (25 + i);
+                        int z = cz + sz * 12 + w;
+                        for (int y = fy + 1; y < fy + 1 + i; y++) set(level, x, y, z, Blocks.DEEPSLATE_BRICKS);
+                        set(level, x, fy + 1 + i, z, stairs(Blocks.POLISHED_BLACKSTONE_BRICK_STAIRS, up));
+                        if (i == 7) {
+                            for (int k = 0; k <= 3; k++) set(level, x + sx * k, fy + 9, z, Blocks.AIR);
+                        }
+                    }
+                }
+            }
+        }
         // Vier Torbogen auf den Achsen (Eingaenge der Tribuene).
         for (int axis = 0; axis < 4; axis++) {
             int ax = (int) Math.round(Math.cos(axis * Math.PI / 2.0));
             int az = (int) Math.round(Math.sin(axis * Math.PI / 2.0));
             for (int w = -2; w <= 2; w++) {
-                int x = cx + ax * 23 + (az != 0 ? w : 0);
-                int z = cz + az * 23 + (ax != 0 ? w : 0);
+                int x = cx + ax * 35 + (az != 0 ? w : 0);
+                int z = cz + az * 35 + (ax != 0 ? w : 0);
                 set(level, x, fy + 6, z, Blocks.GOLD_BLOCK);
             }
         }

@@ -4,7 +4,7 @@
   "name": "Gluecksspitzhacke",
   "item": "minecraft:netherite_pickaxe",
   "count": 1,
-  "price": 260,
+  "price": 520,
   "components": {
     "minecraft:enchantments": {
       "levels": {

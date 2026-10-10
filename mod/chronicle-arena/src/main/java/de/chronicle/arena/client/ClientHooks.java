@@ -15,6 +15,10 @@ public final class ClientHooks {
         Minecraft.getInstance().setScreen(new ShopScreen(payload));
     }
 
+    public static void openSmith(Net.OpenSmith payload) {
+        Minecraft.getInstance().setScreen(new SmithScreen(payload));
+    }
+
     public static void updateStats(Net.Stats stats) {
         ClientState.stats = stats;
         if (Minecraft.getInstance().screen instanceof ShopScreen shop) shop.statsChanged();

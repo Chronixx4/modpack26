@@ -4,7 +4,7 @@
   "name": "Spur: Schneeflocken",
   "item": "minecraft:snowball",
   "count": 1,
-  "price": 100,
+  "price": 250,
   "cosmetic": "trail",
   "value": "snow"
 }

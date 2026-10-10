@@ -4,7 +4,7 @@
   "name": "Buch: Reparatur",
   "item": "minecraft:enchanted_book",
   "count": 1,
-  "price": 80,
+  "price": 140,
   "components": {
     "minecraft:stored_enchantments": {
       "levels": {

@@ -4,7 +4,7 @@
   "name": "Arena-Schild",
   "item": "minecraft:shield",
   "count": 1,
-  "price": 100,
+  "price": 80,
   "components": {
     "minecraft:enchantments": {
       "levels": {

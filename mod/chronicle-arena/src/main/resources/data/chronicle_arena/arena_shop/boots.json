@@ -4,7 +4,7 @@
   "name": "Arena-Stiefel",
   "item": "minecraft:netherite_boots",
   "count": 1,
-  "price": 320,
+  "price": 470,
   "components": {
     "minecraft:enchantments": {
       "levels": {

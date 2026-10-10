@@ -4,7 +4,7 @@
   "name": "Arena-Armbrust",
   "item": "minecraft:crossbow",
   "count": 1,
-  "price": 160,
+  "price": 200,
   "components": {
     "minecraft:enchantments": {
       "levels": {

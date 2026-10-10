@@ -16,7 +16,7 @@ public final class Net {
     private Net() {}
 
     public static void register(RegisterPayloadHandlersEvent event) {
-        PayloadRegistrar reg = event.registrar("4");
+        PayloadRegistrar reg = event.registrar("5");
         reg.playToClient(OpenTerminal.TYPE, OpenTerminal.CODEC,
                 (payload, ctx) -> ctx.enqueueWork(() -> de.chronicle.arena.client.ClientHooks.openTerminal(payload)));
         reg.playToClient(OpenShop.TYPE, OpenShop.CODEC,
@@ -26,6 +26,12 @@ public final class Net {
         reg.playToServer(Action.TYPE, Action.CODEC,
                 (payload, ctx) -> ctx.enqueueWork(() -> {
                     if (ctx.player() instanceof ServerPlayer sp) ArenaManager.handleAction(sp, payload);
+                }));
+        reg.playToClient(OpenSmith.TYPE, OpenSmith.CODEC,
+                (payload, ctx) -> ctx.enqueueWork(() -> de.chronicle.arena.client.ClientHooks.openSmith(payload)));
+        reg.playToServer(SmithBuy.TYPE, SmithBuy.CODEC,
+                (payload, ctx) -> ctx.enqueueWork(() -> {
+                    if (ctx.player() instanceof ServerPlayer sp) ArenaSmith.buy(sp, payload.id());
                 }));
         reg.playToServer(Buy.TYPE, Buy.CODEC,
                 (payload, ctx) -> ctx.enqueueWork(() -> {
@@ -43,7 +49,7 @@ public final class Net {
 
     public record ChallengeInfo(String encounter, String tier, int mask, boolean claimed, int bonusCoins, String text) {}
 
-    public record BoardLine(String name, String title, int wins, int bosses, int kills) {}
+    public record BoardLine(String name, String title, int wins, int bosses, int kills, int endless) {}
 
     /** Server -> Client: Inhalt des Kampf-Menues. */
     public record OpenTerminal(boolean running, String status, List<TierInfo> tiers, List<EncInfo> encounters,
@@ -149,7 +155,7 @@ public final class Net {
 
     /** Server -> Client: Konto, Kosmetik und Rangliste (fuer die Anzeige in der Arena und den Shop). */
     public record Stats(int coins, int kills, int bosses, int wins, String title, String titleId, String trailId,
-                        List<String> owned, List<BoardLine> board, boolean showHud) implements CustomPacketPayload {
+                        List<String> owned, List<BoardLine> board, boolean showHud, String rank, int earned, int nextRankAt, List<String> perks) implements CustomPacketPayload {
         public static final Type<Stats> TYPE = new Type<>(ChronicleArena.id("stats"));
         public static final StreamCodec<FriendlyByteBuf, Stats> CODEC = StreamCodec.of(Stats::write, Stats::read);
 
@@ -170,8 +176,14 @@ public final class Net {
                 buf.writeVarInt(l.wins);
                 buf.writeVarInt(l.bosses);
                 buf.writeVarInt(l.kills);
+                buf.writeVarInt(l.endless);
             }
             buf.writeBoolean(p.showHud);
+            buf.writeUtf(p.rank);
+            buf.writeVarInt(p.earned);
+            buf.writeVarInt(p.nextRankAt);
+            buf.writeVarInt(p.perks.size());
+            for (String k : p.perks) buf.writeUtf(k);
         }
 
         private static Stats read(FriendlyByteBuf buf) {
@@ -187,8 +199,15 @@ public final class Net {
             for (int i = 0; i < no; i++) owned.add(buf.readUtf());
             int nb = buf.readVarInt();
             List<BoardLine> board = new ArrayList<>();
-            for (int i = 0; i < nb; i++) board.add(new BoardLine(buf.readUtf(), buf.readUtf(), buf.readVarInt(), buf.readVarInt(), buf.readVarInt()));
-            return new Stats(coins, kills, bosses, wins, title, titleId, trailId, owned, board, buf.readBoolean());
+            for (int i = 0; i < nb; i++) board.add(new BoardLine(buf.readUtf(), buf.readUtf(), buf.readVarInt(), buf.readVarInt(), buf.readVarInt(), buf.readVarInt()));
+            boolean hud = buf.readBoolean();
+            String rank = buf.readUtf();
+            int earned = buf.readVarInt();
+            int next = buf.readVarInt();
+            int np = buf.readVarInt();
+            List<String> perks = new ArrayList<>();
+            for (int i = 0; i < np; i++) perks.add(buf.readUtf());
+            return new Stats(coins, kills, bosses, wins, title, titleId, trailId, owned, board, hud, rank, earned, next, perks);
         }
 
         @Override
@@ -220,6 +239,52 @@ public final class Net {
         public static final Type<Buy> TYPE = new Type<>(ChronicleArena.id("buy"));
         public static final StreamCodec<FriendlyByteBuf, Buy> CODEC = StreamCodec.of(
                 (buf, p) -> buf.writeUtf(p.offer), buf -> new Buy(buf.readUtf()));
+
+        @Override
+        public Type<? extends CustomPacketPayload> type() {
+            return TYPE;
+        }
+    }
+
+    public record SmithInfo(String id, String name, String desc, int level, int max, int price) {}
+
+    /** Server -> Client: Schmied mit allen Verbesserungen. */
+    public record OpenSmith(int coins, List<SmithInfo> ups) implements CustomPacketPayload {
+        public static final Type<OpenSmith> TYPE = new Type<>(ChronicleArena.id("open_smith"));
+        public static final StreamCodec<FriendlyByteBuf, OpenSmith> CODEC = StreamCodec.of(
+                (buf, p) -> {
+                    buf.writeVarInt(p.coins);
+                    buf.writeVarInt(p.ups.size());
+                    for (SmithInfo u : p.ups) {
+                        buf.writeUtf(u.id);
+                        buf.writeUtf(u.name);
+                        buf.writeUtf(u.desc);
+                        buf.writeVarInt(u.level);
+                        buf.writeVarInt(u.max);
+                        buf.writeVarInt(u.price);
+                    }
+                },
+                buf -> {
+                    int coins = buf.readVarInt();
+                    int n = buf.readVarInt();
+                    List<SmithInfo> list = new ArrayList<>();
+                    for (int i = 0; i < n; i++) {
+                        list.add(new SmithInfo(buf.readUtf(), buf.readUtf(), buf.readUtf(), buf.readVarInt(), buf.readVarInt(), buf.readVarInt()));
+                    }
+                    return new OpenSmith(coins, list);
+                });
+
+        @Override
+        public Type<? extends CustomPacketPayload> type() {
+            return TYPE;
+        }
+    }
+
+    /** Client -> Server: Verbesserung beim Schmied kaufen. */
+    public record SmithBuy(String id) implements CustomPacketPayload {
+        public static final Type<SmithBuy> TYPE = new Type<>(ChronicleArena.id("smith_buy"));
+        public static final StreamCodec<FriendlyByteBuf, SmithBuy> CODEC = StreamCodec.of(
+                (buf, p) -> buf.writeUtf(p.id), buf -> new SmithBuy(buf.readUtf()));
 
         @Override
         public Type<? extends CustomPacketPayload> type() {

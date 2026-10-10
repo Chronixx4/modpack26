@@ -2,7 +2,7 @@
   "type": "waves",
   "order": 2,
   "name": "Illager-Ansturm",
-  "description": "Pluenderer, Vindikatoren, Magier und Verwuester.",
+  "description": "Pluenderer, Vindikatoren, Hexen und Magier.",
   "icon": "minecraft:ominous_bottle",
   "pools": [
     {
@@ -31,11 +31,11 @@
     }
   ],
   "elite": {
-    "entity": "minecraft:ravager",
+    "entity": "minecraft:vindicator",
     "every": 5
   },
   "finale": {
-    "entity": "minecraft:ravager"
+    "entity": "minecraft:evoker"
   },
   "theme": "forest"
 }

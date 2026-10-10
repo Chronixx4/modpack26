@@ -37,7 +37,7 @@ public final class ArenaHud {
         int x = 6;
         int y = 6;
         int w = 112;
-        int h = s.title().isEmpty() ? 52 : 62;
+        int h = s.title().isEmpty() ? 64 : 74;
         g.fill(x - 1, y - 1, x + w + 1, y + h + 1, 0xFF9B5CFF);
         g.fillGradient(x, y, x + w, y + h, 0xD0201638, 0xD00B0914);
         g.fill(x, y, x + w, y + 12, 0xFF3A2370);
@@ -46,27 +46,53 @@ public final class ArenaHud {
         g.drawString(f, "Coins: " + s.coins(), x + 22, y + 18, 0xFFFFD700);
         g.drawString(f, "Kills: " + s.kills(), x + 4, y + 32, 0xFFFFFFFF);
         g.drawString(f, "Bosse: " + s.bosses() + "  Siege: " + s.wins(), x + 4, y + 42, 0xFFCCCCCC);
-        if (!s.title().isEmpty()) g.drawString(f, s.title(), x + 4, y + 52, 0xFFFFAA00);
+        g.drawString(f, "Rang: " + s.rank(), x + 4, y + 52, 0xFFB388FF);
+        if (!s.title().isEmpty()) g.drawString(f, s.title(), x + 4, y + 64, 0xFFFFAA00);
+        if (s.nextRankAt() > 0) {
+            int bw = w - 8;
+            g.fill(x + 4, y + 61, x + 4 + bw, y + 63, 0xFF2A2A2A);
+            int fill = (int) Math.min(bw, bw * (long) s.earned() / Math.max(1, s.nextRankAt()));
+            g.fill(x + 4, y + 61, x + 4 + fill, y + 63, 0xFFB388FF);
+        }
+
+        // Links unten: aktive Verstaerkungen (klein).
+        List<String> perks = s.perks();
+        if (!perks.isEmpty()) {
+            int py = y + h + 6;
+            int pw = 112;
+            int ph = 12 + Math.min(perks.size(), 14) * 9 + 3;
+            g.fill(x - 1, py - 1, x + pw + 1, py + ph + 1, 0xFF6B4BB0);
+            g.fillGradient(x, py, x + pw, py + ph, 0xC0201638, 0xC00B0914);
+            g.drawString(f, "Verstaerkungen", x + 3, py + 2, 0xFFE0B8FF);
+            int ky = py + 13;
+            int shown = 0;
+            for (String k : perks) {
+                if (shown++ >= 14) break;
+                boolean smith = k.startsWith("S ");
+                g.drawString(f, f.plainSubstrByWidth(k.substring(2), pw - 8), x + 4, ky, smith ? 0xFFFFD36B : 0xFF7FE0FF);
+                ky += 9;
+            }
+        }
 
         // Rechts: Rangliste.
         List<Net.BoardLine> board = s.board();
         if (board.isEmpty()) return;
-        int rw = 150;
+        int rw = 168;
         int rx = g.guiWidth() - rw - 6;
         int rh = 14 + board.size() * 10 + 4;
         g.fill(rx - 1, y - 1, rx + rw + 1, y + rh + 1, 0xFFFFD36B);
         g.fillGradient(rx, y, rx + rw, y + rh, 0xD0201638, 0xD00B0914);
         g.fill(rx, y, rx + rw, y + 12, 0xFF3A2370);
         g.drawString(f, "Rangliste", rx + 4, y + 2, 0xFFFFD36B);
-        g.drawString(f, "S/B/K", rx + rw - f.width("S/B/K") - 4, y + 2, 0xFFAAAAAA);
+        g.drawString(f, "S/B/K/A", rx + rw - f.width("S/B/K/A") - 4, y + 2, 0xFFAAAAAA);
         String me = mc.player.getGameProfile().getName();
         int ly = y + 15;
         int rank = 1;
         for (Net.BoardLine l : board) {
             int color = l.name().equals(me) ? 0xFF55FF55 : rank == 1 ? 0xFFFFD700 : rank == 2 ? 0xFFC0C0C0 : rank == 3 ? 0xFFCD7F32 : 0xFFFFFFFF;
-            String name = f.plainSubstrByWidth(rank + ". " + l.name(), 84);
+            String name = f.plainSubstrByWidth(rank + ". " + l.name(), 76);
             g.drawString(f, name, rx + 4, ly, color);
-            String nums = l.wins() + "/" + l.bosses() + "/" + l.kills();
+            String nums = l.wins() + "/" + l.bosses() + "/" + l.kills() + "/" + l.endless();
             g.drawString(f, nums, rx + rw - f.width(nums) - 4, ly, color);
             ly += 10;
             rank++;

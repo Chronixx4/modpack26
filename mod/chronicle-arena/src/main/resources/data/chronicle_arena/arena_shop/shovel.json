@@ -4,7 +4,7 @@
   "name": "Netheritschaufel",
   "item": "minecraft:netherite_shovel",
   "count": 1,
-  "price": 200,
+  "price": 380,
   "components": {
     "minecraft:enchantments": {
       "levels": {

@@ -4,7 +4,7 @@
   "name": "Arena-Brustpanzer",
   "item": "minecraft:netherite_chestplate",
   "count": 1,
-  "price": 440,
+  "price": 560,
   "components": {
     "minecraft:enchantments": {
       "levels": {
