@@ -4,7 +4,7 @@
   "description": "Harte Gegner in grosser Zahl. 16 Wellen.",
   "health": 2.5,
   "damage": 1.8,
-  "count": 1.6,
+  "count": 2.2,
   "waves": 16,
   "loot": "chronicle_arena:rewards/gold",
   "xp": 1500,

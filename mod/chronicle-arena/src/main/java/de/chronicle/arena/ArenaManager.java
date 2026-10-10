@@ -899,9 +899,9 @@ public final class ArenaManager {
             mob.finalizeSpawn(level, level.getCurrentDifficultyAt(le.blockPosition()), MobSpawnType.EVENT, null);
             mob.setPersistenceRequired();
         }
-        double h = r.healthScale * (s.mini ? 5.0 : s.elite ? 2.0 : 1.0);
+        double h = r.healthScale * (s.mini ? 2.5 : s.elite ? 2.0 : 1.0);
         scale(le, Attributes.MAX_HEALTH, h);
-        scale(le, Attributes.ATTACK_DAMAGE, r.damageScale * (s.mini ? 1.3 : 1.0));
+        scale(le, Attributes.ATTACK_DAMAGE, r.damageScale * (s.mini ? 1.15 : 1.0));
         if ((r.mask & MOD_SPEED) != 0) scale(le, Attributes.MOVEMENT_SPEED, 1.3);
         le.setHealth(le.getMaxHealth());
         if (s.elite || s.boss) le.setGlowingTag(true);

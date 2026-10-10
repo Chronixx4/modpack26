@@ -4,7 +4,7 @@
   "description": "Etwas fuer den Einstieg. Normale Gegner, 8 Wellen.",
   "health": 1.0,
   "damage": 1.0,
-  "count": 1.0,
+  "count": 1.4,
   "waves": 8,
   "loot": "chronicle_arena:rewards/bronze",
   "xp": 300,
