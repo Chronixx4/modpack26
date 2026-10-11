@@ -156,7 +156,7 @@ public final class ArenaManager {
 
     // ------------------------------------------------------------------ Run
 
-    private enum State { PREP, WAVE, BOSS, ENDING }
+    enum State { PREP, WAVE, BOSS, ENDING }
 
     static final class Spawn {
         final ResourceLocation entity;
@@ -204,6 +204,11 @@ public final class ArenaManager {
         boolean fountTexts;
         boolean started;
         int fightTicks;
+        final UUID id = UUID.randomUUID();
+        int lastGoal = -1;
+        final Map<UUID,String> names = new HashMap<>();
+        final Map<UUID,Integer> earnedStart = new HashMap<>(), rewardXp = new HashMap<>();
+        final Map<UUID,Map<String,Integer>> loot = new HashMap<>();
         final Map<UUID, int[]> bless = new HashMap<>();
         List<ArenaShow.Blessing> offer = new ArrayList<>();
         final Set<UUID> picked = new HashSet<>();
@@ -433,6 +438,8 @@ public final class ArenaManager {
         run = r;
         int i = 0;
         for (ServerPlayer p : group) {
+            r.names.put(p.getUUID(),p.getGameProfile().getName());
+            r.earnedStart.put(p.getUUID(),ArenaStats.earned(p));
             rememberMode(p);
             p.setGameMode(GameType.SURVIVAL);
             p.setHealth(p.getMaxHealth());
@@ -471,6 +478,7 @@ public final class ArenaManager {
         r.alive.remove(sp.getUUID());
         r.spectators.add(sp.getUUID());
         r.fallen.put(sp.getUUID(), sp.position());
+        PacketDistributor.sendToPlayer(sp,new ArenaNet.Blessings(r.id,r.wave,List.of(),List.of(),0,false));
         sp.setGameMode(GameType.SPECTATOR);
         sp.setHealth(sp.getMaxHealth());
         sp.clearFire();
@@ -504,6 +512,7 @@ public final class ArenaManager {
             ServerPlayer p = server.getPlayerList().getPlayer(id);
             if (p == null || level == null) continue;
             ArenaShow.clear(p);
+            PacketDistributor.sendToPlayer(p,new ArenaNet.Blessings(r.id,r.wave,List.of(),List.of(),0,false));
             if (won) {
                 recordWin(p, r);
                 ArenaShow.title(List.of(p), ArenaShow.big("SIEG!", net.minecraft.ChatFormatting.GOLD),
@@ -517,8 +526,10 @@ public final class ArenaManager {
                 ArenaShow.title(List.of(p), ArenaShow.big("NIEDERLAGE", net.minecraft.ChatFormatting.DARK_RED),
                         Component.literal("Welle " + r.wave + " erreicht").withStyle(net.minecraft.ChatFormatting.GRAY), 10, 60, 20);
                 p.sendSystemMessage(Component.translatable("msg.chronicle_arena.lost"));
+                sendStats(p);
             }
         }
+        ArenaPresentation.snapshot(server,r);
     }
 
     private static void endlessResult(ServerPlayer p, ServerLevel level, Run r) {
@@ -536,11 +547,11 @@ public final class ArenaManager {
                 LootParams params = new LootParams.Builder(level)
                         .withParameter(LootContextParams.ORIGIN, p.position())
                         .create(LootContextParamSets.CHEST);
-                for (ItemStack stack : table.getRandomItems(params)) ItemHandlerHelper.giveItemToPlayer(p, stack);
+                for (ItemStack stack : table.getRandomItems(params)) { ArenaPresentation.loot(r,p,stack); ItemHandlerHelper.giveItemToPlayer(p, stack); }
             }
             p.sendSystemMessage(Component.literal("Abgrund-Beute: " + rolls + " Kisten fuer " + reached + " Wellen."));
         }
-        if (r.tier.xp() > 0 && reached > 0) p.giveExperiencePoints(r.tier.xp() * reached / 10);
+        if (r.tier.xp() > 0 && reached > 0) { int xp=r.tier.xp()*reached/10; p.giveExperiencePoints(xp); r.rewardXp.put(p.getUUID(),xp); }
         ArenaStats.publish(p);
         sendStats(p);
     }
@@ -558,11 +569,12 @@ public final class ArenaManager {
                         .withParameter(LootContextParams.ORIGIN, p.position())
                         .create(LootContextParamSets.CHEST);
                 for (ItemStack stack : table.getRandomItems(params)) {
+                    ArenaPresentation.loot(r,p,stack);
                     ItemHandlerHelper.giveItemToPlayer(p, stack);
                 }
             }
         }
-        if (tier.xp() > 0) p.giveExperiencePoints(tier.xp());
+        if (tier.xp() > 0) { p.giveExperiencePoints(tier.xp()); r.rewardXp.put(p.getUUID(),tier.xp()); }
         int coins = (int) Math.round(tier.tokens() * (r.encounter.boss() ? 2 : 1) * coinMult(r.mask) * r.coinPercent / 100.0);
         Challenge ch = dailyChallenge();
         if (ch != null && ch.encounter() == r.encounter && ch.tier() == r.tier && ch.mask() == r.mask
@@ -605,6 +617,10 @@ public final class ArenaManager {
             restoreMode(p);
             p.setHealth(p.getMaxHealth());
             teleport(p, level, LOBBY.getX() + 0.5, LOBBY.getY(), LOBBY.getZ() + 5.5, 180.0F);
+            PacketDistributor.sendToPlayer(p,ArenaNet.Battle.EMPTY);
+            sendStats(p);
+            if(r.state==State.ENDING && r.participants.contains(id)) ArenaPresentation.show(p);
+            else PacketDistributor.sendToPlayer(p,new ArenaNet.Blessings(r.id,r.wave,List.of(),List.of(),0,false));
         }
         LOGGER.info("Arena-Run beendet ({})", r.won ? "Sieg" : "Niederlage");
     }
@@ -651,6 +667,8 @@ public final class ArenaManager {
         Run r = run;
         if (r == null) return;
         ArenaShow.clear(sp);
+        PacketDistributor.sendToPlayer(sp,ArenaNet.Battle.EMPTY);
+        PacketDistributor.sendToPlayer(sp,new ArenaNet.Blessings(r.id,r.wave,List.of(),List.of(),0,false));
         if (r.state != State.ENDING) ArenaShow.stopMusic(List.of(sp));
         boolean wasAlive = r.alive.remove(sp.getUUID());
         r.spectators.remove(sp.getUUID());
@@ -669,6 +687,7 @@ public final class ArenaManager {
         ArenaParty.tick(server);
         Run r = run;
         if (r != null) tickRun(server, r);
+        if (run != null && tickCounter % 10 == 0) ArenaPresentation.sync(server,run);
         if (tickCounter % 20 == 0) safetyCheck(server);
         if (tickCounter % 20 == 7) for (ServerPlayer sm : server.getPlayerList().getPlayers()) ArenaSmith.apply(sm);
         if (tickCounter % 4 == 0) trails(server);
@@ -746,12 +765,13 @@ public final class ArenaManager {
                                 if (lazy != null && !r.picked.contains(id)) chooseBlessing(lazy, 1 + level.getRandom().nextInt(r.offer.size()));
                             }
                         } else if (r.offerWait % 20 == 0) {
+                            for(UUID id:r.alive){ServerPlayer bp=server.getPlayerList().getPlayer(id);if(bp!=null)openBlessings(bp,false);}
                             StringBuilder waiting = new StringBuilder();
                             for (UUID id : r.alive) {
                                 ServerPlayer wp = server.getPlayerList().getPlayer(id);
                                 if (wp != null && !r.picked.contains(id)) waiting.append(waiting.length() > 0 ? ", " : "").append(wp.getGameProfile().getName());
                             }
-                            actionbar(server, r, Component.literal("Segen waehlen (Chat anklicken oder /arena segen 1-" + r.offer.size() + ")  |  Warte auf: " + waiting)
+                            actionbar(server, r, Component.literal("Segen waehlen (Menue: /arena segen, alternativ /arena segen 1-" + r.offer.size() + ")  |  Warte auf: " + waiting)
                                     .withStyle(net.minecraft.ChatFormatting.AQUA));
                         }
                         break;
@@ -800,7 +820,11 @@ public final class ArenaManager {
         buildWave(level, r);
         r.waveTotal = Math.max(1, r.queue.size());
         r.powerMul = computePower(server, r);
-        r.objective = r.goalsEnabled && r.wave % r.goalInterval == 0 ? ArenaObjectives.begin(level, r.center, r.wave / r.goalInterval) : null;
+        r.objective = r.goalsEnabled && r.wave % r.goalInterval == 0 ? ArenaObjectives.begin(level, r.center, r.lastGoal) : null;
+        if(r.objective!=null){
+            r.lastGoal=r.objective.kind;
+            if(r.objective.kind==2)r.objective.expectedTargets=Math.min(3,Math.max(1,r.queue.size()));
+        }
         r.offer.clear();
         r.event = ArenaExtras.rollEvent(level, r.wave, false);
         r.bar.setColor(r.event == ArenaExtras.EV_BLUTMOND ? BossEvent.BossBarColor.RED
@@ -1240,12 +1264,13 @@ public final class ArenaManager {
             if (p == null) continue;
             p.sendSystemMessage(Component.literal("Waehle einen Segen (gilt bis zum Ende des Runs):").withStyle(net.minecraft.ChatFormatting.AQUA));
             for (int i = 0; i < r.offer.size(); i++) p.sendSystemMessage(ArenaShow.offerLine(i, r.offer.get(i)));
+            openBlessings(p,true);
         }
     }
 
     private static int chooseBlessing(ServerPlayer p, int slot) {
         Run r = run;
-        if (r == null || !r.alive.contains(p.getUUID()) || r.offer.isEmpty() || r.picked.contains(p.getUUID())
+        if (r == null || r.state != State.PREP || p.level().dimension()!=DIM || !r.alive.contains(p.getUUID()) || r.offer.isEmpty() || r.picked.contains(p.getUUID())
                 || slot < 1 || slot > r.offer.size()) {
             p.sendSystemMessage(Component.literal("Gerade gibt es keinen Segen zur Auswahl."));
             return 0;
@@ -1257,6 +1282,7 @@ public final class ArenaManager {
         r.picked.add(p.getUUID());
         statsDirty.add(p.getUUID());
         if (b == ArenaShow.Blessing.LIFE) r.revives = Math.min(9, r.revives + 1);
+        openBlessings(p,false);
         p.sendSystemMessage(Component.literal("Segen: " + b.label + " (" + b.desc + ")").withStyle(net.minecraft.ChatFormatting.GOLD));
         return 1;
     }
@@ -1472,6 +1498,7 @@ public final class ArenaManager {
         if (event.getEntity() instanceof ServerPlayer sp && sp.level().dimension() == DIM) {
             removeFromRun(sp);
         }
+        ArenaPresentation.forget(event.getEntity().getUUID());
     }
 
     @SubscribeEvent
@@ -1515,7 +1542,8 @@ public final class ArenaManager {
                     leave(p);
                     return 1;
                 }))
-                .then(Commands.literal("segen").then(Commands.argument("nr", com.mojang.brigadier.arguments.IntegerArgumentType.integer(1, 3))
+                .then(Commands.literal("ergebnis").executes(ctx->{ArenaPresentation.show(ctx.getSource().getPlayerOrException());return 1;}))
+                .then(Commands.literal("segen").executes(ctx->{openBlessings(ctx.getSource().getPlayerOrException(),true);return 1;}).then(Commands.argument("nr", com.mojang.brigadier.arguments.IntegerArgumentType.integer(1, 3))
                         .executes(ctx -> chooseBlessing(ctx.getSource().getPlayerOrException(),
                                 com.mojang.brigadier.arguments.IntegerArgumentType.getInteger(ctx, "nr")))))
                 .then(Commands.literal("stats").executes(ctx -> {
@@ -1802,12 +1830,39 @@ public final class ArenaManager {
         }
     }
 
+    public static void pick(ServerPlayer p,ArenaNet.Pick choice){
+        Run r=run;
+        if(r!=null && r.id.equals(choice.run()) && r.wave==choice.wave()) chooseBlessing(p,choice.slot());
+    }
+    public static void openBlessings(ServerPlayer p,boolean popup){
+        Run r=run;
+        if(r==null||p.level().dimension()!=DIM||!r.involves(p.getUUID()))return;
+        List<ArenaNet.BlessInfo> offers=new ArrayList<>(),active=new ArrayList<>();
+        int[] stacks=r.bless.getOrDefault(p.getUUID(),new int[ArenaShow.Blessing.values().length]);
+        for(ArenaShow.Blessing b:ArenaShow.Blessing.values())if(stacks[b.ordinal()]>0)active.add(blessInfo(b,stacks));
+        if(r.state==State.PREP&&r.alive.contains(p.getUUID())&&!r.picked.contains(p.getUUID()))for(ArenaShow.Blessing b:r.offer)offers.add(blessInfo(b,stacks));
+        PacketDistributor.sendToPlayer(p,new ArenaNet.Blessings(r.id,r.wave,offers,active,Math.max(0,(2400-r.offerWait+19)/20),popup));
+    }
+    private static ArenaNet.BlessInfo blessInfo(ArenaShow.Blessing b,int[] stacks){
+        String icon=switch(b){case POWER->"iron_sword";case VITALITY->"golden_apple";case SWIFT->"feather";case ARMOR->"iron_chestplate";case REGEN->"glistering_melon_slice";case GOLD->"gold_ingot";case VAMPIR->"redstone";case LIFE->"totem_of_undying";case EMBER->"blaze_powder";case FLARE->"fire_charge";case ASH->"coal";case HUNTER->"bow";};
+        String synergy=switch(b){
+            case EMBER->"Passt zu Flammenjaeger / Asche";
+            case FLARE,ASH->stacks[ArenaShow.Blessing.EMBER.ordinal()]>0?"Synergie mit deiner Glut aktiv":"Passt zu Glut";
+            case ARMOR->stacks[ArenaShow.Blessing.REGEN.ordinal()]>0?"Synergie mit deiner Regeneration aktiv":"Passt zu Regeneration";
+            case REGEN->stacks[ArenaShow.Blessing.ARMOR.ordinal()]>0?"Synergie mit deiner Panzerung aktiv":"Passt zu Panzerung";
+            case HUNTER->stacks[ArenaShow.Blessing.VAMPIR.ordinal()]>0?"Mehr Schaden verbessert deinen Vampir":"Passt zu Vampir";
+            case VAMPIR->"Profitiert von Kraft / Scharfschuetze";
+            default->"";
+        };
+        return new ArenaNet.BlessInfo(b.label,b.desc,"minecraft:"+icon,stacks[b.ordinal()],synergy);
+    }
     public static void control(ServerPlayer p, Net.Control control) {
         switch (control.action()) {
             case "ready" -> ArenaParty.toggle(p);
             case "cancel" -> ArenaParty.cancel(p);
             case "decline" -> ArenaParty.decline(p);
             case "admin" -> openAdmin(p);
+            case "blessings" -> openBlessings(p,true);
         }
     }
     public static void openAdmin(ServerPlayer p) {
@@ -1834,6 +1889,6 @@ public final class ArenaManager {
         if (run != null) endRun(event.getServer());
     }
     @SubscribeEvent public void onStopped(net.neoforged.neoforge.event.server.ServerStoppedEvent event) {
-        run = null; ArenaParty.clear(event.getServer(), "Server beendet."); statsDirty.clear(); tickCounter = 0;
+        run = null; ArenaPresentation.clear(); ArenaParty.clear(event.getServer(), "Server beendet."); statsDirty.clear(); tickCounter = 0;
     }
 }
