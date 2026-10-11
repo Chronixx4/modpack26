@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
   "game": "minecraft",
-  "versionId": "0.9.24",
+  "versionId": "0.9.25",
   "name": "Chronicle",
   "files": [
     {
@@ -4655,34 +4655,19 @@
       "fileSize": 93170262
     },
     {
-      "path": "mods/smallships-neoforge-1.21.1-2.0.0-b2.1.jar",
+      "path": "mods/immersive_aircraft-neoforge-1.6.0+1.21.1.jar",
       "hashes": {
-        "sha1": "aa586dc4339d49db1c988497415d197195849fb9",
-        "sha512": "e5f9e7efd537330e41253696827d72de0662fd46b83a4a3b2983b2de105718125af53e237af5047c1660c45a872486278375a65a71ce39788632993907900120"
+        "sha1": "de202dba639d78863cd1a5705415adaebd74b0f0",
+        "sha512": "92ccb143c13910f946f231bf70c6d897aa6ba404d50cc644959115a03fab2cad7c07389ab813658fc0fa98d5a979a92ab8dd62b62583a558420a37ff7cd3b5be"
       },
       "env": {
         "client": "required",
         "server": "required"
       },
       "downloads": [
-        "https://cdn.modrinth.com/data/rGWEHQrP/versions/6poGZvvr/smallships-neoforge-1.21.1-2.0.0-b2.1.jar"
+        "https://cdn.modrinth.com/data/x3HZvrj6/versions/ZCSI1mBS/immersive_aircraft-neoforge-1.6.0%2B1.21.1.jar"
       ],
-      "fileSize": 1914804
-    },
-    {
-      "path": "mods/owplushies-0.3.1-neoforge-1.21.1.jar",
-      "hashes": {
-        "sha1": "d77faa509f0951c1b82394a1f116cfdc70e02aab",
-        "sha512": "37df1b695f7d1fc69f5d3eac7bd5f45c4edc8384b21de6ca579bef7a60c479f72182efeab3fe85c6e49a4db8a7dfce47b0fb6122fe009bbe389a6138d5335aa9"
-      },
-      "env": {
-        "client": "required",
-        "server": "required"
-      },
-      "downloads": [
-        "https://cdn.modrinth.com/data/iA53FlJE/versions/fyqUHsGY/owplushies-0.3.1-neoforge-1.21.1.jar"
-      ],
-      "fileSize": 2129301
+      "fileSize": 2519285
     }
   ],
   "dependencies": {
