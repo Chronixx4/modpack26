@@ -1,5 +1,12 @@
 # Chronicle Arena
 
+## Update 0.2.0
+
+Gruppenbereitschaft, durchsuchbare Begegnungen/Stufen, Zielwellen, Segen-Synergien und OP-Admin-Panel.
+Installation, neue Bedienung und Teststatus: [RELEASE-0.2.0.md](RELEASE-0.2.0.md).
+OP-Einstellungen: `/arena admin`; Gruppenmenue: `/arena gruppe`; Bereitschaft: `/arena bereit`.
+Server und Clients muessen dieselbe Arena-Version verwenden.
+
 Eigene NeoForge-Mod (MC 1.21.1): Arena-Dimension mit Portal, Bosskaempfen und Monsterwellen.
 
 - **Portal** (`chronicle_arena:arena_portal`, Rezept: 4 Obsidian, 4 Diamant, Enderauge) per Rechtsklick in die Lobby, dort zurueck.

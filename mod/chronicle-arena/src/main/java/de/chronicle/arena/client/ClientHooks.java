@@ -7,6 +7,13 @@ import net.minecraft.client.Minecraft;
 public final class ClientHooks {
     private ClientHooks() {}
 
+    public static void openParty(Net.OpenParty payload) {
+        var mc = Minecraft.getInstance();
+        if (payload.members().isEmpty()) { if (mc.screen instanceof PartyScreen) mc.setScreen(null); return; }
+        if (mc.screen instanceof PartyScreen screen) screen.update(payload);
+        else if (payload.popup()) mc.setScreen(new PartyScreen(payload));
+    }
+    public static void openAdmin(Net.OpenAdmin payload) { Minecraft.getInstance().setScreen(new AdminScreen(payload)); }
     public static void openTerminal(Net.OpenTerminal payload) {
         Minecraft.getInstance().setScreen(new TerminalScreen(payload));
     }

@@ -1,0 +1,47 @@
+name: Arena JAR
+on:
+  push:
+    branches: ['codex/arena-0.2.0']
+    paths: ['mod/chronicle-arena/**', '.github/workflows/arena-jar.yml']
+permissions:
+  contents: write
+concurrency:
+  group: arena-jar-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.11.1'
+      - name: Build and unit tests (no Minecraft server)
+        run: gradle -p mod/chronicle-arena build
+      - name: Prepare standalone arena download
+        run: |
+          mkdir -p arena-dist
+          VERSION=$(sed -n 's/^mod_version=//p' mod/chronicle-arena/gradle.properties | tr -d '\r')
+          cp "mod/chronicle-arena/build/libs/chronicle-arena-${VERSION}.jar" arena-dist/
+          cp mod/chronicle-arena/RELEASE-0.2.0.md arena-dist/
+          cd arena-dist
+          sha256sum *.jar > SHA256SUMS.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chronicle-arena-0.2.0
+          path: arena-dist/*
+      - name: Publish arena preview release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION=$(sed -n 's/^mod_version=//p' mod/chronicle-arena/gradle.properties | tr -d '\r')
+          TAG="arena-v${VERSION}"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "Release already exists; keeping the published assets unchanged."
+          else
+            gh release create "$TAG" arena-dist/* --target "$GITHUB_SHA" --prerelease --title "Chronicle Arena ${VERSION} - Spieltest" --notes-file mod/chronicle-arena/RELEASE-0.2.0.md
+          fi

@@ -16,7 +16,15 @@ public final class Net {
     private Net() {}
 
     public static void register(RegisterPayloadHandlersEvent event) {
-        PayloadRegistrar reg = event.registrar("5");
+        PayloadRegistrar reg = event.registrar("6");
+        reg.playToClient(OpenParty.TYPE, OpenParty.CODEC,
+                (payload, ctx) -> ctx.enqueueWork(() -> de.chronicle.arena.client.ClientHooks.openParty(payload)));
+        reg.playToClient(OpenAdmin.TYPE, OpenAdmin.CODEC,
+                (payload, ctx) -> ctx.enqueueWork(() -> de.chronicle.arena.client.ClientHooks.openAdmin(payload)));
+        reg.playToServer(Control.TYPE, Control.CODEC,
+                (payload, ctx) -> ctx.enqueueWork(() -> { if (ctx.player() instanceof ServerPlayer sp) ArenaManager.control(sp, payload); }));
+        reg.playToServer(AdminChange.TYPE, AdminChange.CODEC,
+                (payload, ctx) -> ctx.enqueueWork(() -> { if (ctx.player() instanceof ServerPlayer sp) ArenaManager.adminChange(sp, payload); }));
         reg.playToClient(OpenTerminal.TYPE, OpenTerminal.CODEC,
                 (payload, ctx) -> ctx.enqueueWork(() -> de.chronicle.arena.client.ClientHooks.openTerminal(payload)));
         reg.playToClient(OpenShop.TYPE, OpenShop.CODEC,
@@ -53,12 +61,14 @@ public final class Net {
 
     /** Server -> Client: Inhalt des Kampf-Menues. */
     public record OpenTerminal(boolean running, String status, List<TierInfo> tiers, List<EncInfo> encounters,
-                               List<ModInfo> mods, ChallengeInfo challenge)
+                               List<ModInfo> mods, ChallengeInfo challenge, boolean admin, int coinPercent)
             implements CustomPacketPayload {
         public static final Type<OpenTerminal> TYPE = new Type<>(ChronicleArena.id("open_terminal"));
         public static final StreamCodec<FriendlyByteBuf, OpenTerminal> CODEC = StreamCodec.of(OpenTerminal::write, OpenTerminal::read);
 
         private static void write(FriendlyByteBuf buf, OpenTerminal p) {
+            buf.writeBoolean(p.admin);
+            buf.writeVarInt(p.coinPercent);
             buf.writeBoolean(p.running);
             buf.writeUtf(p.status);
             buf.writeVarInt(p.tiers.size());
@@ -93,6 +103,8 @@ public final class Net {
         }
 
         private static OpenTerminal read(FriendlyByteBuf buf) {
+            boolean admin = buf.readBoolean();
+            int coinPercent = buf.readVarInt();
             boolean running = buf.readBoolean();
             String status = buf.readUtf();
             int nt = buf.readVarInt();
@@ -110,7 +122,7 @@ public final class Net {
             for (int i = 0; i < nm; i++) mods.add(new ModInfo(buf.readVarInt(), buf.readUtf(), buf.readUtf(256), buf.readVarInt()));
             ChallengeInfo ch = new ChallengeInfo(buf.readUtf(), buf.readUtf(), buf.readVarInt(), buf.readBoolean(),
                     buf.readVarInt(), buf.readUtf(256));
-            return new OpenTerminal(running, status, tiers, encs, mods, ch);
+            return new OpenTerminal(running, status, tiers, encs, mods, ch, admin, coinPercent);
         }
 
         @Override
@@ -290,5 +302,34 @@ public final class Net {
         public Type<? extends CustomPacketPayload> type() {
             return TYPE;
         }
+    }
+
+    public record Control(String action) implements CustomPacketPayload {
+        public static final Type<Control> TYPE = new Type<>(ChronicleArena.id("control"));
+        public static final StreamCodec<FriendlyByteBuf, Control> CODEC = StreamCodec.of((b,p)->b.writeUtf(p.action,32), b->new Control(b.readUtf(32)));
+        public Type<? extends CustomPacketPayload> type() { return TYPE; }
+    }
+    public record OpenParty(String summary, List<String> members, boolean ready, boolean leader, int countdown, boolean popup) implements CustomPacketPayload {
+        public static final Type<OpenParty> TYPE = new Type<>(ChronicleArena.id("party"));
+        public static final StreamCodec<FriendlyByteBuf, OpenParty> CODEC = StreamCodec.of((b,p)-> {
+            b.writeUtf(p.summary,1024); b.writeVarInt(p.members.size()); for(String m:p.members)b.writeUtf(m,128);
+            b.writeBoolean(p.ready); b.writeBoolean(p.leader); b.writeInt(p.countdown); b.writeBoolean(p.popup);
+        }, b->{ String s=b.readUtf(1024); int n=b.readVarInt(); if(n<0||n>1024)throw new IllegalArgumentException("party size");
+            List<String> m=new ArrayList<>(); for(int i=0;i<n;i++)m.add(b.readUtf(128)); return new OpenParty(s,m,b.readBoolean(),b.readBoolean(),b.readInt(),b.readBoolean()); });
+        public Type<? extends CustomPacketPayload> type() { return TYPE; }
+    }
+    public record OpenAdmin(int health, int damage, int coins, int prep, int interval, boolean goals, String status) implements CustomPacketPayload {
+        public static final Type<OpenAdmin> TYPE = new Type<>(ChronicleArena.id("admin"));
+        public static final StreamCodec<FriendlyByteBuf, OpenAdmin> CODEC = StreamCodec.of((b,p)-> {
+            b.writeInt(p.health);b.writeInt(p.damage);b.writeInt(p.coins);b.writeInt(p.prep);b.writeInt(p.interval);b.writeBoolean(p.goals);b.writeUtf(p.status,512);
+        }, b->new OpenAdmin(b.readInt(),b.readInt(),b.readInt(),b.readInt(),b.readInt(),b.readBoolean(),b.readUtf(512)));
+        public Type<? extends CustomPacketPayload> type() { return TYPE; }
+    }
+    public record AdminChange(int health, int damage, int coins, int prep, int interval, boolean goals, boolean stop) implements CustomPacketPayload {
+        public static final Type<AdminChange> TYPE = new Type<>(ChronicleArena.id("admin_change"));
+        public static final StreamCodec<FriendlyByteBuf, AdminChange> CODEC = StreamCodec.of((b,p)-> {
+            b.writeInt(p.health);b.writeInt(p.damage);b.writeInt(p.coins);b.writeInt(p.prep);b.writeInt(p.interval);b.writeBoolean(p.goals);b.writeBoolean(p.stop);
+        }, b->new AdminChange(b.readInt(),b.readInt(),b.readInt(),b.readInt(),b.readInt(),b.readBoolean(),b.readBoolean()));
+        public Type<? extends CustomPacketPayload> type() { return TYPE; }
     }
 }
