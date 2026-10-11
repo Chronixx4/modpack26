@@ -21,10 +21,30 @@ class ArenaCombatTest {
         o.held=600;assertTrue(o.complete());ArenaObjectives.strike(o,id,8);assertEquals(100,o.health);assertFalse(ArenaObjectives.needsPressure(o));
     }
     @Test void reinforcementsNeverOverflowTheCombatCap(){
-        assertEquals(3,ArenaBalance.reinforcements(1,0,0,16));
-        assertEquals(1,ArenaBalance.reinforcements(4,3,12,16));
+        assertEquals(1,ArenaBalance.reinforcements(1,0,0,16));
+        assertEquals(1,ArenaBalance.reinforcements(4,3,6,16));
         assertEquals(0,ArenaBalance.reinforcements(4,3,20,16));
         var hold=new ArenaObjectives.Objective(4,BlockPos.ZERO);assertTrue(ArenaObjectives.needsPressure(hold));hold.checkpoint=3;assertFalse(ArenaObjectives.needsPressure(hold));
+    }
+    @Test void protectionCapScalesWithSurvivorsAndRespectsAdminLimit(){
+        int[] caps={0,4,6,8,10,12,12};
+        for(int i=0;i<caps.length;i++)assertEquals(caps[i],ArenaBalance.missionCap(i,70));
+        assertEquals(3,ArenaBalance.missionCap(1,3));assertEquals(0,ArenaBalance.missionCap(1,0));
+        assertEquals(0,ArenaBalance.reinforcements(1,0,6,70));
+        assertEquals(0,ArenaBalance.reinforcements(0,0,0,70));
+    }
+    @Test void smallBatchesReserveRoomForQueuedEnemies(){
+        assertEquals(1,ArenaBalance.missionBatch(1));assertEquals(2,ArenaBalance.missionBatch(2));assertEquals(3,ArenaBalance.missionBatch(8));
+        assertEquals(0,ArenaBalance.reinforcements(1,2,2,70));assertEquals(1,ArenaBalance.reinforcements(1,2,1,70));
+        assertEquals(2,ArenaBalance.reinforcements(2,0,0,70));assertEquals(3,ArenaBalance.reinforcements(3,0,0,70));
+        assertEquals(120,ArenaBalance.REINFORCEMENT_INTERVAL);
+    }
+    @Test void completedProtectionMissionRetainsItsSpawnCapButStopsReinforcements(){
+        for(int kind:new int[]{1,3,4}){
+            var o=new ArenaObjectives.Objective(kind,BlockPos.ZERO);assertTrue(ArenaObjectives.pressureMission(o));assertTrue(ArenaObjectives.needsPressure(o));
+            o.held=600;o.checkpoint=3;assertTrue(o.complete());assertTrue(ArenaObjectives.pressureMission(o));assertFalse(ArenaObjectives.needsPressure(o));
+        }
+        assertFalse(ArenaObjectives.pressureMission(new ArenaObjectives.Objective(2,BlockPos.ZERO)));
     }
     @Test void regenerationWaitsForDamageAndNeverExceedsItsStackCap(){
         assertFalse(ArenaBalance.canRegen(1,120,50,0,false));

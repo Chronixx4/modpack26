@@ -1,5 +1,9 @@
 # Chronicle Arena
 
+## Update 0.3.2
+
+Schutzmissionen skalieren jetzt fuer Solo und kleine Gruppen: gemeinsame Gegnergrenze, kleinere Anfangswelle und langsamerer Nachschub. Details: [RELEASE-0.3.2.md](RELEASE-0.3.2.md).
+
 ## Update 0.3.1
 
 Siegertafel korrigiert, Beacon-Verteidigung mit Leben und Verstaerkung, Regeneration abgeschwaecht, Recovery mit Hunger/Timer und drei neue Runen auf der Karte und im Shop. Details: [RELEASE-0.3.1.md](RELEASE-0.3.1.md).

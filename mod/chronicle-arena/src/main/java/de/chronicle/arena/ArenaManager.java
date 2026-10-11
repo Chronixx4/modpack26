@@ -271,6 +271,10 @@ public final class ArenaManager {
             return Math.min(70, MAX_ALIVE_MOBS + 8 * extra);
         }
 
+        int combatCap() {
+            return ArenaObjectives.pressureMission(objective)?ArenaBalance.missionCap(alive.size(),maxAlive()):maxAlive();
+        }
+
         boolean involves(UUID id) {
             return alive.contains(id) || spectators.contains(id);
         }
@@ -832,6 +836,12 @@ public final class ArenaManager {
             r.lastGoal=r.objective.kind;
             if(r.objective.kind==2)r.objective.expectedTargets=Math.min(3,Math.max(1,r.queue.size()));
         }
+        if(ArenaObjectives.pressureMission(r.objective)){
+            // Keep special opponents, but do not carry a full normal wave into a timed mission.
+            r.queue.sort(java.util.Comparator.comparingInt((Spawn s)->s.boss?0:s.elite?1:2));
+            int cap=r.combatCap();if(r.queue.size()>cap)r.queue.subList(cap,r.queue.size()).clear();
+            r.waveTotal=Math.max(1,r.queue.size());
+        }
         r.offer.clear();
         ArenaPickups.spawn(level,r);ArenaPickups.spawn(level,r);
         r.event = ArenaExtras.rollEvent(level, r.wave, false);
@@ -995,8 +1005,8 @@ public final class ArenaManager {
         });
 
         // Timed objectives retain pressure even when the original wave is cleared.
-        if(ArenaObjectives.needsPressure(r.objective)&&r.fightTicks%80==0){
-            int count=ArenaBalance.reinforcements(r.alive.size(),r.queue.size(),r.mobs.size(),Math.min(r.maxAlive(),12+4*r.alive.size()));
+        if(ArenaObjectives.needsPressure(r.objective)&&r.fightTicks%ArenaBalance.REINFORCEMENT_INTERVAL==0){
+            int count=ArenaBalance.reinforcements(r.alive.size(),r.queue.size(),r.mobs.size(),r.maxAlive());
             List<ArenaDefs.Pool> pools=r.encounter.pools().stream().filter(p->p.fromWave()<=r.wave).toList();
             if(!pools.isEmpty())for(int i=0;i<count;i++)r.queue.add(new Spawn(pools.get(level.getRandom().nextInt(pools.size())).entity(),false,false));
             r.waveTotal=Math.max(r.waveTotal,r.queue.size()+r.mobs.size());
@@ -1005,7 +1015,7 @@ public final class ArenaManager {
         // Nachspawnen.
         if (!r.queue.isEmpty() && tickCounter % 10 == 0) {
             int spawned = 0;
-            while (!r.queue.isEmpty() && r.mobs.size() < r.maxAlive() && spawned < 4) {
+            while (!r.queue.isEmpty() && r.mobs.size() < r.combatCap() && spawned < (ArenaObjectives.pressureMission(r.objective)?ArenaBalance.missionBatch(r.alive.size()):4)) {
                 Spawn s = r.queue.remove(0);
                 LivingEntity le = spawnMob(level, r, s);
                 if (le != null) {

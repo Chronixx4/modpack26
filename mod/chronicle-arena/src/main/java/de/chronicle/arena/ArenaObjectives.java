@@ -113,7 +113,8 @@ public final class ArenaObjectives {
         if(o==null||o.kind!=1||o.complete()||o.failed||!Float.isFinite(damage)||damage<=0)return;
         if(o.ticks-o.lastStrike.getOrDefault(attacker,-100)>=20){o.lastStrike.put(attacker,o.ticks);o.health=Math.max(0,o.health-Math.clamp(damage,1,8));if(o.health<=0)o.failed=true;}
     }
-    static boolean needsPressure(Objective o){return o!=null&&!o.complete()&&!o.failed&&(o.kind==1||o.kind==3||o.kind==4);}
+    static boolean pressureMission(Objective o){return o!=null&&(o.kind==1||o.kind==3||o.kind==4);}
+    static boolean needsPressure(Objective o){return pressureMission(o)&&!o.complete()&&!o.failed;}
     public static int limit(Objective o){return o.kind==2?1800:3600;}
     public static int progress(Objective o){return switch(o.kind){case 0->3-o.crystals.size();case 1->Math.min(30,o.held/20);case 2->o.markedSpawned-o.marked.size();case 3->o.checkpoint;case 4->o.checkpoint*10+o.held/20;default->0;};}
     public static int target(Objective o){return switch(o.kind){case 1,4->30;case 2->o.expectedTargets;default->3;};}
