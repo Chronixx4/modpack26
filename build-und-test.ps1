@@ -9,7 +9,7 @@ $ProgressPreference = 'SilentlyContinue'
 $MC      = '1.21.1'
 $LOADER  = 'neoforge'
 $PACK    = 'Chronicle'
-$PACKVER = '0.9.25'
+$PACKVER = '0.9.26'
 $RAM     = '8G'
 $TIMEOUT_MIN = 20
 
@@ -516,6 +516,13 @@ if ($cfJars.Count -gt 0) {
   foreach ($j in $cfJars) { Copy-Item -LiteralPath $j.FullName $ov -Force }
   Say "  $($cfJars.Count) CurseForge-Mods aus dem Ordner curseforge-mods mit eingepackt"
 }
+# Lokale Client-Mods separat in die Modrinth-Datei aufnehmen (nie auf den Server).
+$localClientJars = @(Get-ChildItem -LiteralPath (Join-Path $Root 'pack\client-mods') -Filter *.jar -ErrorAction SilentlyContinue)
+if ($localClientJars.Count -gt 0) {
+  $clientModsOut = Join-Path $packDir 'client-overrides\mods'
+  New-Item -ItemType Directory -Force -Path $clientModsOut | Out-Null
+  foreach ($j in $localClientJars) { Copy-Item -LiteralPath $j.FullName $clientModsOut -Force }
+}
 # Questbuch und andere Configs aus pack\config (FTB Quests: pack\quests\generator.py)
 $cfgSrc = Join-Path $Root 'pack\config'
 if (Test-Path -LiteralPath $cfgSrc) {
@@ -583,8 +590,23 @@ foreach ($j in $cfJars) {
   if (-not $ver) { $ver = [IO.Path]::GetFileNameWithoutExtension($j.Name) }
   $groups[$g].Add(("  {0,-46} {1}  (CurseForge)" -f $title, $ver))
 }
+# Namen/Versionen der lokalen Client-Mods aus den JAR-Metadaten lesen.
+foreach ($j in $localClientJars) {
+  $zip = [IO.Compression.ZipFile]::OpenRead($j.FullName)
+  try {
+    $ent = $zip.GetEntry('META-INF/neoforge.mods.toml')
+    if (-not $ent) { throw "Mod-Metadaten fehlen: $($j.Name)" }
+    $rd = New-Object IO.StreamReader($ent.Open())
+    try { $toml = $rd.ReadToEnd() } finally { $rd.Dispose() }
+    if ($toml -notmatch '(?m)^\s*displayName\s*=\s*"([^"]+)"') { throw "Mod-Name fehlt: $($j.Name)" }
+    $title = $Matches[1]
+    if ($toml -notmatch '(?m)^\s*version\s*=\s*"([^"]+)"') { throw "Mod-Version fehlt: $($j.Name)" }
+    $ver = $Matches[1]
+    $groups['Komfort und Oberflaeche'].Add(("  {0,-46} {1}  (nur Client)" -f $title, $ver))
+  } finally { $zip.Dispose() }
+}
 $ml = New-Object System.Collections.Generic.List[string]
-$total = $picked.Count + $cfJars.Count
+$total = $picked.Count + $cfJars.Count + $localClientJars.Count
 $ml.Add("$PACK $PACKVER - Modliste")
 $ml.Add("Minecraft $MC, NeoForge $nf   |   $total Mods inkl. Bibliotheken   |   Stand $(Get-Date -Format 'yyyy-MM-dd')")
 foreach ($g in $groups.Keys) {

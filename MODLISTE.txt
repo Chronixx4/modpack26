@@ -1,5 +1,5 @@
-﻿Chronicle 0.9.25 - Modliste
-Minecraft 1.21.1, NeoForge 21.1.256   |   323 Mods inkl. Bibliotheken   |   Stand 2026-10-10
+﻿Chronicle 0.9.26 - Modliste
+Minecraft 1.21.1, NeoForge 21.1.256   |   324 Mods inkl. Bibliotheken   |   Stand 2026-10-11
 
 == Performance und Grafik (20) ==
   All The Leaks                                  1.1.13+1.21.1-neoforge  (CurseForge)
@@ -23,7 +23,7 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   323 Mods inkl. Bibliotheken   |   Stan
   Packet Fixer                                   3.3.1
   Sodium                                         mc1.21.1-0.8.13-neoforge  (nur Client)
 
-== Komfort und Oberflaeche (28) ==
+== Komfort und Oberflaeche (29) ==
   Almost Unified                                 1.21.1-1.4.2+neoforge
   AppleSkin                                      3.0.9+mc1.21
   Better Advancements                            0.4.3.21  (nur Client)
@@ -41,6 +41,7 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   323 Mods inkl. Bibliotheken   |   Stan
   Jade 🔍                                        15.10.6+neoforge
   Just Enough Items (JEI)                        19.51.0.418
   Just Enough Resources (JER)                    1.6.0.17  (nur Client)
+  Keybind Overview                               1.0.0  (nur Client)
   Mouse Tweaks                                   1.21-2.26.1-neoforge  (nur Client)
   Nature's Compass                               1.21.1-3.4.0-neoforge
   Polymorph                                      1.1.0+1.21.1
