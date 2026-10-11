@@ -80,9 +80,14 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           VER="${{ steps.ver.outputs.ver }}"
+          (cd dist && sha256sum "Chronicle-$VER.mrpack" "Chronicle-$VER-Client.zip" "Chronicle-$VER-Server.zip") > dist/SHA256SUMS.txt
           {
             echo "Minecraft 1.21.1 / NeoForge. Nur fuer uns, bitte nicht oeffentlich weitergeben (Mod-Lizenzen)."
             echo
+            if [ -f "pack/release-notes/$VER.md" ]; then
+              cat "pack/release-notes/$VER.md"
+              echo
+            fi
             echo "| Datei | Wofuer |"
             echo "|---|---|"
             echo "| \`Chronicle-$VER.mrpack\` | **Modrinth App**: \"+\" -> \"Aus Datei importieren\" |"
@@ -99,6 +104,7 @@ jobs:
             "dist/Chronicle-$VER.mrpack" \
             "dist/Chronicle-$VER-Client.zip" \
             "dist/Chronicle-$VER-Server.zip" \
+            dist/SHA256SUMS.txt \
             MODLISTE.txt \
             --target "$GITHUB_SHA" \
             --title "Chronicle $VER" \

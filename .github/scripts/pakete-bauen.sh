@@ -36,11 +36,16 @@ done
 rm -rf "$OUT/mrpack" && mkdir -p "$OUT/mrpack/overrides/mods"
 cp "$IDX" "$OUT/mrpack/"
 cp "$ROOT"/curseforge-mods/*.jar "$OWN"/*.jar "$OUT/mrpack/overrides/mods/"
+# Lokale Client-Mods getrennt halten: Modrinth installiert diese nur im Client.
+if [ -d "$ROOT/pack/client-mods" ]; then
+  mkdir -p "$OUT/mrpack/client-overrides/mods"
+  cp "$ROOT"/pack/client-mods/*.jar "$OUT/mrpack/client-overrides/mods/"
+fi
 [ -d "$ROOT/pack/config" ] && cp -r "$ROOT/pack/config" "$OUT/mrpack/overrides/"   # Questbuch
 [ -d "$ROOT/pack/kubejs" ] && cp -r "$ROOT/pack/kubejs" "$OUT/mrpack/overrides/"   # Chronicle-Kern
 [ -d "$ROOT/pack/defaultconfigs" ] && cp -r "$ROOT/pack/defaultconfigs" "$OUT/mrpack/overrides/"   # Server-Configs fuer neue Welten
 rm -f "$OUT/$NAME.mrpack"
-(cd "$OUT/mrpack" && zip -q -r -D "$OUT/$NAME.mrpack" modrinth.index.json overrides)
+(cd "$OUT/mrpack" && zip -q -r -D "$OUT/$NAME.mrpack" .)
 echo "  $NAME.mrpack"
 
 # 2) Alle Mods von Modrinth laden und Pruefsummen checken
@@ -67,6 +72,7 @@ jq -r '.files[] | select(.env.client != "unsupported") | .path' "$IDX" | while r
   cp "$CACHE/$(basename "$path")" "$C/mods/"
 done
 cp "$ROOT"/curseforge-mods/*.jar "$OWN"/*.jar "$C/mods/"
+[ -d "$ROOT/pack/client-mods" ] && cp "$ROOT"/pack/client-mods/*.jar "$C/mods/"
 [ -d "$ROOT/pack/config" ] && cp -r "$ROOT/pack/config" "$C/"
 [ -d "$ROOT/pack/kubejs" ] && cp -r "$ROOT/pack/kubejs" "$C/"
 [ -d "$ROOT/pack/defaultconfigs" ] && cp -r "$ROOT/pack/defaultconfigs" "$C/"
