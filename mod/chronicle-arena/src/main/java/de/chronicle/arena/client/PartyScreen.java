@@ -22,15 +22,19 @@ public final class PartyScreen extends Screen {
     }
     private void send(String action) { PacketDistributor.sendToServer(new Net.Control(action)); }
     @Override public boolean mouseScrolled(double x,double y,double dx,double dy) {scroll=Math.max(0,Math.min(Math.max(0,data.members().size()-5),scroll-(int)Math.signum(dy)));return true;}
-    @Override public void render(GuiGraphics g,int mx,int my,float tick) {
-        renderBackground(g,mx,my,tick);
+    @Override public void renderBackground(GuiGraphics g,int mx,int my,float tick) {
+        super.renderBackground(g,mx,my,tick);
         int x=width/2-155,y=height/2-110;
         Panel.draw(g,x,y,x+310,y+242,24,0xFFD700);
+    }
+    @Override public void render(GuiGraphics g,int mx,int my,float tick) {
+        // Screen.render draws the background (including blur) before the widgets.
+        super.render(g,mx,my,tick);
+        int x=width/2-155,y=height/2-110;
         g.drawCenteredString(font,title,width/2,y+7,0xFFFFFF);
         g.drawWordWrap(font,Component.literal(data.summary()),x+10,y+34,290,0xCCCCFF);
         for(int i=scroll;i<Math.min(data.members().size(),scroll+5);i++)g.drawString(font,data.members().get(i),x+10,y+82+(i-scroll)*15,0xFFFFFF);
         g.drawString(font,data.countdown()<0?"Start erst, wenn alle zugestimmt haben.":"Start in "+data.countdown()+" Sekunden",x+10,y+166,0xFFD700);
-        super.render(g,mx,my,tick);
     }
     @Override public boolean isPauseScreen(){return false;}
 }

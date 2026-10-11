@@ -28,14 +28,19 @@ public final class AdminScreen extends Screen {
         addRenderableWidget(Button.builder(Component.literal("Zurueck"),b->onClose()).bounds(x+227,y+201,73,20).build());
     }
     private void send(boolean stop){PacketDistributor.sendToServer(new Net.AdminChange(values[0],values[1],values[2],values[3],values[4],goals,stop));}
+    @Override public void renderBackground(GuiGraphics g,int mx,int my,float tick){
+        super.renderBackground(g,mx,my,tick);
+        int x=width/2-165,y=height/2-118;
+        Panel.draw(g,x,y,x+310,y+232,24,0xFF7777);
+    }
     @Override public void render(GuiGraphics g,int mx,int my,float tick){
-        renderBackground(g,mx,my,tick);int x=width/2-165,y=height/2-118;
-        Panel.draw(g,x,y,x+310,y+232,24,0xFF7777);g.drawCenteredString(font,title,x+155,y+8,0xFFFFFF);
+        super.render(g,mx,my,tick);
+        int x=width/2-165,y=height/2-118;
+        g.drawCenteredString(font,title,x+155,y+8,0xFFFFFF);
         g.drawString(font,font.plainSubstrByWidth(data.status(),290),x+10,y+29,0xBBBBBB);
         for(int i=0;i<5;i++)g.drawString(font,labels[i]+": "+values[i],x+10,y+49+i*23,0xFFFFFF);
         g.drawString(font,"Aenderungen gelten fuer neue Kaempfe.",x+10,y+185,0xFFD700);
         if(mx>x&&mx<x+310&&my>y+24&&my<y+40)g.renderTooltip(font,Component.literal(data.status()),mx,my);
-        super.render(g,mx,my,tick);
     }
     @Override public boolean isPauseScreen(){return false;}
 }

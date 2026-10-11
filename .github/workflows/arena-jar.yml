@@ -27,12 +27,12 @@ jobs:
           mkdir -p arena-dist
           VERSION=$(sed -n 's/^mod_version=//p' mod/chronicle-arena/gradle.properties | tr -d '\r')
           cp "mod/chronicle-arena/build/libs/chronicle-arena-${VERSION}.jar" arena-dist/
-          cp mod/chronicle-arena/RELEASE-0.2.0.md arena-dist/
+          cp mod/chronicle-arena/RELEASE-${VERSION}.md arena-dist/
           cd arena-dist
           sha256sum *.jar > SHA256SUMS.txt
       - uses: actions/upload-artifact@v4
         with:
-          name: chronicle-arena-0.2.0
+          name: chronicle-arena-preview
           path: arena-dist/*
       - name: Publish arena preview release
         env:
@@ -43,5 +43,5 @@ jobs:
           if gh release view "$TAG" >/dev/null 2>&1; then
             echo "Release already exists; keeping the published assets unchanged."
           else
-            gh release create "$TAG" arena-dist/* --target "$GITHUB_SHA" --prerelease --title "Chronicle Arena ${VERSION} - Spieltest" --notes-file mod/chronicle-arena/RELEASE-0.2.0.md
+            gh release create "$TAG" arena-dist/* --target "$GITHUB_SHA" --prerelease --title "Chronicle Arena ${VERSION} - Spieltest" --notes-file mod/chronicle-arena/RELEASE-${VERSION}.md
           fi
