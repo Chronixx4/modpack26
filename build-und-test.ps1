@@ -9,7 +9,7 @@ $ProgressPreference = 'SilentlyContinue'
 $MC      = '1.21.1'
 $LOADER  = 'neoforge'
 $PACK    = 'Chronicle'
-$PACKVER = '0.9.24'
+$PACKVER = '0.9.25'
 $RAM     = '8G'
 $TIMEOUT_MIN = 20
 
@@ -340,7 +340,7 @@ grappling-hook-mod|Grappling Hook Mod
 # Transport
 waystones|Waystones
 elevatormod|Elevator Mod
-small-ships|Small Ships
+immersive-aircraft|Immersive Aircraft
 # Deko und Bauen
 supplementaries|Supplementaries
 amendments|Amendments
@@ -356,7 +356,6 @@ handcrafted|Handcrafted
 framedblocks|FramedBlocks
 another-furniture|Another Furniture
 decocraft|Decocraft
-overwatch-plushies|Illarilover17's Overwatch Plushies!
 # Bibliotheken (fehlen auf Modrinth als Abhaengigkeit)
 irons-lib|Iron's Lib|^1\.21\.1-2
 bundle-api|Bundle API

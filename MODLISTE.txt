@@ -1,5 +1,5 @@
-﻿Chronicle 0.9.24 - Modliste
-Minecraft 1.21.1, NeoForge 21.1.256   |   324 Mods inkl. Bibliotheken   |   Stand 2026-10-10
+﻿Chronicle 0.9.25 - Modliste
+Minecraft 1.21.1, NeoForge 21.1.256   |   323 Mods inkl. Bibliotheken   |   Stand 2026-10-10
 
 == Performance und Grafik (20) ==
   All The Leaks                                  1.1.13+1.21.1-neoforge  (CurseForge)
@@ -253,17 +253,16 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   324 Mods inkl. Bibliotheken   |   Stan
 
 == Transport (3) ==
   ElevatorMod                                    neoforge-1.21.1-1.11.4
-  Small Ships                                    2.0.0-b2.1
+  Immersive Aircraft                             1.6.0+1.21.1
   Waystones                                      21.1.46+neoforge-1.21.1
 
-== Deko und Bauen (15) ==
+== Deko und Bauen (14) ==
   Amendments                                     1.21-2.1.10
   Another Furniture                              4.0.3
   Chipped                                        4.0.2
   Decocraft                                      decocraft-3.0.11-1.21.1-neoforge
   FramedBlocks                                   10.6.1
   Handcrafted                                    4.0.3
-  Illarilover17's Overwatch Plushies!            0.3.1
   Macaw's Bridges                                3.1.2
   Macaw's Doors                                  1.1.5
   Macaw's Furniture                              3.4.1
