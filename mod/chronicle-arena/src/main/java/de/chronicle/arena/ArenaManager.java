@@ -201,12 +201,16 @@ public final class ArenaManager {
         boolean addsSpawned;
         boolean won;
         int lossDelay;
-        boolean fountTexts;
         boolean started;
         int fightTicks;
         final UUID id = UUID.randomUUID();
         int lastGoal = -1;
         final Map<UUID,String> names = new HashMap<>();
+        final Map<UUID,Integer> lastDamage = new HashMap<>(),lastRegen = new HashMap<>();
+        final Map<UUID,ArenaPickups.Drop> pickups = new HashMap<>();
+        final Map<UUID,Integer> stasisUntil = new HashMap<>(),echo = new HashMap<>(),wardUntil = new HashMap<>(),runeReady = new HashMap<>();
+        final Map<UUID,Float> ward = new HashMap<>();
+        final Set<UUID> echoBusy = new HashSet<>();
         final Map<UUID,Integer> earnedStart = new HashMap<>(), rewardXp = new HashMap<>();
         final Map<UUID,Map<String,Integer>> loot = new HashMap<>();
         final Map<UUID, int[]> bless = new HashMap<>();
@@ -496,6 +500,7 @@ public final class ArenaManager {
         r.timer = END_TICKS;
         r.won = won;
         ArenaObjectives.clear(server.getLevel(DIM), r.objective);
+        ArenaPickups.clear(server.getLevel(DIM),r);
         discardMobs(server, r);
         r.queue.clear();
         for (UUID kc : r.killcamTicks.keySet()) {
@@ -604,6 +609,7 @@ public final class ArenaManager {
         if (r == null) return;
         r.bar.removeAllPlayers();
         ArenaObjectives.clear(server.getLevel(DIM), r.objective);
+        ArenaPickups.clear(server.getLevel(DIM),r);
         discardMobs(server, r);
         ServerLevel level = server.getLevel(DIM);
         if (level != null) ArenaExtras.clearFountainLabels(server, level);
@@ -808,6 +814,7 @@ public final class ArenaManager {
             r.wave = 1;
             r.powerMul = computePower(server, r);
             r.queue.add(new Spawn(r.encounter.bossEntity(), false, true));
+            ArenaPickups.spawn(level,r);ArenaPickups.spawn(level,r);
             r.bar.setName(Component.translatable("bar.chronicle_arena.boss", r.encounter.name()));
             r.bar.setColor(BossEvent.BossBarColor.RED);
             ArenaShow.title(runPlayers(server, r), ArenaShow.big("BOSSKAMPF", net.minecraft.ChatFormatting.DARK_RED),
@@ -826,6 +833,7 @@ public final class ArenaManager {
             if(r.objective.kind==2)r.objective.expectedTargets=Math.min(3,Math.max(1,r.queue.size()));
         }
         r.offer.clear();
+        ArenaPickups.spawn(level,r);ArenaPickups.spawn(level,r);
         r.event = ArenaExtras.rollEvent(level, r.wave, false);
         r.bar.setColor(r.event == ArenaExtras.EV_BLUTMOND ? BossEvent.BossBarColor.RED
                 : r.event == ArenaExtras.EV_GEWITTER ? BossEvent.BossBarColor.YELLOW
@@ -986,6 +994,14 @@ public final class ArenaManager {
             return e == null || !e.isAlive();
         });
 
+        // Timed objectives retain pressure even when the original wave is cleared.
+        if(ArenaObjectives.needsPressure(r.objective)&&r.fightTicks%80==0){
+            int count=ArenaBalance.reinforcements(r.alive.size(),r.queue.size(),r.mobs.size(),Math.min(r.maxAlive(),12+4*r.alive.size()));
+            List<ArenaDefs.Pool> pools=r.encounter.pools().stream().filter(p->p.fromWave()<=r.wave).toList();
+            if(!pools.isEmpty())for(int i=0;i<count;i++)r.queue.add(new Spawn(pools.get(level.getRandom().nextInt(pools.size())).entity(),false,false));
+            r.waveTotal=Math.max(r.waveTotal,r.queue.size()+r.mobs.size());
+        }
+        ArenaPickups.tick(level,r);
         // Nachspawnen.
         if (!r.queue.isEmpty() && tickCounter % 10 == 0) {
             int spawned = 0;
@@ -1023,7 +1039,10 @@ public final class ArenaManager {
         // Aggro halten.
         if (tickCounter % 40 == 0) {
             for (UUID id : r.mobs) {
-                if (level.getEntity(id) instanceof Mob m && (m.getTarget() == null || !m.getTarget().isAlive())) {
+                if (level.getEntity(id) instanceof Mob m) {
+                    LivingEntity beacon=ArenaObjectives.defender(level,r.objective);
+                    if(beacon!=null){m.setTarget(beacon);m.getNavigation().moveTo(beacon,1.0);continue;}
+                    if(m.getTarget()!=null&&m.getTarget().isAlive())continue;
                     ServerPlayer target = nearestAlive(server, r, m.position());
                     if (target != null) m.setTarget(target);
                 }
@@ -1040,13 +1059,10 @@ public final class ArenaManager {
                 r.bar.setName(Component.literal("Boss: " + r.encounter.name() + (remaining > 1 ? "  |  Gegner: " + remaining : "")));
             }
         }
-        if (tickCounter % 40 == 0) {
-            for (UUID id : r.alive) {
-                if (stack(r, id, ArenaShow.Blessing.REGEN) > 0 && server.getPlayerList().getPlayer(id) instanceof ServerPlayer rp) {
-                    if (stack(r, id, ArenaShow.Blessing.ARMOR) > 0 && (r.mask & MOD_NOHEAL) == 0) rp.heal(2.0F);
-                    rp.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 60,
-                            stack(r, id, ArenaShow.Blessing.REGEN) > 1 ? 1 : 0, true, false));
-                }
+        for(UUID id:r.alive){
+            int stacks=stack(r,id,ArenaShow.Blessing.REGEN);
+            if(ArenaBalance.canRegen(stacks,r.fightTicks,r.lastDamage.getOrDefault(id,-1000),r.lastRegen.getOrDefault(id,0),(r.mask&MOD_NOHEAL)!=0)){
+                ServerPlayer p=server.getPlayerList().getPlayer(id);if(p!=null)p.heal(ArenaBalance.regenAmount(stack(r,id,ArenaShow.Blessing.ARMOR)>0));r.lastRegen.put(id,r.fightTicks);
             }
         }
 
@@ -1080,6 +1096,7 @@ public final class ArenaManager {
         }
 
         ArenaObjectives.clear(level, r.objective);
+        ArenaPickups.clear(level,r);
         r.objective = null;
         r.event = ArenaExtras.EV_NONE;
         r.classes.clear();
@@ -1179,7 +1196,8 @@ public final class ArenaManager {
         if (!added) return null;
         ArenaObjectives.spawned(r.objective, le);
         if (le instanceof Mob mob) {
-            ServerPlayer target = nearestAlive(level.getServer(), r, le.position());
+            LivingEntity target = ArenaObjectives.defender(level,r.objective);
+            if(target==null)target=nearestAlive(level.getServer(),r,le.position());
             if (target != null) mob.setTarget(target);
         }
         return le;
@@ -1300,6 +1318,7 @@ public final class ArenaManager {
     private void safetyCheck(MinecraftServer server) {
         ServerLevel level = server.getLevel(DIM);
         if (level == null) return;
+        ArenaExtras.deduplicateBoard(level);
         for (ServerPlayer p : level.players()) {
             if (p.isCreative() && !p.isSpectator()) continue;
             boolean inRun = run != null && run.involves(p.getUUID());
@@ -1342,7 +1361,19 @@ public final class ArenaManager {
     }
 
     @SubscribeEvent
+    public void onTarget(net.neoforged.neoforge.event.entity.living.LivingChangeTargetEvent event){
+        if(run!=null&&run.mobs.contains(event.getEntity().getUUID())&&event.getEntity().level() instanceof ServerLevel level){LivingEntity beacon=ArenaObjectives.defender(level,run.objective);if(beacon!=null)event.setNewAboutToBeSetTarget(beacon);}
+    }
+    @SubscribeEvent
+    public void onPickup(net.neoforged.neoforge.event.entity.player.ItemEntityPickupEvent.Pre event){
+        if(event.getItemEntity().getTags().contains("chronicle_arena_pickup"))event.setCanPickup(net.neoforged.neoforge.common.util.TriState.FALSE);
+    }
+    @SubscribeEvent
     public void onIncomingDamage(LivingIncomingDamageEvent event) {
+        if(run!=null&&run.objective!=null&&event.getEntity().getUUID().equals(run.objective.defender)){
+            if(event.getSource().getEntity()!=null&&run.mobs.contains(event.getSource().getEntity().getUUID()))ArenaObjectives.strike(run.objective,event.getSource().getEntity().getUUID(),event.getAmount());
+            event.setCanceled(true);return;
+        }
         if (run != null && run.mobs.contains(event.getEntity().getUUID())
                 && event.getSource().getEntity() instanceof ServerPlayer attacker && run.alive.contains(attacker.getUUID())) {
             int fire = stack(run, attacker.getUUID(), ArenaShow.Blessing.FLARE);
@@ -1366,6 +1397,8 @@ public final class ArenaManager {
             }
             return;
         }
+        if(event.getAmount()>0)r.lastDamage.put(sp.getUUID(),r.fightTicks);
+        event.setAmount(ArenaPickups.shield(r,sp,event.getAmount()));
         if ((r.mask & MOD_GLASS) != 0) event.setAmount(event.getAmount() * 2.0F);
         if (event.getAmount() >= sp.getHealth() + sp.getAbsorptionAmount()
                 && !event.getSource().is(DamageTypes.GENERIC_KILL)) {
@@ -1432,9 +1465,10 @@ public final class ArenaManager {
     @SubscribeEvent
     public void onDamageDone(net.neoforged.neoforge.event.entity.living.LivingDamageEvent.Post event) {
         Run r = run;
-        if (r == null || event.getEntity() instanceof Player || event.getEntity().level().dimension() != DIM) return;
+        if (r == null || !r.mobs.contains(event.getEntity().getUUID()) || event.getEntity().level().dimension() != DIM) return;
         if (event.getSource().getEntity() instanceof ServerPlayer p && r.alive.contains(p.getUUID())) {
             r.stat(p.getUUID())[0] += Math.round(event.getNewDamage());
+            if(event.getNewDamage()>0)ArenaPickups.echo(p.serverLevel(),r,p,event.getEntity());
             int embers = stack(r, p.getUUID(), ArenaShow.Blessing.EMBER);
             if (embers > 0) event.getEntity().igniteForSeconds(2.0F + embers);
             int glut = ArenaSmith.level(p, ArenaSmith.GLUT);
@@ -1830,6 +1864,12 @@ public final class ArenaManager {
         }
     }
 
+    public static boolean useRune(ServerPlayer p,int kind){
+        Run r=run;
+        if(r==null||p.level().dimension()!=DIM||!r.alive.contains(p.getUUID())||(r.state!=State.WAVE&&r.state!=State.BOSS)||kind<0||kind>2){p.sendSystemMessage(Component.literal("Runen sind nur im laufenden Arena-Kampf verwendbar."));return false;}
+        if(r.runeReady.getOrDefault(p.getUUID(),0)>r.fightTicks)return false;
+        r.runeReady.put(p.getUUID(),r.fightTicks+80);ArenaPickups.activate(r,p,kind);return true;
+    }
     public static void pick(ServerPlayer p,ArenaNet.Pick choice){
         Run r=run;
         if(r!=null && r.id.equals(choice.run()) && r.wave==choice.wave()) chooseBlessing(p,choice.slot());

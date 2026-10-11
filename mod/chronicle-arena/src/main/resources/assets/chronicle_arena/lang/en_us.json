@@ -61,5 +61,9 @@
   "block.chronicle_arena.arena_holo_shop": "Shop-Holo-Fenster",
   "gui.chronicle_arena.cat_kosmetik": "Kosmetik",
   "gui.chronicle_arena.pick": "Waehle ein Angebot",
-  "msg.chronicle_arena.wave_tokens": "Welle %s geschafft: +%s Coins"
+  "msg.chronicle_arena.wave_tokens": "Welle %s geschafft: +%s Coins",
+  "item.chronicle_arena.rune_stasis": "Stasis-Rune",
+  "item.chronicle_arena.rune_echo": "Echo-Rune",
+  "item.chronicle_arena.rune_ward": "Runenschild",
+  "gui.chronicle_arena.cat_runen": "Runen"
 }

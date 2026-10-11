@@ -20,10 +20,11 @@ public final class ArenaNet {
     private static int count(FriendlyByteBuf b,int max){int n=b.readVarInt();if(n<0||n>max)throw new IllegalArgumentException("Invalid arena list size");return n;}
     private static void strings(FriendlyByteBuf b,List<String> list,int max){if(list.size()>max)throw new IllegalArgumentException("Arena list too large");b.writeVarInt(list.size());for(String s:list)b.writeUtf(s,512);}
     private static List<String> strings(FriendlyByteBuf b,int max){int n=count(b,max);List<String> out=new ArrayList<>();for(int i=0;i<n;i++)out.add(b.readUtf(512));return List.copyOf(out);}
-    public record Battle(boolean active,String phase,int wave,int total,int enemies,int revives,String goal,int progress,int target,int seconds) implements CustomPacketPayload {
+    public record Battle(boolean active,String phase,int wave,int total,int enemies,int revives,String goal,int progress,int target,int seconds,int objectiveHealth,int objectiveMaxHealth,String pickups) implements CustomPacketPayload {
         public static final Type<Battle> TYPE=new Type<>(ChronicleArena.id("battle"));
-        public static final Battle EMPTY=new Battle(false,"",0,0,0,0,"",0,0,0);
-        public static final StreamCodec<FriendlyByteBuf,Battle> CODEC=StreamCodec.of((b,p)->{b.writeBoolean(p.active);b.writeUtf(p.phase,128);b.writeVarInt(p.wave);b.writeVarInt(p.total);b.writeVarInt(p.enemies);b.writeVarInt(p.revives);b.writeUtf(p.goal,256);b.writeVarInt(p.progress);b.writeVarInt(p.target);b.writeVarInt(p.seconds);},b->new Battle(b.readBoolean(),b.readUtf(128),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readUtf(256),b.readVarInt(),b.readVarInt(),b.readVarInt()));
+        public static final Battle EMPTY=new Battle(false,"",0,0,0,0,"",0,0,0,0,0,"");
+        public static final StreamCodec<FriendlyByteBuf,Battle> CODEC=StreamCodec.of((b,p)->{b.writeBoolean(p.active);b.writeUtf(p.phase,128);b.writeVarInt(p.wave);b.writeVarInt(p.total);b.writeVarInt(p.enemies);b.writeVarInt(p.revives);b.writeUtf(p.goal,256);b.writeVarInt(p.progress);b.writeVarInt(p.target);b.writeVarInt(p.seconds);b.writeVarInt(p.objectiveHealth);b.writeVarInt(p.objectiveMaxHealth);b.writeUtf(p.pickups,128);},b->new Battle(b.readBoolean(),b.readUtf(128),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readUtf(256),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readUtf(128)));
+        public Battle withPickups(String value){return new Battle(active,phase,wave,total,enemies,revives,goal,progress,target,seconds,objectiveHealth,objectiveMaxHealth,value);}
         public Type<Battle> type(){return TYPE;}
     }
     public record BlessInfo(String name,String description,String icon,int stacks,String synergy) {}

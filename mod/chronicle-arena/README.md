@@ -1,5 +1,9 @@
 # Chronicle Arena
 
+## Update 0.3.1
+
+Siegertafel korrigiert, Beacon-Verteidigung mit Leben und Verstaerkung, Regeneration abgeschwaecht, Recovery mit Hunger/Timer und drei neue Runen auf der Karte und im Shop. Details: [RELEASE-0.3.1.md](RELEASE-0.3.1.md).
+
 ## Update 0.3.0
 
 Fuenf wechselnde Zielarten, Kampf-HUD, Segen-Karten und Ergebnisfenster. Details und Installation: [RELEASE-0.3.0.md](RELEASE-0.3.0.md).
