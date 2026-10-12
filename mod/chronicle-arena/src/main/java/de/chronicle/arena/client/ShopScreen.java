@@ -18,7 +18,7 @@ import java.util.Map;
  * Der Mauszeiger zeigt den vollen Item-Tooltip (Verzauberungen, Werte).
  */
 public class ShopScreen extends Screen {
-    private static final String[] CATEGORIES = {"verbrauch", "waffen", "ruestung", "werkzeug", "material", "magie", "kosmetik"};
+    private static final String[] CATEGORIES = {"verbrauch", "waffen", "ruestung", "werkzeug", "material", "magie", "kosmetik", "runen"};
     private static final int COLS = 6;
     private static final int ROWS = 5;
     private static final int SLOT = 20;
@@ -87,7 +87,7 @@ public class ShopScreen extends Screen {
                 page = 0;
                 selected = null;
                 updateButtons();
-            }).bounds(left + 6, top + 36 + i * 22, 84, 20).build();
+            }).bounds(left + 6, top + 36 + i * 20, 84, 18).build();
             tabButtons.add(addRenderableWidget(b));
         }
         prevButton = addRenderableWidget(Button.builder(Component.literal("<"), b -> {
@@ -102,7 +102,7 @@ public class ShopScreen extends Screen {
             if (selected != null) PacketDistributor.sendToServer(new Net.Buy(selected.id()));
         }).bounds(left + 98 + COLS * SLOT + 14, top + 196, 108, 20).build());
         addRenderableWidget(Button.builder(Component.translatable("gui.chronicle_arena.close"), b -> onClose())
-                .bounds(left + 6, top + 36 + CATEGORIES.length * 22 + 6, 84, 20).build());
+                .bounds(left + 6, top + 36 + CATEGORIES.length * 20 + 6, 84, 20).build());
         updateButtons();
     }
 

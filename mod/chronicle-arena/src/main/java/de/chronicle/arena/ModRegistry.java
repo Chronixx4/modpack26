@@ -62,6 +62,10 @@ public final class ModRegistry {
 
     public static final DeferredItem<BlockItem> SHOP_ITEM = ITEMS.registerSimpleBlockItem(SHOP);
 
+    public static final DeferredItem<ArenaRuneItem> STASIS = ITEMS.register("rune_stasis",()->new ArenaRuneItem(0));
+    public static final DeferredItem<ArenaRuneItem> ECHO = ITEMS.register("rune_echo",()->new ArenaRuneItem(1));
+    public static final DeferredItem<ArenaRuneItem> WARD = ITEMS.register("rune_ward",()->new ArenaRuneItem(2));
+
     public static final DeferredItem<Item> TOKEN = ITEMS.registerSimpleItem("arena_token", new Item.Properties().rarity(Rarity.RARE));
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> TAB = TABS.register("main",
@@ -73,6 +77,7 @@ public final class ModRegistry {
                         out.accept(TERMINAL_ITEM.get());
                         out.accept(SHOP_ITEM.get());
                         out.accept(TOKEN.get());
+                        out.accept(STASIS.get());out.accept(ECHO.get());out.accept(WARD.get());
                     })
                     .build());
 

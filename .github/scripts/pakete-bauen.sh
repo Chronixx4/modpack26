@@ -28,7 +28,7 @@ OWN="$OUT/eigene-mods" && rm -rf "$OWN" && mkdir -p "$OWN"
 for d in "$ROOT"/mod/*/; do
   [ -f "$d/build.gradle" ] || continue
   echo "  baue eigene Mod $(basename "$d") ..."
-  gradle --no-daemon -q -p "$d" build -x test >&2
+  gradle --no-daemon -q -p "$d" clean build >&2
   cp "$d"/build/libs/*.jar "$OWN/"
 done
 

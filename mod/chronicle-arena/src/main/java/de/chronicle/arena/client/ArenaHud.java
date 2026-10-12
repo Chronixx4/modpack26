@@ -25,13 +25,38 @@ public final class ArenaHud {
         event.registerAboveAll(ChronicleArena.id("hud"), (gfx, delta) -> draw(gfx));
     }
 
+    private static void drawBattle(GuiGraphics g,Font f,de.chronicle.arena.ArenaNet.Battle b){
+        int w=Math.min(220,g.guiWidth()-130);if(w<100)return;
+        int x=g.guiWidth()-w-6,y=40;
+        int goalLines=b.goal().isEmpty()?0:f.split(net.minecraft.network.chat.Component.literal(b.goal()),w-12).size();
+        int pickupLines=b.pickups().isEmpty()?0:f.split(net.minecraft.network.chat.Component.literal(b.pickups()),w-12).size();
+        int h=48+(goalLines==0?0:goalLines*10+30)+(b.objectiveMaxHealth()>0?24:0)+(pickupLines>0?pickupLines*10+5:0);
+        g.fill(x-1,y-1,x+w+1,y+h+1,0xFF9B5CFF);g.fillGradient(x,y,x+w,y+h,0xD0201638,0xD00B0914);
+        g.drawString(f,b.phase()+" | "+(b.total()==0?"Welle "+b.wave():"Welle "+b.wave()+"/"+b.total()),x+6,y+5,0xFFD700);
+        g.drawString(f,"Gegner: "+b.enemies(),x+6,y+18,0xFFFFFF);
+        g.drawString(f,"Wiederbelebungen: "+b.revives(),x+6,y+31,0x7FE0FF);
+        int bottom=y+48;
+        if(goalLines>0){
+            int gy=y+47;g.drawWordWrap(f,net.minecraft.network.chat.Component.literal(b.goal()),x+6,gy,w-12,0xFFFFFF);gy+=goalLines*10;
+            boolean complete=b.progress()>=b.target();
+            g.drawString(f,b.progress()+"/"+b.target()+(complete?" - Erledigt": " | "+b.seconds()+" s"),x+6,gy,complete?0x55FF55:b.seconds()<20?0xFF7777:0xFFD700);
+            g.fill(x+6,gy+12,x+w-6,gy+16,0xFF322448);int fill=(int)((w-12)*Math.clamp(b.progress()/(double)Math.max(1,b.target()),0,1));g.fill(x+6,gy+12,x+6+fill,gy+16,complete?0xFF55FF55:0xFF9B5CFF);
+            bottom=gy+23;
+        }
+        if(b.objectiveMaxHealth()>0){
+            g.drawString(f,"Beacon: "+b.objectiveHealth()+"/"+b.objectiveMaxHealth()+" LP",x+6,bottom,b.objectiveHealth()<=30?0xFF7777:0x55FF55);
+            g.fill(x+6,bottom+12,x+w-6,bottom+16,0xFF322448);int hp=(int)((w-12)*Math.clamp(b.objectiveHealth()/(double)b.objectiveMaxHealth(),0,1));g.fill(x+6,bottom+12,x+6+hp,bottom+16,0xFF55CC77);bottom+=24;
+        }
+        if(pickupLines>0)g.drawWordWrap(f,net.minecraft.network.chat.Component.literal(b.pickups()),x+6,bottom,w-12,0x7FE0FF);
+    }
     private static void draw(GuiGraphics g) {
         Minecraft mc = Minecraft.getInstance();
         Net.Stats s = ClientState.stats;
-        if (s == null || mc.level == null || mc.player == null || mc.options.hideGui) return;
+        if (mc.level == null || mc.player == null || mc.options.hideGui) return;
         if (mc.level.dimension() != ArenaManager.DIM) return;
         if (mc.getDebugOverlay().showDebugScreen()) return;
         Font f = mc.font;
+        if(s==null){var b=ClientState.battle;if(b!=null&&b.active()&&System.nanoTime()-ClientState.battleReceived<3_000_000_000L)drawBattle(g,f,b);return;}
 
         // Links: Konto.
         int x = 6;
@@ -60,20 +85,25 @@ public final class ArenaHud {
         if (!perks.isEmpty()) {
             int py = y + h + 6;
             int pw = 112;
-            int ph = 12 + Math.min(perks.size(), 14) * 9 + 3;
+            int maxPerks=Math.max(0,Math.min(14,(g.guiHeight()-py-55)/9));
+            int ph = 12 + Math.min(perks.size(), maxPerks) * 9 + 3 + (perks.size()>maxPerks?11:0);
             g.fill(x - 1, py - 1, x + pw + 1, py + ph + 1, 0xFF6B4BB0);
             g.fillGradient(x, py, x + pw, py + ph, 0xC0201638, 0xC00B0914);
             g.drawString(f, "Verstaerkungen", x + 3, py + 2, 0xFFE0B8FF);
             int ky = py + 13;
             int shown = 0;
             for (String k : perks) {
-                if (shown++ >= 14) break;
+                if (shown++ >= maxPerks) break;
                 boolean smith = k.startsWith("S ");
                 g.drawString(f, f.plainSubstrByWidth(k.substring(2), pw - 8), x + 4, ky, smith ? 0xFFFFD36B : 0xFF7FE0FF);
                 ky += 9;
             }
+            if(perks.size()>maxPerks)g.drawString(f,"Mehr: /arena segen",x+4,ky,0xFFAAAAAA);
         }
 
+        // During combat, the goal panel takes the leaderboard's place.
+        var battle=ClientState.battle;
+        if(battle!=null&&battle.active()&&System.nanoTime()-ClientState.battleReceived<3_000_000_000L){drawBattle(g,f,battle);return;}
         // Rechts: Rangliste.
         List<Net.BoardLine> board = s.board();
         if (board.isEmpty()) return;

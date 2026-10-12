@@ -9,7 +9,7 @@ $ProgressPreference = 'SilentlyContinue'
 $MC      = '1.21.1'
 $LOADER  = 'neoforge'
 $PACK    = 'Chronicle'
-$PACKVER = '0.9.27'
+$PACKVER = '0.9.28'
 $RAM     = '8G'
 $TIMEOUT_MIN = 20
 
@@ -25,7 +25,7 @@ New-Item -ItemType Directory -Force -Path $Work, $Cache, $CfDir | Out-Null
 # CurseForge-Mods automatisch aus dem Download-Ordner holen (falls dort vorhanden)
 $dl = Join-Path $env:USERPROFILE 'Downloads'
 $cfPatterns = @('*twilightforest*1.21.1*.jar','ExtendedAE-1.21-*neoforge*.jar','ars_elemental-1.21.1-*.jar','ars_technica-1.21.1-*.jar',
-                '*ftb*quests*2101*.jar','*ftb*library*2101*.jar','*ftb*teams*2101*.jar','*ftbbackups2*neoforge*.jar','AE2NetworkAnalyzer-1.21-*neoforge*.jar','allthemodium-*_mc_1.21.1.jar','alltheleaks-*neoforge*.jar','minebohrer-*neoforge*.jar')
+                '*ftb*quests*2101*.jar','*ftb*library*2101*.jar','*ftb*teams*2101*.jar','*ftbbackups2*neoforge*.jar','AE2NetworkAnalyzer-1.21-*neoforge*.jar','allthemodium-*_mc_1.21.1.jar','alltheleaks-*neoforge*.jar','minebohrer-*neoforge*.jar','buildinggadgets2-*.jar','xycraft_core-*.jar','xycraft_world-*.jar','xycraft_machines-*.jar')
 if (Test-Path $dl) {
   foreach ($pat in $cfPatterns) {
     $hit = Get-ChildItem -Path $dl -Filter $pat -ErrorAction SilentlyContinue | Where-Object { $_.Name -notmatch 'fabric' } | Sort-Object LastWriteTime | Select-Object -Last 1
@@ -162,12 +162,14 @@ simple-voice-chat|Simple Voice Chat
 kubejs|KubeJS
 skills|Pufferfish's Skills
 # Lagerung und Rucksaecke
+toms-storage|Tom's Simple Storage Mod|^1\.21-2\.4\.2$
 sophisticated-backpacks|Sophisticated Backpacks
 sophisticated-storage|Sophisticated Storage
 storagedrawers|Storage Drawers
 travelersbackpack|Traveler's Backpack
 sophisticated-storage-create-integration|Sophisticated Storage Create Integration
 # Magie
+mahou-tsukai|Mahou Tsukai|^1\.36\.27$
 ars-nouveau|Ars Nouveau
 ars-additions|Ars Additions
 ars-elemental|Ars Elemental
@@ -259,6 +261,7 @@ integrated-dynamics|Integrated Dynamics
 pipez|Pipez
 refined-storage|Refined Storage
 # Ressourcen und Landwirtschaft
+gensokyo-delight-youkais-feasts|Gensokyo Delight ~ Youkais' Feasts|^1\.1\.1$
 mystical-agriculture|Mystical Agriculture
 productivebees|Productive Bees
 farmers-delight|Farmer's Delight
@@ -270,6 +273,7 @@ tide|Tide 2
 serene-seasons|Serene Seasons
 l_enders-cataclysm-delight|L_Ender 's Cataclysm Delight
 # Dimensionen
+mekanism-ad-astra-ores|Mekanism: Ad Astra Ores|^1\.1\.0$
 the-twilight-forest|The Twilight Forest
 aether|The Aether
 deeper-and-darker|Deeper and Darker
@@ -365,6 +369,7 @@ structure-pool-api|Structure Pool API
 polylib|PolyLib
 atlas-api|Atlas Api
 runiclib|RunicLib
+familiarslib|Familiarslib
 '@
 $ModList = @($ModListRaw -split "`r?`n" | Where-Object { $_ -match '\|' })
 $catOf = [ordered]@{}   # Name aus der Liste -> Kategorie
@@ -373,11 +378,10 @@ foreach ($l in ($ModListRaw -split "`r?`n")) {
   if ($l -match '^#\s*(.+)$') { $curCat = $Matches[1].Trim() }
   elseif ($l -match '\|') { $catOf[$l.Split('|')[1].Trim()] = $curCat }
 }
-familiarslib|Familiarslib
 # Kategorien der CurseForge-Jars (Dateiname -> Kategorie)
 $cfCat = [ordered]@{
   'twilightforest' = 'Dimensionen'; 'ExtendedAE' = 'AE2 und Technik'; 'AE2NetworkAnalyzer' = 'AE2 und Technik'
-  'ars_' = 'Magie'; 'ftb' = 'Multiplayer, Quests und Verwaltung'; 'allthemodium' = 'Dimensionen'; 'alltheleaks' = 'Performance und Grafik'; 'minebohrer' = 'Ressourcen und Landwirtschaft'
+  'ars_' = 'Magie'; 'ftb' = 'Multiplayer, Quests und Verwaltung'; 'allthemodium' = 'Dimensionen'; 'alltheleaks' = 'Performance und Grafik'; 'minebohrer' = 'Ressourcen und Landwirtschaft'; 'buildinggadgets2' = 'Deko und Bauen'; 'xycraft_machines' = 'AE2 und Technik'; 'xycraft_world' = 'Ressourcen und Landwirtschaft'; 'xycraft_core' = 'Bibliotheken (werden automatisch gebraucht)'
 }
 
 $vq = '?loaders=' + [uri]::EscapeDataString('["neoforge"]') + '&game_versions=' + [uri]::EscapeDataString('["1.21.1"]')
@@ -516,6 +520,30 @@ if ($cfJars.Count -gt 0) {
   foreach ($j in $cfJars) { Copy-Item -LiteralPath $j.FullName $ov -Force }
   Say "  $($cfJars.Count) CurseForge-Mods aus dem Ordner curseforge-mods mit eingepackt"
 }
+# Eigene Mods: gepinnte Release-JAR passend zur Quellversion in beide Seiten aufnehmen.
+$ownJars = @()
+foreach ($project in (Get-ChildItem -LiteralPath (Join-Path $Root 'mod') -Directory)) {
+  $propsPath = Join-Path $project.FullName 'gradle.properties'
+  if (-not (Test-Path -LiteralPath $propsPath)) { continue }
+  $props = [IO.File]::ReadAllText($propsPath)
+  if ($props -notmatch '(?m)^mod_version=(.+)$') { throw "mod_version fehlt: $propsPath" }
+  $ownVersion = $Matches[1].Trim()
+  $ownJar = Join-Path $Root ("pack/local-mods/" + $project.Name + "-" + $ownVersion + ".jar")
+  if (-not (Test-Path -LiteralPath $ownJar)) { throw "Eigene Release-JAR fehlt: $ownJar" }
+  $sums = [IO.File]::ReadAllLines((Join-Path $Root 'pack/local-mods/SHA256SUMS.txt'))
+  $ownName = [IO.Path]::GetFileName($ownJar)
+  $sumLine = @($sums | Where-Object { $_ -match ('^[0-9a-fA-F]{64}  ' + [regex]::Escape($ownName) + '$') })
+  if ($sumLine.Count -ne 1) { throw "Pruefsumme fehlt: $ownName" }
+  $expectedHash = $sumLine[0].Substring(0, 64)
+  if ((Get-FileHash -LiteralPath $ownJar -Algorithm SHA256).Hash -ne $expectedHash) { throw "Pruefsumme falsch: $ownName" }
+  $ownJars += Get-Item -LiteralPath $ownJar
+}
+if ($ownJars.Count -gt 0) {
+  $ov = Join-Path $packDir 'overrides\mods'
+  New-Item -ItemType Directory -Force -Path $ov | Out-Null
+  foreach ($j in $ownJars) { Copy-Item -LiteralPath $j.FullName $ov -Force }
+  Say "  $($ownJars.Count) eigene Mods in Client und Server eingepackt"
+}
 # Lokale Client-Mods separat in die Modrinth-Datei aufnehmen (nie auf den Server).
 $localClientJars = @(Get-ChildItem -LiteralPath (Join-Path $Root 'pack\client-mods') -Filter *.jar -ErrorAction SilentlyContinue)
 if ($localClientJars.Count -gt 0) {
@@ -571,8 +599,8 @@ foreach ($e in $picked.Values) {
   elseif ($envOf[$e.project.id].server -eq 'unsupported') { $note = '  (nur Client)' }
   $groups[$g].Add(("  {0,-46} {1}{2}" -f $e.project.title, $e.version.version_number, $note))
 }
-foreach ($j in $cfJars) {
-  $g = 'Sonstiges'
+foreach ($j in @($cfJars) + @($ownJars)) {
+  $g = if ($ownJars.FullName -contains $j.FullName) { 'Mobs und Bosse' } else { 'Sonstiges' }
   foreach ($k in $cfCat.Keys) { if ($j.Name -like "$k*") { $g = $cfCat[$k]; break } }
   if (-not $groups.Contains($g)) { $groups[$g] = New-Object System.Collections.Generic.List[string] }
   # Name und Version aus META-INF/neoforge.mods.toml in der Jar lesen
@@ -588,7 +616,8 @@ foreach ($j in $cfJars) {
     $zip.Dispose()
   } catch {}
   if (-not $ver) { $ver = [IO.Path]::GetFileNameWithoutExtension($j.Name) }
-  $groups[$g].Add(("  {0,-46} {1}  (CurseForge)" -f $title, $ver))
+  $originNote = if ($ownJars.FullName -contains $j.FullName) { "  (eigene Mod)" } else { "  (CurseForge)" }
+  $groups[$g].Add(("  {0,-46} {1}{2}" -f $title, $ver, $originNote))
 }
 # Namen/Versionen der lokalen Client-Mods aus den JAR-Metadaten lesen.
 foreach ($j in $localClientJars) {
@@ -606,7 +635,7 @@ foreach ($j in $localClientJars) {
   } finally { $zip.Dispose() }
 }
 $ml = New-Object System.Collections.Generic.List[string]
-$total = $picked.Count + $cfJars.Count + $localClientJars.Count
+$total = $picked.Count + $cfJars.Count + $localClientJars.Count + $ownJars.Count
 $ml.Add("$PACK $PACKVER - Modliste")
 $ml.Add("Minecraft $MC, NeoForge $nf   |   $total Mods inkl. Bibliotheken   |   Stand $(Get-Date -Format 'yyyy-MM-dd')")
 foreach ($g in $groups.Keys) {
@@ -669,7 +698,7 @@ foreach ($f in $files) {
   $serverMods++
 }
 Say "  $serverMods Mods im Testserver (reine Client-Mods wie Sodium oder Karten werden serverseitig ausgelassen)"
-foreach ($j in $cfJars) { Copy-Item -LiteralPath $j.FullName (Join-Path $Server 'mods') -Force; $serverMods++ }
+foreach ($j in @($cfJars) + @($ownJars)) { Copy-Item -LiteralPath $j.FullName (Join-Path $Server 'mods') -Force; $serverMods++ }
 if (Test-Path -LiteralPath $cfgSrc) { Copy-Item -LiteralPath $cfgSrc $Server -Recurse -Force }
 if (Test-Path -LiteralPath $kjsSrc) { Copy-Item -LiteralPath $kjsSrc $Server -Recurse -Force }
 if (Test-Path -LiteralPath $dcfSrc) { Copy-Item -LiteralPath $dcfSrc $Server -Recurse -Force }

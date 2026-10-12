@@ -18,6 +18,8 @@ import java.util.List;
 public class TerminalScreen extends Screen {
     private static final int[] TIER_COLORS = {0xCD7F32, 0xC0C0C0, 0xFFD700, 0xB366FF};
 
+    private static String lastEncounter = "", lastTier = "";
+    private static int lastMask, lastArena;
     private final Net.OpenTerminal data;
     private boolean bossMode;
     private int encIndex;
@@ -68,12 +70,17 @@ public class TerminalScreen extends Screen {
         }).bounds(lx, y, w, 20).build());
         encButton = addRenderableWidget(Button.builder(Component.empty(), b -> {
             List<Net.EncInfo> list = current();
-            if (!list.isEmpty()) encIndex = (encIndex + 1) % list.size();
-            refresh();
+            minecraft.setScreen(new EncounterScreen(this, list, id -> {
+                for (int i = 0; i < list.size(); i++) if (list.get(i).id().equals(id)) encIndex = i;
+            }));
         }).bounds(lx, y + 24, w, 20).build());
         tierButton = addRenderableWidget(Button.builder(Component.empty(), b -> {
-            if (!data.tiers().isEmpty()) tierIndex = (tierIndex + 1) % data.tiers().size();
-            refresh();
+            List<Net.EncInfo> options = new ArrayList<>();
+            for (Net.TierInfo t : data.tiers()) options.add(new Net.EncInfo(t.id(), false,
+                    t.name() + (t.locked() ? " [Gesperrt]" : ""), t.desc() + " | " + t.info(), "minecraft:gold_ingot"));
+            minecraft.setScreen(new EncounterScreen(this, options, id -> {
+                for (int i = 0; i < data.tiers().size(); i++) if (data.tiers().get(i).id().equals(id)) tierIndex = i;
+            }));
         }).bounds(lx, y + 48, w, 20).build());
         arenaButton = addRenderableWidget(Button.builder(Component.empty(), b -> {
             arenaChoice = (arenaChoice + 1) % 4;
@@ -89,13 +96,24 @@ public class TerminalScreen extends Screen {
         }
         challengeButton = addRenderableWidget(Button.builder(Component.literal("Tages-Challenge waehlen"), b -> applyChallenge())
                 .bounds(rx, y + 100, w, 20).build());
-        startButton = addRenderableWidget(Button.builder(Component.translatable("gui.chronicle_arena.start"), b -> send(false))
+        startButton = addRenderableWidget(Button.builder(Component.literal("Vorbereiten"), b -> send(false))
                 .bounds(lx, y + 158, 106, 20).build());
         addRenderableWidget(Button.builder(Component.translatable("gui.chronicle_arena.spectate"), b -> send(true))
                 .bounds(lx + 111, y + 158, 106, 20).build()).active = data.running();
         addRenderableWidget(Button.builder(Component.translatable("gui.chronicle_arena.close"), b -> onClose())
                 .bounds(lx + 222, y + 158, 98, 20).build());
+        if (data.admin()) addRenderableWidget(Button.builder(Component.literal("Admin-Panel"), b ->
+                PacketDistributor.sendToServer(new Net.Control("admin"))).bounds(lx, y - 42, 92, 20).build());
+        addRenderableWidget(Button.builder(Component.literal("Letzte Auswahl"), b -> restoreLast()).bounds(rx + 46, y - 42, 104, 20).build()).active = !lastEncounter.isEmpty();
         refresh();
+    }
+
+    private void restoreLast() {
+        for (Net.EncInfo e : data.encounters()) if (e.id().equals(lastEncounter)) bossMode = e.boss();
+        List<Net.EncInfo> list = current();
+        for (int i = 0; i < list.size(); i++) if (list.get(i).id().equals(lastEncounter)) encIndex = i;
+        for (int i = 0; i < data.tiers().size(); i++) if (data.tiers().get(i).id().equals(lastTier)) tierIndex = i;
+        mask = lastMask; arenaChoice = lastArena; refresh();
     }
 
     private void applyChallenge() {
@@ -136,13 +154,14 @@ public class TerminalScreen extends Screen {
         Net.ChallengeInfo ch = data.challenge();
         challengeButton.active = !ch.encounter().isEmpty();
         challengeButton.setMessage(Component.literal(ch.claimed() ? "Tages-Challenge (heute erledigt)" : "Tages-Challenge waehlen"));
-        startButton.active = !data.running() && !list.isEmpty() && t != null && !t.locked();
+        startButton.active = !data.running() && !list.isEmpty() && t != null && !t.locked() && !(bossMode && t.id().endsWith(":abgrund"));
     }
 
     private void send(boolean spectate) {
         List<Net.EncInfo> list = current();
         String enc = list.isEmpty() ? "" : list.get(Math.min(encIndex, list.size() - 1)).id();
         Net.TierInfo t = tier();
+        if (!spectate) { lastEncounter = enc; lastTier = t == null ? "" : t.id(); lastMask = mask; lastArena = arenaChoice; }
         PacketDistributor.sendToServer(new Net.Action(spectate, enc, t == null ? "" : t.id(), mask | (arenaChoice << 4)));
         onClose();
     }
@@ -201,7 +220,7 @@ public class TerminalScreen extends Screen {
 
         // Rechts: Hinweise zu Modifikatoren und Tages-Challenge.
         int bonus = bonusPercent();
-        gfx.drawString(this.font, Component.literal(bonus == 0 ? "Coins-Bonus: keiner" : "Coins-Bonus: +" + bonus + "%"), rx, top + 124,
+        gfx.drawString(this.font, Component.literal(bonus == 0 ? "Coins: " + data.coinPercent() + "%" : "Coins: " + data.coinPercent() + "% / Bonus +" + bonus + "%"), rx, top + 124,
                 bonus == 0 ? 0x999999 : 0xFFD700);
         Net.ChallengeInfo ch = data.challenge();
         if (!ch.encounter().isEmpty()) {
@@ -214,6 +233,8 @@ public class TerminalScreen extends Screen {
                 ly += 10;
             }
         }
+        if (encButton.isHovered() && !list.isEmpty()) gfx.renderTooltip(this.font, this.font.split(Component.literal(list.get(Math.min(encIndex, list.size()-1)).desc()), 240), mouseX, mouseY);
+        if (tierButton.isHovered() && t != null) gfx.renderTooltip(this.font, this.font.split(Component.literal(t.desc() + " | " + t.info()), 240), mouseX, mouseY);
         // Tooltip fuer Modifikatoren.
         for (int i = 0; i < modButtons.size(); i++) {
             if (modButtons.get(i).isHovered()) {
