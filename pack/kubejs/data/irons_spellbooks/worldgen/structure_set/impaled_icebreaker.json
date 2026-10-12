@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "irons_spellbooks:impaled_icebreaker",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 87959402,
+    "spacing": 107,
+    "separation": 71,
+    "type": "minecraft:random_spread"
+  }
+}

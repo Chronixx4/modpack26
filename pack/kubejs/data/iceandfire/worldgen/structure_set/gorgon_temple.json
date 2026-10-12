@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 76489509,
+    "separation": 17,
+    "spacing": 44
+  },
+  "structures": [
+    {
+      "structure": "iceandfire:gorgon_temple",
+      "weight": 1
+    }
+  ]
+}

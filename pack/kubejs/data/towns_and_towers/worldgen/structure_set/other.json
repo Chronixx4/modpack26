@@ -1,0 +1,18 @@
+{
+  "structures": [
+    {
+      "structure": "towns_and_towers:mimic_desert",
+      "weight": 1
+    },
+    {
+      "structure": "towns_and_towers:wreckage_ocean",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 213742069,
+    "spacing": 46,
+    "separation": 23,
+    "type": "minecraft:random_spread"
+  }
+}

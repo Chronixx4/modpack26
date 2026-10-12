@@ -1,0 +1,26 @@
+{
+  "structures": [
+    {
+      "structure": "repurposed_structures:igloo_grassy",
+      "weight": 1
+    },
+    {
+      "structure": "repurposed_structures:igloo_stone",
+      "weight": 1
+    },
+    {
+      "structure": "repurposed_structures:igloo_mangrove",
+      "weight": 1
+    },
+    {
+      "structure": "repurposed_structures:igloo_mushroom",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "repurposed_structures:advanced_random_spread",
+    "salt": 626760262,
+    "spacing": 54,
+    "separation": 27
+  }
+}

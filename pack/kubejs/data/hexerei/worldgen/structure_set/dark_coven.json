@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "hexerei:dark_coven",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 2124767140,
+    "spacing": 42,
+    "separation": 16,
+    "type": "minecraft:random_spread"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 14200531,
+    "separation": 17,
+    "spacing": 44
+  },
+  "structures": [
+    {
+      "structure": "iceandfire:mausoleum",
+      "weight": 1
+    }
+  ]
+}

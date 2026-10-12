@@ -1,0 +1,43 @@
+{
+  "structures": [
+    {
+      "structure": "repurposed_structures:mansion_birch",
+      "weight": 1
+    },
+    {
+      "structure": "repurposed_structures:mansion_oak",
+      "weight": 1
+    },
+    {
+      "structure": "repurposed_structures:mansion_taiga",
+      "weight": 1
+    },
+    {
+      "structure": "repurposed_structures:mansion_jungle",
+      "weight": 1
+    },
+    {
+      "structure": "repurposed_structures:mansion_savanna",
+      "weight": 1
+    },
+    {
+      "structure": "repurposed_structures:mansion_snowy",
+      "weight": 1
+    },
+    {
+      "structure": "repurposed_structures:mansion_desert",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "repurposed_structures:advanced_random_spread",
+    "salt": 507461062,
+    "spacing": 338,
+    "separation": 165,
+    "spread_type": "triangular",
+    "super_exclusion_zone": {
+      "chunk_count": 4,
+      "other_set": "#repurposed_structures:mansion_avoid"
+    }
+  }
+}

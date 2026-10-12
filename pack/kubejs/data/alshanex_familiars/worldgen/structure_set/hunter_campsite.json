@@ -1,0 +1,18 @@
+{
+  "structures": [
+    {
+      "structure": "alshanex_familiars:hunter_campsite",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 8493762,
+    "spacing": 57,
+    "separation": 15,
+    "type": "minecraft:random_spread",
+    "exclusion_zone": {
+      "chunk_count": 7,
+      "other_set": "minecraft:villages"
+    }
+  }
+}

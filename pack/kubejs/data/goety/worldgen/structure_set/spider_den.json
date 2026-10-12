@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "goety:spider_den",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1357997531,
+    "spacing": 85,
+    "separation": 29,
+    "type": "minecraft:random_spread"
+  }
+}

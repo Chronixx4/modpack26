@@ -1,5 +1,5 @@
-﻿Chronicle 0.9.26 - Modliste
-Minecraft 1.21.1, NeoForge 21.1.256   |   324 Mods inkl. Bibliotheken   |   Stand 2026-10-11
+﻿Chronicle 0.9.27 - Modliste
+Minecraft 1.21.1, NeoForge 21.1.256   |   324 Mods inkl. Bibliotheken   |   Stand 2026-10-12
 
 == Performance und Grafik (20) ==
   All The Leaks                                  1.1.13+1.21.1-neoforge  (CurseForge)
