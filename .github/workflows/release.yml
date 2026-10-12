@@ -11,7 +11,7 @@ on:
     paths: ['pack/modrinth.index.json']
     tags: ['v*']
   pull_request:
-    paths: ['pack/**', 'curseforge-mods/**', 'mod/**', 'MODLISTE.txt', '.github/**']
+    paths: ['pack/**', 'curseforge-mods/**', 'mod/**', 'MODLISTE.txt', '.github/**', 'tools/strukturdichte.py']
   workflow_dispatch:
 
 permissions:
@@ -55,6 +55,10 @@ jobs:
       - name: Pakete bauen
         if: steps.ver.outputs.exists != 'true'
         run: bash .github/scripts/pakete-bauen.sh dist
+
+      - name: Strukturdichte pruefen
+        if: steps.ver.outputs.exists != 'true'
+        run: python3 tools/strukturdichte.py --mods dist/cache --check
 
       - name: Servertest
         if: steps.ver.outputs.exists != 'true'

@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "goety:buried_ritual",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1432101234,
+    "spacing": 49,
+    "separation": 12,
+    "type": "minecraft:random_spread"
+  }
+}

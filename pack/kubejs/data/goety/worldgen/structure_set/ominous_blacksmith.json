@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "goety:ominous_blacksmith",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1246886421,
+    "spacing": 85,
+    "separation": 29,
+    "type": "minecraft:random_spread"
+  }
+}

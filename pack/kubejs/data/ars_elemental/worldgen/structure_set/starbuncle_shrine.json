@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "ars_elemental:starbuncle_shrine",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 294539046,
+    "spacing": 142,
+    "separation": 71,
+    "type": "minecraft:random_spread"
+  }
+}

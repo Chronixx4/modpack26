@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "born_in_chaos_v1:clown_caravan_plains",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 170,
+    "separation": 12,
+    "salt": 809257424
+  }
+}

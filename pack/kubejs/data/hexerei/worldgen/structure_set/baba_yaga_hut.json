@@ -1,0 +1,18 @@
+{
+  "structures": [
+    {
+      "structure": "hexerei:baba_yaga_hut",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 4297827934,
+    "spacing": 142,
+    "separation": 135,
+    "type": "minecraft:random_spread",
+    "exclusion_zone": {
+      "chunk_count": 10,
+      "other_set": "hexerei:nature_coven"
+    }
+  }
+}

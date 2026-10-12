@@ -33,7 +33,7 @@ Kommunikation mit dem Nutzer: Deutsch, locker, kurz.
   - `pack/config/` landet in `overrides/config` (.mrpack) bzw. `config/` (beide ZIPs) und im lokalen Testserver. Der Servertest gibt die Zeile `Questbuch: Loaded ... quests` aus.
 - **Webseite:** `site/index.html` (statisch, Netlify-Projekt `chronicle-modpack`, Tabs Uebersicht/Guide/Skilltree/Modliste/Changelog; Item-Icons in `site/img/items/`). `python3 tools/seite_aktualisieren.py` schreibt `site/modliste.json` aus `MODLISTE.txt` und setzt die Mod-Anzahl in `index.html`, nach jedem Build mitlaufen lassen und committen. Von Hand bleiben Changelog, Questzahlen und Guide-Rezepte in `index.html`. `netlify.toml` setzt `site/` als Veroeffentlichungsordner.
 - CurseForge-Jars holt das Skript automatisch aus `%USERPROFILE%\Downloads` (Dateinamen-Muster in `$cfPatterns`).
-- Aktuelle Version: **PACKVER 0.9.26**. Bei jeder Änderung `$PACKVER` hochzählen.
+- Aktuelle Version: **PACKVER 0.9.27**. Bei jeder Änderung `$PACKVER` hochzählen.
 
 ## Mods, die nur auf CurseForge sind (liegen in curseforge-mods\ bzw. Downloads)
 Alle für 1.21.1 NeoForge. Download-URL-Schema: `https://www.curseforge.com/minecraft/mc-mods/<slug>/download/<fileId>`
@@ -148,3 +148,5 @@ CurseForge blockt Downloads per Skript, auch über die interne `/api/v1`. Diese 
 Artifact „Modpack-Bauplan 1.21.1“ auf claude.ai (Checkliste mit 143 Mods nach Kategorien). Die maßgebliche Liste ist aber `$ModList` in `build-und-test.ps1`.
 
 - 0.9.26: Eigene Keybind Overview 1.0.0 (324 Mods). Aktueller Build aus Marvins KeybindOverview-Projekt mit Suche, Filtern und kompakter Ansicht. Lokale reine Client-JARs liegen in `pack/client-mods`; beide Builder kopieren sie nach `client-overrides/mods` der .mrpack, der Release-Builder auch in die Client-ZIP. Kein Einbau in Server-ZIP/Testserver. Aufruf ueber die Tastenbelegungsseite; K ist auch vom Skilltree belegt und kann im Spiel neu zugewiesen werden.
+
+- 0.9.27: Strukturdichte in der Oberwelt reduziert (159 Structure-Sets, 25 Namensraeume). WDA/Seven Seas etwa -75 %, ausgewaehlte Strukturpakete -55 bis -60 %, normale Zusatzbauten etwa -50 %, Boss-Orte etwa -45 %. Keine Mods entfernt; Waystones, Doerfer und andere Dimensionen bleiben erhalten. Overrides unter pack/kubejs/data; Profil, Ausnahmen und Pflege in pack/strukturdichte.md und tools/strukturdichte.py. Die Release-Action prueft sie gegen die gepinnten JARs. Wirkt nur in neuen Chunks.
