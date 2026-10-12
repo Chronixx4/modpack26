@@ -7,6 +7,22 @@ import net.minecraft.client.Minecraft;
 public final class ClientHooks {
     private ClientHooks() {}
 
+    public static void battle(de.chronicle.arena.ArenaNet.Battle payload){ClientState.battle=payload;ClientState.battleReceived=System.nanoTime();}
+    public static void blessings(de.chronicle.arena.ArenaNet.Blessings payload){
+        var mc=Minecraft.getInstance();
+        if(mc.screen instanceof BlessingScreen screen){
+            if(screen.choosing()&&payload.offers().isEmpty()&&!payload.popup())mc.setScreen(null);
+            else screen.update(payload);
+        }else if(payload.popup())mc.setScreen(new BlessingScreen(payload));
+    }
+    public static void result(de.chronicle.arena.ArenaNet.Result payload){Minecraft.getInstance().setScreen(new ResultScreen(payload));}
+    public static void openParty(Net.OpenParty payload) {
+        var mc = Minecraft.getInstance();
+        if (payload.members().isEmpty()) { if (mc.screen instanceof PartyScreen) mc.setScreen(null); return; }
+        if (mc.screen instanceof PartyScreen screen) screen.update(payload);
+        else if (payload.popup()) mc.setScreen(new PartyScreen(payload));
+    }
+    public static void openAdmin(Net.OpenAdmin payload) { Minecraft.getInstance().setScreen(new AdminScreen(payload)); }
     public static void openTerminal(Net.OpenTerminal payload) {
         Minecraft.getInstance().setScreen(new TerminalScreen(payload));
     }

@@ -156,7 +156,7 @@ public final class ArenaManager {
 
     // ------------------------------------------------------------------ Run
 
-    private enum State { PREP, WAVE, BOSS, ENDING }
+    enum State { PREP, WAVE, BOSS, ENDING }
 
     static final class Spawn {
         final ResourceLocation entity;
@@ -201,9 +201,18 @@ public final class ArenaManager {
         boolean addsSpawned;
         boolean won;
         int lossDelay;
-        boolean fountTexts;
         boolean started;
         int fightTicks;
+        final UUID id = UUID.randomUUID();
+        int lastGoal = -1;
+        final Map<UUID,String> names = new HashMap<>();
+        final Map<UUID,Integer> lastDamage = new HashMap<>(),lastRegen = new HashMap<>();
+        final Map<UUID,ArenaPickups.Drop> pickups = new HashMap<>();
+        final Map<UUID,Integer> stasisUntil = new HashMap<>(),echo = new HashMap<>(),wardUntil = new HashMap<>(),runeReady = new HashMap<>();
+        final Map<UUID,Float> ward = new HashMap<>();
+        final Set<UUID> echoBusy = new HashSet<>();
+        final Map<UUID,Integer> earnedStart = new HashMap<>(), rewardXp = new HashMap<>();
+        final Map<UUID,Map<String,Integer>> loot = new HashMap<>();
         final Map<UUID, int[]> bless = new HashMap<>();
         List<ArenaShow.Blessing> offer = new ArrayList<>();
         final Set<UUID> picked = new HashSet<>();
@@ -216,6 +225,10 @@ public final class ArenaManager {
         final Map<UUID, UUID> killcamTarget = new HashMap<>();
         final Map<UUID, Integer> killcamTicks = new HashMap<>();
         int event;
+        int coinPercent = 100, goalInterval = 3;
+        boolean goalsEnabled = true;
+        double adminHealth = 1, adminDamage = 1;
+        ArenaObjectives.Objective objective;
         final Map<UUID, Integer> classes = new HashMap<>();
         final long[] fountainReady = new long[4];
         final long[] trapReady = new long[8];
@@ -291,11 +304,13 @@ public final class ArenaManager {
 
     public static void openTerminal(ServerPlayer sp) {
         if (sp.level().dimension() != DIM) return;
+        if (ArenaParty.exists()) { ArenaParty.show(sp); return; }
         List<Net.TierInfo> tiers = new ArrayList<>();
         for (ArenaDefs.Tier t : ArenaDefs.tiers()) {
             int wins = wins(sp, t.id());
             int best = best(sp, t.id());
             String info = wins == 0 ? "" : Component.translatable("gui.chronicle_arena.tier_info", wins, formatTime(best)).getString();
+            info += " | " + (int)Math.round(t.tokens() * ArenaSettings.get(sp.server).coins / 100.0) + " Coins (Boss x2), " + t.xp() + " XP, Stufenbeute";
             boolean locked = !unlocked(sp, t);
             if (locked) {
                 ArenaDefs.Tier req = ArenaDefs.tier(t.requires());
@@ -319,9 +334,9 @@ public final class ArenaManager {
         Challenge ch = dailyChallenge();
         Net.ChallengeInfo chi = ch == null ? new Net.ChallengeInfo("", "", 0, true, 0, "")
                 : new Net.ChallengeInfo(ch.encounter().id().toString(), ch.tier().id().toString(), ch.mask(),
-                ArenaStats.challengeDay(sp) == ch.day(), ch.bonus(),
+                ArenaStats.challengeDay(sp) == ch.day(), (int)Math.round(ch.bonus() * ArenaSettings.get(sp.server).coins / 100.0),
                 ch.encounter().name() + " / " + ch.tier().name() + " / " + modNames(ch.mask()));
-        PacketDistributor.sendToPlayer(sp, new Net.OpenTerminal(run != null, status, tiers, encs, mods, chi));
+        PacketDistributor.sendToPlayer(sp, new Net.OpenTerminal(run != null || ArenaParty.exists(), status, tiers, encs, mods, chi, sp.hasPermissions(2), ArenaSettings.get(sp.server).coins));
         sendStats(sp);
     }
 
@@ -405,10 +420,14 @@ public final class ArenaManager {
             }
         }
         int choice = (action.mask() >> 4) & 3;
-        startRun(sp.server, enc, tier, group, action.mask() & 15, choice == 0 ? variantFor(enc.theme()) : choice - 1);
+        ArenaParty.propose(sp, enc, tier, group, action.mask() & 15, choice == 0 ? variantFor(enc.theme()) : choice - 1);
     }
 
     // ------------------------------------------------------------------ Start und Ende
+
+    static void startPrepared(MinecraftServer server, ArenaDefs.Encounter enc, ArenaDefs.Tier tier, List<ServerPlayer> group, int mask, int variant) {
+        if (run == null && !group.isEmpty() && group.stream().allMatch(p -> inLobby(p) && unlocked(p, tier))) startRun(server, enc, tier, group, mask, variant);
+    }
 
     private static void startRun(MinecraftServer server, ArenaDefs.Encounter enc, ArenaDefs.Tier tier, List<ServerPlayer> group, int mask, int variant) {
         ServerLevel level = server.getLevel(DIM);
@@ -416,9 +435,15 @@ public final class ArenaManager {
         ArenaBuilder.ensureBuilt(level);
         ArenaBuilder.ensureArena(level, centerFor(variant), variant);
         Run r = new Run(enc, tier, group.size(), mask, variant);
+        ArenaSettings settings = ArenaSettings.get(server);
+        r.coinPercent = settings.coins; r.goalsEnabled = settings.goals; r.goalInterval = settings.goalInterval;
+        r.timer = settings.prepSeconds * 20;
+        r.adminHealth = settings.health / 100.0; r.adminDamage = settings.damage / 100.0;
         run = r;
         int i = 0;
         for (ServerPlayer p : group) {
+            r.names.put(p.getUUID(),p.getGameProfile().getName());
+            r.earnedStart.put(p.getUUID(),ArenaStats.earned(p));
             rememberMode(p);
             p.setGameMode(GameType.SURVIVAL);
             p.setHealth(p.getMaxHealth());
@@ -457,6 +482,7 @@ public final class ArenaManager {
         r.alive.remove(sp.getUUID());
         r.spectators.add(sp.getUUID());
         r.fallen.put(sp.getUUID(), sp.position());
+        PacketDistributor.sendToPlayer(sp,new ArenaNet.Blessings(r.id,r.wave,List.of(),List.of(),0,false));
         sp.setGameMode(GameType.SPECTATOR);
         sp.setHealth(sp.getMaxHealth());
         sp.clearFire();
@@ -473,6 +499,8 @@ public final class ArenaManager {
         r.state = State.ENDING;
         r.timer = END_TICKS;
         r.won = won;
+        ArenaObjectives.clear(server.getLevel(DIM), r.objective);
+        ArenaPickups.clear(server.getLevel(DIM),r);
         discardMobs(server, r);
         r.queue.clear();
         for (UUID kc : r.killcamTicks.keySet()) {
@@ -489,6 +517,7 @@ public final class ArenaManager {
             ServerPlayer p = server.getPlayerList().getPlayer(id);
             if (p == null || level == null) continue;
             ArenaShow.clear(p);
+            PacketDistributor.sendToPlayer(p,new ArenaNet.Blessings(r.id,r.wave,List.of(),List.of(),0,false));
             if (won) {
                 recordWin(p, r);
                 ArenaShow.title(List.of(p), ArenaShow.big("SIEG!", net.minecraft.ChatFormatting.GOLD),
@@ -502,8 +531,10 @@ public final class ArenaManager {
                 ArenaShow.title(List.of(p), ArenaShow.big("NIEDERLAGE", net.minecraft.ChatFormatting.DARK_RED),
                         Component.literal("Welle " + r.wave + " erreicht").withStyle(net.minecraft.ChatFormatting.GRAY), 10, 60, 20);
                 p.sendSystemMessage(Component.translatable("msg.chronicle_arena.lost"));
+                sendStats(p);
             }
         }
+        ArenaPresentation.snapshot(server,r);
     }
 
     private static void endlessResult(ServerPlayer p, ServerLevel level, Run r) {
@@ -521,11 +552,11 @@ public final class ArenaManager {
                 LootParams params = new LootParams.Builder(level)
                         .withParameter(LootContextParams.ORIGIN, p.position())
                         .create(LootContextParamSets.CHEST);
-                for (ItemStack stack : table.getRandomItems(params)) ItemHandlerHelper.giveItemToPlayer(p, stack);
+                for (ItemStack stack : table.getRandomItems(params)) { ArenaPresentation.loot(r,p,stack); ItemHandlerHelper.giveItemToPlayer(p, stack); }
             }
             p.sendSystemMessage(Component.literal("Abgrund-Beute: " + rolls + " Kisten fuer " + reached + " Wellen."));
         }
-        if (r.tier.xp() > 0 && reached > 0) p.giveExperiencePoints(r.tier.xp() * reached / 10);
+        if (r.tier.xp() > 0 && reached > 0) { int xp=r.tier.xp()*reached/10; p.giveExperiencePoints(xp); r.rewardXp.put(p.getUUID(),xp); }
         ArenaStats.publish(p);
         sendStats(p);
     }
@@ -543,17 +574,18 @@ public final class ArenaManager {
                         .withParameter(LootContextParams.ORIGIN, p.position())
                         .create(LootContextParamSets.CHEST);
                 for (ItemStack stack : table.getRandomItems(params)) {
+                    ArenaPresentation.loot(r,p,stack);
                     ItemHandlerHelper.giveItemToPlayer(p, stack);
                 }
             }
         }
-        if (tier.xp() > 0) p.giveExperiencePoints(tier.xp());
-        int coins = (int) Math.round(tier.tokens() * (r.encounter.boss() ? 2 : 1) * coinMult(r.mask));
+        if (tier.xp() > 0) { p.giveExperiencePoints(tier.xp()); r.rewardXp.put(p.getUUID(),tier.xp()); }
+        int coins = (int) Math.round(tier.tokens() * (r.encounter.boss() ? 2 : 1) * coinMult(r.mask) * r.coinPercent / 100.0);
         Challenge ch = dailyChallenge();
         if (ch != null && ch.encounter() == r.encounter && ch.tier() == r.tier && ch.mask() == r.mask
                 && ArenaStats.challengeDay(p) != ch.day()) {
             ArenaStats.setChallengeDay(p, ch.day());
-            coins += ch.bonus();
+            coins += (int) Math.round(ch.bonus() * r.coinPercent / 100.0);
             p.sendSystemMessage(Component.literal("Tages-Challenge geschafft: +" + ch.bonus() + " Bonus-Coins!"));
         }
         if (coins > 0) {
@@ -576,6 +608,8 @@ public final class ArenaManager {
         run = null;
         if (r == null) return;
         r.bar.removeAllPlayers();
+        ArenaObjectives.clear(server.getLevel(DIM), r.objective);
+        ArenaPickups.clear(server.getLevel(DIM),r);
         discardMobs(server, r);
         ServerLevel level = server.getLevel(DIM);
         if (level != null) ArenaExtras.clearFountainLabels(server, level);
@@ -584,9 +618,15 @@ public final class ArenaManager {
         for (UUID id : all) {
             ServerPlayer p = server.getPlayerList().getPlayer(id);
             if (p == null || level == null || p.level().dimension() != DIM) continue;
+            p.setCamera(p);
+            ArenaShow.clear(p);
             restoreMode(p);
             p.setHealth(p.getMaxHealth());
             teleport(p, level, LOBBY.getX() + 0.5, LOBBY.getY(), LOBBY.getZ() + 5.5, 180.0F);
+            PacketDistributor.sendToPlayer(p,ArenaNet.Battle.EMPTY);
+            sendStats(p);
+            if(r.state==State.ENDING && r.participants.contains(id)) ArenaPresentation.show(p);
+            else PacketDistributor.sendToPlayer(p,new ArenaNet.Blessings(r.id,r.wave,List.of(),List.of(),0,false));
         }
         LOGGER.info("Arena-Run beendet ({})", r.won ? "Sieg" : "Niederlage");
     }
@@ -633,6 +673,8 @@ public final class ArenaManager {
         Run r = run;
         if (r == null) return;
         ArenaShow.clear(sp);
+        PacketDistributor.sendToPlayer(sp,ArenaNet.Battle.EMPTY);
+        PacketDistributor.sendToPlayer(sp,new ArenaNet.Blessings(r.id,r.wave,List.of(),List.of(),0,false));
         if (r.state != State.ENDING) ArenaShow.stopMusic(List.of(sp));
         boolean wasAlive = r.alive.remove(sp.getUUID());
         r.spectators.remove(sp.getUUID());
@@ -648,8 +690,10 @@ public final class ArenaManager {
     public void onServerTick(ServerTickEvent.Post event) {
         MinecraftServer server = event.getServer();
         tickCounter++;
+        ArenaParty.tick(server);
         Run r = run;
         if (r != null) tickRun(server, r);
+        if (run != null && tickCounter % 10 == 0) ArenaPresentation.sync(server,run);
         if (tickCounter % 20 == 0) safetyCheck(server);
         if (tickCounter % 20 == 7) for (ServerPlayer sm : server.getPlayerList().getPlayers()) ArenaSmith.apply(sm);
         if (tickCounter % 4 == 0) trails(server);
@@ -727,12 +771,13 @@ public final class ArenaManager {
                                 if (lazy != null && !r.picked.contains(id)) chooseBlessing(lazy, 1 + level.getRandom().nextInt(r.offer.size()));
                             }
                         } else if (r.offerWait % 20 == 0) {
+                            for(UUID id:r.alive){ServerPlayer bp=server.getPlayerList().getPlayer(id);if(bp!=null)openBlessings(bp,false);}
                             StringBuilder waiting = new StringBuilder();
                             for (UUID id : r.alive) {
                                 ServerPlayer wp = server.getPlayerList().getPlayer(id);
                                 if (wp != null && !r.picked.contains(id)) waiting.append(waiting.length() > 0 ? ", " : "").append(wp.getGameProfile().getName());
                             }
-                            actionbar(server, r, Component.literal("Segen waehlen (Chat anklicken oder /arena segen 1-" + r.offer.size() + ")  |  Warte auf: " + waiting)
+                            actionbar(server, r, Component.literal("Segen waehlen (Menue: /arena segen, alternativ /arena segen 1-" + r.offer.size() + ")  |  Warte auf: " + waiting)
                                     .withStyle(net.minecraft.ChatFormatting.AQUA));
                         }
                         break;
@@ -769,6 +814,7 @@ public final class ArenaManager {
             r.wave = 1;
             r.powerMul = computePower(server, r);
             r.queue.add(new Spawn(r.encounter.bossEntity(), false, true));
+            ArenaPickups.spawn(level,r);ArenaPickups.spawn(level,r);
             r.bar.setName(Component.translatable("bar.chronicle_arena.boss", r.encounter.name()));
             r.bar.setColor(BossEvent.BossBarColor.RED);
             ArenaShow.title(runPlayers(server, r), ArenaShow.big("BOSSKAMPF", net.minecraft.ChatFormatting.DARK_RED),
@@ -781,7 +827,13 @@ public final class ArenaManager {
         buildWave(level, r);
         r.waveTotal = Math.max(1, r.queue.size());
         r.powerMul = computePower(server, r);
+        r.objective = r.goalsEnabled && r.wave % r.goalInterval == 0 ? ArenaObjectives.begin(level, r.center, r.lastGoal) : null;
+        if(r.objective!=null){
+            r.lastGoal=r.objective.kind;
+            if(r.objective.kind==2)r.objective.expectedTargets=Math.min(3,Math.max(1,r.queue.size()));
+        }
         r.offer.clear();
+        ArenaPickups.spawn(level,r);ArenaPickups.spawn(level,r);
         r.event = ArenaExtras.rollEvent(level, r.wave, false);
         r.bar.setColor(r.event == ArenaExtras.EV_BLUTMOND ? BossEvent.BossBarColor.RED
                 : r.event == ArenaExtras.EV_GEWITTER ? BossEvent.BossBarColor.YELLOW
@@ -942,6 +994,14 @@ public final class ArenaManager {
             return e == null || !e.isAlive();
         });
 
+        // Timed objectives retain pressure even when the original wave is cleared.
+        if(ArenaObjectives.needsPressure(r.objective)&&r.fightTicks%80==0){
+            int count=ArenaBalance.reinforcements(r.alive.size(),r.queue.size(),r.mobs.size(),Math.min(r.maxAlive(),12+4*r.alive.size()));
+            List<ArenaDefs.Pool> pools=r.encounter.pools().stream().filter(p->p.fromWave()<=r.wave).toList();
+            if(!pools.isEmpty())for(int i=0;i<count;i++)r.queue.add(new Spawn(pools.get(level.getRandom().nextInt(pools.size())).entity(),false,false));
+            r.waveTotal=Math.max(r.waveTotal,r.queue.size()+r.mobs.size());
+        }
+        ArenaPickups.tick(level,r);
         // Nachspawnen.
         if (!r.queue.isEmpty() && tickCounter % 10 == 0) {
             int spawned = 0;
@@ -979,7 +1039,10 @@ public final class ArenaManager {
         // Aggro halten.
         if (tickCounter % 40 == 0) {
             for (UUID id : r.mobs) {
-                if (level.getEntity(id) instanceof Mob m && (m.getTarget() == null || !m.getTarget().isAlive())) {
+                if (level.getEntity(id) instanceof Mob m) {
+                    LivingEntity beacon=ArenaObjectives.defender(level,r.objective);
+                    if(beacon!=null){m.setTarget(beacon);m.getNavigation().moveTo(beacon,1.0);continue;}
+                    if(m.getTarget()!=null&&m.getTarget().isAlive())continue;
                     ServerPlayer target = nearestAlive(server, r, m.position());
                     if (target != null) m.setTarget(target);
                 }
@@ -996,12 +1059,10 @@ public final class ArenaManager {
                 r.bar.setName(Component.literal("Boss: " + r.encounter.name() + (remaining > 1 ? "  |  Gegner: " + remaining : "")));
             }
         }
-        if (tickCounter % 40 == 0) {
-            for (UUID id : r.alive) {
-                if (stack(r, id, ArenaShow.Blessing.REGEN) > 0 && server.getPlayerList().getPlayer(id) instanceof ServerPlayer rp) {
-                    rp.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 60,
-                            stack(r, id, ArenaShow.Blessing.REGEN) > 1 ? 1 : 0, true, false));
-                }
+        for(UUID id:r.alive){
+            int stacks=stack(r,id,ArenaShow.Blessing.REGEN);
+            if(ArenaBalance.canRegen(stacks,r.fightTicks,r.lastDamage.getOrDefault(id,-1000),r.lastRegen.getOrDefault(id,0),(r.mask&MOD_NOHEAL)!=0)){
+                ServerPlayer p=server.getPlayerList().getPlayer(id);if(p!=null)p.heal(ArenaBalance.regenAmount(stack(r,id,ArenaShow.Blessing.ARMOR)>0));r.lastRegen.put(id,r.fightTicks);
             }
         }
 
@@ -1013,11 +1074,16 @@ public final class ArenaManager {
             r.bar.setProgress(Math.max(0.0F, Math.min(1.0F, b.getHealth() / b.getMaxHealth())));
         }
 
-        boolean cleared = r.queue.isEmpty() && r.mobs.isEmpty();
+        if (r.objective != null) {
+            ArenaObjectives.tick(server, level, r.objective, r.alive, r.mobs);
+            if (tickCounter % 20 == 0) actionbar(server, r, Component.literal(ArenaObjectives.status(r.objective)));
+            if (r.objective.failed) { finish(server, false); return; }
+        }
+        boolean cleared = r.queue.isEmpty() && r.mobs.isEmpty() && (r.objective == null || r.objective.complete());
         if (!cleared) return;
 
         if (r.state == State.WAVE && r.tier.tokensPerWave() > 0) {
-            int basePerWave = (int) Math.round(r.tier.tokensPerWave() * coinMult(r.mask) * ArenaExtras.eventCoinMult(r.event));
+            int basePerWave = (int) Math.round(r.tier.tokensPerWave() * coinMult(r.mask) * ArenaExtras.eventCoinMult(r.event) * r.coinPercent / 100.0 * (r.objective == null ? 1 : 1.25));
             for (UUID id : r.alive) {
                 ServerPlayer p = server.getPlayerList().getPlayer(id);
                 if (p == null) continue;
@@ -1029,6 +1095,9 @@ public final class ArenaManager {
             }
         }
 
+        ArenaObjectives.clear(level, r.objective);
+        ArenaPickups.clear(level,r);
+        r.objective = null;
         r.event = ArenaExtras.EV_NONE;
         r.classes.clear();
         if (r.state == State.BOSS) {
@@ -1085,7 +1154,7 @@ public final class ArenaManager {
             mob.finalizeSpawn(level, level.getCurrentDifficultyAt(le.blockPosition()), MobSpawnType.EVENT, null);
             mob.setPersistenceRequired();
         }
-        double h = r.healthScale * (1.0 + 0.25 * r.extra) * r.growth(0.04, 0.06) * r.powerMul
+        double h = r.adminHealth * r.healthScale * (1.0 + 0.25 * r.extra) * r.growth(0.04, 0.06) * r.powerMul
                 * (s.mini ? (r.extra == 0 ? 1.75 : 2.5) : s.elite ? 2.0 : 1.0);
         if (s.mini) {
             double cap = switch (r.tier.order()) {
@@ -1099,7 +1168,7 @@ public final class ArenaManager {
             if (base * h > cap) h = cap / base;
         }
         scale(le, Attributes.MAX_HEALTH, h);
-        scale(le, Attributes.ATTACK_DAMAGE, r.damageScale * (1.0 + 0.08 * r.extra) * r.growth(0.02, 0.03) * (s.mini ? 1.15 : 1.0));
+        scale(le, Attributes.ATTACK_DAMAGE, r.adminDamage * r.damageScale * (1.0 + 0.08 * r.extra) * r.growth(0.02, 0.03) * (s.mini ? 1.15 : 1.0));
         if ((r.mask & MOD_SPEED) != 0) scale(le, Attributes.MOVEMENT_SPEED, 1.3);
         le.setHealth(le.getMaxHealth());
         if (s.elite || s.boss) le.setGlowingTag(true);
@@ -1125,8 +1194,10 @@ public final class ArenaManager {
         boolean added;
         try { added = level.addFreshEntity(le); } finally { spawningMob = false; }
         if (!added) return null;
+        ArenaObjectives.spawned(r.objective, le);
         if (le instanceof Mob mob) {
-            ServerPlayer target = nearestAlive(level.getServer(), r, le.position());
+            LivingEntity target = ArenaObjectives.defender(level,r.objective);
+            if(target==null)target=nearestAlive(level.getServer(),r,le.position());
             if (target != null) mob.setTarget(target);
         }
         return le;
@@ -1141,7 +1212,7 @@ public final class ArenaManager {
     }
 
     private static void scale(LivingEntity le, net.minecraft.core.Holder<net.minecraft.world.entity.ai.attributes.Attribute> attr, double factor) {
-        if (factor <= 1.0001) return;
+        if (Math.abs(factor - 1.0) <= 0.0001) return;
         AttributeInstance inst = le.getAttribute(attr);
         if (inst == null) return;
         inst.removeModifier(ChronicleArena.id("scale"));
@@ -1202,6 +1273,7 @@ public final class ArenaManager {
     private static void offerBlessings(MinecraftServer server, Run r) {
         List<ArenaShow.Blessing> all = new ArrayList<>(List.of(ArenaShow.Blessing.values()));
         java.util.Collections.shuffle(all);
+        if ((r.mask & MOD_NOHEAL) != 0) all.removeIf(b -> b == ArenaShow.Blessing.REGEN || b == ArenaShow.Blessing.VAMPIR || b == ArenaShow.Blessing.ASH);
         r.offer = new ArrayList<>(all.subList(0, 3));
         r.picked.clear();
         r.offerWait = 0;
@@ -1210,12 +1282,13 @@ public final class ArenaManager {
             if (p == null) continue;
             p.sendSystemMessage(Component.literal("Waehle einen Segen (gilt bis zum Ende des Runs):").withStyle(net.minecraft.ChatFormatting.AQUA));
             for (int i = 0; i < r.offer.size(); i++) p.sendSystemMessage(ArenaShow.offerLine(i, r.offer.get(i)));
+            openBlessings(p,true);
         }
     }
 
     private static int chooseBlessing(ServerPlayer p, int slot) {
         Run r = run;
-        if (r == null || !r.alive.contains(p.getUUID()) || r.offer.isEmpty() || r.picked.contains(p.getUUID())
+        if (r == null || r.state != State.PREP || p.level().dimension()!=DIM || !r.alive.contains(p.getUUID()) || r.offer.isEmpty() || r.picked.contains(p.getUUID())
                 || slot < 1 || slot > r.offer.size()) {
             p.sendSystemMessage(Component.literal("Gerade gibt es keinen Segen zur Auswahl."));
             return 0;
@@ -1227,6 +1300,7 @@ public final class ArenaManager {
         r.picked.add(p.getUUID());
         statsDirty.add(p.getUUID());
         if (b == ArenaShow.Blessing.LIFE) r.revives = Math.min(9, r.revives + 1);
+        openBlessings(p,false);
         p.sendSystemMessage(Component.literal("Segen: " + b.label + " (" + b.desc + ")").withStyle(net.minecraft.ChatFormatting.GOLD));
         return 1;
     }
@@ -1244,6 +1318,7 @@ public final class ArenaManager {
     private void safetyCheck(MinecraftServer server) {
         ServerLevel level = server.getLevel(DIM);
         if (level == null) return;
+        ArenaExtras.deduplicateBoard(level);
         for (ServerPlayer p : level.players()) {
             if (p.isCreative() && !p.isSpectator()) continue;
             boolean inRun = run != null && run.involves(p.getUUID());
@@ -1286,7 +1361,27 @@ public final class ArenaManager {
     }
 
     @SubscribeEvent
+    public void onTarget(net.neoforged.neoforge.event.entity.living.LivingChangeTargetEvent event){
+        if(run!=null&&run.mobs.contains(event.getEntity().getUUID())&&event.getEntity().level() instanceof ServerLevel level){LivingEntity beacon=ArenaObjectives.defender(level,run.objective);if(beacon!=null)event.setNewAboutToBeSetTarget(beacon);}
+    }
+    @SubscribeEvent
+    public void onPickup(net.neoforged.neoforge.event.entity.player.ItemEntityPickupEvent.Pre event){
+        if(event.getItemEntity().getTags().contains("chronicle_arena_pickup"))event.setCanPickup(net.neoforged.neoforge.common.util.TriState.FALSE);
+    }
+    @SubscribeEvent
     public void onIncomingDamage(LivingIncomingDamageEvent event) {
+        if(run!=null&&run.objective!=null&&event.getEntity().getUUID().equals(run.objective.defender)){
+            if(event.getSource().getEntity()!=null&&run.mobs.contains(event.getSource().getEntity().getUUID()))ArenaObjectives.strike(run.objective,event.getSource().getEntity().getUUID(),event.getAmount());
+            event.setCanceled(true);return;
+        }
+        if (run != null && run.mobs.contains(event.getEntity().getUUID())
+                && event.getSource().getEntity() instanceof ServerPlayer attacker && run.alive.contains(attacker.getUUID())) {
+            int fire = stack(run, attacker.getUUID(), ArenaShow.Blessing.FLARE);
+            int hunter = stack(run, attacker.getUUID(), ArenaShow.Blessing.HUNTER);
+            boolean ranged = event.getSource().getDirectEntity() instanceof net.minecraft.world.entity.projectile.Projectile;
+            double bonus = (event.getEntity().isOnFire() ? fire * 0.15 : 0) + (ranged ? hunter * 0.15 : 0);
+            event.setAmount((float)(event.getAmount() * (1 + bonus)));
+        }
         if (!(event.getEntity() instanceof ServerPlayer sp) || sp.level().dimension() != DIM) return;
         // Kein PvP (auch nicht per Pfeil oder Wurfwaffe).
         if (event.getSource().getEntity() instanceof Player attacker && attacker != sp) {
@@ -1302,6 +1397,8 @@ public final class ArenaManager {
             }
             return;
         }
+        if(event.getAmount()>0)r.lastDamage.put(sp.getUUID(),r.fightTicks);
+        event.setAmount(ArenaPickups.shield(r,sp,event.getAmount()));
         if ((r.mask & MOD_GLASS) != 0) event.setAmount(event.getAmount() * 2.0F);
         if (event.getAmount() >= sp.getHealth() + sp.getAbsorptionAmount()
                 && !event.getSource().is(DamageTypes.GENERIC_KILL)) {
@@ -1324,7 +1421,12 @@ public final class ArenaManager {
 
     @SubscribeEvent
     public void onRightClickBlock(net.neoforged.neoforge.event.entity.player.PlayerInteractEvent.RightClickBlock event) {
-        if (event.getLevel().dimension() != DIM || !event.getPos().equals(ArenaDecor.SMITH_ANVIL)) return;
+        if (event.getLevel().dimension() != DIM) return;
+        if (run != null && event.getEntity() instanceof ServerPlayer player && run.alive.contains(player.getUUID())
+                && ArenaObjectives.interact(player, event.getPos(), run.objective)) {
+            event.setCanceled(true); event.setCancellationResult(net.minecraft.world.InteractionResult.SUCCESS); return;
+        }
+        if (!event.getPos().equals(ArenaDecor.SMITH_ANVIL)) return;
         event.setCanceled(true);
         event.setCancellationResult(net.minecraft.world.InteractionResult.SUCCESS);
         if (!event.getLevel().isClientSide() && event.getEntity() instanceof ServerPlayer sp) ArenaSmith.open(sp);
@@ -1342,9 +1444,13 @@ public final class ArenaManager {
         LivingEntity dead = event.getEntity();
         Run r = run;
         if (r == null || dead instanceof Player || dead.level().dimension() != DIM) return;
+        ArenaObjectives.killed(r.objective, dead.getUUID());
         if (event.getSource().getEntity() instanceof ServerPlayer killer && r.alive.contains(killer.getUUID())
                 && r.mobs.contains(dead.getUUID())) {
             ArenaStats.addKill(killer);
+            if ((r.mask & MOD_NOHEAL) == 0 && dead.isOnFire() && stack(r, killer.getUUID(), ArenaShow.Blessing.ASH) > 0) {
+                killer.heal(2.0F * stack(r, killer.getUUID(), ArenaShow.Blessing.ASH));
+            }
             statsDirty.add(killer.getUUID());
             r.stat(killer.getUUID())[1]++;
         }
@@ -1359,9 +1465,12 @@ public final class ArenaManager {
     @SubscribeEvent
     public void onDamageDone(net.neoforged.neoforge.event.entity.living.LivingDamageEvent.Post event) {
         Run r = run;
-        if (r == null || event.getEntity() instanceof Player || event.getEntity().level().dimension() != DIM) return;
+        if (r == null || !r.mobs.contains(event.getEntity().getUUID()) || event.getEntity().level().dimension() != DIM) return;
         if (event.getSource().getEntity() instanceof ServerPlayer p && r.alive.contains(p.getUUID())) {
             r.stat(p.getUUID())[0] += Math.round(event.getNewDamage());
+            if(event.getNewDamage()>0)ArenaPickups.echo(p.serverLevel(),r,p,event.getEntity());
+            int embers = stack(r, p.getUUID(), ArenaShow.Blessing.EMBER);
+            if (embers > 0) event.getEntity().igniteForSeconds(2.0F + embers);
             int glut = ArenaSmith.level(p, ArenaSmith.GLUT);
             if (glut > 0) event.getEntity().igniteForSeconds(2.0F * glut);
             int vamp = stack(r, p.getUUID(), ArenaShow.Blessing.VAMPIR);
@@ -1423,6 +1532,7 @@ public final class ArenaManager {
         if (event.getEntity() instanceof ServerPlayer sp && sp.level().dimension() == DIM) {
             removeFromRun(sp);
         }
+        ArenaPresentation.forget(event.getEntity().getUUID());
     }
 
     @SubscribeEvent
@@ -1454,6 +1564,9 @@ public final class ArenaManager {
     public void onCommands(RegisterCommandsEvent event) {
         CommandDispatcher<CommandSourceStack> d = event.getDispatcher();
         d.register(Commands.literal("arena")
+                .then(Commands.literal("bereit").executes(ctx -> { ArenaParty.toggle(ctx.getSource().getPlayerOrException()); return 1; }))
+                .then(Commands.literal("gruppe").executes(ctx -> { ArenaParty.show(ctx.getSource().getPlayerOrException()); return 1; }))
+                .then(Commands.literal("admin").requires(src -> src.hasPermission(2)).executes(ctx -> { openAdmin(ctx.getSource().getPlayerOrException()); return 1; }))
                 .then(Commands.literal("leave").executes(ctx -> {
                     ServerPlayer p = ctx.getSource().getPlayerOrException();
                     if (p.level().dimension() != DIM) {
@@ -1463,7 +1576,8 @@ public final class ArenaManager {
                     leave(p);
                     return 1;
                 }))
-                .then(Commands.literal("segen").then(Commands.argument("nr", com.mojang.brigadier.arguments.IntegerArgumentType.integer(1, 3))
+                .then(Commands.literal("ergebnis").executes(ctx->{ArenaPresentation.show(ctx.getSource().getPlayerOrException());return 1;}))
+                .then(Commands.literal("segen").executes(ctx->{openBlessings(ctx.getSource().getPlayerOrException(),true);return 1;}).then(Commands.argument("nr", com.mojang.brigadier.arguments.IntegerArgumentType.integer(1, 3))
                         .executes(ctx -> chooseBlessing(ctx.getSource().getPlayerOrException(),
                                 com.mojang.brigadier.arguments.IntegerArgumentType.getInteger(ctx, "nr")))))
                 .then(Commands.literal("stats").executes(ctx -> {
@@ -1610,7 +1724,7 @@ public final class ArenaManager {
 
     // ------------------------------------------------------------------ Hilfen
 
-    private static boolean inLobby(ServerPlayer sp) {
+    static boolean inLobby(ServerPlayer sp) {
         double dx = sp.getX() - (LOBBY.getX() + 0.5);
         double dz = sp.getZ() - (LOBBY.getZ() + 0.5);
         return dx * dx + dz * dz <= (LOBBY_RADIUS + 2) * (LOBBY_RADIUS + 2) && sp.getY() > 40;
@@ -1748,5 +1862,73 @@ public final class ArenaManager {
         } else if (sp.isSpectator()) {
             sp.setGameMode(GameType.SURVIVAL);
         }
+    }
+
+    public static boolean useRune(ServerPlayer p,int kind){
+        Run r=run;
+        if(r==null||p.level().dimension()!=DIM||!r.alive.contains(p.getUUID())||(r.state!=State.WAVE&&r.state!=State.BOSS)||kind<0||kind>2){p.sendSystemMessage(Component.literal("Runen sind nur im laufenden Arena-Kampf verwendbar."));return false;}
+        if(r.runeReady.getOrDefault(p.getUUID(),0)>r.fightTicks)return false;
+        r.runeReady.put(p.getUUID(),r.fightTicks+80);ArenaPickups.activate(r,p,kind);return true;
+    }
+    public static void pick(ServerPlayer p,ArenaNet.Pick choice){
+        Run r=run;
+        if(r!=null && r.id.equals(choice.run()) && r.wave==choice.wave()) chooseBlessing(p,choice.slot());
+    }
+    public static void openBlessings(ServerPlayer p,boolean popup){
+        Run r=run;
+        if(r==null||p.level().dimension()!=DIM||!r.involves(p.getUUID()))return;
+        List<ArenaNet.BlessInfo> offers=new ArrayList<>(),active=new ArrayList<>();
+        int[] stacks=r.bless.getOrDefault(p.getUUID(),new int[ArenaShow.Blessing.values().length]);
+        for(ArenaShow.Blessing b:ArenaShow.Blessing.values())if(stacks[b.ordinal()]>0)active.add(blessInfo(b,stacks));
+        if(r.state==State.PREP&&r.alive.contains(p.getUUID())&&!r.picked.contains(p.getUUID()))for(ArenaShow.Blessing b:r.offer)offers.add(blessInfo(b,stacks));
+        PacketDistributor.sendToPlayer(p,new ArenaNet.Blessings(r.id,r.wave,offers,active,Math.max(0,(2400-r.offerWait+19)/20),popup));
+    }
+    private static ArenaNet.BlessInfo blessInfo(ArenaShow.Blessing b,int[] stacks){
+        String icon=switch(b){case POWER->"iron_sword";case VITALITY->"golden_apple";case SWIFT->"feather";case ARMOR->"iron_chestplate";case REGEN->"glistering_melon_slice";case GOLD->"gold_ingot";case VAMPIR->"redstone";case LIFE->"totem_of_undying";case EMBER->"blaze_powder";case FLARE->"fire_charge";case ASH->"coal";case HUNTER->"bow";};
+        String synergy=switch(b){
+            case EMBER->"Passt zu Flammenjaeger / Asche";
+            case FLARE,ASH->stacks[ArenaShow.Blessing.EMBER.ordinal()]>0?"Synergie mit deiner Glut aktiv":"Passt zu Glut";
+            case ARMOR->stacks[ArenaShow.Blessing.REGEN.ordinal()]>0?"Synergie mit deiner Regeneration aktiv":"Passt zu Regeneration";
+            case REGEN->stacks[ArenaShow.Blessing.ARMOR.ordinal()]>0?"Synergie mit deiner Panzerung aktiv":"Passt zu Panzerung";
+            case HUNTER->stacks[ArenaShow.Blessing.VAMPIR.ordinal()]>0?"Mehr Schaden verbessert deinen Vampir":"Passt zu Vampir";
+            case VAMPIR->"Profitiert von Kraft / Scharfschuetze";
+            default->"";
+        };
+        return new ArenaNet.BlessInfo(b.label,b.desc,"minecraft:"+icon,stacks[b.ordinal()],synergy);
+    }
+    public static void control(ServerPlayer p, Net.Control control) {
+        switch (control.action()) {
+            case "ready" -> ArenaParty.toggle(p);
+            case "cancel" -> ArenaParty.cancel(p);
+            case "decline" -> ArenaParty.decline(p);
+            case "admin" -> openAdmin(p);
+            case "blessings" -> openBlessings(p,true);
+        }
+    }
+    public static void openAdmin(ServerPlayer p) {
+        if (!p.hasPermissions(2)) return;
+        ArenaSettings s = ArenaSettings.get(p.server);
+        PacketDistributor.sendToPlayer(p, new Net.OpenAdmin(s.health, s.damage, s.coins, s.prepSeconds, s.goalInterval, s.goals,
+                run == null ? "Kein Kampf aktiv" : "Kampf: " + run.encounter.name() + " / Welle " + run.wave));
+    }
+    public static void adminChange(ServerPlayer p, Net.AdminChange change) {
+        if (!p.hasPermissions(2)) return;
+        if (change.stop()) { ArenaParty.clear(p.server, "Vom Admin abgebrochen."); if (run != null) endRun(p.server); }
+        else {
+            ArenaSettings s = ArenaSettings.get(p.server);
+            s.health = ArenaSettings.clamp(change.health(),25,300); s.damage = ArenaSettings.clamp(change.damage(),25,300);
+            s.coins = ArenaSettings.clamp(change.coins(),0,300); s.prepSeconds = ArenaSettings.clamp(change.prep(),3,60);
+            s.goalInterval = ArenaSettings.clamp(change.interval(),2,10); s.goals = change.goals(); s.setDirty();
+            p.sendSystemMessage(Component.literal("Arena-Einstellungen gespeichert. Gelten fuer neue Kaempfe."));
+        }
+        LOGGER.info("Arena-Admin {}: {}", p.getGameProfile().getName(), change);
+        openAdmin(p);
+    }
+    @SubscribeEvent public void onStopping(net.neoforged.neoforge.event.server.ServerStoppingEvent event) {
+        ArenaParty.clear(event.getServer(), "Server wird beendet.");
+        if (run != null) endRun(event.getServer());
+    }
+    @SubscribeEvent public void onStopped(net.neoforged.neoforge.event.server.ServerStoppedEvent event) {
+        run = null; ArenaPresentation.clear(); ArenaParty.clear(event.getServer(), "Server beendet."); statsDirty.clear(); tickCounter = 0;
     }
 }

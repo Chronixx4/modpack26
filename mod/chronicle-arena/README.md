@@ -1,10 +1,26 @@
 # Chronicle Arena
 
+## Update 0.3.1
+
+Siegertafel korrigiert, Beacon-Verteidigung mit Leben und Verstaerkung, Regeneration abgeschwaecht, Recovery mit Hunger/Timer und drei neue Runen auf der Karte und im Shop. Details: [RELEASE-0.3.1.md](RELEASE-0.3.1.md).
+
+## Update 0.3.0
+
+Fuenf wechselnde Zielarten, Kampf-HUD, Segen-Karten und Ergebnisfenster. Details und Installation: [RELEASE-0.3.0.md](RELEASE-0.3.0.md).
+Segen-Auswahl/Uebersicht: `/arena segen`; letztes Ergebnis in der Lobby: `/arena ergebnis`.
+
+## Update 0.2.0
+
+Gruppenbereitschaft, durchsuchbare Begegnungen/Stufen, Zielwellen, Segen-Synergien und OP-Admin-Panel.
+Installation, neue Bedienung und Teststatus: [RELEASE-0.2.0.md](RELEASE-0.2.0.md).
+OP-Einstellungen: `/arena admin`; Gruppenmenue: `/arena gruppe`; Bereitschaft: `/arena bereit`.
+Server und Clients muessen dieselbe Arena-Version verwenden.
+
 Eigene NeoForge-Mod (MC 1.21.1): Arena-Dimension mit Portal, Bosskaempfen und Monsterwellen.
 
 - **Portal** (`chronicle_arena:arena_portal`, Rezept: 4 Obsidian, 4 Diamant, Enderauge) per Rechtsklick in die Lobby, dort zurueck.
 - **Terminal** in der Lobby: Modus (Wellen/Boss), Begegnung, Stufe, Starten oder Zuschauen.
-- Es gibt genau eine Arena. Beim Start kaempfen alle mit, die in der Lobby stehen; wer spaeter kommt, schaut zu. Gefallene werden zu Zuschauern. Befehl `/arena leave`, Op: `/arena stop`.
+- Es gibt genau eine Arena. Die Lobby-Gruppe bestaetigt ihre Teilnahme vor dem Start; wer spaeter kommt, schaut zu. Gefallene werden zu Zuschauern. Befehl `/arena leave`, Op: `/arena stop`.
 - Skalierung mit Spielerzahl: Leben +50 %, Schaden +10 %, Mobanzahl +40 % pro zusaetzlichem Spieler, dazu die Faktoren der Stufe.
 - Inhalte sind Datapack-JSON (auch per KubeJS-Datapack ergaenzbar): `data/<ns>/arena_tiers/*.json`, `data/<ns>/arena_encounters/*.json`, Loot unter `loot_table/rewards/`. Begegnungen mit Mobs, die im Pack fehlen, werden automatisch ausgeblendet.
 - Bauen: `gradle build` im Ordner (Java 21). Texturen: `python3 tools/texturen.py`. Die Release-Action baut die Jar mit und packt sie in .mrpack und beide ZIPs.

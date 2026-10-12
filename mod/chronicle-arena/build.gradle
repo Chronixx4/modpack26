@@ -9,6 +9,12 @@ base.archivesName = 'chronicle-arena'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
+repositories { mavenCentral() }
+dependencies { testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'; testRuntimeOnly 'org.junit.platform:junit-platform-launcher' }
+test { useJUnitPlatform() }
+sourceSets.test.compileClasspath += sourceSets.main.compileClasspath
+sourceSets.test.runtimeClasspath += sourceSets.main.runtimeClasspath
+
 neoForge {
     version = neo_version
     mods {

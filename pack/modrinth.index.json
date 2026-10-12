@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
   "game": "minecraft",
-  "versionId": "0.9.27",
+  "versionId": "0.9.28",
   "name": "Chronicle",
   "files": [
     {
@@ -4668,6 +4668,66 @@
         "https://cdn.modrinth.com/data/x3HZvrj6/versions/ZCSI1mBS/immersive_aircraft-neoforge-1.6.0%2B1.21.1.jar"
       ],
       "fileSize": 2519285
+    },
+    {
+      "path": "mods/toms_storage-1.21-2.4.2.jar",
+      "hashes": {
+        "sha1": "592af3bc4768c804c4929af16961ca2a1a916942",
+        "sha512": "53db61b4486616b3a78dfff83b58f9424dd9bf525ea3db4e444ff0403fb70aa9ab7fc097dff2f49665e480bce936b32be76b3051a5aff217898b2b94d846d30b"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/XZNI4Cpy/versions/WQAMoIMC/toms_storage-1.21-2.4.2.jar"
+      ],
+      "fileSize": 856803
+    },
+    {
+      "path": "mods/mekanism-ad-astra-ores-neoforge-1.21.1-1.1.0.jar",
+      "hashes": {
+        "sha512": "4a84a688df0fa302d51db81762683cdad2c8f0dd30cc1b45ba58cb2744bf2abd415dbd484f67d61c7fe277c43b0544848ae9b0f5b3503948645e0e9ccb0a8281",
+        "sha1": "8bf953e8086e385e4fc2a5d6630d202c72def34a"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/KQwxMOPD/versions/xzMvcc9M/mekanism-ad-astra-ores-neoforge-1.21.1-1.1.0.jar"
+      ],
+      "fileSize": 134483
+    },
+    {
+      "path": "mods/mahoutsukai-1.21.1-v1.36.27.jar",
+      "hashes": {
+        "sha512": "6fd1f103a8377e0d2d5346d83da38aa56fd4ec70925f27e6b3f119aef6fc5908367e5337da5561f280b7c8c6977eb16d03f15cb657176ba9210a02ddea0bcc92",
+        "sha1": "110d092cd3e26ffbb96709f2363b561d218cdda5"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/7jOxn6qJ/versions/qAJ0gGH9/mahoutsukai-1.21.1-v1.36.27.jar"
+      ],
+      "fileSize": 5045082
+    },
+    {
+      "path": "mods/youkaisfeasts-1.1.1.jar",
+      "hashes": {
+        "sha1": "bd42591be5cc8ca80021d6abbae55400f5921046",
+        "sha512": "ac78336a306a01ab021a4d082a89668fc142160a3f58daa9d9e5865457cbe328c35dd4255a5cce3801ad121b4ae0850893585fbc5b0df5b6a3da1200e63aa90d"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/Ohy0TgO2/versions/tYzXrPD1/youkaisfeasts-1.1.1.jar"
+      ],
+      "fileSize": 3955662
     }
   ],
   "dependencies": {

@@ -2,7 +2,6 @@ package de.chronicle.arena;
 
 import com.google.gson.JsonObject;
 import net.minecraft.ChatFormatting;
-import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
@@ -13,6 +12,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.LivingEntity;
@@ -165,25 +165,25 @@ final class ArenaExtras {
             } else if (tick % 10 == 0) {
                 level.sendParticles(ParticleTypes.SMOKE, fx, c.getY() + 1.2, fz, 2, 0.3, 0.2, 0.3, 0.0);
             }
-            if (tick % 20 == 0) fountainLabel(server, level, i, fx, c.getY() + 4.2, fz, ready, (int) ((r.fountainReady[i] - tick + 19) / 20), !r.fountTexts);
+            if (tick % 20 == 0) fountainLabel(server, level, i, fx, c.getY() + 4.2, fz, ready, (int) ((r.fountainReady[i] - tick + 19) / 20));
             if (!ready) continue;
             for (UUID id : r.alive) {
                 ServerPlayer p = server.getPlayerList().getPlayer(id);
                 if (p == null || p.level() != level) continue;
                 double dx = p.getX() - fx;
                 double dz = p.getZ() - fz;
-                if (dx * dx + dz * dz <= 2.5 * 2.5 && Math.abs(p.getY() - c.getY()) < 3.0) {
+                if (dx * dx + dz * dz <= 2.5 * 2.5 && Math.abs(p.getY() - c.getY()) < 3.0 && ArenaBalance.needsRecovery(p.getHealth(),p.getMaxHealth(),p.getFoodData().getFoodLevel(),p.isOnFire(),(r.mask&ArenaManager.MOD_NOHEAL)!=0)) {
                     if ((r.mask & ArenaManager.MOD_NOHEAL) == 0) p.heal(Math.max(8.0F, p.getMaxHealth() * 0.4F));
+                    p.getFoodData().eat(4,0.5F);
                     p.clearFire();
                     level.sendParticles(ParticleTypes.HEART, p.getX(), p.getY() + 1.5, p.getZ(), 6, 0.4, 0.4, 0.4, 0.0);
                     level.playSound(null, fx, c.getY(), fz, SoundEvents.BEACON_ACTIVATE, SoundSource.BLOCKS, 1.0F, 1.4F);
                     r.fountainReady[i] = tick + 900;
-                    p.displayClientMessage(Component.literal("Heilbrunnen genutzt - er laedt 45 Sekunden auf."), true);
+                    p.displayClientMessage(Component.literal("Recovery: Leben und +2 Hungerkeulen - Cooldown 45 s."), true);
                     break;
                 }
             }
         }
-        r.fountTexts = true;
         // Fallen: Druckplatten loesen Flammenstoesse aus (treffen Gegner hart, Spieler leicht).
         for (int i = 0; i < TRAPS.length; i++) {
             if (r.trapReady[i] > tick) continue;
@@ -224,59 +224,51 @@ final class ArenaExtras {
 
     // ------------------------------------------------------------------ Siegertafel in der Lobby
 
-    static void updateBoard(MinecraftServer server, ArenaManager.Run r, boolean won) {
-        ServerLevel level = server.getLevel(ArenaManager.DIM);
-        if (level == null) return;
-        StringBuilder sb = new StringBuilder();
-        sb.append("LETZTER RUN\\n");
-        sb.append(r.encounter.name()).append(" - ").append(r.tier.name());
-        sb.append(r.endless ? "  |  Abgrund: Welle " + Math.max(0, r.wave - 1)
-                : won ? "  |  Sieg" : "  |  Niederlage");
-        sb.append("  |  ").append(ArenaManager.formatTime(r.fightTicks)).append("\\n\\n");
-        List<Map.Entry<UUID, long[]>> rows = new ArrayList<>(r.stat.entrySet());
-        rows.sort((a, b) -> Long.compare(b.getValue()[0], a.getValue()[0]));
-        for (Map.Entry<UUID, long[]> en : rows) {
-            ServerPlayer p = server.getPlayerList().getPlayer(en.getKey());
-            String name = p != null ? p.getGameProfile().getName() : "?";
-            long[] s = en.getValue();
-            sb.append(name).append("   Schaden ").append(s[0]).append("   Kills ").append(s[1])
-                    .append("   Wiederbelebt ").append(s[2]).append("\\n");
-        }
-        JsonObject json = new JsonObject();
-        json.addProperty("text", sb.toString().replace("\\n", "\n"));
-        json.addProperty("color", "gold");
-        String snbt = "'" + json.toString().replace("\\", "\\\\").replace("'", "\\'") + "'";
-        BlockPos at = ArenaManager.LOBBY;
-        CommandSourceStack src = server.createCommandSourceStack().withSuppressedOutput().withLevel(level)
-                .withPosition(new Vec3(at.getX() + 0.5, at.getY(), at.getZ() + 0.5)).withPermission(4);
-        server.getCommands().performPrefixedCommand(src, "kill @e[type=minecraft:text_display,tag=chronicle_board]");
-        server.getCommands().performPrefixedCommand(src, String.format(java.util.Locale.ROOT,
-                "summon minecraft:text_display %.1f %.1f %.1f {Tags:[\"chronicle_board\"],billboard:\"vertical\",alignment:\"center\","
-                        + "line_width:260,background:1275068416,text:%s,"
-                        + "transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[0f,0f,0f],scale:[1.6f,1.6f,1.6f]}}",
-                at.getX() + 0.5, at.getY() + 4.5, at.getZ() - 9.5, snbt));
+    static void deduplicateBoard(ServerLevel level) {
+        List<Entity> boards=new ArrayList<>();
+        for(Entity e:level.getAllEntities())if(e.getTags().contains("chronicle_board"))boards.add(e);
+        boards.sort(java.util.Comparator.comparingInt(Entity::getId).reversed());
+        for(int i=1;i<boards.size();i++)boards.get(i).discard();
     }
 
-    private static CommandSourceStack src(MinecraftServer server, ServerLevel level, double x, double y, double z) {
-        return server.createCommandSourceStack().withSuppressedOutput().withLevel(level).withPosition(new Vec3(x, y, z)).withPermission(4);
+    static net.minecraft.nbt.CompoundTag boardTag(String text) {
+        var tag=new net.minecraft.nbt.CompoundTag();
+        JsonObject json=new JsonObject();json.addProperty("text",text);json.addProperty("color","gold");
+        tag.putString("text",json.toString());tag.putString("billboard","vertical");tag.putString("alignment","center");
+        tag.putInt("line_width",320);tag.putInt("background",1275068416);tag.putBoolean("shadow",true);
+        return tag;
+    }
+
+    static void updateBoard(MinecraftServer server,ArenaManager.Run r,boolean won) {
+        ServerLevel level=server.getLevel(ArenaManager.DIM);if(level==null)return;
+        List<Entity> old=new ArrayList<>();for(Entity e:level.getAllEntities())if(e.getTags().contains("chronicle_board"))old.add(e);
+        old.forEach(Entity::discard);
+        StringBuilder text=new StringBuilder("LETZTER RUN\n");
+        text.append(r.encounter.name()).append(" - ").append(r.tier.name()).append("\n");
+        text.append(r.endless?"Abgrund: Welle "+Math.max(0,r.wave-1):won?"Sieg":"Niederlage").append(" | ").append(ArenaManager.formatTime(r.fightTicks)).append("\n\n");
+        List<Map.Entry<UUID,long[]>> rows=new ArrayList<>(r.stat.entrySet());rows.sort((a,b)->Long.compare(b.getValue()[0],a.getValue()[0]));
+        for(var en:rows.subList(0,Math.min(8,rows.size()))){long[] st=en.getValue();text.append(r.names.getOrDefault(en.getKey(),"Spieler")).append(" | Kills ").append(st[1]).append("\nSchaden ").append(st[0]).append(" | Wiederbelebt ").append(st[2]).append("\n");}
+        if(rows.size()>8)text.append("Alle Spieler: /arena ergebnis");
+        var board=EntityType.TEXT_DISPLAY.create(level);if(board==null)return;
+        board.load(boardTag(text.toString()));board.addTag("chronicle_board");
+        board.moveTo(ArenaManager.LOBBY.getX()+0.5,ArenaManager.LOBBY.getY()+4.5,ArenaManager.LOBBY.getZ()-9.5,0,0);
+        level.addFreshEntity(board);
     }
 
     /** Schwebender Text ueber dem Heilbrunnen: "Bereit" oder Aufladezeit. */
-    private static void fountainLabel(MinecraftServer server, ServerLevel level, int i, double x, double y, double z, boolean ready, int secs, boolean create) {
-        String text = ready ? "{\"text\":\"+ HEILBRUNNEN +\",\"color\":\"green\",\"bold\":true}"
-                : "{\"text\":\"Laedt: " + secs + " s\",\"color\":\"yellow\"}";
-        String tag = "chronicle_fount" + i;
-        CommandSourceStack s = src(server, level, x, y, z);
-        if (create) {
-            server.getCommands().performPrefixedCommand(s, "kill @e[type=minecraft:text_display,tag=" + tag + "]");
-            server.getCommands().performPrefixedCommand(s, String.format(java.util.Locale.ROOT,
-                    "summon minecraft:text_display %.1f %.1f %.1f {Tags:[\"%s\",\"chronicle_fountain\"],billboard:\"center\",alignment:\"center\",line_width:200,background:1275068416,text:'%s',"
-                            + "transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[0f,0f,0f],scale:[2.0f,2.0f,2.0f]}}", x, y, z, tag, text));
-        }
-        else server.getCommands().performPrefixedCommand(s, "data merge entity @e[type=minecraft:text_display,tag=" + tag + ",limit=1,distance=..6] {text:'" + text + "'}");
+    private static void fountainLabel(MinecraftServer server,ServerLevel level,int i,double x,double y,double z,boolean ready,int secs){
+        String tag="chronicle_fount"+i;
+        List<Entity> old=new ArrayList<>();for(Entity e:level.getAllEntities())if(e.getTags().contains(tag))old.add(e);
+        old.sort(java.util.Comparator.comparingInt(Entity::getId).reversed());for(int k=1;k<old.size();k++)old.get(k).discard();
+        net.minecraft.world.entity.Display.TextDisplay label=old.isEmpty()?EntityType.TEXT_DISPLAY.create(level):old.get(0) instanceof net.minecraft.world.entity.Display.TextDisplay d?d:null;
+        if(label==null)return;
+        var data=boardTag(ready?"RECOVERY\nLeben + Hunger bereit":"RECOVERY\nCooldown: "+Math.max(0,secs)+" s");
+        JsonObject text=new JsonObject();text.addProperty("text",ready?"RECOVERY\nLeben + Hunger bereit":"RECOVERY\nCooldown: "+Math.max(0,secs)+" s");text.addProperty("color",ready?"green":"yellow");data.putString("text",text.toString());data.putString("billboard","center");data.putInt("line_width",180);
+        label.load(data);label.addTag(tag);label.addTag("chronicle_fountain");label.moveTo(x,y,z,0,0);
+        if(old.isEmpty())level.addFreshEntity(label);
     }
 
-    static void clearFountainLabels(MinecraftServer server, ServerLevel level) {
-        server.getCommands().performPrefixedCommand(src(server, level, 0, 80, 0), "kill @e[type=minecraft:text_display,tag=chronicle_fountain]");
+    static void clearFountainLabels(MinecraftServer server,ServerLevel level){
+        List<Entity> labels=new ArrayList<>();for(Entity e:level.getAllEntities())if(e.getTags().contains("chronicle_fountain"))labels.add(e);labels.forEach(Entity::discard);
     }
 }

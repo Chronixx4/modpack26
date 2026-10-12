@@ -71,10 +71,14 @@ public final class ArenaShow {
         VITALITY("Vitalitaet", "+2 Herzen", Attributes.MAX_HEALTH, AttributeModifier.Operation.ADD_VALUE, 4.0),
         SWIFT("Eile", "+8 % Tempo", Attributes.MOVEMENT_SPEED, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL, 0.08),
         ARMOR("Panzerung", "+3 Ruestung", Attributes.ARMOR, AttributeModifier.Operation.ADD_VALUE, 3.0),
-        REGEN("Regeneration", "Du heilst dich langsam", null, null, 0.0),
+        REGEN("Regeneration", "Nach 4 s ohne Treffer: 1/4 Herz alle 6 s. Stapel bis 4 s. Panzerung: +1/8 Herz.", null, null, 0.0),
         GOLD("Goldrausch", "+25 % Coins pro Welle", null, null, 0.0),
         VAMPIR("Vampir", "Du heilst dich mit 6 % deines Schadens", null, null, 0.0),
-        LIFE("Zweite Chance", "+1 Wiederbelebung fuers ganze Team", null, null, 0.0);
+        LIFE("Zweite Chance", "+1 Wiederbelebung fuers ganze Team", null, null, 0.0),
+        EMBER("Glut", "Treffer entzuenden Gegner. Kombiniert mit Flammenjaeger und Asche.", null, null, 0.0),
+        FLARE("Flammenjaeger", "+15 % Schaden gegen brennende Gegner je Stapel. Synergie: Glut.", null, null, 0.0),
+        ASH("Asche", "Brennende Gegner zu toeten heilt 1 Herz je Stapel. Synergie: Glut.", null, null, 0.0),
+        HUNTER("Scharfschuetze", "+15 % Projektilschaden je Stapel. Synergie: Vampir.", null, null, 0.0);
 
         public final String label;
         public final String desc;

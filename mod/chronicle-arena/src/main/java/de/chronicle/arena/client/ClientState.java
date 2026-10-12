@@ -7,4 +7,7 @@ public final class ClientState {
     private ClientState() {}
 
     static Net.Stats stats;
+    static de.chronicle.arena.ArenaNet.Battle battle;
+    static long battleReceived;
+
 }
