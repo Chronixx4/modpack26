@@ -200,6 +200,7 @@ public final class ArenaManager {
         int waveTotal;
         UUID bossId;
         boolean addsSpawned;
+        int phase;
         boolean won;
         int lossDelay;
         boolean started;
@@ -931,6 +932,36 @@ public final class ArenaManager {
 
     private static final int REVIVE_TICKS = 80;
 
+    /** Phasen: 75 % Druckwelle, 25 % Raserei (der Helfer-Schub bei 50 % steht oben). */
+    private void bossPhases(MinecraftServer server, ServerLevel level, Run r) {
+        if (r.state != State.BOSS || r.bossId == null || r.phase >= 2) return;
+        if (!(level.getEntity(r.bossId) instanceof LivingEntity b) || !b.isAlive()) return;
+        float frac = b.getHealth() / b.getMaxHealth();
+        if (r.phase == 0 && frac <= 0.75F) {
+            r.phase = 1;
+            for (UUID id : r.alive) {
+                ServerPlayer p = server.getPlayerList().getPlayer(id);
+                if (p == null || p.distanceTo(b) > 14.0F) continue;
+                net.minecraft.world.phys.Vec3 away = p.position().subtract(b.position()).multiply(1, 0, 1).normalize().scale(1.4);
+                p.push(away.x, 0.5, away.z);
+                p.hurtMarked = true;
+                p.addEffect(new net.minecraft.world.effect.MobEffectInstance(net.minecraft.world.effect.MobEffects.MOVEMENT_SLOWDOWN, 60, 1));
+            }
+            ArenaFx.burst(level, b.getX(), b.getY() + 1.0, b.getZ(), 3, 6.0);
+            actionbar(server, r, Component.literal("Phase 2: Druckwelle!"));
+        } else if (r.phase == 1 && frac <= 0.25F) {
+            r.phase = 2;
+            b.addEffect(new net.minecraft.world.effect.MobEffectInstance(net.minecraft.world.effect.MobEffects.MOVEMENT_SPEED, 12000, 1));
+            b.addEffect(new net.minecraft.world.effect.MobEffectInstance(net.minecraft.world.effect.MobEffects.DAMAGE_BOOST, 12000, 0));
+            for (ArenaDefs.Spawn a : r.encounter.adds()) {
+                int n = Math.max(1, (int) Math.round(a.count() * r.countScale * 0.5));
+                for (int i = 0; i < n; i++) r.queue.add(new Spawn(a.entity(), false, false));
+            }
+            ArenaFx.burst(level, b.getX(), b.getY() + 1.0, b.getZ(), 3, 6.0);
+            actionbar(server, r, Component.literal("Phase 3: Raserei! Der Boss wird schneller und staerker."));
+        }
+    }
+
     private void tickRevive(MinecraftServer server, ServerLevel level, Run r) {
         if (r.fallen.isEmpty()) return;
         for (var it = r.fallen.entrySet().iterator(); it.hasNext(); ) {
@@ -1062,6 +1093,8 @@ public final class ArenaManager {
             }
         }
 
+        bossPhases(server, level, r);
+
         // Wiederbeleben: neben einem Gefallenen schleichen (ca. 4 Sekunden).
         tickRevive(server, level, r);
         ArenaExtras.tick(server, level, r, tickCounter);
@@ -1117,7 +1150,7 @@ public final class ArenaManager {
             for (UUID id : r.alive) {
                 ServerPlayer p = server.getPlayerList().getPlayer(id);
                 if (p == null) continue;
-                int perWave = (int) Math.round(basePerWave * (1.0 + 0.25 * stack(r, id, ArenaShow.Blessing.GOLD)))
+                int perWave = (int) Math.round(basePerWave * (1.0 + 0.25 * stack(r, id, ArenaShow.Blessing.GOLD) + 0.5 * stack(r, id, ArenaShow.Blessing.PACT)))
                         + (r.miniThisWave ? basePerWave * 3 : 0);
                 ArenaStats.addCoins(p, perWave);
                 statsDirty.add(id);
@@ -1305,7 +1338,16 @@ public final class ArenaManager {
         List<ArenaShow.Blessing> all = new ArrayList<>(List.of(ArenaShow.Blessing.values()));
         java.util.Collections.shuffle(all);
         if ((r.mask & MOD_NOHEAL) != 0) all.removeIf(b -> b == ArenaShow.Blessing.REGEN || b == ArenaShow.Blessing.VAMPIR || b == ArenaShow.Blessing.ASH);
-        r.offer = new ArrayList<>(all.subList(0, 3));
+        // Hoechstens eine Fluch-Karte pro Angebot.
+        List<ArenaShow.Blessing> pick = new ArrayList<>();
+        boolean curse = false;
+        for (ArenaShow.Blessing b : all) {
+            if (b.curse() && curse) continue;
+            curse |= b.curse();
+            pick.add(b);
+            if (pick.size() == 3) break;
+        }
+        r.offer = pick;
         r.picked.clear();
         r.offerWait = 0;
         for (UUID id : r.alive) {
@@ -2010,7 +2052,7 @@ public final class ArenaManager {
         PacketDistributor.sendToPlayer(p,new ArenaNet.Blessings(r.id,r.wave,offers,active,Math.max(0,(2400-r.offerWait+19)/20),popup));
     }
     private static ArenaNet.BlessInfo blessInfo(ArenaShow.Blessing b,int[] stacks){
-        String icon=switch(b){case POWER->"iron_sword";case VITALITY->"golden_apple";case SWIFT->"feather";case ARMOR->"iron_chestplate";case REGEN->"glistering_melon_slice";case GOLD->"gold_ingot";case VAMPIR->"redstone";case LIFE->"totem_of_undying";case EMBER->"blaze_powder";case FLARE->"fire_charge";case ASH->"coal";case HUNTER->"bow";};
+        String icon=switch(b){case POWER->"iron_sword";case VITALITY->"golden_apple";case SWIFT->"feather";case ARMOR->"iron_chestplate";case REGEN->"glistering_melon_slice";case GOLD->"gold_ingot";case VAMPIR->"redstone";case LIFE->"totem_of_undying";case EMBER->"blaze_powder";case FLARE->"fire_charge";case ASH->"coal";case HUNTER->"bow";case GLASS->"glass_bottle";case LIGHT->"leather_boots";case PACT->"ghast_tear";};
         String synergy=switch(b){
             case EMBER->"Passt zu Flammenjaeger / Asche";
             case FLARE,ASH->stacks[ArenaShow.Blessing.EMBER.ordinal()]>0?"Synergie mit deiner Glut aktiv":"Passt zu Glut";

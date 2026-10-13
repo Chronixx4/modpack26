@@ -52,7 +52,7 @@ class ArenaRouteChoiceTest {
         var b=ballot(Set.of(alice),false);
         assertFalse(b.cast(bob,run,5,0));assertFalse(b.cast(alice,UUID.randomUUID(),5,0));
         assertFalse(b.cast(alice,run,10,0));assertFalse(b.cast(alice,run,5,-1));
-        assertFalse(b.cast(alice,run,5,3));assertFalse(b.cast(alice,run,5,2));assertEquals(0,b.voted());
+        assertFalse(b.cast(alice,run,5,4));assertFalse(b.cast(alice,run,5,2));assertEquals(0,b.voted());
         assertTrue(b.cast(alice,run,5,1));assertEquals(RECOVERY,b.tick(Set.of(alice)));
     }
     @Test void changingVoteDoesNotCreateExtraVotesAndEligibilityRefreshes(){
@@ -89,5 +89,19 @@ class ArenaRouteChoiceTest {
     @Test void cancelledBallotsCannotAcceptVotesOrResolve(){
         var b=ballot(Set.of(alice),true);b.cancel();
         assertFalse(b.cast(alice,run,5,0));assertNull(b.tick(Set.of(alice)));
+    }
+    @Test void merchantCanWinAndTiesStillRecover(){
+        var alive=Set.of(alice,bob);var b=ballot(alive,true);
+        assertTrue(b.cast(alice,run,5,3));assertTrue(b.cast(bob,run,5,3));
+        assertEquals(MERCHANT,b.tick(alive));
+        var c=ballot(alive,true);
+        c.cast(alice,run,5,3);c.cast(bob,run,5,1);
+        assertEquals(RECOVERY,c.tick(alive));
+    }
+    @Test void curseCardsCarryAPrice(){
+        for(var bl:de.chronicle.arena.ArenaShow.Blessing.values()){
+            if(bl.curse())assertTrue(bl.desc.contains("aber"),bl.name());
+            else assertFalse(bl.label.startsWith("Fluch"),bl.name());
+        }
     }
 }

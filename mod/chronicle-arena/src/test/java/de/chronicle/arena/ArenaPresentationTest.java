@@ -23,8 +23,8 @@ class ArenaPresentationTest {
     }
     @Test void routeBallotAndVotePreserveIdentityCountsAndRestrictions(){
         UUID run=UUID.randomUUID();
-        roundTrip(ArenaNet.Routes.CODEC,new ArenaNet.Routes(run,5,true,27,3,4,2,1,0,0,false,true,true));
-        roundTrip(ArenaNet.Routes.CODEC,new ArenaNet.Routes(run,5,false,0,0,0,0,0,0,-1,false,false,false));
+        roundTrip(ArenaNet.Routes.CODEC,new ArenaNet.Routes(run,5,true,27,3,4,2,1,0,1,0,false,true,true));
+        roundTrip(ArenaNet.Routes.CODEC,new ArenaNet.Routes(run,5,false,0,0,0,0,0,0,0,-1,false,false,false));
         roundTrip(ArenaNet.RouteVote.CODEC,new ArenaNet.RouteVote(run,5,2));
     }
     @Test void resultsAndRetryPreserveRewardSnapshot(){

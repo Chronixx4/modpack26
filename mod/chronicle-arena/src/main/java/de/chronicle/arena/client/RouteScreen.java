@@ -22,7 +22,7 @@ public final class RouteScreen extends Screen {
     @Override protected void init(){
         w=Math.min(400,width-24);h=Math.min(345,height-24);x=(width-w)/2;y=(height-h)/2;
         choices.clear();rowY.clear();int offset=0;
-        for(int i=0;i<3;i++){
+        for(int i=0;i<ArenaRouteChoice.Route.values().length;i++){
             final int slot=i;rowY.add(offset);
             choices.add(addRenderableWidget(Button.builder(label(slot),b->PacketDistributor.sendToServer(new ArenaNet.RouteVote(data.run(),data.wave(),slot))).bounds(x+10,y+58+offset,w-20,20).build()));
             offset+=34+font.split(description(slot),w-24).size()*10;
@@ -47,7 +47,7 @@ public final class RouteScreen extends Screen {
         g.drawString(font,data.voted()+"/"+data.voters()+" gewaehlt | noch "+data.seconds()+" s",x+10,y+30,0xCCCCFF);
         g.drawString(font,"Meiste Stimmen; Gleichstand: Erholung",x+10,y+42,0xFFD700);
         g.enableScissor(x+5,y+56,x+w-5,y+h-35);
-        for(int i=0;i<3;i++)g.drawWordWrap(font,description(i),x+10,y+82+rowY.get(i)-scroll,w-24,0xCCCCCC);
+        for(int i=0;i<ArenaRouteChoice.Route.values().length;i++)g.drawWordWrap(font,description(i),x+10,y+82+rowY.get(i)-scroll,w-24,0xCCCCCC);
         g.disableScissor();
     }
     @Override public boolean isPauseScreen(){return false;}

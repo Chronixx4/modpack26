@@ -6,7 +6,7 @@ import java.util.*;
 public final class ArenaRouteChoice {
     public static final int VOTE_TICKS = 30 * 20;
     public enum Route {
-        RISK("Risiko"), RECOVERY("Erholung"), MISSION("Spezialmission");
+        RISK("Risiko"), RECOVERY("Erholung"), MISSION("Spezialmission"), MERCHANT("Haendler");
         public final String title;
         Route(String title) { this.title = title; }
         public String description(boolean noHeal, boolean goalsEnabled) {
@@ -14,6 +14,7 @@ public final class ArenaRouteChoice {
                 case RISK -> "Naechste 5 Wellen: +25 % Gegnerleben, +15 % Angriffsschaden, +50 % Wellen-Coins. Mini-Boss-Lebenslimit bleibt bestehen.";
                 case RECOVERY -> noHeal ? "Nahrung und Saettigung auffuellen. Kein Heilen ist aktiv: keine Heilung. Keine Extra-Belohnung."
                         : "Jetzt Leben, Nahrung und Saettigung auffuellen. Normale Gegner und Belohnungen.";
+                case MERCHANT -> "Ein fahrender Haendler: jeder lebende Spieler bekommt 2 Heiltraenke, 1 Staerketrank und 2 Goldaepfel. Keine Heilung, normale Gegner und Belohnungen.";
                 case MISSION -> goalsEnabled ? "Naechste Welle mit Zufallsziel. Nach Ziel UND Welle: eine zufaellige Rune je lebendem Spieler. Danach normale Wellen."
                         : "Nicht verfuegbar: Zielwellen wurden vom Admin deaktiviert.";
             };

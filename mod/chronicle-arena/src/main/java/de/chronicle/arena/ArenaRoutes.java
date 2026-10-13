@@ -37,21 +37,31 @@ final class ArenaRoutes {
                     p.getFoodData().setFoodLevel(20);
                     p.getFoodData().setSaturation(20);
                 }
+                if (chosen == ArenaRouteChoice.Route.MERCHANT) merchant(p);
                 p.sendSystemMessage(Component.literal("Gruppenweg: " + chosen.title + " | Wellen "
                         + (r.wave + 1) + "-" + Math.min(r.wave + 5, r.totalWaves)));
             }
         }
         return true;
     }
+    private static void merchant(ServerPlayer p) {
+        ItemStack heal = net.minecraft.world.item.alchemy.PotionContents.createItemStack(net.minecraft.world.item.Items.POTION, net.minecraft.world.item.alchemy.Potions.STRONG_HEALING);
+        heal.setCount(2);
+        ItemStack power = net.minecraft.world.item.alchemy.PotionContents.createItemStack(net.minecraft.world.item.Items.POTION, net.minecraft.world.item.alchemy.Potions.STRONG_STRENGTH);
+        ItemHandlerHelper.giveItemToPlayer(p, heal);
+        ItemHandlerHelper.giveItemToPlayer(p, power);
+        ItemHandlerHelper.giveItemToPlayer(p, new ItemStack(net.minecraft.world.item.Items.GOLDEN_APPLE, 2));
+        p.sendSystemMessage(Component.literal("Der Haendler liefert: 2 Heiltraenke, 1 Staerketrank, 2 Goldaepfel."));
+    }
     static void send(ServerPlayer p, ArenaManager.Run r, boolean popup) {
         var c = r.routes;
         PacketDistributor.sendToPlayer(p, new ArenaNet.Routes(r.id, r.wave, c.voting(), c.seconds(),
                 c.voted(), c.voters(), c.count(ArenaRouteChoice.Route.RISK), c.count(ArenaRouteChoice.Route.RECOVERY),
-                c.count(ArenaRouteChoice.Route.MISSION), c.choice(p.getUUID()), r.goalsEnabled,
+                c.count(ArenaRouteChoice.Route.MISSION), c.count(ArenaRouteChoice.Route.MERCHANT), c.choice(p.getUUID()), r.goalsEnabled,
                 (r.mask & ArenaManager.MOD_NOHEAL) != 0, popup));
     }
     static void close(ServerPlayer p, ArenaManager.Run r) {
-        PacketDistributor.sendToPlayer(p, new ArenaNet.Routes(r.id, r.wave, false, 0, 0, 0, 0, 0, 0, -1, false, false, false));
+        PacketDistributor.sendToPlayer(p, new ArenaNet.Routes(r.id, r.wave, false, 0, 0, 0, 0, 0, 0, 0, -1, false, false, false));
     }
     static void reward(MinecraftServer server, ArenaManager.Run r) {
         if (!r.routes.claimMission(r.wave, r.objective != null && r.objective.complete())) return;
