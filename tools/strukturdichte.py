@@ -15,29 +15,34 @@ from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-HALF = math.sqrt(2)
-BOSS = 1.35
+# Stufen (Faktor auf Abstand und Mindestabstand; Dichte ~ 1/Faktor^2).
+# Ab 0.9.30 deutlich groesser als in 0.9.27 (dort 1,35 bis 2).
+GROSS = 3      # WDA/Seven Seas: riesige Burgen und Schiffe
+BOSS = 2.5     # Cataclysm, Ice and Fire, Mowzie's, Bossbauten
+HALF = 2.5     # normale Zusatzbauten
+DORF = 1.5     # Dorf-Varianten, sollen bleiben
 
 # None = alle Structure-Sets dieses Namensraums; sonst nur die genannten Sets.
-# Andere Dimensionen, Doerfer und Vanilla-Ersatzstrukturen bleiben erhalten.
+# Andere Dimensionen, Vanilla-Ersatzstrukturen und Biom-Sets bleiben erhalten.
 RULES = {
-    'dungeons_arise': (2, None),
-    'dungeons_arise_seven_seas': (2, None),
-    'nova_structures': (1.5, None),
-    'idas': (1.5, {'idas_common', 'idas_ocean', 'idas_rare', 'idas_small'}),
-    'repurposed_structures': (1.5, {
+    'dungeons_arise': (GROSS, None),
+    'dungeons_arise_seven_seas': (GROSS, None),
+    'idas': (HALF, {'idas_common', 'idas_ocean', 'idas_rare', 'idas_small'}),
+    'repurposed_structures': (HALF, {
         'cities_overworld', 'fortresses_overworld', 'igloos_overworld',
         'mansions_mangrove', 'mansions_overworld', 'monuments_overworld',
         'outposts_ocean', 'outposts_overworld', 'pyramids_mushroom',
         'pyramids_overworld', 'ruins_overworld', 'temples_overworld',
-        'witch_huts_overworld',
+        'witch_huts_overworld', 'ancient_cities_overworld',
+        'bastions_overworld', 'villages_overworld',
     }),
-    'towns_and_towers': (HALF, {'towers', 'other'}),
+    'towns_and_towers': (HALF, {'towers', 'other', 'towns'}),
     'born_in_chaos_v1': (HALF, None),
     'goety': (HALF, None),
     'irons_spellbooks': (HALF, {
         'catacombs', 'evoker_fort', 'ice_spider_den', 'impaled_icebreaker',
         'mangrove_hut', 'mountain_tower', 'pyromancer_tower',
+        'ancient_battleground', 'citadel',
     }),
     'hexerei': (HALF, None),
     'ars_additions': (HALF, {'arcane_library', 'ruined_portal'}),
@@ -50,7 +55,7 @@ RULES = {
     }),
     'iceandfire': (BOSS, {
         'cyclops_cave', 'dragon_cave', 'dragon_roost', 'gorgon_temple',
-        'graveyard', 'hydra_cave', 'mausoleum', 'siren_island',
+        'graveyard', 'hydra_cave', 'mausoleum', 'siren_island', 'pixie_village',
     }),
     'mowziesmobs': (BOSS, None),
     'block_factorys_bosses': (BOSS, {
@@ -62,21 +67,35 @@ RULES = {
     'illagerinvasion': (HALF, None),
     'friendsandfoes': (HALF, {
         'iceologer_cabin', 'illusioner_shack', 'illusioner_training_grounds',
+        'citadel',
     }),
-    'alshanex_familiars': (HALF, {'hunter_campsite'}),
+    'alshanex_familiars': (HALF, {'hunter_campsite', 'graveyard'}),
     'apotheosis': (HALF, {'towers'}),
     'evilcraft': (HALF, {'dark_temples'}),
     'supplementaries': (HALF, {'galleons'}),
-    'terralith': (HALF, {'mage', 'regular', 'rubble'}),
+    'terralith': (HALF, {'mage', 'regular', 'rubble', 'rare_village', 'rare_dungeon'}),
+    # Neu in 0.9.30
+    'alexscaves': (3, None),
+    'kobolds': (HALF, None),
+    'betterdungeons': (HALF, {
+        'skeleton_dungeons', 'small_dungeons', 'spider_dungeons', 'zombie_dungeons',
+    }),
+    'betterdeserttemples': (HALF, None),
+    'betterjungletemples': (HALF, None),
+    'betterwitchhuts': (HALF, None),
+    'betteroceanmonuments': (HALF, None),
+}
+
+# Einzelne Sets mit anderem Faktor als ihr Namensraum.
+SET_FACTOR = {
+    'repurposed_structures/villages_overworld': DORF,
+    'towns_and_towers/towns': DORF,
+    'terralith/rare_village': DORF,
 }
 
 
 def selected(namespace, name):
     if namespace not in RULES:
-        return False
-    if namespace == 'nova_structures' and (
-        name.startswith(('nether_', 'end_', 'villages_'))
-    ):
         return False
     if namespace == 'goety' and name == 'final_terminal':
         return False
@@ -123,11 +142,11 @@ def overrides(cache):
                 original = read_json(archive.read(path))
                 updated = copy.deepcopy(original)
                 placement = updated['placement']
-                factor = RULES[namespace][0]
+                factor = SET_FACTOR.get(f'{namespace}/{name}', RULES[namespace][0])
                 if placement['type'] == 'aquamirae:configurable_random_spread':
                     # Der Codec unterstuetzt die gemeinsame Placement-Frequenz.
                     # Die @Config-Referenzen bleiben intakt; Zahlen dort sind ungueltig.
-                    placement['frequency'] = placement.get('frequency', 1.0) / 2
+                    placement['frequency'] = placement.get('frequency', 1.0) / 4
                 else:
                     placement['spacing'] = math.ceil(placement['spacing'] * factor)
                     placement['separation'] = math.ceil(placement['separation'] * factor)

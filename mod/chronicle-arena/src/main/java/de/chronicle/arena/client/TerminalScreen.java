@@ -39,6 +39,8 @@ public class TerminalScreen extends Screen {
         this.data = data;
     }
 
+    static void clearLast(){lastEncounter="";lastTier="";lastMask=0;lastArena=0;}
+
     private List<Net.EncInfo> current() {
         List<Net.EncInfo> out = new ArrayList<>();
         for (Net.EncInfo e : data.encounters()) if (e.boss() == bossMode) out.add(e);
@@ -62,7 +64,7 @@ public class TerminalScreen extends Screen {
         int lx = cx - 160;
         int rx = cx + 10;
         int w = 150;
-        int y = this.height / 2 - 82;
+        int y = Math.max(48, this.height / 2 - 82);
         modeButton = addRenderableWidget(Button.builder(Component.empty(), b -> {
             bossMode = !bossMode;
             encIndex = 0;
@@ -170,7 +172,7 @@ public class TerminalScreen extends Screen {
     public void renderBackground(GuiGraphics gfx, int mouseX, int mouseY, float partialTick) {
         super.renderBackground(gfx, mouseX, mouseY, partialTick);
         int cx = this.width / 2;
-        int top = this.height / 2 - 82;
+        int top = Math.max(48, this.height / 2 - 82);
         Panel.draw(gfx, cx - 170, top - 44, cx + 170, top + 186, 26, TIER_COLORS[Math.min(tierIndex, TIER_COLORS.length - 1)]);
         gfx.fill(cx - 3, top - 14, cx - 1, top + 152, 0xFF2A2440);
     }
@@ -179,7 +181,7 @@ public class TerminalScreen extends Screen {
     public void render(GuiGraphics gfx, int mouseX, int mouseY, float partialTick) {
         super.render(gfx, mouseX, mouseY, partialTick);
         int cx = this.width / 2;
-        int top = this.height / 2 - 82;
+        int top = Math.max(48, this.height / 2 - 82);
         int lx = cx - 160;
         int rx = cx + 10;
         gfx.drawCenteredString(this.font, this.title, cx, top - 38, 0xE0B8FF);

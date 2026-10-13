@@ -1,5 +1,5 @@
-﻿Chronicle 0.9.29 - Modliste
-Minecraft 1.21.1, NeoForge 21.1.256   |   338 Mods inkl. Bibliotheken und eigener Arena   |   Stand 2026-10-13
+﻿Chronicle 0.9.30 - Modliste
+Minecraft 1.21.1, NeoForge 21.1.256   |   340 Mods inkl. Bibliotheken und eigener Arena   |   Stand 2026-10-13
 
 == Performance und Grafik (20) ==
   All The Leaks                                  1.1.13+1.21.1-neoforge  (CurseForge)
@@ -23,7 +23,7 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   338 Mods inkl. Bibliotheken und eigene
   Packet Fixer                                   3.3.1
   Sodium                                         mc1.21.1-0.8.13-neoforge  (nur Client)
 
-== Komfort und Oberflaeche (29) ==
+== Komfort und Oberflaeche (30) ==
   Almost Unified                                 1.21.1-1.4.2+neoforge
   AppleSkin                                      3.0.9+mc1.21
   Better Advancements                            0.4.3.21  (nur Client)
@@ -44,6 +44,7 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   338 Mods inkl. Bibliotheken und eigene
   Keybind Overview                               1.0.0  (nur Client)
   Mouse Tweaks                                   1.21-2.26.1-neoforge  (nur Client)
   Nature's Compass                               1.21.1-3.4.0-neoforge
+  Oracle Index                                   1.4.0  (nur Client)
   Polymorph                                      1.1.0+1.21.1
   Sound Physics Remastered                       neoforge-1.21.1-1.5.1  (nur Client)
   spark                                          1.10.124-neoforge-1.21.1
@@ -54,11 +55,13 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   338 Mods inkl. Bibliotheken und eigene
   Xaero's Minimap                                neoforge-1.21.1-26.6.0  (nur Client)
   Xaero's World Map                              neoforge-1.21.1-1.47.0  (nur Client)
 
-== Multiplayer, Quests und Verwaltung (8) ==
+== Multiplayer, Quests und Verwaltung (10) ==
   FTB Backups 2                                  1.0.28  (CurseForge)
+  FTB Chunks                                     2101.1.22  (CurseForge)
   FTB Library                                    2101.1.37  (CurseForge)
   FTB Quests                                     2101.1.36  (CurseForge)
   FTB Teams                                      2101.1.11  (CurseForge)
+  FTB Ultimine                                   2101.1.15  (CurseForge)
   KubeJS                                         2101.7.2-build.377
   Open Parties and Claims                        neoforge-1.21.1-0.32.7
   Pufferfish's Skills                            0.19.1
@@ -207,9 +210,8 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   338 Mods inkl. Bibliotheken und eigene
   Tectonic                                       3.0.28-neoforge-21.1
   Terralith                                      2.6.2
 
-== Strukturen und Dungeons (16) ==
+== Strukturen und Dungeons (15) ==
    Integrated Dungeons and Structures            1.13.7+1.21.1-neoforge
-  Dungeons and Taverns                           v4.4.4+mod
   Lootr                                          1.21.1-1.11.38.127
   Repurposed Structures - Neoforge/Forge         7.5.22+1.21.1-neoforge
   Towns and Towers                               1.13.11
@@ -230,7 +232,7 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   338 Mods inkl. Bibliotheken und eigene
   Born in Chaos                                  1.7.6
   Bosses'Rise                                    2.1.2
   Cataclysm x Create Integration                 1.21.1-Neoforge+mod
-  Chronicle Arena                                0.3.1  (eigene Mod)
+  Chronicle Arena                                0.4.1  (eigene Mod)
   Eternal Hunts [Cataclysm & Mowzie's Mobs & Born in Chaos] 0.2.4-1.21.1
   Friends&Foes (Forge/NeoForge)                  neoforge-4.0.27+mc1.21.1
   Goety Cataclysm                                1.21.1-1.9.0

@@ -195,6 +195,7 @@ public final class ArenaManager {
         final int mask;
         State state = State.PREP;
         int wave;
+        int completedWaves;
         int timer = PREP_TICKS;
         int waveTotal;
         UUID bossId;
@@ -204,6 +205,7 @@ public final class ArenaManager {
         boolean started;
         int fightTicks;
         final UUID id = UUID.randomUUID();
+        final ArenaRouteChoice routes = new ArenaRouteChoice(id);
         int lastGoal = -1;
         final Map<UUID,String> names = new HashMap<>();
         final Map<UUID,Integer> lastDamage = new HashMap<>(),lastRegen = new HashMap<>();
@@ -482,6 +484,7 @@ public final class ArenaManager {
         r.alive.remove(sp.getUUID());
         r.spectators.add(sp.getUUID());
         r.fallen.put(sp.getUUID(), sp.position());
+        ArenaRoutes.close(sp, r);
         PacketDistributor.sendToPlayer(sp,new ArenaNet.Blessings(r.id,r.wave,List.of(),List.of(),0,false));
         sp.setGameMode(GameType.SPECTATOR);
         sp.setHealth(sp.getMaxHealth());
@@ -496,6 +499,7 @@ public final class ArenaManager {
     private static void finish(MinecraftServer server, boolean won) {
         Run r = run;
         if (r == null || r.state == State.ENDING) return;
+        r.routes.cancel();
         r.state = State.ENDING;
         r.timer = END_TICKS;
         r.won = won;
@@ -515,8 +519,9 @@ public final class ArenaManager {
         ArenaExtras.updateBoard(server, r, won);
         for (UUID id : r.participants) {
             ServerPlayer p = server.getPlayerList().getPlayer(id);
-            if (p == null || level == null) continue;
+            if (p == null || level == null || !r.involves(id)) continue;
             ArenaShow.clear(p);
+            ArenaRoutes.close(p, r);
             PacketDistributor.sendToPlayer(p,new ArenaNet.Blessings(r.id,r.wave,List.of(),List.of(),0,false));
             if (won) {
                 recordWin(p, r);
@@ -538,7 +543,7 @@ public final class ArenaManager {
     }
 
     private static void endlessResult(ServerPlayer p, ServerLevel level, Run r) {
-        int reached = Math.max(0, r.wave - 1);
+        int reached = r.completedWaves;
         int old = ArenaStats.endlessBest(p);
         boolean record = reached > old;
         if (record) ArenaStats.setEndlessBest(p, reached);
@@ -585,8 +590,9 @@ public final class ArenaManager {
         if (ch != null && ch.encounter() == r.encounter && ch.tier() == r.tier && ch.mask() == r.mask
                 && ArenaStats.challengeDay(p) != ch.day()) {
             ArenaStats.setChallengeDay(p, ch.day());
-            coins += (int) Math.round(ch.bonus() * r.coinPercent / 100.0);
-            p.sendSystemMessage(Component.literal("Tages-Challenge geschafft: +" + ch.bonus() + " Bonus-Coins!"));
+            int bonus = (int) Math.round(ch.bonus() * r.coinPercent / 100.0);
+            coins += bonus;
+            p.sendSystemMessage(Component.literal("Tages-Challenge geschafft: +" + bonus + " Bonus-Coins!"));
         }
         if (coins > 0) {
             ArenaStats.addCoins(p, coins);
@@ -619,6 +625,7 @@ public final class ArenaManager {
             ServerPlayer p = server.getPlayerList().getPlayer(id);
             if (p == null || level == null || p.level().dimension() != DIM) continue;
             p.setCamera(p);
+            ArenaRoutes.close(p, r);
             ArenaShow.clear(p);
             restoreMode(p);
             p.setHealth(p.getMaxHealth());
@@ -674,10 +681,16 @@ public final class ArenaManager {
         if (r == null) return;
         ArenaShow.clear(sp);
         PacketDistributor.sendToPlayer(sp,ArenaNet.Battle.EMPTY);
+        ArenaRoutes.close(sp, r);
         PacketDistributor.sendToPlayer(sp,new ArenaNet.Blessings(r.id,r.wave,List.of(),List.of(),0,false));
         if (r.state != State.ENDING) ArenaShow.stopMusic(List.of(sp));
         boolean wasAlive = r.alive.remove(sp.getUUID());
         r.spectators.remove(sp.getUUID());
+        r.fallen.remove(sp.getUUID());
+        r.reviving.remove(sp.getUUID());
+        r.killcamTarget.remove(sp.getUUID());
+        r.killcamTicks.remove(sp.getUUID());
+        sp.setCamera(sp);
         r.bar.removePlayer(sp);
         if (wasAlive && r.alive.isEmpty() && r.state != State.ENDING) {
             finish(sp.server, false);
@@ -735,15 +748,18 @@ public final class ArenaManager {
             ServerPlayer p = server.getPlayerList().getPlayer(id);
             if (p == null || p.level().dimension() != DIM) {
                 it.remove();
-                if (p != null) r.bar.removePlayer(p);
+                if (p != null) { r.bar.removePlayer(p); ArenaRoutes.close(p, r); }
             }
         }
+        tickKillcam(server, level, r);
         if (r.lossDelay > 0) {
             if (--r.lossDelay == 0) finish(server, false);
         } else if (r.alive.isEmpty() && r.state != State.ENDING) {
             finish(server, false);
         }
 
+        // Never complete a wave or award a victory during the last player's killcam.
+        if (r.alive.isEmpty() && r.state != State.ENDING) return;
         if (r.started && r.state != State.ENDING) r.fightTicks++;
         if (r.started && r.state != State.ENDING && tickCounter % 20 == 0) {
             boolean boss = r.state == State.BOSS;
@@ -783,6 +799,7 @@ public final class ArenaManager {
                         break;
                     }
                 }
+                if (ArenaRoutes.tick(server, r)) break;
                 if (r.started && r.timer > 0 && r.timer <= 60 && r.timer % 20 == 0) {
                     ArenaShow.title(runPlayers(server, r), ArenaShow.big(String.valueOf(r.timer / 20), net.minecraft.ChatFormatting.GOLD),
                             Component.literal("Naechste Welle"), 0, 18, 2);
@@ -827,7 +844,7 @@ public final class ArenaManager {
         buildWave(level, r);
         r.waveTotal = Math.max(1, r.queue.size());
         r.powerMul = computePower(server, r);
-        r.objective = r.goalsEnabled && r.wave % r.goalInterval == 0 ? ArenaObjectives.begin(level, r.center, r.lastGoal) : null;
+        r.objective = r.goalsEnabled && (r.routes.mission(r.wave) || r.wave % r.goalInterval == 0) ? ArenaObjectives.begin(level, r.center, r.lastGoal) : null;
         if(r.objective!=null){
             r.lastGoal=r.objective.kind;
             if(r.objective.kind==2)r.objective.expectedTargets=Math.min(3,Math.max(1,r.queue.size()));
@@ -950,6 +967,9 @@ public final class ArenaManager {
                 r.stat(helper.getUUID())[2]++;
                 r.spectators.remove(id);
                 r.alive.add(id);
+                down.setCamera(down);
+                r.killcamTicks.remove(id);
+                r.killcamTarget.remove(id);
                 down.setGameMode(GameType.SURVIVAL);
                 teleport(down, level, pos.x, pos.y, pos.z, down.getYRot());
                 down.setHealth(Math.max(1.0F, down.getMaxHealth() * 0.5F));
@@ -1008,10 +1028,14 @@ public final class ArenaManager {
             while (!r.queue.isEmpty() && r.mobs.size() < r.maxAlive() && spawned < 4) {
                 Spawn s = r.queue.remove(0);
                 LivingEntity le = spawnMob(level, r, s);
-                if (le != null) {
-                    r.mobs.add(le.getUUID());
-                    if (s.boss) r.bossId = le.getUUID();
+                if (le == null) {
+                    LOGGER.error("Arena: Gegner {} konnte nicht gespawnt werden; Kampf abgebrochen", s.entity);
+                    actionbar(server, r, Component.literal("Gegner konnte nicht gespawnt werden. Kampf abgebrochen."));
+                    finish(server, false);
+                    return;
                 }
+                r.mobs.add(le.getUUID());
+                if (s.boss) r.bossId = le.getUUID();
                 spawned++;
             }
         }
@@ -1034,7 +1058,6 @@ public final class ArenaManager {
         // Wiederbeleben: neben einem Gefallenen schleichen (ca. 4 Sekunden).
         tickRevive(server, level, r);
         ArenaExtras.tick(server, level, r, tickCounter);
-        tickKillcam(server, level, r);
 
         // Aggro halten.
         if (tickCounter % 40 == 0) {
@@ -1083,7 +1106,7 @@ public final class ArenaManager {
         if (!cleared) return;
 
         if (r.state == State.WAVE && r.tier.tokensPerWave() > 0) {
-            int basePerWave = (int) Math.round(r.tier.tokensPerWave() * coinMult(r.mask) * ArenaExtras.eventCoinMult(r.event) * r.coinPercent / 100.0 * (r.objective == null ? 1 : 1.25));
+            int basePerWave = (int) Math.round(r.tier.tokensPerWave() * coinMult(r.mask) * ArenaExtras.eventCoinMult(r.event) * r.coinPercent / 100.0 * (r.objective == null ? 1 : 1.25) * r.routes.coins(r.wave));
             for (UUID id : r.alive) {
                 ServerPlayer p = server.getPlayerList().getPlayer(id);
                 if (p == null) continue;
@@ -1095,6 +1118,8 @@ public final class ArenaManager {
             }
         }
 
+        r.completedWaves = r.wave;
+        ArenaRoutes.reward(server, r);
         ArenaObjectives.clear(level, r.objective);
         ArenaPickups.clear(level,r);
         r.objective = null;
@@ -1110,14 +1135,14 @@ public final class ArenaManager {
             boolean offer = r.wave % 5 == 0;
             r.timer = offer ? 400 : 100;
             ArenaShow.title(runPlayers(server, r), ArenaShow.big("WELLE " + r.wave + " GESCHAFFT", net.minecraft.ChatFormatting.GREEN),
-                    Component.literal(offer ? "Waehle einen Segen, +1 Wiederbelebung, volle Heilung" : "Kurze Pause").withStyle(net.minecraft.ChatFormatting.GRAY), 5, 40, 10);
+                    Component.literal(offer ? "Segen, +1 Wiederbelebung, danach Gruppenweg waehlen" : "Kurze Pause").withStyle(net.minecraft.ChatFormatting.GRAY), 5, 40, 10);
             if (offer) {
                 offerBlessings(server, r);
                 r.revives = Math.min(5, r.revives + 1);
             }
             for (UUID id : r.alive) {
                 ServerPlayer p = server.getPlayerList().getPlayer(id);
-                if (p != null && (r.mask & MOD_NOHEAL) == 0) p.heal(r.wave % 5 == 0 ? p.getMaxHealth() : 6.0F);
+                if (p != null && (r.mask & MOD_NOHEAL) == 0) p.heal(6.0F);
             }
             r.bar.setProgress(1.0F);
             r.bar.setName(Component.translatable("bar.chronicle_arena.pause", r.wave, r.totalStr()));
@@ -1154,7 +1179,7 @@ public final class ArenaManager {
             mob.finalizeSpawn(level, level.getCurrentDifficultyAt(le.blockPosition()), MobSpawnType.EVENT, null);
             mob.setPersistenceRequired();
         }
-        double h = r.adminHealth * r.healthScale * (1.0 + 0.25 * r.extra) * r.growth(0.04, 0.06) * r.powerMul
+        double h = r.adminHealth * r.healthScale * (1.0 + 0.25 * r.extra) * r.growth(0.04, 0.06) * r.powerMul * r.routes.health(r.wave)
                 * (s.mini ? (r.extra == 0 ? 1.75 : 2.5) : s.elite ? 2.0 : 1.0);
         if (s.mini) {
             double cap = switch (r.tier.order()) {
@@ -1168,8 +1193,9 @@ public final class ArenaManager {
             if (base * h > cap) h = cap / base;
         }
         scale(le, Attributes.MAX_HEALTH, h);
-        scale(le, Attributes.ATTACK_DAMAGE, r.adminDamage * r.damageScale * (1.0 + 0.08 * r.extra) * r.growth(0.02, 0.03) * (s.mini ? 1.15 : 1.0));
-        if ((r.mask & MOD_SPEED) != 0) scale(le, Attributes.MOVEMENT_SPEED, 1.3);
+        scale(le, Attributes.ATTACK_DAMAGE, r.adminDamage * r.damageScale * (1.0 + 0.08 * r.extra) * r.growth(0.02, 0.03) * r.routes.damage(r.wave) * (s.mini ? 1.15 : 1.0));
+        scale(le, Attributes.MOVEMENT_SPEED, ArenaBalance.mobSpeed((r.mask & MOD_SPEED) != 0,
+                s.cls == ArenaExtras.CL_BOMBE, r.event == ArenaExtras.EV_BLUTMOND));
         le.setHealth(le.getMaxHealth());
         if (s.elite || s.boss) le.setGlowingTag(true);
         if (s.cls != ArenaExtras.CL_NONE) {
@@ -1181,11 +1207,9 @@ public final class ArenaManager {
                 le.setItemSlot(net.minecraft.world.entity.EquipmentSlot.OFFHAND, new ItemStack(net.minecraft.world.item.Items.SHIELD));
             } else if (s.cls == ArenaExtras.CL_BOMBE) {
                 le.setItemSlot(net.minecraft.world.entity.EquipmentSlot.HEAD, new ItemStack(net.minecraft.world.item.Items.TNT));
-                scale(le, Attributes.MOVEMENT_SPEED, 1.2);
             }
             r.classes.put(le.getUUID(), s.cls);
         }
-        if (r.event == ArenaExtras.EV_BLUTMOND) scale(le, Attributes.MOVEMENT_SPEED, 1.25);
         if (s.mini) {
             le.setCustomName(Component.literal("Mini-Boss").withStyle(net.minecraft.ChatFormatting.RED));
             le.setCustomNameVisible(true);
@@ -1389,7 +1413,7 @@ public final class ArenaManager {
             return;
         }
         Run r = run;
-        boolean fighting = r != null && r.alive.contains(sp.getUUID());
+        boolean fighting = r != null && r.state != State.ENDING && r.alive.contains(sp.getUUID());
         if (!fighting) {
             // Lobby und Zuschauer sind unverwundbar (ausser /kill und Abgrund).
             if (!event.getSource().is(DamageTypes.GENERIC_KILL) && !event.getSource().is(DamageTypes.FELL_OUT_OF_WORLD)) {
@@ -1400,22 +1424,23 @@ public final class ArenaManager {
         if(event.getAmount()>0)r.lastDamage.put(sp.getUUID(),r.fightTicks);
         event.setAmount(ArenaPickups.shield(r,sp,event.getAmount()));
         if ((r.mask & MOD_GLASS) != 0) event.setAmount(event.getAmount() * 2.0F);
-        if (event.getAmount() >= sp.getHealth() + sp.getAbsorptionAmount()
-                && !event.getSource().is(DamageTypes.GENERIC_KILL)) {
-            event.setCanceled(true);
-            net.minecraft.world.entity.Entity slayer = event.getSource().getEntity();
-            makeSpectator(sp);
-            if (slayer instanceof LivingEntity && !(slayer instanceof Player) && slayer.isAlive()) {
-                r.killcamTarget.put(sp.getUUID(), slayer.getUUID());
-                r.killcamTicks.put(sp.getUUID(), 100);
-                ArenaShow.title(List.of(sp), ArenaShow.big("BESIEGT", net.minecraft.ChatFormatting.DARK_RED),
-                        Component.literal("von " + slayer.getDisplayName().getString()).withStyle(net.minecraft.ChatFormatting.GRAY), 5, 70, 15);
-            }
-            if (r.alive.isEmpty()) {
-                // Solo: Killcam erst noch zeigen, dann Niederlage.
-                if (r.killcamTicks.isEmpty()) finish(sp.server, false);
-                else r.lossDelay = 105;
-            }
+    }
+
+    /** Called only after vanilla armor, shields, absorption and death-protection were applied. */
+    private static void defeat(ServerPlayer sp, net.minecraft.world.damagesource.DamageSource source) {
+        Run r = run;
+        if (r == null) return;
+        Entity slayer = source.getEntity();
+        makeSpectator(sp);
+        if (slayer instanceof LivingEntity && !(slayer instanceof Player) && slayer.isAlive()) {
+            r.killcamTarget.put(sp.getUUID(), slayer.getUUID());
+            r.killcamTicks.put(sp.getUUID(), 100);
+            ArenaShow.title(List.of(sp), ArenaShow.big("BESIEGT", net.minecraft.ChatFormatting.DARK_RED),
+                    Component.literal("von " + slayer.getDisplayName().getString()).withStyle(net.minecraft.ChatFormatting.GRAY), 5, 70, 15);
+        }
+        if (r.alive.isEmpty()) {
+            if (r.killcamTicks.isEmpty()) finish(sp.server, false);
+            else r.lossDelay = 105;
         }
     }
 
@@ -1443,7 +1468,20 @@ public final class ArenaManager {
     public void onDeath(LivingDeathEvent event) {
         LivingEntity dead = event.getEntity();
         Run r = run;
-        if (r == null || dead instanceof Player || dead.level().dimension() != DIM) return;
+        if (r == null || dead.level().dimension() != DIM) return;
+        if (dead instanceof ServerPlayer sp) {
+            if (r.state != State.ENDING && r.alive.contains(sp.getUUID())) {
+                if (event.getSource().is(DamageTypes.GENERIC_KILL)) {
+                    removeFromRun(sp);
+                    restoreMode(sp);
+                } else {
+                    event.setCanceled(true);
+                    defeat(sp, event.getSource());
+                }
+            }
+            return;
+        }
+        if (dead instanceof Player) return;
         ArenaObjectives.killed(r.objective, dead.getUUID());
         if (event.getSource().getEntity() instanceof ServerPlayer killer && r.alive.contains(killer.getUUID())
                 && r.mobs.contains(dead.getUUID())) {
@@ -1528,6 +1566,22 @@ public final class ArenaManager {
     }
 
     @SubscribeEvent
+    public void onClone(PlayerEvent.Clone event) {
+        CompoundTag old = event.getOriginal().getPersistentData();
+        CompoundTag current = event.getEntity().getPersistentData();
+        // NeoForge automatically retains only PlayerPersisted; these legacy arena keys live at the root.
+        for (String key : List.of("chronicle_arena_stats", TAG_PROGRESS, TAG_ORIGIN, TAG_MODE)) {
+            if (old.contains(key)) current.put(key, old.get(key).copy());
+        }
+        if (event.getOriginal() instanceof ServerPlayer sp && sp.level().dimension() == DIM) removeFromRun(sp);
+    }
+
+    @SubscribeEvent
+    public void onRespawn(PlayerEvent.PlayerRespawnEvent event) {
+        if (event.getEntity() instanceof ServerPlayer sp && sp.getPersistentData().contains(TAG_MODE)) restoreMode(sp);
+    }
+
+    @SubscribeEvent
     public void onLogout(PlayerEvent.PlayerLoggedOutEvent event) {
         if (event.getEntity() instanceof ServerPlayer sp && sp.level().dimension() == DIM) {
             removeFromRun(sp);
@@ -1577,6 +1631,7 @@ public final class ArenaManager {
                     return 1;
                 }))
                 .then(Commands.literal("ergebnis").executes(ctx->{ArenaPresentation.show(ctx.getSource().getPlayerOrException());return 1;}))
+                .then(Commands.literal("weg").executes(ctx -> { openRoutes(ctx.getSource().getPlayerOrException()); return 1; }))
                 .then(Commands.literal("segen").executes(ctx->{openBlessings(ctx.getSource().getPlayerOrException(),true);return 1;}).then(Commands.argument("nr", com.mojang.brigadier.arguments.IntegerArgumentType.integer(1, 3))
                         .executes(ctx -> chooseBlessing(ctx.getSource().getPlayerOrException(),
                                 com.mojang.brigadier.arguments.IntegerArgumentType.getInteger(ctx, "nr")))))
@@ -1642,6 +1697,10 @@ public final class ArenaManager {
         List<ArenaDefs.Tier> tiers = ArenaDefs.tiers();
         LOGGER.info("ARENA-DEBUG: Musik Wellen={} Boss={}", BuiltInRegistries.SOUND_EVENT.containsKey(ArenaShow.WAVE_MUSIC), BuiltInRegistries.SOUND_EVENT.containsKey(ArenaShow.BOSS_MUSIC));
         LOGGER.info("ARENA-DEBUG: {} Stufen, {} Begegnungen verfuegbar", tiers.size(), ArenaDefs.encounters().size());
+        if (tiers.isEmpty() || ArenaDefs.encounters().isEmpty()) {
+            LOGGER.error("ARENA-DEBUG: Keine Stufen oder verfuegbaren Begegnungen fuer den Selbsttest");
+            return;
+        }
         Run dummy = new Run(ArenaDefs.encounters().get(0), tiers.get(tiers.size() - 1), 3, 15, 0);
         int ok = 0;
         int fail = 0;
@@ -1704,6 +1763,36 @@ public final class ArenaManager {
             LOGGER.error("ARENA-DEBUG: Extras-Test Fehler", t);
         }
 
+        // Verify objectives and escort navigation against the actual generated geometry in all variants.
+        int routeOk = 0, routeFail = 0;
+        for (BlockPos center : List.of(ARENA, ARENA_B, ARENA_C)) {
+            Set<Integer> kinds = new HashSet<>();
+            for (int attempt = 0; attempt < 80 && kinds.size() < 5; attempt++) {
+                ArenaObjectives.Objective goal = ArenaObjectives.begin(level, center, -1);
+                kinds.add(goal.kind);
+                ArenaObjectives.clear(level, goal);
+            }
+            if (kinds.size() != 5) { routeFail++; LOGGER.error("ARENA-DEBUG: Zielarten bei {} fehlen: {}", center, kinds); }
+            for (int turn = 0; turn < 4; turn++) {
+                var guide = EntityType.VILLAGER.create(level);
+                if (guide == null) { routeFail++; continue; }
+                guide.setNoAi(true);guide.setInvulnerable(true);guide.moveTo(center.getX()+0.5,center.getY(),center.getZ()+0.5,0,0);
+                if (!level.addFreshEntity(guide)) { routeFail++; continue; }
+                boolean passed = true;int steps = 0;
+                for (BlockPos point : ArenaObjectives.routePoints(center, turn)) {
+                    Vec3 to = Vec3.atBottomCenterOf(point);
+                    while (guide.position().distanceToSqr(to) >= 0.25 && ++steps <= 3600) {
+                        if (!ArenaObjectives.stepGuide(level, guide, to)) { passed=false;break; }
+                    }
+                    if (!passed || steps > 3600) { passed=false;break; }
+                }
+                guide.discard();
+                if (passed) routeOk++;
+                else { routeFail++; LOGGER.error("ARENA-DEBUG: Begleitroute bei {} Orientierung {} blockiert", center, turn); }
+            }
+        }
+        LOGGER.info("ARENA-DEBUG: Ziel-/Begleit-Test fertig, routen_ok={} fehler={}", routeOk, routeFail);
+
         int shopOk = 0;
         for (ArenaDefs.ShopOffer o : ArenaDefs.shopOffers()) {
             ItemStack st = o.stack(server.registryAccess());
@@ -1727,7 +1816,7 @@ public final class ArenaManager {
     static boolean inLobby(ServerPlayer sp) {
         double dx = sp.getX() - (LOBBY.getX() + 0.5);
         double dz = sp.getZ() - (LOBBY.getZ() + 0.5);
-        return dx * dx + dz * dz <= (LOBBY_RADIUS + 2) * (LOBBY_RADIUS + 2) && sp.getY() > 40;
+        return sp.level().dimension() == DIM && dx * dx + dz * dz <= (LOBBY_RADIUS + 2) * (LOBBY_RADIUS + 2) && sp.getY() > 40;
     }
 
     private static List<ServerPlayer> playersInLobby(MinecraftServer server) {
@@ -1826,7 +1915,7 @@ public final class ArenaManager {
             if (lv > 0) out.add("S " + u.name() + " " + lv);
         }
         Run r = run;
-        int[] st = r == null ? null : r.bless.get(p.getUUID());
+        int[] st = r == null || !r.involves(p.getUUID()) ? null : r.bless.get(p.getUUID());
         if (st != null) {
             for (ArenaShow.Blessing b : ArenaShow.Blessing.values()) {
                 if (b.ordinal() < st.length && st[b.ordinal()] > 0) out.add("+ " + b.label + " x" + st[b.ordinal()]);
@@ -1874,6 +1963,23 @@ public final class ArenaManager {
         Run r=run;
         if(r!=null && r.id.equals(choice.run()) && r.wave==choice.wave()) chooseBlessing(p,choice.slot());
     }
+    public static void openRoutes(ServerPlayer p) {
+        Run r = run;
+        if (r == null || r.state != State.PREP || !r.routes.voting() || !r.alive.contains(p.getUUID()) || p.level().dimension() != DIM) {
+            p.sendSystemMessage(Component.literal("Gerade keine Wege-Abstimmung aktiv. Sie startet nach dem Segen jeder fuenften Welle."));
+            return;
+        }
+        r.routes.refresh(r.alive);
+        ArenaRoutes.send(p, r, true);
+    }
+
+    public static void voteRoute(ServerPlayer p, ArenaNet.RouteVote vote) {
+        Run r = run;
+        if (r == null || r.state != State.PREP || p.level().dimension() != DIM || !r.alive.contains(p.getUUID())) return;
+        r.routes.refresh(r.alive);
+        if (r.routes.cast(p.getUUID(), vote.run(), vote.wave(), vote.slot())) ArenaRoutes.send(p, r, false);
+    }
+
     public static void openBlessings(ServerPlayer p,boolean popup){
         Run r=run;
         if(r==null||p.level().dimension()!=DIM||!r.involves(p.getUUID()))return;

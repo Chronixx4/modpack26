@@ -6,7 +6,7 @@
       "spacing": "@PIRATE_OUTPOST_PLACEMENT_SPACING",
       "separation": "@PIRATE_OUTPOST_PLACEMENT_SEPARATION"
     },
-    "frequency": 0.5
+    "frequency": 0.25
   },
   "structures": [
     {

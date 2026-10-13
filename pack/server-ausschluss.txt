@@ -8,3 +8,4 @@ iris-*
 # Distant Horizons: auf dem Server nur optional und crasht zusammen mit Chunky
 DistantHorizons-*
 keybindoverview-*
+oracle_index-*

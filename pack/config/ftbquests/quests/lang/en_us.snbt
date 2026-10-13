@@ -1976,10 +1976,6 @@
 		"Für Ad Astra brauchst du viel Stahl, z. B. aus dem Etrionischen Hochofen (Eisen plus Kohle). Andere Stahlquellen gehen auch."
 	]
 	quest.32B50C90FFB163B6.title: "Weltraum-Stahl"
-	quest.32B6D3A364BB574F.quest_desc: [
-		"Dungeons and Taverns stellt Tavernen in viele Biome. Jede davon zählt. Drinnen kannst du dich ausruhen und handeln."
-	]
-	quest.32B6D3A364BB574F.title: "Taverne"
 	quest.32BACAFCE3E9001E.quest_desc: [
 		"Mit einem Upgrade-Ritual (Edelholzbretter, arkane Kristalle, Spawner-Schrott) hebst du die Schmiede auf Stufe 2. Die Anforderungen zeigt dir JEI."
 	]
@@ -3682,10 +3678,6 @@
 		"Wer weiter weg ist, hört dich leiser. In Gruppen hören sich alle überall."
 	]
 	quest.555069810060F442.title: "Voice Chat"
-	quest.5552DE1973760971.quest_desc: [
-		"Auch im End gibt es etwas Neues: eine Burg auf den äußeren Inseln."
-	]
-	quest.5552DE1973760971.title: "End-Burg"
 	quest.555A4B2D3C60608F.quest_desc: [
 		"Drachenschuppen, Obsidianstahl und eine Netherit-Brustplatte werden in einer Stufe-2-Schmiede zur &eDraco-Arcanus&r-Rüstung.\n\nDrachenschuppen hinterlässt der Enderdrache."
 	]
@@ -4496,10 +4488,6 @@
 		"Create Train Utilities bringt echte Schiebetüren. Dafür brauchst du Transistor, Steuereinheit und Gummidichtung."
 	]
 	quest.5E9F99C79E90F18E.title: "Bauteile für Zugtüren"
-	quest.5EA2C0A6A27DB1F9.quest_desc: [
-		"Eine Gruft voller Untoter. Fackeln und Heiltränke einpacken."
-	]
-	quest.5EA2C0A6A27DB1F9.title: "Untote Gruft"
 	quest.5EBD3279774713D4.quest_desc: [
 		"Der Stab ist ein Upgrade für deinen Zauberstab (Nekroturgie-Ritual). Mit ihm beschwörst du mehr als einen Untoten pro Zauber."
 	]
@@ -5244,10 +5232,6 @@
 		"Lauf, Trommel und Hammer aus Stahl, dazu ein Holzgriff. Mit Upgrades an der Werkbank wird er noch besser."
 	]
 	quest.76A915753B38445C.title: "Revolver"
-	quest.76B750E2193AFEB8.quest_desc: [
-		"Ein großes Anwesen der Illager. Erwarte Magier und Verwüster."
-	]
-	quest.76B750E2193AFEB8.title: "Illager-Anwesen"
 	quest.76BE00C3DFE42F0F.quest_desc: [
 		"Gib 64 Eisenbarren ab und bekomm dafür eine seltene Kiste."
 	]

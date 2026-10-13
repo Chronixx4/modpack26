@@ -2,6 +2,7 @@ package de.chronicle.arena;
 
 /** Combat recovery has a damage delay and never upgrades a regeneration potion. */
 final class ArenaBalance {
+    static double mobSpeed(boolean haste,boolean bomber,boolean bloodMoon){return (haste?1.3:1)*(bomber?1.2:1)*(bloodMoon?1.25:1);}
     static int regenInterval(int stacks){return 120-20*Math.clamp(stacks-1,0,2);}
     static float regenAmount(boolean armor){return armor?0.75F:0.5F;}
     static boolean canRegen(int stacks,int now,int lastHit,int lastPulse,boolean noHeal){

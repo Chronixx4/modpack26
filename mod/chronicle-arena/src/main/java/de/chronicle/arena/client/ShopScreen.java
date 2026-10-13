@@ -19,7 +19,8 @@ import java.util.Map;
  */
 public class ShopScreen extends Screen {
     private static final String[] CATEGORIES = {"verbrauch", "waffen", "ruestung", "werkzeug", "material", "magie", "kosmetik", "runen"};
-    private static final int COLS = 6;
+    private int cols = 6;
+    private int panelWidth;
     private static final int ROWS = 5;
     private static final int SLOT = 20;
 
@@ -72,13 +73,15 @@ public class ShopScreen extends Screen {
     }
 
     private int pages() {
-        return Math.max(1, (items().size() + COLS * ROWS - 1) / (COLS * ROWS));
+        return Math.max(1, (items().size() + cols * ROWS - 1) / (cols * ROWS));
     }
 
     @Override
     protected void init() {
         tabButtons.clear();
-        left = this.width / 2 - 190;
+        panelWidth = Math.min(380, this.width - 20);
+        cols = Math.max(3, Math.min(6, (panelWidth - 238) / SLOT));
+        left = (this.width - panelWidth) / 2;
         top = this.height / 2 - 105;
         for (int i = 0; i < CATEGORIES.length; i++) {
             final int idx = i;
@@ -97,10 +100,10 @@ public class ShopScreen extends Screen {
         nextButton = addRenderableWidget(Button.builder(Component.literal(">"), b -> {
             page = (page + 1) % pages();
             updateButtons();
-        }).bounds(left + 98 + COLS * SLOT - 24, top + 36 + ROWS * SLOT + 8, 24, 18).build());
+        }).bounds(left + 98 + cols * SLOT - 24, top + 36 + ROWS * SLOT + 8, 24, 18).build());
         buyButton = addRenderableWidget(Button.builder(Component.translatable("gui.chronicle_arena.buy"), b -> {
             if (selected != null) PacketDistributor.sendToServer(new Net.Buy(selected.id()));
-        }).bounds(left + 98 + COLS * SLOT + 14, top + 196, 108, 20).build());
+        }).bounds(left + 98 + cols * SLOT + 14, top + 196, 108, 20).build());
         addRenderableWidget(Button.builder(Component.translatable("gui.chronicle_arena.close"), b -> onClose())
                 .bounds(left + 6, top + 36 + CATEGORIES.length * 20 + 6, 84, 20).build());
         updateButtons();
@@ -128,10 +131,10 @@ public class ShopScreen extends Screen {
         List<Net.ShopInfo> list = items();
         int gx = left + 98;
         int gy = top + 36;
-        if (mx >= gx && my >= gy && mx < gx + COLS * SLOT && my < gy + ROWS * SLOT) {
+        if (mx >= gx && my >= gy && mx < gx + cols * SLOT && my < gy + ROWS * SLOT) {
             int col = (int) ((mx - gx) / SLOT);
             int row = (int) ((my - gy) / SLOT);
-            int idx = page * COLS * ROWS + row * COLS + col;
+            int idx = page * cols * ROWS + row * cols + col;
             if (idx < list.size()) {
                 selected = list.get(idx);
                 updateButtons();
@@ -144,7 +147,7 @@ public class ShopScreen extends Screen {
     @Override
     public void renderBackground(GuiGraphics gfx, int mouseX, int mouseY, float partialTick) {
         super.renderBackground(gfx, mouseX, mouseY, partialTick);
-        Panel.draw(gfx, left, top, left + 380, top + 224, 28, 0xFFD36B);
+        Panel.draw(gfx, left, top, left + panelWidth, top + 224, 28, 0xFFD36B);
         gfx.fill(left + 94, top + 32, left + 96, top + 220, 0xFF2A2440);
     }
 
@@ -153,15 +156,15 @@ public class ShopScreen extends Screen {
         super.render(gfx, mouseX, mouseY, partialTick);
         gfx.drawString(this.font, this.title, left + 8, top + 10, 0xE0B8FF);
         Component tk = Component.translatable("gui.chronicle_arena.tokens", tokens);
-        gfx.drawString(this.font, tk, left + 372 - this.font.width(tk), top + 10, 0xFFD700);
+        gfx.drawString(this.font, tk, left + panelWidth - 8 - this.font.width(tk), top + 10, 0xFFD700);
 
         List<Net.ShopInfo> list = items();
         int gx = left + 98;
         int gy = top + 36;
         Net.ShopInfo hover = null;
         for (int row = 0; row < ROWS; row++) {
-            for (int col = 0; col < COLS; col++) {
-                int idx = page * COLS * ROWS + row * COLS + col;
+            for (int col = 0; col < cols; col++) {
+                int idx = page * cols * ROWS + row * cols + col;
                 int x = gx + col * SLOT;
                 int y = gy + row * SLOT;
                 boolean has = idx < list.size();
@@ -177,14 +180,14 @@ public class ShopScreen extends Screen {
             }
         }
         gfx.drawCenteredString(this.font, Component.translatable("gui.chronicle_arena.page", page + 1, pages()),
-                gx + COLS * SLOT / 2, gy + ROWS * SLOT + 13, 0xAAAAAA);
+                gx + cols * SLOT / 2, gy + ROWS * SLOT + 13, 0xAAAAAA);
 
         // Detailbereich rechts.
-        int dx = left + 98 + COLS * SLOT + 14;
+        int dx = left + 98 + cols * SLOT + 14;
         if (selected != null) {
             ItemStack st = selected.stack();
             gfx.renderItem(st, dx, top + 36);
-            gfx.drawString(this.font, selected.name(), dx + 22, top + 36, 0xFFFFFF);
+            gfx.drawString(this.font, this.font.plainSubstrByWidth(selected.name(), 86), dx + 22, top + 36, 0xFFFFFF);
             gfx.drawString(this.font, owned(selected) ? Component.literal("Gekauft") : Component.translatable("gui.chronicle_arena.tokens", selected.price()), dx + 22, top + 47,
                     owned(selected) ? 0x55FF55 : tokens >= selected.price() ? 0xFFD700 : 0xFF6666);
             List<Component> tip = Screen.getTooltipFromItem(this.minecraft, st);

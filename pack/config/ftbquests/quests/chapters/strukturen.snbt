@@ -19,20 +19,20 @@
 			y: 0.0d
 		}
 		{
-			id: "307E82EEDCCACF4A"
-			linked_quest: "158910F703716CDC"
-			shape: "rsquare"
-			size: 1.0d
-			x: 6.0d
-			y: -7.5d
-		}
-		{
 			id: "7313F56F66F7AA25"
 			linked_quest: "1EC196EC8629D11F"
 			shape: "rsquare"
 			size: 1.0d
 			x: 4.0d
-			y: -4.5d
+			y: 3.0d
+		}
+		{
+			id: "307E82EEDCCACF4A"
+			linked_quest: "158910F703716CDC"
+			shape: "rsquare"
+			size: 1.0d
+			x: 12.0d
+			y: -1.5d
 		}
 	]
 	quests: [
@@ -87,7 +87,7 @@
 				}
 			]
 			x: 2.0d
-			y: -3.0d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -133,7 +133,7 @@
 				}
 			]
 			x: 4.0d
-			y: -9.0d
+			y: -3.0d
 		}
 		{
 			dependencies: [
@@ -156,7 +156,7 @@
 				}
 			]
 			x: 6.0d
-			y: -9.0d
+			y: -4.5d
 		}
 		{
 			dependencies: [
@@ -179,7 +179,7 @@
 				}
 			]
 			x: 8.0d
-			y: -9.0d
+			y: -4.5d
 		}
 		{
 			dependencies: [
@@ -202,7 +202,7 @@
 				}
 			]
 			x: 10.0d
-			y: -9.0d
+			y: -6.0d
 		}
 		{
 			dependencies: [
@@ -225,7 +225,7 @@
 				}
 			]
 			x: 12.0d
-			y: -9.0d
+			y: -6.0d
 		}
 		{
 			dependencies: [
@@ -248,7 +248,7 @@
 				}
 			]
 			x: 4.0d
-			y: -3.0d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -392,100 +392,6 @@
 			dependencies: [
 				"1055241A975F792E"
 			]
-			id: "32B6D3A364BB574F"
-			progression_mode: "flexible"
-			rewards: [
-				{
-					id: "3AAC1A61AED76CB0"
-					type: "xp_levels"
-					xp_levels: 1
-				}
-			]
-			tasks: [
-				{
-					id: "7E84D4FB83FE6490"
-					structure: "#nova_structures:taverns"
-					type: "structure"
-				}
-			]
-			x: 2.0d
-			y: -6.0d
-		}
-		{
-			dependencies: [
-				"32B6D3A364BB574F"
-			]
-			id: "5EA2C0A6A27DB1F9"
-			progression_mode: "flexible"
-			rewards: [
-				{
-					id: "3D8FEE7B3A479F70"
-					type: "xp_levels"
-					xp_levels: 2
-				}
-			]
-			tasks: [
-				{
-					id: "734EC8B96E4230FA"
-					structure: "nova_structures:undead_crypt"
-					type: "structure"
-				}
-			]
-			x: 4.0d
-			y: -6.0d
-		}
-		{
-			dependencies: [
-				"5EA2C0A6A27DB1F9"
-			]
-			id: "76B750E2193AFEB8"
-			progression_mode: "flexible"
-			rewards: [
-				{
-					id: "56356E4738F132F3"
-					table_id: 1753254771712731614L
-					type: "loot"
-				}
-			]
-			tasks: [
-				{
-					id: "594163B5F0A3AC41"
-					structure: "nova_structures:illager_manor"
-					type: "structure"
-				}
-			]
-			x: 6.0d
-			y: -6.0d
-		}
-		{
-			dependencies: [
-				"76B750E2193AFEB8"
-				"158910F703716CDC"
-			]
-			id: "5552DE1973760971"
-			optional: true
-			progression_mode: "flexible"
-			rewards: [
-				{
-					id: "3841F2A316E8CEAA"
-					table_id: 6783561722415423100L
-					type: "loot"
-				}
-			]
-			tasks: [
-				{
-					id: "56E01A3A4754B690"
-					structure: "nova_structures:end_castle"
-					type: "structure"
-				}
-			]
-			x: 8.0d
-			y: -6.0d
-		}
-		{
-			dependencies: [
-				"1055241A975F792E"
-			]
 			id: "7DBF5A09EBAEA107"
 			progression_mode: "flexible"
 			rewards: [
@@ -503,7 +409,7 @@
 				}
 			]
 			x: 2.0d
-			y: 1.5d
+			y: 6.0d
 		}
 		{
 			dependencies: [
@@ -526,7 +432,7 @@
 				}
 			]
 			x: 4.0d
-			y: -1.5d
+			y: 6.0d
 		}
 		{
 			dependencies: [
@@ -547,7 +453,7 @@
 				}
 			]
 			x: 4.0d
-			y: 3.0d
+			y: 9.0d
 		}
 		{
 			dependencies: [
@@ -572,7 +478,7 @@
 				}
 			]
 			x: 4.0d
-			y: 1.5d
+			y: 4.5d
 		}
 		{
 			dependencies: [
@@ -597,7 +503,7 @@
 				}
 			]
 			x: 6.0d
-			y: 3.0d
+			y: 6.0d
 		}
 		{
 			dependencies: [
@@ -623,7 +529,7 @@
 				}
 			]
 			x: 6.0d
-			y: 1.5d
+			y: 4.5d
 		}
 		{
 			dependencies: [
@@ -651,7 +557,7 @@
 				}
 			]
 			x: 4.0d
-			y: 4.5d
+			y: 7.5d
 		}
 		{
 			dependencies: [
@@ -748,7 +654,7 @@
 				}
 			]
 			x: 2.0d
-			y: 7.5d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -771,7 +677,7 @@
 				}
 			]
 			x: 4.0d
-			y: 7.5d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -794,7 +700,7 @@
 				}
 			]
 			x: 6.0d
-			y: 7.5d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -817,7 +723,7 @@
 				}
 			]
 			x: 2.0d
-			y: 4.5d
+			y: 9.0d
 		}
 		{
 			dependencies: [
@@ -840,7 +746,7 @@
 				}
 			]
 			x: 4.0d
-			y: 6.0d
+			y: 10.5d
 		}
 		{
 			dependencies: [
@@ -865,7 +771,7 @@
 				}
 			]
 			x: 6.0d
-			y: 6.0d
+			y: 10.5d
 		}
 		{
 			dependencies: [
@@ -912,7 +818,7 @@
 				}
 			]
 			x: 14.0d
-			y: -1.5d
+			y: -3.0d
 		}
 		{
 			dependencies: [
@@ -935,7 +841,7 @@
 				}
 			]
 			x: 16.0d
-			y: -1.5d
+			y: -3.0d
 		}
 		{
 			dependencies: [
@@ -959,7 +865,7 @@
 				}
 			]
 			x: 14.0d
-			y: 1.5d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -982,7 +888,7 @@
 				}
 			]
 			x: 16.0d
-			y: 1.5d
+			y: -1.5d
 		}
 		{
 			dependencies: [
