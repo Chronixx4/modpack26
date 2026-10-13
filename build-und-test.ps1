@@ -9,7 +9,7 @@ $ProgressPreference = 'SilentlyContinue'
 $MC      = '1.21.1'
 $LOADER  = 'neoforge'
 $PACK    = 'Chronicle'
-$PACKVER = '0.9.30'
+$PACKVER = '0.9.31'
 $RAM     = '8G'
 $TIMEOUT_MIN = 20
 
