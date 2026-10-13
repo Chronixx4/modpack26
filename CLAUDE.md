@@ -33,7 +33,7 @@ Kommunikation mit dem Nutzer: Deutsch, locker, kurz.
   - `pack/config/` landet in `overrides/config` (.mrpack) bzw. `config/` (beide ZIPs) und im lokalen Testserver. Der Servertest gibt die Zeile `Questbuch: Loaded ... quests` aus.
 - **Webseite:** `site/index.html` (statisch, Netlify-Projekt `chronicle-modpack`, Tabs Uebersicht/Guide/Skilltree/Modliste/Changelog; Item-Icons in `site/img/items/`). `python3 tools/seite_aktualisieren.py` schreibt `site/modliste.json` aus `MODLISTE.txt` und setzt die Mod-Anzahl in `index.html`, nach jedem Build mitlaufen lassen und committen. Von Hand bleiben Changelog, Questzahlen und Guide-Rezepte in `index.html`. `netlify.toml` setzt `site/` als Veroeffentlichungsordner.
 - CurseForge-Jars holt das Skript automatisch aus `%USERPROFILE%\Downloads` (Dateinamen-Muster in `$cfPatterns`).
-- Aktuelle Version: **PACKVER 0.9.30 (Arbeitsbranch)**. Bei jeder Änderung `$PACKVER` hochzählen.
+- Aktuelle Version: **PACKVER 0.9.31 (Arbeitsbranch)**. Bei jeder Änderung `$PACKVER` hochzählen.
 
 ## Mods, die nur auf CurseForge sind (liegen in curseforge-mods\ bzw. Downloads)
 Alle für 1.21.1 NeoForge. Download-URL-Schema: `https://www.curseforge.com/minecraft/mc-mods/<slug>/download/<fileId>`
@@ -156,3 +156,5 @@ Artifact „Modpack-Bauplan 1.21.1“ auf claude.ai (Checkliste mit 143 Mods nac
 - 0.9.29: Buddy Drones 1.1.0, ByteBuddies 0.9.2 (offizielle CurseForge-NeoForge-JAR, Datei 7174647), Laser Bridges & Doors 6.1 und Superb Warfare 0.8.9.2. Deimos 2.7 kommt als benoetigte Bibliothek dazu: 338 Mods insgesamt. Architectury und Kotlin for Forge bereits vorhanden; SimpleBedrockModel wird von Superb Warfare eingebettet mitgeliefert. ByteBuddies fuer NeoForge braucht keine Turtleboi Core Library (diese ist nur fuer Forge 1.20.1). Vista, Drifter und Cyborg Robot Chicken nicht enthalten. Superb-Warfare-Blockzerstoerung bleibt beim Mod-Standard (aktiviert). Paketcheck prueft auch die fuenf neuen JARs in allen Paketen; Client/Ingame noch ungeprueft.
 
 - 0.9.30 (Arbeitsbranch, noch kein Release): Arena 0.4.0 mit gemeinsamer Wege-Abstimmung nach jeder fuenften Welle (Risiko/Erholung/Spezialmission). Details und Teststatus: mod/chronicle-arena/RELEASE-0.4.0.md. Volle Pausenheilung nur noch beim Erholungsweg. Netzwerkversion 9; Server und Clients gemeinsam aktualisieren. Trainingsraum/Boss nicht begonnen.
+
+- 0.9.31 (Arbeitsbranch, noch kein Release): Gesamtpruefung der Arena, Korrekturen als Arena 0.4.1. Tod-Erkennung nach Vanilla-Schutz, Fortschritt bleibt nach Respawn, Killcam/Wiederbeleben, Abgrund-Zaehler, Belohnungsberechtigung, Spawnfehler, Tempo-Skalierung, Zielpunkte/Begleitrouten, eigene Strukturen, GUI-Groessen und Paketgrenzen korrigiert. Testnachweise und noch offene Laufzeitpruefung: mod/chronicle-arena/PRUEFBERICHT-0.4.1.md.

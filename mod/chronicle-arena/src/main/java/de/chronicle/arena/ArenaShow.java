@@ -95,7 +95,7 @@ public final class ArenaShow {
         }
 
         ResourceLocation modId() {
-            return ChronicleArena.id("blessing_" + name().toLowerCase());
+            return ChronicleArena.id("blessing_" + name().toLowerCase(java.util.Locale.ROOT));
         }
     }
 

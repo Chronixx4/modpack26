@@ -16,7 +16,7 @@ public final class AdminScreen extends Screen {
     private boolean goals,confirmStop;
     public AdminScreen(Net.OpenAdmin data){super(Component.literal("Arena - Admin Control Panel"));this.data=data;values=new int[]{data.health(),data.damage(),data.coins(),data.prep(),data.interval()};goals=data.goals();}
     @Override protected void init(){
-        int x=width/2-165,y=height/2-118;
+        int x=width/2-155,y=height/2-118;
         for(int i=0;i<5;i++){
             final int j=i;
             addRenderableWidget(Button.builder(Component.literal("-"),b->values[j]=Math.max(min[j],values[j]-step[j])).bounds(x+236,y+43+i*23,25,20).build());
@@ -30,12 +30,12 @@ public final class AdminScreen extends Screen {
     private void send(boolean stop){PacketDistributor.sendToServer(new Net.AdminChange(values[0],values[1],values[2],values[3],values[4],goals,stop));}
     @Override public void renderBackground(GuiGraphics g,int mx,int my,float tick){
         super.renderBackground(g,mx,my,tick);
-        int x=width/2-165,y=height/2-118;
+        int x=width/2-155,y=height/2-118;
         Panel.draw(g,x,y,x+310,y+232,24,0xFF7777);
     }
     @Override public void render(GuiGraphics g,int mx,int my,float tick){
         super.render(g,mx,my,tick);
-        int x=width/2-165,y=height/2-118;
+        int x=width/2-155,y=height/2-118;
         g.drawCenteredString(font,title,x+155,y+8,0xFFFFFF);
         g.drawString(font,font.plainSubstrByWidth(data.status(),290),x+10,y+29,0xBBBBBB);
         for(int i=0;i<5;i++)g.drawString(font,labels[i]+": "+values[i],x+10,y+49+i*23,0xFFFFFF);

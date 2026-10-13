@@ -7,6 +7,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ArenaCombatTest {
+    @Test void mobSpeedCombinesHasteClassAndEventWithoutOverwriting(){
+        assertEquals(1,ArenaBalance.mobSpeed(false,false,false));
+        assertEquals(1.3,ArenaBalance.mobSpeed(true,false,false));
+        assertEquals(1.5,ArenaBalance.mobSpeed(false,true,true),0.00001);
+        assertEquals(1.95,ArenaBalance.mobSpeed(true,true,true),0.00001);
+    }
     @Test void beaconHasFiniteHealthAndOneStrikePerMobPerSecond(){
         var o=new ArenaObjectives.Objective(1,BlockPos.ZERO);UUID enemy=UUID.randomUUID();
         ArenaObjectives.strike(o,enemy,1000);assertEquals(92,o.health);

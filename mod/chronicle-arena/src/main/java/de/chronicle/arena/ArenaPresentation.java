@@ -27,7 +27,7 @@ public final class ArenaPresentation {
         for(UUID id:ids){var s=r.stat(id);team.add(r.names.getOrDefault(id,"Spieler")+" | Schaden "+s[0]+" | Kills "+s[1]+" | Wiederbelebt "+s[2]);}
         for(UUID id:ids){ServerPlayer p=server.getPlayerList().getPlayer(id);if(p==null)continue;
             List<String> loot=new ArrayList<>();r.loot.getOrDefault(id,Map.of()).forEach((name,n)->loot.add(n+" x "+name));
-            ArenaNet.Result result=new ArenaNet.Result(r.id,r.won,r.encounter.name(),r.tier.name(),r.endless?Math.max(0,r.wave-1):r.wave,ArenaManager.formatTime(r.fightTicks),Math.max(0,ArenaStats.earned(p)-r.earnedStart.getOrDefault(id,ArenaStats.earned(p))),r.rewardXp.getOrDefault(id,0),List.copyOf(loot),List.copyOf(team.subList(0,Math.min(1024,team.size()))));
+            ArenaNet.Result result=new ArenaNet.Result(r.id,r.won,r.encounter.name(),r.tier.name(),r.endless?r.completedWaves:r.wave,ArenaManager.formatTime(r.fightTicks),Math.max(0,ArenaStats.earned(p)-r.earnedStart.getOrDefault(id,ArenaStats.earned(p))),r.rewardXp.getOrDefault(id,0),List.copyOf(loot),List.copyOf(team.subList(0,Math.min(1024,team.size()))));
             last.put(id,new Last(result,new Net.Action(false,r.encounter.id().toString(),r.tier.id().toString(),r.mask|((r.variant+1)<<4)),server.getTickCount()+12000));
         }
     }

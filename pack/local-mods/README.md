@@ -1,8 +1,8 @@
 # Eigene Mods fuer den Windows-Builder
 
-`chronicle-arena-0.4.0.jar` ist der Build des Arena-Quellstands auf diesem
-Arbeitsbranch (Wege-Auswahl, noch nicht veroeffentlicht). Die passende SHA-256-Pruefsumme
-steht in `SHA256SUMS.txt`. Build- und Teststatus: `mod/chronicle-arena/RELEASE-0.4.0.md`.
+`chronicle-arena-0.4.1.jar` ist der Build des Arena-Quellstands auf diesem
+Arbeitsbranch (Wege-Auswahl und Review-Korrekturen, noch nicht veroeffentlicht). Die passende SHA-256-Pruefsumme
+steht in `SHA256SUMS.txt`. Build- und Teststatus: `mod/chronicle-arena/PRUEFBERICHT-0.4.1.md`.
 
 Der PowerShell-Builder liest `mod_version` aus `mod/chronicle-arena/gradle.properties`,
 prueft die passende JAR per SHA-256 und kopiert sie in Client und Server.

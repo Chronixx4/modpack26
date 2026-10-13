@@ -33,12 +33,36 @@ public final class ArenaObjectives {
     }
     /** Maps a uniform roll to all goal types except the preceding one. */
     static int chooseKind(int roll,int previous){return previous>=0&&previous<5?(roll>=previous?roll+1:roll):roll;}
+    static List<BlockPos> routePoints(BlockPos center,int turn){
+        List<BlockPos> points=new ArrayList<>();
+        // Keep markers away from the red carpets on the four arena axes.
+        for(int[] v:new int[][]{{-12,-8},{8,12},{12,-8}}){int x=v[0],z=v[1];for(int i=0;i<Math.floorMod(turn,4);i++){int old=x;x=-z;z=old;}points.add(center.offset(x,0,z));}
+        return points;
+    }
+    static boolean guideFloor(boolean clearHead,boolean supported,double height){
+        return clearHead&&supported&&Double.isFinite(height)&&height>=0&&height<=0.25;
+    }
+    static boolean stepGuide(ServerLevel level,Entity guide,Vec3 target){
+        Vec3 direction=target.subtract(guide.position()).multiply(1,0,1).normalize();
+        for(double angle:new double[]{0,Math.PI/4,-Math.PI/4,Math.PI/2,-Math.PI/2}){
+            double dx=direction.x*Math.cos(angle)-direction.z*Math.sin(angle),dz=direction.x*Math.sin(angle)+direction.z*Math.cos(angle);
+            Vec3 next=guide.position().add(dx*0.05,0,dz*0.05);BlockPos at=BlockPos.containing(next);
+            var shape=level.getBlockState(at).getCollisionShape(level,at);
+            double height=shape.isEmpty()?0:shape.max(net.minecraft.core.Direction.Axis.Y);
+            if(!guideFloor(level.getBlockState(at.above()).getCollisionShape(level,at.above()).isEmpty(),level.getBlockState(at.below()).isSolid(),height))continue;
+            Vec3 step=new Vec3(next.x,at.getY()+height,next.z);
+            if(level.noCollision(guide,guide.getBoundingBox().move(step.subtract(guide.position())))){
+                guide.teleportTo(step.x,step.y,step.z);return true;
+            }
+        }
+        return false;
+    }
     public static Objective begin(ServerLevel level,BlockPos center,int previous){
         int kind=chooseKind(level.getRandom().nextInt(previous>=0?4:5),previous);
         Objective o=new Objective(kind,center);
         // Rotate the same safe, short route through four different orientations.
         int turn=level.getRandom().nextInt(4);
-        for(int[] v:new int[][]{{-12,-8},{0,12},{12,-8}}){int x=v[0],z=v[1];for(int i=0;i<turn;i++){int old=x;x=-z;z=old;}o.points.add(center.offset(x,0,z));}
+        o.points.addAll(routePoints(center,turn));
         if(kind==0||kind==1||kind==4){
             List<BlockPos> needed=kind==1?List.of(o.points.get(0)):o.points;
             // Never overwrite containers, existing builds or their block entity data.
@@ -97,8 +121,7 @@ public final class ArenaObjectives {
             Vec3 to=Vec3.atBottomCenterOf(o.points.get(o.checkpoint));Vec3 delta=to.subtract(guide.position());
             if(delta.lengthSqr()<0.25)o.checkpoint++;
             else if(defend(server,level,guide.position(),alive,mobs)){
-                Vec3 next=guide.position().add(delta.normalize().scale(0.05));BlockPos at=BlockPos.containing(next);
-                if(level.getBlockState(at).isAir()&&level.getBlockState(at.above()).isAir()&&level.getBlockState(at.below()).isSolid())guide.teleportTo(next.x,next.y,next.z);
+                stepGuide(level,guide,to);
             }
             if(o.ticks%10==0)level.sendParticles(net.minecraft.core.particles.ParticleTypes.HAPPY_VILLAGER,to.x,to.y+1,to.z,6,0.4,0.2,0.4,0);
         }

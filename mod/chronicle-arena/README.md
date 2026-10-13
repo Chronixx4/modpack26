@@ -1,5 +1,9 @@
 # Chronicle Arena
 
+## Update 0.4.1 (vorbereitet)
+
+Fehlerkorrekturen nach Gesamtpruefung: Tod erst nach Ruestung/Totem, Fortschritt nach Respawn erhalten, Abgrund-Zaehler, Killcam/Wiederbeleben, Zielpunkte/NPC-Wege, Belohnungen und Menuegroessen. Details und Teststand: [PRUEFBERICHT-0.4.1.md](PRUEFBERICHT-0.4.1.md).
+
 ## Update 0.4.0 (vorbereitet)
 
 Gruppenwege nach jeder fuenften Welle: Risiko, Erholung oder Spezialmission. Menue: `/arena weg`. Volle Pausenheilung gehoert jetzt zum Erholungsweg. Regeln und Teststatus: [RELEASE-0.4.0.md](RELEASE-0.4.0.md).
