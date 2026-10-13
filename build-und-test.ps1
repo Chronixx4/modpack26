@@ -9,7 +9,7 @@ $ProgressPreference = 'SilentlyContinue'
 $MC      = '1.21.1'
 $LOADER  = 'neoforge'
 $PACK    = 'Chronicle'
-$PACKVER = '0.9.28'
+$PACKVER = '0.9.29'
 $RAM     = '8G'
 $TIMEOUT_MIN = 20
 
@@ -25,7 +25,7 @@ New-Item -ItemType Directory -Force -Path $Work, $Cache, $CfDir | Out-Null
 # CurseForge-Mods automatisch aus dem Download-Ordner holen (falls dort vorhanden)
 $dl = Join-Path $env:USERPROFILE 'Downloads'
 $cfPatterns = @('*twilightforest*1.21.1*.jar','ExtendedAE-1.21-*neoforge*.jar','ars_elemental-1.21.1-*.jar','ars_technica-1.21.1-*.jar',
-                '*ftb*quests*2101*.jar','*ftb*library*2101*.jar','*ftb*teams*2101*.jar','*ftbbackups2*neoforge*.jar','AE2NetworkAnalyzer-1.21-*neoforge*.jar','allthemodium-*_mc_1.21.1.jar','alltheleaks-*neoforge*.jar','minebohrer-*neoforge*.jar','buildinggadgets2-*.jar','xycraft_core-*.jar','xycraft_world-*.jar','xycraft_machines-*.jar')
+                '*ftb*quests*2101*.jar','*ftb*library*2101*.jar','*ftb*teams*2101*.jar','*ftbbackups2*neoforge*.jar','AE2NetworkAnalyzer-1.21-*neoforge*.jar','allthemodium-*_mc_1.21.1.jar','alltheleaks-*neoforge*.jar','minebohrer-*neoforge*.jar','buildinggadgets2-*.jar','xycraft_core-*.jar','xycraft_world-*.jar','xycraft_machines-*.jar','bytebuddies-0.9.2.jar')
 if (Test-Path $dl) {
   foreach ($pat in $cfPatterns) {
     $hit = Get-ChildItem -Path $dl -Filter $pat -ErrorAction SilentlyContinue | Where-Object { $_.Name -notmatch 'fabric' } | Sort-Object LastWriteTime | Select-Object -Last 1
@@ -234,6 +234,7 @@ create-factory|Create: Factory
 create-train-perspective|Create: Train Perspective
 create-wizardry|Create: Wizardry
 # AE2 und Technik
+buddy-drones|Buddy Drones|^1\.1\.0$
 ae2|Applied Energistics 2
 applied-energistics-2-wireless-terminals|AE2 Wireless Terminals
 extendedae|ExtendedAE
@@ -329,6 +330,7 @@ mowzies-cataclysm|Mowzie's Cataclysm
 gtbcs-cataclysmic-boss-ui|GTBC's Cataclysmic Boss UI
 cataclysm_create|Cataclysm x Create Integration
 # Waffen, Ruestung und Ausruestung
+superb-warfare|Superb Warfare|^0\.8\.9\.2$
 simply-swords|Simply Swords
 simply-swords-cataclysm|Simply Swords: Cataclysm
 archers|Archers (RPG Series)
@@ -342,6 +344,7 @@ paladins-and-priests|Paladins & Priests (RPG Series)
 shield-expansion|Shield Expansion
 grappling-hook-mod|Grappling Hook Mod
 # Transport
+laser-bridges-and-doors|Laser Bridges & Doors|^1\.21\.1-neoforge-6\.1$
 waystones|Waystones
 elevatormod|Elevator Mod
 immersive-aircraft|Immersive Aircraft
@@ -381,7 +384,7 @@ foreach ($l in ($ModListRaw -split "`r?`n")) {
 # Kategorien der CurseForge-Jars (Dateiname -> Kategorie)
 $cfCat = [ordered]@{
   'twilightforest' = 'Dimensionen'; 'ExtendedAE' = 'AE2 und Technik'; 'AE2NetworkAnalyzer' = 'AE2 und Technik'
-  'ars_' = 'Magie'; 'ftb' = 'Multiplayer, Quests und Verwaltung'; 'allthemodium' = 'Dimensionen'; 'alltheleaks' = 'Performance und Grafik'; 'minebohrer' = 'Ressourcen und Landwirtschaft'; 'buildinggadgets2' = 'Deko und Bauen'; 'xycraft_machines' = 'AE2 und Technik'; 'xycraft_world' = 'Ressourcen und Landwirtschaft'; 'xycraft_core' = 'Bibliotheken (werden automatisch gebraucht)'
+  'ars_' = 'Magie'; 'ftb' = 'Multiplayer, Quests und Verwaltung'; 'allthemodium' = 'Dimensionen'; 'alltheleaks' = 'Performance und Grafik'; 'minebohrer' = 'Ressourcen und Landwirtschaft'; 'buildinggadgets2' = 'Deko und Bauen'; 'xycraft_machines' = 'AE2 und Technik'; 'xycraft_world' = 'Ressourcen und Landwirtschaft'; 'xycraft_core' = 'Bibliotheken (werden automatisch gebraucht)'; 'bytebuddies' = 'AE2 und Technik'
 }
 
 $vq = '?loaders=' + [uri]::EscapeDataString('["neoforge"]') + '&game_versions=' + [uri]::EscapeDataString('["1.21.1"]')
