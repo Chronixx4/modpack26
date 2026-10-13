@@ -7,8 +7,8 @@
   ],
   "placement": {
     "type": "goety:wind_shrine_expansion",
-    "spacing": 85,
-    "separation": 29,
+    "spacing": 150,
+    "separation": 50,
     "salt": 1321010123,
     "search_chunks": 12
   }

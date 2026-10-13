@@ -8,8 +8,8 @@
   "placement": {
     "type": "minecraft:random_spread",
     "salt": 30981980,
-    "separation": 22,
-    "spacing": 57,
+    "separation": 38,
+    "spacing": 100,
     "exclusion_zone": {
       "chunk_count": 10,
       "other_set": "minecraft:ruined_portals"

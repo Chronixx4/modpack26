@@ -9,7 +9,7 @@ $ProgressPreference = 'SilentlyContinue'
 $MC      = '1.21.1'
 $LOADER  = 'neoforge'
 $PACK    = 'Chronicle'
-$PACKVER = '0.9.29'
+$PACKVER = '0.9.30'
 $RAM     = '8G'
 $TIMEOUT_MIN = 20
 
@@ -306,7 +306,6 @@ yungs-better-jungle-temples|YUNG's Better Jungle Temples
 yungs-better-witch-huts|YUNG's Better Witch Huts
 yungs-bridges|YUNG's Bridges
 towns-and-towers|Towns and Towers
-dungeons-and-taverns|Dungeons and Taverns
 idas|Integrated Dungeons and Structures
 lootr|Lootr
 # Mobs und Bosse

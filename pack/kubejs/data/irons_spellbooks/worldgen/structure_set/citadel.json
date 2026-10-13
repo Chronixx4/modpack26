@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "irons_spellbooks:citadel",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 199995600,
+    "spacing": 250,
+    "separation": 200,
+    "type": "minecraft:random_spread"
+  }
+}

@@ -4,18 +4,17 @@ Mehr freie Landschaft in der Oberwelt, ohne Mods oder Questziele zu entfernen.
 Die Overrides liegen in `kubejs/data/<mod>/worldgen/structure_set/` und werden
 von beiden Buildern in die Modrinth-Datei, Client-ZIP und Server-ZIP kopiert.
 
-| Gruppe | Anpassung | Ungefaehre Verringerung der Platzierungsdichte |
+| Gruppe | Faktor auf Abstand und Mindestabstand | Dichte gegenueber dem Original |
 |---|---|---|
-| When Dungeons Arise und Seven Seas | Abstand und Mindestabstand x2 | 75 % |
-| Dungeons and Taverns, oberirdische/Meeres-Sets von IDAS und Repurposed Structures | Abstand und Mindestabstand x1,5 | 55-60 % |
-| Zusaetzliche Magierbauten, Lager, Ruinen, Graeber, Galeonen und Aussenposten | Abstand und Mindestabstand x Wurzel(2) | etwa 50 % |
-| Cataclysm, Ice and Fire, Mowzie's Mobs, Bosses'Rise und Wilden-Bauten | Abstand und Mindestabstand x1,35 | etwa 45 % |
-| Aquamirae-Piratenschiffe, -verstecke und -aussenposten | Bestehende Placement-Frequenz halbiert | 50 % |
+| When Dungeons Arise, Seven Seas, Alex's Caves | x3 | etwa -89 % |
+| Cataclysm, Ice and Fire, Mowzie's, Bossbauten, IDAS, Repurposed (ohne Doerfer), Goety, Iron's, Born in Chaos, YUNG's Dungeons/Tempel/Hexenhuetten/Monumente, Kobolde, weitere Zusatzbauten | x2,5 | etwa -84 % |
+| Doerfer (Repurposed, Towns and Towers, Terralith rare_village) | x1,5 | etwa -55 % |
+| Aquamirae-Piratenschiffe, -verstecke und -aussenposten | Placement-Frequenz geviertelt | -75 % |
 
-Die normalen Zusatzbauten umfassen Born in Chaos, Goety, Iron's Spellbooks,
-Hexerei, Ars Additions/Elemental, Illager Invasion, Friends&Foes, Apotheosis,
-EvilCraft, Alshanex's Familiars, Supplementaries, Terralith und Towns and Towers.
-Es sind insgesamt **159 Structure-Sets aus 25 Namensraeumen** angepasst.
+(Stand 0.9.30; in 0.9.27 waren es nur x1,35 bis x2.) Dungeons and Taverns
+ist seit 0.9.30 nicht mehr im Pack. Es sind **170 Structure-Sets aus 31
+Namensraeumen** angepasst. Das Profil steht in `tools/strukturdichte.py`
+(`RULES`, `SET_FACTOR`).
 
 Die Werte beschreiben Platzierungsversuche je Flaeche, keine garantierte
 Anzahl fertiger Gebaeude. Biome, Hoehenbedingungen, Ausschlusszonen und die
@@ -27,7 +26,7 @@ umgekehrt proportional zum Quadrat des Abstands.
 
 - Alle Mods, Struktur-IDs, Beute und Quests; keine Struktur wird abgeschaltet.
 - Waystones und Doerfer inklusive deren zusaetzlicher Gebaeude.
-- Vanilla-Strukturen und die YUNG's-Varianten.
+- Vanilla-Strukturen, YUNG's Mineshafts, Strongholds und Nether-Festungen.
 - Biome, Gelaende, Erze, Pflanzen, Arena und die anderen Dimensionen.
 - Kleine unterirdische Camps, Artifacts-Lager und Koboldbaue.
 - Terraliths unterirdische Sets, Supplementaries-Wegweiser und Feendoerfer.
@@ -49,7 +48,7 @@ Placement-Frequenz. Natuerliche Eisformationen bleiben unveraendert.
 
 Goetys Windschrein hat acht gekoppelte Erweiterungs-Sets. Alle neun erhalten
 dasselbe vergroesserte Raster und behalten denselben Salt. Auch die gekoppelte
-Badlands-Mine von Dungeons and Taverns folgt dem Raster ihres Aussenpostens.
+
 
 ## Pflegen und pruefen
 

@@ -1,5 +1,5 @@
-﻿Chronicle 0.9.29 - Modliste
-Minecraft 1.21.1, NeoForge 21.1.256   |   338 Mods inkl. Bibliotheken und eigener Arena   |   Stand 2026-10-13
+﻿Chronicle 0.9.30 - Modliste
+Minecraft 1.21.1, NeoForge 21.1.256   |   337 Mods inkl. Bibliotheken und eigener Arena   |   Stand 2026-10-13
 
 == Performance und Grafik (20) ==
   All The Leaks                                  1.1.13+1.21.1-neoforge  (CurseForge)
@@ -207,9 +207,8 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   338 Mods inkl. Bibliotheken und eigene
   Tectonic                                       3.0.28-neoforge-21.1
   Terralith                                      2.6.2
 
-== Strukturen und Dungeons (16) ==
+== Strukturen und Dungeons (15) ==
    Integrated Dungeons and Structures            1.13.7+1.21.1-neoforge
-  Dungeons and Taverns                           v4.4.4+mod
   Lootr                                          1.21.1-1.11.38.127
   Repurposed Structures - Neoforge/Forge         7.5.22+1.21.1-neoforge
   Towns and Towers                               1.13.11

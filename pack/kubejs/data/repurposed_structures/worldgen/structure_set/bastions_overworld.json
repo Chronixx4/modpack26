@@ -1,0 +1,18 @@
+{
+  "structures": [
+    {
+      "structure": "repurposed_structures:bastion_underground",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "repurposed_structures:advanced_random_spread",
+    "salt": 618127296,
+    "spacing": 338,
+    "separation": 188,
+    "super_exclusion_zone": {
+      "chunk_count": 7,
+      "other_set": "#repurposed_structures:underground_bastion_avoid"
+    }
+  }
+}
