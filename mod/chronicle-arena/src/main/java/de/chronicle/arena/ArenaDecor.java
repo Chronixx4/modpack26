@@ -160,6 +160,7 @@ final class ArenaDecor {
     // ------------------------------------------------------------------ Lobby
 
     static void lobby(ServerLevel level) {
+        if (level.getStructureManager().get(ChronicleArena.id("arena/lobby")).isPresent()) return;
         int cx = ArenaManager.LOBBY.getX();
         int cz = ArenaManager.LOBBY.getZ();
         int fy = ArenaManager.LOBBY.getY() - 1;
@@ -258,6 +259,7 @@ final class ArenaDecor {
 
     /** Schmiede im Shop; eigener Marker, damit sie auch in bestehenden Welten nachgebaut wird. */
     static void ensureSmith(ServerLevel level) {
+        if (level.getStructureManager().get(ChronicleArena.id("arena/shop")).isPresent()) return;
         if (level.getBlockState(SMITH_MARKER).is(Blocks.PURPUR_PILLAR)) return;
         int x = SMITH_ANVIL.getX();
         int z = SMITH_ANVIL.getZ();
@@ -292,6 +294,7 @@ final class ArenaDecor {
     }
 
     static void shop(ServerLevel level) {
+        if (level.getStructureManager().get(ChronicleArena.id("arena/shop")).isPresent()) return;
         int cx = ArenaManager.SHOP.getX();
         int cz = ArenaManager.SHOP.getZ();
         int fy = ArenaManager.SHOP.getY() - 1;
@@ -373,6 +376,7 @@ final class ArenaDecor {
 
     /** Heilbrunnen und Flammenfallen; fuer die klassische Arena auch nachtraeglich (eigener Marker). */
     static void ensureGadgets(ServerLevel level) {
+        if (level.getStructureManager().get(ChronicleArena.id("arena/arena")).isPresent()) return;
         BlockPos m = new BlockPos(ArenaManager.ARENA.getX(), 59, ArenaManager.ARENA.getZ());
         if (level.getBlockState(m).is(Blocks.PURPUR_PILLAR)) return;
         gadgets(level, ArenaManager.ARENA);

@@ -4773,6 +4773,21 @@
         "https://cdn.modrinth.com/data/Cd3DYqzn/versions/bl7W8fjU/superbwarfare-0.8.9.2-mc1.21.1-c22d98c2.jar"
       ],
       "fileSize": 41619226
+    },
+    {
+      "path": "mods/oracle_index-neoforge-1.4.0.jar",
+      "hashes": {
+        "sha1": "90415e944016b45bd3791bfa3705e9e8345e1dde",
+        "sha512": "3937fe508e7a077769d813662bf3e13dcd16874d63ac91a433810d7ee38a526e23ca0258f5810c5ea65d37cdff2cad7cb4067cf43cb9a4874316310b190e2a87"
+      },
+      "env": {
+        "client": "required",
+        "server": "unsupported"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/J8MMsNrL/versions/7OqGasX2/oracle_index-neoforge-1.4.0.jar"
+      ],
+      "fileSize": 29675090
     }
   ],
   "dependencies": {

@@ -1,8 +1,8 @@
 # Eigene Mods fuer den Windows-Builder
 
-`chronicle-arena-0.3.1.jar` ist der veroeffentlichte Build aus
-`arena-v0.3.1` (Quellcommit `f6a3be4a2538316238f13809036892e7d6c76943`).
-Die SHA-256-Pruefsumme stammt aus diesem Release.
+`chronicle-arena-0.4.1.jar` ist der Build des Arena-Quellstands auf diesem
+Arbeitsbranch (Wege-Auswahl und Review-Korrekturen, noch nicht veroeffentlicht). Die passende SHA-256-Pruefsumme
+steht in `SHA256SUMS.txt`. Build- und Teststatus: `mod/chronicle-arena/PRUEFBERICHT-0.4.1.md`.
 
 Der PowerShell-Builder liest `mod_version` aus `mod/chronicle-arena/gradle.properties`,
 prueft die passende JAR per SHA-256 und kopiert sie in Client und Server.
@@ -11,5 +11,5 @@ Der Linux-/GitHub-Builder baut denselben Quellstand mit Gradle und fuehrt
 auch die automatisierten Tests aus. Ein Clean-Build verhindert doppelte alte JARs.
 
 Bei einem kuenftigen Arena-Update den freigegebenen Quellstand, die lokale
-Release-JAR und ihre Pruefsumme gemeinsam aktualisieren. Alte lokale Arena-JARs
+Build-JAR und ihre Pruefsumme gemeinsam aktualisieren. Alte lokale Arena-JARs
 entfernen; auf Server und allen Clients muss dieselbe Arena-Version laufen.
