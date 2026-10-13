@@ -1,0 +1,11 @@
+{
+  "type": "boss",
+  "order": 26,
+  "name": "Geisterritter (Twilight)",
+  "description": "Mehrere Ritter, kreisende Waffen.",
+  "icon": "minecraft:iron_sword",
+  "boss": {
+    "entity": "twilightforest:knight_phantom"
+  },
+  "theme": "forest"
+}

@@ -1,0 +1,11 @@
+{
+  "type": "boss",
+  "order": 28,
+  "name": "Slider (Aether)",
+  "description": "Stein-Koloss, schiebt sich durch die Arena.",
+  "icon": "minecraft:stone",
+  "boss": {
+    "entity": "aether:slider"
+  },
+  "theme": "default"
+}

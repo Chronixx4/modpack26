@@ -1,0 +1,17 @@
+{
+  "type": "boss",
+  "order": 37,
+  "name": "Wildfeuer",
+  "description": "Flammenkreis.",
+  "icon": "minecraft:blaze_powder",
+  "boss": {
+    "entity": "friendsandfoes:wildfire"
+  },
+  "adds": [
+    {
+      "entity": "minecraft:blaze",
+      "count": 2
+    }
+  ],
+  "theme": "nether"
+}

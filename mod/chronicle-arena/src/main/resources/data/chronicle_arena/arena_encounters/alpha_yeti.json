@@ -1,0 +1,17 @@
+{
+  "type": "boss",
+  "order": 27,
+  "name": "Alpha-Yeti (Twilight)",
+  "description": "Lawinen und Wucht.",
+  "icon": "minecraft:snowball",
+  "boss": {
+    "entity": "twilightforest:alpha_yeti"
+  },
+  "adds": [
+    {
+      "entity": "minecraft:stray",
+      "count": 3
+    }
+  ],
+  "theme": "ice"
+}

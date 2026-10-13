@@ -1,0 +1,11 @@
+{
+  "type": "boss",
+  "order": 24,
+  "name": "Naga (Twilight)",
+  "description": "Schnelle Schlange, weicht aus.",
+  "icon": "minecraft:scute",
+  "boss": {
+    "entity": "twilightforest:naga"
+  },
+  "theme": "forest"
+}

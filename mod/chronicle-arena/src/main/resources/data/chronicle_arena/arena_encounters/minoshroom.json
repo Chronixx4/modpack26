@@ -1,0 +1,17 @@
+{
+  "type": "boss",
+  "order": 25,
+  "name": "Minoshroom (Twilight)",
+  "description": "Stier mit Axt, Ansturm.",
+  "icon": "minecraft:iron_axe",
+  "boss": {
+    "entity": "twilightforest:minoshroom"
+  },
+  "adds": [
+    {
+      "entity": "minecraft:zombie",
+      "count": 3
+    }
+  ],
+  "theme": "forest"
+}

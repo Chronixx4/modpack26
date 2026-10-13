@@ -517,6 +517,13 @@ public final class ArenaManager {
         r.bar.setName(Component.translatable(won ? "bar.chronicle_arena.won" : "bar.chronicle_arena.lost"));
         ServerLevel level = server.getLevel(DIM);
         ArenaExtras.updateBoard(server, r, won);
+        ArenaLog.logRun(server, r, won);
+        if (ArenaLog.submit(server, r, won)) {
+            for (UUID id : r.participants) {
+                ServerPlayer rp = server.getPlayerList().getPlayer(id);
+                if (rp != null && r.involves(id)) rp.sendSystemMessage(Component.literal("Neuer Rekord! Siehe Bestzeiten-Tafel in der Lobby."));
+            }
+        }
         for (UUID id : r.participants) {
             ServerPlayer p = server.getPlayerList().getPlayer(id);
             if (p == null || level == null || !r.involves(id)) continue;
@@ -1343,6 +1350,7 @@ public final class ArenaManager {
         ServerLevel level = server.getLevel(DIM);
         if (level == null) return;
         ArenaExtras.deduplicateBoard(level);
+        ArenaLog.dedupe(level);
         for (ServerPlayer p : level.players()) {
             if (p.isCreative() && !p.isSpectator()) continue;
             boolean inRun = run != null && run.involves(p.getUUID());
@@ -1394,6 +1402,7 @@ public final class ArenaManager {
     }
     @SubscribeEvent
     public void onIncomingDamage(LivingIncomingDamageEvent event) {
+        if (ArenaLog.dummyHit(event)) return;
         if(run!=null&&run.objective!=null&&event.getEntity().getUUID().equals(run.objective.defender)){
             if(event.getSource().getEntity()!=null&&run.mobs.contains(event.getSource().getEntity().getUUID()))ArenaObjectives.strike(run.objective,event.getSource().getEntity().getUUID(),event.getAmount());
             event.setCanceled(true);return;
@@ -1587,6 +1596,7 @@ public final class ArenaManager {
             removeFromRun(sp);
         }
         ArenaPresentation.forget(event.getEntity().getUUID());
+        ArenaLog.forget(event.getEntity().getUUID());
     }
 
     @SubscribeEvent
@@ -1628,6 +1638,16 @@ public final class ArenaManager {
                         return 0;
                     }
                     leave(p);
+                    return 1;
+                }))
+                .then(Commands.literal("rekorde").executes(ctx -> { ctx.getSource().sendSystemMessage(Component.literal(ArenaLog.recordsChat(ctx.getSource().getServer()))); return 1; }))
+                .then(Commands.literal("training").executes(ctx -> {
+                    ServerPlayer p = ctx.getSource().getPlayerOrException();
+                    if (p.level().dimension() != DIM || (run != null && run.involves(p.getUUID()))) {
+                        ctx.getSource().sendFailure(Component.literal("Das Training geht nur in der Arena-Lobby, nicht im laufenden Kampf."));
+                        return 0;
+                    }
+                    ArenaLog.spawnDummy(p);
                     return 1;
                 }))
                 .then(Commands.literal("ergebnis").executes(ctx->{ArenaPresentation.show(ctx.getSource().getPlayerOrException());return 1;}))
