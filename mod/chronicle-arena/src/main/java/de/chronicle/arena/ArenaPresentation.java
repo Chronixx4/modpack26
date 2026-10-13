@@ -35,7 +35,7 @@ public final class ArenaPresentation {
     public static void retry(ServerPlayer p,UUID run){Last value=last.get(p.getUUID());if(value==null||!value.result.run().equals(run)||p.server.getTickCount()>=value.expires||!ArenaManager.inLobby(p))return;ArenaManager.handleAction(p,value.action);}
     public static void sync(MinecraftServer server,ArenaManager.Run r){
         var o=r.objective;
-        String phase=switch(r.state){case PREP->r.offer.isEmpty()?"Vorbereitung":"Segen waehlen";case WAVE->"Wellenkampf";case BOSS->"Bosskampf";case ENDING->r.won?"Sieg":"Niederlage";};
+        String phase=switch(r.state){case PREP->r.routes.voting()?"Weg abstimmen":r.offer.isEmpty()?"Vorbereitung":"Segen waehlen";case WAVE->"Wellenkampf"+(r.routes.active(r.wave)==null?"":" | "+r.routes.active(r.wave).title);case BOSS->"Bosskampf";case ENDING->r.won?"Sieg":"Niederlage";};
         ArenaNet.Battle payload=new ArenaNet.Battle(true,phase,r.wave,r.encounter.boss()?1:r.endless?0:r.totalWaves,r.mobs.size()+r.queue.size(),r.revives,o==null?"":ArenaObjectives.label(o),o==null?0:ArenaObjectives.progress(o),o==null?0:ArenaObjectives.target(o),o==null?0:Math.max(0,(ArenaObjectives.limit(o)-o.ticks+19)/20),o!=null&&o.kind==1?(int)Math.ceil(o.health):0,o!=null&&o.kind==1?100:0,"");
         Set<UUID> all=new HashSet<>(r.alive);all.addAll(r.spectators);
         for(UUID id:all){ServerPlayer p=server.getPlayerList().getPlayer(id);if(p!=null&&p.level().dimension()==ArenaManager.DIM)PacketDistributor.sendToPlayer(p,payload.withPickups(ArenaPickups.status(r,id)));}

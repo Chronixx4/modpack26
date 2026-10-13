@@ -21,6 +21,12 @@ class ArenaPresentationTest {
         roundTrip(ArenaNet.Blessings.CODEC,new ArenaNet.Blessings(run,5,List.of(info),List.of(info),93,true));
         roundTrip(ArenaNet.Pick.CODEC,new ArenaNet.Pick(run,5,2));
     }
+    @Test void routeBallotAndVotePreserveIdentityCountsAndRestrictions(){
+        UUID run=UUID.randomUUID();
+        roundTrip(ArenaNet.Routes.CODEC,new ArenaNet.Routes(run,5,true,27,3,4,2,1,0,0,false,true,true));
+        roundTrip(ArenaNet.Routes.CODEC,new ArenaNet.Routes(run,5,false,0,0,0,0,0,0,-1,false,false,false));
+        roundTrip(ArenaNet.RouteVote.CODEC,new ArenaNet.RouteVote(run,5,2));
+    }
     @Test void resultsAndRetryPreserveRewardSnapshot(){
         UUID run=UUID.randomUUID();
         roundTrip(ArenaNet.Result.CODEC,new ArenaNet.Result(run,true,"Zombies","Gold",12,"2:34",150,70,List.of("2 x Diamant"),List.of("Alice | Schaden 100 | Kills 5 | Wiederbelebt 1")));

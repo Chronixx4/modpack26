@@ -11,6 +11,8 @@ import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 public final class ArenaNet {
     private ArenaNet() {}
     public static void register(PayloadRegistrar r) {
+        r.playToClient(Routes.TYPE,Routes.CODEC,(p,c)->c.enqueueWork(()->de.chronicle.arena.client.ClientHooks.routes(p)));
+        r.playToServer(RouteVote.TYPE,RouteVote.CODEC,(p,c)->c.enqueueWork(()->{if(c.player() instanceof ServerPlayer sp)ArenaManager.voteRoute(sp,p);}));
         r.playToClient(Battle.TYPE,Battle.CODEC,(p,c)->c.enqueueWork(()->de.chronicle.arena.client.ClientHooks.battle(p)));
         r.playToClient(Blessings.TYPE,Blessings.CODEC,(p,c)->c.enqueueWork(()->de.chronicle.arena.client.ClientHooks.blessings(p)));
         r.playToClient(Result.TYPE,Result.CODEC,(p,c)->c.enqueueWork(()->de.chronicle.arena.client.ClientHooks.result(p)));
@@ -26,6 +28,21 @@ public final class ArenaNet {
         public static final StreamCodec<FriendlyByteBuf,Battle> CODEC=StreamCodec.of((b,p)->{b.writeBoolean(p.active);b.writeUtf(p.phase,128);b.writeVarInt(p.wave);b.writeVarInt(p.total);b.writeVarInt(p.enemies);b.writeVarInt(p.revives);b.writeUtf(p.goal,256);b.writeVarInt(p.progress);b.writeVarInt(p.target);b.writeVarInt(p.seconds);b.writeVarInt(p.objectiveHealth);b.writeVarInt(p.objectiveMaxHealth);b.writeUtf(p.pickups,128);},b->new Battle(b.readBoolean(),b.readUtf(128),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readUtf(256),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readUtf(128)));
         public Battle withPickups(String value){return new Battle(active,phase,wave,total,enemies,revives,goal,progress,target,seconds,objectiveHealth,objectiveMaxHealth,value);}
         public Type<Battle> type(){return TYPE;}
+    }
+    public record Routes(UUID run,int wave,boolean open,int seconds,int voted,int voters,int risk,int recovery,int mission,int choice,boolean goalsEnabled,boolean noHeal,boolean popup) implements CustomPacketPayload {
+        public static final Type<Routes> TYPE=new Type<>(ChronicleArena.id("routes"));
+        public static final StreamCodec<FriendlyByteBuf,Routes> CODEC=StreamCodec.of((b,p)->{
+            b.writeUUID(p.run);b.writeVarInt(p.wave);b.writeBoolean(p.open);b.writeVarInt(p.seconds);
+            b.writeVarInt(p.voted);b.writeVarInt(p.voters);b.writeVarInt(p.risk);b.writeVarInt(p.recovery);b.writeVarInt(p.mission);
+            b.writeVarInt(p.choice);b.writeBoolean(p.goalsEnabled);b.writeBoolean(p.noHeal);b.writeBoolean(p.popup);
+        },b->new Routes(b.readUUID(),b.readVarInt(),b.readBoolean(),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readBoolean(),b.readBoolean(),b.readBoolean()));
+        public int count(int slot){return switch(slot){case 0->risk;case 1->recovery;default->mission;};}
+        public Type<Routes> type(){return TYPE;}
+    }
+    public record RouteVote(UUID run,int wave,int slot) implements CustomPacketPayload {
+        public static final Type<RouteVote> TYPE=new Type<>(ChronicleArena.id("route_vote"));
+        public static final StreamCodec<FriendlyByteBuf,RouteVote> CODEC=StreamCodec.of((b,p)->{b.writeUUID(p.run);b.writeVarInt(p.wave);b.writeVarInt(p.slot);},b->new RouteVote(b.readUUID(),b.readVarInt(),b.readVarInt()));
+        public Type<RouteVote> type(){return TYPE;}
     }
     public record BlessInfo(String name,String description,String icon,int stacks,String synergy) {}
     private static void blessings(FriendlyByteBuf b,List<BlessInfo> list,int max){if(list.size()>max)throw new IllegalArgumentException("Too many blessings");b.writeVarInt(list.size());for(var p:list){b.writeUtf(p.name,64);b.writeUtf(p.description,512);b.writeUtf(p.icon,128);b.writeVarInt(p.stacks);b.writeUtf(p.synergy,256);}}

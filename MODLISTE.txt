@@ -1,4 +1,4 @@
-﻿Chronicle 0.9.29 - Modliste
+﻿Chronicle 0.9.30 - Modliste
 Minecraft 1.21.1, NeoForge 21.1.256   |   338 Mods inkl. Bibliotheken und eigener Arena   |   Stand 2026-10-13
 
 == Performance und Grafik (20) ==
@@ -230,7 +230,7 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   338 Mods inkl. Bibliotheken und eigene
   Born in Chaos                                  1.7.6
   Bosses'Rise                                    2.1.2
   Cataclysm x Create Integration                 1.21.1-Neoforge+mod
-  Chronicle Arena                                0.3.1  (eigene Mod)
+  Chronicle Arena                                0.4.0  (eigene Mod)
   Eternal Hunts [Cataclysm & Mowzie's Mobs & Born in Chaos] 0.2.4-1.21.1
   Friends&Foes (Forge/NeoForge)                  neoforge-4.0.27+mc1.21.1
   Goety Cataclysm                                1.21.1-1.9.0

@@ -204,6 +204,7 @@ public final class ArenaManager {
         boolean started;
         int fightTicks;
         final UUID id = UUID.randomUUID();
+        final ArenaRouteChoice routes = new ArenaRouteChoice(id);
         int lastGoal = -1;
         final Map<UUID,String> names = new HashMap<>();
         final Map<UUID,Integer> lastDamage = new HashMap<>(),lastRegen = new HashMap<>();
@@ -482,6 +483,7 @@ public final class ArenaManager {
         r.alive.remove(sp.getUUID());
         r.spectators.add(sp.getUUID());
         r.fallen.put(sp.getUUID(), sp.position());
+        ArenaRoutes.close(sp, r);
         PacketDistributor.sendToPlayer(sp,new ArenaNet.Blessings(r.id,r.wave,List.of(),List.of(),0,false));
         sp.setGameMode(GameType.SPECTATOR);
         sp.setHealth(sp.getMaxHealth());
@@ -496,6 +498,7 @@ public final class ArenaManager {
     private static void finish(MinecraftServer server, boolean won) {
         Run r = run;
         if (r == null || r.state == State.ENDING) return;
+        r.routes.cancel();
         r.state = State.ENDING;
         r.timer = END_TICKS;
         r.won = won;
@@ -517,6 +520,7 @@ public final class ArenaManager {
             ServerPlayer p = server.getPlayerList().getPlayer(id);
             if (p == null || level == null) continue;
             ArenaShow.clear(p);
+            ArenaRoutes.close(p, r);
             PacketDistributor.sendToPlayer(p,new ArenaNet.Blessings(r.id,r.wave,List.of(),List.of(),0,false));
             if (won) {
                 recordWin(p, r);
@@ -626,7 +630,7 @@ public final class ArenaManager {
             PacketDistributor.sendToPlayer(p,ArenaNet.Battle.EMPTY);
             sendStats(p);
             if(r.state==State.ENDING && r.participants.contains(id)) ArenaPresentation.show(p);
-            else PacketDistributor.sendToPlayer(p,new ArenaNet.Blessings(r.id,r.wave,List.of(),List.of(),0,false));
+            else { ArenaRoutes.close(p, r); PacketDistributor.sendToPlayer(p,new ArenaNet.Blessings(r.id,r.wave,List.of(),List.of(),0,false)); }
         }
         LOGGER.info("Arena-Run beendet ({})", r.won ? "Sieg" : "Niederlage");
     }
@@ -674,6 +678,7 @@ public final class ArenaManager {
         if (r == null) return;
         ArenaShow.clear(sp);
         PacketDistributor.sendToPlayer(sp,ArenaNet.Battle.EMPTY);
+        ArenaRoutes.close(sp, r);
         PacketDistributor.sendToPlayer(sp,new ArenaNet.Blessings(r.id,r.wave,List.of(),List.of(),0,false));
         if (r.state != State.ENDING) ArenaShow.stopMusic(List.of(sp));
         boolean wasAlive = r.alive.remove(sp.getUUID());
@@ -735,7 +740,7 @@ public final class ArenaManager {
             ServerPlayer p = server.getPlayerList().getPlayer(id);
             if (p == null || p.level().dimension() != DIM) {
                 it.remove();
-                if (p != null) r.bar.removePlayer(p);
+                if (p != null) { r.bar.removePlayer(p); ArenaRoutes.close(p, r); }
             }
         }
         if (r.lossDelay > 0) {
@@ -783,6 +788,7 @@ public final class ArenaManager {
                         break;
                     }
                 }
+                if (ArenaRoutes.tick(server, r)) break;
                 if (r.started && r.timer > 0 && r.timer <= 60 && r.timer % 20 == 0) {
                     ArenaShow.title(runPlayers(server, r), ArenaShow.big(String.valueOf(r.timer / 20), net.minecraft.ChatFormatting.GOLD),
                             Component.literal("Naechste Welle"), 0, 18, 2);
@@ -827,7 +833,7 @@ public final class ArenaManager {
         buildWave(level, r);
         r.waveTotal = Math.max(1, r.queue.size());
         r.powerMul = computePower(server, r);
-        r.objective = r.goalsEnabled && r.wave % r.goalInterval == 0 ? ArenaObjectives.begin(level, r.center, r.lastGoal) : null;
+        r.objective = r.goalsEnabled && (r.routes.mission(r.wave) || r.wave % r.goalInterval == 0) ? ArenaObjectives.begin(level, r.center, r.lastGoal) : null;
         if(r.objective!=null){
             r.lastGoal=r.objective.kind;
             if(r.objective.kind==2)r.objective.expectedTargets=Math.min(3,Math.max(1,r.queue.size()));
@@ -1083,7 +1089,7 @@ public final class ArenaManager {
         if (!cleared) return;
 
         if (r.state == State.WAVE && r.tier.tokensPerWave() > 0) {
-            int basePerWave = (int) Math.round(r.tier.tokensPerWave() * coinMult(r.mask) * ArenaExtras.eventCoinMult(r.event) * r.coinPercent / 100.0 * (r.objective == null ? 1 : 1.25));
+            int basePerWave = (int) Math.round(r.tier.tokensPerWave() * coinMult(r.mask) * ArenaExtras.eventCoinMult(r.event) * r.coinPercent / 100.0 * (r.objective == null ? 1 : 1.25) * r.routes.coins(r.wave));
             for (UUID id : r.alive) {
                 ServerPlayer p = server.getPlayerList().getPlayer(id);
                 if (p == null) continue;
@@ -1095,6 +1101,7 @@ public final class ArenaManager {
             }
         }
 
+        ArenaRoutes.reward(server, r);
         ArenaObjectives.clear(level, r.objective);
         ArenaPickups.clear(level,r);
         r.objective = null;
@@ -1110,14 +1117,14 @@ public final class ArenaManager {
             boolean offer = r.wave % 5 == 0;
             r.timer = offer ? 400 : 100;
             ArenaShow.title(runPlayers(server, r), ArenaShow.big("WELLE " + r.wave + " GESCHAFFT", net.minecraft.ChatFormatting.GREEN),
-                    Component.literal(offer ? "Waehle einen Segen, +1 Wiederbelebung, volle Heilung" : "Kurze Pause").withStyle(net.minecraft.ChatFormatting.GRAY), 5, 40, 10);
+                    Component.literal(offer ? "Segen, +1 Wiederbelebung, danach Gruppenweg waehlen" : "Kurze Pause").withStyle(net.minecraft.ChatFormatting.GRAY), 5, 40, 10);
             if (offer) {
                 offerBlessings(server, r);
                 r.revives = Math.min(5, r.revives + 1);
             }
             for (UUID id : r.alive) {
                 ServerPlayer p = server.getPlayerList().getPlayer(id);
-                if (p != null && (r.mask & MOD_NOHEAL) == 0) p.heal(r.wave % 5 == 0 ? p.getMaxHealth() : 6.0F);
+                if (p != null && (r.mask & MOD_NOHEAL) == 0) p.heal(6.0F);
             }
             r.bar.setProgress(1.0F);
             r.bar.setName(Component.translatable("bar.chronicle_arena.pause", r.wave, r.totalStr()));
@@ -1154,7 +1161,7 @@ public final class ArenaManager {
             mob.finalizeSpawn(level, level.getCurrentDifficultyAt(le.blockPosition()), MobSpawnType.EVENT, null);
             mob.setPersistenceRequired();
         }
-        double h = r.adminHealth * r.healthScale * (1.0 + 0.25 * r.extra) * r.growth(0.04, 0.06) * r.powerMul
+        double h = r.adminHealth * r.healthScale * (1.0 + 0.25 * r.extra) * r.growth(0.04, 0.06) * r.powerMul * r.routes.health(r.wave)
                 * (s.mini ? (r.extra == 0 ? 1.75 : 2.5) : s.elite ? 2.0 : 1.0);
         if (s.mini) {
             double cap = switch (r.tier.order()) {
@@ -1168,7 +1175,7 @@ public final class ArenaManager {
             if (base * h > cap) h = cap / base;
         }
         scale(le, Attributes.MAX_HEALTH, h);
-        scale(le, Attributes.ATTACK_DAMAGE, r.adminDamage * r.damageScale * (1.0 + 0.08 * r.extra) * r.growth(0.02, 0.03) * (s.mini ? 1.15 : 1.0));
+        scale(le, Attributes.ATTACK_DAMAGE, r.adminDamage * r.damageScale * (1.0 + 0.08 * r.extra) * r.growth(0.02, 0.03) * r.routes.damage(r.wave) * (s.mini ? 1.15 : 1.0));
         if ((r.mask & MOD_SPEED) != 0) scale(le, Attributes.MOVEMENT_SPEED, 1.3);
         le.setHealth(le.getMaxHealth());
         if (s.elite || s.boss) le.setGlowingTag(true);
@@ -1577,6 +1584,7 @@ public final class ArenaManager {
                     return 1;
                 }))
                 .then(Commands.literal("ergebnis").executes(ctx->{ArenaPresentation.show(ctx.getSource().getPlayerOrException());return 1;}))
+                .then(Commands.literal("weg").executes(ctx -> { openRoutes(ctx.getSource().getPlayerOrException()); return 1; }))
                 .then(Commands.literal("segen").executes(ctx->{openBlessings(ctx.getSource().getPlayerOrException(),true);return 1;}).then(Commands.argument("nr", com.mojang.brigadier.arguments.IntegerArgumentType.integer(1, 3))
                         .executes(ctx -> chooseBlessing(ctx.getSource().getPlayerOrException(),
                                 com.mojang.brigadier.arguments.IntegerArgumentType.getInteger(ctx, "nr")))))
@@ -1874,6 +1882,23 @@ public final class ArenaManager {
         Run r=run;
         if(r!=null && r.id.equals(choice.run()) && r.wave==choice.wave()) chooseBlessing(p,choice.slot());
     }
+    public static void openRoutes(ServerPlayer p) {
+        Run r = run;
+        if (r == null || r.state != State.PREP || !r.routes.voting() || !r.alive.contains(p.getUUID()) || p.level().dimension() != DIM) {
+            p.sendSystemMessage(Component.literal("Gerade keine Wege-Abstimmung aktiv. Sie startet nach dem Segen jeder fuenften Welle."));
+            return;
+        }
+        r.routes.refresh(r.alive);
+        ArenaRoutes.send(p, r, true);
+    }
+
+    public static void voteRoute(ServerPlayer p, ArenaNet.RouteVote vote) {
+        Run r = run;
+        if (r == null || r.state != State.PREP || p.level().dimension() != DIM || !r.alive.contains(p.getUUID())) return;
+        r.routes.refresh(r.alive);
+        if (r.routes.cast(p.getUUID(), vote.run(), vote.wave(), vote.slot())) ArenaRoutes.send(p, r, false);
+    }
+
     public static void openBlessings(ServerPlayer p,boolean popup){
         Run r=run;
         if(r==null||p.level().dimension()!=DIM||!r.involves(p.getUUID()))return;

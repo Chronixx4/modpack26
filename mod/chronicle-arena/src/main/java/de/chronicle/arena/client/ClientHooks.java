@@ -15,6 +15,13 @@ public final class ClientHooks {
             else screen.update(payload);
         }else if(payload.popup())mc.setScreen(new BlessingScreen(payload));
     }
+    public static void routes(de.chronicle.arena.ArenaNet.Routes payload){
+        var mc=Minecraft.getInstance();
+        if(mc.screen instanceof RouteScreen screen){
+            if(!payload.open())mc.setScreen(null);
+            else screen.update(payload);
+        }else if(payload.open()&&payload.popup())mc.setScreen(new RouteScreen(payload));
+    }
     public static void result(de.chronicle.arena.ArenaNet.Result payload){Minecraft.getInstance().setScreen(new ResultScreen(payload));}
     public static void openParty(Net.OpenParty payload) {
         var mc = Minecraft.getInstance();
