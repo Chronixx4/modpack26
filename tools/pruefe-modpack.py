@@ -17,6 +17,11 @@ NEW_MODS = {
     'xycraft_core': '0.7.53',
     'xycraft_world': '0.7.53',
     'xycraft_machines': '0.7.53',
+    'drones': '1.1.0',
+    'bytebuddies': '0.9.2',
+    'laserbridges': '6.1',
+    'deimos': '2.7',
+    'superbwarfare': '0.8.9.2',
 }
 
 
@@ -44,7 +49,8 @@ def main():
     assert mods(local.read_bytes()) == {'chronicle_arena': arena_version}, 'Lokale Arena-Version falsch'
     paths = [(ROOT / 'curseforge-mods' / name) for name in (
         'buildinggadgets2-1.3.9.jar', 'xycraft_core-0.7.53-all.jar',
-        'xycraft_world-0.7.53.jar', 'xycraft_machines-0.7.53.jar')]
+        'xycraft_world-0.7.53.jar', 'xycraft_machines-0.7.53.jar',
+        'bytebuddies-0.9.2.jar')]
     expected_cf = {p.name: p.read_bytes() for p in paths}
     for filename, prefix in [(f'Chronicle-{version}.mrpack', 'overrides/'),
                              (f'Chronicle-{version}-Client.zip', ''),
@@ -62,7 +68,8 @@ def main():
                 inventory = {}
                 for entry in index['files']:
                     if any(name in entry['path'] for name in (
-                        'toms_storage-', 'mekanism-ad-astra-ores-', 'mahoutsukai-', 'youkaisfeasts-')):
+                        'toms_storage-', 'mekanism-ad-astra-ores-', 'mahoutsukai-', 'youkaisfeasts-',
+                        'drones-', 'laserbridges-', 'deimos-', 'superbwarfare-')):
                         raw = (args.dist / 'cache' / Path(entry['path']).name).read_bytes()
                         assert hashlib.sha512(raw).hexdigest() == entry['hashes']['sha512']
                         inventory.update(mods(raw))
@@ -74,10 +81,11 @@ def main():
                     if name.startswith('mods/') and name.endswith('.jar') and any(
                         marker in name for marker in (
                             'toms_storage-', 'mekanism-ad-astra-ores-', 'mahoutsukai-',
-                            'youkaisfeasts-', 'buildinggadgets2-', 'xycraft_')):
+                            'youkaisfeasts-', 'buildinggadgets2-', 'xycraft_',
+                            'drones-', 'bytebuddies-', 'laserbridges-', 'deimos-', 'superbwarfare-')):
                         inventory.update(mods(archive.read(name)))
             assert inventory == NEW_MODS, (filename, inventory)
-        print(f'{filename}: Arena {arena_version} genau einmal und alle acht neuen Mods enthalten')
+        print(f'{filename}: Arena {arena_version} genau einmal und alle {len(NEW_MODS)} geprueften Mods enthalten')
 
 
 if __name__ == '__main__':
