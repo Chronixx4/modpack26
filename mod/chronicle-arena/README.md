@@ -1,6 +1,10 @@
 # Chronicle Arena
 
-## Update 0.4.1 (vorbereitet)
+## Update 0.4.2 (vorbereitet)
+
+Fluch-Karten, Haendler-Weg, Boss-Phasen, Bestzeiten-Tafel, Trainingsdummy, Balance-Log, 14 neue Bosse und 4 Wellen-Themen. Details: [RELEASE-0.4.2.md](RELEASE-0.4.2.md).
+
+## Update 0.4.1
 
 Fehlerkorrekturen nach Gesamtpruefung: Tod erst nach Ruestung/Totem, Fortschritt nach Respawn erhalten, Abgrund-Zaehler, Killcam/Wiederbeleben, Zielpunkte/NPC-Wege, Belohnungen und Menuegroessen. Details und Teststand: [PRUEFBERICHT-0.4.1.md](PRUEFBERICHT-0.4.1.md).
 

@@ -1,0 +1,11 @@
+{
+  "type": "boss",
+  "order": 32,
+  "name": "Wesir (Goety)",
+  "description": "Beschwoerer mit Zaubern.",
+  "icon": "minecraft:emerald",
+  "boss": {
+    "entity": "goety:vizier"
+  },
+  "theme": "default"
+}

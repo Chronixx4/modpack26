@@ -29,14 +29,14 @@ public final class ArenaNet {
         public Battle withPickups(String value){return new Battle(active,phase,wave,total,enemies,revives,goal,progress,target,seconds,objectiveHealth,objectiveMaxHealth,value);}
         public Type<Battle> type(){return TYPE;}
     }
-    public record Routes(UUID run,int wave,boolean open,int seconds,int voted,int voters,int risk,int recovery,int mission,int choice,boolean goalsEnabled,boolean noHeal,boolean popup) implements CustomPacketPayload {
+    public record Routes(UUID run,int wave,boolean open,int seconds,int voted,int voters,int risk,int recovery,int mission,int merchant,int choice,boolean goalsEnabled,boolean noHeal,boolean popup) implements CustomPacketPayload {
         public static final Type<Routes> TYPE=new Type<>(ChronicleArena.id("routes"));
         public static final StreamCodec<FriendlyByteBuf,Routes> CODEC=StreamCodec.of((b,p)->{
             b.writeUUID(p.run);b.writeVarInt(p.wave);b.writeBoolean(p.open);b.writeVarInt(p.seconds);
-            b.writeVarInt(p.voted);b.writeVarInt(p.voters);b.writeVarInt(p.risk);b.writeVarInt(p.recovery);b.writeVarInt(p.mission);
+            b.writeVarInt(p.voted);b.writeVarInt(p.voters);b.writeVarInt(p.risk);b.writeVarInt(p.recovery);b.writeVarInt(p.mission);b.writeVarInt(p.merchant);
             b.writeVarInt(p.choice);b.writeBoolean(p.goalsEnabled);b.writeBoolean(p.noHeal);b.writeBoolean(p.popup);
-        },b->new Routes(b.readUUID(),b.readVarInt(),b.readBoolean(),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readBoolean(),b.readBoolean(),b.readBoolean()));
-        public int count(int slot){return switch(slot){case 0->risk;case 1->recovery;default->mission;};}
+        },b->new Routes(b.readUUID(),b.readVarInt(),b.readBoolean(),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readBoolean(),b.readBoolean(),b.readBoolean()));
+        public int count(int slot){return switch(slot){case 0->risk;case 1->recovery;case 2->mission;default->merchant;};}
         public Type<Routes> type(){return TYPE;}
     }
     public record RouteVote(UUID run,int wave,int slot) implements CustomPacketPayload {

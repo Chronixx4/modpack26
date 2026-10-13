@@ -1,0 +1,11 @@
+{
+  "type": "boss",
+  "order": 29,
+  "name": "Zyklop",
+  "description": "Wirft Felsen, stampft.",
+  "icon": "minecraft:iron_ingot",
+  "boss": {
+    "entity": "iceandfire:cyclops"
+  },
+  "theme": "default"
+}

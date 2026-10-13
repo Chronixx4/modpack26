@@ -1,0 +1,41 @@
+{
+  "type": "waves",
+  "order": 5,
+  "name": "Eissturm",
+  "description": "Streuner, Spinnen und Eis-Beschwoerer.",
+  "icon": "minecraft:blue_ice",
+  "pools": [
+    {
+      "entity": "minecraft:stray",
+      "from_wave": 1,
+      "base": 2.1,
+      "per_wave": 0.35
+    },
+    {
+      "entity": "minecraft:zombie",
+      "from_wave": 1,
+      "base": 1.4,
+      "per_wave": 0.28
+    },
+    {
+      "entity": "minecraft:spider",
+      "from_wave": 3,
+      "base": 1.4,
+      "per_wave": 0.28
+    },
+    {
+      "entity": "friendsandfoes:iceologer",
+      "from_wave": 5,
+      "base": 0.7,
+      "per_wave": 0.14
+    }
+  ],
+  "elite": {
+    "entity": "twilightforest:alpha_yeti",
+    "every": 5
+  },
+  "finale": {
+    "entity": "twilightforest:snow_queen"
+  },
+  "theme": "ice"
+}

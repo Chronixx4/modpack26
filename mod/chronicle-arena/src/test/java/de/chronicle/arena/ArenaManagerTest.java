@@ -129,4 +129,10 @@ class ArenaManagerTest {
         }
         assertEquals(ArenaManager.State.ENDING,run.state);assertFalse(run.won);assertEquals(5,run.completedWaves);
     }
+    @Test void curseCardsCarryAPrice(){
+        for(var bl:ArenaShow.Blessing.values()){
+            if(bl.curse())assertTrue(bl.desc.contains("aber"),bl.name());
+            else assertFalse(bl.label.startsWith("Fluch"),bl.name());
+        }
+    }
 }

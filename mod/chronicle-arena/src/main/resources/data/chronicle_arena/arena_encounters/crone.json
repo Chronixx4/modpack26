@@ -1,0 +1,17 @@
+{
+  "type": "boss",
+  "order": 34,
+  "name": "Hexe der Sumpfe (Goety)",
+  "description": "Fluch und Gebraeu.",
+  "icon": "minecraft:cauldron",
+  "boss": {
+    "entity": "goety:crone"
+  },
+  "adds": [
+    {
+      "entity": "minecraft:witch",
+      "count": 2
+    }
+  ],
+  "theme": "default"
+}

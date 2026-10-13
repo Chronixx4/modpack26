@@ -78,20 +78,45 @@ public final class ArenaShow {
         EMBER("Glut", "Treffer entzuenden Gegner. Kombiniert mit Flammenjaeger und Asche.", null, null, 0.0),
         FLARE("Flammenjaeger", "+15 % Schaden gegen brennende Gegner je Stapel. Synergie: Glut.", null, null, 0.0),
         ASH("Asche", "Brennende Gegner zu toeten heilt 1 Herz je Stapel. Synergie: Glut.", null, null, 0.0),
-        HUNTER("Scharfschuetze", "+15 % Projektilschaden je Stapel. Synergie: Vampir.", null, null, 0.0);
+        HUNTER("Scharfschuetze", "+15 % Projektilschaden je Stapel. Synergie: Vampir.", null, null, 0.0),
+        // Fluch-Karten: starker Vorteil, dafuer ein Preis. Immer hinten anhaengen (Ordinal ist im Netzwerkpaket).
+        GLASS("Fluch: Glaskanone", "+40 % Schaden, aber -4 Herzen", Attributes.ATTACK_DAMAGE, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL, 0.40,
+                Attributes.MAX_HEALTH, AttributeModifier.Operation.ADD_VALUE, -8.0),
+        LIGHT("Fluch: Leichtfuss", "+20 % Tempo, aber -4 Ruestung", Attributes.MOVEMENT_SPEED, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL, 0.20,
+                Attributes.ARMOR, AttributeModifier.Operation.ADD_VALUE, -4.0),
+        PACT("Fluch: Blutpakt", "+50 % Coins pro Welle, aber -2 Herzen", Attributes.MAX_HEALTH, AttributeModifier.Operation.ADD_VALUE, -4.0);
 
         public final String label;
         public final String desc;
         final Holder<Attribute> attr;
         final AttributeModifier.Operation op;
         final double amount;
+        final Holder<Attribute> attr2;
+        final AttributeModifier.Operation op2;
+        final double amount2;
 
         Blessing(String label, String desc, Holder<Attribute> attr, AttributeModifier.Operation op, double amount) {
+            this(label, desc, attr, op, amount, null, null, 0.0);
+        }
+
+        Blessing(String label, String desc, Holder<Attribute> attr, AttributeModifier.Operation op, double amount,
+                 Holder<Attribute> attr2, AttributeModifier.Operation op2, double amount2) {
             this.label = label;
             this.desc = desc;
             this.attr = attr;
             this.op = op;
             this.amount = amount;
+            this.attr2 = attr2;
+            this.op2 = op2;
+            this.amount2 = amount2;
+        }
+
+        public boolean curse() {
+            return label.startsWith("Fluch");
+        }
+
+        ResourceLocation modId2() {
+            return ChronicleArena.id("blessing_" + name().toLowerCase(java.util.Locale.ROOT) + "_b");
         }
 
         ResourceLocation modId() {
@@ -108,6 +133,12 @@ public final class ArenaShow {
             inst.removeModifier(b.modId());
             int n = b.ordinal() < stacks.length ? stacks[b.ordinal()] : 0;
             if (n > 0) inst.addTransientModifier(new AttributeModifier(b.modId(), b.amount * n, b.op));
+            if (b.attr2 != null) {
+                AttributeInstance inst2 = p.getAttribute(b.attr2);
+                if (inst2 == null) continue;
+                inst2.removeModifier(b.modId2());
+                if (n > 0) inst2.addTransientModifier(new AttributeModifier(b.modId2(), b.amount2 * n, b.op2));
+            }
         }
         if (p.getHealth() > p.getMaxHealth()) p.setHealth(p.getMaxHealth());
     }
@@ -117,6 +148,10 @@ public final class ArenaShow {
             if (b.attr == null) continue;
             AttributeInstance inst = p.getAttribute(b.attr);
             if (inst != null) inst.removeModifier(b.modId());
+            if (b.attr2 != null) {
+                AttributeInstance inst2 = p.getAttribute(b.attr2);
+                if (inst2 != null) inst2.removeModifier(b.modId2());
+            }
         }
         if (p.getHealth() > p.getMaxHealth()) p.setHealth(p.getMaxHealth());
     }
