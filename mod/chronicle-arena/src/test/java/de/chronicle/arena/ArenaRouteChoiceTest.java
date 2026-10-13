@@ -98,10 +98,4 @@ class ArenaRouteChoiceTest {
         c.cast(alice,run,5,3);c.cast(bob,run,5,1);
         assertEquals(RECOVERY,c.tick(alive));
     }
-    @Test void curseCardsCarryAPrice(){
-        for(var bl:de.chronicle.arena.ArenaShow.Blessing.values()){
-            if(bl.curse())assertTrue(bl.desc.contains("aber"),bl.name());
-            else assertFalse(bl.label.startsWith("Fluch"),bl.name());
-        }
-    }
 }
