@@ -69,3 +69,6 @@ Raster. Die Release-Action fuehrt die Pruefung nach dem Paket-Build aus.
 generierten Chunks. Fuer den Vergleich eignet sich derselbe Seed in einer
 neuen Welt; die Platzierungen verschieben sich durch die geaenderten Raster.
 Ein Ingame-Vergleich der tatsaechlichen Dichte ist noch erforderlich.
+
+## Platzhalter `nova_structures` (ab 0.9.32)
+Dungeons and Taverns ist seit 0.9.30 entfernt, aber Modrinth loescht bei Updates keine alten Override-Dateien. In bestehenden Profilen blieben die alten `nova_structures`-Structure-Sets liegen und verwiesen auf nicht mehr vorhandene Strukturen: Absturz bei "Neue Welt erstellen" (`Unbound values in registry worldgen/structure`). Die leeren Platzhalter unter `pack/kubejs/data/nova_structures/` ueberschreiben die alten Dateien und sind harmlos. Nicht loeschen, solange alte Profile existieren.
