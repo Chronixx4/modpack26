@@ -9,7 +9,7 @@ $ProgressPreference = 'SilentlyContinue'
 $MC      = '1.21.1'
 $LOADER  = 'neoforge'
 $PACK    = 'Chronicle'
-$PACKVER = '0.9.28'
+$PACKVER = '0.9.29'
 $RAM     = '8G'
 $TIMEOUT_MIN = 20
 
@@ -234,6 +234,7 @@ create-factory|Create: Factory
 create-train-perspective|Create: Train Perspective
 create-wizardry|Create: Wizardry
 # AE2 und Technik
+buddy-drones|Buddy Drones|^1\.1\.0$
 ae2|Applied Energistics 2
 applied-energistics-2-wireless-terminals|AE2 Wireless Terminals
 extendedae|ExtendedAE
@@ -329,6 +330,7 @@ mowzies-cataclysm|Mowzie's Cataclysm
 gtbcs-cataclysmic-boss-ui|GTBC's Cataclysmic Boss UI
 cataclysm_create|Cataclysm x Create Integration
 # Waffen, Ruestung und Ausruestung
+superb-warfare|Superb Warfare|^0\.8\.9\.2$
 simply-swords|Simply Swords
 simply-swords-cataclysm|Simply Swords: Cataclysm
 archers|Archers (RPG Series)
@@ -346,6 +348,8 @@ waystones|Waystones
 elevatormod|Elevator Mod
 immersive-aircraft|Immersive Aircraft
 # Deko und Bauen
+vista_tv|Vista|^1\.21\.1-5\.5\.7$
+laser-bridges-and-doors|Laser Bridges & Doors|^1\.21\.1-neoforge-6\.1$
 supplementaries|Supplementaries
 amendments|Amendments
 quark|Quark
@@ -361,6 +365,7 @@ framedblocks|FramedBlocks
 another-furniture|Another Furniture
 decocraft|Decocraft
 # Bibliotheken (fehlen auf Modrinth als Abhaengigkeit)
+deimos|Deimos|^1\.21\.1-neoforge-2\.7$
 irons-lib|Iron's Lib|^1\.21\.1-2
 bundle-api|Bundle API
 smartbrainlib|SmartBrainLib

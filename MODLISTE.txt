@@ -1,5 +1,5 @@
-﻿Chronicle 0.9.28 - Modliste
-Minecraft 1.21.1, NeoForge 21.1.256   |   333 Mods inkl. Bibliotheken und eigener Arena   |   Stand 2026-10-12
+﻿Chronicle 0.9.29 - Modliste
+Minecraft 1.21.1, NeoForge 21.1.256   |   338 Mods inkl. Bibliotheken und eigener Arena   |   Stand 2026-10-14
 
 == Performance und Grafik (20) ==
   All The Leaks                                  1.1.13+1.21.1-neoforge  (CurseForge)
@@ -139,7 +139,7 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   333 Mods inkl. Bibliotheken und eigene
   Steam 'n' Rails Neoforge                       0.2.1+neoforge-mc1.21.1
   Waystones: Sable (Create Aeronautics Addon)    1.0.7
 
-== AE2 und Technik (27) ==
+== AE2 und Technik (28) ==
   Actually Additions                             1.3.26
   AdvancedAE                                     1.6.12-1.21.1
   AE2NetworkAnalyzer                             1.21-2.1.5-neoforge  (CurseForge)
@@ -147,6 +147,7 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   333 Mods inkl. Bibliotheken und eigene
   Applied Energistics 2 Wireless Terminals       19.5.1
   Applied Flux                                   1.21-2.1.5-neoforge
   Applied Mekanistics                            1.6.3
+  Buddy Drones                                   1.1.0
   Draconic Evolution                             3.1.4.633
   Ender IO                                       v8.2.12-beta
   ExtendedAE                                     1.21-2.2.39-neoforge  (CurseForge)
@@ -245,7 +246,7 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   333 Mods inkl. Bibliotheken und eigene
   Mutant Monsters                                v21.1.1-1.21.1-NeoForge
   Naturalist                                     2.0.5+1.21.1-neoforge
 
-== Waffen, Ruestung und Ausruestung (12) ==
+== Waffen, Ruestung und Ausruestung (13) ==
   Apotheosis                                     1.21.1-8.9.0
   Apothic Attributes                             1.21.1-2.11.0
   Archers (RPG Series)                           3.1.3+1.21.1-neoforge
@@ -258,13 +259,14 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   333 Mods inkl. Bibliotheken und eigene
   Shield Expansion                               1.4.3
   Simply Swords                                  1.70.2-1.21.1
   Simply Swords: Cataclysm                       1.0.2+1.21.1+neoforge
+  Superb Warfare                                 0.8.9.2
 
 == Transport (3) ==
   ElevatorMod                                    neoforge-1.21.1-1.11.4
   Immersive Aircraft                             1.6.0+1.21.1
   Waystones                                      21.1.46+neoforge-1.21.1
 
-== Deko und Bauen (15) ==
+== Deko und Bauen (17) ==
   Amendments                                     1.21-2.1.10
   Another Furniture                              4.0.3
   Building Gadgets 2                             1.3.9  (CurseForge)
@@ -272,6 +274,7 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   333 Mods inkl. Bibliotheken und eigene
   Decocraft                                      decocraft-3.0.11-1.21.1-neoforge
   FramedBlocks                                   10.6.1
   Handcrafted                                    4.0.3
+  Laser Bridges & Doors                          1.21.1-neoforge-6.1
   Macaw's Bridges                                3.1.2
   Macaw's Doors                                  1.1.5
   Macaw's Furniture                              3.4.1
@@ -280,8 +283,9 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   333 Mods inkl. Bibliotheken und eigene
   Macaw's Windows                                2.4.2
   Quark                                          4.1-487
   Supplementaries                                1.21.1-3.9.9
+  Vista                                          1.21.1-5.5.7
 
-== Bibliotheken (werden automatisch gebraucht) (83) ==
+== Bibliotheken (werden automatisch gebraucht) (84) ==
   Ace's Spell Utils                              1.2.7.3-1.21.1
   Apothic-Enchanting                             1.21.1-1.6.3
   Apothic-Spawners                               1.21.1-1.4.0
@@ -307,6 +311,7 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   333 Mods inkl. Bibliotheken und eigene
   Cucumber Library                               8.0.16
   Curios API                                     9.5.1+1.21.1
   Cyclops Core                                   1.21.1-1.30.0
+  Deimos                                         1.21.1-neoforge-2.7
   DragonLib                                      1.21.1-beta-3.0.28
   Familiarslib                                   1.21.1-1.7.1
   Fragmentum                                     5.2.0

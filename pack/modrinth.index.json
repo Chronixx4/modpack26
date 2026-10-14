@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
   "game": "minecraft",
-  "versionId": "0.9.28",
+  "versionId": "0.9.29",
   "name": "Chronicle",
   "files": [
     {
@@ -4728,6 +4728,81 @@
         "https://cdn.modrinth.com/data/Ohy0TgO2/versions/tYzXrPD1/youkaisfeasts-1.1.1.jar"
       ],
       "fileSize": 3955662
+    },
+    {
+      "path": "mods/vista-1.21.1-5.5.7-neoforge.jar",
+      "hashes": {
+        "sha1": "29543f7d287f3927f04d06d376696970e4408123",
+        "sha512": "fa279c2d300fc98dbb65ba4b70b21fd1eefffc3a065b2cfa8fd1703812503611cdde4e81b93635f5b511e3d6921e8eba3dac4f47c256db50a38962064d55dcf1"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/zuARv1N7/versions/mrDh5q89/vista-1.21.1-5.5.7-neoforge.jar"
+      ],
+      "fileSize": 5777411
+    },
+    {
+      "path": "mods/drones-neoforge-1.1.0.jar",
+      "hashes": {
+        "sha1": "12512c4ea8ebf7ab81587cc2fc12f7913af87273",
+        "sha512": "8c90e97294c605f5b717b6bef5f8b4565d9bc1f5b83a6722f0836a3956155f96ed01c3e5199b6de4493f0015b31c72f0a576d8b043ee3046264234041f610306"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/5NYdYLm1/versions/EfH1X1Lo/drones-neoforge-1.1.0.jar"
+      ],
+      "fileSize": 605819
+    },
+    {
+      "path": "mods/laserbridges-1.21.1-neoforge-6.1.jar",
+      "hashes": {
+        "sha1": "197eddad7ba7b19893a85e577aee76abe2283495",
+        "sha512": "b00dbb1d93ba9f2b4a95078a53aa48529ad0aa21453d1922bcd39bd8bf8c2c7b33b0ce332a108dcd0075401af5bea7d1e7a013ca56065c5c547fe1fd064bbc9e"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/wz31BboV/versions/LfpCEXCa/laserbridges-1.21.1-neoforge-6.1.jar"
+      ],
+      "fileSize": 211253
+    },
+    {
+      "path": "mods/superbwarfare-0.8.9.2-mc1.21.1-c22d98c2.jar",
+      "hashes": {
+        "sha1": "2cfbb5d964d59f3eff64ec62ea406e852079b2d7",
+        "sha512": "fb035d68d6ee30c17e8eade8de6e2019ccf9f3e517fa467be59441a397553c81bd29778f92fa0406f1ac3aa73f68ad522aed5d65825336c36686714c900877a5"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/Cd3DYqzn/versions/bl7W8fjU/superbwarfare-0.8.9.2-mc1.21.1-c22d98c2.jar"
+      ],
+      "fileSize": 41619226
+    },
+    {
+      "path": "mods/deimos-1.21.1-neoforge-2.7.jar",
+      "hashes": {
+        "sha1": "1b026e8e83030a27e762294f87f30eea5b23fa58",
+        "sha512": "a70fc4dfe594d10367961b227e4b22e1c69173287f012837130d177b6393b2b7e7293b73d1fd4f0345639ed9f0c8090f875177bad2138b787597faf47ec16e8d"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/WQaxNzFg/versions/COaBPCdu/deimos-1.21.1-neoforge-2.7.jar"
+      ],
+      "fileSize": 49576
     }
   ],
   "dependencies": {
