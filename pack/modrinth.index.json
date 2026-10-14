@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
   "game": "minecraft",
-  "versionId": "0.9.32",
+  "versionId": "0.9.33",
   "name": "Chronicle",
   "files": [
     {
@@ -4803,6 +4803,21 @@
         "https://cdn.modrinth.com/data/zuARv1N7/versions/mrDh5q89/vista-1.21.1-5.5.7-neoforge.jar"
       ],
       "fileSize": 5777411
+    },
+    {
+      "path": "mods/aerocopycats-1.1.1.jar",
+      "hashes": {
+        "sha1": "3a93862421d0a8cdae1e3a3d7f0d4bd01e049007",
+        "sha512": "4f48c03a25a6f4ec022398cece20e5aa8d51f00951a0f568980e6e5419c1af2f12c8bb652500721afef119ecc455e4c5b1bc4bb7bef38d88846759f0e4c39e8c"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/wjpmYU1u/versions/wsXjRa7l/aerocopycats-1.1.1.jar"
+      ],
+      "fileSize": 14702
     }
   ],
   "dependencies": {

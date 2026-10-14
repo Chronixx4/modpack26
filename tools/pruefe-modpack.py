@@ -23,6 +23,8 @@ NEW_MODS = {
     'deimos': '2.7',
     'superbwarfare': '0.8.9.2',
     'vista': '1.21.1-5.5.7',
+    'aerocopycats': '1.1.0',
+    'aeroportals': '1.3.4',
 }
 
 
@@ -51,7 +53,7 @@ def main():
     paths = [(ROOT / 'curseforge-mods' / name) for name in (
         'buildinggadgets2-1.3.9.jar', 'xycraft_core-0.7.53-all.jar',
         'xycraft_world-0.7.53.jar', 'xycraft_machines-0.7.53.jar',
-        'bytebuddies-0.9.2.jar')]
+        'bytebuddies-0.9.2.jar', 'aeroportals-1.21.1-1.3.4.jar')]
     expected_cf = {p.name: p.read_bytes() for p in paths}
     config_path = 'defaultconfigs/superbwarfare-server.toml'
     expected_config = (ROOT / 'pack' / config_path).read_bytes()
@@ -76,7 +78,7 @@ def main():
                 for entry in index['files']:
                     if any(name in entry['path'] for name in (
                         'toms_storage-', 'mekanism-ad-astra-ores-', 'mahoutsukai-', 'youkaisfeasts-',
-                        'drones-', 'laserbridges-', 'deimos-', 'superbwarfare-', 'vista-')):
+                        'drones-', 'laserbridges-', 'deimos-', 'superbwarfare-', 'vista-', 'aerocopycats-')):
                         raw = (args.dist / 'cache' / Path(entry['path']).name).read_bytes()
                         assert hashlib.sha512(raw).hexdigest() == entry['hashes']['sha512']
                         inventory.update(mods(raw))
@@ -89,7 +91,7 @@ def main():
                         marker in name for marker in (
                             'toms_storage-', 'mekanism-ad-astra-ores-', 'mahoutsukai-',
                             'youkaisfeasts-', 'buildinggadgets2-', 'xycraft_',
-                            'drones-', 'bytebuddies-', 'laserbridges-', 'deimos-', 'superbwarfare-', 'vista-')):
+                            'drones-', 'bytebuddies-', 'laserbridges-', 'deimos-', 'superbwarfare-', 'vista-', 'aerocopycats-', 'aeroportals-')):
                         inventory.update(mods(archive.read(name)))
             assert inventory == NEW_MODS, (filename, inventory)
         print(f'{filename}: Arena {arena_version} genau einmal und alle {len(NEW_MODS)} geprueften Mods enthalten')
