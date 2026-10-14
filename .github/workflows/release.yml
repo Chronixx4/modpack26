@@ -71,6 +71,22 @@ jobs:
           TEST_TIMEOUT_MIN: 25
         run: bash .github/scripts/servertest.sh "dist/Chronicle-${{ steps.ver.outputs.ver }}-Server.zip" "$RUNNER_TEMP/servertest"
 
+      - name: Superb-Warfare-Serverconfig pruefen
+        if: steps.ver.outputs.exists != 'true'
+        run: |
+          python3 - "$RUNNER_TEMP/servertest" <<'PY'
+          import sys, tomllib
+          from pathlib import Path
+          server = Path(sys.argv[1])
+          override = server / 'world/serverconfig/superbwarfare-server.toml'
+          path = override if override.exists() else server / 'config/superbwarfare-server.toml'
+          print(f'Pruefe effektiv geladene Serverconfig: {path}')
+          config = tomllib.loads(path.read_text())['explosion']
+          assert config['explosion_destroy'] is False, 'Blockzerstoerung durch Explosionen aktiv'
+          assert config['extra_explosion_effect'] is False, 'Zusaetzliche Sprengwirkung aktiv'
+          print('Server hat beide Explosionseinstellungen uebernommen')
+          PY
+
       - name: Server-Log sichern
         if: failure()
         uses: actions/upload-artifact@v4

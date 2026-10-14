@@ -22,6 +22,7 @@ NEW_MODS = {
     'laserbridges': '6.1',
     'deimos': '2.7',
     'superbwarfare': '0.8.9.2',
+    'vista': '1.21.1-5.5.7',
 }
 
 
@@ -52,10 +53,16 @@ def main():
         'xycraft_world-0.7.53.jar', 'xycraft_machines-0.7.53.jar',
         'bytebuddies-0.9.2.jar')]
     expected_cf = {p.name: p.read_bytes() for p in paths}
+    config_path = 'defaultconfigs/superbwarfare-server.toml'
+    expected_config = (ROOT / 'pack' / config_path).read_bytes()
+    explosion = tomllib.loads(expected_config.decode())['explosion']
+    assert explosion['explosion_destroy'] is False, 'Explosionen zerstoeren Bloecke'
+    assert explosion['extra_explosion_effect'] is False, 'Zusaetzliche Sprengwirkung aktiv'
     for filename, prefix in [(f'Chronicle-{version}.mrpack', 'overrides/'),
                              (f'Chronicle-{version}-Client.zip', ''),
                              (f'Chronicle-{version}-Server.zip', '')]:
         with zipfile.ZipFile(args.dist / filename) as archive:
+            assert archive.read(prefix + config_path) == expected_config, (filename, config_path)
             jar_paths = [name for name in archive.namelist()
                          if name.startswith(prefix + 'mods/chronicle-arena-') and name.endswith('.jar')]
             assert jar_paths == [prefix + 'mods/' + arena_name], (filename, 'Doppelte/alte Arena', jar_paths)
@@ -69,7 +76,7 @@ def main():
                 for entry in index['files']:
                     if any(name in entry['path'] for name in (
                         'toms_storage-', 'mekanism-ad-astra-ores-', 'mahoutsukai-', 'youkaisfeasts-',
-                        'drones-', 'laserbridges-', 'deimos-', 'superbwarfare-')):
+                        'drones-', 'laserbridges-', 'deimos-', 'superbwarfare-', 'vista-')):
                         raw = (args.dist / 'cache' / Path(entry['path']).name).read_bytes()
                         assert hashlib.sha512(raw).hexdigest() == entry['hashes']['sha512']
                         inventory.update(mods(raw))
@@ -82,7 +89,7 @@ def main():
                         marker in name for marker in (
                             'toms_storage-', 'mekanism-ad-astra-ores-', 'mahoutsukai-',
                             'youkaisfeasts-', 'buildinggadgets2-', 'xycraft_',
-                            'drones-', 'bytebuddies-', 'laserbridges-', 'deimos-', 'superbwarfare-')):
+                            'drones-', 'bytebuddies-', 'laserbridges-', 'deimos-', 'superbwarfare-', 'vista-')):
                         inventory.update(mods(archive.read(name)))
             assert inventory == NEW_MODS, (filename, inventory)
         print(f'{filename}: Arena {arena_version} genau einmal und alle {len(NEW_MODS)} geprueften Mods enthalten')

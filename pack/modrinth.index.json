@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
   "game": "minecraft",
-  "versionId": "0.9.31",
+  "versionId": "0.9.32",
   "name": "Chronicle",
   "files": [
     {
@@ -4788,6 +4788,21 @@
         "https://cdn.modrinth.com/data/J8MMsNrL/versions/7OqGasX2/oracle_index-neoforge-1.4.0.jar"
       ],
       "fileSize": 29675090
+    },
+    {
+      "path": "mods/vista-1.21.1-5.5.7-neoforge.jar",
+      "hashes": {
+        "sha1": "29543f7d287f3927f04d06d376696970e4408123",
+        "sha512": "fa279c2d300fc98dbb65ba4b70b21fd1eefffc3a065b2cfa8fd1703812503611cdde4e81b93635f5b511e3d6921e8eba3dac4f47c256db50a38962064d55dcf1"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/zuARv1N7/versions/mrDh5q89/vista-1.21.1-5.5.7-neoforge.jar"
+      ],
+      "fileSize": 5777411
     }
   ],
   "dependencies": {

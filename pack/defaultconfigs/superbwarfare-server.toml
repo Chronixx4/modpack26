@@ -1,0 +1,4 @@
+# Chronicle: Explosionen und zusaetzliche Sprengwirkungen zerstoeren keine Bloecke.
+[explosion]
+explosion_destroy = false
+extra_explosion_effect = false

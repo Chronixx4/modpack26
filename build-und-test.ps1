@@ -9,7 +9,7 @@ $ProgressPreference = 'SilentlyContinue'
 $MC      = '1.21.1'
 $LOADER  = 'neoforge'
 $PACK    = 'Chronicle'
-$PACKVER = '0.9.31'
+$PACKVER = '0.9.32'
 $RAM     = '8G'
 $TIMEOUT_MIN = 20
 
@@ -349,6 +349,7 @@ waystones|Waystones
 elevatormod|Elevator Mod
 immersive-aircraft|Immersive Aircraft
 # Deko und Bauen
+vista_tv|Vista|^1\.21\.1-5\.5\.7$
 supplementaries|Supplementaries
 amendments|Amendments
 quark|Quark
@@ -364,6 +365,7 @@ framedblocks|FramedBlocks
 another-furniture|Another Furniture
 decocraft|Decocraft
 # Bibliotheken (fehlen auf Modrinth als Abhaengigkeit)
+deimos|Deimos|^1\.21\.1-neoforge-2\.7$
 irons-lib|Iron's Lib|^1\.21\.1-2
 bundle-api|Bundle API
 smartbrainlib|SmartBrainLib
