@@ -9,7 +9,7 @@ $ProgressPreference = 'SilentlyContinue'
 $MC      = '1.21.1'
 $LOADER  = 'neoforge'
 $PACK    = 'Chronicle'
-$PACKVER = '0.9.32'
+$PACKVER = '0.9.33'
 $RAM     = '8G'
 $TIMEOUT_MIN = 20
 
@@ -25,7 +25,7 @@ New-Item -ItemType Directory -Force -Path $Work, $Cache, $CfDir | Out-Null
 # CurseForge-Mods automatisch aus dem Download-Ordner holen (falls dort vorhanden)
 $dl = Join-Path $env:USERPROFILE 'Downloads'
 $cfPatterns = @('*twilightforest*1.21.1*.jar','ExtendedAE-1.21-*neoforge*.jar','ars_elemental-1.21.1-*.jar','ars_technica-1.21.1-*.jar',
-                '*ftb*quests*2101*.jar','*ftb*library*2101*.jar','*ftb*teams*2101*.jar','*ftbbackups2*neoforge*.jar','AE2NetworkAnalyzer-1.21-*neoforge*.jar','allthemodium-*_mc_1.21.1.jar','alltheleaks-*neoforge*.jar','minebohrer-*neoforge*.jar','buildinggadgets2-*.jar','xycraft_core-*.jar','xycraft_world-*.jar','xycraft_machines-*.jar','bytebuddies-0.9.2.jar','*ftb*chunks*2101*.jar','*ftb*ultimine*2101*.jar')
+                '*ftb*quests*2101*.jar','*ftb*library*2101*.jar','*ftb*teams*2101*.jar','*ftbbackups2*neoforge*.jar','AE2NetworkAnalyzer-1.21-*neoforge*.jar','allthemodium-*_mc_1.21.1.jar','alltheleaks-*neoforge*.jar','minebohrer-*neoforge*.jar','buildinggadgets2-*.jar','xycraft_core-*.jar','xycraft_world-*.jar','xycraft_machines-*.jar','bytebuddies-0.9.2.jar','*ftb*chunks*2101*.jar','*ftb*ultimine*2101*.jar','aeroportals-1.21.1-*.jar')
 if (Test-Path $dl) {
   foreach ($pat in $cfPatterns) {
     $hit = Get-ChildItem -Path $dl -Filter $pat -ErrorAction SilentlyContinue | Where-Object { $_.Name -notmatch 'fabric' } | Sort-Object LastWriteTime | Select-Object -Last 1
@@ -202,6 +202,7 @@ create-design-n-decor|Create: Design n' Decor
 create-deco|Create Deco
 create-aeronautics|Create Aeronautics
 sable|Sable
+copycats-plus-aeronautics-weight|Copycats+ aeronautics weight|^1\.1\.1$
 waystones-sable|Waystones: Sable
 create-big-cannons|Create Big Cannons
 create-big-cannons-advanced-technologies|Create Big Cannons: Advanced Technologies
@@ -386,7 +387,7 @@ foreach ($l in ($ModListRaw -split "`r?`n")) {
 # Kategorien der CurseForge-Jars (Dateiname -> Kategorie)
 $cfCat = [ordered]@{
   'twilightforest' = 'Dimensionen'; 'ExtendedAE' = 'AE2 und Technik'; 'AE2NetworkAnalyzer' = 'AE2 und Technik'
-  'ars_' = 'Magie'; 'ftb' = 'Multiplayer, Quests und Verwaltung'; 'allthemodium' = 'Dimensionen'; 'alltheleaks' = 'Performance und Grafik'; 'minebohrer' = 'Ressourcen und Landwirtschaft'; 'buildinggadgets2' = 'Deko und Bauen'; 'xycraft_machines' = 'AE2 und Technik'; 'xycraft_world' = 'Ressourcen und Landwirtschaft'; 'xycraft_core' = 'Bibliotheken (werden automatisch gebraucht)'; 'bytebuddies' = 'AE2 und Technik'
+  'ars_' = 'Magie'; 'ftb' = 'Multiplayer, Quests und Verwaltung'; 'allthemodium' = 'Dimensionen'; 'alltheleaks' = 'Performance und Grafik'; 'minebohrer' = 'Ressourcen und Landwirtschaft'; 'buildinggadgets2' = 'Deko und Bauen'; 'xycraft_machines' = 'AE2 und Technik'; 'xycraft_world' = 'Ressourcen und Landwirtschaft'; 'xycraft_core' = 'Bibliotheken (werden automatisch gebraucht)'; 'bytebuddies' = 'AE2 und Technik'; 'aeroportals' = 'Create und Addons'
 }
 
 $vq = '?loaders=' + [uri]::EscapeDataString('["neoforge"]') + '&game_versions=' + [uri]::EscapeDataString('["1.21.1"]')
