@@ -48,8 +48,8 @@
   "placement": {
     "type": "repurposed_structures:advanced_random_spread",
     "salt": 411702122,
-    "spacing": 74,
-    "separation": 36,
+    "spacing": 123,
+    "separation": 60,
     "super_exclusion_zone": {
       "chunk_count": 5,
       "other_set": "#repurposed_structures:overworld_outpost_avoid"

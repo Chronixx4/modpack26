@@ -4,8 +4,14 @@ import de.chronicle.arena.Net;
 import net.minecraft.client.Minecraft;
 
 /** Nur auf dem Client geladen. */
+@net.neoforged.fml.common.EventBusSubscriber(modid=de.chronicle.arena.ChronicleArena.MOD_ID,value=net.neoforged.api.distmarker.Dist.CLIENT)
 public final class ClientHooks {
     private ClientHooks() {}
+
+    @net.neoforged.bus.api.SubscribeEvent
+    public static void logout(net.neoforged.neoforge.client.event.ClientPlayerNetworkEvent.LoggingOut event){
+        ClientState.stats=null;ClientState.battle=null;ClientState.battleReceived=0;TerminalScreen.clearLast();
+    }
 
     public static void battle(de.chronicle.arena.ArenaNet.Battle payload){ClientState.battle=payload;ClientState.battleReceived=System.nanoTime();}
     public static void blessings(de.chronicle.arena.ArenaNet.Blessings payload){
@@ -14,6 +20,13 @@ public final class ClientHooks {
             if(screen.choosing()&&payload.offers().isEmpty()&&!payload.popup())mc.setScreen(null);
             else screen.update(payload);
         }else if(payload.popup())mc.setScreen(new BlessingScreen(payload));
+    }
+    public static void routes(de.chronicle.arena.ArenaNet.Routes payload){
+        var mc=Minecraft.getInstance();
+        if(mc.screen instanceof RouteScreen screen){
+            if(!payload.open())mc.setScreen(null);
+            else screen.update(payload);
+        }else if(payload.open()&&payload.popup())mc.setScreen(new RouteScreen(payload));
     }
     public static void result(de.chronicle.arena.ArenaNet.Result payload){Minecraft.getInstance().setScreen(new ResultScreen(payload));}
     public static void openParty(Net.OpenParty payload) {

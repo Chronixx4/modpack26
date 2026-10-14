@@ -8,8 +8,8 @@
   "placement": {
     "type": "cataclysm:cataclysm_random_spread",
     "salt": 166104345,
-    "spacing": 68,
-    "separation": 41,
+    "spacing": 125,
+    "separation": 75,
     "super_exclusion_zone": {
       "chunk_count": 10,
       "other_set": "#cataclysm:cursed_pyramid_avoid"

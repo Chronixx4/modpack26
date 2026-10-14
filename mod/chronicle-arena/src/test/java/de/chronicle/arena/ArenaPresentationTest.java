@@ -21,6 +21,12 @@ class ArenaPresentationTest {
         roundTrip(ArenaNet.Blessings.CODEC,new ArenaNet.Blessings(run,5,List.of(info),List.of(info),93,true));
         roundTrip(ArenaNet.Pick.CODEC,new ArenaNet.Pick(run,5,2));
     }
+    @Test void routeBallotAndVotePreserveIdentityCountsAndRestrictions(){
+        UUID run=UUID.randomUUID();
+        roundTrip(ArenaNet.Routes.CODEC,new ArenaNet.Routes(run,5,true,27,3,4,2,1,0,1,0,false,true,true));
+        roundTrip(ArenaNet.Routes.CODEC,new ArenaNet.Routes(run,5,false,0,0,0,0,0,0,0,-1,false,false,false));
+        roundTrip(ArenaNet.RouteVote.CODEC,new ArenaNet.RouteVote(run,5,2));
+    }
     @Test void resultsAndRetryPreserveRewardSnapshot(){
         UUID run=UUID.randomUUID();
         roundTrip(ArenaNet.Result.CODEC,new ArenaNet.Result(run,true,"Zombies","Gold",12,"2:34",150,70,List.of("2 x Diamant"),List.of("Alice | Schaden 100 | Kills 5 | Wiederbelebt 1")));
@@ -45,6 +51,21 @@ class ArenaPresentationTest {
         var goal=new ArenaObjectives.Objective(2,BlockPos.ZERO);goal.expectedTargets=3;goal.markedSpawned=1;
         assertFalse(goal.complete());assertEquals(3,ArenaObjectives.target(goal));
         goal.markedSpawned=3;assertTrue(goal.complete());
+    }
+    @Test void allGoalMarkersAvoidRedCarpetsInEveryOrientation(){
+        for(int turn=0;turn<4;turn++){
+            var points=ArenaObjectives.routePoints(BlockPos.ZERO,turn);assertEquals(3,new HashSet<>(points).size());
+            for(var point:points){
+                boolean carpet=(Math.abs(point.getX())<=1&&Math.abs(point.getZ())>=8&&Math.abs(point.getZ())<=20)
+                        ||(Math.abs(point.getZ())<=1&&Math.abs(point.getX())>=8&&Math.abs(point.getX())<=20);
+                assertFalse(carpet);assertTrue(point.distSqr(BlockPos.ZERO)<400);
+            }
+        }
+    }
+    @Test void guideCanStepOnCarpetsAndPressurePlatesWithoutWalkingIntoWallsOrVoid(){
+        assertTrue(ArenaObjectives.guideFloor(true,true,0));assertTrue(ArenaObjectives.guideFloor(true,true,1.0/16));
+        assertTrue(ArenaObjectives.guideFloor(true,true,0.125));assertFalse(ArenaObjectives.guideFloor(true,true,1));
+        assertFalse(ArenaObjectives.guideFloor(false,true,0));assertFalse(ArenaObjectives.guideFloor(true,false,0));assertFalse(ArenaObjectives.guideFloor(true,true,Double.NaN));
     }
     @Test void escortNeedsAllCheckpointsAndEnemiesBlockAdvancement(){
         var goal=new ArenaObjectives.Objective(3,BlockPos.ZERO);goal.checkpoint=2;assertFalse(goal.complete());goal.checkpoint=3;assertTrue(goal.complete());

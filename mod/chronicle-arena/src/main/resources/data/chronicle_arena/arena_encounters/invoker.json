@@ -1,0 +1,17 @@
+{
+  "type": "boss",
+  "order": 36,
+  "name": "Beschwoerer (Illager)",
+  "description": "Fangzaehne und Verstaerkung.",
+  "icon": "minecraft:totem_of_undying",
+  "boss": {
+    "entity": "illagerinvasion:invoker"
+  },
+  "adds": [
+    {
+      "entity": "minecraft:vindicator",
+      "count": 2
+    }
+  ],
+  "theme": "forest"
+}

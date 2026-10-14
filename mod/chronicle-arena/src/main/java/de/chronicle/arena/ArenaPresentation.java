@@ -27,7 +27,7 @@ public final class ArenaPresentation {
         for(UUID id:ids){var s=r.stat(id);team.add(r.names.getOrDefault(id,"Spieler")+" | Schaden "+s[0]+" | Kills "+s[1]+" | Wiederbelebt "+s[2]);}
         for(UUID id:ids){ServerPlayer p=server.getPlayerList().getPlayer(id);if(p==null)continue;
             List<String> loot=new ArrayList<>();r.loot.getOrDefault(id,Map.of()).forEach((name,n)->loot.add(n+" x "+name));
-            ArenaNet.Result result=new ArenaNet.Result(r.id,r.won,r.encounter.name(),r.tier.name(),r.endless?Math.max(0,r.wave-1):r.wave,ArenaManager.formatTime(r.fightTicks),Math.max(0,ArenaStats.earned(p)-r.earnedStart.getOrDefault(id,ArenaStats.earned(p))),r.rewardXp.getOrDefault(id,0),List.copyOf(loot),List.copyOf(team.subList(0,Math.min(1024,team.size()))));
+            ArenaNet.Result result=new ArenaNet.Result(r.id,r.won,r.encounter.name(),r.tier.name(),r.endless?r.completedWaves:r.wave,ArenaManager.formatTime(r.fightTicks),Math.max(0,ArenaStats.earned(p)-r.earnedStart.getOrDefault(id,ArenaStats.earned(p))),r.rewardXp.getOrDefault(id,0),List.copyOf(loot),List.copyOf(team.subList(0,Math.min(1024,team.size()))));
             last.put(id,new Last(result,new Net.Action(false,r.encounter.id().toString(),r.tier.id().toString(),r.mask|((r.variant+1)<<4)),server.getTickCount()+12000));
         }
     }
@@ -35,7 +35,7 @@ public final class ArenaPresentation {
     public static void retry(ServerPlayer p,UUID run){Last value=last.get(p.getUUID());if(value==null||!value.result.run().equals(run)||p.server.getTickCount()>=value.expires||!ArenaManager.inLobby(p))return;ArenaManager.handleAction(p,value.action);}
     public static void sync(MinecraftServer server,ArenaManager.Run r){
         var o=r.objective;
-        String phase=switch(r.state){case PREP->r.offer.isEmpty()?"Vorbereitung":"Segen waehlen";case WAVE->"Wellenkampf";case BOSS->"Bosskampf";case ENDING->r.won?"Sieg":"Niederlage";};
+        String phase=switch(r.state){case PREP->r.routes.voting()?"Weg abstimmen":r.offer.isEmpty()?"Vorbereitung":"Segen waehlen";case WAVE->"Wellenkampf"+(r.routes.active(r.wave)==null?"":" | "+r.routes.active(r.wave).title);case BOSS->"Bosskampf";case ENDING->r.won?"Sieg":"Niederlage";};
         ArenaNet.Battle payload=new ArenaNet.Battle(true,phase,r.wave,r.encounter.boss()?1:r.endless?0:r.totalWaves,r.mobs.size()+r.queue.size(),r.revives,o==null?"":ArenaObjectives.label(o),o==null?0:ArenaObjectives.progress(o),o==null?0:ArenaObjectives.target(o),o==null?0:Math.max(0,(ArenaObjectives.limit(o)-o.ticks+19)/20),o!=null&&o.kind==1?(int)Math.ceil(o.health):0,o!=null&&o.kind==1?100:0,"");
         Set<UUID> all=new HashSet<>(r.alive);all.addAll(r.spectators);
         for(UUID id:all){ServerPlayer p=server.getPlayerList().getPlayer(id);if(p!=null&&p.level().dimension()==ArenaManager.DIM)PacketDistributor.sendToPlayer(p,payload.withPickups(ArenaPickups.status(r,id)));}

@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
   "game": "minecraft",
-  "versionId": "0.9.29",
+  "versionId": "0.9.32",
   "name": "Chronicle",
   "files": [
     {
@@ -1008,21 +1008,6 @@
         "https://cdn.modrinth.com/data/9s6osm5g/versions/izKINKFg/cloth-config-15.0.140-neoforge.jar"
       ],
       "fileSize": 1163890
-    },
-    {
-      "path": "mods/dungeons-and-taverns-v4.4.4.jar",
-      "hashes": {
-        "sha1": "249a5bdd0e8622b8a11f88758e6f5fd5fda036a3",
-        "sha512": "83069dc336bcc212059f753923373d9522aa5953bf4b4fe2a8cfa666b4e28d2d017daa66c4b35e315c3be8d1ad60c2872879dd47cc1f47665ebbfd102da76976"
-      },
-      "env": {
-        "client": "required",
-        "server": "required"
-      },
-      "downloads": [
-        "https://cdn.modrinth.com/data/tpehi7ww/versions/BYUUUeZA/dungeons-and-taverns-v4.4.4.jar"
-      ],
-      "fileSize": 24859622
     },
     {
       "path": "mods/polymorph-neoforge-1.1.0+1.21.1.jar",
@@ -4730,21 +4715,6 @@
       "fileSize": 3955662
     },
     {
-      "path": "mods/vista-1.21.1-5.5.7-neoforge.jar",
-      "hashes": {
-        "sha1": "29543f7d287f3927f04d06d376696970e4408123",
-        "sha512": "fa279c2d300fc98dbb65ba4b70b21fd1eefffc3a065b2cfa8fd1703812503611cdde4e81b93635f5b511e3d6921e8eba3dac4f47c256db50a38962064d55dcf1"
-      },
-      "env": {
-        "client": "required",
-        "server": "required"
-      },
-      "downloads": [
-        "https://cdn.modrinth.com/data/zuARv1N7/versions/mrDh5q89/vista-1.21.1-5.5.7-neoforge.jar"
-      ],
-      "fileSize": 5777411
-    },
-    {
       "path": "mods/drones-neoforge-1.1.0.jar",
       "hashes": {
         "sha1": "12512c4ea8ebf7ab81587cc2fc12f7913af87273",
@@ -4775,6 +4745,21 @@
       "fileSize": 211253
     },
     {
+      "path": "mods/deimos-1.21.1-neoforge-2.7.jar",
+      "hashes": {
+        "sha1": "1b026e8e83030a27e762294f87f30eea5b23fa58",
+        "sha512": "a70fc4dfe594d10367961b227e4b22e1c69173287f012837130d177b6393b2b7e7293b73d1fd4f0345639ed9f0c8090f875177bad2138b787597faf47ec16e8d"
+      },
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/WQaxNzFg/versions/COaBPCdu/deimos-1.21.1-neoforge-2.7.jar"
+      ],
+      "fileSize": 49576
+    },
+    {
       "path": "mods/superbwarfare-0.8.9.2-mc1.21.1-c22d98c2.jar",
       "hashes": {
         "sha1": "2cfbb5d964d59f3eff64ec62ea406e852079b2d7",
@@ -4790,19 +4775,34 @@
       "fileSize": 41619226
     },
     {
-      "path": "mods/deimos-1.21.1-neoforge-2.7.jar",
+      "path": "mods/oracle_index-neoforge-1.4.0.jar",
       "hashes": {
-        "sha1": "1b026e8e83030a27e762294f87f30eea5b23fa58",
-        "sha512": "a70fc4dfe594d10367961b227e4b22e1c69173287f012837130d177b6393b2b7e7293b73d1fd4f0345639ed9f0c8090f875177bad2138b787597faf47ec16e8d"
+        "sha1": "90415e944016b45bd3791bfa3705e9e8345e1dde",
+        "sha512": "3937fe508e7a077769d813662bf3e13dcd16874d63ac91a433810d7ee38a526e23ca0258f5810c5ea65d37cdff2cad7cb4067cf43cb9a4874316310b190e2a87"
+      },
+      "env": {
+        "client": "required",
+        "server": "unsupported"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/J8MMsNrL/versions/7OqGasX2/oracle_index-neoforge-1.4.0.jar"
+      ],
+      "fileSize": 29675090
+    },
+    {
+      "path": "mods/vista-1.21.1-5.5.7-neoforge.jar",
+      "hashes": {
+        "sha1": "29543f7d287f3927f04d06d376696970e4408123",
+        "sha512": "fa279c2d300fc98dbb65ba4b70b21fd1eefffc3a065b2cfa8fd1703812503611cdde4e81b93635f5b511e3d6921e8eba3dac4f47c256db50a38962064d55dcf1"
       },
       "env": {
         "client": "required",
         "server": "required"
       },
       "downloads": [
-        "https://cdn.modrinth.com/data/WQaxNzFg/versions/COaBPCdu/deimos-1.21.1-neoforge-2.7.jar"
+        "https://cdn.modrinth.com/data/zuARv1N7/versions/mrDh5q89/vista-1.21.1-5.5.7-neoforge.jar"
       ],
-      "fileSize": 49576
+      "fileSize": 5777411
     }
   ],
   "dependencies": {

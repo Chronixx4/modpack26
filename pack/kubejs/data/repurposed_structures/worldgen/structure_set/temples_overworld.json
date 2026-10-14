@@ -12,7 +12,7 @@
   "placement": {
     "type": "repurposed_structures:advanced_random_spread",
     "salt": 1590755324,
-    "spacing": 77,
-    "separation": 44
+    "spacing": 128,
+    "separation": 73
   }
 }

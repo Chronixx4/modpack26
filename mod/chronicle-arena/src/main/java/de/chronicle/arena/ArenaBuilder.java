@@ -115,6 +115,7 @@ final class ArenaBuilder {
         int fy = ArenaManager.LOBBY.getY() - 1;
         int r = ArenaManager.LOBBY_RADIUS;
         clear(level, cx, cz, fy, r + 2, 14);
+        if (placeCustom(level, "lobby", cx, cz, fy)) return;
         for (int dx = -r - 1; dx <= r + 1; dx++) {
             for (int dz = -r - 1; dz <= r + 1; dz++) {
                 double d = Math.sqrt(dx * dx + dz * dz);

@@ -15,8 +15,15 @@ import java.util.List;
 public final class Net {
     private Net() {}
 
+    private static int readCount(FriendlyByteBuf buf,int max){
+        int n=buf.readVarInt();if(n<0||n>max)throw new IllegalArgumentException("Invalid arena list size");return n;
+    }
+    private static void writeCount(FriendlyByteBuf buf,int n,int max){
+        if(n<0||n>max)throw new IllegalArgumentException("Arena list too large");buf.writeVarInt(n);
+    }
+
     public static void register(RegisterPayloadHandlersEvent event) {
-        PayloadRegistrar reg = event.registrar("8");
+        PayloadRegistrar reg = event.registrar("10");
         ArenaNet.register(reg);
         reg.playToClient(OpenParty.TYPE, OpenParty.CODEC,
                 (payload, ctx) -> ctx.enqueueWork(() -> de.chronicle.arena.client.ClientHooks.openParty(payload)));
@@ -72,7 +79,7 @@ public final class Net {
             buf.writeVarInt(p.coinPercent);
             buf.writeBoolean(p.running);
             buf.writeUtf(p.status);
-            buf.writeVarInt(p.tiers.size());
+            writeCount(buf,p.tiers.size(),1024);
             for (TierInfo t : p.tiers) {
                 buf.writeUtf(t.id);
                 buf.writeUtf(t.name);
@@ -80,7 +87,7 @@ public final class Net {
                 buf.writeBoolean(t.locked);
                 buf.writeUtf(t.info, 256);
             }
-            buf.writeVarInt(p.encounters.size());
+            writeCount(buf,p.encounters.size(),4096);
             for (EncInfo e : p.encounters) {
                 buf.writeUtf(e.id);
                 buf.writeBoolean(e.boss);
@@ -88,7 +95,7 @@ public final class Net {
                 buf.writeUtf(e.desc, 1024);
                 buf.writeUtf(e.icon);
             }
-            buf.writeVarInt(p.mods.size());
+            writeCount(buf,p.mods.size(),16);
             for (ModInfo m : p.mods) {
                 buf.writeVarInt(m.bit);
                 buf.writeUtf(m.name);
@@ -108,17 +115,17 @@ public final class Net {
             int coinPercent = buf.readVarInt();
             boolean running = buf.readBoolean();
             String status = buf.readUtf();
-            int nt = buf.readVarInt();
+            int nt = readCount(buf,1024);
             List<TierInfo> tiers = new ArrayList<>();
             for (int i = 0; i < nt; i++) {
                 tiers.add(new TierInfo(buf.readUtf(), buf.readUtf(), buf.readUtf(1024), buf.readBoolean(), buf.readUtf(256)));
             }
-            int ne = buf.readVarInt();
+            int ne = readCount(buf,4096);
             List<EncInfo> encs = new ArrayList<>();
             for (int i = 0; i < ne; i++) {
                 encs.add(new EncInfo(buf.readUtf(), buf.readBoolean(), buf.readUtf(), buf.readUtf(1024), buf.readUtf()));
             }
-            int nm = buf.readVarInt();
+            int nm = readCount(buf,16);
             List<ModInfo> mods = new ArrayList<>();
             for (int i = 0; i < nm; i++) mods.add(new ModInfo(buf.readVarInt(), buf.readUtf(), buf.readUtf(256), buf.readVarInt()));
             ChallengeInfo ch = new ChallengeInfo(buf.readUtf(), buf.readUtf(), buf.readVarInt(), buf.readBoolean(),
@@ -139,7 +146,7 @@ public final class Net {
 
         private static void write(RegistryFriendlyByteBuf buf, OpenShop p) {
             buf.writeVarInt(p.coins);
-            buf.writeVarInt(p.offers.size());
+            writeCount(buf,p.offers.size(),4096);
             for (ShopInfo s : p.offers) {
                 buf.writeUtf(s.id);
                 buf.writeUtf(s.category);
@@ -152,7 +159,7 @@ public final class Net {
 
         private static OpenShop read(RegistryFriendlyByteBuf buf) {
             int coins = buf.readVarInt();
-            int n = buf.readVarInt();
+            int n = readCount(buf,4096);
             List<ShopInfo> list = new ArrayList<>();
             for (int i = 0; i < n; i++) {
                 list.add(new ShopInfo(buf.readUtf(), buf.readUtf(), buf.readUtf(), buf.readVarInt(), ItemStack.STREAM_CODEC.decode(buf), buf.readUtf()));
@@ -180,9 +187,9 @@ public final class Net {
             buf.writeUtf(p.title);
             buf.writeUtf(p.titleId);
             buf.writeUtf(p.trailId);
-            buf.writeVarInt(p.owned.size());
+            writeCount(buf,p.owned.size(),4096);
             for (String o : p.owned) buf.writeUtf(o);
-            buf.writeVarInt(p.board.size());
+            writeCount(buf,p.board.size(),1024);
             for (BoardLine l : p.board) {
                 buf.writeUtf(l.name);
                 buf.writeUtf(l.title);
@@ -195,7 +202,7 @@ public final class Net {
             buf.writeUtf(p.rank);
             buf.writeVarInt(p.earned);
             buf.writeVarInt(p.nextRankAt);
-            buf.writeVarInt(p.perks.size());
+            writeCount(buf,p.perks.size(),64);
             for (String k : p.perks) buf.writeUtf(k);
         }
 
@@ -207,17 +214,17 @@ public final class Net {
             String title = buf.readUtf();
             String titleId = buf.readUtf();
             String trailId = buf.readUtf();
-            int no = buf.readVarInt();
+            int no = readCount(buf,4096);
             List<String> owned = new ArrayList<>();
             for (int i = 0; i < no; i++) owned.add(buf.readUtf());
-            int nb = buf.readVarInt();
+            int nb = readCount(buf,1024);
             List<BoardLine> board = new ArrayList<>();
             for (int i = 0; i < nb; i++) board.add(new BoardLine(buf.readUtf(), buf.readUtf(), buf.readVarInt(), buf.readVarInt(), buf.readVarInt(), buf.readVarInt()));
             boolean hud = buf.readBoolean();
             String rank = buf.readUtf();
             int earned = buf.readVarInt();
             int next = buf.readVarInt();
-            int np = buf.readVarInt();
+            int np = readCount(buf,64);
             List<String> perks = new ArrayList<>();
             for (int i = 0; i < np; i++) perks.add(buf.readUtf());
             return new Stats(coins, kills, bosses, wins, title, titleId, trailId, owned, board, hud, rank, earned, next, perks);
@@ -267,7 +274,7 @@ public final class Net {
         public static final StreamCodec<FriendlyByteBuf, OpenSmith> CODEC = StreamCodec.of(
                 (buf, p) -> {
                     buf.writeVarInt(p.coins);
-                    buf.writeVarInt(p.ups.size());
+                    writeCount(buf,p.ups.size(),64);
                     for (SmithInfo u : p.ups) {
                         buf.writeUtf(u.id);
                         buf.writeUtf(u.name);
@@ -279,7 +286,7 @@ public final class Net {
                 },
                 buf -> {
                     int coins = buf.readVarInt();
-                    int n = buf.readVarInt();
+                    int n = readCount(buf,64);
                     List<SmithInfo> list = new ArrayList<>();
                     for (int i = 0; i < n; i++) {
                         list.add(new SmithInfo(buf.readUtf(), buf.readUtf(), buf.readUtf(), buf.readVarInt(), buf.readVarInt(), buf.readVarInt()));
@@ -313,9 +320,9 @@ public final class Net {
     public record OpenParty(String summary, List<String> members, boolean ready, boolean leader, int countdown, boolean popup) implements CustomPacketPayload {
         public static final Type<OpenParty> TYPE = new Type<>(ChronicleArena.id("party"));
         public static final StreamCodec<FriendlyByteBuf, OpenParty> CODEC = StreamCodec.of((b,p)-> {
-            b.writeUtf(p.summary,1024); b.writeVarInt(p.members.size()); for(String m:p.members)b.writeUtf(m,128);
+            b.writeUtf(p.summary,1024); writeCount(b,p.members.size(),1024); for(String m:p.members)b.writeUtf(m,128);
             b.writeBoolean(p.ready); b.writeBoolean(p.leader); b.writeInt(p.countdown); b.writeBoolean(p.popup);
-        }, b->{ String s=b.readUtf(1024); int n=b.readVarInt(); if(n<0||n>1024)throw new IllegalArgumentException("party size");
+        }, b->{ String s=b.readUtf(1024); int n=readCount(b,1024);
             List<String> m=new ArrayList<>(); for(int i=0;i<n;i++)m.add(b.readUtf(128)); return new OpenParty(s,m,b.readBoolean(),b.readBoolean(),b.readInt(),b.readBoolean()); });
         public Type<? extends CustomPacketPayload> type() { return TYPE; }
     }

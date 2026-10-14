@@ -9,10 +9,10 @@ ANDERE LAUNCHER (Prism, CurseForge-App, ATLauncher ...)
 1. Neue Instanz anlegen: Minecraft @MC@, Loader NeoForge @NEOFORGE@.
 2. Die Ordner "mods" und "config" aus dieser ZIP in den Instanz-Ordner kopieren
    (vorhandenen mods-Ordner vorher leeren). In "config" steckt das Questbuch.
-3. In den Instanz-Einstellungen mindestens 8 GB RAM geben, besser 10 GB.
+3. In den Instanz-Einstellungen 12 GB RAM zuweisen.
 
 PERFORMANCE
-- RAM: 10-12 GB (Modrinth App: Profil -> Einstellungen -> Java und Speicher). Mehr bringt nichts.
+- RAM: 12 GB (Modrinth App: Profil -> Einstellungen -> Java und Speicher).
 - Distant Horizons frisst am meisten. Bei Rucklern im DH-Menue (Knopf im Optionsmenue)
   die Qualitaet auf "Low" oder die LOD-Distanz runter und die CPU-Last auf "Low Impact" stellen.
 - Dynamic FPS drosselt das Spiel automatisch, wenn das Fenster im Hintergrund ist.

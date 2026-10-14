@@ -8,8 +8,8 @@
   "placement": {
     "type": "cataclysm:cataclysm_random_spread",
     "salt": 913530101,
-    "spacing": 108,
-    "separation": 68,
+    "spacing": 200,
+    "separation": 125,
     "super_exclusion_zone": {
       "chunk_count": 10,
       "other_set": "#cataclysm:acropolis_avoid"

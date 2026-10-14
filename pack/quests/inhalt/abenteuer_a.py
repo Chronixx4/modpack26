@@ -498,20 +498,6 @@ kapitel('strukturen', '&6Strukturen', 'explorerscompass:explorerscompass', 'Dung
       'Ein großes Kriegsschiff. Die Besatzung ist nicht erfreut über Besuch.',
       nach=['wda_yacht'], belohnung='loot2', zeile=2),
 
-    # ---- Dungeons and Taverns ----
-    Q('dnt_taverne', 'Taverne', ('struct', '#nova_structures:taverns'),
-      'Dungeons and Taverns stellt Tavernen in viele Biome. Jede davon zählt. Drinnen kannst du dich ausruhen und handeln.',
-      nach=['start'], belohnung=1, zeile=-3),
-    Q('dnt_gruft', 'Untote Gruft', ('struct', 'nova_structures:undead_crypt'),
-      'Eine Gruft voller Untoter. Fackeln und Heiltränke einpacken.',
-      nach=['dnt_taverne'], belohnung=2, zeile=-3),
-    Q('dnt_anwesen', 'Illager-Anwesen', ('struct', 'nova_structures:illager_manor'),
-      'Ein großes Anwesen der Illager. Erwarte Magier und Verwüster.',
-      nach=['dnt_gruft'], belohnung='loot2', zeile=-3),
-    Q('dnt_endburg', 'End-Burg', ('struct', 'nova_structures:end_castle'),
-      'Auch im End gibt es etwas Neues: eine Burg auf den äußeren Inseln.',
-      nach=['dnt_anwesen', 'dimensionen/end'], belohnung='loot3', optional=True, zeile=-3),
-
     # ---- Towns and Towers ----
     Q('tnt_dorf', 'Neue Dörfer', ('struct', '#towns_and_towers:town'),
       'Towns and Towers bringt neue Dorfstile für fast jedes Biom. Jedes Towns-and-Towers-Dorf zählt.',

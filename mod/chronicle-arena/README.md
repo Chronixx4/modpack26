@@ -1,5 +1,17 @@
 # Chronicle Arena
 
+## Update 0.4.2 (vorbereitet)
+
+Fluch-Karten, Haendler-Weg, Boss-Phasen, Bestzeiten-Tafel, Trainingsdummy, Balance-Log, 14 neue Bosse und 4 Wellen-Themen. Details: [RELEASE-0.4.2.md](RELEASE-0.4.2.md).
+
+## Update 0.4.1
+
+Fehlerkorrekturen nach Gesamtpruefung: Tod erst nach Ruestung/Totem, Fortschritt nach Respawn erhalten, Abgrund-Zaehler, Killcam/Wiederbeleben, Zielpunkte/NPC-Wege, Belohnungen und Menuegroessen. Details und Teststand: [PRUEFBERICHT-0.4.1.md](PRUEFBERICHT-0.4.1.md).
+
+## Update 0.4.0 (vorbereitet)
+
+Gruppenwege nach jeder fuenften Welle: Risiko, Erholung oder Spezialmission. Menue: `/arena weg`. Volle Pausenheilung gehoert jetzt zum Erholungsweg. Regeln und Teststatus: [RELEASE-0.4.0.md](RELEASE-0.4.0.md).
+
 ## Update 0.3.1
 
 Siegertafel korrigiert, Beacon-Verteidigung mit Leben und Verstaerkung, Regeneration abgeschwaecht, Recovery mit Hunger/Timer und drei neue Runen auf der Karte und im Shop. Details: [RELEASE-0.3.1.md](RELEASE-0.3.1.md).
@@ -52,7 +64,7 @@ In der Arena-Dimension gibt es keine Hostility-Levels (Datapack `l2hostility_con
 - Bossleiste zeigt die verbleibenden Gegner.
 - Mini-Boss: bei Stufen ab 15 Wellen alle 10 Wellen, sonst in der Mitte (5-fache Leben, 3 Wellen-Coins Bonus).
 - Segen: nach jeder 5. Welle 3 zur Auswahl (klickbar im Chat, `/arena segen 1-3`), gelten bis zum Run-Ende, stapelbar.
-- Wiederbeleben: 2 pro Run, +1 nach jeder 5. Welle (max 5), dazu volle Heilung.
+- Wiederbeleben: 2 pro Run, +1 nach jeder 5. Welle (max 5), volle Heilung durch den Erholungsweg.
 - Musik: Pigstep bei Wellen, Precipice beim Boss (Vanilla-Platten, Kategorie Musik, Schleife).
 
 ## Scaling und Abgrund (Endlos)

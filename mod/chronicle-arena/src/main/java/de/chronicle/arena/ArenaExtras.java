@@ -245,7 +245,8 @@ final class ArenaExtras {
         old.forEach(Entity::discard);
         StringBuilder text=new StringBuilder("LETZTER RUN\n");
         text.append(r.encounter.name()).append(" - ").append(r.tier.name()).append("\n");
-        text.append(r.endless?"Abgrund: Welle "+Math.max(0,r.wave-1):won?"Sieg":"Niederlage").append(" | ").append(ArenaManager.formatTime(r.fightTicks)).append("\n\n");
+        text.append(r.endless?"Abgrund: Welle "+r.completedWaves:won?"Sieg":"Niederlage").append(" | ").append(ArenaManager.formatTime(r.fightTicks)).append("\n\n");
+        for(UUID id:r.participants)r.stat(id);
         List<Map.Entry<UUID,long[]>> rows=new ArrayList<>(r.stat.entrySet());rows.sort((a,b)->Long.compare(b.getValue()[0],a.getValue()[0]));
         for(var en:rows.subList(0,Math.min(8,rows.size()))){long[] st=en.getValue();text.append(r.names.getOrDefault(en.getKey(),"Spieler")).append(" | Kills ").append(st[1]).append("\nSchaden ").append(st[0]).append(" | Wiederbelebt ").append(st[2]).append("\n");}
         if(rows.size()>8)text.append("Alle Spieler: /arena ergebnis");

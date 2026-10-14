@@ -123,8 +123,8 @@
   ],
   "placement": {
     "salt": 169480673,
-    "spacing": 39,
-    "separation": 30,
+    "spacing": 65,
+    "separation": 50,
     "type": "integrated_api:advanced_random_spread",
     "super_exclusion_zone": {
       "chunk_count": 2,

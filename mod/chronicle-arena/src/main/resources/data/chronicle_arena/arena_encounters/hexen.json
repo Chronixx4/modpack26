@@ -1,0 +1,47 @@
+{
+  "type": "waves",
+  "order": 7,
+  "name": "Hexenzirkel",
+  "description": "Hexen, Beschwoerer, Untote Diener und Spinnen.",
+  "icon": "minecraft:cauldron",
+  "pools": [
+    {
+      "entity": "minecraft:witch",
+      "from_wave": 1,
+      "base": 2.1,
+      "per_wave": 0.35
+    },
+    {
+      "entity": "minecraft:spider",
+      "from_wave": 2,
+      "base": 1.4,
+      "per_wave": 0.28
+    },
+    {
+      "entity": "minecraft:cave_spider",
+      "from_wave": 3,
+      "base": 1.4,
+      "per_wave": 0.28
+    },
+    {
+      "entity": "minecraft:zombie",
+      "from_wave": 2,
+      "base": 1.4,
+      "per_wave": 0.28
+    },
+    {
+      "entity": "minecraft:evoker",
+      "from_wave": 6,
+      "base": 0.7,
+      "per_wave": 0.14
+    }
+  ],
+  "elite": {
+    "entity": "goety:crone",
+    "every": 5
+  },
+  "finale": {
+    "entity": "goety:vizier"
+  },
+  "theme": "forest"
+}
