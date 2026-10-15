@@ -30,7 +30,7 @@
   "keybindoverview.move": "Move",
   "keybindoverview.add_action": "Add action",
   "keybindoverview.results": "%s actions · %s/%s",
-  "keybindoverview.move_hint": "%s: Click or press destination key · Green outline = free suggestion · ESC: Cancel",
+  "keybindoverview.move_hint": "%s: Click or press destination key · Green outline = free suggestion · Del: Unbind · ESC: Cancel",
   "keybindoverview.search": "Search action, category or key",
   "keybindoverview.pick_target": "Choose destination: %s",
   "keybindoverview.pick_help": "Click or press key · ESC: Cancel · Del: Unbind",
@@ -46,5 +46,6 @@
   "keybindoverview.notice.exported": "Exported %s bindings to config/keybindoverview/keybindings.txt",
   "keybindoverview.notice.imported": "Imported: %s bindings changed (Undo available)",
   "keybindoverview.notice.no_file": "No file found: config/keybindoverview/keybindings.txt",
-  "keybindoverview.notice.io_error": "File error: %s"
+  "keybindoverview.notice.io_error": "File error: %s",
+  "keybindoverview.recent": "Recently changed"
 }

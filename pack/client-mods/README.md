@@ -9,7 +9,7 @@ Eigene Mod aus Marvins Projekt `KeybindOverview`, Quellen in `quellen/keybind-ov
 (Build: `./gradlew build` dort, JAR hierher kopieren). Stand 15.10.2026.
 Minecraft 1.21.1, NeoForge ab 21.1.0, Java 21; Lizenz laut Mod-Metadaten: MIT.
 
-SHA-256: `b28488c36904b809256dc27d89986c391f261da2c3192744109f44c08c68df82`
+SHA-256: `ee9fdaa7c4ee5f061913e7ca13a52ae9f202a9d613fa15816374a1102cb8fb31`
 
 Ersetzt die Tastenbelegungsseite durch eine Tastatur- und Kategorienansicht.
 Suche nach Aktion, Kategorie oder Taste (Strg+F), Filter fuer Mehrfachbelegungen
@@ -20,6 +20,7 @@ Neu in 1.1.0:
   rot = echter Konflikt, hell umrandet = Vorschlag (freie Buchstaben nahe WASD).
 - Hinweis nach dem Zuweisen, wenn die Taste schon belegt ist; "Rueckgaengig" bleibt.
 - Strg/Shift/Alt-Kombinationen zaehlen nicht als Konflikt mit der einfachen Taste.
+- Gruppe "Zuletzt geaendert" oben in der Liste (die letzten 12 Aenderungen dieser Sitzung).
 - Export/Import: `config/keybindoverview/keybindings.txt` (gleiches Format wie options.txt).
 - Standardtaste zum Oeffnen ist jetzt unbelegt (K gehoert dem Skilltree). Aufruf ueber
   Optionen -> Steuerung -> Tastenbelegung.

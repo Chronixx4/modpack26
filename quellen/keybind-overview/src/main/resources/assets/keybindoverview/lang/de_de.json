@@ -30,7 +30,7 @@
   "keybindoverview.move": "Verschieben",
   "keybindoverview.add_action": "Aktion hinzufügen",
   "keybindoverview.results": "%s Aktionen · %s/%s",
-  "keybindoverview.move_hint": "%s: Zieltaste anklicken oder drücken · Grün umrandet = freier Vorschlag · ESC: Abbrechen",
+  "keybindoverview.move_hint": "%s: Zieltaste anklicken oder drücken · Grün umrandet = freier Vorschlag · Entf: Unbelegt · ESC: Abbrechen",
   "keybindoverview.search": "Aktion, Kategorie oder Taste suchen",
   "keybindoverview.pick_target": "Ziel wählen: %s",
   "keybindoverview.pick_help": "Taste anklicken oder drücken · ESC: Abbrechen · Entf: Entfernen",
@@ -46,5 +46,6 @@
   "keybindoverview.notice.exported": "%s Belegungen exportiert nach config/keybindoverview/keybindings.txt",
   "keybindoverview.notice.imported": "Importiert: %s Belegungen geändert (Rückgängig möglich)",
   "keybindoverview.notice.no_file": "Keine Datei gefunden: config/keybindoverview/keybindings.txt",
-  "keybindoverview.notice.io_error": "Dateifehler: %s"
+  "keybindoverview.notice.io_error": "Dateifehler: %s",
+  "keybindoverview.recent": "Zuletzt geändert"
 }

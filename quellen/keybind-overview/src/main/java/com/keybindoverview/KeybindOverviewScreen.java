@@ -33,6 +33,7 @@ public class KeybindOverviewScreen extends Screen {
     private Button unboundButton;
     private final Deque<List<BindingChange>> history = new ArrayDeque<>();
     private boolean fromList;
+    private final LinkedHashSet<KeyMapping> recent = new LinkedHashSet<>();
     private String noticeText = "";
     private boolean noticeWarn;
     private long noticeUntil;
@@ -208,13 +209,21 @@ public class KeybindOverviewScreen extends Screen {
             groups.computeIfAbsent(mapping.getCategory(), ignored -> new ArrayList<>()).add(mapping);
             keyCount++;
         }
+        Map<String, List<KeyMapping>> ordered = new LinkedHashMap<>();
+        List<KeyMapping> recentShown = new ArrayList<>();
+        for (KeyMapping mapping : recent) {
+            List<KeyMapping> group = groups.get(mapping.getCategory());
+            if (group != null && group.contains(mapping)) recentShown.add(0, mapping);
+        }
+        if (!recentShown.isEmpty()) ordered.put("keybindoverview.recent", recentShown);
+        ordered.putAll(groups);
         cards.clear();
         int panelWidth = right - left;
         int columns = Math.max(1, Math.min(4, (panelWidth - 12 + GAP) / 210));
         int cardWidth = Math.max(1, (panelWidth - 12 - (columns - 1) * GAP) / columns);
         int[] heights = new int[columns];
-        for (var entry : groups.entrySet()) {
-            entry.getValue().sort(Comparator.comparing(mapping -> Component.translatable(mapping.getName()).getString()));
+        for (var entry : ordered.entrySet()) {
+            if (!entry.getKey().equals("keybindoverview.recent")) entry.getValue().sort(Comparator.comparing(mapping -> Component.translatable(mapping.getName()).getString()));
             int column = 0;
             for (int i = 1; i < columns; i++) if (heights[i] < heights[column]) column = i;
             int cardHeight = collapsed.contains(entry.getKey()) ? 28 : 39 + entry.getValue().size() * ROW;
@@ -250,6 +259,7 @@ public class KeybindOverviewScreen extends Screen {
     void changeBinding(KeyMapping mapping, InputConstants.Key key, KeyModifier modifier) {
         if (mapping.getKey().equals(key) && mapping.getKeyModifier() == modifier) return;
         history.push(List.of(new BindingChange(mapping, mapping.getKey(), mapping.getKeyModifier())));
+        markRecent(mapping);
         mapping.setKeyModifierAndCode(modifier, key);
         saveBindings();
         warnConflicts(mapping);
@@ -257,6 +267,7 @@ public class KeybindOverviewScreen extends Screen {
 
     void resetBinding(KeyMapping mapping) {
         history.push(List.of(new BindingChange(mapping, mapping.getKey(), mapping.getKeyModifier())));
+        markRecent(mapping);
         mapping.setToDefault();
         saveBindings();
         warnConflicts(mapping);
@@ -288,6 +299,12 @@ public class KeybindOverviewScreen extends Screen {
         if (list.isEmpty()) return 0;
         for (KeyMapping mapping : list) if (conflicts(mapping)) return 2;
         return 1;
+    }
+
+    private void markRecent(KeyMapping mapping) {
+        recent.remove(mapping);
+        recent.add(mapping);
+        while (recent.size() > 12) recent.remove(recent.iterator().next());
     }
 
     private void notice(String text, boolean warn) {
@@ -359,6 +376,7 @@ public class KeybindOverviewScreen extends Screen {
                 KeyModifier modifier = parts.length > 1 ? KeyModifier.valueFromString(parts[1]) : KeyModifier.NONE;
                 if (mapping.getKey().equals(key) && mapping.getKeyModifier() == modifier) continue;
                 changes.add(new BindingChange(mapping, mapping.getKey(), mapping.getKeyModifier()));
+                markRecent(mapping);
                 mapping.setKeyModifierAndCode(modifier, key);
             }
             if (!changes.isEmpty()) { history.push(changes); saveBindings(); }
