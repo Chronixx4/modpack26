@@ -1,5 +1,5 @@
-﻿Chronicle 0.9.34 - Modliste
-Minecraft 1.21.1, NeoForge 21.1.256   |   342 Mods inkl. Bibliotheken und eigener Arena   |   Stand 2026-10-15
+﻿Chronicle 0.9.35 - Modliste
+Minecraft 1.21.1, NeoForge 21.1.256   |   342 Mods inkl. Bibliotheken und eigener Arena   |   Stand 2026-10-16
 
 == Performance und Grafik (20) ==
   All The Leaks                                  1.1.13+1.21.1-neoforge  (CurseForge)
@@ -272,7 +272,7 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   342 Mods inkl. Bibliotheken und eigene
   Laser Bridges & Doors                          1.21.1-neoforge-6.1
   Waystones                                      21.1.46+neoforge-1.21.1
 
-== Deko und Bauen (16) ==
+== Deko und Bauen (15) ==
   Amendments                                     1.21-2.1.10
   Another Furniture                              4.0.3
   Building Gadgets 2                             1.3.9  (CurseForge)
