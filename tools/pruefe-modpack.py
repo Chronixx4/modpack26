@@ -22,7 +22,6 @@ NEW_MODS = {
     'laserbridges': '6.1',
     'deimos': '2.7',
     'superbwarfare': '0.8.9.2',
-    'vista': '1.21.1-5.5.7',
     'aerocopycats': '1.1.0',
     'aeroportals': '1.3.4',
 }
@@ -78,7 +77,7 @@ def main():
                 for entry in index['files']:
                     if any(name in entry['path'] for name in (
                         'toms_storage-', 'mekanism-ad-astra-ores-', 'mahoutsukai-', 'youkaisfeasts-',
-                        'drones-', 'laserbridges-', 'deimos-', 'superbwarfare-', 'vista-', 'aerocopycats-')):
+                        'drones-', 'laserbridges-', 'deimos-', 'superbwarfare-', 'aerocopycats-')):
                         raw = (args.dist / 'cache' / Path(entry['path']).name).read_bytes()
                         assert hashlib.sha512(raw).hexdigest() == entry['hashes']['sha512']
                         inventory.update(mods(raw))
@@ -91,7 +90,7 @@ def main():
                         marker in name for marker in (
                             'toms_storage-', 'mekanism-ad-astra-ores-', 'mahoutsukai-',
                             'youkaisfeasts-', 'buildinggadgets2-', 'xycraft_',
-                            'drones-', 'bytebuddies-', 'laserbridges-', 'deimos-', 'superbwarfare-', 'vista-', 'aerocopycats-', 'aeroportals-')):
+                            'drones-', 'bytebuddies-', 'laserbridges-', 'deimos-', 'superbwarfare-', 'aerocopycats-', 'aeroportals-')):
                         inventory.update(mods(archive.read(name)))
             assert inventory == NEW_MODS, (filename, inventory)
         print(f'{filename}: Arena {arena_version} genau einmal und alle {len(NEW_MODS)} geprueften Mods enthalten')

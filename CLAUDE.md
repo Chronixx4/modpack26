@@ -33,7 +33,7 @@ Kommunikation mit dem Nutzer: Deutsch, locker, kurz.
   - `pack/config/` landet in `overrides/config` (.mrpack) bzw. `config/` (beide ZIPs) und im lokalen Testserver. Der Servertest gibt die Zeile `Questbuch: Loaded ... quests` aus.
 - **Webseite:** `site/index.html` (statisch, Netlify-Projekt `chronicle-modpack`, Tabs Uebersicht/Guide/Skilltree/Modliste/Changelog; Item-Icons in `site/img/items/`). `python3 tools/seite_aktualisieren.py` schreibt `site/modliste.json` aus `MODLISTE.txt` und setzt die Mod-Anzahl in `index.html`, nach jedem Build mitlaufen lassen und committen. Von Hand bleiben Changelog, Questzahlen und Guide-Rezepte in `index.html`. `netlify.toml` setzt `site/` als Veroeffentlichungsordner.
 - CurseForge-Jars holt das Skript automatisch aus `%USERPROFILE%\Downloads` (Dateinamen-Muster in `$cfPatterns`).
-- Aktuelle Version: **PACKVER 0.9.34**. Bei jeder Änderung `$PACKVER` hochzählen.
+- Aktuelle Version: **PACKVER 0.9.35**. Bei jeder Änderung `$PACKVER` hochzählen.
 
 ## Mods, die nur auf CurseForge sind (liegen in curseforge-mods\ bzw. Downloads)
 Alle für 1.21.1 NeoForge. Download-URL-Schema: `https://www.curseforge.com/minecraft/mc-mods/<slug>/download/<fileId>`
@@ -164,3 +164,5 @@ Artifact „Modpack-Bauplan 1.21.1“ auf claude.ai (Checkliste mit 143 Mods nac
 - 0.9.33: Create: AeroPortals 1.3.4 (nur CurseForge, JAR in `curseforge-mods`, Muster in `$cfPatterns`, braucht Sable) und Copycats+ aeronautics weight 1.1.1 (Modrinth `copycats-plus-aeronautics-weight`, braucht Sable + Copycats+). Keine Worldgen, auf laufendem Server nachruestbar. 343 Mods. Im Spiel ungetestet.
 
 - 0.9.34: **Tasten-Vorlage** `pack/config/defaultoptions/keybindings.txt` (Default Options; nur Fruehspiel belegt, 203 von 620 Aktionen, Rest unbelegt; greift nur bei Profilen ohne eigene options.txt; Format in diesem Mod-Stand nicht im Spiel geprueft). **Keybind Overview 1.1.0** (Quellen `quellen/keybind-overview`, bewusst nicht unter `mod/`, weil `pakete-bauen.sh` alles unter `mod/` in Server+Client packt; JAR + SHA in `pack/client-mods`): freie Tasten/Vorschlaege beim Neuzuweisen, Konflikt-Hinweis, Export/Import (`config/keybindoverview/keybindings.txt`), Modifier-Kombis zaehlen nicht als Konflikt, Standardtaste unbelegt. Kompiliert, aber im Spiel ungetestet. 343 Mods.
+
+- 0.9.35: **Vista wieder entfernt** (war nicht gewollt, 342 Mods). Aus Modliste, Index, Pruefskript und Webseite genommen.
