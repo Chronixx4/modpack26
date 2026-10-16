@@ -9,7 +9,7 @@ $ProgressPreference = 'SilentlyContinue'
 $MC      = '1.21.1'
 $LOADER  = 'neoforge'
 $PACK    = 'Chronicle'
-$PACKVER = '0.9.34'
+$PACKVER = '0.9.35'
 $RAM     = '8G'
 $TIMEOUT_MIN = 20
 
@@ -350,7 +350,6 @@ waystones|Waystones
 elevatormod|Elevator Mod
 immersive-aircraft|Immersive Aircraft
 # Deko und Bauen
-vista_tv|Vista|^1\.21\.1-5\.5\.7$
 supplementaries|Supplementaries
 amendments|Amendments
 quark|Quark
