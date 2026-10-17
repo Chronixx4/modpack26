@@ -1,0 +1,102 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "31C13A805E33748A"
+	loot_crate: {
+		color: 11579568
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "erste_schritte_loot1"
+	}
+	loot_size: 1
+	order_index: 49
+	rewards: [
+		{
+			count: 16
+			id: "78D31B8413785867"
+			item: {
+				count: 1
+				id: "minecraft:coal"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "738CB4B4F748BD1A"
+			item: {
+				count: 1
+				id: "minecraft:copper_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "709368B904BA8286"
+			item: {
+				count: 1
+				id: "minecraft:iron_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "59B975E58C034525"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "1AB45F352D6F38F0"
+			item: {
+				count: 1
+				id: "minecraft:redstone"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "78DE60B9596904DD"
+			item: {
+				count: 1
+				id: "minecraft:lapis_lazuli"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "36F73578BF680AF0"
+			item: {
+				count: 1
+				id: "minecraft:iron_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 16
+			id: "1FF2E9508B9AB2D2"
+			item: {
+				count: 1
+				id: "minecraft:copper_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 4
+			id: "3DC06BC1FE2A2DE6"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

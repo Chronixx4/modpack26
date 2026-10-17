@@ -1,0 +1,102 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "19EDDD6F00FC3C40"
+	loot_crate: {
+		color: 5635925
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "goety_loot2"
+	}
+	loot_size: 1
+	order_index: 64
+	rewards: [
+		{
+			count: 6
+			id: "5738F42544BF342F"
+			item: {
+				count: 1
+				id: "goety:dark_fabric"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "7BEC3B503695774A"
+			item: {
+				count: 1
+				id: "goety:cursed_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "579B512D911CF364"
+			item: {
+				count: 1
+				id: "goety:magic_fabric"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "12C44F7F1FFD53AC"
+			item: {
+				count: 1
+				id: "goety:spirit_fabric"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "30108BEC49CA3687"
+			item: {
+				count: 1
+				id: "goety:dark_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "188B49015460D490"
+			item: {
+				count: 1
+				id: "goety:unholy_blood"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 3
+			id: "781CD29F9A0BC888"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 6
+			id: "560CCE9BAB2F2ADC"
+			item: {
+				count: 1
+				id: "minecraft:emerald"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 12
+			id: "166471F1749778B7"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

@@ -1,0 +1,118 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "7F3FF3A4EDEC1EC3"
+	loot_crate: {
+		color: 11141375
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "bosse_loot3"
+	}
+	loot_size: 1
+	order_index: 28
+	rewards: [
+		{
+			count: 8
+			id: "56626DECAAF384DB"
+			item: {
+				count: 1
+				id: "minecraft:ender_eye"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "71D68BBA94DF114E"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "7EDBE7972BCCDDE5"
+			item: {
+				count: 1
+				id: "cataclysm:ignitium_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "74F834B734B65C2F"
+			item: {
+				count: 1
+				id: "minecraft:shulker_shell"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "30187FB62005142D"
+			item: {
+				count: 1
+				id: "cataclysm:witherite_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "567112B37F3F235B"
+			item: {
+				count: 1
+				id: "cataclysm:cursium_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "348CB2406E7B6C51"
+			item: {
+				count: 1
+				id: "minecraft:totem_of_undying"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "3EA22B6FAD49BC02"
+			item: {
+				count: 1
+				id: "minecraft:nether_star"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "1CDC535FB4BA19CF"
+			item: {
+				count: 1
+				id: "minecraft:diamond_block"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 2
+			id: "7CD0AE6C5C58E7AB"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 3
+			id: "3AD35279F283299C"
+			item: {
+				count: 1
+				id: "minecraft:emerald_block"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

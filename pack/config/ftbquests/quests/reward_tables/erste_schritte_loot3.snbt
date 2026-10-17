@@ -1,0 +1,119 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "75C3340647F307CA"
+	loot_crate: {
+		color: 11141375
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "erste_schritte_loot3"
+	}
+	loot_size: 1
+	order_index: 51
+	rewards: [
+		{
+			count: 16
+			id: "7C72B834B0A419D3"
+			item: {
+				count: 1
+				id: "minecraft:lapis_lazuli"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "7E4F6FFF2E50BDF3"
+			item: {
+				count: 1
+				id: "minecraft:experience_bottle"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "7658343DD318F798"
+			item: {
+				count: 1
+				id: "minecraft:obsidian"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 3
+			id: "33F9038B21F1D0FB"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "1114FEB2D9E3A58B"
+			item: {
+				count: 1
+				id: "minecraft:ender_pearl"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "1F2E83B9A1992F97"
+			item: {
+				count: 1
+				id: "minecraft:golden_apple"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "3F8820E17ECC1CBF"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "74C3771552372D5E"
+			item: {
+				count: 1
+				id: "minecraft:netherite_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "108E89D2CB8753BF"
+			item: {
+				count: 1
+				id: "minecraft:diamond_block"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 2
+			id: "3038F3309A72CE95"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 3
+			id: "358227243547447D"
+			item: {
+				count: 1
+				id: "minecraft:emerald_block"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

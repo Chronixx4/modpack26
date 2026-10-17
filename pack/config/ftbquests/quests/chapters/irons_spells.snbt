@@ -52,13 +52,13 @@
 			rewards: [
 				{
 					id: "3FB2FD27FFB34746"
-					table_id: 8873071041503571705L
+					table_id: 6190216266771158797L
 					type: "loot"
 				}
 				{
 					id: "552247AA28AFFD2E"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
 				}
 			]
 			shape: "gear"
@@ -85,7 +85,16 @@
 				{
 					id: "51C7A86B162C76BD"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "3AF3FCF9EA2FED8D"
+					item: {
+						count: 1
+						id: "irons_spellbooks:common_ink"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -110,7 +119,16 @@
 				{
 					id: "10A758014EC0DCC8"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "1DCFBAEE1B5CB6E9"
+					item: {
+						count: 1
+						id: "irons_spellbooks:arcane_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -136,7 +154,16 @@
 				{
 					id: "78F3E9B2D1E4C005"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "1A91A16EF861D204"
+					item: {
+						count: 1
+						id: "irons_spellbooks:arcane_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -161,7 +188,16 @@
 				{
 					id: "7E8F6CB020D53858"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "75AACF89C2F17302"
+					item: {
+						count: 1
+						id: "irons_spellbooks:common_ink"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -186,7 +222,12 @@
 			rewards: [
 				{
 					id: "5A664F3C548AE482"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "5DB78A4CFCEE1996"
+					table_id: 6190216266771158797L
 					type: "loot"
 				}
 			]
@@ -213,7 +254,16 @@
 				{
 					id: "5D82E151648B7F60"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 6
+					id: "377891E2C080111A"
+					item: {
+						count: 1
+						id: "irons_spellbooks:uncommon_ink"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -238,7 +288,16 @@
 				{
 					id: "3FC215C87097D8F3"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 9
+					id: "30FB5B6FF7EE25A8"
+					item: {
+						count: 1
+						id: "irons_spellbooks:uncommon_ink"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -263,7 +322,16 @@
 				{
 					id: "159ECFC54A46F840"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 6
+					id: "1D46FE8708DF6F13"
+					item: {
+						count: 1
+						id: "irons_spellbooks:uncommon_ink"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -288,7 +356,12 @@
 			rewards: [
 				{
 					id: "32DC006AE39DCD22"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "3666657D54C8A149"
+					table_id: 8439947549587279647L
 					type: "loot"
 				}
 			]
@@ -314,7 +387,12 @@
 			rewards: [
 				{
 					id: "1F5A56267B2E6531"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "192F6A44969E88C3"
+					table_id: 8439947549587279647L
 					type: "loot"
 				}
 			]
@@ -341,7 +419,12 @@
 			rewards: [
 				{
 					id: "7DA560736B0ADFDF"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "7281CDB693EEE24F"
+					table_id: 3511036587447339970L
 					type: "loot"
 				}
 			]
@@ -367,7 +450,12 @@
 			rewards: [
 				{
 					id: "53A264D1241343B4"
-					table_id: 3797459037597754809L
+					type: "xp_levels"
+					xp_levels: 20
+				}
+				{
+					id: "1FDA26FE4C1B4A55"
+					table_id: 1483754895447933045L
 					type: "loot"
 				}
 			]
@@ -395,7 +483,16 @@
 				{
 					id: "348577A2F09C11A9"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 3
+					id: "1A05A85E14919152"
+					item: {
+						count: 1
+						id: "irons_spellbooks:uncommon_ink"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -420,7 +517,16 @@
 				{
 					id: "3DD929F4CBC9667F"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "17D7A012702C282D"
+					item: {
+						count: 1
+						id: "irons_spellbooks:magic_cloth"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -445,7 +551,16 @@
 				{
 					id: "3DADADC77CBA2918"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "7579EBEECA55070C"
+					item: {
+						count: 1
+						id: "irons_spellbooks:mithril_scrap"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -467,7 +582,7 @@
 				}
 			]
 			x: 12.0d
-			y: 3.0d
+			y: 4.5d
 		}
 		{
 			dependencies: [
@@ -478,7 +593,16 @@
 				{
 					id: "759066BA56175D84"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "1B4F62E17E34031B"
+					item: {
+						count: 1
+						id: "irons_spellbooks:magic_cloth"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -500,7 +624,7 @@
 				}
 			]
 			x: 14.0d
-			y: 3.0d
+			y: 4.5d
 		}
 		{
 			dependencies: [
@@ -511,7 +635,16 @@
 				{
 					id: "3B95ABE202687701"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "3BC31CB258B2391D"
+					item: {
+						count: 1
+						id: "irons_spellbooks:magic_cloth"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -525,7 +658,7 @@
 				}
 			]
 			x: 12.0d
-			y: 4.5d
+			y: 3.0d
 		}
 		{
 			dependencies: [
@@ -536,7 +669,16 @@
 				{
 					id: "55891D2B36E5AC49"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "7C62E0DB35DD0D03"
+					item: {
+						count: 1
+						id: "irons_spellbooks:mithril_scrap"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -561,7 +703,16 @@
 				{
 					id: "1792D38D802B8A4C"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "180681F6FC33D9B6"
+					item: {
+						count: 1
+						id: "irons_spellbooks:magic_cloth"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -586,7 +737,16 @@
 				{
 					id: "73A60D7BF9C86877"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "39A1E4111ED507D3"
+					item: {
+						count: 1
+						id: "irons_spellbooks:cinder_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -612,7 +772,16 @@
 				{
 					id: "7DFAAA5C09D7A21C"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "36810C302414093A"
+					item: {
+						count: 1
+						id: "irons_spellbooks:cinder_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -626,7 +795,7 @@
 				}
 			]
 			x: 8.0d
-			y: -3.0d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -637,7 +806,16 @@
 				{
 					id: "315CD100010C29AD"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "717FBB85B4BF27D7"
+					item: {
+						count: 1
+						id: "irons_spellbooks:cinder_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -651,7 +829,7 @@
 				}
 			]
 			x: 6.0d
-			y: -7.5d
+			y: -6.0d
 		}
 		{
 			dependencies: [
@@ -662,7 +840,16 @@
 				{
 					id: "108B5237C62FF144"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "51A07F20E2CC55A4"
+					item: {
+						count: 1
+						id: "irons_spellbooks:lightning_bottle"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -692,7 +879,7 @@
 				}
 			]
 			x: 10.0d
-			y: -6.0d
+			y: -7.5d
 		}
 		{
 			dependencies: [
@@ -703,7 +890,16 @@
 				{
 					id: "322519B9910942F9"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "5A03B9199D135710"
+					item: {
+						count: 1
+						id: "irons_spellbooks:cinder_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -744,7 +940,16 @@
 				{
 					id: "7458AADE90B62A10"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "1F0E8B0FB78D69FD"
+					item: {
+						count: 1
+						id: "irons_spellbooks:lightning_bottle"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -774,7 +979,7 @@
 				}
 			]
 			x: 8.0d
-			y: -9.0d
+			y: -10.5d
 		}
 		{
 			dependencies: [
@@ -785,7 +990,16 @@
 				{
 					id: "53E2397B0D88A710"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "1D771FD797218F35"
+					item: {
+						count: 1
+						id: "irons_spellbooks:cinder_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -799,7 +1013,7 @@
 				}
 			]
 			x: 10.0d
-			y: -10.5d
+			y: -12.0d
 		}
 		{
 			dependencies: [
@@ -810,7 +1024,16 @@
 				{
 					id: "32E955AB88A5BF28"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "76E6A5A3F39D02A7"
+					item: {
+						count: 1
+						id: "irons_spellbooks:cinder_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -837,7 +1060,16 @@
 				{
 					id: "5A0352947A20CABF"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "1E852BA5F20545E9"
+					item: {
+						count: 1
+						id: "irons_spellbooks:cinder_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -859,7 +1091,7 @@
 				}
 			]
 			x: 20.0d
-			y: -7.5d
+			y: -9.0d
 		}
 		{
 			dependencies: [
@@ -870,7 +1102,16 @@
 				{
 					id: "55017EB3A8B5AC99"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "534F03A41F7B216A"
+					item: {
+						count: 1
+						id: "irons_jewelry:ruby"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -884,7 +1125,7 @@
 				}
 			]
 			x: 8.0d
-			y: -1.5d
+			y: -3.0d
 		}
 		{
 			dependencies: [
@@ -896,7 +1137,16 @@
 				{
 					id: "1EBD59FD1E708E5A"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 2
+					id: "760565A228334D5D"
+					item: {
+						count: 1
+						id: "irons_jewelry:ruby"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -926,7 +1176,7 @@
 				}
 			]
 			x: 12.0d
-			y: -4.5d
+			y: -6.0d
 		}
 		{
 			dependencies: [
@@ -938,7 +1188,16 @@
 				{
 					id: "56A7515A8002E497"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 2
+					id: "315E3FC441346C99"
+					item: {
+						count: 1
+						id: "irons_jewelry:ruby"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -980,7 +1239,16 @@
 				{
 					id: "7D79869FF476120D"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "312A1D811E398270"
+					item: {
+						count: 1
+						id: "irons_spellbooks:lightning_bottle"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1002,7 +1270,7 @@
 				}
 			]
 			x: 12.0d
-			y: -7.5d
+			y: -9.0d
 		}
 		{
 			dependencies: [
@@ -1014,7 +1282,16 @@
 				{
 					id: "1F429025AE1FB411"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 2
+					id: "5CCA8E3CFBB82B01"
+					item: {
+						count: 1
+						id: "irons_jewelry:ruby"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1039,7 +1316,16 @@
 				{
 					id: "30DE01D0A29963FC"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "753F0E7E8C25D0C6"
+					item: {
+						count: 1
+						id: "irons_jewelry:sapphire"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1064,7 +1350,16 @@
 				{
 					id: "1B8B69B1F329A9AD"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "7007A8A5F62DAC7D"
+					item: {
+						count: 1
+						id: "irons_jewelry:ruby"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1097,7 +1392,16 @@
 				{
 					id: "33FE49AF79087F63"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "5BFB54C1E46A236D"
+					item: {
+						count: 1
+						id: "irons_jewelry:ruby"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1123,7 +1427,16 @@
 				{
 					id: "51FF0ED45A9E8329"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "142D1F6A313D3A64"
+					item: {
+						count: 1
+						id: "irons_jewelry:topaz"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1152,7 +1465,16 @@
 				{
 					id: "36C4542CAE4EF260"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "7B0C0C087540DA3B"
+					item: {
+						count: 1
+						id: "irons_spellbooks:rare_ink"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1182,7 +1504,16 @@
 				{
 					id: "595D6432C5A43001"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 2
+					id: "5B2270C3B10B91D9"
+					item: {
+						count: 1
+						id: "irons_jewelry:topaz"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1211,7 +1542,16 @@
 				{
 					id: "1CBE3E1724871CB1"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 2
+					id: "1A6A781C7271E20C"
+					item: {
+						count: 1
+						id: "irons_jewelry:topaz"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1239,7 +1579,12 @@
 			rewards: [
 				{
 					id: "12A1A3F27147C483"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "53AD9DF6713FBD4E"
+					table_id: 3511036587447339970L
 					type: "loot"
 				}
 			]
@@ -1263,7 +1608,16 @@
 				{
 					id: "310C274F2B92A57E"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 2
+					id: "1C4497E5D9B6D075"
+					item: {
+						count: 1
+						id: "irons_jewelry:sapphire"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1289,7 +1643,16 @@
 				{
 					id: "1F229C548B0DD48A"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 2
+					id: "1D5D5849CBD022BD"
+					item: {
+						count: 1
+						id: "irons_jewelry:topaz"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1316,7 +1679,16 @@
 				{
 					id: "7220658881EB5484"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "3864228FD3D92C3B"
+					item: {
+						count: 1
+						id: "irons_spellbooks:rare_ink"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -1342,7 +1714,16 @@
 				{
 					id: "7227271F11A7A250"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "715FF6B75558D247"
+					item: {
+						count: 1
+						id: "irons_spellbooks:arcane_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1367,7 +1748,16 @@
 				{
 					id: "7E1CCEB5854DF498"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 2
+					id: "7672BED257FFC381"
+					item: {
+						count: 1
+						id: "irons_spellbooks:arcane_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1381,7 +1771,7 @@
 				}
 			]
 			x: 24.0d
-			y: 4.5d
+			y: 6.0d
 		}
 		{
 			dependencies: [
@@ -1392,7 +1782,16 @@
 				{
 					id: "760CF5EEE068D2DB"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "7A2CBD6D7DD9086B"
+					item: {
+						count: 1
+						id: "irons_spellbooks:rare_ink"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1406,7 +1805,7 @@
 				}
 			]
 			x: 24.0d
-			y: 6.0d
+			y: 4.5d
 		}
 		{
 			dependencies: [
@@ -1417,7 +1816,16 @@
 				{
 					id: "32C0FF0DA8347CEF"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "5C6ABC29A2C95036"
+					item: {
+						count: 1
+						id: "irons_spellbooks:rare_ink"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1439,7 +1847,7 @@
 				}
 			]
 			x: 2.0d
-			y: 1.5d
+			y: 4.5d
 		}
 		{
 			dependencies: [
@@ -1450,7 +1858,16 @@
 				{
 					id: "13D9BA1F2DA02903"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "16C41C4C2D41D06C"
+					item: {
+						count: 1
+						id: "irons_spellbooks:epic_ink"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1491,7 +1908,16 @@
 				{
 					id: "19EA0715BA05428C"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 2
+					id: "51D5414BA4373ACC"
+					item: {
+						count: 1
+						id: "irons_spellbooks:epic_ink"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1525,7 +1951,16 @@
 				{
 					id: "57E206F800F43DEE"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 2
+					id: "36065334B5EB3A7C"
+					item: {
+						count: 1
+						id: "irons_spellbooks:epic_ink"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1558,7 +1993,16 @@
 				{
 					id: "12CE210E823ECA73"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "5352DE50F0248ABE"
+					item: {
+						count: 1
+						id: "irons_spellbooks:arcane_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1591,7 +2035,16 @@
 				{
 					id: "1AC8504351B1F72A"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 2
+					id: "5005DAE6E56F872F"
+					item: {
+						count: 1
+						id: "irons_spellbooks:arcane_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1616,7 +2069,16 @@
 				{
 					id: "572096B0CEC5FB60"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 2
+					id: "54FE7B35B46AC1EE"
+					item: {
+						count: 1
+						id: "irons_spellbooks:epic_ink"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1641,7 +2103,12 @@
 			rewards: [
 				{
 					id: "12A217B91CDBF8A6"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "781204074617B1B0"
+					table_id: 3511036587447339970L
 					type: "loot"
 				}
 			]
@@ -1668,7 +2135,15 @@
 				{
 					id: "5E8763C372EF2351"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					id: "193068266CD4034C"
+					item: {
+						count: 1
+						id: "irons_spellbooks:legendary_ink"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1695,7 +2170,15 @@
 				{
 					id: "50BCFC5A45CAC07F"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					id: "7FBACD6F37DF193A"
+					item: {
+						count: 1
+						id: "irons_spellbooks:legendary_ink"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1709,7 +2192,7 @@
 				}
 			]
 			x: 8.0d
-			y: 9.0d
+			y: 7.5d
 		}
 		{
 			dependencies: [
@@ -1721,7 +2204,15 @@
 				{
 					id: "7FF8228CFFDB1E5D"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					id: "3058B2E2BA2D2FCB"
+					item: {
+						count: 1
+						id: "irons_spellbooks:upgrade_orb"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1770,7 +2261,12 @@
 			rewards: [
 				{
 					id: "5B734D98EA3DFD2B"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "5721C3EF8AFB6CCE"
+					table_id: 8439947549587279647L
 					type: "loot"
 				}
 			]
@@ -1798,7 +2294,12 @@
 			rewards: [
 				{
 					id: "5BA256966304341E"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "742FB355789549AF"
+					table_id: 3511036587447339970L
 					type: "loot"
 				}
 			]

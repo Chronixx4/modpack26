@@ -1,0 +1,111 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "3E0429DAC80B350B"
+	loot_crate: {
+		color: 11141375
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "occultism_loot3"
+	}
+	loot_size: 1
+	order_index: 97
+	rewards: [
+		{
+			count: 8
+			id: "5E0DCF4C8BFB7AD0"
+			item: {
+				count: 1
+				id: "occultism:spirit_attuned_gem"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "701C05F3218C7520"
+			item: {
+				count: 1
+				id: "occultism:purified_ink"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "36F90947BE604CBE"
+			item: {
+				count: 1
+				id: "occultism:awakened_feather"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "39E07120FC12FE2D"
+			item: {
+				count: 1
+				id: "occultism:iesnium_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "31B38AE08A62227A"
+			item: {
+				count: 1
+				id: "occultism:fragile_soul_gem"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "3417372CBC224C5C"
+			item: {
+				count: 1
+				id: "occultism:afrit_essence"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "35EAE001BC86D211"
+			item: {
+				count: 1
+				id: "occultism:marid_essence"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "3C59C506223D9C17"
+			item: {
+				count: 1
+				id: "minecraft:diamond_block"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 2
+			id: "54685EB25DC4DCB0"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 3
+			id: "364C225B9C7A2283"
+			item: {
+				count: 1
+				id: "minecraft:emerald_block"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

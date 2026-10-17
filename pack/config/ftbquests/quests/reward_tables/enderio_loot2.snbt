@@ -1,0 +1,120 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "77DCBE457379BC2C"
+	loot_crate: {
+		color: 5635925
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "enderio_loot2"
+	}
+	loot_size: 1
+	order_index: 47
+	rewards: [
+		{
+			count: 12
+			id: "5FE4944C00C6FDA4"
+			item: {
+				count: 1
+				id: "enderio:conductive_alloy_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "16663D304CBB5212"
+			item: {
+				count: 1
+				id: "enderio:redstone_alloy_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "7EA069873E87140F"
+			item: {
+				count: 1
+				id: "enderio:energetic_alloy_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "7A0D8715D94EDBAB"
+			item: {
+				count: 1
+				id: "enderio:vibrant_alloy_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "36DDA74EB55E1BD0"
+			item: {
+				count: 1
+				id: "enderio:pulsating_alloy_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "7BAD42491F813CC5"
+			item: {
+				count: 1
+				id: "enderio:soularium_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "3C1A292D2F49B1EE"
+			item: {
+				count: 1
+				id: "enderio:dark_steel_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "3C90636E0AD645C6"
+			item: {
+				count: 1
+				id: "enderio:pulsating_crystal"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 3
+			id: "149FA012C4B4D2B4"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 6
+			id: "7F1308DE68335908"
+			item: {
+				count: 1
+				id: "minecraft:emerald"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 12
+			id: "3578E3868D80E478"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

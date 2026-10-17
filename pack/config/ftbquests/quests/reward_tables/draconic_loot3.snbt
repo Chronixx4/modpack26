@@ -1,0 +1,89 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "503D3089F01C3531"
+	loot_crate: {
+		color: 11141375
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "draconic_loot3"
+	}
+	loot_size: 1
+	order_index: 44
+	rewards: [
+		{
+			id: "1787E40C52EB59AC"
+			item: {
+				count: 1
+				id: "draconicevolution:wyvern_core"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "710558298503F9C0"
+			item: {
+				count: 1
+				id: "draconicevolution:awakened_draconium_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "3C5F447A1BC72278"
+			item: {
+				count: 1
+				id: "draconicevolution:awakened_core"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "3CB3A0A979A35314"
+			item: {
+				count: 1
+				id: "draconicevolution:chaos_shard"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "5F7E2558811C9C75"
+			item: {
+				count: 1
+				id: "draconicevolution:chaotic_core"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "369E58449A6AE0BB"
+			item: {
+				count: 1
+				id: "minecraft:diamond_block"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 2
+			id: "58BAACF94A89C7B6"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 3
+			id: "710E7463C5D793D8"
+			item: {
+				count: 1
+				id: "minecraft:emerald_block"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

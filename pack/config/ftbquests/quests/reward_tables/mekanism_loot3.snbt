@@ -1,0 +1,126 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "164E972C4AC84C97"
+	loot_crate: {
+		color: 11141375
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "mekanism_loot3"
+	}
+	loot_size: 1
+	order_index: 89
+	rewards: [
+		{
+			count: 8
+			id: "53B52DE123C1F086"
+			item: {
+				count: 1
+				id: "mekanism:ingot_refined_obsidian"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "7F02272062A24892"
+			item: {
+				count: 1
+				id: "mekanism:ingot_refined_glowstone"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "12C86AB167AB0D3F"
+			item: {
+				count: 1
+				id: "mekanism:hdpe_sheet"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "5A55C7C86D76926F"
+			item: {
+				count: 1
+				id: "mekanism:upgrade_speed"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "544014819C7BF786"
+			item: {
+				count: 1
+				id: "mekanism:upgrade_energy"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "5C30ECD9CE56863B"
+			item: {
+				count: 1
+				id: "mekanism:elite_control_circuit"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "7E32E0AE1A29FCAB"
+			item: {
+				count: 1
+				id: "mekanism:yellow_cake_uranium"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "1A22260B5E136916"
+			item: {
+				count: 1
+				id: "mekanism:alloy_atomic"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "1F237B69E961C809"
+			item: {
+				count: 1
+				id: "mekanism:ultimate_control_circuit"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "57B0E28EAA40B9E9"
+			item: {
+				count: 1
+				id: "minecraft:diamond_block"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 2
+			id: "1D031FDAD6FBDB02"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 3
+			id: "76F486465F0AB25A"
+			item: {
+				count: 1
+				id: "minecraft:emerald_block"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

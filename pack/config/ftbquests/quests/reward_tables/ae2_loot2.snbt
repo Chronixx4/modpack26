@@ -1,0 +1,118 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "5D22C3419FE018A1"
+	loot_crate: {
+		color: 5635925
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "ae2_loot2"
+	}
+	loot_size: 1
+	order_index: 5
+	rewards: [
+		{
+			count: 12
+			id: "5D82BC09EB920E9A"
+			item: {
+				count: 1
+				id: "ae2:fluix_crystal"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "7D94F721853B2DDA"
+			item: {
+				count: 1
+				id: "ae2:blank_pattern"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "1509C6E50E7073AC"
+			item: {
+				count: 1
+				id: "ae2:logic_processor"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "70FB3D2DED2ED511"
+			item: {
+				count: 1
+				id: "ae2:calculation_processor"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "14AF2E65AD7BAED4"
+			item: {
+				count: 1
+				id: "ae2:engineering_processor"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "14953677EA85D72A"
+			item: {
+				count: 1
+				id: "ae2:item_storage_cell_1k"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "11A79BBE3CB952C8"
+			item: {
+				count: 1
+				id: "ae2:energy_cell"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "76E2EC72AF86E5B7"
+			item: {
+				count: 1
+				id: "ae2:fluix_pearl"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 3
+			id: "7F4B7A8F3EAD20EE"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 6
+			id: "3453DE13D732F7D5"
+			item: {
+				count: 1
+				id: "minecraft:emerald"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 12
+			id: "56CCEDA91287F7DC"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

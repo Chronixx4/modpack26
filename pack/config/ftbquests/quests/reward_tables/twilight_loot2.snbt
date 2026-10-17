@@ -1,0 +1,102 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "70AE326DBC2EEA46"
+	loot_crate: {
+		color: 5635925
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "twilight_loot2"
+	}
+	loot_size: 1
+	order_index: 117
+	rewards: [
+		{
+			count: 12
+			id: "7F620247DF45D765"
+			item: {
+				count: 1
+				id: "twilightforest:meef_stroganoff"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "7F6839055D5585C6"
+			item: {
+				count: 1
+				id: "twilightforest:naga_scale"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "585B020563C6F865"
+			item: {
+				count: 1
+				id: "twilightforest:carminite"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "7DF665BCA4C6CAAE"
+			item: {
+				count: 1
+				id: "twilightforest:ice_bomb"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "529733CC243029A6"
+			item: {
+				count: 1
+				id: "twilightforest:fiery_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 9
+			id: "17D35830D92A0365"
+			item: {
+				count: 1
+				id: "twilightforest:knightmetal_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 3
+			id: "1C4F90937039F1A6"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 6
+			id: "1C1C9A3F598A34F0"
+			item: {
+				count: 1
+				id: "minecraft:emerald"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 12
+			id: "58D9C5E0CC3B9878"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

@@ -1,0 +1,63 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "3C5E82D61E3685C8"
+	loot_crate: {
+		color: 16755200
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "allthemodium_loot4"
+	}
+	loot_size: 1
+	order_index: 12
+	rewards: [
+		{
+			count: 2
+			id: "17B36C1218076268"
+			item: {
+				count: 1
+				id: "allthemodium:vibranium_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "17BE1F28BB294404"
+			item: {
+				count: 1
+				id: "allthemodium:allthemodium_upgrade_smithing_template"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "7CEF72029B42A7A2"
+			item: {
+				count: 1
+				id: "minecraft:netherite_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "5E525BAA499C045C"
+			item: {
+				count: 1
+				id: "minecraft:enchanted_golden_apple"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "73BFD0E84D4B7FFF"
+			item: {
+				count: 1
+				id: "minecraft:nether_star"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

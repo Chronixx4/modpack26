@@ -1,0 +1,120 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "5D3A300995CABAFD"
+	loot_crate: {
+		color: 11141375
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "ars_nouveau_loot3"
+	}
+	loot_size: 1
+	order_index: 22
+	rewards: [
+		{
+			count: 8
+			id: "538FBD5816349D3E"
+			item: {
+				count: 1
+				id: "ars_nouveau:water_essence"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "352D5BE29A01A6DB"
+			item: {
+				count: 1
+				id: "ars_nouveau:earth_essence"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "15708FBF655EDD11"
+			item: {
+				count: 1
+				id: "ars_nouveau:air_essence"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "5CBC564A02DC60CE"
+			item: {
+				count: 1
+				id: "ars_nouveau:blank_thread"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "5FE36833FC057A35"
+			item: {
+				count: 1
+				id: "ars_nouveau:manipulation_essence"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "7CE31A8FDD6F793D"
+			item: {
+				count: 1
+				id: "ars_nouveau:abjuration_essence"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "507753BFDC1DF99A"
+			item: {
+				count: 1
+				id: "ars_nouveau:conjuration_essence"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 64
+			id: "538290236BFD7188"
+			item: {
+				count: 1
+				id: "ars_nouveau:source_gem"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "5A49C8574D59CFA0"
+			item: {
+				count: 1
+				id: "minecraft:diamond_block"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 2
+			id: "3AFEC21E94530369"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 3
+			id: "17BC23C9D62EF013"
+			item: {
+				count: 1
+				id: "minecraft:emerald_block"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

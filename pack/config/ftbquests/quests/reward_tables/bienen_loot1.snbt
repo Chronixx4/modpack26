@@ -1,0 +1,84 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "7FCA00AAB9A15321"
+	loot_crate: {
+		color: 11579568
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "bienen_loot1"
+	}
+	loot_size: 1
+	order_index: 23
+	rewards: [
+		{
+			count: 16
+			id: "50063EA343F18EF4"
+			item: {
+				count: 1
+				id: "minecraft:honeycomb"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "1BAF8F2ED7EC63A9"
+			item: {
+				count: 1
+				id: "productivebees:honey_treat"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "7E912497F83A6BB4"
+			item: {
+				count: 1
+				id: "productivebees:bee_cage"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "5210722E004B78F1"
+			item: {
+				count: 1
+				id: "the_bumblezone:pollen_puff"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "1483DD952A593C37"
+			item: {
+				count: 1
+				id: "minecraft:iron_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 16
+			id: "15681609A37EED84"
+			item: {
+				count: 1
+				id: "minecraft:copper_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 4
+			id: "7FBD16F480DE65E1"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

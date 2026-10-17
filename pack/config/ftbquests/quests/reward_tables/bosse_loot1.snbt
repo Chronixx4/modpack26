@@ -1,0 +1,102 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "12C1A7CB85888A24"
+	loot_crate: {
+		color: 11579568
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "bosse_loot1"
+	}
+	loot_size: 1
+	order_index: 26
+	rewards: [
+		{
+			count: 16
+			id: "7B3B213286067AD4"
+			item: {
+				count: 1
+				id: "minecraft:experience_bottle"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "13706BDA844FE39B"
+			item: {
+				count: 1
+				id: "minecraft:blaze_rod"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "7E125B5A8DE0B37D"
+			item: {
+				count: 1
+				id: "minecraft:golden_apple"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "72FCA31BE29F2809"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "5DFF9A8357657F55"
+			item: {
+				count: 1
+				id: "born_in_chaos_v1:dark_metal_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "3AFB9C5FBE580BB5"
+			item: {
+				count: 1
+				id: "minecraft:ender_eye"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "3F99CFBF9DE9D6FB"
+			item: {
+				count: 1
+				id: "minecraft:iron_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 16
+			id: "5FA9C63945414720"
+			item: {
+				count: 1
+				id: "minecraft:copper_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 4
+			id: "3B71DDD572FFEFC0"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

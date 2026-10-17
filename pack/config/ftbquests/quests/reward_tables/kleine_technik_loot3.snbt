@@ -1,0 +1,119 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "71F5CC7F14D701EB"
+	loot_crate: {
+		color: 11141375
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "kleine_technik_loot3"
+	}
+	loot_size: 1
+	order_index: 83
+	rewards: [
+		{
+			count: 8
+			id: "7A51EF8FB9B2D74D"
+			item: {
+				count: 1
+				id: "actuallyadditions:void_crystal"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "3E931021DCFB139B"
+			item: {
+				count: 1
+				id: "integrateddynamics:crystalized_menril_chunk"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "768293F5CDEF173E"
+			item: {
+				count: 1
+				id: "ironjetpacks:strap"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "33116ADBE72E993B"
+			item: {
+				count: 1
+				id: "ironjetpacks:basic_coil"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "797D52808F142659"
+			item: {
+				count: 1
+				id: "ironjetpacks:thruster"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "12A3EC2610906F38"
+			item: {
+				count: 1
+				id: "ironjetpacks:advanced_coil"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "77E7915A6B7619E1"
+			item: {
+				count: 1
+				id: "actuallyadditions:empowered_restonia_crystal"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "789B0A9393606D24"
+			item: {
+				count: 1
+				id: "ironjetpacks:elite_coil"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "50E37BE0EAD14166"
+			item: {
+				count: 1
+				id: "minecraft:diamond_block"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 2
+			id: "71821F3745A16C9A"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 3
+			id: "7E6DDFBB17A091DC"
+			item: {
+				count: 1
+				id: "minecraft:emerald_block"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

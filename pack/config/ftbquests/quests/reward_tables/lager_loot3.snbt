@@ -1,0 +1,114 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "57AEE540FCA5F720"
+	loot_crate: {
+		color: 11141375
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "lager_loot3"
+	}
+	loot_size: 1
+	order_index: 86
+	rewards: [
+		{
+			count: 16
+			id: "180C9FA04FC19C5D"
+			item: {
+				count: 1
+				id: "pipez:energy_pipe"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "189F1182F81A7ED4"
+			item: {
+				count: 1
+				id: "pipez:basic_upgrade"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "12630D6728F95633"
+			item: {
+				count: 1
+				id: "sophisticatedstorage:hopper_upgrade"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "1A0203B586D55F82"
+			item: {
+				count: 1
+				id: "sophisticatedbackpacks:pickup_upgrade"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "724C4B1361D6E86A"
+			item: {
+				count: 1
+				id: "sophisticatedbackpacks:feeding_upgrade"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "338F38CF9CDC5E55"
+			item: {
+				count: 1
+				id: "storagedrawers:iron_storage_upgrade"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "30F608E7D1982D4F"
+			item: {
+				count: 1
+				id: "sophisticatedbackpacks:magnet_upgrade"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "34966F77708D3C91"
+			item: {
+				count: 1
+				id: "storagedrawers:diamond_storage_upgrade"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "74FB9F7D99A939DD"
+			item: {
+				count: 1
+				id: "minecraft:diamond_block"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 2
+			id: "5E368DD39571C90E"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 3
+			id: "1606E58F86E62243"
+			item: {
+				count: 1
+				id: "minecraft:emerald_block"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

@@ -1,0 +1,120 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "38CF944523DBDBAC"
+	loot_crate: {
+		color: 11579568
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "tfmg_loot1"
+	}
+	loot_size: 1
+	order_index: 113
+	rewards: [
+		{
+			count: 8
+			id: "1193B45288BDA16F"
+			item: {
+				count: 1
+				id: "tfmg:cast_iron_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "315936ADEFBE3694"
+			item: {
+				count: 1
+				id: "tfmg:coal_coke"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "1D9475981BC61B5F"
+			item: {
+				count: 1
+				id: "tfmg:fireclay_ball"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "1A60915CF5A20857"
+			item: {
+				count: 1
+				id: "tfmg:limesand"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "399CD3F8A51F9A4B"
+			item: {
+				count: 1
+				id: "tfmg:fireproof_bricks"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "16F9A7977F1DC89E"
+			item: {
+				count: 1
+				id: "immersiveengineering:ingot_steel"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "1E501EFB9C323ADF"
+			item: {
+				count: 1
+				id: "immersiveengineering:ingot_lead"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "395F839DCB71FD12"
+			item: {
+				count: 1
+				id: "immersiveengineering:ingot_nickel"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "15CFCABBF7CDBF65"
+			item: {
+				count: 1
+				id: "minecraft:iron_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 16
+			id: "37C6C12823EF50E3"
+			item: {
+				count: 1
+				id: "minecraft:copper_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 4
+			id: "32809A2ACBDC34FC"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

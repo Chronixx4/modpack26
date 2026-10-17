@@ -1,0 +1,102 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "39601D7BB413BFAC"
+	loot_crate: {
+		color: 11579568
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "immersive_loot1"
+	}
+	loot_size: 1
+	order_index: 70
+	rewards: [
+		{
+			count: 16
+			id: "1D863EEF5BA58F12"
+			item: {
+				count: 1
+				id: "immersiveengineering:coal_coke"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "12151BF5C8730402"
+			item: {
+				count: 1
+				id: "immersiveengineering:ingot_electrum"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "5BA93F9A3036B7BC"
+			item: {
+				count: 1
+				id: "immersiveengineering:ingot_constantan"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "1863B4737241E1D6"
+			item: {
+				count: 1
+				id: "immersiveengineering:wirecoil_copper"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "3413A6A157373FB2"
+			item: {
+				count: 1
+				id: "immersiveengineering:connector_lv"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "725F681F999AFD40"
+			item: {
+				count: 1
+				id: "immersiveengineering:ingot_steel"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "1C315E111A466DD7"
+			item: {
+				count: 1
+				id: "minecraft:iron_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 16
+			id: "15B8E9A9D8B9671B"
+			item: {
+				count: 1
+				id: "minecraft:copper_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 4
+			id: "3D7E7FC16C74B57F"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

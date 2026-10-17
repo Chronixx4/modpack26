@@ -1,0 +1,128 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "7792B0097C59B6E3"
+	loot_crate: {
+		color: 11141375
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "essen_loot3"
+	}
+	loot_size: 1
+	order_index: 54
+	rewards: [
+		{
+			count: 8
+			id: "1A8CFD76A7022063"
+			item: {
+				count: 1
+				id: "farmersdelight:beef_stew"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "127BB575E5A18D68"
+			item: {
+				count: 1
+				id: "farmersdelight:hamburger"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 24
+			id: "3320ECBFF0B00764"
+			item: {
+				count: 1
+				id: "aquaculture:fish_fillet_cooked"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "761B2D1B97861B04"
+			item: {
+				count: 1
+				id: "farmersdelight:pasta_with_meatballs"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "7C21A997830BCDEA"
+			item: {
+				count: 1
+				id: "garnished:nut_mix"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "10A3AED6D0A16DC8"
+			item: {
+				count: 1
+				id: "create_factory:waffle"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "56278A22E705051F"
+			item: {
+				count: 1
+				id: "aquaculture:sushi"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "1B5980496BA0D33C"
+			item: {
+				count: 1
+				id: "farmersdelight:roast_chicken_block"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "7148C97DEC75B150"
+			item: {
+				count: 1
+				id: "minecraft:golden_apple"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "181724F3613EA1C0"
+			item: {
+				count: 1
+				id: "minecraft:diamond_block"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 2
+			id: "39DA0D4F0B821545"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 3
+			id: "15B2F4DF142318B0"
+			item: {
+				count: 1
+				id: "minecraft:emerald_block"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

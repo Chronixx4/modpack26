@@ -1,0 +1,73 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "1637417DDE9B504F"
+	loot_crate: {
+		color: 11141375
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "hostility_loot3"
+	}
+	loot_size: 1
+	order_index: 68
+	rewards: [
+		{
+			count: 8
+			id: "3EB78AD8D6152767"
+			item: {
+				count: 1
+				id: "minecraft:golden_apple"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "7B29F1307817A9A3"
+			item: {
+				count: 1
+				id: "l2hostility:chaos_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "7A3F588183163AB3"
+			item: {
+				count: 1
+				id: "l2hostility:miracle_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "7C1D920325A0D9FC"
+			item: {
+				count: 1
+				id: "minecraft:diamond_block"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 2
+			id: "342C61AC59D717BA"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 3
+			id: "7ABA5E867E435375"
+			item: {
+				count: 1
+				id: "minecraft:emerald_block"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

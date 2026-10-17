@@ -1,0 +1,93 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "7C2E0E3D13213C82"
+	loot_crate: {
+		color: 5635925
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "strukturen_loot2"
+	}
+	loot_size: 1
+	order_index: 110
+	rewards: [
+		{
+			count: 12
+			id: "3507E324112C12FE"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "3B5B6798605F1437"
+			item: {
+				count: 1
+				id: "minecraft:experience_bottle"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "778ED451DD571B52"
+			item: {
+				count: 1
+				id: "minecraft:name_tag"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "5446DDF9F7D9AF20"
+			item: {
+				count: 1
+				id: "minecraft:ender_pearl"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 3
+			id: "7CDC518B877779B8"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 3
+			id: "19AA63F08D0EBDD0"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 6
+			id: "1E06BB88C4F5A9E3"
+			item: {
+				count: 1
+				id: "minecraft:emerald"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 12
+			id: "7AE67BAEB058B93A"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

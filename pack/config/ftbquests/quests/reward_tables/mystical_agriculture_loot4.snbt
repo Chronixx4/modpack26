@@ -1,0 +1,91 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "583ABEA576DEE8D8"
+	loot_crate: {
+		color: 16755200
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "mystical_agriculture_loot4"
+	}
+	loot_size: 1
+	order_index: 94
+	rewards: [
+		{
+			count: 48
+			id: "5B7FD72E2A8CD2AF"
+			item: {
+				count: 1
+				id: "mysticalagriculture:tertium_essence"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "3DBB9953830F1233"
+			item: {
+				count: 1
+				id: "mysticalagriculture:prosperity_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 48
+			id: "719B83805D7DE8EA"
+			item: {
+				count: 1
+				id: "mysticalagriculture:imperium_essence"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 24
+			id: "553CA0E22611B816"
+			item: {
+				count: 1
+				id: "mysticalagriculture:supremium_essence"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "59FF4E738720D923"
+			item: {
+				count: 1
+				id: "mysticalagradditions:insanium_essence"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "76D64DEA896CB8E8"
+			item: {
+				count: 1
+				id: "minecraft:netherite_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "503C52F9D8F0F807"
+			item: {
+				count: 1
+				id: "minecraft:enchanted_golden_apple"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "7FB5F2284DD9743D"
+			item: {
+				count: 1
+				id: "minecraft:nether_star"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

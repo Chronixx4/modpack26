@@ -1,0 +1,120 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "1D96B695BCF7DA6D"
+	loot_crate: {
+		color: 11141375
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "mystical_agriculture_loot3"
+	}
+	loot_size: 1
+	order_index: 93
+	rewards: [
+		{
+			count: 48
+			id: "1A7798EAD97158E8"
+			item: {
+				count: 1
+				id: "mysticalagriculture:prudentium_essence"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "533EC0525B5CBE4E"
+			item: {
+				count: 1
+				id: "mysticalagriculture:soulium_dust"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "1038E8E871525E8E"
+			item: {
+				count: 1
+				id: "mysticalagriculture:diamond_seeds"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 32
+			id: "5798ED19929FAB79"
+			item: {
+				count: 1
+				id: "mysticalagriculture:tertium_essence"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "744603EB628CB94B"
+			item: {
+				count: 1
+				id: "mysticalagriculture:prosperity_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 32
+			id: "523458C89D4FB2FF"
+			item: {
+				count: 1
+				id: "mysticalagriculture:imperium_essence"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "580FCD5228BB1CB8"
+			item: {
+				count: 1
+				id: "mysticalagriculture:supremium_essence"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "18EBE96DE1044303"
+			item: {
+				count: 1
+				id: "mysticalagradditions:insanium_essence"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "7EAC5A8839CBDD62"
+			item: {
+				count: 1
+				id: "minecraft:diamond_block"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 2
+			id: "5079A07E026DC42B"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 3
+			id: "721B3E372B513CFE"
+			item: {
+				count: 1
+				id: "minecraft:emerald_block"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

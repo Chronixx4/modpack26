@@ -1,0 +1,84 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "36362F2DF8798778"
+	loot_crate: {
+		color: 11579568
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "refined_storage_loot1"
+	}
+	loot_size: 1
+	order_index: 106
+	rewards: [
+		{
+			count: 8
+			id: "11250A67FC4EAC0B"
+			item: {
+				count: 1
+				id: "refinedstorage:quartz_enriched_iron"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "75CB66FF39C36501"
+			item: {
+				count: 1
+				id: "refinedstorage:silicon"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "5F8EC048EF8596E8"
+			item: {
+				count: 1
+				id: "refinedstorage:cable"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "53D87F01A46220A3"
+			item: {
+				count: 1
+				id: "refinedstorage:basic_processor"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "596A7B81B285D62A"
+			item: {
+				count: 1
+				id: "minecraft:iron_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 16
+			id: "307862173C4B85C2"
+			item: {
+				count: 1
+				id: "minecraft:copper_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 4
+			id: "75C9F8E3CDAFB832"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

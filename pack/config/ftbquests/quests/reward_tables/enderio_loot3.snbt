@@ -1,0 +1,119 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "5B7507B59462D13E"
+	loot_crate: {
+		color: 11141375
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "enderio_loot3"
+	}
+	loot_size: 1
+	order_index: 48
+	rewards: [
+		{
+			count: 8
+			id: "789DAAC0DA5B7455"
+			item: {
+				count: 1
+				id: "enderio:vibrant_alloy_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "7ED6E56C6A62B40D"
+			item: {
+				count: 1
+				id: "enderio:pulsating_alloy_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "1A9A9D3535B96BAF"
+			item: {
+				count: 1
+				id: "enderio:soularium_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "76BA2BC10062E7F2"
+			item: {
+				count: 1
+				id: "enderio:dark_steel_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "53591295FBA3335B"
+			item: {
+				count: 1
+				id: "enderio:pulsating_crystal"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "7D3D052462E64C77"
+			item: {
+				count: 1
+				id: "enderio:vibrant_crystal"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "7601F93012B06F5E"
+			item: {
+				count: 1
+				id: "enderio:end_steel_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "7B0BE576FFA70A17"
+			item: {
+				count: 1
+				id: "enderio:ender_crystal"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "34A8D4DD30D74E4E"
+			item: {
+				count: 1
+				id: "minecraft:diamond_block"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 2
+			id: "71D1BC49C0CC8B70"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 3
+			id: "11E75D3249DE23F4"
+			item: {
+				count: 1
+				id: "minecraft:emerald_block"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

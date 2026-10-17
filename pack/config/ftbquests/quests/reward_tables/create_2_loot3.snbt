@@ -1,0 +1,125 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "5AFB5E897300BB18"
+	loot_crate: {
+		color: 11141375
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "create_2_loot3"
+	}
+	loot_size: 1
+	order_index: 34
+	rewards: [
+		{
+			count: 2
+			id: "563081666A71A1C3"
+			item: {
+				count: 1
+				id: "create:railway_casing"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "761734E85FA0C22D"
+			item: {
+				count: 1
+				id: "create:smart_chute"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "3ACBF3F8B4017E9E"
+			item: {
+				count: 1
+				id: "create:chain_conveyor"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "5B91D8AEE923406A"
+			item: {
+				count: 1
+				id: "create:super_glue"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "3B20F2FD6744F9CB"
+			item: {
+				count: 1
+				id: "create:precision_mechanism"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "7B18A2B00B4D2499"
+			item: {
+				count: 1
+				id: "create:stock_link"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "1F040E7BCD27A6E6"
+			item: {
+				count: 1
+				id: "create:display_link"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "759E8938CE839F82"
+			item: {
+				count: 1
+				id: "create:mechanical_arm"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "79DCE449CE24CC90"
+			item: {
+				count: 1
+				id: "create:packager"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "510F8186E7A13C8F"
+			item: {
+				count: 1
+				id: "minecraft:diamond_block"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 2
+			id: "1036E9CAAC8A0A9D"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 3
+			id: "1A758B6195D862CE"
+			item: {
+				count: 1
+				id: "minecraft:emerald_block"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

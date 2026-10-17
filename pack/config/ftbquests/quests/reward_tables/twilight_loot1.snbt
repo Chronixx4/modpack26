@@ -1,0 +1,93 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "1A3A68B99653F5A2"
+	loot_crate: {
+		color: 11579568
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "twilight_loot1"
+	}
+	loot_size: 1
+	order_index: 116
+	rewards: [
+		{
+			count: 8
+			id: "151D4C34513AFEA6"
+			item: {
+				count: 1
+				id: "twilightforest:ironwood_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "12206E52E985FBD3"
+			item: {
+				count: 1
+				id: "twilightforest:steeleaf_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "7FC131F707AA291E"
+			item: {
+				count: 1
+				id: "twilightforest:meef_stroganoff"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "7325D6D2B94CAFC2"
+			item: {
+				count: 1
+				id: "twilightforest:naga_scale"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "35D605DFFBE48975"
+			item: {
+				count: 1
+				id: "twilightforest:carminite"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "5CBB704CEEB152FD"
+			item: {
+				count: 1
+				id: "minecraft:iron_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 16
+			id: "349E2EADB85006B9"
+			item: {
+				count: 1
+				id: "minecraft:copper_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 4
+			id: "72F65184C96DD26D"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

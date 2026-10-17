@@ -1,0 +1,119 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "7291346B07A1897C"
+	loot_crate: {
+		color: 5635925
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "create_2_loot2"
+	}
+	loot_size: 1
+	order_index: 33
+	rewards: [
+		{
+			count: 24
+			id: "7780CD17462AE498"
+			item: {
+				count: 1
+				id: "create:track"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "7F0F39C9EFF0338C"
+			item: {
+				count: 1
+				id: "create:sturdy_sheet"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "3074B52C488E2DB4"
+			item: {
+				count: 1
+				id: "create:redstone_link"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "7575A4D79C64662B"
+			item: {
+				count: 1
+				id: "create:railway_casing"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "7C6D933DB01A5C99"
+			item: {
+				count: 1
+				id: "create:smart_chute"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "529FD24DD50BF600"
+			item: {
+				count: 1
+				id: "create:chain_conveyor"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "7BA605DF55FDFA7F"
+			item: {
+				count: 1
+				id: "create:super_glue"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "7527FDD94E64F13F"
+			item: {
+				count: 1
+				id: "create:precision_mechanism"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 3
+			id: "5E0477F678E57C74"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 6
+			id: "795C9C03EDB55486"
+			item: {
+				count: 1
+				id: "minecraft:emerald"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 12
+			id: "353BB01081D0E786"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

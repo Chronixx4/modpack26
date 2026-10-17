@@ -1,0 +1,65 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "373E8192D8C46CEF"
+	loot_crate: {
+		color: 11579568
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "hostility_loot1"
+	}
+	loot_size: 1
+	order_index: 67
+	rewards: [
+		{
+			count: 16
+			id: "3A91F4C8CD1B15E8"
+			item: {
+				count: 1
+				id: "minecraft:experience_bottle"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "1553BAFD03FFC73E"
+			item: {
+				count: 1
+				id: "l2hostility:bottle_of_sanity"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "3C05CB3ED5DE6F60"
+			item: {
+				count: 1
+				id: "minecraft:iron_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 16
+			id: "7C4974105B906B16"
+			item: {
+				count: 1
+				id: "minecraft:copper_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 4
+			id: "3C36595BE1351EB9"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

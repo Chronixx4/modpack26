@@ -1,0 +1,84 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "31AFB64F12EF5D4A"
+	loot_crate: {
+		color: 11579568
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "strukturen_loot1"
+	}
+	loot_size: 1
+	order_index: 109
+	rewards: [
+		{
+			count: 8
+			id: "31E8FF66EB97B47F"
+			item: {
+				count: 1
+				id: "minecraft:emerald"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "741587CD51D682A8"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "3866A76A460C650D"
+			item: {
+				count: 1
+				id: "minecraft:experience_bottle"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "76B87217726A34FF"
+			item: {
+				count: 1
+				id: "minecraft:name_tag"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "746938029AADE73C"
+			item: {
+				count: 1
+				id: "minecraft:iron_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 16
+			id: "5C4725378001D9E9"
+			item: {
+				count: 1
+				id: "minecraft:copper_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 4
+			id: "1DA7EE41ACB669B7"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

@@ -36,7 +36,12 @@
 			rewards: [
 				{
 					id: "339E8AF3D9E8FC53"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "1518FA3C47483BD5"
+					table_id: 6446610553462284844L
 					type: "loot"
 				}
 			]
@@ -64,7 +69,16 @@
 				{
 					id: "383841761CADBFD3"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "5D8BC2CA1374A09A"
+					item: {
+						count: 1
+						id: "evilcraft:dark_gem"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -89,7 +103,16 @@
 				{
 					id: "16BCCC697BEF7F56"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "730B79911CD458E7"
+					item: {
+						count: 1
+						id: "evilcraft:dark_gem"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -114,7 +137,16 @@
 				{
 					id: "7C8A9E52140A168A"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "12865080A8566442"
+					item: {
+						count: 1
+						id: "evilcraft:hardened_blood_shard"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -139,7 +171,16 @@
 				{
 					id: "598CE18148720B2A"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "59B43F0055B6D02E"
+					item: {
+						count: 1
+						id: "evilcraft:hardened_blood_shard"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -164,7 +205,16 @@
 				{
 					id: "5F4388F417181014"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "18F9071829E38888"
+					item: {
+						count: 1
+						id: "evilcraft:dark_gem"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -190,7 +240,16 @@
 				{
 					id: "59709301FC6F2EC3"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "3D12DF583CE27422"
+					item: {
+						count: 1
+						id: "evilcraft:hardened_blood_shard"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -214,7 +273,12 @@
 			rewards: [
 				{
 					id: "5FB71C8C33C03915"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "333457D662082C9A"
+					table_id: 3849655637607776897L
 					type: "loot"
 				}
 			]
@@ -241,7 +305,16 @@
 				{
 					id: "7611169405B0FEFE"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "5D598E8884548331"
+					item: {
+						count: 1
+						id: "evilcraft:dark_gem"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -266,7 +339,16 @@
 				{
 					id: "30F1A7311BEF518B"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "50101B2F16BC3C72"
+					item: {
+						count: 1
+						id: "evilcraft:hardened_blood_shard"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -292,7 +374,16 @@
 				{
 					id: "7C930D514C135B2A"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "1E247E5157EFAAAA"
+					item: {
+						count: 1
+						id: "evilcraft:hardened_blood_shard"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -316,7 +407,16 @@
 				{
 					id: "3A0256E956CB2680"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "5FFFB8978EF56827"
+					item: {
+						count: 1
+						id: "evilcraft:dark_gem"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -342,7 +442,16 @@
 				{
 					id: "3C8A122DB976FF0E"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "198CA8563B6D914C"
+					item: {
+						count: 1
+						id: "evilcraft:hardened_blood_shard"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -370,7 +479,16 @@
 				{
 					id: "79A9E1242ED357D9"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "7426A218FFA44364"
+					item: {
+						count: 1
+						id: "evilcraft:dark_power_gem"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -396,7 +514,16 @@
 				{
 					id: "308DED1BBFF2ADD4"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "10996FDC94F439E6"
+					item: {
+						count: 1
+						id: "evilcraft:hardened_blood_shard"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -421,7 +548,16 @@
 				{
 					id: "1FBC3E846BF0389A"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "3020683A2836BA05"
+					item: {
+						count: 1
+						id: "evilcraft:dark_power_gem"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -445,7 +581,12 @@
 			rewards: [
 				{
 					id: "1F1EE0314853B033"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "778E2E1F0B3D7067"
+					table_id: 6495938419084997267L
 					type: "loot"
 				}
 			]
@@ -473,7 +614,12 @@
 			rewards: [
 				{
 					id: "1E9192AEF6E55CFA"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "39BB27563D6FAD41"
+					table_id: 3849655637607776897L
 					type: "loot"
 				}
 			]

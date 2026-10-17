@@ -1,0 +1,102 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "31F5BCF4FC9AA6B2"
+	loot_crate: {
+		color: 5635925
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "ae2_addons_loot2"
+	}
+	loot_size: 1
+	order_index: 7
+	rewards: [
+		{
+			count: 6
+			id: "13A62716928080C5"
+			item: {
+				count: 1
+				id: "extendedae:entro_crystal"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "119AC92C017BF72C"
+			item: {
+				count: 1
+				id: "megacells:sky_steel_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "17C0B4B11C98C081"
+			item: {
+				count: 1
+				id: "megacells:sky_bronze_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "33F1122369F1A300"
+			item: {
+				count: 1
+				id: "extendedae:concurrent_processor"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "7AAA5F19B79FA34D"
+			item: {
+				count: 1
+				id: "megacells:accumulation_processor"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "5A36CAABD6C8E251"
+			item: {
+				count: 1
+				id: "advanced_ae:quantum_alloy"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 3
+			id: "5BF17E451E8D91C5"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 6
+			id: "3E9C33754B6B96DE"
+			item: {
+				count: 1
+				id: "minecraft:emerald"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 12
+			id: "192A37824BD59D48"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

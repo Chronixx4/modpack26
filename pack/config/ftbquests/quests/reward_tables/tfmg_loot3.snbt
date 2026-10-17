@@ -1,0 +1,137 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "143B54E8773E95A8"
+	loot_crate: {
+		color: 11141375
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "tfmg_loot3"
+	}
+	loot_size: 1
+	order_index: 115
+	rewards: [
+		{
+			count: 16
+			id: "17C143EFDB9CEB10"
+			item: {
+				count: 1
+				id: "immersiveengineering:ingot_nickel"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "7135568DB808EB25"
+			item: {
+				count: 1
+				id: "tfmg:copper_spool"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "7434C916B085B58B"
+			item: {
+				count: 1
+				id: "immersiveengineering:ingot_aluminum"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "37AC7005BF801185"
+			item: {
+				count: 1
+				id: "tfmg:plastic_sheet"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "5C84306A325D840E"
+			item: {
+				count: 1
+				id: "tfmg:rubber_sheet"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "7C4E08B9DD07A745"
+			item: {
+				count: 1
+				id: "tfmg:silicon_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "17929FAA186C04B2"
+			item: {
+				count: 1
+				id: "tfmg:magnet"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "1FD833792BFF1D8C"
+			item: {
+				count: 1
+				id: "tfmg:steel_mechanism"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "76A9073D9CF4993B"
+			item: {
+				count: 1
+				id: "tfmg:circuit_board"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "3E1C6A4C2A3E3004"
+			item: {
+				count: 1
+				id: "tfmg:diesel_bucket"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "5369F3E1B82EA421"
+			item: {
+				count: 1
+				id: "minecraft:diamond_block"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 2
+			id: "52884527279044DA"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 3
+			id: "31870FC7C23AAD69"
+			item: {
+				count: 1
+				id: "minecraft:emerald_block"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

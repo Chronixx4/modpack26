@@ -1,0 +1,120 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "327AE147420FA96C"
+	loot_crate: {
+		color: 11579568
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "mekanism_loot1"
+	}
+	loot_size: 1
+	order_index: 87
+	rewards: [
+		{
+			count: 8
+			id: "30E495F28EF1E9F0"
+			item: {
+				count: 1
+				id: "mekanism:ingot_osmium"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "1C69CC0E64BCE9CA"
+			item: {
+				count: 1
+				id: "mekanism:alloy_infused"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "32E8390F84EF192B"
+			item: {
+				count: 1
+				id: "mekanism:basic_control_circuit"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "7272D98CD1277A6B"
+			item: {
+				count: 1
+				id: "mekanism:bio_fuel"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "1A3BD0171251D002"
+			item: {
+				count: 1
+				id: "mekanism:advanced_control_circuit"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "38DC753A46CE9883"
+			item: {
+				count: 1
+				id: "mekanism:alloy_reinforced"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "56A46E8F8467B6FD"
+			item: {
+				count: 1
+				id: "mekanism:ingot_refined_obsidian"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "7176AE0A01D18930"
+			item: {
+				count: 1
+				id: "mekanism:ingot_refined_glowstone"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "5811F96604FC7565"
+			item: {
+				count: 1
+				id: "minecraft:iron_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 16
+			id: "39C8137AF8FB55E1"
+			item: {
+				count: 1
+				id: "minecraft:copper_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 4
+			id: "3D45F8AB0F00686C"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

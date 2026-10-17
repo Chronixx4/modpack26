@@ -1,0 +1,97 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "78160A28140B0DBB"
+	loot_crate: {
+		color: 16755200
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "mekanism_loot4"
+	}
+	loot_size: 1
+	order_index: 90
+	rewards: [
+		{
+			id: "7F1C6C03D0F76CC6"
+			item: {
+				count: 1
+				id: "mekanism:upgrade_speed"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "76F508F7ADF26BE9"
+			item: {
+				count: 1
+				id: "mekanism:upgrade_energy"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "7372FB1F7DABFDC5"
+			item: {
+				count: 1
+				id: "mekanism:elite_control_circuit"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "531D98E743D985F5"
+			item: {
+				count: 1
+				id: "mekanism:yellow_cake_uranium"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "38A531FB9212E286"
+			item: {
+				count: 1
+				id: "mekanism:alloy_atomic"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "5B185A738E3D727D"
+			item: {
+				count: 1
+				id: "mekanism:ultimate_control_circuit"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "1462666285DB1C12"
+			item: {
+				count: 1
+				id: "minecraft:netherite_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "726695124DA346A4"
+			item: {
+				count: 1
+				id: "minecraft:enchanted_golden_apple"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "5AA0B922317B7035"
+			item: {
+				count: 1
+				id: "minecraft:nether_star"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

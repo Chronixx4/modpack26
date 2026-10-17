@@ -1,0 +1,102 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "77033DA00A12EF0B"
+	loot_crate: {
+		color: 11579568
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "kleine_technik_loot1"
+	}
+	loot_size: 1
+	order_index: 81
+	rewards: [
+		{
+			count: 8
+			id: "133D5943B239B8B7"
+			item: {
+				count: 1
+				id: "actuallyadditions:black_quartz"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "7217897EF23BB7A7"
+			item: {
+				count: 1
+				id: "actuallyadditions:canola_seeds"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "197899635FE24B1B"
+			item: {
+				count: 1
+				id: "actuallyadditions:restonia_crystal"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "3115B5E097DFD861"
+			item: {
+				count: 1
+				id: "actuallyadditions:palis_crystal"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "3698990C7B8F0609"
+			item: {
+				count: 1
+				id: "actuallyadditions:enori_crystal"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "7AE782F73C955E52"
+			item: {
+				count: 1
+				id: "actuallyadditions:void_crystal"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "539ECA13C9D0FAEA"
+			item: {
+				count: 1
+				id: "minecraft:iron_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 16
+			id: "19FC26CE700C12AC"
+			item: {
+				count: 1
+				id: "minecraft:copper_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 4
+			id: "3DAF36C7CB930FC8"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

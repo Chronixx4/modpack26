@@ -1,0 +1,165 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "38BF7CE1A19A7173"
+	loot_crate: {
+		color: 5635925
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "dimensionen_loot2"
+	}
+	loot_size: 1
+	order_index: 40
+	rewards: [
+		{
+			count: 12
+			id: "1A7E72DA540854E0"
+			item: {
+				count: 1
+				id: "betternether:cincinnasite_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "39F339C287D74320"
+			item: {
+				count: 1
+				id: "alexscaves:amber"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "5B65B9BE8CDC6A72"
+			item: {
+				count: 1
+				id: "enderscape:nebulite"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "56AC6D60AB6148F3"
+			item: {
+				count: 1
+				id: "aether:zanite_gemstone"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "1A870F0C7BB42F0E"
+			item: {
+				count: 1
+				id: "deep_aether:skyjade"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "1EB324333994452D"
+			item: {
+				count: 1
+				id: "betterend:terminite_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "75A5273A8BB64502"
+			item: {
+				count: 1
+				id: "ad_astra:desh_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "3C7F4F2B968D975A"
+			item: {
+				count: 1
+				id: "alexscaves:sea_glass_shards"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "3172DABD0062CB6A"
+			item: {
+				count: 1
+				id: "undergarden:froststeel_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "3EE1BCE644D7CED7"
+			item: {
+				count: 1
+				id: "betternether:nether_ruby"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "5B821A2AF0728520"
+			item: {
+				count: 1
+				id: "alexscaves:uranium_shard"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "112EF9F263894FD7"
+			item: {
+				count: 1
+				id: "enderscape:shadoline_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 9
+			id: "7BAD301F00AC0FD1"
+			item: {
+				count: 1
+				id: "ad_astra:ostrum_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 3
+			id: "53881BC583E17670"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 6
+			id: "147DD7161E4C623D"
+			item: {
+				count: 1
+				id: "minecraft:emerald"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 12
+			id: "36D2559990D4C041"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

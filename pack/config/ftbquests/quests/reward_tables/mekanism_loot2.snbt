@@ -1,0 +1,118 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "1FE21155908D9DBD"
+	loot_crate: {
+		color: 5635925
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "mekanism_loot2"
+	}
+	loot_size: 1
+	order_index: 88
+	rewards: [
+		{
+			count: 24
+			id: "757D9DAABD986F13"
+			item: {
+				count: 1
+				id: "mekanism:bio_fuel"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "1AD338445D9951DC"
+			item: {
+				count: 1
+				id: "mekanism:advanced_control_circuit"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "356A8F9DDE75DE40"
+			item: {
+				count: 1
+				id: "mekanism:alloy_reinforced"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "7C791AE54D304751"
+			item: {
+				count: 1
+				id: "mekanism:ingot_refined_obsidian"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "3EDF17334EFDB9F2"
+			item: {
+				count: 1
+				id: "mekanism:ingot_refined_glowstone"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "50202FC2E215C933"
+			item: {
+				count: 1
+				id: "mekanism:hdpe_sheet"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "12132735D20FB43E"
+			item: {
+				count: 1
+				id: "mekanism:upgrade_speed"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "5798B66918D42DBF"
+			item: {
+				count: 1
+				id: "mekanism:upgrade_energy"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 3
+			id: "571F0AFEECCCEA91"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 6
+			id: "392430CC6EE081E5"
+			item: {
+				count: 1
+				id: "minecraft:emerald"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 12
+			id: "5D9A7A4D40F46262"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

@@ -44,7 +44,12 @@
 			rewards: [
 				{
 					id: "1F8FD6BD66155461"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "7DE83C9D0541E310"
+					table_id: 4168323650699015028L
 					type: "loot"
 				}
 			]
@@ -72,7 +77,16 @@
 				{
 					id: "3DD43956D9F39680"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "3ABE515D07BB8286"
+					item: {
+						count: 1
+						id: "allthemodium:raw_allthemodium"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -98,7 +112,16 @@
 				{
 					id: "7F8E2DD6461D0147"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "5BB75324136B9C72"
+					item: {
+						count: 1
+						id: "allthemodium:raw_allthemodium"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -123,7 +146,12 @@
 			rewards: [
 				{
 					id: "15849587D3E5D269"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "15761882A24D42CB"
+					table_id: 4168323650699015028L
 					type: "loot"
 				}
 			]
@@ -147,7 +175,16 @@
 				{
 					id: "754051C038556E56"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "3B45C07FB351EECB"
+					item: {
+						count: 1
+						id: "allthemodium:allthemodium_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -172,7 +209,16 @@
 				{
 					id: "15EE02F4A9F5A758"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "1D7197AE7B55626B"
+					item: {
+						count: 1
+						id: "allthemodium:vibranium_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -196,7 +242,12 @@
 			rewards: [
 				{
 					id: "1562E5042F7C5F8F"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "549AB08B74DBD14B"
+					table_id: 4168323650699015028L
 					type: "loot"
 				}
 			]
@@ -247,7 +298,16 @@
 				{
 					id: "585148A8D62B4A67"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "77959CC6F87201CA"
+					item: {
+						count: 1
+						id: "allthemodium:vibranium_ingot"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -274,7 +334,12 @@
 			rewards: [
 				{
 					id: "13119C5B19745AFA"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "1B382596BC46DA97"
+					table_id: 4168323650699015028L
 					type: "loot"
 				}
 			]
@@ -298,7 +363,16 @@
 				{
 					id: "1BCF0B57682302DE"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 2
+					id: "15828C1569F3F4A2"
+					item: {
+						count: 1
+						id: "allthemodium:allthemodium_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -326,7 +400,15 @@
 				{
 					id: "57C2813DDF98B3E2"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					id: "12F1B7A17D694D7A"
+					item: {
+						count: 1
+						id: "allthemodium:allthemodium_upgrade_smithing_template"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -358,7 +440,15 @@
 				{
 					id: "7B99FA10FCAB35D4"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					id: "3E25B3DE44561062"
+					item: {
+						count: 1
+						id: "allthemodium:allthemodium_upgrade_smithing_template"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -391,7 +481,12 @@
 			rewards: [
 				{
 					id: "168E936E36E0D2D3"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "72FFE442BBD724C0"
+					table_id: 4105718088354612967L
 					type: "loot"
 				}
 			]
@@ -442,7 +537,12 @@
 			rewards: [
 				{
 					id: "544D52187626BAD3"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "18E030A516CE273A"
+					table_id: 4105718088354612967L
 					type: "loot"
 				}
 			]
@@ -466,7 +566,16 @@
 				{
 					id: "5C2EB7DF5DE72ABA"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 2
+					id: "587F0C31E395A7D0"
+					item: {
+						count: 1
+						id: "allthemodium:allthemodium_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -491,7 +600,12 @@
 			rewards: [
 				{
 					id: "1DDA8E3F1E5C9E6E"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "330B7F1D6D5BD1E9"
+					table_id: 4105718088354612967L
 					type: "loot"
 				}
 			]
@@ -525,7 +639,12 @@
 			rewards: [
 				{
 					id: "53ACD74CB5EA7DFD"
-					table_id: 3797459037597754809L
+					type: "xp_levels"
+					xp_levels: 20
+				}
+				{
+					id: "723743A0D2A66D3C"
+					table_id: 4350058146227979720L
 					type: "loot"
 				}
 			]
@@ -553,7 +672,12 @@
 			rewards: [
 				{
 					id: "54D540EFA726DF26"
-					table_id: 3797459037597754809L
+					type: "xp_levels"
+					xp_levels: 20
+				}
+				{
+					id: "1D3C6C5C24936DD9"
+					table_id: 4350058146227979720L
 					type: "loot"
 				}
 			]

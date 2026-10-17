@@ -1,0 +1,117 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "37D789C2F7BE1D08"
+	loot_crate: {
+		color: 5635925
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "lager_loot2"
+	}
+	loot_size: 1
+	order_index: 85
+	rewards: [
+		{
+			count: 2
+			id: "78C911FDB70B379B"
+			item: {
+				count: 1
+				id: "sophisticatedbackpacks:upgrade_base"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "3DD7EFC6B19A93CC"
+			item: {
+				count: 1
+				id: "sophisticatedstorage:upgrade_base"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "726F83CB591C3AAA"
+			item: {
+				count: 1
+				id: "pipez:fluid_pipe"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "7C81F49AAE007B25"
+			item: {
+				count: 1
+				id: "pipez:energy_pipe"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "566CB69C9BE8FE3B"
+			item: {
+				count: 1
+				id: "pipez:basic_upgrade"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "336EA9E4DC3F4167"
+			item: {
+				count: 1
+				id: "sophisticatedstorage:hopper_upgrade"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "789104757A50888A"
+			item: {
+				count: 1
+				id: "sophisticatedbackpacks:pickup_upgrade"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "58C6DB275FC43563"
+			item: {
+				count: 1
+				id: "sophisticatedbackpacks:feeding_upgrade"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 3
+			id: "3F3DD32D183E5E30"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 6
+			id: "13E4CFC2C6EEB7CB"
+			item: {
+				count: 1
+				id: "minecraft:emerald"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 12
+			id: "3CDDE789BE515629"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

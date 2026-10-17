@@ -1,0 +1,120 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "71FA8DDA3BB5FF7C"
+	loot_crate: {
+		color: 5635925
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "erste_schritte_loot2"
+	}
+	loot_size: 1
+	order_index: 50
+	rewards: [
+		{
+			count: 18
+			id: "5FC500B10F3ED7B5"
+			item: {
+				count: 1
+				id: "minecraft:iron_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 9
+			id: "528C25799FEACA74"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 24
+			id: "350ADEAF80EA44C2"
+			item: {
+				count: 1
+				id: "minecraft:redstone"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "19F93B55C557E337"
+			item: {
+				count: 1
+				id: "minecraft:lapis_lazuli"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "14159E62AAC632F1"
+			item: {
+				count: 1
+				id: "minecraft:experience_bottle"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "710A993D7373FFEE"
+			item: {
+				count: 1
+				id: "minecraft:obsidian"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 3
+			id: "38DB23154FA0D7BA"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "732E3D9F29A28C61"
+			item: {
+				count: 1
+				id: "minecraft:ender_pearl"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 3
+			id: "70B43F691841AA1A"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 6
+			id: "5D1FF7F1DD998CAF"
+			item: {
+				count: 1
+				id: "minecraft:emerald"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 12
+			id: "7BE3253760D6D9DB"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

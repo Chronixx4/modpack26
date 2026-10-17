@@ -1,0 +1,102 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "1C7693DA2E56631F"
+	loot_crate: {
+		color: 11579568
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "enderio_loot1"
+	}
+	loot_size: 1
+	order_index: 46
+	rewards: [
+		{
+			count: 8
+			id: "7F0D1DBAE48D5074"
+			item: {
+				count: 1
+				id: "enderio:silicon"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "1651D34206B5BF8D"
+			item: {
+				count: 1
+				id: "enderio:grains_of_infinity"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "79F0EA3FAFE4D90B"
+			item: {
+				count: 1
+				id: "enderio:conductive_alloy_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "12B87920E68FE3BD"
+			item: {
+				count: 1
+				id: "enderio:redstone_alloy_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "55C99FC83146EA57"
+			item: {
+				count: 1
+				id: "enderio:energetic_alloy_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "75CD60D0F2E349B4"
+			item: {
+				count: 1
+				id: "enderio:vibrant_alloy_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "5F08B94C9B08D118"
+			item: {
+				count: 1
+				id: "minecraft:iron_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 16
+			id: "12373864AD9E32E1"
+			item: {
+				count: 1
+				id: "minecraft:copper_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 4
+			id: "329EA7EC81C05AD9"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

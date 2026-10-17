@@ -1,0 +1,84 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "1F560F8DBE066AA2"
+	loot_crate: {
+		color: 11579568
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "industrial_foregoing_loot1"
+	}
+	loot_size: 1
+	order_index: 73
+	rewards: [
+		{
+			count: 4
+			id: "54B70B241EB69D23"
+			item: {
+				count: 1
+				id: "industrialforegoing:iron_gear"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "3135B8147D0492D5"
+			item: {
+				count: 1
+				id: "industrialforegoing:dryrubber"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "1ECD525C38810AD3"
+			item: {
+				count: 1
+				id: "industrialforegoing:plastic"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "13CBA901DB6C372B"
+			item: {
+				count: 1
+				id: "industrialforegoing:gold_gear"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "12C47F8346013DCF"
+			item: {
+				count: 1
+				id: "minecraft:iron_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 16
+			id: "56C9837773704C64"
+			item: {
+				count: 1
+				id: "minecraft:copper_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 4
+			id: "7076EDE824299086"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

@@ -44,7 +44,12 @@
 			rewards: [
 				{
 					id: "77986738CE1B492F"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "3F121CF2B146488B"
+					table_id: 3580280679519182154L
 					type: "loot"
 				}
 			]
@@ -73,7 +78,16 @@
 				{
 					id: "3019B4701E01C6EE"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "15FBA6055795A49F"
+					item: {
+						count: 1
+						id: "minecraft:emerald"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -99,7 +113,16 @@
 				{
 					id: "75FF8449BA0BE810"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "78B521A3977FF652"
+					item: {
+						count: 1
+						id: "minecraft:emerald"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -122,7 +145,16 @@
 				{
 					id: "76FE775CA86229C4"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "133610A0AAEA9049"
+					item: {
+						count: 1
+						id: "minecraft:emerald"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -145,7 +177,16 @@
 				{
 					id: "1FC6B7E1CD854883"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "34AFD2E02E8BF20B"
+					item: {
+						count: 1
+						id: "minecraft:emerald"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -168,7 +209,16 @@
 				{
 					id: "52C7D36DEE83002C"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "147DDAB44DCD8C0F"
+					item: {
+						count: 1
+						id: "minecraft:experience_bottle"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -191,7 +241,16 @@
 				{
 					id: "54A367DB6278DE52"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "1DFF6780037E910C"
+					item: {
+						count: 1
+						id: "minecraft:experience_bottle"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -202,7 +261,7 @@
 				}
 			]
 			x: 10.0d
-			y: -3.0d
+			y: -6.0d
 		}
 		{
 			dependencies: [
@@ -213,7 +272,12 @@
 			rewards: [
 				{
 					id: "15E2ACA4EBFF6A20"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "7955E0450CBA87E2"
+					table_id: 8948105165108493442L
 					type: "loot"
 				}
 			]
@@ -225,7 +289,7 @@
 				}
 			]
 			x: 12.0d
-			y: -3.0d
+			y: -6.0d
 		}
 		{
 			dependencies: [
@@ -237,7 +301,16 @@
 				{
 					id: "347DC45EE595EAC4"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "352C672425AC6575"
+					item: {
+						count: 1
+						id: "minecraft:experience_bottle"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -260,7 +333,16 @@
 				{
 					id: "32DD8047FCE6B112"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "3E535F1044107808"
+					item: {
+						count: 1
+						id: "minecraft:gold_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -283,7 +365,16 @@
 				{
 					id: "1D90C5664F630140"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "1F3666E36799644F"
+					item: {
+						count: 1
+						id: "minecraft:experience_bottle"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -305,7 +396,12 @@
 			rewards: [
 				{
 					id: "3189AD33CB4ED994"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "37A7F10FB6CAF427"
+					table_id: 8948105165108493442L
 					type: "loot"
 				}
 			]
@@ -328,7 +424,12 @@
 			rewards: [
 				{
 					id: "13D3580E6FCA39D3"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "5314367CA4BD64F2"
+					table_id: 3491381876524382220L
 					type: "loot"
 				}
 			]
@@ -352,7 +453,16 @@
 				{
 					id: "34C5DCB1F0D3BE92"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "3F2DF6238E19F5C6"
+					item: {
+						count: 1
+						id: "minecraft:ender_pearl"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -374,7 +484,12 @@
 			rewards: [
 				{
 					id: "18EA92C1ED54FA6C"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "7AC47B0F784A6D8F"
+					table_id: 8948105165108493442L
 					type: "loot"
 				}
 			]
@@ -398,7 +513,16 @@
 				{
 					id: "70F9898224ADE832"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "5F02BA1272EABE76"
+					item: {
+						count: 1
+						id: "minecraft:name_tag"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -421,7 +545,16 @@
 				{
 					id: "3001925D4D8E27A2"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "5A1B66E4001B1D80"
+					item: {
+						count: 1
+						id: "minecraft:ender_pearl"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -443,7 +576,16 @@
 				{
 					id: "354603346E17FF63"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "71AA9E9C2482E2C0"
+					item: {
+						count: 1
+						id: "minecraft:name_tag"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -453,7 +595,7 @@
 				}
 			]
 			x: 4.0d
-			y: 7.5d
+			y: 3.0d
 		}
 		{
 			dependencies: [
@@ -464,7 +606,16 @@
 				{
 					id: "597173EECC1D5D7E"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "7015007249BA1625"
+					item: {
+						count: 1
+						id: "minecraft:ender_pearl"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -489,7 +640,16 @@
 				{
 					id: "13239DBA18252554"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "72E9DC26709B12A8"
+					item: {
+						count: 1
+						id: "minecraft:name_tag"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -515,7 +675,16 @@
 				{
 					id: "5C6B2AD93017318F"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "766684E4FC4775E9"
+					item: {
+						count: 1
+						id: "minecraft:name_tag"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -540,7 +709,12 @@
 			rewards: [
 				{
 					id: "1EF2BE4E2CBDFF0C"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "183547FB6FC813F0"
+					table_id: 8948105165108493442L
 					type: "loot"
 				}
 			]
@@ -557,7 +731,7 @@
 				}
 			]
 			x: 4.0d
-			y: 3.0d
+			y: 7.5d
 		}
 		{
 			dependencies: [
@@ -569,7 +743,16 @@
 				{
 					id: "72E0BDD4EC819F28"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 3
+					id: "7D1150DD9F8197A6"
+					item: {
+						count: 1
+						id: "minecraft:diamond"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -591,7 +774,16 @@
 				{
 					id: "1B0DA56042F43043"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 3
+					id: "32BFA09BB04C4C19"
+					item: {
+						count: 1
+						id: "minecraft:diamond"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -605,7 +797,7 @@
 				}
 			]
 			x: 4.0d
-			y: 18.0d
+			y: 12.0d
 		}
 		{
 			dependencies: [
@@ -617,7 +809,16 @@
 				{
 					id: "501C7EA2594F8205"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 3
+					id: "5B7F25CD3222521A"
+					item: {
+						count: 1
+						id: "minecraft:diamond"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -631,7 +832,7 @@
 				}
 			]
 			x: 6.0d
-			y: 18.0d
+			y: 12.0d
 		}
 		{
 			dependencies: [
@@ -643,7 +844,15 @@
 				{
 					id: "5D48DDCE4E90A36A"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					id: "15EB31BBF7EB31BB"
+					item: {
+						count: 1
+						id: "minecraft:saddle"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -666,7 +875,16 @@
 				{
 					id: "76086BBEFAC25F91"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "30A0D24FCCF2EAE0"
+					item: {
+						count: 1
+						id: "minecraft:ender_pearl"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -688,7 +906,12 @@
 			rewards: [
 				{
 					id: "7D7071806F1D957E"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "101655D862E3E1A5"
+					table_id: 8948105165108493442L
 					type: "loot"
 				}
 			]
@@ -712,7 +935,16 @@
 				{
 					id: "35FED27EC7B932BD"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 3
+					id: "339871CE25299777"
+					item: {
+						count: 1
+						id: "minecraft:diamond"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -735,7 +967,16 @@
 				{
 					id: "5C18790576DC6BB1"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "57DFFAAC1D14BC8F"
+					item: {
+						count: 1
+						id: "minecraft:golden_apple"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -759,7 +1000,12 @@
 			rewards: [
 				{
 					id: "3FA42F33F300E12B"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "5B5059517C355099"
+					table_id: 8948105165108493442L
 					type: "loot"
 				}
 			]
@@ -782,7 +1028,12 @@
 			rewards: [
 				{
 					id: "70DF80104E554E91"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "7A2C7DD91D74CCA0"
+					table_id: 8948105165108493442L
 					type: "loot"
 				}
 			]
@@ -807,7 +1058,15 @@
 				{
 					id: "75062ABCF79175DD"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					id: "1615AB4D7E4FFDE6"
+					item: {
+						count: 1
+						id: "minecraft:saddle"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -830,7 +1089,16 @@
 				{
 					id: "71879CD7E8AFB93A"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 3
+					id: "57A34776CBCD4BF7"
+					item: {
+						count: 1
+						id: "minecraft:diamond"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -854,7 +1122,16 @@
 				{
 					id: "7E10744FA7BACE93"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 2
+					id: "342B9530B9B18B1B"
+					item: {
+						count: 1
+						id: "minecraft:golden_apple"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -865,7 +1142,7 @@
 				}
 			]
 			x: 14.0d
-			y: -3.0d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -877,7 +1154,16 @@
 				{
 					id: "75883EFE9331971B"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 2
+					id: "1672B85EFC77AACC"
+					item: {
+						count: 1
+						id: "minecraft:golden_apple"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -888,7 +1174,7 @@
 				}
 			]
 			x: 16.0d
-			y: -3.0d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -900,7 +1186,12 @@
 			rewards: [
 				{
 					id: "15238C754EDC0950"
-					table_id: 3797459037597754809L
+					type: "xp_levels"
+					xp_levels: 20
+				}
+				{
+					id: "52BB19BD75EEAC14"
+					table_id: 4576570933948168042L
 					type: "loot"
 				}
 			]

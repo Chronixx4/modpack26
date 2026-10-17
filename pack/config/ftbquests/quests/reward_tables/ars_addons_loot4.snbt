@@ -1,0 +1,81 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "54A27C8D3C379AC1"
+	loot_crate: {
+		color: 16755200
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "ars_addons_loot4"
+	}
+	loot_size: 1
+	order_index: 19
+	rewards: [
+		{
+			count: 12
+			id: "5FAA0EDDF919878C"
+			item: {
+				count: 1
+				id: "ars_nouveau:abjuration_essence"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "57E7FCDD0090F6A2"
+			item: {
+				count: 1
+				id: "ars_nouveau:conjuration_essence"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "10A8743C38717A04"
+			item: {
+				count: 1
+				id: "ars_technica:calibrated_precision_mechanism"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 64
+			id: "58772DC9B114C109"
+			item: {
+				count: 1
+				id: "ars_nouveau:source_gem"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "393270A771BED6AF"
+			item: {
+				count: 1
+				id: "minecraft:netherite_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "77EDEF1E8E67CBB3"
+			item: {
+				count: 1
+				id: "minecraft:enchanted_golden_apple"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "1F0C2408430C2755"
+			item: {
+				count: 1
+				id: "minecraft:nether_star"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

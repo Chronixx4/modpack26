@@ -36,7 +36,12 @@
 			rewards: [
 				{
 					id: "3C85EF5059E33121"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "58C43707E366649E"
+					table_id: 8215303777960847550L
 					type: "loot"
 				}
 			]
@@ -60,7 +65,16 @@
 				{
 					id: "59E52160048788A5"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "3EFFFB4453C28307"
+					item: {
+						count: 1
+						id: "hexerei:sage_seed"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -85,7 +99,16 @@
 				{
 					id: "3DD330F8541353D1"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "5AB53BB99EB25067"
+					item: {
+						count: 1
+						id: "hexerei:mandrake_root"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -110,7 +133,16 @@
 				{
 					id: "30419760056E496A"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "52E9585656159F32"
+					item: {
+						count: 1
+						id: "hexerei:sage_seed"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -124,7 +156,7 @@
 				}
 			]
 			x: 2.0d
-			y: -4.5d
+			y: -7.5d
 		}
 		{
 			dependencies: [
@@ -135,7 +167,16 @@
 				{
 					id: "76340E3E0098387F"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "324C843FF291790C"
+					item: {
+						count: 1
+						id: "hexerei:belladonna_flowers"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -168,7 +209,16 @@
 				{
 					id: "32570B51FC27E6BA"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "3F066CEC598D4BF5"
+					item: {
+						count: 1
+						id: "hexerei:belladonna_flowers"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -202,7 +252,16 @@
 				{
 					id: "5589DB2CA142E627"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "1132004809FFC2EF"
+					item: {
+						count: 1
+						id: "hexerei:mandrake_root"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -217,7 +276,7 @@
 				}
 			]
 			x: 4.0d
-			y: -3.0d
+			y: -4.5d
 		}
 		{
 			dependencies: [
@@ -228,7 +287,16 @@
 				{
 					id: "3B9A0197FCCFCA63"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "5AF753BFEAB0A251"
+					item: {
+						count: 1
+						id: "hexerei:belladonna_flowers"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -253,7 +321,16 @@
 				{
 					id: "58422ADFADB0275B"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "310855953427E672"
+					item: {
+						count: 1
+						id: "hexerei:mandrake_root"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -278,7 +355,12 @@
 			rewards: [
 				{
 					id: "5E36FE1C5F90ECFD"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "7923E271B8513100"
+					table_id: 1233398173796023097L
 					type: "loot"
 				}
 			]
@@ -324,7 +406,16 @@
 				{
 					id: "54483978A9C7EB75"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "756398AED3107A2F"
+					item: {
+						count: 1
+						id: "hexerei:mugwort_flowers"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -350,7 +441,16 @@
 				{
 					id: "51026148BF9D24FF"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "7CEFBD8BB19FF2BC"
+					item: {
+						count: 1
+						id: "hexerei:belladonna_flowers"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -376,7 +476,16 @@
 				{
 					id: "148F6FB5050BBE28"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 16
+					id: "53F1596CE9F49872"
+					item: {
+						count: 1
+						id: "forbidden_arcanus:arcane_crystal_dust"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -398,7 +507,7 @@
 				}
 			]
 			x: 12.0d
-			y: -3.0d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -409,7 +518,16 @@
 				{
 					id: "710D58A19927F489"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 8
+					id: "7E5EE4791224F766"
+					item: {
+						count: 1
+						id: "forbidden_arcanus:arcane_crystal_dust"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -423,7 +541,7 @@
 				}
 			]
 			x: 4.0d
-			y: -4.5d
+			y: -7.5d
 		}
 		{
 			dependencies: [
@@ -435,7 +553,16 @@
 				{
 					id: "721960391A3E1F4D"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "5C8F7A81EDA8C773"
+					item: {
+						count: 1
+						id: "forbidden_arcanus:arcane_crystal"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -460,7 +587,16 @@
 				{
 					id: "7DC1E57E95C3BBCE"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "7634665C5AB0E676"
+					item: {
+						count: 1
+						id: "hexerei:mugwort_flowers"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -486,7 +622,12 @@
 			rewards: [
 				{
 					id: "18C7E82E4058A81A"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "1E45C2AEBB46CF0A"
+					table_id: 1233398173796023097L
 					type: "loot"
 				}
 			]
@@ -520,7 +661,12 @@
 			rewards: [
 				{
 					id: "1828871A15F5E658"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "16E225EA7E2587BC"
+					table_id: 1233398173796023097L
 					type: "loot"
 				}
 			]
@@ -543,7 +689,16 @@
 				{
 					id: "5EF3DEBB4E5DBE15"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "14A746D8800A7F9E"
+					item: {
+						count: 1
+						id: "hexerei:dried_sage_bundle"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -569,7 +724,16 @@
 				{
 					id: "12686E5108A38DA7"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "58AC0A5986335BE3"
+					item: {
+						count: 1
+						id: "hexerei:dried_sage_bundle"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -584,7 +748,7 @@
 				}
 			]
 			x: 12.0d
-			y: 3.0d
+			y: 6.0d
 		}
 		{
 			dependencies: [
@@ -596,7 +760,12 @@
 			rewards: [
 				{
 					id: "7BBE1E8DBDB0E671"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "124DEB9E674468E0"
+					table_id: 4373979149525625415L
 					type: "loot"
 				}
 			]
@@ -624,7 +793,16 @@
 				{
 					id: "136C740CCEBE124D"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "7DFCDEE58E0E83B9"
+					item: {
+						count: 1
+						id: "forbidden_arcanus:arcane_crystal"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -649,7 +827,16 @@
 				{
 					id: "3A9170D084F71A61"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "39B1D887BB1E15BC"
+					item: {
+						count: 1
+						id: "hexerei:dried_sage_bundle"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -697,7 +884,12 @@
 			rewards: [
 				{
 					id: "73A599663A9B6076"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "7AB8FC32E0943D06"
+					table_id: 8215303777960847550L
 					type: "loot"
 				}
 			]
@@ -724,7 +916,16 @@
 				{
 					id: "7C2E354B6A5EF472"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "537A5BF05DB2683D"
+					item: {
+						count: 1
+						id: "hexerei:dried_sage_bundle"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -749,7 +950,16 @@
 				{
 					id: "59BE0675A7D6BE94"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "14A2518053EC8031"
+					item: {
+						count: 1
+						id: "forbidden_arcanus:mundabitur_dust"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -784,7 +994,16 @@
 				{
 					id: "57B17CC5EB0C3077"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "3897E5BD39897A56"
+					item: {
+						count: 1
+						id: "forbidden_arcanus:deorum_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -809,7 +1028,16 @@
 				{
 					id: "1CA7C99A77F86607"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "584AFF1DE513F241"
+					item: {
+						count: 1
+						id: "forbidden_arcanus:mundabitur_dust"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -823,7 +1051,7 @@
 				}
 			]
 			x: 4.0d
-			y: 12.0d
+			y: 13.5d
 		}
 		{
 			dependencies: [
@@ -834,7 +1062,16 @@
 				{
 					id: "58D8AC64141F84F4"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "19D52E6914240747"
+					item: {
+						count: 1
+						id: "forbidden_arcanus:deorum_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -867,7 +1104,16 @@
 				{
 					id: "5029B42521C26271"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "3F5ADB9F50632C40"
+					item: {
+						count: 1
+						id: "forbidden_arcanus:deorum_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -889,7 +1135,7 @@
 				}
 			]
 			x: 6.0d
-			y: 6.0d
+			y: 7.5d
 		}
 		{
 			dependencies: [
@@ -902,7 +1148,16 @@
 				{
 					id: "15982F83AF0BFF85"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "1090BAC5318EADA2"
+					item: {
+						count: 1
+						id: "forbidden_arcanus:obsidiansteel_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -927,7 +1182,12 @@
 			rewards: [
 				{
 					id: "79D0CFFC06701B04"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "16732BD1806C6C6A"
+					table_id: 1233398173796023097L
 					type: "loot"
 				}
 			]
@@ -954,7 +1214,16 @@
 				{
 					id: "1B9BB54C5DC9D3DF"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 2
+					id: "5CEEE5FC650D4E43"
+					item: {
+						count: 1
+						id: "forbidden_arcanus:obsidiansteel_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -968,7 +1237,7 @@
 				}
 			]
 			x: 10.0d
-			y: 9.0d
+			y: 7.5d
 		}
 		{
 			dependencies: [
@@ -979,7 +1248,16 @@
 				{
 					id: "789C9D7673316D6A"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "165ADBE827884D08"
+					item: {
+						count: 1
+						id: "forbidden_arcanus:obsidiansteel_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -993,7 +1271,7 @@
 				}
 			]
 			x: 10.0d
-			y: 7.5d
+			y: 12.0d
 		}
 		{
 			dependencies: [
@@ -1005,7 +1283,16 @@
 				{
 					id: "11FBEAFD95B0B3E7"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "32363905A0BDC6C3"
+					item: {
+						count: 1
+						id: "forbidden_arcanus:deorum_ingot"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -1036,7 +1323,7 @@
 				}
 			]
 			x: 8.0d
-			y: 7.5d
+			y: 6.0d
 		}
 	]
 }

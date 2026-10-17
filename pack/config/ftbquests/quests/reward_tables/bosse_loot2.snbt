@@ -1,0 +1,120 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "51EA446D5CB94935"
+	loot_crate: {
+		color: 5635925
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "bosse_loot2"
+	}
+	loot_size: 1
+	order_index: 27
+	rewards: [
+		{
+			count: 6
+			id: "18E20B0552860C1E"
+			item: {
+				count: 1
+				id: "minecraft:golden_apple"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "7014D61B59257305"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "57E6AB51A1A13103"
+			item: {
+				count: 1
+				id: "born_in_chaos_v1:dark_metal_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "704425F33F1CD148"
+			item: {
+				count: 1
+				id: "minecraft:ender_eye"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "167111B6A77B4FAA"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "5039736612DBFA8F"
+			item: {
+				count: 1
+				id: "cataclysm:ignitium_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "18F405BFFA224C49"
+			item: {
+				count: 1
+				id: "minecraft:shulker_shell"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "11FEFB1F30E628A9"
+			item: {
+				count: 1
+				id: "cataclysm:witherite_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 3
+			id: "57AB50BF13824256"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 6
+			id: "16B29E381302D313"
+			item: {
+				count: 1
+				id: "minecraft:emerald"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 12
+			id: "16385D76CA9C065F"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

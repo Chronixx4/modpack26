@@ -1,0 +1,111 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "73C458B40A2131CD"
+	loot_crate: {
+		color: 11579568
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "create_1_loot1"
+	}
+	loot_size: 1
+	order_index: 30
+	rewards: [
+		{
+			count: 16
+			id: "742A78166DA3CC36"
+			item: {
+				count: 1
+				id: "create:andesite_alloy"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "52FCDDD19E4BC513"
+			item: {
+				count: 1
+				id: "create:shaft"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "5B6623ABCED081DB"
+			item: {
+				count: 1
+				id: "create:cogwheel"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "1114D34E826819FF"
+			item: {
+				count: 1
+				id: "create:iron_sheet"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "166AABF5C01FD7A7"
+			item: {
+				count: 1
+				id: "create:copper_sheet"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "79CE17B2950FC876"
+			item: {
+				count: 1
+				id: "create:zinc_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "570C9F1FCF9EAB5E"
+			item: {
+				count: 1
+				id: "create:fluid_pipe"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "57FF97E8F5AD8ACF"
+			item: {
+				count: 1
+				id: "minecraft:iron_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 16
+			id: "71046CFA913873CA"
+			item: {
+				count: 1
+				id: "minecraft:copper_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 4
+			id: "5A9C0D875B24BF50"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

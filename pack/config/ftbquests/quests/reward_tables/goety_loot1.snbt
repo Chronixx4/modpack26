@@ -1,0 +1,102 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "7D9A9AB0F18A9C29"
+	loot_crate: {
+		color: 11579568
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "goety_loot1"
+	}
+	loot_size: 1
+	order_index: 63
+	rewards: [
+		{
+			count: 8
+			id: "30F3164CC52FC88F"
+			item: {
+				count: 1
+				id: "goety:ectoplasm"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "7C431BDF13D87C9B"
+			item: {
+				count: 1
+				id: "goety:magic_emerald"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "1185E84BF3889441"
+			item: {
+				count: 1
+				id: "goety:dark_fabric"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "512EECE1E42FAA8B"
+			item: {
+				count: 1
+				id: "goety:cursed_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "342DE1C94ED7160D"
+			item: {
+				count: 1
+				id: "goety:magic_fabric"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "3DF523A7A3EABF2A"
+			item: {
+				count: 1
+				id: "goety:spirit_fabric"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "1271C520B6636B6C"
+			item: {
+				count: 1
+				id: "minecraft:iron_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 16
+			id: "7390B71FD7165989"
+			item: {
+				count: 1
+				id: "minecraft:copper_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 4
+			id: "758AFA463CA478F0"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

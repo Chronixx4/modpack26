@@ -44,7 +44,12 @@
 			rewards: [
 				{
 					id: "1D81506C235D0569"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "59444479CD5F9724"
+					table_id: 9050716485911747625L
 					type: "loot"
 				}
 			]
@@ -72,7 +77,16 @@
 				{
 					id: "1E71F69716B07D76"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "7054DB9EB91E257E"
+					item: {
+						count: 1
+						id: "goety:ectoplasm"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -97,7 +111,16 @@
 				{
 					id: "320D1EB67C548BAD"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "703446C6BD2FB0FA"
+					item: {
+						count: 1
+						id: "goety:ectoplasm"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -123,7 +146,16 @@
 				{
 					id: "590256CE9B3E2E67"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "3FA3CCEB8DB6366A"
+					item: {
+						count: 1
+						id: "goety:magic_emerald"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -149,7 +181,16 @@
 				{
 					id: "714822FCDD4DA5F5"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "1D579A070CBF3473"
+					item: {
+						count: 1
+						id: "goety:magic_emerald"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -174,7 +215,16 @@
 				{
 					id: "597F635A235EC0F7"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "1EF5A676DAA900BE"
+					item: {
+						count: 1
+						id: "goety:magic_emerald"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -215,7 +265,16 @@
 				{
 					id: "568359EEBF9CF8CC"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "52EED6197379F165"
+					item: {
+						count: 1
+						id: "goety:magic_emerald"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -240,7 +299,16 @@
 				{
 					id: "53F09E60D895BEF2"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "3D1CB8E9E25CBE8A"
+					item: {
+						count: 1
+						id: "goety:magic_emerald"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -265,7 +333,16 @@
 				{
 					id: "78271FE555CAD928"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "5F91D348B7C662F1"
+					item: {
+						count: 1
+						id: "goety:dark_fabric"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -289,7 +366,12 @@
 			rewards: [
 				{
 					id: "174E9DE08A066346"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "11C5E39748CDCC59"
+					table_id: 1868392889256262720L
 					type: "loot"
 				}
 			]
@@ -325,7 +407,16 @@
 				{
 					id: "7699AA452D5A4922"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "1C109BBE31DD04A3"
+					item: {
+						count: 1
+						id: "goety:cursed_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -350,7 +441,16 @@
 				{
 					id: "50AFD7DF71E73E03"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "7E885708909EFEDB"
+					item: {
+						count: 1
+						id: "goety:cursed_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -375,7 +475,16 @@
 				{
 					id: "1A1404ACC3CA34B4"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "5C43F2F9DBA0028D"
+					item: {
+						count: 1
+						id: "goety:magic_fabric"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -400,7 +509,16 @@
 				{
 					id: "5FFF34712917B3E8"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "1CDA4F08F05380E2"
+					item: {
+						count: 1
+						id: "goety:cursed_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -425,7 +543,12 @@
 			rewards: [
 				{
 					id: "11B329B394FCDE0B"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "5400B379F8B186FA"
+					table_id: 1868392889256262720L
 					type: "loot"
 				}
 			]
@@ -460,7 +583,16 @@
 				{
 					id: "777E861BD929F6F0"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "1FBCC82F999F5443"
+					item: {
+						count: 1
+						id: "goety:dark_fabric"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -487,7 +619,16 @@
 				{
 					id: "534C2667DE066AA2"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "573E4CE7BC9B6FE7"
+					item: {
+						count: 1
+						id: "goety:magic_fabric"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -509,7 +650,12 @@
 			rewards: [
 				{
 					id: "5A30038ECEDBFCD4"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "1F5CC7C40CF6EF23"
+					table_id: 1868392889256262720L
 					type: "loot"
 				}
 			]
@@ -533,7 +679,16 @@
 				{
 					id: "73104BBBF3E19B5A"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "7A2C02D7EC683FCD"
+					item: {
+						count: 1
+						id: "goety:spirit_fabric"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -557,7 +712,12 @@
 			rewards: [
 				{
 					id: "78A23B2E36D1747B"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "1CCDEA40EB5F123B"
+					table_id: 8079828073450096685L
 					type: "loot"
 				}
 			]
@@ -585,7 +745,12 @@
 			rewards: [
 				{
 					id: "721FCEFD8B4D1C8E"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "3A8C4BA4BDC29ECF"
+					table_id: 8079828073450096685L
 					type: "loot"
 				}
 			]
@@ -610,7 +775,16 @@
 				{
 					id: "11B0F3A484A10ECF"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "3D0840603EA33229"
+					item: {
+						count: 1
+						id: "goety:spirit_fabric"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -635,7 +809,16 @@
 				{
 					id: "34DDB5090FB8A65A"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "541BE26A71DB0DB5"
+					item: {
+						count: 1
+						id: "goety:magic_fabric"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -659,7 +842,12 @@
 			rewards: [
 				{
 					id: "369F41EF642128E3"
-					table_id: 3797459037597754809L
+					type: "xp_levels"
+					xp_levels: 20
+				}
+				{
+					id: "31CC5EE64ECE639F"
+					table_id: 3952043054871740789L
 					type: "loot"
 				}
 			]
@@ -683,7 +871,16 @@
 				{
 					id: "5ADCC864CBE38A9B"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "7BF93CCB16BB67A1"
+					item: {
+						count: 1
+						id: "goety:spirit_fabric"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -708,7 +905,12 @@
 			rewards: [
 				{
 					id: "7D140F0037A860DF"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "1497F3340073FEF3"
+					table_id: 1868392889256262720L
 					type: "loot"
 				}
 			]
@@ -736,7 +938,12 @@
 			rewards: [
 				{
 					id: "5B9FD3CCB3457A8D"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "115033F61520F51E"
+					table_id: 1868392889256262720L
 					type: "loot"
 				}
 			]
@@ -764,7 +971,16 @@
 				{
 					id: "10D602066A4A36B9"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "7A0CB379E6D08A76"
+					item: {
+						count: 1
+						id: "goety:spirit_fabric"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -789,7 +1005,16 @@
 				{
 					id: "7F7C228DD6DA6D70"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "1E4150A4512ABEDB"
+					item: {
+						count: 1
+						id: "goety:soul_emerald"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -814,7 +1039,12 @@
 			rewards: [
 				{
 					id: "72FD1F488009B680"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "5CB292D4F5CFD984"
+					table_id: 1868392889256262720L
 					type: "loot"
 				}
 			]
@@ -838,7 +1068,16 @@
 				{
 					id: "37ED77E416D0104A"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "1F6E00EA17BCFA23"
+					item: {
+						count: 1
+						id: "goety:dark_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -863,7 +1102,16 @@
 				{
 					id: "7609E107CA8AF37F"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "1559BB9BEF234726"
+					item: {
+						count: 1
+						id: "goety:unholy_blood"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -912,7 +1160,12 @@
 			rewards: [
 				{
 					id: "7686DAB42CB8CB69"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "3569F9677E7D92F3"
+					table_id: 1868392889256262720L
 					type: "loot"
 				}
 			]
@@ -937,7 +1190,16 @@
 				{
 					id: "5E7091732EBDB6BC"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "518C79BDBF2165EC"
+					item: {
+						count: 1
+						id: "goety:unholy_blood"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -959,7 +1221,12 @@
 			rewards: [
 				{
 					id: "168B48E3E7268060"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "378C7AA1BA55DF8E"
+					table_id: 1868392889256262720L
 					type: "loot"
 				}
 			]
@@ -983,7 +1250,16 @@
 				{
 					id: "38671EF55B607FD7"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "39B51D4A30056B41"
+					item: {
+						count: 1
+						id: "goety:void_shard"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1008,7 +1284,16 @@
 				{
 					id: "3A78BBBA63382E52"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "5DA03C8686312E92"
+					item: {
+						count: 1
+						id: "goety:void_shard"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1033,7 +1318,16 @@
 				{
 					id: "5DF3EF4D904F67BE"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "35E1B3BBF0420A28"
+					item: {
+						count: 1
+						id: "goety:void_shard"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1066,7 +1360,12 @@
 			rewards: [
 				{
 					id: "162BC1BA7D94C245"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "3095BFDA8C5F8483"
+					table_id: 1868392889256262720L
 					type: "loot"
 				}
 			]
@@ -1118,7 +1417,15 @@
 				{
 					id: "5492F5B5B1DBE319"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					id: "3949A5CABCD621FD"
+					item: {
+						count: 1
+						id: "goety:soul_ruby"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1140,7 +1447,16 @@
 				{
 					id: "5D2E140DC0C286CC"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "3F807397FDF60932"
+					item: {
+						count: 1
+						id: "goety:void_shard"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1166,7 +1482,12 @@
 			rewards: [
 				{
 					id: "34D70A196F041685"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "3C43524AB9263777"
+					table_id: 8079828073450096685L
 					type: "loot"
 				}
 			]
@@ -1190,7 +1511,16 @@
 				{
 					id: "5CC16F3651875ECC"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 2
+					id: "77ACB008121B517C"
+					item: {
+						count: 1
+						id: "goety:void_shard"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1216,7 +1546,15 @@
 				{
 					id: "170A40CB2DD1009F"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					id: "5E1B82F85FFCEBFB"
+					item: {
+						count: 1
+						id: "goety:soul_ruby"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"

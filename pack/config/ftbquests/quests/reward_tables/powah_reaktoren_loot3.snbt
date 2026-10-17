@@ -1,0 +1,117 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "50CD10BB3979A751"
+	loot_crate: {
+		color: 11141375
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "powah_reaktoren_loot3"
+	}
+	loot_size: 1
+	order_index: 104
+	rewards: [
+		{
+			count: 8
+			id: "724EEE63167ABEBF"
+			item: {
+				count: 1
+				id: "powah:steel_energized"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "3EA960782469A9A4"
+			item: {
+				count: 1
+				id: "bigreactors:cyanite_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "1D1DEC5727727CDE"
+			item: {
+				count: 1
+				id: "powah:crystal_blazing"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "3147AF434FC7416B"
+			item: {
+				count: 1
+				id: "powah:crystal_niotic"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "15EAC98C5385EB63"
+			item: {
+				count: 1
+				id: "powah:aerial_pearl"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "59921CE72040DCD9"
+			item: {
+				count: 1
+				id: "powah:crystal_spirited"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "13489F18C6E6A117"
+			item: {
+				count: 1
+				id: "powah:ender_core"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "5886BB0C359A47C8"
+			item: {
+				count: 1
+				id: "powah:crystal_nitro"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "1D3C95AAC13465B9"
+			item: {
+				count: 1
+				id: "minecraft:diamond_block"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 2
+			id: "798A58BAC6CD5E02"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 3
+			id: "59EA9D0EE4B741BE"
+			item: {
+				count: 1
+				id: "minecraft:emerald_block"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

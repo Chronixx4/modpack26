@@ -1,0 +1,102 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "3CF742B9678AEDCC"
+	loot_crate: {
+		color: 11579568
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "apotheosis_loot1"
+	}
+	loot_size: 1
+	order_index: 13
+	rewards: [
+		{
+			count: 32
+			id: "59113F06B87082B2"
+			item: {
+				count: 1
+				id: "minecraft:lapis_lazuli"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "1BAC102536EE2FC2"
+			item: {
+				count: 1
+				id: "apotheosis:gem_dust"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "5A44187F8A0750AB"
+			item: {
+				count: 1
+				id: "apothic_enchanting:scrap_tome"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "5475AEDF261C7E1F"
+			item: {
+				count: 1
+				id: "apotheosis:mysterious_scrap_metal"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "5A34763ED508B986"
+			item: {
+				count: 1
+				id: "apotheosis:timeworn_fabric"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "14AD7A9D1CB6D38F"
+			item: {
+				count: 1
+				id: "apotheosis:luminous_crystal_shard"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "3D06388A0C68CF51"
+			item: {
+				count: 1
+				id: "minecraft:iron_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 16
+			id: "3B8607386233576F"
+			item: {
+				count: 1
+				id: "minecraft:copper_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 4
+			id: "58C721FE8C67D9E1"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

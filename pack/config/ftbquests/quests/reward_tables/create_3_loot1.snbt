@@ -1,0 +1,120 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "1CB7AFB6348589EC"
+	loot_crate: {
+		color: 11579568
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "create_3_loot1"
+	}
+	loot_size: 1
+	order_index: 35
+	rewards: [
+		{
+			count: 16
+			id: "3ADB34F535F7273F"
+			item: {
+				count: 1
+				id: "immersiveengineering:wire_copper"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "3ED0A31F938CFF5A"
+			item: {
+				count: 1
+				id: "createaddition:copper_spool"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "17367C5FF0A34B92"
+			item: {
+				count: 1
+				id: "create_new_age:overcharged_iron"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "3FFEE2196FF84E0F"
+			item: {
+				count: 1
+				id: "mekanism:ingot_tin"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "55E74BEBEE306904"
+			item: {
+				count: 1
+				id: "mekanism:ingot_bronze"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "5F34CBFA3C2E5AD4"
+			item: {
+				count: 1
+				id: "immersiveengineering:ingot_steel"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "5CC80AC7DAFE67A0"
+			item: {
+				count: 1
+				id: "createbigcannons:powder_charge"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "17F2671EF3190149"
+			item: {
+				count: 1
+				id: "createaddition:capacitor"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "7F2F9B77551DAFC8"
+			item: {
+				count: 1
+				id: "minecraft:iron_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 16
+			id: "71AB1ACC1A1889B6"
+			item: {
+				count: 1
+				id: "minecraft:copper_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 4
+			id: "7EDE2A5CFFDBD7F1"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

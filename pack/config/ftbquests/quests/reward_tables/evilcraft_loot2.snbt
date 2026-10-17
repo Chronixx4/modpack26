@@ -1,0 +1,66 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "356CB967F3310281"
+	loot_crate: {
+		color: 5635925
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "evilcraft_loot2"
+	}
+	loot_size: 1
+	order_index: 56
+	rewards: [
+		{
+			count: 12
+			id: "7DC937DAC8E880DA"
+			item: {
+				count: 1
+				id: "evilcraft:dark_gem"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "7AB5909C3869429B"
+			item: {
+				count: 1
+				id: "evilcraft:hardened_blood_shard"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 3
+			id: "3DC065FC67CC78AA"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 6
+			id: "1305D4701AB0C1F5"
+			item: {
+				count: 1
+				id: "minecraft:emerald"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 12
+			id: "390DC3E5ECDEDBE8"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

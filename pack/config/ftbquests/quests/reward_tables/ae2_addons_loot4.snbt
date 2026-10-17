@@ -1,0 +1,81 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "74A645CB9EE88336"
+	loot_crate: {
+		color: 16755200
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "ae2_addons_loot4"
+	}
+	loot_size: 1
+	order_index: 9
+	rewards: [
+		{
+			count: 2
+			id: "5C37398E520A5BD0"
+			item: {
+				count: 1
+				id: "megacells:accumulation_processor"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "592F7FAEC0529EF4"
+			item: {
+				count: 1
+				id: "advanced_ae:quantum_alloy"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "130CA96D910FA1A0"
+			item: {
+				count: 1
+				id: "advanced_ae:quantum_processor"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "11FD923E685442C7"
+			item: {
+				count: 1
+				id: "megacells:item_storage_cell_1m"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "5CD7E2C7E18683B3"
+			item: {
+				count: 1
+				id: "minecraft:netherite_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "17AA33241580992F"
+			item: {
+				count: 1
+				id: "minecraft:enchanted_golden_apple"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "3BF3B9608EF95BD6"
+			item: {
+				count: 1
+				id: "minecraft:nether_star"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

@@ -60,12 +60,17 @@
 			rewards: [
 				{
 					id: "7B683B9E82D80CF1"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "320625BDA13875FB"
+					table_id: 8341889940084306381L
 					type: "loot"
 				}
 				{
 					count: 16
-					id: "320625BDA13875FB"
+					id: "39D299B2C514AFE9"
 					item: {
 						count: 1
 						id: "create:andesite_alloy"
@@ -98,7 +103,16 @@
 				{
 					id: "76910334179F50A6"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 8
+					id: "1200C21679E4AC08"
+					item: {
+						count: 1
+						id: "create:andesite_alloy"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -124,7 +138,16 @@
 				{
 					id: "7254784682FDA67B"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "15A9836C3AFC94F2"
+					item: {
+						count: 1
+						id: "create:cogwheel"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -149,7 +172,16 @@
 				{
 					id: "504C333301384FDB"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "57F0310F44AEAE53"
+					item: {
+						count: 1
+						id: "create:cogwheel"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -175,7 +207,16 @@
 				{
 					id: "334FD719495D574B"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 16
+					id: "51A75DE3DCB0142F"
+					item: {
+						count: 1
+						id: "create:shaft"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -200,7 +241,16 @@
 				{
 					id: "12F2E21494CC6412"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "56174E0C76503B2E"
+					item: {
+						count: 1
+						id: "create:cogwheel"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -234,7 +284,16 @@
 				{
 					id: "37B081575AFC3E8E"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "33827BB54FA3C4A4"
+					item: {
+						count: 1
+						id: "create:iron_sheet"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -267,7 +326,16 @@
 				{
 					id: "310ECF9253DECBB9"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "7EFD4E231CB4E94D"
+					item: {
+						count: 1
+						id: "create:cogwheel"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -293,7 +361,16 @@
 				{
 					id: "399C4AD5120A4F76"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "3896B87F2E6E4E10"
+					item: {
+						count: 1
+						id: "create:iron_sheet"
+					}
+					type: "item"
 				}
 			]
 			shape: "hexagon"
@@ -320,7 +397,16 @@
 				{
 					id: "18D41B408BE42AAD"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "78958CFEDE2121F3"
+					item: {
+						count: 1
+						id: "create:iron_sheet"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -354,7 +440,16 @@
 				{
 					id: "782DF53FAE06D9C4"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "10F576D4BD9AF434"
+					item: {
+						count: 1
+						id: "create:iron_sheet"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -387,7 +482,16 @@
 				{
 					id: "733154739C845626"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "3915AE4D4EADC3EF"
+					item: {
+						count: 1
+						id: "create:copper_sheet"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -419,7 +523,12 @@
 			rewards: [
 				{
 					id: "7685597BEB583C01"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "5A01AE378D3AE8BE"
+					table_id: 8341889940084306381L
 					type: "loot"
 				}
 			]
@@ -448,7 +557,16 @@
 				{
 					id: "366F6D184BB297D4"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "52B0BAF5F271F581"
+					item: {
+						count: 1
+						id: "create:copper_sheet"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -492,7 +610,16 @@
 				{
 					id: "322E10F1AFB3D929"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "164840BA7475524A"
+					item: {
+						count: 1
+						id: "create:iron_sheet"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -517,7 +644,16 @@
 				{
 					id: "3E25871217C16B3D"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "3C765D0D26AD78CB"
+					item: {
+						count: 1
+						id: "create:fluid_pipe"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -542,7 +678,16 @@
 				{
 					id: "38F7CC77B6120EEC"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "1825448293FB6007"
+					item: {
+						count: 1
+						id: "create:zinc_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -569,7 +714,16 @@
 				{
 					id: "5670C3495E134298"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "75274F220836A29E"
+					item: {
+						count: 1
+						id: "create:copper_sheet"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -594,7 +748,16 @@
 				{
 					id: "385358B9837FB45E"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "51A9986F29A9C36C"
+					item: {
+						count: 1
+						id: "create:copper_sheet"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -618,7 +781,12 @@
 			rewards: [
 				{
 					id: "743F2F48495F2429"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "724CDAE6FCF8C3EE"
+					table_id: 8341889940084306381L
 					type: "loot"
 				}
 			]
@@ -645,7 +813,16 @@
 				{
 					id: "79706E580940EC2C"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "36026BE6D3065B63"
+					item: {
+						count: 1
+						id: "create:fluid_pipe"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -670,7 +847,16 @@
 				{
 					id: "314E3158068949DC"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "3148A262842A73C7"
+					item: {
+						count: 1
+						id: "create:andesite_casing"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -696,7 +882,16 @@
 				{
 					id: "3A1FDE7EAAF81AA8"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "7F30CDF8A7CE477B"
+					item: {
+						count: 1
+						id: "create:brass_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -721,7 +916,16 @@
 				{
 					id: "782CA3DBDBC16528"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "1C1717DE95CE4ACE"
+					item: {
+						count: 1
+						id: "create:brass_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -742,7 +946,16 @@
 				{
 					id: "1A11700BE3033E49"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "1D9E36A82AF1743F"
+					item: {
+						count: 1
+						id: "create:brass_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -763,7 +976,16 @@
 				{
 					id: "115BDB4678CE99E2"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "5517062DAE1B6B89"
+					item: {
+						count: 1
+						id: "create:copper_casing"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -796,7 +1018,16 @@
 				{
 					id: "39456A18F7DC0691"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "7D29DE127435E6C6"
+					item: {
+						count: 1
+						id: "create:andesite_casing"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -822,7 +1053,16 @@
 				{
 					id: "33D675FA674D36AE"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "3D9AC3BE90A3B513"
+					item: {
+						count: 1
+						id: "create:copper_casing"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -847,7 +1087,16 @@
 				{
 					id: "725A69D6A681CCB3"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "3CFB99B3FE54D27D"
+					item: {
+						count: 1
+						id: "create:brass_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -872,7 +1121,16 @@
 				{
 					id: "35DCFB5C3C91FF71"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "1EF27FB71054454E"
+					item: {
+						count: 1
+						id: "create:brass_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -906,7 +1164,12 @@
 			rewards: [
 				{
 					id: "7E3778818F1B1D77"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "1F168140440963CB"
+					table_id: 8341889940084306381L
 					type: "loot"
 				}
 			]
@@ -933,7 +1196,12 @@
 			rewards: [
 				{
 					id: "53D046F16F7C4703"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "3B8C3FDFFD8D5F04"
+					table_id: 3504246891289352839L
 					type: "loot"
 				}
 			]
@@ -962,7 +1230,16 @@
 				{
 					id: "1C53A313C9C7DA4D"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "506DC48D343CDE28"
+					item: {
+						count: 1
+						id: "create:electron_tube"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -989,7 +1266,16 @@
 				{
 					id: "7E413556F0C8129C"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "1EC3FB60FDA52963"
+					item: {
+						count: 1
+						id: "create:electron_tube"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1023,7 +1309,16 @@
 				{
 					id: "3861BBFD9598B496"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "782CC2DF4B36E262"
+					item: {
+						count: 1
+						id: "create:brass_casing"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1050,7 +1345,16 @@
 				{
 					id: "7DBB3C3CC420443F"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "5DEB90CC6643CA1A"
+					item: {
+						count: 1
+						id: "create:electron_tube"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1075,7 +1379,16 @@
 				{
 					id: "5122BC29111F89B6"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "1E85DA03C01BF454"
+					item: {
+						count: 1
+						id: "create:electron_tube"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1101,7 +1414,16 @@
 				{
 					id: "5B442339FAF42EF1"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "76625B1716EF2356"
+					item: {
+						count: 1
+						id: "create:brass_casing"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1135,7 +1457,16 @@
 				{
 					id: "32BD1598681CD440"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "15DE9B290546EA75"
+					item: {
+						count: 1
+						id: "create:large_cogwheel"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1161,7 +1492,16 @@
 				{
 					id: "164F3C516A1CCCF4"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "7B759CCBE1B0CB54"
+					item: {
+						count: 1
+						id: "create:brass_casing"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1187,7 +1527,16 @@
 				{
 					id: "331D3A6687C1F232"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "5D17108F578FE0AE"
+					item: {
+						count: 1
+						id: "create:large_cogwheel"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1220,7 +1569,12 @@
 			rewards: [
 				{
 					id: "117B1D6C980420EF"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "53AFB84C38149C23"
+					table_id: 3504246891289352839L
 					type: "loot"
 				}
 			]
@@ -1248,7 +1602,12 @@
 			rewards: [
 				{
 					id: "55A54BE1EC7DCCDA"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "16D1D052CC355421"
+					table_id: 4287007500245123786L
 					type: "loot"
 				}
 			]
@@ -1275,7 +1634,12 @@
 			rewards: [
 				{
 					id: "38FFEBD627067E6E"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "30BC2F4F180C1688"
+					table_id: 4287007500245123786L
 					type: "loot"
 				}
 			]

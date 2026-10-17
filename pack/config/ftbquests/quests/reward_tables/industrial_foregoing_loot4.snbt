@@ -1,0 +1,79 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "3CD6797EA96C7D83"
+	loot_crate: {
+		color: 16755200
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "industrial_foregoing_loot4"
+	}
+	loot_size: 1
+	order_index: 76
+	rewards: [
+		{
+			id: "7376CBB6E61F58FE"
+			item: {
+				count: 1
+				id: "industrialforegoing:speed_addon_tier_1"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "3D3CDB6A57AFFE96"
+			item: {
+				count: 1
+				id: "industrialforegoing:efficiency_addon_tier_1"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "1E4B316AED42C71F"
+			item: {
+				count: 1
+				id: "industrialforegoing:diamond_gear"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "1AE4EF13A7AA5C32"
+			item: {
+				count: 1
+				id: "industrialforegoing:pink_slime_bucket"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "1B4E3E9DDE95114E"
+			item: {
+				count: 1
+				id: "minecraft:netherite_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "539288AA73F876E3"
+			item: {
+				count: 1
+				id: "minecraft:enchanted_golden_apple"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "3D2BD22553862E92"
+			item: {
+				count: 1
+				id: "minecraft:nether_star"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

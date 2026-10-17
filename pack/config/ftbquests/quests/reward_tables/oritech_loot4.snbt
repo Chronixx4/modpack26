@@ -1,0 +1,82 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "703EDDA3A649CA58"
+	loot_crate: {
+		color: 16755200
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "oritech_loot4"
+	}
+	loot_size: 1
+	order_index: 101
+	rewards: [
+		{
+			count: 2
+			id: "56C5B52CF575A28E"
+			item: {
+				count: 1
+				id: "oritech:processing_unit"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "76B31FDDB7A0B6C5"
+			item: {
+				count: 1
+				id: "oritech:duratium_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "5C5834FCB544BDD4"
+			item: {
+				count: 1
+				id: "oritech:superconductor"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "590B7EE2CDCE851C"
+			item: {
+				count: 1
+				id: "oritech:prometheum_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "32C0BEE09328AE52"
+			item: {
+				count: 1
+				id: "minecraft:netherite_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "38E8E70DF5511778"
+			item: {
+				count: 1
+				id: "minecraft:enchanted_golden_apple"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "7CD1FBF097B33136"
+			item: {
+				count: 1
+				id: "minecraft:nether_star"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

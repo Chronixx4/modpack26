@@ -1,0 +1,75 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "3DA5CF3E3A21DA53"
+	loot_crate: {
+		color: 5635925
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "willkommen_loot2"
+	}
+	loot_size: 1
+	order_index: 124
+	rewards: [
+		{
+			count: 24
+			id: "3A9F5E25370DDECB"
+			item: {
+				count: 1
+				id: "minecraft:bread"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 18
+			id: "7A6A10D6D2B366D5"
+			item: {
+				count: 1
+				id: "minecraft:cooked_beef"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "5EE824EBFA4B8D3B"
+			item: {
+				count: 1
+				id: "minecraft:iron_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 3
+			id: "71BF9E6DF267E379"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 6
+			id: "5A65AE7CBB1DB770"
+			item: {
+				count: 1
+				id: "minecraft:emerald"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 12
+			id: "50C2F6BFA55A14CE"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

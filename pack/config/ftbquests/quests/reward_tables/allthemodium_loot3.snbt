@@ -1,0 +1,74 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "38FA70D92C45C6E7"
+	loot_crate: {
+		color: 11141375
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "allthemodium_loot3"
+	}
+	loot_size: 1
+	order_index: 11
+	rewards: [
+		{
+			count: 2
+			id: "79E21CAEF4A50215"
+			item: {
+				count: 1
+				id: "allthemodium:allthemodium_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "1B12206BC54BF140"
+			item: {
+				count: 1
+				id: "allthemodium:vibranium_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "189B327D4E0F69E1"
+			item: {
+				count: 1
+				id: "allthemodium:allthemodium_upgrade_smithing_template"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "5E693592807497A1"
+			item: {
+				count: 1
+				id: "minecraft:diamond_block"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 2
+			id: "5FCECE62A88E4ECD"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 3
+			id: "52FB322E53AD5328"
+			item: {
+				count: 1
+				id: "minecraft:emerald_block"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

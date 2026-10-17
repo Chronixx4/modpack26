@@ -1,0 +1,120 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "3B7E829BA18BC2CA"
+	loot_crate: {
+		color: 11141375
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "create_1_loot3"
+	}
+	loot_size: 1
+	order_index: 32
+	rewards: [
+		{
+			count: 16
+			id: "5584CCF5D654D1AD"
+			item: {
+				count: 1
+				id: "create:fluid_pipe"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "512850A553A36402"
+			item: {
+				count: 1
+				id: "create:andesite_casing"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "17EFE471330C1FBC"
+			item: {
+				count: 1
+				id: "create:brass_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "1E5DDCA526AAE256"
+			item: {
+				count: 1
+				id: "create:copper_casing"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "54E82EA0293B45AC"
+			item: {
+				count: 1
+				id: "create:electron_tube"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "1181F39881E5B200"
+			item: {
+				count: 1
+				id: "create:brass_casing"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "78957C88B3A0EDF4"
+			item: {
+				count: 1
+				id: "create:large_cogwheel"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "52DAE7B770E56309"
+			item: {
+				count: 1
+				id: "create:golden_sheet"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "1B246F3FF2A667D9"
+			item: {
+				count: 1
+				id: "minecraft:diamond_block"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 2
+			id: "1CB86A4FD3D35FBE"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 3
+			id: "775418BA20007AF3"
+			item: {
+				count: 1
+				id: "minecraft:emerald_block"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

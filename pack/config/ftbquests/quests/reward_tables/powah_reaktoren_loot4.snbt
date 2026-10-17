@@ -1,0 +1,88 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "5595E768F138DD50"
+	loot_crate: {
+		color: 16755200
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "powah_reaktoren_loot4"
+	}
+	loot_size: 1
+	order_index: 105
+	rewards: [
+		{
+			count: 2
+			id: "75C661105BC6D488"
+			item: {
+				count: 1
+				id: "powah:crystal_niotic"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "3125E4702E08FED2"
+			item: {
+				count: 1
+				id: "powah:aerial_pearl"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "3C07BE152068E4CD"
+			item: {
+				count: 1
+				id: "powah:crystal_spirited"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "53CBAE0BDC4C7B4F"
+			item: {
+				count: 1
+				id: "powah:ender_core"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "535E9B29449F72AD"
+			item: {
+				count: 1
+				id: "powah:crystal_nitro"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "37EB2754CE9BC879"
+			item: {
+				count: 1
+				id: "minecraft:netherite_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "322A1ACAE930A606"
+			item: {
+				count: 1
+				id: "minecraft:enchanted_golden_apple"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "702898D0CBDEB260"
+			item: {
+				count: 1
+				id: "minecraft:nether_star"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

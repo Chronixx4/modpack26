@@ -1,0 +1,102 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "3CB37EDCB670AA47"
+	loot_crate: {
+		color: 11141375
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "forbidden_hexerei_loot3"
+	}
+	loot_size: 1
+	order_index: 62
+	rewards: [
+		{
+			count: 32
+			id: "3E918C03E8D3A92D"
+			item: {
+				count: 1
+				id: "forbidden_arcanus:arcane_crystal_dust"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "16B90D02668E4EA5"
+			item: {
+				count: 1
+				id: "forbidden_arcanus:arcane_crystal"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "3A3EDBC89AB763D0"
+			item: {
+				count: 1
+				id: "hexerei:dried_sage_bundle"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "316CFF4279D9B57D"
+			item: {
+				count: 1
+				id: "forbidden_arcanus:mundabitur_dust"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "333DF8351EEAE2E7"
+			item: {
+				count: 1
+				id: "forbidden_arcanus:deorum_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "5BDCFADDA1531226"
+			item: {
+				count: 1
+				id: "forbidden_arcanus:obsidiansteel_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "39170BCEA01C43D7"
+			item: {
+				count: 1
+				id: "minecraft:diamond_block"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 2
+			id: "1579D9A374FC6927"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 3
+			id: "7D01F6A3303A39B0"
+			item: {
+				count: 1
+				id: "minecraft:emerald_block"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

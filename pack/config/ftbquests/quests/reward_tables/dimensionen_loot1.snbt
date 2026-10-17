@@ -1,0 +1,156 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "3557090919C101AC"
+	loot_crate: {
+		color: 11579568
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "dimensionen_loot1"
+	}
+	loot_size: 1
+	order_index: 39
+	rewards: [
+		{
+			count: 8
+			id: "7746C5B8186D2F46"
+			item: {
+				count: 1
+				id: "minecraft:ender_pearl"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "1E7273D9E538D4D0"
+			item: {
+				count: 1
+				id: "minecraft:blaze_rod"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "3738964A47667B65"
+			item: {
+				count: 1
+				id: "aether:ambrosium_shard"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "3890EADB871187BE"
+			item: {
+				count: 1
+				id: "undergarden:cloggrum_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "3DAD06FEE6E7991C"
+			item: {
+				count: 1
+				id: "betternether:cincinnasite_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "7855AC6D59D066C2"
+			item: {
+				count: 1
+				id: "alexscaves:amber"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "17CB1CFAD0DE7DAF"
+			item: {
+				count: 1
+				id: "enderscape:nebulite"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "35D5348E16E5BECB"
+			item: {
+				count: 1
+				id: "aether:zanite_gemstone"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "7D5D5BD4024FC036"
+			item: {
+				count: 1
+				id: "deep_aether:skyjade"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "1CE36A04D56F84E3"
+			item: {
+				count: 1
+				id: "betterend:terminite_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "38E7DA94DF8E7BF5"
+			item: {
+				count: 1
+				id: "ad_astra:desh_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "56A903F39A6098A6"
+			item: {
+				count: 1
+				id: "alexscaves:sea_glass_shards"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "1DA0A1AA05B616EA"
+			item: {
+				count: 1
+				id: "minecraft:iron_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 16
+			id: "5132F6D605CB16DE"
+			item: {
+				count: 1
+				id: "minecraft:copper_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 4
+			id: "341BCA1F3125833E"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

@@ -1,0 +1,98 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "14975B3754EBC075"
+	loot_crate: {
+		color: 16755200
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "irons_spells_loot4"
+	}
+	loot_size: 1
+	order_index: 80
+	rewards: [
+		{
+			count: 2
+			id: "1CBF1E9ABD9A88EE"
+			item: {
+				count: 1
+				id: "irons_jewelry:topaz"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "5853341CE818BBF2"
+			item: {
+				count: 1
+				id: "irons_spellbooks:rare_ink"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "3E9978BCCCDD28B5"
+			item: {
+				count: 1
+				id: "irons_spellbooks:arcane_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "703D05B1487F63A8"
+			item: {
+				count: 1
+				id: "irons_spellbooks:epic_ink"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "5CC6CDF43F2E9B5F"
+			item: {
+				count: 1
+				id: "irons_spellbooks:legendary_ink"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "7B8D9F73B19BE7B7"
+			item: {
+				count: 1
+				id: "irons_spellbooks:upgrade_orb"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "3355EF950DA426C6"
+			item: {
+				count: 1
+				id: "minecraft:netherite_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "75A04AAE7A31DE39"
+			item: {
+				count: 1
+				id: "minecraft:enchanted_golden_apple"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "3E21234A5FCA2885"
+			item: {
+				count: 1
+				id: "minecraft:nether_star"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

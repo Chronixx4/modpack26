@@ -29,7 +29,16 @@
 				{
 					id: "34C09810C69003B0"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 16
+					id: "54EA81F8F2C43452"
+					item: {
+						count: 1
+						id: "powah:dielectric_paste"
+					}
+					type: "item"
 				}
 			]
 			shape: "gear"
@@ -57,7 +66,16 @@
 				{
 					id: "1D6D4BD305B8A30D"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 8
+					id: "51B90308C702DB7C"
+					item: {
+						count: 1
+						id: "powah:dielectric_paste"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -82,7 +100,16 @@
 				{
 					id: "5764BF8D43F69029"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "5721ABB918C824B8"
+					item: {
+						count: 1
+						id: "powah:uraninite"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -115,7 +142,16 @@
 				{
 					id: "3CAA6347CBA0F100"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "5EBAA783E4F1B4AE"
+					item: {
+						count: 1
+						id: "powah:uraninite"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -147,7 +183,12 @@
 			rewards: [
 				{
 					id: "1E5B98D258B99FCA"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "3935F18F34824355"
+					table_id: 1563316606435524584L
 					type: "loot"
 				}
 			]
@@ -182,7 +223,16 @@
 				{
 					id: "32987CA9347AA38C"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "541AC1644F5B8957"
+					item: {
+						count: 1
+						id: "powah:uraninite"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -196,7 +246,7 @@
 				}
 			]
 			x: 6.0d
-			y: 3.0d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -207,7 +257,16 @@
 				{
 					id: "5512B1E4475F1BBC"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "30216FA8F8641ED4"
+					item: {
+						count: 1
+						id: "powah:uraninite"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -221,7 +280,7 @@
 				}
 			]
 			x: 8.0d
-			y: 3.0d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -232,7 +291,16 @@
 				{
 					id: "12AF5FBC73F6E01C"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "7479DC53EC6F3490"
+					item: {
+						count: 1
+						id: "bigreactors:graphite_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -246,7 +314,7 @@
 				}
 			]
 			x: 10.0d
-			y: 3.0d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -257,7 +325,15 @@
 				{
 					id: "5F2773D4A3922C95"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					id: "3335710F9C9DC6E3"
+					item: {
+						count: 1
+						id: "powah:energizing_orb"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -279,7 +355,7 @@
 				}
 			]
 			x: 6.0d
-			y: 1.5d
+			y: 3.0d
 		}
 		{
 			dependencies: [
@@ -290,7 +366,16 @@
 				{
 					id: "725DA9CE9F9F83EA"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "3469E3051560A67F"
+					item: {
+						count: 1
+						id: "powah:steel_energized"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -324,7 +409,16 @@
 				{
 					id: "3DBF19D74604A9EB"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "548ADEBD5C00CC05"
+					item: {
+						count: 1
+						id: "powah:steel_energized"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -351,7 +445,16 @@
 				{
 					id: "3B1DCFB738D65E5C"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "5CCA43A88E9F82F4"
+					item: {
+						count: 1
+						id: "bigreactors:cyanite_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -376,7 +479,15 @@
 				{
 					id: "50599C72BBDC92F6"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					id: "50C4AB1E5777D409"
+					item: {
+						count: 1
+						id: "powah:energizing_orb"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -409,7 +520,16 @@
 				{
 					id: "5036F75E9E5AFC8B"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "787CAECE4F1BAA84"
+					item: {
+						count: 1
+						id: "powah:steel_energized"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -431,7 +551,7 @@
 				}
 			]
 			x: 8.0d
-			y: -1.5d
+			y: -4.5d
 		}
 		{
 			dependencies: [
@@ -442,7 +562,16 @@
 				{
 					id: "1B86AE0AD3927D64"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "339677B791A36361"
+					item: {
+						count: 1
+						id: "powah:crystal_blazing"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -477,7 +606,16 @@
 				{
 					id: "77426F5192D1FF0E"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "5B3B96893FCEDADE"
+					item: {
+						count: 1
+						id: "bigreactors:cyanite_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -491,7 +629,7 @@
 				}
 			]
 			x: 10.0d
-			y: -3.0d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -502,7 +640,16 @@
 				{
 					id: "79A4EDA86DC5F7DF"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "5659CA30101B6CCE"
+					item: {
+						count: 1
+						id: "bigreactors:cyanite_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -535,7 +682,12 @@
 			rewards: [
 				{
 					id: "16049F18BDD46147"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "5E37551B2A8ADBE4"
+					table_id: 2058532963518569828L
 					type: "loot"
 				}
 			]
@@ -571,7 +723,16 @@
 				{
 					id: "7DEC2EDB63093EF6"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 2
+					id: "3384785D79FBDD06"
+					item: {
+						count: 1
+						id: "powah:crystal_blazing"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -605,7 +766,16 @@
 				{
 					id: "1EF8D884AB37DFEF"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "1827A786C9D6208E"
+					item: {
+						count: 1
+						id: "powah:crystal_blazing"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -629,7 +799,12 @@
 			rewards: [
 				{
 					id: "57F6A111D9215890"
-					table_id: 3797459037597754809L
+					type: "xp_levels"
+					xp_levels: 20
+				}
+				{
+					id: "14FBA38C1E26C398"
+					table_id: 6167089702663413072L
 					type: "loot"
 				}
 			]
@@ -665,7 +840,16 @@
 				{
 					id: "12DCF065DD507A83"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "3B44D9969FF6BE39"
+					item: {
+						count: 1
+						id: "powah:crystal_niotic"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -680,7 +864,7 @@
 				}
 			]
 			x: 2.0d
-			y: 4.5d
+			y: 3.0d
 		}
 		{
 			dependencies: [
@@ -691,7 +875,12 @@
 			rewards: [
 				{
 					id: "3FF57F9460F84593"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "552A2183314E525D"
+					table_id: 2058532963518569828L
 					type: "loot"
 				}
 			]
@@ -708,7 +897,7 @@
 				}
 			]
 			x: 4.0d
-			y: 4.5d
+			y: 3.0d
 		}
 		{
 			dependencies: [
@@ -719,7 +908,15 @@
 				{
 					id: "791381FC4F3BAB45"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					id: "337EE259A2005F15"
+					item: {
+						count: 1
+						id: "powah:ender_core"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -734,7 +931,7 @@
 				}
 			]
 			x: 2.0d
-			y: 7.5d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -745,7 +942,16 @@
 				{
 					id: "54107245C9A754F8"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "506F84BF1505E6AD"
+					item: {
+						count: 1
+						id: "powah:crystal_spirited"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -760,7 +966,7 @@
 				}
 			]
 			x: 4.0d
-			y: 6.0d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -771,7 +977,12 @@
 			rewards: [
 				{
 					id: "3ADECDFFF1F431AB"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "7EF4FB6A9788EE57"
+					table_id: 2058532963518569828L
 					type: "loot"
 				}
 			]
@@ -819,7 +1030,7 @@
 				}
 			]
 			x: 6.0d
-			y: 6.0d
+			y: 4.5d
 		}
 		{
 			dependencies: [
@@ -830,7 +1041,16 @@
 				{
 					id: "5BA5170E7F0E3FA2"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "5FEA90F94DB07A45"
+					item: {
+						count: 1
+						id: "powah:crystal_spirited"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -845,7 +1065,7 @@
 				}
 			]
 			x: 8.0d
-			y: 7.5d
+			y: 4.5d
 		}
 		{
 			dependencies: [
@@ -856,7 +1076,16 @@
 				{
 					id: "316125264B426722"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "52AF64D3ECC00134"
+					item: {
+						count: 1
+						id: "powah:crystal_spirited"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -878,7 +1107,7 @@
 				}
 			]
 			x: 10.0d
-			y: 7.5d
+			y: 4.5d
 		}
 		{
 			dependencies: [
@@ -889,7 +1118,15 @@
 				{
 					id: "148543ABDA82CE78"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					id: "3CC9B8631382B063"
+					item: {
+						count: 1
+						id: "powah:crystal_nitro"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -930,7 +1167,12 @@
 			rewards: [
 				{
 					id: "37B631D58DD1593B"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "7E7CD50CF87B54EC"
+					table_id: 5822328289569122129L
 					type: "loot"
 				}
 			]

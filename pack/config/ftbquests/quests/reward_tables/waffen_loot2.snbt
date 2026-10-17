@@ -1,0 +1,93 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "7254F32F9C855850"
+	loot_crate: {
+		color: 5635925
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "waffen_loot2"
+	}
+	loot_size: 1
+	order_index: 121
+	rewards: [
+		{
+			count: 64
+			id: "5EBAFCEF963A9E20"
+			item: {
+				count: 1
+				id: "minecraft:arrow"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 24
+			id: "3BA08236C7EBB96D"
+			item: {
+				count: 1
+				id: "minecraft:experience_bottle"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "34D2B9BB457A314D"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "72B2C6F9625BB287"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "5809FDC44594F784"
+			item: {
+				count: 1
+				id: "minecraft:golden_apple"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 3
+			id: "3BCBD9AA4A846814"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 6
+			id: "3836F1840622B1F0"
+			item: {
+				count: 1
+				id: "minecraft:emerald"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 12
+			id: "5A59BF25CFADAE8C"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}
