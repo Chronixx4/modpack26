@@ -1,0 +1,102 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "750C5C22125B38CB"
+	loot_crate: {
+		color: 5635925
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "occultism_loot2"
+	}
+	loot_size: 1
+	order_index: 96
+	rewards: [
+		{
+			count: 6
+			id: "1DDF62233A9D4325"
+			item: {
+				count: 1
+				id: "occultism:chalk_white"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "35CD3E445A294A90"
+			item: {
+				count: 1
+				id: "immersiveengineering:ingot_silver"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "50C29E9BEDAD12C2"
+			item: {
+				count: 1
+				id: "occultism:spirit_attuned_gem"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "13E2757304186D43"
+			item: {
+				count: 1
+				id: "occultism:purified_ink"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "1AC2069BF786B04A"
+			item: {
+				count: 1
+				id: "occultism:awakened_feather"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "71019B8E782BB67D"
+			item: {
+				count: 1
+				id: "occultism:iesnium_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 3
+			id: "768D0478F7489FFD"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 6
+			id: "181F0173E52252F4"
+			item: {
+				count: 1
+				id: "minecraft:emerald"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 12
+			id: "1F1D2CDED2E9B153"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

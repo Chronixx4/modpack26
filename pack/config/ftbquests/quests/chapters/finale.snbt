@@ -140,7 +140,12 @@
 			rewards: [
 				{
 					id: "59067F5E2A4A96CC"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "113AE4DBD4BF63EC"
+					table_id: 1743283558643373244L
 					type: "loot"
 				}
 			]
@@ -165,7 +170,16 @@
 				{
 					id: "52234A578F0DE588"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 64
+					id: "778F3A25D4E9E248"
+					item: {
+						count: 1
+						id: "minecraft:experience_bottle"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -187,7 +201,16 @@
 				{
 					id: "3477F478B562EA7A"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 64
+					id: "5EBB25F1BE76C346"
+					item: {
+						count: 1
+						id: "minecraft:experience_bottle"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -212,7 +235,12 @@
 			rewards: [
 				{
 					id: "51F1463A361F1FDC"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "15401C3889542764"
+					table_id: 1743283558643373244L
 					type: "loot"
 				}
 			]
@@ -240,7 +268,16 @@
 				{
 					id: "3135D3274EF20FFF"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 12
+					id: "374F35E1C3F3D152"
+					item: {
+						count: 1
+						id: "minecraft:golden_apple"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -266,7 +303,16 @@
 				{
 					id: "78016CCB9ADCFF75"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 12
+					id: "13D3422D6D5B539B"
+					item: {
+						count: 1
+						id: "minecraft:golden_apple"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -291,7 +337,12 @@
 			rewards: [
 				{
 					id: "1092C8BEBC349704"
-					table_id: 3797459037597754809L
+					type: "xp_levels"
+					xp_levels: 20
+				}
+				{
+					id: "1E03711DE4B76674"
+					table_id: 5894154515251248447L
 					type: "loot"
 				}
 			]
@@ -319,7 +370,16 @@
 				{
 					id: "59256CA6B08161B8"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 24
+					id: "37C13F1BDC5D7656"
+					item: {
+						count: 1
+						id: "mysticalagradditions:insanium_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -345,7 +405,16 @@
 				{
 					id: "378E1993E95FD1D8"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "50AAA28992F447E9"
+					item: {
+						count: 1
+						id: "minecraft:netherite_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -371,7 +440,16 @@
 				{
 					id: "7AE889E1CE4D5F15"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "31820A3B570ACD50"
+					item: {
+						count: 1
+						id: "minecraft:netherite_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -392,7 +470,12 @@
 			rewards: [
 				{
 					id: "39E9BCA9602831D2"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "527C6DC1E6362491"
+					table_id: 1743283558643373244L
 					type: "loot"
 				}
 			]
@@ -420,7 +503,16 @@
 				{
 					id: "17907B8CE2AD9AE5"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 2
+					id: "178214C02387A913"
+					item: {
+						count: 1
+						id: "minecraft:nether_star"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -442,7 +534,16 @@
 				{
 					id: "554958B0E8CFCE32"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "3FD7BCE82FF78F5F"
+					item: {
+						count: 1
+						id: "minecraft:netherite_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -464,7 +565,16 @@
 				{
 					id: "3B1A08DA4012DEB4"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "1600819AEF2BC166"
+					item: {
+						count: 1
+						id: "minecraft:netherite_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -485,7 +595,12 @@
 			rewards: [
 				{
 					id: "1B20C85AA4279D82"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "5D8158065DF8654B"
+					table_id: 1743283558643373244L
 					type: "loot"
 				}
 			]
@@ -512,7 +627,12 @@
 			rewards: [
 				{
 					id: "121E0A22CCFE5753"
-					table_id: 3797459037597754809L
+					type: "xp_levels"
+					xp_levels: 20
+				}
+				{
+					id: "1D9AEAA7B38C8C7A"
+					table_id: 5894154515251248447L
 					type: "loot"
 				}
 			]
@@ -540,7 +660,16 @@
 				{
 					id: "11F03C3C86FE3CFD"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 2
+					id: "39547042C54439EB"
+					item: {
+						count: 1
+						id: "minecraft:enchanted_golden_apple"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -565,7 +694,16 @@
 				{
 					id: "57E3BF76550BD8EB"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 2
+					id: "5E25185627711894"
+					item: {
+						count: 1
+						id: "minecraft:enchanted_golden_apple"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -590,7 +728,16 @@
 				{
 					id: "1813A1BC448505DF"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 24
+					id: "11CAFDA3FF381CE0"
+					item: {
+						count: 1
+						id: "mysticalagradditions:insanium_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -616,7 +763,12 @@
 			rewards: [
 				{
 					id: "319CDB4803ED2B6C"
-					table_id: 3797459037597754809L
+					type: "xp_levels"
+					xp_levels: 20
+				}
+				{
+					id: "1580BE7E0EB7187D"
+					table_id: 5894154515251248447L
 					type: "loot"
 				}
 			]
@@ -643,7 +795,12 @@
 			rewards: [
 				{
 					id: "1799F0F3E2E3B6CB"
-					table_id: 3797459037597754809L
+					type: "xp_levels"
+					xp_levels: 20
+				}
+				{
+					id: "35840B312EBEB029"
+					table_id: 5894154515251248447L
 					type: "loot"
 				}
 			]

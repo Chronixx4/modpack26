@@ -1,0 +1,101 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "1CD43D58D420CA2A"
+	loot_crate: {
+		color: 11141375
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "ae2_addons_loot3"
+	}
+	loot_size: 1
+	order_index: 8
+	rewards: [
+		{
+			count: 16
+			id: "77FA1169F33E3658"
+			item: {
+				count: 1
+				id: "megacells:sky_bronze_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "3A56522EC42F395D"
+			item: {
+				count: 1
+				id: "extendedae:concurrent_processor"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "5904AC9BBAE5FF3B"
+			item: {
+				count: 1
+				id: "megacells:accumulation_processor"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "57732C2ACC0FA6E2"
+			item: {
+				count: 1
+				id: "advanced_ae:quantum_alloy"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "3977C28CC170F55A"
+			item: {
+				count: 1
+				id: "advanced_ae:quantum_processor"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "1073791ADF477CB0"
+			item: {
+				count: 1
+				id: "megacells:item_storage_cell_1m"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "37E34FB81687AC1D"
+			item: {
+				count: 1
+				id: "minecraft:diamond_block"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 2
+			id: "11E54B852A33CF0B"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 3
+			id: "5D74BA26B61D9A2B"
+			item: {
+				count: 1
+				id: "minecraft:emerald_block"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

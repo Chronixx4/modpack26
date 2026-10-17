@@ -29,7 +29,16 @@
 				{
 					id: "742AE71A86254067"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 16
+					id: "5AB788CF35169F08"
+					item: {
+						count: 1
+						id: "immersiveengineering:coal_coke"
+					}
+					type: "item"
 				}
 			]
 			shape: "gear"
@@ -56,7 +65,16 @@
 				{
 					id: "5A69557132CAA766"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 8
+					id: "5FB878FF49A550B9"
+					item: {
+						count: 1
+						id: "immersiveengineering:coal_coke"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -81,7 +99,16 @@
 				{
 					id: "7653BAFEEC8A6283"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 8
+					id: "5F75BD8C4513A6DA"
+					item: {
+						count: 1
+						id: "immersiveengineering:coal_coke"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -106,7 +133,16 @@
 				{
 					id: "7028DD7F3D39FF4F"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 16
+					id: "32957BC2C43927F2"
+					item: {
+						count: 1
+						id: "immersiveengineering:coal_coke"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -132,7 +168,16 @@
 				{
 					id: "3ECC412BB961873F"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "15B2B7949AAC84FA"
+					item: {
+						count: 1
+						id: "immersiveengineering:ingot_constantan"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -164,7 +209,12 @@
 			rewards: [
 				{
 					id: "53996782D2A8311F"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "7341C28CD9CFAC00"
+					table_id: 4134336875065491372L
 					type: "loot"
 				}
 			]
@@ -200,7 +250,12 @@
 			rewards: [
 				{
 					id: "531229216F4CDCD7"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "1B25766AF18B51FC"
+					table_id: 8514379120600149404L
 					type: "loot"
 				}
 			]
@@ -228,7 +283,16 @@
 				{
 					id: "5F7807F815CCC31D"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "39FB8D12FDF2ADCF"
+					item: {
+						count: 1
+						id: "immersiveengineering:wirecoil_copper"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -254,7 +318,16 @@
 				{
 					id: "56D7C7DFDE0AC365"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "5C70BEAB04265677"
+					item: {
+						count: 1
+						id: "immersiveengineering:connector_lv"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -278,7 +351,12 @@
 			rewards: [
 				{
 					id: "3FFB5D31A82D3326"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "53D4100624E9279E"
+					table_id: 8514379120600149404L
 					type: "loot"
 				}
 			]
@@ -314,7 +392,12 @@
 			rewards: [
 				{
 					id: "32E566B59F1126EC"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "7B4B7D829A07EBE7"
+					table_id: 3940025607251423674L
 					type: "loot"
 				}
 			]
@@ -343,7 +426,16 @@
 				{
 					id: "7B2BFA05D6767A55"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "51EE5BF0FFC49341"
+					item: {
+						count: 1
+						id: "immersiveengineering:wirecoil_copper"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -377,7 +469,16 @@
 				{
 					id: "1CBE72B9541B1D4C"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "558D6AF43F3307C3"
+					item: {
+						count: 1
+						id: "immersiveengineering:wirecoil_copper"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -402,7 +503,16 @@
 				{
 					id: "536100DEA00CDB39"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "39D3FA595D69323D"
+					item: {
+						count: 1
+						id: "immersiveengineering:ingot_steel"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -427,7 +537,16 @@
 				{
 					id: "53A030944068DE39"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "3B7D7F005438D2E8"
+					item: {
+						count: 1
+						id: "immersiveengineering:ingot_steel"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -462,7 +581,15 @@
 				{
 					id: "52C545CEF07E41D8"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					id: "77629A3DBD76C92C"
+					item: {
+						count: 1
+						id: "immersiveengineering:capacitor_lv"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -495,7 +622,15 @@
 				{
 					id: "7D1637E3FB2CB754"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					id: "3947E74F099C8EBC"
+					item: {
+						count: 1
+						id: "immersiveengineering:capacitor_lv"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -536,7 +671,16 @@
 				{
 					id: "554C0C1C3F928D57"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 12
+					id: "7612DBEB48B0DC7C"
+					item: {
+						count: 1
+						id: "immersiveengineering:ingot_steel"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -585,7 +729,15 @@
 				{
 					id: "78925DE189F01D3F"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					id: "758F5A29F8055952"
+					item: {
+						count: 1
+						id: "immersiveengineering:capacitor_lv"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -610,7 +762,12 @@
 			rewards: [
 				{
 					id: "54E522A844B9FE5F"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "3B4FA1AB6BD36CF3"
+					table_id: 8514379120600149404L
 					type: "loot"
 				}
 			]
@@ -648,7 +805,15 @@
 				{
 					id: "162A73BA8E7C303B"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					id: "31A86700BF270445"
+					item: {
+						count: 1
+						id: "immersiveengineering:capacitor_lv"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -669,7 +834,16 @@
 				{
 					id: "1A7B1062925B618B"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "5D24989AC23693B5"
+					item: {
+						count: 1
+						id: "immersiveengineering:bullet_casull"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -689,7 +863,12 @@
 			rewards: [
 				{
 					id: "317932AF7B39C2E5"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "3880A695A9519913"
+					table_id: 3940025607251423674L
 					type: "loot"
 				}
 			]
@@ -720,7 +899,16 @@
 				{
 					id: "5F165E45D0E4B249"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "366732FF0B7A2643"
+					item: {
+						count: 1
+						id: "immersiveengineering:wirecoil_steel"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -753,7 +941,12 @@
 			rewards: [
 				{
 					id: "705191F81B75B768"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "3B9B4AC674FBA49D"
+					table_id: 3940025607251423674L
 					type: "loot"
 				}
 			]
@@ -777,7 +970,16 @@
 				{
 					id: "3446DE21B5DE7009"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "7CB855AF4C6565DF"
+					item: {
+						count: 1
+						id: "immersiveengineering:wirecoil_electrum"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -798,7 +1000,16 @@
 				{
 					id: "3E996202885B8233"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "12A7FAC6B6276C7B"
+					item: {
+						count: 1
+						id: "immersiveengineering:wirecoil_steel"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -823,7 +1034,16 @@
 				{
 					id: "55089805DB29D428"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 12
+					id: "3A5F24029ECCC95C"
+					item: {
+						count: 1
+						id: "immersiveengineering:bullet_casull"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -845,7 +1065,15 @@
 				{
 					id: "3CDF6C07460E6910"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					id: "7A6FDB4DBBA58F54"
+					item: {
+						count: 1
+						id: "immersiveengineering:capacitor_mv"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -870,7 +1098,16 @@
 				{
 					id: "1EA57D4C508D7677"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "5ED16D9856CCE843"
+					item: {
+						count: 1
+						id: "immersiveengineering:wirecoil_steel"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -897,7 +1134,16 @@
 				{
 					id: "1DAD85FF9120D882"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 12
+					id: "1E1FEFD24DB7B2F5"
+					item: {
+						count: 1
+						id: "immersiveengineering:wirecoil_steel"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"

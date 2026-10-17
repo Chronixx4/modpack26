@@ -1,0 +1,70 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "10621E7AA6AF6DC2"
+	loot_crate: {
+		color: 16755200
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "draconic_loot4"
+	}
+	loot_size: 1
+	order_index: 45
+	rewards: [
+		{
+			id: "1801D217E53C11B3"
+			item: {
+				count: 1
+				id: "draconicevolution:awakened_core"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "32D8011883DAEE85"
+			item: {
+				count: 1
+				id: "draconicevolution:chaos_shard"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "7A78D3D173E7808B"
+			item: {
+				count: 1
+				id: "draconicevolution:chaotic_core"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "1A9FED12DE6128A5"
+			item: {
+				count: 1
+				id: "minecraft:netherite_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "5C923F4CA991A18A"
+			item: {
+				count: 1
+				id: "minecraft:enchanted_golden_apple"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "5931A7736567871D"
+			item: {
+				count: 1
+				id: "minecraft:nether_star"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

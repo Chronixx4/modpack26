@@ -1,0 +1,120 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "336F42C6C7895C42"
+	loot_crate: {
+		color: 5635925
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "create_3_loot2"
+	}
+	loot_size: 1
+	order_index: 36
+	rewards: [
+		{
+			count: 12
+			id: "102EBADCDDB6621D"
+			item: {
+				count: 1
+				id: "mekanism:ingot_tin"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "59251C94957444A5"
+			item: {
+				count: 1
+				id: "mekanism:ingot_bronze"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "7D7E3DDE845BB92D"
+			item: {
+				count: 1
+				id: "immersiveengineering:ingot_steel"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "330437CD760E0CDC"
+			item: {
+				count: 1
+				id: "createbigcannons:powder_charge"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "52D157FEFC1536A2"
+			item: {
+				count: 1
+				id: "createaddition:capacitor"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "14EA2BCF05F36802"
+			item: {
+				count: 1
+				id: "createmetallurgy:tungsten_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "5A6E487E692E2EDD"
+			item: {
+				count: 1
+				id: "create_new_age:thorium"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "1E5CCCA59AC271F7"
+			item: {
+				count: 1
+				id: "aeronautics:levitite"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 3
+			id: "34B0F5684440A766"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 6
+			id: "3B319D1A206ABF85"
+			item: {
+				count: 1
+				id: "minecraft:emerald"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 12
+			id: "1C52E3412C799F27"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

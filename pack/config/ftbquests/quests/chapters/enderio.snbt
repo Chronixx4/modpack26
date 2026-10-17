@@ -37,7 +37,16 @@
 				{
 					id: "7B1A1E5B6CFD18AA"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "7D7FBD0BBDEAD4B2"
+					item: {
+						count: 1
+						id: "enderio:silicon"
+					}
+					type: "item"
 				}
 			]
 			shape: "gear"
@@ -65,7 +74,12 @@
 			rewards: [
 				{
 					id: "5A80ABB215DCB128"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "5B3BB818681FC784"
+					table_id: 8636987390889147436L
 					type: "loot"
 				}
 			]
@@ -93,7 +107,16 @@
 				{
 					id: "57AB9A3432F14CC4"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "738767B2B58A85BB"
+					item: {
+						count: 1
+						id: "enderio:conductive_alloy_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -134,7 +157,16 @@
 				{
 					id: "5B095BE1CD3E2960"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "189CF09BF8C0341F"
+					item: {
+						count: 1
+						id: "enderio:conductive_alloy_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -159,7 +191,16 @@
 				{
 					id: "7F357BC9D3DD8C3B"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "38DD0A086184946F"
+					item: {
+						count: 1
+						id: "enderio:redstone_alloy_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -183,7 +224,12 @@
 			rewards: [
 				{
 					id: "53F7624F590FF2D2"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "39C48DDF61FAB6DC"
+					table_id: 2050989245603406623L
 					type: "loot"
 				}
 			]
@@ -210,7 +256,16 @@
 				{
 					id: "599C665FF86AF0F2"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "393FBF331822E3D2"
+					item: {
+						count: 1
+						id: "enderio:conductive_alloy_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -235,7 +290,16 @@
 				{
 					id: "3179EA57A6578546"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "58C5401B5B2684A7"
+					item: {
+						count: 1
+						id: "enderio:energetic_alloy_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -261,7 +325,16 @@
 				{
 					id: "714FF3834ECE173A"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "71F4AEEB62E26511"
+					item: {
+						count: 1
+						id: "enderio:vibrant_alloy_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -287,7 +360,16 @@
 				{
 					id: "74BBE0659E825672"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "3E0E95FEF71594A9"
+					item: {
+						count: 1
+						id: "enderio:vibrant_alloy_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -321,7 +403,16 @@
 				{
 					id: "5207625DB77BEB55"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "330AEA7CB694863D"
+					item: {
+						count: 1
+						id: "enderio:energetic_alloy_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -346,7 +437,12 @@
 			rewards: [
 				{
 					id: "79ED8E47BF7BDA01"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "57A0D0BFAEE86625"
+					table_id: 8636987390889147436L
 					type: "loot"
 				}
 			]
@@ -374,7 +470,16 @@
 				{
 					id: "3979C521537BC617"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "1C7AE315DBEAF6EB"
+					item: {
+						count: 1
+						id: "enderio:pulsating_alloy_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -407,7 +512,16 @@
 				{
 					id: "707E19E89D08AFA7"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "1D8A277708DF68E3"
+					item: {
+						count: 1
+						id: "enderio:soularium_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -448,7 +562,16 @@
 				{
 					id: "3767F491846B4F7C"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "55ABF3F47E611508"
+					item: {
+						count: 1
+						id: "enderio:soularium_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -474,7 +597,16 @@
 				{
 					id: "7FBA16FC6067E3CA"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "3AEAE3AA151B38F7"
+					item: {
+						count: 1
+						id: "enderio:dark_steel_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -501,7 +633,16 @@
 				{
 					id: "7F7CBEDD049462C2"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "5BB91DBC8FD35325"
+					item: {
+						count: 1
+						id: "enderio:soularium_ingot"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -527,7 +668,16 @@
 				{
 					id: "103905CF194DE368"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "50E1AE686A760FF0"
+					item: {
+						count: 1
+						id: "enderio:pulsating_crystal"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -553,7 +703,16 @@
 				{
 					id: "327B98D44E1F0576"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "1865067277BAE9BD"
+					item: {
+						count: 1
+						id: "enderio:pulsating_crystal"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -579,7 +738,16 @@
 				{
 					id: "32C5164C7F1CA41B"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "3C1B47D252139D76"
+					item: {
+						count: 1
+						id: "enderio:vibrant_crystal"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -606,7 +774,16 @@
 				{
 					id: "5EC7E675DE3DD037"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "372AA2E689494252"
+					item: {
+						count: 1
+						id: "enderio:pulsating_crystal"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -631,7 +808,16 @@
 				{
 					id: "163FB1354B9126B1"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "301926E1EA692445"
+					item: {
+						count: 1
+						id: "enderio:pulsating_crystal"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -665,7 +851,12 @@
 			rewards: [
 				{
 					id: "7143E07FE61F753D"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "1006752517A3FB01"
+					table_id: 8636987390889147436L
 					type: "loot"
 				}
 			]
@@ -692,7 +883,15 @@
 				{
 					id: "3DBA0FF7E04D47F0"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					id: "30B4982656FD1A8A"
+					item: {
+						count: 1
+						id: "enderio:ender_crystal"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -719,7 +918,15 @@
 				{
 					id: "7EA28358F02B122B"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					id: "5E3B29EBDFF510E0"
+					item: {
+						count: 1
+						id: "enderio:ender_crystal"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -751,7 +958,12 @@
 			rewards: [
 				{
 					id: "1ACA17A914FB333E"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "1F15DC76A25FA905"
+					table_id: 6590182106186567998L
 					type: "loot"
 				}
 			]

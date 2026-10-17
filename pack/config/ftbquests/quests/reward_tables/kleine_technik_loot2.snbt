@@ -1,0 +1,120 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "3D5B30D675E00772"
+	loot_crate: {
+		color: 5635925
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "kleine_technik_loot2"
+	}
+	loot_size: 1
+	order_index: 82
+	rewards: [
+		{
+			count: 6
+			id: "52B5B654F41098D9"
+			item: {
+				count: 1
+				id: "actuallyadditions:restonia_crystal"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "10DE9FB594325EBE"
+			item: {
+				count: 1
+				id: "actuallyadditions:palis_crystal"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "1A41E6C25AF40A2F"
+			item: {
+				count: 1
+				id: "actuallyadditions:enori_crystal"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "7B615B786A252F92"
+			item: {
+				count: 1
+				id: "actuallyadditions:void_crystal"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "74C1CA66A834FE00"
+			item: {
+				count: 1
+				id: "integrateddynamics:crystalized_menril_chunk"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "5A0C7187FCD259EF"
+			item: {
+				count: 1
+				id: "ironjetpacks:strap"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "7A19B8E7DEA9BF45"
+			item: {
+				count: 1
+				id: "ironjetpacks:basic_coil"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "1E9C5FA0F5D74467"
+			item: {
+				count: 1
+				id: "ironjetpacks:thruster"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 3
+			id: "7232A1557AD3E07F"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 6
+			id: "3E77C8939ADC1DC1"
+			item: {
+				count: 1
+				id: "minecraft:emerald"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 12
+			id: "1720D89650437E39"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

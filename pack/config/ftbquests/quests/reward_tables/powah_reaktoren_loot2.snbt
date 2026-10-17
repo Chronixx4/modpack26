@@ -1,0 +1,118 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "1C9160D2E0F4DD64"
+	loot_crate: {
+		color: 5635925
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "powah_reaktoren_loot2"
+	}
+	loot_size: 1
+	order_index: 103
+	rewards: [
+		{
+			count: 12
+			id: "5652CC647FFB884D"
+			item: {
+				count: 1
+				id: "bigreactors:graphite_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "5110FC25FA25B990"
+			item: {
+				count: 1
+				id: "bigreactors:yellorium_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "3B1ED5F3EB2E5205"
+			item: {
+				count: 1
+				id: "powah:energizing_orb"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "1F80F6E391E8ACE1"
+			item: {
+				count: 1
+				id: "powah:steel_energized"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "5786DC38D8A021AD"
+			item: {
+				count: 1
+				id: "bigreactors:cyanite_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "5476BDC400770711"
+			item: {
+				count: 1
+				id: "powah:crystal_blazing"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "3C1EFA20D199C828"
+			item: {
+				count: 1
+				id: "powah:crystal_niotic"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "1AB6EF15EBA50FD3"
+			item: {
+				count: 1
+				id: "powah:aerial_pearl"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 3
+			id: "723C2C9D41E4D794"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 6
+			id: "31FB80A0104E3506"
+			item: {
+				count: 1
+				id: "minecraft:emerald"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 12
+			id: "598ED9F97EAC67D9"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

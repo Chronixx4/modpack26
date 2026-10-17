@@ -1,0 +1,89 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "1233D12C0670ED00"
+	loot_crate: {
+		color: 11141375
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "industrial_foregoing_loot3"
+	}
+	loot_size: 1
+	order_index: 75
+	rewards: [
+		{
+			id: "1726059D0CF1532B"
+			item: {
+				count: 1
+				id: "industrialforegoing:range_addon_tier_1"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "5A3BE7EE735FE919"
+			item: {
+				count: 1
+				id: "industrialforegoing:speed_addon_tier_1"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "312DFFD5AEE43FBA"
+			item: {
+				count: 1
+				id: "industrialforegoing:efficiency_addon_tier_1"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "56D8830BAE83BB14"
+			item: {
+				count: 1
+				id: "industrialforegoing:diamond_gear"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "1B7D1C60BEEFDF9B"
+			item: {
+				count: 1
+				id: "industrialforegoing:pink_slime_bucket"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "531C513E5B89668E"
+			item: {
+				count: 1
+				id: "minecraft:diamond_block"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 2
+			id: "3B3F15EDA6EAEA6A"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 3
+			id: "55BEEE8CB656779F"
+			item: {
+				count: 1
+				id: "minecraft:emerald_block"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

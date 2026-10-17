@@ -1,0 +1,102 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "7329A8168716850F"
+	loot_crate: {
+		color: 11579568
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "mystical_agriculture_loot1"
+	}
+	loot_size: 1
+	order_index: 91
+	rewards: [
+		{
+			count: 32
+			id: "7C9420F4FBA6DCE0"
+			item: {
+				count: 1
+				id: "mysticalagriculture:inferium_essence"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "7546AD77FEF6A6A7"
+			item: {
+				count: 1
+				id: "mysticalagriculture:inferium_seeds"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "3FBCC6E1F338BEB5"
+			item: {
+				count: 1
+				id: "mysticalagriculture:mystical_fertilizer"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "17047A2CF0150B1B"
+			item: {
+				count: 1
+				id: "mysticalagriculture:iron_seeds"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "5D3E5F0A608CC73E"
+			item: {
+				count: 1
+				id: "mysticalagriculture:prosperity_shard"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 24
+			id: "74EE53237ACAEE11"
+			item: {
+				count: 1
+				id: "mysticalagriculture:prudentium_essence"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "7E2F6D53572AB491"
+			item: {
+				count: 1
+				id: "minecraft:iron_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 16
+			id: "3BF062623892525B"
+			item: {
+				count: 1
+				id: "minecraft:copper_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 4
+			id: "12C53456C05D22EA"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

@@ -1,0 +1,72 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "3F833F04475BB76A"
+	loot_crate: {
+		color: 16755200
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "strukturen_loot4"
+	}
+	loot_size: 1
+	order_index: 112
+	rewards: [
+		{
+			count: 3
+			id: "53F5B375A8EFC604"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "1C47D0686C5182E0"
+			item: {
+				count: 1
+				id: "minecraft:saddle"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "7BCA2495950370D0"
+			item: {
+				count: 1
+				id: "minecraft:golden_apple"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "7FC59A57F3E8FF4B"
+			item: {
+				count: 1
+				id: "minecraft:netherite_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "58BB23C519E3E2B9"
+			item: {
+				count: 1
+				id: "minecraft:enchanted_golden_apple"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "3EC1E47EA354EEAC"
+			item: {
+				count: 1
+				id: "minecraft:nether_star"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

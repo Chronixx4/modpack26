@@ -1,0 +1,110 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "702150D2F438C82D"
+	loot_crate: {
+		color: 11141375
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "goety_loot3"
+	}
+	loot_size: 1
+	order_index: 65
+	rewards: [
+		{
+			count: 8
+			id: "38BBF76A477FF61D"
+			item: {
+				count: 1
+				id: "goety:magic_fabric"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "5892991B257B7F3B"
+			item: {
+				count: 1
+				id: "goety:spirit_fabric"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "7D0B8D4A0D1B0413"
+			item: {
+				count: 1
+				id: "goety:dark_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "13014D0DBA418E33"
+			item: {
+				count: 1
+				id: "goety:unholy_blood"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "104EB7CF2B44ACB4"
+			item: {
+				count: 1
+				id: "goety:soul_emerald"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "733449D31D3B3344"
+			item: {
+				count: 1
+				id: "goety:void_shard"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "51659DF7A0FC8C2D"
+			item: {
+				count: 1
+				id: "goety:soul_ruby"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "5DFCD171D91430EC"
+			item: {
+				count: 1
+				id: "minecraft:diamond_block"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 2
+			id: "34D607669E309C35"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 3
+			id: "3A23D6359473E2F3"
+			item: {
+				count: 1
+				id: "minecraft:emerald_block"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

@@ -1,0 +1,111 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "39474EBE827E3FBE"
+	loot_crate: {
+		color: 11141375
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "oritech_loot3"
+	}
+	loot_size: 1
+	order_index: 100
+	rewards: [
+		{
+			count: 2
+			id: "1A30BC6B11597F22"
+			item: {
+				count: 1
+				id: "oritech:magnetic_coil"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "121BF043C787CA6F"
+			item: {
+				count: 1
+				id: "oritech:enderic_compound"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "7F5F1FF7CB66D12B"
+			item: {
+				count: 1
+				id: "oritech:energite_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "3716BF8B9D806275"
+			item: {
+				count: 1
+				id: "oritech:processing_unit"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "1A05022D31EC7105"
+			item: {
+				count: 1
+				id: "oritech:duratium_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "300E10F0B8B4E83C"
+			item: {
+				count: 1
+				id: "oritech:superconductor"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "5002C14FD0863D67"
+			item: {
+				count: 1
+				id: "oritech:prometheum_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "7D86DD6BC1628AE5"
+			item: {
+				count: 1
+				id: "minecraft:diamond_block"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 2
+			id: "5E83A32D6EAB3AA2"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 3
+			id: "5D2A146174B40A12"
+			item: {
+				count: 1
+				id: "minecraft:emerald_block"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

@@ -1,0 +1,120 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "5457F03125981A5C"
+	loot_crate: {
+		color: 11579568
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "essen_loot1"
+	}
+	loot_size: 1
+	order_index: 52
+	rewards: [
+		{
+			count: 8
+			id: "56C95473EF93C105"
+			item: {
+				count: 1
+				id: "farmersdelight:tomato"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "1B88DA91EE98DF99"
+			item: {
+				count: 1
+				id: "farmersdelight:onion"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "5ECA6861948F01FE"
+			item: {
+				count: 1
+				id: "farmersdelight:rice"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "3BA8A90D810D410C"
+			item: {
+				count: 1
+				id: "aquaculture:worm"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "1F3C4B5AB4AD1C39"
+			item: {
+				count: 1
+				id: "tide:bait"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "563AE86792387CF5"
+			item: {
+				count: 1
+				id: "farmersdelight:cooked_rice"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "5DD217946F8EC466"
+			item: {
+				count: 1
+				id: "farmersdelight:beef_stew"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "52FBEA881F68668A"
+			item: {
+				count: 1
+				id: "farmersdelight:hamburger"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "5F879F0B75A9FA3C"
+			item: {
+				count: 1
+				id: "minecraft:iron_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 16
+			id: "5D8D4A607CBB0E5B"
+			item: {
+				count: 1
+				id: "minecraft:copper_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 4
+			id: "50E047922C9A10C0"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

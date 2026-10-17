@@ -29,7 +29,16 @@
 				{
 					id: "1C2CE31592D99D48"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "71219DA2134A19BF"
+					item: {
+						count: 1
+						id: "actuallyadditions:black_quartz"
+					}
+					type: "item"
 				}
 			]
 			shape: "gear"
@@ -52,7 +61,16 @@
 				{
 					id: "3D0D8E43A55A72F9"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "73C55F0292FCCABF"
+					item: {
+						count: 1
+						id: "actuallyadditions:canola_seeds"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -78,7 +96,16 @@
 				{
 					id: "55FEFB9A335C256D"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "505EB0E6FF550862"
+					item: {
+						count: 1
+						id: "actuallyadditions:canola_seeds"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -104,7 +131,16 @@
 				{
 					id: "7C09515845EAAF9A"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "5D82623585B2BF2A"
+					item: {
+						count: 1
+						id: "actuallyadditions:black_quartz"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -128,7 +164,12 @@
 			rewards: [
 				{
 					id: "31391B876480882B"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "7CDC3FBAA8D154DA"
+					table_id: 8575765873016631051L
 					type: "loot"
 				}
 			]
@@ -155,7 +196,16 @@
 				{
 					id: "1CFDCE420CCEFD7E"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "1EA0DE76E343BCA7"
+					item: {
+						count: 1
+						id: "actuallyadditions:palis_crystal"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -204,7 +254,16 @@
 				{
 					id: "1714F3292B799038"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "1333E9574293D198"
+					item: {
+						count: 1
+						id: "actuallyadditions:palis_crystal"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -237,7 +296,16 @@
 				{
 					id: "79328675B3E896F2"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "3F97915F1565B143"
+					item: {
+						count: 1
+						id: "actuallyadditions:restonia_crystal"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -272,7 +340,16 @@
 				{
 					id: "345623E5920FBFF3"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "7483EDEF491F27A8"
+					item: {
+						count: 1
+						id: "actuallyadditions:palis_crystal"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -298,7 +375,16 @@
 				{
 					id: "751ECDD13D1B5E95"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "7C5BB8437EE93B7E"
+					item: {
+						count: 1
+						id: "actuallyadditions:enori_crystal"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -324,7 +410,16 @@
 				{
 					id: "382CAACEDAFD99C9"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "160D2A31B7A26412"
+					item: {
+						count: 1
+						id: "actuallyadditions:enori_crystal"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -358,7 +453,16 @@
 				{
 					id: "1DB2A4EBAC7F24A1"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "141BEDE6734EC945"
+					item: {
+						count: 1
+						id: "actuallyadditions:enori_crystal"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -391,7 +495,16 @@
 				{
 					id: "7C6FB63A251ECB44"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "38C88CF02D41E354"
+					item: {
+						count: 1
+						id: "integrateddynamics:crystalized_menril_chunk"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -424,7 +537,16 @@
 				{
 					id: "512714E05549D85A"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "1A663DC828DB5EF1"
+					item: {
+						count: 1
+						id: "actuallyadditions:void_crystal"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -457,7 +579,12 @@
 			rewards: [
 				{
 					id: "1FB74C2127AB198E"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "3C058CFFBD99C905"
+					table_id: 4421181156853024626L
 					type: "loot"
 				}
 			]
@@ -492,7 +619,16 @@
 				{
 					id: "10FE545F23E63C43"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "39F423197E6DAAC5"
+					item: {
+						count: 1
+						id: "integrateddynamics:crystalized_menril_chunk"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -525,7 +661,16 @@
 				{
 					id: "7AB0DD872BABC165"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "1B923EDC85AB3B18"
+					item: {
+						count: 1
+						id: "integrateddynamics:crystalized_menril_chunk"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -559,7 +704,16 @@
 				{
 					id: "502609DDFEA2CF76"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "30AA877CF5966F23"
+					item: {
+						count: 1
+						id: "ironjetpacks:basic_coil"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -592,7 +746,16 @@
 				{
 					id: "11C55B4FE7E12BE8"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "12CC82E0E1138F96"
+					item: {
+						count: 1
+						id: "ironjetpacks:strap"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -626,7 +789,16 @@
 				{
 					id: "5690E0A0E8771B45"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "7E90335C0AC82017"
+					item: {
+						count: 1
+						id: "ironjetpacks:basic_coil"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -652,7 +824,16 @@
 				{
 					id: "19E9F8B69A959273"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "7864BC25C2BEF68D"
+					item: {
+						count: 1
+						id: "ironjetpacks:basic_coil"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -686,7 +867,16 @@
 				{
 					id: "30B3F2BAAAF0C6AF"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "3DDE10B99F329462"
+					item: {
+						count: 1
+						id: "ironjetpacks:basic_coil"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -718,7 +908,12 @@
 			rewards: [
 				{
 					id: "38FF305E007AC29B"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "5220AEE206C71E6E"
+					table_id: 8575765873016631051L
 					type: "loot"
 				}
 			]
@@ -744,7 +939,16 @@
 				{
 					id: "79A9596B3E42E3DB"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "5EE1583E54879D4D"
+					item: {
+						count: 1
+						id: "ironjetpacks:advanced_coil"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -777,7 +981,16 @@
 				{
 					id: "19B647B79F78ABFA"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "5BFAE4931FDBAE2E"
+					item: {
+						count: 1
+						id: "ironjetpacks:thruster"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -817,7 +1030,12 @@
 			rewards: [
 				{
 					id: "77B1B3593EEE2CBC"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "56EB04C38877E8B7"
+					table_id: 8575765873016631051L
 					type: "loot"
 				}
 			]
@@ -843,7 +1061,15 @@
 				{
 					id: "5926C102982E93DF"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					id: "1D1F41260F338E56"
+					item: {
+						count: 1
+						id: "ironjetpacks:elite_coil"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -876,7 +1102,15 @@
 				{
 					id: "507E75052E05D57D"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					id: "52139673DC02776F"
+					item: {
+						count: 1
+						id: "ironjetpacks:elite_coil"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -901,7 +1135,12 @@
 			rewards: [
 				{
 					id: "1644E99C34FD5EE0"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "34AE17AF9B8F58F7"
+					table_id: 4421181156853024626L
 					type: "loot"
 				}
 			]
@@ -930,7 +1169,12 @@
 			rewards: [
 				{
 					id: "77DC03AF0ADF6FA1"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "1B4C9E85E8B6B761"
+					table_id: 8211694341762515435L
 					type: "loot"
 				}
 			]

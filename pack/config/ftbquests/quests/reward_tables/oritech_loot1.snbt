@@ -1,0 +1,102 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "5995FF01A3AD86E7"
+	loot_crate: {
+		color: 11579568
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "oritech_loot1"
+	}
+	loot_size: 1
+	order_index: 98
+	rewards: [
+		{
+			count: 8
+			id: "7D32CFA868861D2B"
+			item: {
+				count: 1
+				id: "immersiveengineering:ingot_nickel"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "7CF23302E991A20C"
+			item: {
+				count: 1
+				id: "oritech:fluxite"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "1AF9C73ACCA8C26A"
+			item: {
+				count: 1
+				id: "oritech:plastic_sheet"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "787C2306F4E3467F"
+			item: {
+				count: 1
+				id: "oritech:platinum_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "534C75E388AC6ED9"
+			item: {
+				count: 1
+				id: "oritech:magnetic_coil"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "7CBEACBC7CAE2671"
+			item: {
+				count: 1
+				id: "oritech:enderic_compound"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "5CE74E5314B609A1"
+			item: {
+				count: 1
+				id: "minecraft:iron_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 16
+			id: "39873D70A050C2BC"
+			item: {
+				count: 1
+				id: "minecraft:copper_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 4
+			id: "78D9CF9285043E82"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

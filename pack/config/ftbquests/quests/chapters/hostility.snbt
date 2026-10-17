@@ -36,7 +36,12 @@
 			rewards: [
 				{
 					id: "1BD1BC741B24CA44"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "7F9F413D56EA8DF6"
+					table_id: 3980761588344057071L
 					type: "loot"
 				}
 			]
@@ -65,7 +70,16 @@
 				{
 					id: "1C0EE81FD86465A8"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 16
+					id: "716B539205FEC78B"
+					item: {
+						count: 1
+						id: "minecraft:experience_bottle"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -90,7 +104,15 @@
 				{
 					id: "1182F1807F7AE73C"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					id: "15A13C96305FEE15"
+					item: {
+						count: 1
+						id: "l2hostility:bottle_of_sanity"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -115,7 +137,16 @@
 				{
 					id: "176DE35DD7ED0024"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "1761C55EF1F2359E"
+					item: {
+						count: 1
+						id: "minecraft:golden_apple"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -140,7 +171,15 @@
 				{
 					id: "5F6265E290CA8602"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					id: "57472995E6B79E70"
+					item: {
+						count: 1
+						id: "l2hostility:chaos_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -164,7 +203,12 @@
 			rewards: [
 				{
 					id: "741EB4B83BFB4A1F"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "1674472AF6AFAC81"
+					table_id: 1600820201414938703L
 					type: "loot"
 				}
 			]
@@ -190,7 +234,12 @@
 			rewards: [
 				{
 					id: "1A217158143B2917"
-					table_id: 3797459037597754809L
+					type: "xp_levels"
+					xp_levels: 20
+				}
+				{
+					id: "34AB361314B4F7AA"
+					table_id: 4178911318211753170L
 					type: "loot"
 				}
 			]

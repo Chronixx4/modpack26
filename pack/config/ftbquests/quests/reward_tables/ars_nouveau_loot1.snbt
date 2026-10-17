@@ -1,0 +1,102 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "3BA0600779A6FBE0"
+	loot_crate: {
+		color: 11579568
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "ars_nouveau_loot1"
+	}
+	loot_size: 1
+	order_index: 20
+	rewards: [
+		{
+			count: 16
+			id: "75E42C5A09BBAD01"
+			item: {
+				count: 1
+				id: "ars_nouveau:source_gem"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "7B13D458727E7AE6"
+			item: {
+				count: 1
+				id: "ars_nouveau:magebloom_fiber"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "3A5BA61942EBD5E9"
+			item: {
+				count: 1
+				id: "ars_nouveau:blank_parchment"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 32
+			id: "523F44FFBF8C2CCC"
+			item: {
+				count: 1
+				id: "ars_nouveau:archwood_planks"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "79B73F3F2634DCBA"
+			item: {
+				count: 1
+				id: "ars_nouveau:fire_essence"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "73DE39658E5E87F1"
+			item: {
+				count: 1
+				id: "ars_nouveau:water_essence"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "5B1BA36CDFD6401B"
+			item: {
+				count: 1
+				id: "minecraft:iron_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 16
+			id: "1E9DF1BC0AF75F56"
+			item: {
+				count: 1
+				id: "minecraft:copper_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 4
+			id: "328C2206CF8E9A34"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

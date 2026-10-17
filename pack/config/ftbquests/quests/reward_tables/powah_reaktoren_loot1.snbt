@@ -1,0 +1,101 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "15B2042BB60EFFE8"
+	loot_crate: {
+		color: 11579568
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "powah_reaktoren_loot1"
+	}
+	loot_size: 1
+	order_index: 102
+	rewards: [
+		{
+			count: 16
+			id: "3207961B4D13791C"
+			item: {
+				count: 1
+				id: "powah:dielectric_paste"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "10A9128120EDE396"
+			item: {
+				count: 1
+				id: "powah:uraninite"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "1A922265F8BB91C7"
+			item: {
+				count: 1
+				id: "bigreactors:graphite_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "5CD1D2A2BB5CB736"
+			item: {
+				count: 1
+				id: "bigreactors:yellorium_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "746FF4B0CE1BA725"
+			item: {
+				count: 1
+				id: "powah:energizing_orb"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "132E2944CF28D748"
+			item: {
+				count: 1
+				id: "powah:steel_energized"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "3D4C20ECEFB1699F"
+			item: {
+				count: 1
+				id: "minecraft:iron_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 16
+			id: "5A01E6F311B0477A"
+			item: {
+				count: 1
+				id: "minecraft:copper_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 4
+			id: "3973E5D957F2B6E5"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

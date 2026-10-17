@@ -1,0 +1,78 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "33188D499D028783"
+	loot_crate: {
+		color: 16755200
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "apotheosis_loot4"
+	}
+	loot_size: 1
+	order_index: 16
+	rewards: [
+		{
+			id: "3A10E5B822E92397"
+			item: {
+				count: 1
+				id: "apotheosis:gem_fused_slate"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "5A464C05ED8B58FC"
+			item: {
+				count: 1
+				id: "apotheosis:sigil_of_socketing"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "3D9000EC88950A2E"
+			item: {
+				count: 1
+				id: "apotheosis:sigil_of_enhancement"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "1B52550688683287"
+			item: {
+				count: 1
+				id: "apotheosis:godforged_pearl"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "5532E60238E01A33"
+			item: {
+				count: 1
+				id: "minecraft:netherite_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "732BFF0606FFD8B2"
+			item: {
+				count: 1
+				id: "minecraft:enchanted_golden_apple"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "590B34D6DC165FD0"
+			item: {
+				count: 1
+				id: "minecraft:nether_star"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

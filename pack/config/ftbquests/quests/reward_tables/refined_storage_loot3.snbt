@@ -1,0 +1,90 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "53718B92A1CE6CBB"
+	loot_crate: {
+		color: 11141375
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "refined_storage_loot3"
+	}
+	loot_size: 1
+	order_index: 108
+	rewards: [
+		{
+			id: "1D920CFF052228D4"
+			item: {
+				count: 1
+				id: "refinedstorage:1k_storage_disk"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "7FC0369C63B2A710"
+			item: {
+				count: 1
+				id: "refinedstorage:improved_processor"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "1A8416E2928B74FB"
+			item: {
+				count: 1
+				id: "refinedstorage:16k_storage_disk"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "17A70433B8793323"
+			item: {
+				count: 1
+				id: "refinedstorage:advanced_processor"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "766A29F661C09648"
+			item: {
+				count: 1
+				id: "refinedstorage:64k_storage_disk"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "73075895569B5CE5"
+			item: {
+				count: 1
+				id: "minecraft:diamond_block"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 2
+			id: "12314604DCE399F6"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 3
+			id: "79925DA3543F15EC"
+			item: {
+				count: 1
+				id: "minecraft:emerald_block"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

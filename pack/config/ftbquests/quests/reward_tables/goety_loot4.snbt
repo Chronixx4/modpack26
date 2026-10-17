@@ -1,0 +1,81 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "36D87A3836AE0175"
+	loot_crate: {
+		color: 16755200
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "goety_loot4"
+	}
+	loot_size: 1
+	order_index: 66
+	rewards: [
+		{
+			count: 12
+			id: "737F2FF6446625B7"
+			item: {
+				count: 1
+				id: "goety:unholy_blood"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "397DFF2B3538C989"
+			item: {
+				count: 1
+				id: "goety:soul_emerald"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "50558AE75F0F77F1"
+			item: {
+				count: 1
+				id: "goety:void_shard"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "36E5FA83F76D9E63"
+			item: {
+				count: 1
+				id: "goety:soul_ruby"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "77AB424334F32ABB"
+			item: {
+				count: 1
+				id: "minecraft:netherite_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "180BE64330130F3C"
+			item: {
+				count: 1
+				id: "minecraft:enchanted_golden_apple"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "5F3F1BA4B91DA891"
+			item: {
+				count: 1
+				id: "minecraft:nether_star"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

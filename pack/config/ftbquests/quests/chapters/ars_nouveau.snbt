@@ -32,7 +32,7 @@
 			shape: "rsquare"
 			size: 1.0d
 			x: 24.0d
-			y: -3.0d
+			y: -1.5d
 		}
 	]
 	quests: [
@@ -44,13 +44,13 @@
 			rewards: [
 				{
 					id: "7E547D8D4D7DABC0"
-					table_id: 8873071041503571705L
+					table_id: 4296539629733477344L
 					type: "loot"
 				}
 				{
 					id: "573D2BCF2BE8E713"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
 				}
 			]
 			shape: "gear"
@@ -77,7 +77,16 @@
 				{
 					id: "348CB5DABD37FD91"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 16
+					id: "503690204AD471B7"
+					item: {
+						count: 1
+						id: "ars_nouveau:magebloom_fiber"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -103,7 +112,16 @@
 				{
 					id: "7A0F355202A3C75B"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 16
+					id: "3238D0F1185E5D39"
+					item: {
+						count: 1
+						id: "ars_nouveau:magebloom_fiber"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -127,7 +145,12 @@
 			rewards: [
 				{
 					id: "1445E62D1FA608BD"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "537897D7D394944D"
+					table_id: 4296539629733477344L
 					type: "loot"
 				}
 			]
@@ -155,7 +178,16 @@
 				{
 					id: "3A8D3DDD06011DA0"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 16
+					id: "5BEF25F27E400E15"
+					item: {
+						count: 1
+						id: "ars_nouveau:blank_parchment"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -180,7 +212,16 @@
 				{
 					id: "7D721AC53B783A14"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 16
+					id: "76C9C4AE52D3C897"
+					item: {
+						count: 1
+						id: "ars_nouveau:magebloom_fiber"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -205,7 +246,16 @@
 				{
 					id: "71A688F3231D7DDF"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 16
+					id: "10CB24DBDD5F5CC8"
+					item: {
+						count: 1
+						id: "ars_nouveau:blank_parchment"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -230,7 +280,12 @@
 			rewards: [
 				{
 					id: "73C367D99DC5DC5B"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "1DF5967BB9DFD913"
+					table_id: 8385611391479330766L
 					type: "loot"
 				}
 			]
@@ -265,7 +320,12 @@
 			rewards: [
 				{
 					id: "5617F51A26D9BE4F"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "1CED48E12D9ED613"
+					table_id: 8385611391479330766L
 					type: "loot"
 				}
 			]
@@ -293,7 +353,16 @@
 				{
 					id: "7D2EBAC30D3C0E19"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 24
+					id: "3091A0AE40382C50"
+					item: {
+						count: 1
+						id: "ars_nouveau:magebloom_fiber"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -329,7 +398,16 @@
 				{
 					id: "334A5057DFA3AC4B"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 24
+					id: "3C245888F1322647"
+					item: {
+						count: 1
+						id: "ars_nouveau:magebloom_fiber"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -354,7 +432,12 @@
 			rewards: [
 				{
 					id: "333F6C60A572EEC5"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "7DC7DC7DAA8E2F3A"
+					table_id: 6717734611902446333L
 					type: "loot"
 				}
 			]
@@ -379,7 +462,12 @@
 			rewards: [
 				{
 					id: "327291A426F3A30C"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "76154C12659FF107"
+					table_id: 6717734611902446333L
 					type: "loot"
 				}
 			]
@@ -408,7 +496,16 @@
 				{
 					id: "57D8AB2CE06F5464"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 16
+					id: "56A4E0036B21DB83"
+					item: {
+						count: 1
+						id: "ars_nouveau:archwood_planks"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -434,7 +531,16 @@
 				{
 					id: "5424FF3BCC7800E9"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 16
+					id: "770991308001DABC"
+					item: {
+						count: 1
+						id: "ars_nouveau:blank_parchment"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -472,7 +578,7 @@
 				}
 			]
 			x: 4.0d
-			y: 9.0d
+			y: 4.5d
 		}
 		{
 			dependencies: [
@@ -484,7 +590,16 @@
 				{
 					id: "15409480B16B714C"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 32
+					id: "5AEE266A2BA1E36F"
+					item: {
+						count: 1
+						id: "ars_nouveau:archwood_planks"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -507,7 +622,7 @@
 				}
 			]
 			x: 4.0d
-			y: 1.5d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -518,7 +633,16 @@
 				{
 					id: "30A64F6AAE09DCD5"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 32
+					id: "13CE49E7845B2B86"
+					item: {
+						count: 1
+						id: "ars_nouveau:archwood_planks"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -543,7 +667,16 @@
 				{
 					id: "10E741792B239428"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "3D97E192762F784E"
+					item: {
+						count: 1
+						id: "ars_nouveau:water_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -573,7 +706,7 @@
 				}
 			]
 			x: 6.0d
-			y: -1.5d
+			y: -3.0d
 		}
 		{
 			dependencies: [
@@ -584,7 +717,16 @@
 				{
 					id: "3202C39CEDF98360"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "3B30728310461181"
+					item: {
+						count: 1
+						id: "ars_nouveau:fire_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -625,7 +767,16 @@
 				{
 					id: "157657C54CFCE554"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 32
+					id: "59B1D4E43BD8B631"
+					item: {
+						count: 1
+						id: "ars_nouveau:archwood_planks"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -647,7 +798,7 @@
 				}
 			]
 			x: 10.0d
-			y: -4.5d
+			y: -6.0d
 		}
 		{
 			dependencies: [
@@ -658,7 +809,16 @@
 				{
 					id: "3A131291B3EBC9E0"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "575C59B2B44B1DA9"
+					item: {
+						count: 1
+						id: "ars_nouveau:fire_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -691,7 +851,16 @@
 				{
 					id: "517E946E20763B72"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "1DD344CB45939E75"
+					item: {
+						count: 1
+						id: "ars_nouveau:fire_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -724,7 +893,16 @@
 				{
 					id: "10E2415218F762F6"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "71D2940DC0BCBC74"
+					item: {
+						count: 1
+						id: "ars_nouveau:fire_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -754,7 +932,7 @@
 				}
 			]
 			x: 24.0d
-			y: -1.5d
+			y: -3.0d
 		}
 		{
 			dependencies: [
@@ -765,7 +943,16 @@
 				{
 					id: "1113D485E1977979"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "33746895460F859F"
+					item: {
+						count: 1
+						id: "ars_nouveau:fire_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -795,7 +982,7 @@
 				}
 			]
 			x: 26.0d
-			y: -1.5d
+			y: -3.0d
 		}
 		{
 			dependencies: [
@@ -806,7 +993,16 @@
 				{
 					id: "7B032B5877BDFDF2"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "1C85C1837D4650BB"
+					item: {
+						count: 1
+						id: "ars_nouveau:fire_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -847,7 +1043,16 @@
 				{
 					id: "7B874EDB47E1421A"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "5218549CBDD7F454"
+					item: {
+						count: 1
+						id: "ars_nouveau:water_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -881,7 +1086,16 @@
 				{
 					id: "35F17E8C116EBA61"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "118F258920D040C4"
+					item: {
+						count: 1
+						id: "ars_nouveau:earth_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -903,7 +1117,7 @@
 				}
 			]
 			x: 22.0d
-			y: -1.5d
+			y: -3.0d
 		}
 		{
 			dependencies: [
@@ -914,7 +1128,16 @@
 				{
 					id: "1998CDF2D318A9A1"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "53A03EF3CB050F9C"
+					item: {
+						count: 1
+						id: "ars_nouveau:earth_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -928,7 +1151,7 @@
 				}
 			]
 			x: 10.0d
-			y: 7.5d
+			y: 10.5d
 		}
 		{
 			dependencies: [
@@ -939,7 +1162,16 @@
 				{
 					id: "1FB359A82CA1A8D5"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "7A56C16D8BAB9711"
+					item: {
+						count: 1
+						id: "ars_nouveau:water_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -965,7 +1197,16 @@
 				{
 					id: "78F171FDA22E8C0C"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "709CB561B2FB09EA"
+					item: {
+						count: 1
+						id: "ars_nouveau:air_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -990,7 +1231,16 @@
 				{
 					id: "78ECC55730BF5A11"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "1F955EC13BC08A16"
+					item: {
+						count: 1
+						id: "ars_nouveau:earth_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1015,7 +1265,16 @@
 				{
 					id: "3E0EB28AC9CCE28E"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "7A4CB9C505C5E8C5"
+					item: {
+						count: 1
+						id: "ars_nouveau:air_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1040,7 +1299,16 @@
 				{
 					id: "787C2B6EEB8466F5"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "1BC637A6F3003B9C"
+					item: {
+						count: 1
+						id: "ars_nouveau:earth_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1073,7 +1341,16 @@
 				{
 					id: "530A5537A49DD31F"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "7A745B88F469F712"
+					item: {
+						count: 1
+						id: "ars_nouveau:air_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1107,7 +1384,16 @@
 				{
 					id: "725084E1E632D2C2"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "12962BED3C1858CE"
+					item: {
+						count: 1
+						id: "ars_nouveau:air_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1132,7 +1418,16 @@
 				{
 					id: "313B94F6B4D4A985"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "5488962B99F54A31"
+					item: {
+						count: 1
+						id: "ars_nouveau:manipulation_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1162,7 +1457,7 @@
 				}
 			]
 			x: 14.0d
-			y: 1.5d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -1173,7 +1468,16 @@
 				{
 					id: "707005285556732E"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "13554CFFF48154A7"
+					item: {
+						count: 1
+						id: "ars_nouveau:manipulation_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1187,7 +1491,7 @@
 				}
 			]
 			x: 10.0d
-			y: 3.0d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -1198,7 +1502,16 @@
 				{
 					id: "3D82891BCA318517"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "34EEB1E72A3A5505"
+					item: {
+						count: 1
+						id: "ars_nouveau:blank_thread"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1223,7 +1536,16 @@
 				{
 					id: "74251E4609B31845"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "764B437FF2929C39"
+					item: {
+						count: 1
+						id: "ars_nouveau:air_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1248,7 +1570,16 @@
 				{
 					id: "106BE57D6307608E"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "7EABCB038DD854D8"
+					item: {
+						count: 1
+						id: "ars_nouveau:blank_thread"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1273,7 +1604,16 @@
 				{
 					id: "35A900AA279A8041"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "18F7DDA58DBFE117"
+					item: {
+						count: 1
+						id: "ars_nouveau:abjuration_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1299,7 +1639,16 @@
 				{
 					id: "5366BC56E68A62C5"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "3B8B29BAC2D59FEC"
+					item: {
+						count: 1
+						id: "ars_nouveau:blank_thread"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1324,7 +1673,16 @@
 				{
 					id: "1EFABCB46DA15E9B"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "18108387F08FBAAC"
+					item: {
+						count: 1
+						id: "ars_nouveau:blank_thread"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1357,7 +1715,16 @@
 				{
 					id: "317D090D713918B9"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "31924BC1880C9A7B"
+					item: {
+						count: 1
+						id: "ars_nouveau:blank_thread"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1382,7 +1749,16 @@
 				{
 					id: "3E13CDBBAD41A154"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "1F2BCF93BB5A9F1F"
+					item: {
+						count: 1
+						id: "ars_nouveau:manipulation_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1404,7 +1780,7 @@
 				}
 			]
 			x: 10.0d
-			y: -1.5d
+			y: -3.0d
 		}
 		{
 			dependencies: [
@@ -1416,7 +1792,16 @@
 				{
 					id: "537399BA60923060"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "3891D1F8972F582C"
+					item: {
+						count: 1
+						id: "ars_nouveau:conjuration_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1449,7 +1834,16 @@
 				{
 					id: "17C0CDC22323C2D7"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "1D991C389D7FDB24"
+					item: {
+						count: 1
+						id: "ars_nouveau:conjuration_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1475,7 +1869,16 @@
 				{
 					id: "72A4926B1760E1FC"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "35C771085125C6DA"
+					item: {
+						count: 1
+						id: "ars_nouveau:manipulation_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1510,7 +1913,16 @@
 				{
 					id: "7498C230E00CB7F0"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "771A12BF47FADFEF"
+					item: {
+						count: 1
+						id: "ars_nouveau:abjuration_essence"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -1545,7 +1957,16 @@
 				{
 					id: "3CE7582496CADD46"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "12C7B41752D418C1"
+					item: {
+						count: 1
+						id: "ars_nouveau:abjuration_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1570,7 +1991,16 @@
 				{
 					id: "378B3C06C593AE7D"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "3530DAB0EC990B98"
+					item: {
+						count: 1
+						id: "ars_nouveau:abjuration_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1604,7 +2034,16 @@
 				{
 					id: "5B382D3F3F0B83D0"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "5CBC1637BE6B7903"
+					item: {
+						count: 1
+						id: "ars_nouveau:conjuration_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1630,7 +2069,16 @@
 				{
 					id: "5073D085F4EAFB09"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 48
+					id: "5B26F0286B999268"
+					item: {
+						count: 1
+						id: "ars_nouveau:source_gem"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1657,7 +2105,16 @@
 				{
 					id: "12243C0A715EFDE2"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 48
+					id: "56CD3CFF3E299DC8"
+					item: {
+						count: 1
+						id: "ars_nouveau:source_gem"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -1684,7 +2141,16 @@
 				{
 					id: "1897C3D8C8B39ACA"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 48
+					id: "72218F392DAAF419"
+					item: {
+						count: 1
+						id: "ars_nouveau:source_gem"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -1710,7 +2176,12 @@
 			rewards: [
 				{
 					id: "106A5B72E60AEA73"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "7FBBBC4A2D910CCC"
+					table_id: 8385611391479330766L
 					type: "loot"
 				}
 			]
@@ -1727,7 +2198,7 @@
 				}
 			]
 			x: 10.0d
-			y: 1.5d
+			y: -1.5d
 		}
 	]
 }

@@ -1,0 +1,101 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "762926B2F65FED9C"
+	loot_crate: {
+		color: 5635925
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "immersive_loot2"
+	}
+	loot_size: 1
+	order_index: 71
+	rewards: [
+		{
+			count: 12
+			id: "1719D5DA6DA017DB"
+			item: {
+				count: 1
+				id: "immersiveengineering:ingot_constantan"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "3E262369160385AB"
+			item: {
+				count: 1
+				id: "immersiveengineering:wirecoil_copper"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "305705A9861B2C72"
+			item: {
+				count: 1
+				id: "immersiveengineering:connector_lv"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "30768CD1DFF0B8AC"
+			item: {
+				count: 1
+				id: "immersiveengineering:ingot_steel"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "3573133AB36CA68E"
+			item: {
+				count: 1
+				id: "immersiveengineering:capacitor_lv"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "38A639DABEDED8FE"
+			item: {
+				count: 1
+				id: "immersiveengineering:wirecoil_electrum"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 3
+			id: "32D0879092E35CAA"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 6
+			id: "192BF759262C136B"
+			item: {
+				count: 1
+				id: "minecraft:emerald"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 12
+			id: "5BBF19CA6E1006FF"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

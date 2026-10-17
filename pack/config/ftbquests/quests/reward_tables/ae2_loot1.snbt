@@ -1,0 +1,120 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "1BE73BFC4266C0D8"
+	loot_crate: {
+		color: 11579568
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "ae2_loot1"
+	}
+	loot_size: 1
+	order_index: 4
+	rewards: [
+		{
+			count: 16
+			id: "1BD5CD7A834C4E30"
+			item: {
+				count: 1
+				id: "ae2:certus_quartz_crystal"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "50C4D7EF40046835"
+			item: {
+				count: 1
+				id: "ae2:silicon"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "5D26E4A5FC566240"
+			item: {
+				count: 1
+				id: "ae2:charged_certus_quartz_crystal"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "7A019E8B72272CE8"
+			item: {
+				count: 1
+				id: "ae2:fluix_crystal"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "1D1481777C0F679F"
+			item: {
+				count: 1
+				id: "ae2:blank_pattern"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "76D846840623F9D3"
+			item: {
+				count: 1
+				id: "ae2:logic_processor"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "7DC4094105A9F5FA"
+			item: {
+				count: 1
+				id: "ae2:calculation_processor"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "77B43015C7988610"
+			item: {
+				count: 1
+				id: "ae2:engineering_processor"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "1F0C607ED722C5D0"
+			item: {
+				count: 1
+				id: "minecraft:iron_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 16
+			id: "359B182C161DDD46"
+			item: {
+				count: 1
+				id: "minecraft:copper_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 4
+			id: "58D046E3272CA734"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

@@ -46,7 +46,7 @@
 				{
 					id: "77DC2F71A6525D34"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
 				}
 			]
 			shape: "gear"
@@ -74,7 +74,16 @@
 				{
 					id: "336881EBC4F05879"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "1260B2461DDA4F0A"
+					item: {
+						count: 1
+						id: "immersiveengineering:ingot_nickel"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -109,7 +118,16 @@
 				{
 					id: "36BA38A78E48AA09"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "30BCBAA1752904FB"
+					item: {
+						count: 1
+						id: "oritech:plastic_sheet"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -144,7 +162,16 @@
 				{
 					id: "16A9554B78C2846C"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "3DACCFC88F8321B6"
+					item: {
+						count: 1
+						id: "oritech:fluxite"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -170,7 +197,16 @@
 				{
 					id: "18EB50D268B894C2"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "1E6F88822310E45D"
+					item: {
+						count: 1
+						id: "oritech:plastic_sheet"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -204,7 +240,12 @@
 			rewards: [
 				{
 					id: "503F85A9D6303F71"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "315517D570A19E45"
+					table_id: 6455346023411582695L
 					type: "loot"
 				}
 			]
@@ -231,7 +272,16 @@
 				{
 					id: "7DF9B29220CCB432"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "1446484A0BCFF0A1"
+					item: {
+						count: 1
+						id: "oritech:fluxite"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -272,7 +322,16 @@
 				{
 					id: "503AC084E51D6562"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "54B46CA8418CE127"
+					item: {
+						count: 1
+						id: "oritech:plastic_sheet"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -305,7 +364,16 @@
 				{
 					id: "3418EEA9B51FCBFD"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "7332EFDFEEF0F957"
+					item: {
+						count: 1
+						id: "oritech:magnetic_coil"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -330,7 +398,16 @@
 				{
 					id: "190B3B474B2C4BE4"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "5B490E8E9624D8E8"
+					item: {
+						count: 1
+						id: "oritech:platinum_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -356,7 +433,16 @@
 				{
 					id: "16A4C977991D52CA"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "7A4D558A0C80016E"
+					item: {
+						count: 1
+						id: "oritech:platinum_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -382,7 +468,16 @@
 				{
 					id: "57F614EFFC15B457"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "33AC7B85B638E622"
+					item: {
+						count: 1
+						id: "oritech:platinum_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -407,7 +502,12 @@
 			rewards: [
 				{
 					id: "77EB9E9D8A49ED90"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "1702C386E39F2995"
+					table_id: 6663822651926431878L
 					type: "loot"
 				}
 			]
@@ -434,7 +534,12 @@
 			rewards: [
 				{
 					id: "3A49F0926996B32D"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "3FCB32217B57DEBA"
+					table_id: 6663822651926431878L
 					type: "loot"
 				}
 			]
@@ -461,7 +566,16 @@
 				{
 					id: "734496E40FFE3AFA"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "526B4511FD404907"
+					item: {
+						count: 1
+						id: "oritech:energite_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -486,7 +600,16 @@
 				{
 					id: "3C7154BD1631B077"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "5C29643E76222910"
+					item: {
+						count: 1
+						id: "oritech:enderic_compound"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -512,7 +635,16 @@
 				{
 					id: "7FA14A03CC295BBB"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "50799E612C4846DD"
+					item: {
+						count: 1
+						id: "oritech:energite_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -537,7 +669,16 @@
 				{
 					id: "7D189CA2A9095F0F"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "51B265195E56DE72"
+					item: {
+						count: 1
+						id: "oritech:processing_unit"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -570,7 +711,16 @@
 				{
 					id: "391FF2174A369C9C"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "56B9FD93310B0F6B"
+					item: {
+						count: 1
+						id: "oritech:energite_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -596,7 +746,12 @@
 			rewards: [
 				{
 					id: "1D34DEB6EBCBEABF"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "7C1B7C413986F3A8"
+					table_id: 6663822651926431878L
 					type: "loot"
 				}
 			]
@@ -630,7 +785,12 @@
 			rewards: [
 				{
 					id: "59AFA0B37C2CE223"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "124A74C6630B4F7A"
+					table_id: 6663822651926431878L
 					type: "loot"
 				}
 			]
@@ -666,7 +826,16 @@
 				{
 					id: "1101F71BDC603E4B"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "59169AD23F7A84AB"
+					item: {
+						count: 1
+						id: "oritech:duratium_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -693,7 +862,16 @@
 				{
 					id: "13AA59469EF15B73"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "1AB13DF20579DA79"
+					item: {
+						count: 1
+						id: "oritech:duratium_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -720,7 +898,16 @@
 				{
 					id: "312FFE315F9065E3"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "596B85064FAA1521"
+					item: {
+						count: 1
+						id: "oritech:processing_unit"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -746,7 +933,16 @@
 				{
 					id: "7EE7F78DA9D4D126"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "32BDA5746197E57E"
+					item: {
+						count: 1
+						id: "oritech:superconductor"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -773,7 +969,16 @@
 				{
 					id: "1E93A8ED5DBFF2E4"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "326AA98947EA61B3"
+					item: {
+						count: 1
+						id: "oritech:prometheum_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -799,7 +1004,12 @@
 			rewards: [
 				{
 					id: "5209502C8AAC3878"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "78B5CE77AADDBCEB"
+					table_id: 4127354163648413630L
 					type: "loot"
 				}
 			]
@@ -826,7 +1036,12 @@
 			rewards: [
 				{
 					id: "7F8FF9189F8F00FA"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "7577D547A84A212D"
+					table_id: 4127354163648413630L
 					type: "loot"
 				}
 			]
@@ -868,7 +1083,12 @@
 			rewards: [
 				{
 					id: "59988BE15F878A3B"
-					table_id: 3797459037597754809L
+					type: "xp_levels"
+					xp_levels: 20
+				}
+				{
+					id: "723A044B2D6FB695"
+					table_id: 8088145675743251032L
 					type: "loot"
 				}
 			]

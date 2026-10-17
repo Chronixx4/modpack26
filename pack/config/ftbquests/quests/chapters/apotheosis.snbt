@@ -24,7 +24,7 @@
 			shape: "rsquare"
 			size: 1.0d
 			x: 0.0d
-			y: -9.0d
+			y: -6.0d
 		}
 		{
 			id: "13A9754E4D85B30E"
@@ -32,7 +32,7 @@
 			shape: "rsquare"
 			size: 1.0d
 			x: 8.0d
-			y: -15.0d
+			y: -9.0d
 		}
 		{
 			id: "14348FDF12BAA22A"
@@ -60,7 +60,12 @@
 			rewards: [
 				{
 					id: "3D1CE1C65AAEB468"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "17B6814F46D5F083"
+					table_id: 4393053325596749260L
 					type: "loot"
 				}
 			]
@@ -90,7 +95,16 @@
 				{
 					id: "5F3C08A822F017F2"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 8
+					id: "7B606A39A7DB9BE0"
+					item: {
+						count: 1
+						id: "apotheosis:gem_dust"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -105,7 +119,7 @@
 				}
 			]
 			x: 2.0d
-			y: 1.5d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -117,7 +131,16 @@
 				{
 					id: "1425EF2D5111F80B"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "7A037385AA46EB1C"
+					item: {
+						count: 1
+						id: "apothic_enchanting:scrap_tome"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -131,7 +154,7 @@
 				}
 			]
 			x: 2.0d
-			y: -9.0d
+			y: -6.0d
 		}
 		{
 			dependencies: [
@@ -142,7 +165,16 @@
 				{
 					id: "7BEBD20F31712D76"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 16
+					id: "18DA28FDA9115E48"
+					item: {
+						count: 1
+						id: "apotheosis:gem_dust"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -156,7 +188,7 @@
 				}
 			]
 			x: 4.0d
-			y: -10.5d
+			y: -9.0d
 		}
 		{
 			dependencies: [
@@ -167,7 +199,16 @@
 				{
 					id: "3A59B20AF8166CD0"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 16
+					id: "7543811FB91C676F"
+					item: {
+						count: 1
+						id: "apotheosis:gem_dust"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -200,7 +241,16 @@
 				{
 					id: "3ABD4DC86E47EB0C"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 16
+					id: "196B841F34ED12C4"
+					item: {
+						count: 1
+						id: "apotheosis:gem_dust"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -222,7 +272,7 @@
 				}
 			]
 			x: 6.0d
-			y: -10.5d
+			y: -12.0d
 		}
 		{
 			dependencies: [
@@ -233,7 +283,16 @@
 				{
 					id: "14948442DEF60443"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 16
+					id: "56595EAFEAFAF296"
+					item: {
+						count: 1
+						id: "apotheosis:gem_dust"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -255,7 +314,7 @@
 				}
 			]
 			x: 8.0d
-			y: -10.5d
+			y: -12.0d
 		}
 		{
 			dependencies: [
@@ -266,7 +325,16 @@
 				{
 					id: "398D7AFCBBCFA138"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "17EBD49BDE5E0C27"
+					item: {
+						count: 1
+						id: "apotheosis:mysterious_scrap_metal"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -288,7 +356,7 @@
 				}
 			]
 			x: 6.0d
-			y: -12.0d
+			y: -7.5d
 		}
 		{
 			dependencies: [
@@ -299,7 +367,16 @@
 				{
 					id: "76731D78ED40DCEA"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "720AA417718D4EEE"
+					item: {
+						count: 1
+						id: "apotheosis:mysterious_scrap_metal"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -321,7 +398,7 @@
 				}
 			]
 			x: 8.0d
-			y: -12.0d
+			y: -7.5d
 		}
 		{
 			dependencies: [
@@ -332,7 +409,12 @@
 			rewards: [
 				{
 					id: "3C172A0C2321775C"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "1E029C6F2E109C50"
+					table_id: 2083388610768942495L
 					type: "loot"
 				}
 			]
@@ -356,7 +438,7 @@
 				}
 			]
 			x: 10.0d
-			y: -12.0d
+			y: -7.5d
 		}
 		{
 			dependencies: [
@@ -367,7 +449,16 @@
 				{
 					id: "37B8DC80687482A3"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "34C4EBB92EF690C7"
+					item: {
+						count: 1
+						id: "apotheosis:timeworn_fabric"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -389,7 +480,7 @@
 				}
 			]
 			x: 12.0d
-			y: -12.0d
+			y: -7.5d
 		}
 		{
 			dependencies: [
@@ -400,7 +491,16 @@
 				{
 					id: "54803E0790B03222"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "54CC145FC2AF630D"
+					item: {
+						count: 1
+						id: "apotheosis:timeworn_fabric"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -414,7 +514,7 @@
 				}
 			]
 			x: 6.0d
-			y: -13.5d
+			y: -10.5d
 		}
 		{
 			dependencies: [
@@ -425,7 +525,16 @@
 				{
 					id: "54B6991FB263378D"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "5B89BB6E5FCE0846"
+					item: {
+						count: 1
+						id: "apotheosis:timeworn_fabric"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -439,7 +548,7 @@
 				}
 			]
 			x: 8.0d
-			y: -13.5d
+			y: -10.5d
 		}
 		{
 			dependencies: [
@@ -450,7 +559,16 @@
 				{
 					id: "5F01EE8C1CE45E90"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "7C32F7E151D34AAC"
+					item: {
+						count: 1
+						id: "apotheosis:timeworn_fabric"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -475,7 +593,16 @@
 				{
 					id: "18F02FE58F801977"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "546454A0AE3C0704"
+					item: {
+						count: 1
+						id: "apotheosis:timeworn_fabric"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -496,7 +623,16 @@
 				{
 					id: "749C1E5F9E308E09"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "70A5DB05D942D882"
+					item: {
+						count: 1
+						id: "apothic_enchanting:infused_breath"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -520,7 +656,12 @@
 			rewards: [
 				{
 					id: "7F072A09620AD6A6"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "52AA8D2B98EA21C6"
+					table_id: 4393053325596749260L
 					type: "loot"
 				}
 			]
@@ -547,7 +688,16 @@
 				{
 					id: "502E0A5D783D8ECC"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "7F8EFB92A3113DB6"
+					item: {
+						count: 1
+						id: "apothic_enchanting:infused_breath"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -588,7 +738,16 @@
 				{
 					id: "7E3D392E7610D7DE"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "7DB8C6DA2B2C9CAF"
+					item: {
+						count: 1
+						id: "apotheosis:luminous_crystal_shard"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -613,7 +772,16 @@
 				{
 					id: "148F0F378AE25EBF"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "16DB2E9F04F9101D"
+					item: {
+						count: 1
+						id: "apotheosis:luminous_crystal_shard"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -635,7 +803,7 @@
 				}
 			]
 			x: 6.0d
-			y: 1.5d
+			y: 3.0d
 		}
 		{
 			dependencies: [
@@ -646,7 +814,15 @@
 				{
 					id: "7F8692DBEC6E6020"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					id: "326E8A3CF857326A"
+					item: {
+						count: 1
+						id: "apotheosis:gem_fused_slate"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -671,7 +847,16 @@
 				{
 					id: "5678F4E8E31CD8D2"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "796DB6A31521E2A1"
+					item: {
+						count: 1
+						id: "apothic_enchanting:infused_breath"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -696,7 +881,16 @@
 				{
 					id: "1A86DB4685068E3D"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 2
+					id: "3FD0A4A293F88D7F"
+					item: {
+						count: 1
+						id: "apothic_enchanting:infused_breath"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -722,7 +916,12 @@
 			rewards: [
 				{
 					id: "7E5FFCF116A8A1C8"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "309B25B664CD2665"
+					table_id: 9028583089324988437L
 					type: "loot"
 				}
 			]
@@ -748,7 +947,12 @@
 			rewards: [
 				{
 					id: "3671598DB09CCFCC"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "578B5A6218ACDB06"
+					table_id: 2083388610768942495L
 					type: "loot"
 				}
 			]
@@ -775,7 +979,15 @@
 				{
 					id: "12F8CFFEE853E7FF"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					id: "36A331D08C1B6952"
+					item: {
+						count: 1
+						id: "apotheosis:gem_fused_slate"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -789,7 +1001,7 @@
 				}
 			]
 			x: 14.0d
-			y: 4.5d
+			y: 3.0d
 		}
 		{
 			dependencies: [
@@ -801,7 +1013,12 @@
 			rewards: [
 				{
 					id: "341D00836210C034"
-					table_id: 3797459037597754809L
+					type: "xp_levels"
+					xp_levels: 20
+				}
+				{
+					id: "7C19647753E1921B"
+					table_id: 3681848042681698179L
 					type: "loot"
 				}
 			]
@@ -828,7 +1045,12 @@
 			rewards: [
 				{
 					id: "3CD58E83B34A5A00"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "527851D9B27F98EB"
+					table_id: 9028583089324988437L
 					type: "loot"
 				}
 			]
@@ -839,7 +1061,7 @@
 				}
 			]
 			x: 4.0d
-			y: -1.5d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -850,7 +1072,15 @@
 				{
 					id: "5728F37CF55D9C0B"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					id: "1290526E544CE516"
+					item: {
+						count: 1
+						id: "apotheosis:sigil_of_socketing"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -871,7 +1101,15 @@
 				{
 					id: "543F432277EC5F41"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					id: "516FF454396ADA20"
+					item: {
+						count: 1
+						id: "apotheosis:sigil_of_enhancement"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -896,7 +1134,15 @@
 				{
 					id: "57FD63BDA5227282"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					id: "7803D59EA47301D9"
+					item: {
+						count: 1
+						id: "apotheosis:godforged_pearl"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -906,7 +1152,7 @@
 				}
 			]
 			x: 4.0d
-			y: 1.5d
+			y: 4.5d
 		}
 		{
 			dependencies: [
@@ -918,7 +1164,15 @@
 				{
 					id: "3CC06948ADD966A3"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					id: "32600DC6A7EE999C"
+					item: {
+						count: 1
+						id: "apotheosis:sigil_of_socketing"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -940,7 +1194,7 @@
 				}
 			]
 			x: 8.0d
-			y: 3.0d
+			y: 4.5d
 		}
 		{
 			dependencies: [
@@ -951,7 +1205,15 @@
 				{
 					id: "18BFD19A3A821A9C"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					id: "1610773B4FDF1963"
+					item: {
+						count: 1
+						id: "apotheosis:godforged_pearl"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -976,7 +1238,12 @@
 			rewards: [
 				{
 					id: "5ED84E14F329CC7C"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "74FD1E45D8B4041D"
+					table_id: 9028583089324988437L
 					type: "loot"
 				}
 			]
@@ -993,7 +1260,7 @@
 				}
 			]
 			x: 2.0d
-			y: -1.5d
+			y: 1.5d
 		}
 	]
 }

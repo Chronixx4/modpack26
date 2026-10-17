@@ -1,0 +1,102 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "500ECF16289BCC91"
+	loot_crate: {
+		color: 11579568
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "occultism_loot1"
+	}
+	loot_size: 1
+	order_index: 95
+	rewards: [
+		{
+			count: 8
+			id: "133FAF635B2094D7"
+			item: {
+				count: 1
+				id: "occultism:datura_seeds"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "1EAF4A367EDB8C71"
+			item: {
+				count: 1
+				id: "occultism:otherstone"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "59FDF1F186BBC78F"
+			item: {
+				count: 1
+				id: "occultism:chalk_white"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "1661C00DAC2CC390"
+			item: {
+				count: 1
+				id: "immersiveengineering:ingot_silver"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "7E0DD6722CEFD9F2"
+			item: {
+				count: 1
+				id: "occultism:spirit_attuned_gem"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "5BA678C4FA00FA89"
+			item: {
+				count: 1
+				id: "occultism:purified_ink"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "13F260B643D4A856"
+			item: {
+				count: 1
+				id: "minecraft:iron_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 16
+			id: "7AEEB0F7D4F6831B"
+			item: {
+				count: 1
+				id: "minecraft:copper_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 4
+			id: "52DAA9F78FA759BF"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

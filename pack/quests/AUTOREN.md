@@ -45,6 +45,8 @@ python3 pack/quests/generator.py --nur <teil> --locker --ids $QUEST_DATEN/ids.js
 - Titel: kurz (max. ~25 Zeichen), deutsch, kein Item-Namen-Spam.
 
 ## Belohnungen
+**Automatisch:** `inhalt/belohnungen.py` rechnet beim Generieren die Werte um: XP-Level 1/2/3 werden zu 3/5/8, normale Quests bekommen zusaetzlich ein Item aus dem Pool ihres Kapitels (frueh im Kapitel = frueh im Pool), `loot1`-`loot4` werden zu Kisten des Kapitels (`<kapitel>_loot2` usw.) plus XP. Im Inhalt weiter nur `1`-`3`/`'lootN'` schreiben; fuer ein neues Kapitel einen `pool(...)` ergaenzen (nur IDs, die schon in Quests vorkommen, und Vanilla). Quests mit eigener `('item', ...)`-Belohnung bleiben unberuehrt.
+
 | Wofür | Belohnung |
 |---|---|
 | Normale Quest | `1`–`3` XP-Level |

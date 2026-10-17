@@ -1,0 +1,89 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "75E7C9963CABC9F3"
+	loot_crate: {
+		color: 16755200
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "bosse_loot4"
+	}
+	loot_size: 1
+	order_index: 29
+	rewards: [
+		{
+			count: 12
+			id: "3ED3ECF64ADD53C0"
+			item: {
+				count: 1
+				id: "minecraft:shulker_shell"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "1510E07A629D2610"
+			item: {
+				count: 1
+				id: "cataclysm:witherite_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "731071A53AD6D264"
+			item: {
+				count: 1
+				id: "cataclysm:cursium_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "384A6BD421E31155"
+			item: {
+				count: 1
+				id: "minecraft:totem_of_undying"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "1A645521EFD76341"
+			item: {
+				count: 1
+				id: "minecraft:nether_star"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "12DBD3F5677935AA"
+			item: {
+				count: 1
+				id: "minecraft:netherite_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "515399FAA93B22F8"
+			item: {
+				count: 1
+				id: "minecraft:enchanted_golden_apple"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "148823E6FE1B9CFA"
+			item: {
+				count: 1
+				id: "minecraft:nether_star"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

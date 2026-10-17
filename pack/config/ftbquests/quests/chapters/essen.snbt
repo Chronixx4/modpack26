@@ -32,7 +32,7 @@
 			shape: "rsquare"
 			size: 1.0d
 			x: 2.0d
-			y: 6.0d
+			y: 9.0d
 		}
 		{
 			id: "13B1110696C4857A"
@@ -40,7 +40,7 @@
 			shape: "rsquare"
 			size: 1.0d
 			x: 4.0d
-			y: -6.0d
+			y: 4.5d
 		}
 		{
 			id: "1B8A5BA6A4A701E0"
@@ -48,7 +48,7 @@
 			shape: "rsquare"
 			size: 1.0d
 			x: 2.0d
-			y: 22.5d
+			y: 19.5d
 		}
 		{
 			id: "3BAE53F0645FFEC8"
@@ -56,7 +56,7 @@
 			shape: "rsquare"
 			size: 1.0d
 			x: 4.0d
-			y: 24.0d
+			y: 15.0d
 		}
 		{
 			id: "1F514499F1D63012"
@@ -64,7 +64,7 @@
 			shape: "rsquare"
 			size: 1.0d
 			x: 6.0d
-			y: 25.5d
+			y: 18.0d
 		}
 		{
 			id: "710F7CD2DCA449BB"
@@ -88,7 +88,7 @@
 			shape: "rsquare"
 			size: 1.0d
 			x: 8.0d
-			y: -3.0d
+			y: -6.0d
 		}
 	]
 	quests: [
@@ -101,7 +101,16 @@
 				{
 					id: "3A8EF587439DD6B2"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "57FABD4AF121B76D"
+					item: {
+						count: 1
+						id: "farmersdelight:onion"
+					}
+					type: "item"
 				}
 			]
 			shape: "gear"
@@ -128,7 +137,16 @@
 				{
 					id: "15E9D7DEB764F40C"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "7844655DD19488C3"
+					item: {
+						count: 1
+						id: "farmersdelight:tomato"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -169,7 +187,16 @@
 				{
 					id: "343AE796AA21D988"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "783AAC479E5E27E5"
+					item: {
+						count: 1
+						id: "farmersdelight:onion"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -194,7 +221,16 @@
 				{
 					id: "7BF3987A2182A00B"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 8
+					id: "300F83B85CC0C050"
+					item: {
+						count: 1
+						id: "farmersdelight:rice"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -220,7 +256,16 @@
 				{
 					id: "7464924A174602DE"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "591295CD5E9B49AD"
+					item: {
+						count: 1
+						id: "farmersdelight:tomato"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -245,7 +290,16 @@
 				{
 					id: "1ED251DE4FF9651B"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "3F14410C859B211D"
+					item: {
+						count: 1
+						id: "farmersdelight:onion"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -270,7 +324,16 @@
 				{
 					id: "1E31998DA4A8802F"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "1BFACEB73DB08A55"
+					item: {
+						count: 1
+						id: "farmersdelight:onion"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -295,7 +358,12 @@
 			rewards: [
 				{
 					id: "3AEF2D2F5FE849BD"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "787F667647E5F586"
+					table_id: 6077590316034562652L
 					type: "loot"
 				}
 			]
@@ -322,7 +390,16 @@
 				{
 					id: "35383179BA308802"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 8
+					id: "59A978388855438C"
+					item: {
+						count: 1
+						id: "farmersdelight:rice"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -347,7 +424,16 @@
 				{
 					id: "7D777F530BEE28B2"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "7F20E5402C9D8E0A"
+					item: {
+						count: 1
+						id: "farmersdelight:onion"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -373,7 +459,16 @@
 				{
 					id: "749058644B4198A3"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 8
+					id: "75B69C9BF01871E1"
+					item: {
+						count: 1
+						id: "aquaculture:worm"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -406,7 +501,16 @@
 				{
 					id: "70C8106A8CEDFEED"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 8
+					id: "182F4BEBEFA7B2FE"
+					item: {
+						count: 1
+						id: "aquaculture:worm"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -431,7 +535,16 @@
 				{
 					id: "7AD7B60E24C44114"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 8
+					id: "1792F438990A80EF"
+					item: {
+						count: 1
+						id: "farmersdelight:rice"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -445,7 +558,7 @@
 				}
 			]
 			x: 8.0d
-			y: 3.0d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -456,7 +569,16 @@
 				{
 					id: "74928C5A513855BF"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 16
+					id: "12F5ADC86E2BE35A"
+					item: {
+						count: 1
+						id: "farmersdelight:rice"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -480,7 +602,12 @@
 			rewards: [
 				{
 					id: "170CAF3528CAB6C2"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "543B82C0384136C4"
+					table_id: 8616142591900628707L
 					type: "loot"
 				}
 			]
@@ -509,7 +636,16 @@
 				{
 					id: "5DA4D35DA3BB8AE8"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 8
+					id: "7730411A2089AD1A"
+					item: {
+						count: 1
+						id: "tide:bait"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -535,7 +671,16 @@
 				{
 					id: "7EF1898D14A1207E"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 8
+					id: "19EAD045EC73299E"
+					item: {
+						count: 1
+						id: "tide:bait"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -545,7 +690,7 @@
 				}
 			]
 			x: 2.0d
-			y: 7.5d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -556,7 +701,12 @@
 			rewards: [
 				{
 					id: "1D5F51BF7606A47E"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "370D2BD0C88DDFDD"
+					table_id: 4160893813058505456L
 					type: "loot"
 				}
 			]
@@ -585,7 +735,16 @@
 				{
 					id: "54ACA265B4CDE2A0"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "733410C31087BB2B"
+					item: {
+						count: 1
+						id: "farmersdelight:cooked_rice"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -599,7 +758,7 @@
 				}
 			]
 			x: 2.0d
-			y: 4.5d
+			y: 7.5d
 		}
 		{
 			dependencies: [
@@ -610,7 +769,16 @@
 				{
 					id: "5C9A83D51FB6642F"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "318B0C6FAC8297D7"
+					item: {
+						count: 1
+						id: "farmersdelight:cooked_rice"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -624,7 +792,7 @@
 				}
 			]
 			x: 4.0d
-			y: 4.5d
+			y: 6.0d
 		}
 		{
 			dependencies: [
@@ -635,7 +803,16 @@
 				{
 					id: "12BFD5000AC1CBAD"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "5470D3225D11092D"
+					item: {
+						count: 1
+						id: "farmersdelight:cooked_rice"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -649,7 +826,7 @@
 				}
 			]
 			x: 4.0d
-			y: 6.0d
+			y: 7.5d
 		}
 		{
 			dependencies: [
@@ -660,7 +837,16 @@
 				{
 					id: "76335DA5214D85D9"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 8
+					id: "1FB7D4C451D04596"
+					item: {
+						count: 1
+						id: "tide:bait"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -682,7 +868,7 @@
 				}
 			]
 			x: 6.0d
-			y: 6.0d
+			y: 7.5d
 		}
 		{
 			dependencies: [
@@ -694,7 +880,16 @@
 				{
 					id: "5F929086EE16A428"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 8
+					id: "7AF89E361749F5CD"
+					item: {
+						count: 1
+						id: "tide:bait"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -709,7 +904,7 @@
 				}
 			]
 			x: 8.0d
-			y: 6.0d
+			y: 7.5d
 		}
 		{
 			dependencies: [
@@ -721,7 +916,16 @@
 				{
 					id: "52D812455450F003"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "19C78E4839A5888D"
+					item: {
+						count: 1
+						id: "farmersdelight:hamburger"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -735,7 +939,7 @@
 				}
 			]
 			x: 4.0d
-			y: 7.5d
+			y: 9.0d
 		}
 		{
 			dependencies: [
@@ -747,7 +951,16 @@
 				{
 					id: "3F7E9A2E3DAA38BF"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "1041A76D73E54829"
+					item: {
+						count: 1
+						id: "farmersdelight:hamburger"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -761,7 +974,7 @@
 				}
 			]
 			x: 6.0d
-			y: 7.5d
+			y: 9.0d
 		}
 		{
 			dependencies: [
@@ -771,7 +984,12 @@
 			rewards: [
 				{
 					id: "341F6BFEA3C6B378"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "704F379A00A04E25"
+					table_id: 4160893813058505456L
 					type: "loot"
 				}
 			]
@@ -797,7 +1015,16 @@
 				{
 					id: "754B32218D4A4C94"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "75D1A802E6CEF695"
+					item: {
+						count: 1
+						id: "farmersdelight:hamburger"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -822,7 +1049,16 @@
 				{
 					id: "76CD32B2E942B679"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "3BBDF2031567CE00"
+					item: {
+						count: 1
+						id: "farmersdelight:hamburger"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -836,7 +1072,7 @@
 				}
 			]
 			x: 2.0d
-			y: 19.5d
+			y: 18.0d
 		}
 		{
 			dependencies: [
@@ -847,7 +1083,16 @@
 				{
 					id: "719236DFB9345F07"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "772014A018919C87"
+					item: {
+						count: 1
+						id: "farmersdelight:beef_stew"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -861,7 +1106,7 @@
 				}
 			]
 			x: 4.0d
-			y: 21.0d
+			y: 16.5d
 		}
 		{
 			dependencies: [
@@ -872,7 +1117,16 @@
 				{
 					id: "16E50E1079ED918E"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 6
+					id: "3095D6C98BF112D2"
+					item: {
+						count: 1
+						id: "aquaculture:fish_fillet_cooked"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -886,7 +1140,7 @@
 				}
 			]
 			x: 4.0d
-			y: 19.5d
+			y: 18.0d
 		}
 		{
 			dependencies: [
@@ -898,7 +1152,16 @@
 				{
 					id: "704C4A58F15111A6"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "1E351534948C06BF"
+					item: {
+						count: 1
+						id: "farmersdelight:hamburger"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -912,7 +1175,7 @@
 				}
 			]
 			x: 4.0d
-			y: 22.5d
+			y: 19.5d
 		}
 		{
 			dependencies: [
@@ -924,7 +1187,16 @@
 				{
 					id: "5CC6AC37332B6A1D"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "50BA1E6F2FEA88DB"
+					item: {
+						count: 1
+						id: "farmersdelight:hamburger"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -939,7 +1211,7 @@
 				}
 			]
 			x: 4.0d
-			y: 18.0d
+			y: 21.0d
 		}
 		{
 			dependencies: [
@@ -951,7 +1223,16 @@
 				{
 					id: "172F7A0E40068A3A"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 6
+					id: "51BEACBED76AD68F"
+					item: {
+						count: 1
+						id: "aquaculture:fish_fillet_cooked"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -976,7 +1257,12 @@
 			rewards: [
 				{
 					id: "1BC80C83E83BEF12"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "54A50CB51F355317"
+					table_id: 4160893813058505456L
 					type: "loot"
 				}
 			]
@@ -1003,7 +1289,16 @@
 				{
 					id: "5216E31662D19D04"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "17E8FFC652D99D0B"
+					item: {
+						count: 1
+						id: "farmersdelight:pasta_with_meatballs"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1017,7 +1312,7 @@
 				}
 			]
 			x: 6.0d
-			y: 24.0d
+			y: 19.5d
 		}
 		{
 			dependencies: [
@@ -1029,7 +1324,16 @@
 				{
 					id: "1F9FE6F72BB2BABC"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 12
+					id: "1B62BA2B0EB4C6B8"
+					item: {
+						count: 1
+						id: "aquaculture:fish_fillet_cooked"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1043,7 +1347,7 @@
 				}
 			]
 			x: 8.0d
-			y: 25.5d
+			y: 19.5d
 		}
 		{
 			dependencies: [
@@ -1055,7 +1359,16 @@
 				{
 					id: "1B3F506ACEF67C02"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "5CCC3EEA015101D3"
+					item: {
+						count: 1
+						id: "farmersdelight:pasta_with_meatballs"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1069,7 +1382,7 @@
 				}
 			]
 			x: 6.0d
-			y: 21.0d
+			y: 16.5d
 		}
 		{
 			dependencies: [
@@ -1080,7 +1393,16 @@
 				{
 					id: "3DABC5950CEFB713"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "7C33B2B3701D8078"
+					item: {
+						count: 1
+						id: "garnished:nut_mix"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1106,7 +1428,16 @@
 				{
 					id: "7C0627B10DAFC265"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "37B8762D0CCE7ED3"
+					item: {
+						count: 1
+						id: "garnished:nut_mix"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -1132,7 +1463,16 @@
 				{
 					id: "10FF9F6DC5EE4455"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 6
+					id: "71110772354517CE"
+					item: {
+						count: 1
+						id: "aquaculture:fish_fillet_cooked"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1158,7 +1498,16 @@
 				{
 					id: "58F9F07649D84760"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "5FAD6C5F61DB1DAD"
+					item: {
+						count: 1
+						id: "farmersdelight:pasta_with_meatballs"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -1173,7 +1522,7 @@
 				}
 			]
 			x: 2.0d
-			y: 1.5d
+			y: 4.5d
 		}
 		{
 			dependencies: [
@@ -1185,7 +1534,16 @@
 				{
 					id: "54DFFA6BB19FBB79"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "7A8950596519AF10"
+					item: {
+						count: 1
+						id: "create_factory:waffle"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -1212,7 +1570,16 @@
 				{
 					id: "11F374D4BE306832"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "5AE0A0C723D7F66F"
+					item: {
+						count: 1
+						id: "garnished:nut_mix"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1237,7 +1604,16 @@
 				{
 					id: "14B0553727C6B050"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "508AC686F5FF17C2"
+					item: {
+						count: 1
+						id: "create_factory:waffle"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1260,7 +1636,16 @@
 				{
 					id: "19C976B470572120"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "7CCE0691005B8C98"
+					item: {
+						count: 1
+						id: "garnished:nut_mix"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1286,7 +1671,16 @@
 				{
 					id: "35F11F8085C387DE"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "5E3C480B42B87BCC"
+					item: {
+						count: 1
+						id: "garnished:nut_mix"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1311,7 +1705,16 @@
 				{
 					id: "565F5AD25DAE5700"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "3D8A7CBD9E362CA1"
+					item: {
+						count: 1
+						id: "garnished:nut_mix"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1336,7 +1739,16 @@
 				{
 					id: "38F430D18ADB063B"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "3D181AC6B3851C54"
+					item: {
+						count: 1
+						id: "garnished:nut_mix"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1362,7 +1774,15 @@
 				{
 					id: "72A035AB7D852AE7"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					id: "1BECBE1CDAD86D23"
+					item: {
+						count: 1
+						id: "farmersdelight:roast_chicken_block"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1387,7 +1807,16 @@
 				{
 					id: "51FD4CB5D7DED994"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "5FBD08AA2EDB6A03"
+					item: {
+						count: 1
+						id: "create_factory:waffle"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1412,7 +1841,15 @@
 				{
 					id: "570850EBC5FBC406"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					id: "1AE4762CBA189253"
+					item: {
+						count: 1
+						id: "farmersdelight:roast_chicken_block"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1437,7 +1874,15 @@
 				{
 					id: "534889C0128EDB7D"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					id: "5C9DABD611C343C0"
+					item: {
+						count: 1
+						id: "farmersdelight:roast_chicken_block"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1462,7 +1907,16 @@
 				{
 					id: "1967B5A3B749B9A4"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "7F58CE2945BC4FC5"
+					item: {
+						count: 1
+						id: "minecraft:golden_apple"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1487,7 +1941,15 @@
 				{
 					id: "766E4DDAE8186AF2"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					id: "5205B45247B4E2A5"
+					item: {
+						count: 1
+						id: "farmersdelight:roast_chicken_block"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1513,7 +1975,15 @@
 				{
 					id: "7A08B9E852C48495"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					id: "59DAD9F9FB57F526"
+					item: {
+						count: 1
+						id: "farmersdelight:roast_chicken_block"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -1540,7 +2010,15 @@
 				{
 					id: "5A944D6B6562750F"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					id: "5B77CB2CF02B8075"
+					item: {
+						count: 1
+						id: "farmersdelight:roast_chicken_block"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1550,7 +2028,7 @@
 				}
 			]
 			x: 8.0d
-			y: -1.5d
+			y: -3.0d
 		}
 		{
 			dependencies: [
@@ -1561,7 +2039,16 @@
 				{
 					id: "5D69CDB986F4F791"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "52D83F437A423C18"
+					item: {
+						count: 1
+						id: "minecraft:golden_apple"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1587,7 +2074,16 @@
 				{
 					id: "38968C4D9193ED61"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "1BDD926B356EE592"
+					item: {
+						count: 1
+						id: "minecraft:golden_apple"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1602,7 +2098,7 @@
 				}
 			]
 			x: 10.0d
-			y: -1.5d
+			y: -4.5d
 		}
 		{
 			dependencies: [
@@ -1613,7 +2109,16 @@
 				{
 					id: "70E3CCF3741FA1A1"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "1AAB7E6B0B1B69A0"
+					item: {
+						count: 1
+						id: "minecraft:golden_apple"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1627,7 +2132,7 @@
 				}
 			]
 			x: 12.0d
-			y: -1.5d
+			y: -4.5d
 		}
 	]
 }

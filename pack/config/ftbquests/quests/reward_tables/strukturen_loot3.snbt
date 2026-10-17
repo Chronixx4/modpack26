@@ -1,0 +1,92 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "3073E1518D78F80C"
+	loot_crate: {
+		color: 11141375
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "strukturen_loot3"
+	}
+	loot_size: 1
+	order_index: 111
+	rewards: [
+		{
+			count: 2
+			id: "174110EE5F69E47A"
+			item: {
+				count: 1
+				id: "minecraft:name_tag"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "376F58362A1CD973"
+			item: {
+				count: 1
+				id: "minecraft:ender_pearl"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 3
+			id: "790901EB19CE7053"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "77027ED217A3BD63"
+			item: {
+				count: 1
+				id: "minecraft:saddle"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "7789BD0F7470D15A"
+			item: {
+				count: 1
+				id: "minecraft:golden_apple"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "70A93D34C1D59C89"
+			item: {
+				count: 1
+				id: "minecraft:diamond_block"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 2
+			id: "5B24B645F4B9A540"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 3
+			id: "3F215502F692061F"
+			item: {
+				count: 1
+				id: "minecraft:emerald_block"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

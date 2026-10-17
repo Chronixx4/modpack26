@@ -1,0 +1,102 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "111DE91AAFBA3B39"
+	loot_crate: {
+		color: 5635925
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "forbidden_hexerei_loot2"
+	}
+	loot_size: 1
+	order_index: 61
+	rewards: [
+		{
+			count: 12
+			id: "32A870D0C5FADD9C"
+			item: {
+				count: 1
+				id: "hexerei:belladonna_flowers"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "3DA2AF31BF02A5CD"
+			item: {
+				count: 1
+				id: "hexerei:mugwort_flowers"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 24
+			id: "1BA765A83BDB65F5"
+			item: {
+				count: 1
+				id: "forbidden_arcanus:arcane_crystal_dust"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "159A5418D1A76DA6"
+			item: {
+				count: 1
+				id: "forbidden_arcanus:arcane_crystal"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "747DC90820716B5F"
+			item: {
+				count: 1
+				id: "hexerei:dried_sage_bundle"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "3CA70FFF34E6C127"
+			item: {
+				count: 1
+				id: "forbidden_arcanus:mundabitur_dust"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 3
+			id: "74AC479B48503C83"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 6
+			id: "328F3BCFE332FF15"
+			item: {
+				count: 1
+				id: "minecraft:emerald"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 12
+			id: "3D31095EF07D55D5"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

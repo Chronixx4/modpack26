@@ -85,7 +85,16 @@
 				{
 					id: "57EF3C4DDDB65A59"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "518B5DEFA8A6D5A1"
+					item: {
+						count: 1
+						id: "pipez:item_pipe"
+					}
+					type: "item"
 				}
 			]
 			shape: "gear"
@@ -113,7 +122,16 @@
 				{
 					id: "75A3B965F02CF0C7"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "1BBA5CD3F8F7D08F"
+					item: {
+						count: 1
+						id: "pipez:item_pipe"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -137,7 +155,12 @@
 			rewards: [
 				{
 					id: "5D9967E21CF493E2"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "3976A8322968D7A7"
+					table_id: 6666642578526164282L
 					type: "loot"
 				}
 			]
@@ -165,7 +188,16 @@
 				{
 					id: "3F5AA73A1F07AC70"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "5F99077C21DB5DFC"
+					item: {
+						count: 1
+						id: "pipez:item_pipe"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -190,7 +222,12 @@
 			rewards: [
 				{
 					id: "74AFAAEA2E128773"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "1EBE171CDFF00A6B"
+					table_id: 4023836262551919880L
 					type: "loot"
 				}
 			]
@@ -217,7 +254,12 @@
 			rewards: [
 				{
 					id: "30BCD140972643D3"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "10745B2229E71720"
+					table_id: 6318239394526787360L
 					type: "loot"
 				}
 			]
@@ -245,7 +287,16 @@
 				{
 					id: "1F3E16A4BCFC1EC3"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "586E6DBDBBD37D86"
+					item: {
+						count: 1
+						id: "sophisticatedbackpacks:upgrade_base"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -270,7 +321,16 @@
 				{
 					id: "150955781DEC2E68"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "353FF535804CA392"
+					item: {
+						count: 1
+						id: "storagedrawers:upgrade_template"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -295,7 +355,16 @@
 				{
 					id: "50EA8C41554AE382"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "707E1AFC9FCF853D"
+					item: {
+						count: 1
+						id: "pipez:fluid_pipe"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -320,7 +389,16 @@
 				{
 					id: "57AE567C583EB507"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "5B0322AB2E56301A"
+					item: {
+						count: 1
+						id: "sophisticatedbackpacks:upgrade_base"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -346,7 +424,16 @@
 				{
 					id: "7D973B909D959183"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "37C9508D3383BE82"
+					item: {
+						count: 1
+						id: "pipez:fluid_pipe"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -372,7 +459,16 @@
 				{
 					id: "5DC9C3EBDFE8498F"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "3D17B3E8DDEBD1AB"
+					item: {
+						count: 1
+						id: "sophisticatedstorage:upgrade_base"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -398,7 +494,16 @@
 				{
 					id: "3CC79DDD0807929D"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "5928D719E8C3B053"
+					item: {
+						count: 1
+						id: "pipez:fluid_pipe"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -423,7 +528,16 @@
 				{
 					id: "1967BA702BC2F42D"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "79FDDFA60028E657"
+					item: {
+						count: 1
+						id: "pipez:energy_pipe"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -448,7 +562,16 @@
 				{
 					id: "74601FD493118626"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "1E4A959AD6F42C4F"
+					item: {
+						count: 1
+						id: "pipez:energy_pipe"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -473,7 +596,16 @@
 				{
 					id: "55A2C08DF4F20897"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "17708C28CD392EF0"
+					item: {
+						count: 1
+						id: "pipez:basic_upgrade"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -499,7 +631,16 @@
 				{
 					id: "117000D024836FDC"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "54472B6DC8514D4B"
+					item: {
+						count: 1
+						id: "pipez:basic_upgrade"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -524,7 +665,16 @@
 				{
 					id: "535E7AECE15C9B55"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "1E55A6E149C997A9"
+					item: {
+						count: 1
+						id: "pipez:energy_pipe"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -550,7 +700,16 @@
 				{
 					id: "719CF55564452F96"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "18368FE30C5E7E38"
+					item: {
+						count: 1
+						id: "pipez:energy_pipe"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -576,7 +735,15 @@
 				{
 					id: "1EAE325F7E456AE1"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					id: "14B40466C7F6FDF9"
+					item: {
+						count: 1
+						id: "sophisticatedbackpacks:pickup_upgrade"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -602,7 +769,15 @@
 				{
 					id: "15CEDA069855CFFA"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					id: "3C0E9B8BFE131F6F"
+					item: {
+						count: 1
+						id: "sophisticatedstorage:hopper_upgrade"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -627,7 +802,15 @@
 				{
 					id: "39A92002A81F0BB0"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					id: "390047E190063DF8"
+					item: {
+						count: 1
+						id: "sophisticatedbackpacks:pickup_upgrade"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -652,7 +835,15 @@
 				{
 					id: "77C9C6FE803A66BB"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					id: "1A1C256CE4CA6C8B"
+					item: {
+						count: 1
+						id: "sophisticatedbackpacks:feeding_upgrade"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -678,7 +869,15 @@
 				{
 					id: "70C6523C32A84F3C"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					id: "18966488E7F20FF3"
+					item: {
+						count: 1
+						id: "sophisticatedbackpacks:feeding_upgrade"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -703,7 +902,12 @@
 			rewards: [
 				{
 					id: "59D3630EE478209E"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "1A69A3CFC0AFF7C3"
+					table_id: 4023836262551919880L
 					type: "loot"
 				}
 			]
@@ -729,7 +933,15 @@
 				{
 					id: "19D8876B11001A4D"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					id: "54FAC1F4DEE5B034"
+					item: {
+						count: 1
+						id: "sophisticatedbackpacks:feeding_upgrade"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -755,7 +967,15 @@
 				{
 					id: "723915F3BF738654"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					id: "78F0CA615A93D0C9"
+					item: {
+						count: 1
+						id: "sophisticatedbackpacks:feeding_upgrade"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -780,7 +1000,15 @@
 				{
 					id: "759859087F955DBE"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					id: "7FCD4C76185EE202"
+					item: {
+						count: 1
+						id: "sophisticatedbackpacks:pickup_upgrade"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -805,7 +1033,15 @@
 				{
 					id: "5F4524D5B8ABAE16"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					id: "1A75158C4318C1AB"
+					item: {
+						count: 1
+						id: "sophisticatedbackpacks:feeding_upgrade"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -831,7 +1067,15 @@
 				{
 					id: "3AB1451C833B17BF"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					id: "12A5F9F5D7C48122"
+					item: {
+						count: 1
+						id: "sophisticatedbackpacks:feeding_upgrade"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -858,7 +1102,15 @@
 				{
 					id: "39AD67E1F5DE8D96"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					id: "3D624AD5DB1ABD70"
+					item: {
+						count: 1
+						id: "sophisticatedbackpacks:feeding_upgrade"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -885,7 +1137,15 @@
 				{
 					id: "16071700DA60C731"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					id: "5DCB570E4048E4B3"
+					item: {
+						count: 1
+						id: "storagedrawers:iron_storage_upgrade"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -910,7 +1170,15 @@
 				{
 					id: "3ABE26F9FF50D324"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					id: "5300753AA8551CAB"
+					item: {
+						count: 1
+						id: "storagedrawers:iron_storage_upgrade"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -943,7 +1211,15 @@
 				{
 					id: "3DA1D208453B2024"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					id: "5734EE3FFF0BBDA7"
+					item: {
+						count: 1
+						id: "storagedrawers:iron_storage_upgrade"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -970,7 +1246,15 @@
 				{
 					id: "5A6E4A591662579D"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					id: "38A766248060B4A9"
+					item: {
+						count: 1
+						id: "sophisticatedbackpacks:magnet_upgrade"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -992,7 +1276,12 @@
 			rewards: [
 				{
 					id: "3529F2B126B4BBDF"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "199586697C3B06E3"
+					table_id: 4023836262551919880L
 					type: "loot"
 				}
 			]

@@ -1,0 +1,123 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "5F1B20E1ABCC5285"
+	loot_crate: {
+		color: 11141375
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "ae2_loot3"
+	}
+	loot_size: 1
+	order_index: 6
+	rewards: [
+		{
+			count: 8
+			id: "5947E2F7377CF5D1"
+			item: {
+				count: 1
+				id: "ae2:calculation_processor"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "75C12C8BFB52506E"
+			item: {
+				count: 1
+				id: "ae2:engineering_processor"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "38963FFFC6881BFB"
+			item: {
+				count: 1
+				id: "ae2:item_storage_cell_1k"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "32921B803043B43B"
+			item: {
+				count: 1
+				id: "ae2:energy_cell"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "7223BEA8C8D00921"
+			item: {
+				count: 1
+				id: "ae2:fluix_pearl"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "59E585727E5DD8A9"
+			item: {
+				count: 1
+				id: "ae2:item_storage_cell_4k"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "345A6E8BC2A1D294"
+			item: {
+				count: 1
+				id: "ae2:item_storage_cell_16k"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "3A74DAD4E07E6B3B"
+			item: {
+				count: 1
+				id: "ae2:dense_energy_cell"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "7680A3A51C959AC7"
+			item: {
+				count: 1
+				id: "ae2:item_storage_cell_64k"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "75F9C1046A391E40"
+			item: {
+				count: 1
+				id: "minecraft:diamond_block"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 2
+			id: "3AEAEF8174F2DA87"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 3
+			id: "37407837BD43482A"
+			item: {
+				count: 1
+				id: "minecraft:emerald_block"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

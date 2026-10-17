@@ -1,0 +1,129 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "7520B79460140F1F"
+	loot_crate: {
+		color: 5635925
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "irons_spells_loot2"
+	}
+	loot_size: 1
+	order_index: 78
+	rewards: [
+		{
+			count: 9
+			id: "7459B8261C7F6392"
+			item: {
+				count: 1
+				id: "irons_spellbooks:uncommon_ink"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "12194C6E800A058F"
+			item: {
+				count: 1
+				id: "irons_spellbooks:magic_cloth"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "5B6CAB91ACA28B8C"
+			item: {
+				count: 1
+				id: "irons_spellbooks:mithril_scrap"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "71252A9F947798BE"
+			item: {
+				count: 1
+				id: "irons_spellbooks:cinder_essence"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "3720CFCFAEED95C2"
+			item: {
+				count: 1
+				id: "irons_spellbooks:lightning_bottle"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "7741C11830EF3507"
+			item: {
+				count: 1
+				id: "irons_jewelry:ruby"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "51F381C09847C4B0"
+			item: {
+				count: 1
+				id: "irons_jewelry:sapphire"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "18B67DD49B3936D8"
+			item: {
+				count: 1
+				id: "irons_jewelry:topaz"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "5240D380B5DCC20C"
+			item: {
+				count: 1
+				id: "irons_spellbooks:rare_ink"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 3
+			id: "3344BC16F0CBD12A"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 6
+			id: "303473CC6BB3C1AA"
+			item: {
+				count: 1
+				id: "minecraft:emerald"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 12
+			id: "1275D03DB0158B03"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

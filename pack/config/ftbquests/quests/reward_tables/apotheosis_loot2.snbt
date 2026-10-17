@@ -1,0 +1,101 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "7D4BF87BF8509815"
+	loot_crate: {
+		color: 5635925
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "apotheosis_loot2"
+	}
+	loot_size: 1
+	order_index: 14
+	rewards: [
+		{
+			count: 6
+			id: "5373335B69480183"
+			item: {
+				count: 1
+				id: "apothic_enchanting:scrap_tome"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "71E6FAB705D8AAE7"
+			item: {
+				count: 1
+				id: "apotheosis:mysterious_scrap_metal"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "160C7CB745B6168A"
+			item: {
+				count: 1
+				id: "apotheosis:timeworn_fabric"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "35B3CB81CCA5BC2D"
+			item: {
+				count: 1
+				id: "apotheosis:luminous_crystal_shard"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "10F11DD361847018"
+			item: {
+				count: 1
+				id: "apothic_enchanting:infused_breath"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "128BAEFB3B59B60A"
+			item: {
+				count: 1
+				id: "apotheosis:gem_fused_slate"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 3
+			id: "3989B8B49A7517CE"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 6
+			id: "52D7ECE97F298770"
+			item: {
+				count: 1
+				id: "minecraft:emerald"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 12
+			id: "7B113BDAFC1A05BE"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

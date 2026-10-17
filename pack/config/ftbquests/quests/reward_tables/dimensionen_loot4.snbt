@@ -1,0 +1,127 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "19080D81B94E9AF1"
+	loot_crate: {
+		color: 16755200
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "dimensionen_loot4"
+	}
+	loot_size: 1
+	order_index: 42
+	rewards: [
+		{
+			count: 12
+			id: "5B519073744604EB"
+			item: {
+				count: 1
+				id: "alexscaves:uranium_shard"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "7422742A0A16BA45"
+			item: {
+				count: 1
+				id: "enderscape:shadoline_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 18
+			id: "52158409E574CE60"
+			item: {
+				count: 1
+				id: "ad_astra:ostrum_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "7EA60609F0AF71C8"
+			item: {
+				count: 1
+				id: "alexscaves:scarlet_neodymium_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "312D3EB1FFB796B7"
+			item: {
+				count: 1
+				id: "alexscaves:azure_neodymium_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "35640393A555F638"
+			item: {
+				count: 1
+				id: "undergarden:utherium_crystal"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "11D5A161CB12D69E"
+			item: {
+				count: 1
+				id: "ad_astra:calorite_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "3242F815DD7E6718"
+			item: {
+				count: 1
+				id: "betterend:aeternium_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "5AB98C50EE99B670"
+			item: {
+				count: 1
+				id: "undergarden:regalium_crystal"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "1921B8DE4668F62C"
+			item: {
+				count: 1
+				id: "minecraft:netherite_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "719284F8857692E2"
+			item: {
+				count: 1
+				id: "minecraft:enchanted_golden_apple"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "343BD4F9C3493587"
+			item: {
+				count: 1
+				id: "minecraft:nether_star"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

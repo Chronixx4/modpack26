@@ -1,0 +1,100 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "3A73E96C864BB0BC"
+	loot_crate: {
+		color: 5635925
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "refined_storage_loot2"
+	}
+	loot_size: 1
+	order_index: 107
+	rewards: [
+		{
+			count: 12
+			id: "3D1D81698DA55734"
+			item: {
+				count: 1
+				id: "refinedstorage:silicon"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 24
+			id: "16A4D8865A769C38"
+			item: {
+				count: 1
+				id: "refinedstorage:cable"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "32CB0A198EA9769F"
+			item: {
+				count: 1
+				id: "refinedstorage:basic_processor"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "1CFE788C0B68D765"
+			item: {
+				count: 1
+				id: "refinedstorage:1k_storage_disk"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "5FECF83710092553"
+			item: {
+				count: 1
+				id: "refinedstorage:improved_processor"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "1717D337DAAD5133"
+			item: {
+				count: 1
+				id: "refinedstorage:16k_storage_disk"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 3
+			id: "773778038963B593"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 6
+			id: "12464FA90C48811A"
+			item: {
+				count: 1
+				id: "minecraft:emerald"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 12
+			id: "52F2B910A65EF927"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

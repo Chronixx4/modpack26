@@ -24,7 +24,7 @@
 			shape: "rsquare"
 			size: 1.0d
 			x: 20.0d
-			y: -4.5d
+			y: -3.0d
 		}
 	]
 	quests: [
@@ -36,7 +36,12 @@
 			rewards: [
 				{
 					id: "50905D9AFC76B01A"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "7ACAC4144F0A6131"
+					table_id: 5768775866785713297L
 					type: "loot"
 				}
 			]
@@ -64,7 +69,16 @@
 				{
 					id: "16611B36195E53A5"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "3CDD271F8B96DC30"
+					item: {
+						count: 1
+						id: "occultism:datura_seeds"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -89,7 +103,16 @@
 				{
 					id: "79C4F8E2B3B708DF"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "5C98075939075147"
+					item: {
+						count: 1
+						id: "occultism:chalk_white"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -103,7 +126,7 @@
 				}
 			]
 			x: 2.0d
-			y: -4.5d
+			y: -6.0d
 		}
 		{
 			dependencies: [
@@ -114,7 +137,16 @@
 				{
 					id: "385EE695E14A9923"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "38EF86B00E1F2609"
+					item: {
+						count: 1
+						id: "occultism:chalk_white"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -139,7 +171,16 @@
 				{
 					id: "74048C92E174450D"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "3DC7D673CE579A9A"
+					item: {
+						count: 1
+						id: "occultism:datura_seeds"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -172,7 +213,16 @@
 				{
 					id: "53AB9865055D305B"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "106DF59458B87F97"
+					item: {
+						count: 1
+						id: "immersiveengineering:ingot_silver"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -197,7 +247,16 @@
 				{
 					id: "7B14BF2DEE90D68D"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "761E2FC5742E5634"
+					item: {
+						count: 1
+						id: "immersiveengineering:ingot_silver"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -222,7 +281,16 @@
 				{
 					id: "37F4D38028726835"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 16
+					id: "131EBC80BC2E1838"
+					item: {
+						count: 1
+						id: "occultism:otherstone"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -256,7 +324,16 @@
 				{
 					id: "5D2C9F308CBF9FCA"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "31C9B9EE027ED999"
+					item: {
+						count: 1
+						id: "occultism:spirit_attuned_gem"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -282,7 +359,16 @@
 				{
 					id: "5568DB1BB3DACFA2"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "58041A1481AE4C49"
+					item: {
+						count: 1
+						id: "occultism:spirit_attuned_gem"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -331,7 +417,12 @@
 			rewards: [
 				{
 					id: "1C065656F1BD75EC"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "7BE1AF85023C938B"
+					table_id: 5768775866785713297L
 					type: "loot"
 				}
 			]
@@ -358,7 +449,16 @@
 				{
 					id: "1D459EA963822EFC"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "7FEAB576C9CFEE7B"
+					item: {
+						count: 1
+						id: "occultism:spirit_attuned_gem"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -384,7 +484,16 @@
 				{
 					id: "7B0418A3A1D690D7"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "36A3E4DF12B224EC"
+					item: {
+						count: 1
+						id: "occultism:spirit_attuned_gem"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -417,7 +526,16 @@
 				{
 					id: "5D492A9A471BEA9F"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "5DCC9847E7F3DD32"
+					item: {
+						count: 1
+						id: "occultism:purified_ink"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -457,7 +575,12 @@
 			rewards: [
 				{
 					id: "5111CB67B6CE9D43"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "57B880E949938065"
+					table_id: 8434217503564708043L
 					type: "loot"
 				}
 			]
@@ -485,7 +608,16 @@
 				{
 					id: "5CD903EDF5F1EB70"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "762CD1A8402FD2F5"
+					item: {
+						count: 1
+						id: "occultism:awakened_feather"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -511,7 +643,16 @@
 				{
 					id: "5D812A9E2E67FCFB"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "7CB29781E3021CCB"
+					item: {
+						count: 1
+						id: "occultism:iesnium_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -535,7 +676,12 @@
 			rewards: [
 				{
 					id: "7419F04ADF62B451"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "3DA523709A9B9C24"
+					table_id: 8434217503564708043L
 					type: "loot"
 				}
 			]
@@ -578,7 +724,16 @@
 				{
 					id: "7CD1F9F42E5FAC60"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 2
+					id: "58F307A6D4D5EC95"
+					item: {
+						count: 1
+						id: "occultism:awakened_feather"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -600,7 +755,7 @@
 				}
 			]
 			x: 22.0d
-			y: 1.5d
+			y: 3.0d
 		}
 		{
 			dependencies: [
@@ -611,7 +766,16 @@
 				{
 					id: "1FACAF63520A1C52"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 2
+					id: "5AE439FE602A015E"
+					item: {
+						count: 1
+						id: "occultism:fragile_soul_gem"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -643,7 +807,12 @@
 			rewards: [
 				{
 					id: "5D2BDEB999BAF11F"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "504FF4CEEDB74E12"
+					table_id: 8434217503564708043L
 					type: "loot"
 				}
 			]
@@ -658,7 +827,7 @@
 				}
 			]
 			x: 26.0d
-			y: 1.5d
+			y: 6.0d
 		}
 		{
 			dependencies: [
@@ -669,7 +838,16 @@
 				{
 					id: "3012323F13E52100"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 2
+					id: "1AECBD0D3E2006EF"
+					item: {
+						count: 1
+						id: "occultism:awakened_feather"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -683,7 +861,7 @@
 				}
 			]
 			x: 28.0d
-			y: 1.5d
+			y: 6.0d
 		}
 		{
 			dependencies: [
@@ -694,7 +872,16 @@
 				{
 					id: "37AE7E9AF01EEE36"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "1AA2C7C6BC5D2B88"
+					item: {
+						count: 1
+						id: "occultism:iesnium_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -716,7 +903,7 @@
 				}
 			]
 			x: 20.0d
-			y: -3.0d
+			y: -4.5d
 		}
 		{
 			dependencies: [
@@ -727,7 +914,16 @@
 				{
 					id: "732C9555A50CFC0F"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "51BA41A9FC2A50D4"
+					item: {
+						count: 1
+						id: "occultism:fragile_soul_gem"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -741,7 +937,7 @@
 				}
 			]
 			x: 22.0d
-			y: -3.0d
+			y: -4.5d
 		}
 		{
 			dependencies: [
@@ -752,7 +948,16 @@
 				{
 					id: "757E491514535DA2"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "5EBD5A5C9844A4B2"
+					item: {
+						count: 1
+						id: "occultism:iesnium_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -766,7 +971,7 @@
 				}
 			]
 			x: 16.0d
-			y: 4.5d
+			y: 6.0d
 		}
 		{
 			dependencies: [
@@ -777,7 +982,16 @@
 				{
 					id: "5613340989C128F1"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "716B9F0C347BA954"
+					item: {
+						count: 1
+						id: "occultism:afrit_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -810,7 +1024,12 @@
 			rewards: [
 				{
 					id: "5670A3E36BC945BB"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "38E13D3619035018"
+					table_id: 8434217503564708043L
 					type: "loot"
 				}
 			]
@@ -837,7 +1056,16 @@
 				{
 					id: "5705490309B288FE"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 2
+					id: "7EEC333682FC10B1"
+					item: {
+						count: 1
+						id: "occultism:afrit_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -869,7 +1097,12 @@
 			rewards: [
 				{
 					id: "1BF0722C3E1377A8"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "15E5C2833BAE4E6F"
+					table_id: 4468742749894161675L
 					type: "loot"
 				}
 			]
@@ -897,7 +1130,12 @@
 			rewards: [
 				{
 					id: "34E2ED6FBAA053CA"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "12179FF6030B6CF0"
+					table_id: 8434217503564708043L
 					type: "loot"
 				}
 			]

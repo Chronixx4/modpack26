@@ -1,0 +1,120 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "745FAD21B59837CE"
+	loot_crate: {
+		color: 5635925
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "ars_nouveau_loot2"
+	}
+	loot_size: 1
+	order_index: 21
+	rewards: [
+		{
+			count: 24
+			id: "3F47B56BA3C2C3F6"
+			item: {
+				count: 1
+				id: "ars_nouveau:blank_parchment"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 48
+			id: "51AF13C729E591B0"
+			item: {
+				count: 1
+				id: "ars_nouveau:archwood_planks"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "5BA9D3B5E0A411B4"
+			item: {
+				count: 1
+				id: "ars_nouveau:fire_essence"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "726429F019F83596"
+			item: {
+				count: 1
+				id: "ars_nouveau:water_essence"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "76979C30C1317C34"
+			item: {
+				count: 1
+				id: "ars_nouveau:earth_essence"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "57C164390E5FD3DC"
+			item: {
+				count: 1
+				id: "ars_nouveau:air_essence"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "315B8C768E8488C4"
+			item: {
+				count: 1
+				id: "ars_nouveau:blank_thread"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 6
+			id: "5D7B546F36200113"
+			item: {
+				count: 1
+				id: "ars_nouveau:manipulation_essence"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 3
+			id: "5898D437CA9943D8"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 6
+			id: "566639E342442292"
+			item: {
+				count: 1
+				id: "minecraft:emerald"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 12
+			id: "77A5FAE0A4060166"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

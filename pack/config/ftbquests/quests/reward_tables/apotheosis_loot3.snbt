@@ -1,0 +1,107 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "1CE9AEE739FA359F"
+	loot_crate: {
+		color: 11141375
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "apotheosis_loot3"
+	}
+	loot_size: 1
+	order_index: 15
+	rewards: [
+		{
+			count: 8
+			id: "7A45C2E041D2FD78"
+			item: {
+				count: 1
+				id: "apotheosis:timeworn_fabric"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "51AD88354B46F349"
+			item: {
+				count: 1
+				id: "apotheosis:luminous_crystal_shard"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "34519EB9F0A86070"
+			item: {
+				count: 1
+				id: "apothic_enchanting:infused_breath"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "3297417677C125EA"
+			item: {
+				count: 1
+				id: "apotheosis:gem_fused_slate"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "7EBF9334A9061900"
+			item: {
+				count: 1
+				id: "apotheosis:sigil_of_socketing"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "78FB41FB55EE957E"
+			item: {
+				count: 1
+				id: "apotheosis:sigil_of_enhancement"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "3D87293892464BCB"
+			item: {
+				count: 1
+				id: "apotheosis:godforged_pearl"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "1F8E2AB0D0C52EC5"
+			item: {
+				count: 1
+				id: "minecraft:diamond_block"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 2
+			id: "512AECA3A0AA86C6"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 3
+			id: "17DC18D5F8211B28"
+			item: {
+				count: 1
+				id: "minecraft:emerald_block"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

@@ -52,7 +52,12 @@
 			rewards: [
 				{
 					id: "5A834F19D1E2E6BB"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "7E7F4BE5E1382BAC"
+					table_id: 8298348603115996431L
 					type: "loot"
 				}
 			]
@@ -80,7 +85,16 @@
 				{
 					id: "712A03083C56A865"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 16
+					id: "129FB3822B03EFEF"
+					item: {
+						count: 1
+						id: "mysticalagriculture:inferium_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -105,7 +119,16 @@
 				{
 					id: "1DCB89E5E4D1500A"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "53015E87C3C1A0C7"
+					item: {
+						count: 1
+						id: "mysticalagriculture:inferium_seeds"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -130,7 +153,16 @@
 				{
 					id: "39E4E759C4338693"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 32
+					id: "5E68054365120895"
+					item: {
+						count: 1
+						id: "mysticalagriculture:inferium_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -154,7 +186,12 @@
 			rewards: [
 				{
 					id: "338913338A2CA388"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "56E0C8255CB161E6"
+					table_id: 5978619282210104781L
 					type: "loot"
 				}
 			]
@@ -181,7 +218,16 @@
 				{
 					id: "7061E3896AEBF4E5"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "71C6FF2D5474938D"
+					item: {
+						count: 1
+						id: "mysticalagriculture:inferium_seeds"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -205,7 +251,12 @@
 			rewards: [
 				{
 					id: "700EB28EFEFE9E9F"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "33E08596EDBEC83C"
+					table_id: 2132092227843250797L
 					type: "loot"
 				}
 			]
@@ -231,7 +282,12 @@
 			rewards: [
 				{
 					id: "125DEFAB0BA7737C"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "33D035F416ED1583"
+					table_id: 2132092227843250797L
 					type: "loot"
 				}
 			]
@@ -259,7 +315,16 @@
 				{
 					id: "384D1E971288321D"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 12
+					id: "3B61E64E9CEC2A76"
+					item: {
+						count: 1
+						id: "mysticalagriculture:mystical_fertilizer"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -291,7 +356,12 @@
 			rewards: [
 				{
 					id: "5150F968666E902C"
-					table_id: 3797459037597754809L
+					type: "xp_levels"
+					xp_levels: 20
+				}
+				{
+					id: "783CF3EE37F2EC41"
+					table_id: 6357603441860077784L
 					type: "loot"
 				}
 			]
@@ -318,7 +388,12 @@
 			rewards: [
 				{
 					id: "10F221F990A845F9"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "52584C040674855D"
+					table_id: 8298348603115996431L
 					type: "loot"
 				}
 			]
@@ -354,7 +429,16 @@
 				{
 					id: "53E07023EEBA24E2"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "7A4A637FBC62367E"
+					item: {
+						count: 1
+						id: "mysticalagriculture:mystical_fertilizer"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -380,7 +464,16 @@
 				{
 					id: "5D3FE95270D7CC1C"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "1875BB34833200FD"
+					item: {
+						count: 1
+						id: "mysticalagriculture:iron_seeds"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -421,7 +514,16 @@
 				{
 					id: "1A2812AFCFD748D2"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 24
+					id: "76B00ECFACC9EE9E"
+					item: {
+						count: 1
+						id: "mysticalagriculture:prudentium_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -471,7 +573,16 @@
 				{
 					id: "7A67B087F3B9F36B"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 24
+					id: "1059A09391DBA2FB"
+					item: {
+						count: 1
+						id: "mysticalagriculture:prudentium_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -513,7 +624,16 @@
 				{
 					id: "551FD115D1A0EF0A"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 24
+					id: "5F99F58033C5741D"
+					item: {
+						count: 1
+						id: "mysticalagriculture:prudentium_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -554,7 +674,16 @@
 				{
 					id: "7C0236C24AB2C136"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "38135C677CF4281B"
+					item: {
+						count: 1
+						id: "mysticalagriculture:iron_seeds"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -596,7 +725,16 @@
 				{
 					id: "57E5DC1DC4C351B5"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 24
+					id: "1617B22062B3E108"
+					item: {
+						count: 1
+						id: "mysticalagriculture:prosperity_shard"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -646,7 +784,16 @@
 				{
 					id: "75B6442B90A96AC5"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 36
+					id: "5EA1FA0D9125A81D"
+					item: {
+						count: 1
+						id: "mysticalagriculture:prudentium_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -688,7 +835,16 @@
 				{
 					id: "5C6425184B716B43"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 12
+					id: "149F687775F6D46B"
+					item: {
+						count: 1
+						id: "mysticalagriculture:soulium_dust"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -731,7 +887,16 @@
 				{
 					id: "59990B513F30E60B"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 2
+					id: "52BC68570996F4A8"
+					item: {
+						count: 1
+						id: "mysticalagriculture:diamond_seeds"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -764,7 +929,16 @@
 				{
 					id: "383B589DB5A2EBBB"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "741E2AA999F12F9E"
+					item: {
+						count: 1
+						id: "mysticalagriculture:soulium_dust"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -789,7 +963,16 @@
 				{
 					id: "3D87DDC3A26F0D91"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "363C357F1AC7913D"
+					item: {
+						count: 1
+						id: "mysticalagriculture:soulium_dust"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -814,7 +997,16 @@
 				{
 					id: "3CD1DEA148FBF3A0"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "1875E426F6BA35DD"
+					item: {
+						count: 1
+						id: "mysticalagriculture:soulium_dust"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -839,7 +1031,16 @@
 				{
 					id: "77A0810CC327101E"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "5ABFF5FB06CD429C"
+					item: {
+						count: 1
+						id: "mysticalagriculture:diamond_seeds"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -864,7 +1065,12 @@
 			rewards: [
 				{
 					id: "1C535D0F09AE354C"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "38A8B5D47F52681C"
+					table_id: 5978619282210104781L
 					type: "loot"
 				}
 			]
@@ -892,7 +1098,16 @@
 				{
 					id: "39C747AA696B7D69"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "3DDC82148EC82C41"
+					item: {
+						count: 1
+						id: "mysticalagriculture:soulium_dust"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -925,7 +1140,16 @@
 				{
 					id: "7AA64DE37EF5C015"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "71BB6BEDFE1AD985"
+					item: {
+						count: 1
+						id: "mysticalagriculture:prosperity_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -958,7 +1182,16 @@
 				{
 					id: "74C50BA87F9BD0FF"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 16
+					id: "10413C3FBF223BB4"
+					item: {
+						count: 1
+						id: "mysticalagriculture:tertium_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -983,7 +1216,16 @@
 				{
 					id: "33EBA17CC1E6ACFB"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "5F8190DF1A25B1FD"
+					item: {
+						count: 1
+						id: "mysticalagriculture:prosperity_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1008,7 +1250,16 @@
 				{
 					id: "7FBA3D8F96B169B9"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "3C332F93BB33CDDC"
+					item: {
+						count: 1
+						id: "mysticalagriculture:prosperity_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1041,7 +1292,16 @@
 				{
 					id: "3A44EE88AFD49072"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 16
+					id: "7DCC362A400794D9"
+					item: {
+						count: 1
+						id: "mysticalagriculture:imperium_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1067,7 +1327,16 @@
 				{
 					id: "351576D21B55C73D"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 8
+					id: "7472C25A5C9EE7C3"
+					item: {
+						count: 1
+						id: "mysticalagriculture:tertium_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1093,7 +1362,16 @@
 				{
 					id: "7DC6E9265A74DB71"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 16
+					id: "77A2C81AB37C013F"
+					item: {
+						count: 1
+						id: "mysticalagriculture:tertium_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1118,7 +1396,16 @@
 				{
 					id: "514E830A0A2B370A"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 16
+					id: "1C17406B805F2CB3"
+					item: {
+						count: 1
+						id: "mysticalagriculture:imperium_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1152,7 +1439,16 @@
 				{
 					id: "59B9D1946194001E"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "3E5AB10D3D4F9E51"
+					item: {
+						count: 1
+						id: "mysticalagriculture:prosperity_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1186,7 +1482,16 @@
 				{
 					id: "5FBCF9036A7C591D"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 16
+					id: "176C930811A09689"
+					item: {
+						count: 1
+						id: "mysticalagriculture:imperium_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1228,7 +1533,16 @@
 				{
 					id: "3EAFA4F81C433FA5"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "319CE6B20D621A2F"
+					item: {
+						count: 1
+						id: "mysticalagriculture:prosperity_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1254,7 +1568,16 @@
 				{
 					id: "1C6345F41DE8675D"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 16
+					id: "3051953C59767294"
+					item: {
+						count: 1
+						id: "mysticalagriculture:imperium_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1280,7 +1603,16 @@
 				{
 					id: "1BD6EBBF33E3DF24"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 12
+					id: "1177D95D0B15E40C"
+					item: {
+						count: 1
+						id: "mysticalagriculture:supremium_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1330,7 +1662,16 @@
 				{
 					id: "3AB203D445CF7AAA"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "3DC3D63D3AE22F3F"
+					item: {
+						count: 1
+						id: "mysticalagradditions:insanium_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1372,7 +1713,16 @@
 				{
 					id: "7A6200D47A5B32F5"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "38A186218CB5ED61"
+					item: {
+						count: 1
+						id: "mysticalagradditions:insanium_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1398,7 +1748,16 @@
 				{
 					id: "7DD9BDEEE3337533"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 12
+					id: "12E1D6AB7A20E773"
+					item: {
+						count: 1
+						id: "mysticalagriculture:supremium_essence"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1440,7 +1799,12 @@
 			rewards: [
 				{
 					id: "14862EF853DC11D0"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "12FBA918AB1DA6F3"
+					table_id: 2132092227843250797L
 					type: "loot"
 				}
 			]

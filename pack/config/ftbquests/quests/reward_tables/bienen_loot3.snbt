@@ -1,0 +1,92 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "571EFE21794A878C"
+	loot_crate: {
+		color: 11141375
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "bienen_loot3"
+	}
+	loot_size: 1
+	order_index: 25
+	rewards: [
+		{
+			count: 16
+			id: "11715E7C6D349754"
+			item: {
+				count: 1
+				id: "the_bumblezone:pollen_puff"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "30A40CE6B72C9DD8"
+			item: {
+				count: 1
+				id: "the_bumblezone:bee_bread"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "53C71BABE0AE348D"
+			item: {
+				count: 1
+				id: "the_bumblezone:honey_crystal_shards"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "1E9918AD19B93659"
+			item: {
+				count: 1
+				id: "the_bumblezone:royal_jelly_bottle"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "74A20AB4130E3484"
+			item: {
+				count: 1
+				id: "the_bumblezone:essence_of_the_bees"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "18EE8963675368B7"
+			item: {
+				count: 1
+				id: "minecraft:diamond_block"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 2
+			id: "74E6436ECCAFCD57"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 3
+			id: "5BD655ADE195FAF6"
+			item: {
+				count: 1
+				id: "minecraft:emerald_block"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

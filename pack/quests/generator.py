@@ -435,6 +435,8 @@ def main():
     for t in teile:
         importlib.import_module('inhalt.' + t)
     from inhalt.loot import TABELLEN
+    from inhalt import belohnungen
+    belohnungen.anwenden(dsl.KAPITEL, TABELLEN)
     chk = Pruefer(a.ids)
     warn = chk.warnungen
 

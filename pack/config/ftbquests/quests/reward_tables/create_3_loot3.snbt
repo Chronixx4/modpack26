@@ -1,0 +1,127 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "13B9C48E65109520"
+	loot_crate: {
+		color: 11141375
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "create_3_loot3"
+	}
+	loot_size: 1
+	order_index: 37
+	rewards: [
+		{
+			count: 16
+			id: "18B7E9130F6AF258"
+			item: {
+				count: 1
+				id: "createbigcannons:powder_charge"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "74EBB851717CBDEC"
+			item: {
+				count: 1
+				id: "createaddition:capacitor"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "5BEA4A769849BF70"
+			item: {
+				count: 1
+				id: "createmetallurgy:tungsten_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "158ABDE750431EAB"
+			item: {
+				count: 1
+				id: "create_new_age:thorium"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "5D21C49E8943AB8C"
+			item: {
+				count: 1
+				id: "aeronautics:levitite"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "3CDA01A9CB87D87A"
+			item: {
+				count: 1
+				id: "createbigcannons:solid_shot"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "102E6742978398F4"
+			item: {
+				count: 1
+				id: "createdieselgenerators:diesel_bucket"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "1EA7863A8C2A0A8B"
+			item: {
+				count: 1
+				id: "createteleporters:quantum_mechanism"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "5F7CD5B2830C4D07"
+			item: {
+				count: 1
+				id: "create_new_age:overcharged_gold"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "75CFAB359019DAD3"
+			item: {
+				count: 1
+				id: "minecraft:diamond_block"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 2
+			id: "5B291887517E5153"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 3
+			id: "348F161855796655"
+			item: {
+				count: 1
+				id: "minecraft:emerald_block"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

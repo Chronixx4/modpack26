@@ -1,0 +1,165 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "312F6BB1B8A7B23C"
+	loot_crate: {
+		color: 11141375
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "dimensionen_loot3"
+	}
+	loot_size: 1
+	order_index: 41
+	rewards: [
+		{
+			count: 16
+			id: "11F262FA0F07D08B"
+			item: {
+				count: 1
+				id: "ad_astra:desh_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "74AA054A6DA75FF9"
+			item: {
+				count: 1
+				id: "alexscaves:sea_glass_shards"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "797D13A0FE840438"
+			item: {
+				count: 1
+				id: "undergarden:froststeel_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "15AEB74ED0D65D8D"
+			item: {
+				count: 1
+				id: "betternether:nether_ruby"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "5D7231E30EDC2FEB"
+			item: {
+				count: 1
+				id: "alexscaves:uranium_shard"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "3FFB7369D670F626"
+			item: {
+				count: 1
+				id: "enderscape:shadoline_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "7004518AAD803BB3"
+			item: {
+				count: 1
+				id: "ad_astra:ostrum_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "5A36D73BC41113CF"
+			item: {
+				count: 1
+				id: "alexscaves:scarlet_neodymium_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "79C35D7C793577A6"
+			item: {
+				count: 1
+				id: "alexscaves:azure_neodymium_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "7304B71810BC1FEB"
+			item: {
+				count: 1
+				id: "undergarden:utherium_crystal"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "5A35AE451114101C"
+			item: {
+				count: 1
+				id: "ad_astra:calorite_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "18E50746DD87A764"
+			item: {
+				count: 1
+				id: "betterend:aeternium_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "579C86DE1F5B0F26"
+			item: {
+				count: 1
+				id: "undergarden:regalium_crystal"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "72E2DE9AEC5C8C5B"
+			item: {
+				count: 1
+				id: "minecraft:diamond_block"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 2
+			id: "583E5ED85994955A"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 3
+			id: "315293889EF53418"
+			item: {
+				count: 1
+				id: "minecraft:emerald_block"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

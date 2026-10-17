@@ -1,0 +1,73 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "51CC3E4D94D0BD3F"
+	loot_crate: {
+		color: 16755200
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "finale_loot4"
+	}
+	loot_size: 1
+	order_index: 59
+	rewards: [
+		{
+			count: 48
+			id: "340BEDE6FFBB680E"
+			item: {
+				count: 1
+				id: "mysticalagradditions:insanium_essence"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "114297DAC953D2BE"
+			item: {
+				count: 1
+				id: "minecraft:nether_star"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "5A9F56778623F23F"
+			item: {
+				count: 1
+				id: "minecraft:enchanted_golden_apple"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "3A462631A3A0955D"
+			item: {
+				count: 1
+				id: "minecraft:netherite_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "167752626225BA78"
+			item: {
+				count: 1
+				id: "minecraft:enchanted_golden_apple"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "1BBCA1D8DC607BEA"
+			item: {
+				count: 1
+				id: "minecraft:nether_star"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

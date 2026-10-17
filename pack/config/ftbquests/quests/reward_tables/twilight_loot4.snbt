@@ -1,0 +1,81 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "384B589979438A19"
+	loot_crate: {
+		color: 16755200
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "twilight_loot4"
+	}
+	loot_size: 1
+	order_index: 119
+	rewards: [
+		{
+			count: 12
+			id: "15CDB8351EBFE8D6"
+			item: {
+				count: 1
+				id: "twilightforest:fiery_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 18
+			id: "37710FCE0CBDB293"
+			item: {
+				count: 1
+				id: "twilightforest:knightmetal_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "10145F690F741ACD"
+			item: {
+				count: 1
+				id: "twilightforest:fiery_blood"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "762B27E6935E2382"
+			item: {
+				count: 1
+				id: "twilightforest:magic_map"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "13D70345CBF900B1"
+			item: {
+				count: 1
+				id: "minecraft:netherite_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "13455D3265C391F1"
+			item: {
+				count: 1
+				id: "minecraft:enchanted_golden_apple"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "7FBB117FDEE4C2F0"
+			item: {
+				count: 1
+				id: "minecraft:nether_star"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

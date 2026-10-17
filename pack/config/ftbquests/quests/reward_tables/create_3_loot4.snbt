@@ -1,0 +1,98 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "3761A603C85896FB"
+	loot_crate: {
+		color: 16755200
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "create_3_loot4"
+	}
+	loot_size: 1
+	order_index: 38
+	rewards: [
+		{
+			count: 12
+			id: "120F6C3FC9821F2E"
+			item: {
+				count: 1
+				id: "create_new_age:thorium"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "34AA6D86688B267E"
+			item: {
+				count: 1
+				id: "aeronautics:levitite"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "3B67B4F25BB1DE0F"
+			item: {
+				count: 1
+				id: "createbigcannons:solid_shot"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "19B95A38A67BB44E"
+			item: {
+				count: 1
+				id: "createdieselgenerators:diesel_bucket"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "5CE0E91384FCA23B"
+			item: {
+				count: 1
+				id: "createteleporters:quantum_mechanism"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 12
+			id: "18321258B945B217"
+			item: {
+				count: 1
+				id: "create_new_age:overcharged_gold"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "3F0650A0A04FDA0F"
+			item: {
+				count: 1
+				id: "minecraft:netherite_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "1BB284FC4E5B968A"
+			item: {
+				count: 1
+				id: "minecraft:enchanted_golden_apple"
+			}
+			weight: 2.0f
+		}
+		{
+			id: "1F0494F30E833D7C"
+			item: {
+				count: 1
+				id: "minecraft:nether_star"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

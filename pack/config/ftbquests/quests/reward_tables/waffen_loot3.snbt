@@ -1,0 +1,92 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "15F67DCB5256C2D6"
+	loot_crate: {
+		color: 11141375
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "waffen_loot3"
+	}
+	loot_size: 1
+	order_index: 122
+	rewards: [
+		{
+			count: 16
+			id: "3A6E35A3BAF41A3A"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "51AD926CE6425886"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "15A2D49B9CAA615A"
+			item: {
+				count: 1
+				id: "minecraft:golden_apple"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "1A731C440559193B"
+			item: {
+				count: 1
+				id: "simplyswords:runic_tablet"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "11E78223CCE94B15"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "346DD2C052DF6794"
+			item: {
+				count: 1
+				id: "minecraft:diamond_block"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 2
+			id: "7DA5A6224B251953"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 3
+			id: "36488D5A06956648"
+			item: {
+				count: 1
+				id: "minecraft:emerald_block"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

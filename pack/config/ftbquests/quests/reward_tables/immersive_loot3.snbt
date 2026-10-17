@@ -1,0 +1,109 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "36ADC86A2629F1BA"
+	loot_crate: {
+		color: 11141375
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: true
+		string_id: "immersive_loot3"
+	}
+	loot_size: 1
+	order_index: 72
+	rewards: [
+		{
+			count: 8
+			id: "3EF216B3BDB57063"
+			item: {
+				count: 1
+				id: "immersiveengineering:connector_lv"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "1809F161BB045312"
+			item: {
+				count: 1
+				id: "immersiveengineering:ingot_steel"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "1DC61B761B778B3B"
+			item: {
+				count: 1
+				id: "immersiveengineering:capacitor_lv"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "59F8F7770366704F"
+			item: {
+				count: 1
+				id: "immersiveengineering:wirecoil_electrum"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "3DCB6677EF767348"
+			item: {
+				count: 1
+				id: "immersiveengineering:bullet_casull"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 16
+			id: "3166B2A66598F6E4"
+			item: {
+				count: 1
+				id: "immersiveengineering:wirecoil_steel"
+			}
+			weight: 10.0f
+		}
+		{
+			id: "187B8EC52252E8CA"
+			item: {
+				count: 1
+				id: "immersiveengineering:capacitor_mv"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "1390926EA9BBBB93"
+			item: {
+				count: 1
+				id: "minecraft:diamond_block"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 2
+			id: "19D8C885BEB719AB"
+			item: {
+				count: 1
+				id: "minecraft:netherite_scrap"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 3
+			id: "14E15F8685F09D01"
+			item: {
+				count: 1
+				id: "minecraft:emerald_block"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

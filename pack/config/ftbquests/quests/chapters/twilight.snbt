@@ -29,7 +29,16 @@
 				{
 					id: "57EE54F5729CD02A"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "314CC89DF5B94EFD"
+					item: {
+						count: 1
+						id: "twilightforest:ironwood_ingot"
+					}
+					type: "item"
 				}
 			]
 			shape: "gear"
@@ -56,7 +65,12 @@
 			rewards: [
 				{
 					id: "7DD23B0B4C27DFB5"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "1078CF5E8DCEF383"
+					table_id: 1889938139935667618L
 					type: "loot"
 				}
 			]
@@ -80,7 +94,12 @@
 			rewards: [
 				{
 					id: "5E815D377E2664F9"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "3C8A4D83EBD84821"
+					table_id: 1889938139935667618L
 					type: "loot"
 				}
 			]
@@ -113,7 +132,12 @@
 			rewards: [
 				{
 					id: "38CE4E03FC606B23"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "585D6475BA0AD2E6"
+					table_id: 8119482625085598278L
 					type: "loot"
 				}
 			]
@@ -146,7 +170,12 @@
 			rewards: [
 				{
 					id: "3DF356D4A5E1C2FE"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "5F858F50AE81EE89"
+					table_id: 8119482625085598278L
 					type: "loot"
 				}
 			]
@@ -179,7 +208,12 @@
 			rewards: [
 				{
 					id: "3C51E45DC515DF68"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "59847ADF3854ABDD"
+					table_id: 8119482625085598278L
 					type: "loot"
 				}
 			]
@@ -212,7 +246,12 @@
 			rewards: [
 				{
 					id: "136AF7FC06C254C6"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "1136FCFBBD7B9230"
+					table_id: 2288808833546634852L
 					type: "loot"
 				}
 			]
@@ -245,7 +284,12 @@
 			rewards: [
 				{
 					id: "31B195B1A6234135"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "3ECD8B513019F596"
+					table_id: 2288808833546634852L
 					type: "loot"
 				}
 			]
@@ -278,7 +322,12 @@
 			rewards: [
 				{
 					id: "144556EE51E0EFC7"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "3A65DE1503064DD0"
+					table_id: 2288808833546634852L
 					type: "loot"
 				}
 			]
@@ -311,7 +360,12 @@
 			rewards: [
 				{
 					id: "333493A07FD30930"
-					table_id: 3797459037597754809L
+					type: "xp_levels"
+					xp_levels: 20
+				}
+				{
+					id: "59A7134A07CF1F93"
+					table_id: 4056433305564973593L
 					type: "loot"
 				}
 			]
@@ -345,7 +399,16 @@
 				{
 					id: "388F6BD4D13D20FB"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "748B6D40E662594F"
+					item: {
+						count: 1
+						id: "twilightforest:naga_scale"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -371,7 +434,16 @@
 				{
 					id: "77AAC5697ADB3A10"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "155FBDEDA04B0379"
+					item: {
+						count: 1
+						id: "twilightforest:carminite"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -397,7 +469,16 @@
 				{
 					id: "1CB2CBBECFE257A8"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "130E2C0A654D8741"
+					item: {
+						count: 1
+						id: "twilightforest:naga_scale"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -422,7 +503,16 @@
 				{
 					id: "102AAD49ECC30741"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "763E8BB284C6D2D6"
+					item: {
+						count: 1
+						id: "twilightforest:carminite"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -449,7 +539,16 @@
 				{
 					id: "3130210AE74F70B8"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "1F723ED4A580E77C"
+					item: {
+						count: 1
+						id: "twilightforest:carminite"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -482,7 +581,16 @@
 				{
 					id: "12979DD261EB8099"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "5BF5F71E85F9363F"
+					item: {
+						count: 1
+						id: "twilightforest:fiery_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -507,7 +615,16 @@
 				{
 					id: "5B1B9AE64DECD57A"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 9
+					id: "3C0ECBA5DB241085"
+					item: {
+						count: 1
+						id: "twilightforest:knightmetal_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -532,7 +649,16 @@
 				{
 					id: "7E830919F0B8DF69"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 6
+					id: "71D7CC031EEC5FFC"
+					item: {
+						count: 1
+						id: "twilightforest:knightmetal_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -558,7 +684,16 @@
 				{
 					id: "33A8C3E07EADE06A"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 2
+					id: "1E4206A902858EF6"
+					item: {
+						count: 1
+						id: "twilightforest:fiery_blood"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -584,7 +719,16 @@
 				{
 					id: "3D04C853EF733E03"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "1519D1B5BCC7041D"
+					item: {
+						count: 1
+						id: "twilightforest:fiery_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -610,7 +754,15 @@
 				{
 					id: "50127C3C111D52A6"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					id: "363183B6FF07C22F"
+					item: {
+						count: 1
+						id: "twilightforest:magic_map"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -636,7 +788,16 @@
 				{
 					id: "546FAB951A1E2E88"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "305D49380A8591EB"
+					item: {
+						count: 1
+						id: "twilightforest:fiery_blood"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -661,7 +822,16 @@
 				{
 					id: "52ABEE3251B0C8D7"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 6
+					id: "7B3848CE52F52C9C"
+					item: {
+						count: 1
+						id: "twilightforest:knightmetal_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -688,7 +858,16 @@
 				{
 					id: "173412C6C212A404"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "3E1DB6A0BB7E2140"
+					item: {
+						count: 1
+						id: "twilightforest:fiery_blood"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -713,7 +892,12 @@
 			rewards: [
 				{
 					id: "18AE397361C33F4C"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "175B5FFC80DC4292"
+					table_id: 8119482625085598278L
 					type: "loot"
 				}
 			]

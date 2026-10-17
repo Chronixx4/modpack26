@@ -1,0 +1,102 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "5C84AC1A918BD53A"
+	loot_crate: {
+		color: 11579568
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "lager_loot1"
+	}
+	loot_size: 1
+	order_index: 84
+	rewards: [
+		{
+			count: 8
+			id: "16C64AB31754BA36"
+			item: {
+				count: 1
+				id: "pipez:item_pipe"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 4
+			id: "7B43A26CBCBD3CD1"
+			item: {
+				count: 1
+				id: "storagedrawers:upgrade_template"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "38147AAEA68548F1"
+			item: {
+				count: 1
+				id: "sophisticatedbackpacks:upgrade_base"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "3CC5D0CAE982FEE2"
+			item: {
+				count: 1
+				id: "sophisticatedstorage:upgrade_base"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "538B25041BD6CE72"
+			item: {
+				count: 1
+				id: "pipez:fluid_pipe"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "5996EBE4B45E2881"
+			item: {
+				count: 1
+				id: "pipez:energy_pipe"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 8
+			id: "768CE211B56C0BC8"
+			item: {
+				count: 1
+				id: "minecraft:iron_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 16
+			id: "16A2284DD8D42505"
+			item: {
+				count: 1
+				id: "minecraft:copper_ingot"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 4
+			id: "5FC37950348B12FF"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

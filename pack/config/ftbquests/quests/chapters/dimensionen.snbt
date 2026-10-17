@@ -84,7 +84,12 @@
 			rewards: [
 				{
 					id: "7F4CE04329047970"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "7FE3F6C2140BD195"
+					table_id: 3843550741675442604L
 					type: "loot"
 				}
 			]
@@ -109,7 +114,16 @@
 				{
 					id: "12EC22636A1A49A3"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "744F945B6BBD20C6"
+					item: {
+						count: 1
+						id: "minecraft:ender_pearl"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -131,7 +145,16 @@
 				{
 					id: "1776DAB3BFC6F77F"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "70D3F041651D8F9D"
+					item: {
+						count: 1
+						id: "minecraft:blaze_rod"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -183,7 +206,16 @@
 				{
 					id: "5053FB5BC00EC41A"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 24
+					id: "5ED383255E33DE66"
+					item: {
+						count: 1
+						id: "aether:ambrosium_shard"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -205,7 +237,12 @@
 			rewards: [
 				{
 					id: "5486DAFD358EEF70"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "5CE333AF40937622"
+					table_id: 4089124295196438899L
 					type: "loot"
 				}
 			]
@@ -232,7 +269,16 @@
 				{
 					id: "3E7A13A53A669D70"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 12
+					id: "7509CB6A90351199"
+					item: {
+						count: 1
+						id: "undergarden:cloggrum_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -255,7 +301,16 @@
 				{
 					id: "52BFC0CD425017E0"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "309CD9F9181135DE"
+					item: {
+						count: 1
+						id: "undergarden:cloggrum_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -279,7 +334,16 @@
 				{
 					id: "58DE0B2C93DC6A5F"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 8
+					id: "19D362BFFE767E85"
+					item: {
+						count: 1
+						id: "aether:ambrosium_shard"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -300,7 +364,12 @@
 			rewards: [
 				{
 					id: "7286DEF781CC718D"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "5EAB176F0274F141"
+					table_id: 3544169842815251004L
 					type: "loot"
 				}
 			]
@@ -333,7 +402,12 @@
 			rewards: [
 				{
 					id: "1B9D544DFEF07C5A"
-					table_id: 3797459037597754809L
+					type: "xp_levels"
+					xp_levels: 20
+				}
+				{
+					id: "5805ABF72FA3CE40"
+					table_id: 1803706501572762353L
 					type: "loot"
 				}
 			]
@@ -357,7 +431,12 @@
 			rewards: [
 				{
 					id: "345DCA9AA88B90FF"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "56D6BD65E637E81F"
+					table_id: 4089124295196438899L
 					type: "loot"
 				}
 			]
@@ -386,7 +465,16 @@
 				{
 					id: "3AB36A51C7E8332C"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "7B6B9FFF088216D9"
+					item: {
+						count: 1
+						id: "betternether:cincinnasite_ingot"
+					}
+					type: "item"
 				}
 			]
 			shape: "diamond"
@@ -409,7 +497,16 @@
 				{
 					id: "51E1676BB99C2590"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "7E0F21642454C338"
+					item: {
+						count: 1
+						id: "undergarden:cloggrum_ingot"
+					}
+					type: "item"
 				}
 			]
 			shape: "diamond"
@@ -432,7 +529,16 @@
 				{
 					id: "7D7C1953935513D2"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "5702AE239A9CD141"
+					item: {
+						count: 1
+						id: "undergarden:cloggrum_ingot"
+					}
+					type: "item"
 				}
 			]
 			shape: "diamond"
@@ -455,7 +561,16 @@
 				{
 					id: "7A78EE8F994CA2F6"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "1623F1012501CD24"
+					item: {
+						count: 1
+						id: "alexscaves:amber"
+					}
+					type: "item"
 				}
 			]
 			shape: "diamond"
@@ -478,7 +593,16 @@
 				{
 					id: "7561389DCAB86827"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "114E037BE1C419C8"
+					item: {
+						count: 1
+						id: "alexscaves:amber"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -505,7 +629,16 @@
 				{
 					id: "5E86989F7ACF4937"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "33A228E0E0AADA99"
+					item: {
+						count: 1
+						id: "betternether:cincinnasite_ingot"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -532,7 +665,16 @@
 				{
 					id: "7164922909E7B794"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "71E534FE2B7B6D54"
+					item: {
+						count: 1
+						id: "alexscaves:amber"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -559,7 +701,16 @@
 				{
 					id: "7FCF98A1D0068424"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "158DBD4ECCEE660F"
+					item: {
+						count: 1
+						id: "alexscaves:amber"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -586,7 +737,16 @@
 				{
 					id: "3126B58F885E23B0"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "1BD9FED831DB973F"
+					item: {
+						count: 1
+						id: "enderscape:nebulite"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -613,7 +773,16 @@
 				{
 					id: "33FD907299F404DE"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "10D815FD24FF271E"
+					item: {
+						count: 1
+						id: "enderscape:nebulite"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -640,7 +809,16 @@
 				{
 					id: "31BF0149E5FAF3AA"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "1BED977985B2B336"
+					item: {
+						count: 1
+						id: "betternether:cincinnasite_ingot"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -667,7 +845,16 @@
 				{
 					id: "3DFBB89D71A55F68"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "5AE416F018620B2C"
+					item: {
+						count: 1
+						id: "betternether:cincinnasite_ingot"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -694,7 +881,16 @@
 				{
 					id: "1D243A3ADE8F640B"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "3E1B6CEC4BE0E7AE"
+					item: {
+						count: 1
+						id: "alexscaves:amber"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -721,7 +917,16 @@
 				{
 					id: "1932946365CB59B7"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "3A48DECEEAE53CDA"
+					item: {
+						count: 1
+						id: "aether:zanite_gemstone"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -748,7 +953,16 @@
 				{
 					id: "1F55A657466DA087"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "3474FA1C28174179"
+					item: {
+						count: 1
+						id: "alexscaves:amber"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -775,7 +989,16 @@
 				{
 					id: "7E91E499A676F41B"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "13E015E4950C8125"
+					item: {
+						count: 1
+						id: "alexscaves:amber"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -803,7 +1026,16 @@
 				{
 					id: "57802383A6E11898"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "37229DD11F8C42B6"
+					item: {
+						count: 1
+						id: "deep_aether:skyjade"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -830,7 +1062,16 @@
 				{
 					id: "7CF11895B936CAD7"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "142573A7B6AAD1D7"
+					item: {
+						count: 1
+						id: "aether:zanite_gemstone"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -858,7 +1099,16 @@
 				{
 					id: "543AE9487512D774"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "198F9A37CD0B56F3"
+					item: {
+						count: 1
+						id: "deep_aether:skyjade"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -885,7 +1135,16 @@
 				{
 					id: "1B2EC75C945B1B4E"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "78B4F9F8C21455FC"
+					item: {
+						count: 1
+						id: "enderscape:nebulite"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -912,7 +1171,16 @@
 				{
 					id: "3A81F4A28F55C8A0"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "3559017CBD070FD1"
+					item: {
+						count: 1
+						id: "deep_aether:skyjade"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -949,7 +1217,16 @@
 				{
 					id: "36E5465CE87C857D"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "5F114E6905EEB0FD"
+					item: {
+						count: 1
+						id: "aether:zanite_gemstone"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -975,7 +1252,16 @@
 				{
 					id: "3B64ACA97E843D61"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "569B82B2BE7178DC"
+					item: {
+						count: 1
+						id: "betterend:terminite_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1001,7 +1287,16 @@
 				{
 					id: "3C7579C9CF1C6B9E"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "537594472F6BD407"
+					item: {
+						count: 1
+						id: "betterend:terminite_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1028,7 +1323,16 @@
 				{
 					id: "36B70950F12CDDAC"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "71318DE69EFBB489"
+					item: {
+						count: 1
+						id: "deep_aether:skyjade"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1053,7 +1357,16 @@
 				{
 					id: "33740E10F91F8F84"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "5F900633A2F7ABE6"
+					item: {
+						count: 1
+						id: "betterend:terminite_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1078,7 +1391,16 @@
 				{
 					id: "791EC2BBA7B72F44"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "1A163E64C1915C32"
+					item: {
+						count: 1
+						id: "betterend:terminite_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1104,7 +1426,16 @@
 				{
 					id: "79769C44A2BE417C"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "167F8057193B8DFD"
+					item: {
+						count: 1
+						id: "deep_aether:skyjade"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1127,7 +1458,16 @@
 				{
 					id: "15D2D201BA7F830A"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "7650EC0EE2E85C1A"
+					item: {
+						count: 1
+						id: "deep_aether:skyjade"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -1154,7 +1494,16 @@
 				{
 					id: "1675A7A5C9B1A0DC"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "370B282907EACFDB"
+					item: {
+						count: 1
+						id: "ad_astra:desh_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1179,7 +1528,12 @@
 			rewards: [
 				{
 					id: "3AF51C11A757C5D1"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "5EC208DFDE43E302"
+					table_id: 4089124295196438899L
 					type: "loot"
 				}
 			]
@@ -1206,7 +1560,16 @@
 				{
 					id: "5719B087C8E06943"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "16C524979E6B2982"
+					item: {
+						count: 1
+						id: "ad_astra:desh_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1238,7 +1601,16 @@
 				{
 					id: "5CDB02260B162E2D"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "7E51C9630F05E8C5"
+					item: {
+						count: 1
+						id: "ad_astra:desh_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1263,7 +1635,16 @@
 				{
 					id: "1FD282D09AABCB6B"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 12
+					id: "1CA716F969C35647"
+					item: {
+						count: 1
+						id: "alexscaves:sea_glass_shards"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1289,7 +1670,16 @@
 				{
 					id: "1EE53456A0C6F492"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "7B9DB195EE4149FD"
+					item: {
+						count: 1
+						id: "undergarden:froststeel_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1321,7 +1711,16 @@
 				{
 					id: "78328827A848D97E"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "1DF4490904BA7FA7"
+					item: {
+						count: 1
+						id: "alexscaves:sea_glass_shards"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1346,7 +1745,12 @@
 			rewards: [
 				{
 					id: "39496A29AF01D3CD"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "76E9C43AE043FE8B"
+					table_id: 3544169842815251004L
 					type: "loot"
 				}
 			]
@@ -1401,7 +1805,12 @@
 			rewards: [
 				{
 					id: "38DF5A9BB52DD2E6"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "559BCCCE122D04DE"
+					table_id: 3843550741675442604L
 					type: "loot"
 				}
 			]
@@ -1425,7 +1834,16 @@
 				{
 					id: "7B80DCBA54609C89"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "1642FD0D59FA9993"
+					item: {
+						count: 1
+						id: "alexscaves:sea_glass_shards"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1451,7 +1869,16 @@
 				{
 					id: "14A9A9E4CD85605D"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 8
+					id: "32BF4D64EDC15D37"
+					item: {
+						count: 1
+						id: "alexscaves:sea_glass_shards"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1477,7 +1904,16 @@
 				{
 					id: "3DB833EA72686B91"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "77BF78A3387843C8"
+					item: {
+						count: 1
+						id: "undergarden:froststeel_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1501,7 +1937,12 @@
 			rewards: [
 				{
 					id: "74D9A392100E1A6C"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "347E540E5CC98179"
+					table_id: 4089124295196438899L
 					type: "loot"
 				}
 			]
@@ -1530,7 +1971,16 @@
 				{
 					id: "33B731B7A2007667"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "5B2518E1B7A08770"
+					item: {
+						count: 1
+						id: "alexscaves:uranium_shard"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1554,7 +2004,16 @@
 				{
 					id: "313C5E08E27E389E"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "131172EB22CEAD7B"
+					item: {
+						count: 1
+						id: "alexscaves:uranium_shard"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1577,7 +2036,16 @@
 				{
 					id: "39D34F1F778E6B78"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "7D9EACA480F24848"
+					item: {
+						count: 1
+						id: "betternether:nether_ruby"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1604,7 +2072,12 @@
 			rewards: [
 				{
 					id: "5A5C081FF92D94B7"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "53F39CBC20ADA623"
+					table_id: 3544169842815251004L
 					type: "loot"
 				}
 			]
@@ -1629,7 +2102,16 @@
 				{
 					id: "3CE6070738938D88"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "1B893644FD2CD42F"
+					item: {
+						count: 1
+						id: "undergarden:froststeel_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1654,7 +2136,16 @@
 				{
 					id: "563E56A1FE26E4C3"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "1FEDB2D2F6764B80"
+					item: {
+						count: 1
+						id: "betternether:nether_ruby"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1679,7 +2170,12 @@
 			rewards: [
 				{
 					id: "35FEE6C052E555A1"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "7C720B41645E6398"
+					table_id: 4089124295196438899L
 					type: "loot"
 				}
 			]
@@ -1703,7 +2199,16 @@
 				{
 					id: "564585B8AE52E04F"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "7BCF1D5BEAFE4437"
+					item: {
+						count: 1
+						id: "enderscape:shadoline_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1733,7 +2238,12 @@
 			rewards: [
 				{
 					id: "5F751D5CAA86BAC2"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "3C6FE1A0817399BC"
+					table_id: 3544169842815251004L
 					type: "loot"
 				}
 			]
@@ -1764,7 +2274,12 @@
 			rewards: [
 				{
 					id: "16F688ABA65C538A"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "37039B07D1DD7207"
+					table_id: 3843550741675442604L
 					type: "loot"
 				}
 			]
@@ -1787,7 +2302,16 @@
 				{
 					id: "723C3E7D03E940B0"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 2
+					id: "34D3660CEB9CFAD5"
+					item: {
+						count: 1
+						id: "enderscape:shadoline_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1812,7 +2336,12 @@
 			rewards: [
 				{
 					id: "1BB3034C370A7BDD"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "12F9592438062E77"
+					table_id: 3843550741675442604L
 					type: "loot"
 				}
 			]
@@ -1836,7 +2365,16 @@
 				{
 					id: "78D69CEE33129E0F"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 3
+					id: "1DAC8E0D3AFD7102"
+					item: {
+						count: 1
+						id: "ad_astra:ostrum_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1862,7 +2400,16 @@
 				{
 					id: "3CD72222AF11A9B8"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "731F393FAAE6D24E"
+					item: {
+						count: 1
+						id: "alexscaves:uranium_shard"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1887,7 +2434,16 @@
 				{
 					id: "183E92FFEC13F922"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 6
+					id: "1903CC119CFC1B6B"
+					item: {
+						count: 1
+						id: "ad_astra:ostrum_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1911,7 +2467,12 @@
 			rewards: [
 				{
 					id: "1C727DDFCDC2CC18"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "744720464EA810D5"
+					table_id: 4089124295196438899L
 					type: "loot"
 				}
 			]
@@ -1938,7 +2499,16 @@
 				{
 					id: "34C1658F65B82574"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 6
+					id: "5945251D7F3D0A98"
+					item: {
+						count: 1
+						id: "ad_astra:ostrum_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1960,7 +2530,16 @@
 				{
 					id: "3FB6A0829A4ED548"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "35039D3758BAE7AB"
+					item: {
+						count: 1
+						id: "enderscape:shadoline_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -1985,7 +2564,12 @@
 			rewards: [
 				{
 					id: "3350ED3AD92F62AA"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "3430768A9E1963EF"
+					table_id: 4089124295196438899L
 					type: "loot"
 				}
 			]
@@ -2009,7 +2593,12 @@
 			rewards: [
 				{
 					id: "5193CA664A27D6FC"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "73BF423086027F77"
+					table_id: 3843550741675442604L
 					type: "loot"
 				}
 			]
@@ -2032,7 +2621,16 @@
 				{
 					id: "3C59E19DD9A57B36"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 6
+					id: "5F74EFFA29EB7012"
+					item: {
+						count: 1
+						id: "ad_astra:ostrum_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -2059,7 +2657,16 @@
 				{
 					id: "56F39EA6D4900E6B"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 9
+					id: "3BF657AE2D542791"
+					item: {
+						count: 1
+						id: "ad_astra:ostrum_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -2085,7 +2692,16 @@
 				{
 					id: "53B2AEED9B17DE1D"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "545F7922F3C85862"
+					item: {
+						count: 1
+						id: "undergarden:utherium_crystal"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -2124,7 +2740,16 @@
 				{
 					id: "7F470677AD1D3946"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "7318F16560892A44"
+					item: {
+						count: 1
+						id: "undergarden:utherium_crystal"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -2155,7 +2780,16 @@
 				{
 					id: "1C8BF4D95D4AB2EC"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "377205941F5D81F9"
+					item: {
+						count: 1
+						id: "alexscaves:azure_neodymium_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -2186,7 +2820,16 @@
 				{
 					id: "726FACBAF076B47D"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "52BF28C1C140F194"
+					item: {
+						count: 1
+						id: "undergarden:utherium_crystal"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -2216,7 +2859,12 @@
 			rewards: [
 				{
 					id: "391FE5DC019701F1"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "5328D3D2E6D280E9"
+					table_id: 4089124295196438899L
 					type: "loot"
 				}
 			]
@@ -2249,7 +2897,16 @@
 				{
 					id: "399440599854C02E"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "30D607D5442009B4"
+					item: {
+						count: 1
+						id: "ad_astra:calorite_ingot"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -2280,7 +2937,16 @@
 				{
 					id: "3E9441CB57FB1693"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "795628CA269FF660"
+					item: {
+						count: 1
+						id: "alexscaves:azure_neodymium_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -2306,7 +2972,16 @@
 				{
 					id: "3DB1BA1AE93EC9D4"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "7A17906D66AA626D"
+					item: {
+						count: 1
+						id: "alexscaves:azure_neodymium_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -2331,7 +3006,16 @@
 				{
 					id: "77884144A9B22193"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "3B6D68FF074AF232"
+					item: {
+						count: 1
+						id: "ad_astra:calorite_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -2364,7 +3048,16 @@
 				{
 					id: "5383348DC0992D35"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 4
+					id: "7AB7010EE05932A8"
+					item: {
+						count: 1
+						id: "undergarden:utherium_crystal"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -2413,7 +3106,12 @@
 			rewards: [
 				{
 					id: "5D2B39FFA2F6EFBA"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "1BF136D3189F0948"
+					table_id: 4089124295196438899L
 					type: "loot"
 				}
 			]
@@ -2450,7 +3148,16 @@
 				{
 					id: "14821F47B68153B6"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "7CC9E2D9F8EA9A92"
+					item: {
+						count: 1
+						id: "ad_astra:calorite_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -2472,7 +3179,16 @@
 				{
 					id: "5A6F686092707CEB"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "733C263C3878F9D7"
+					item: {
+						count: 1
+						id: "ad_astra:calorite_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -2506,7 +3222,12 @@
 			rewards: [
 				{
 					id: "777FBF71A47B8B3A"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "194B0B9DE6A8617D"
+					table_id: 4089124295196438899L
 					type: "loot"
 				}
 			]
@@ -2529,7 +3250,16 @@
 				{
 					id: "59EEFCDE7A5D763E"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 2
+					id: "55C29093310B680E"
+					item: {
+						count: 1
+						id: "undergarden:regalium_crystal"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -2564,7 +3294,16 @@
 				{
 					id: "71BF4D674FD1B2F6"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 2
+					id: "1A3B4F7FE1693064"
+					item: {
+						count: 1
+						id: "betterend:aeternium_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -2588,7 +3327,16 @@
 				{
 					id: "70F0C0ABE3EB09A8"
 					type: "xp_levels"
-					xp_levels: 3
+					xp_levels: 8
+				}
+				{
+					count: 6
+					id: "3B7512641C5AF609"
+					item: {
+						count: 1
+						id: "ad_astra:calorite_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -2609,7 +3357,12 @@
 			rewards: [
 				{
 					id: "72EC72C1DE97199A"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "7A5D9F9E5F5A5D36"
+					table_id: 3544169842815251004L
 					type: "loot"
 				}
 			]
@@ -2645,7 +3398,12 @@
 			rewards: [
 				{
 					id: "1855892839A27195"
-					table_id: 6783561722415423100L
+					type: "xp_levels"
+					xp_levels: 12
+				}
+				{
+					id: "3D0A2A234484EBBF"
+					table_id: 3544169842815251004L
 					type: "loot"
 				}
 			]
@@ -2670,7 +3428,16 @@
 				{
 					id: "31FD31F9DD43245A"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "754DDA526A6F0D20"
+					item: {
+						count: 1
+						id: "undergarden:regalium_crystal"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"
@@ -2705,7 +3472,16 @@
 				{
 					id: "319C99BD486D66FA"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 2
+					id: "76E61F6505C51D68"
+					item: {
+						count: 1
+						id: "undergarden:regalium_crystal"
+					}
+					type: "item"
 				}
 			]
 			shape: "heart"

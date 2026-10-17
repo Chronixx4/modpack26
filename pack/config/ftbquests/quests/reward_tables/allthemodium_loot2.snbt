@@ -1,0 +1,75 @@
+{
+	icon: {
+		id: "ftbquests:lootcrate"
+	}
+	id: "39D8DC468CC63374"
+	loot_crate: {
+		color: 5635925
+		drops: {
+			boss: 0
+			monster: 0
+			passive: 0
+		}
+		glow: false
+		string_id: "allthemodium_loot2"
+	}
+	loot_size: 1
+	order_index: 10
+	rewards: [
+		{
+			count: 6
+			id: "7927B72E5A84D986"
+			item: {
+				count: 1
+				id: "allthemodium:raw_allthemodium"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "14DE733E765CF472"
+			item: {
+				count: 1
+				id: "allthemodium:allthemodium_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 2
+			id: "388EC01D3E770260"
+			item: {
+				count: 1
+				id: "allthemodium:vibranium_ingot"
+			}
+			weight: 10.0f
+		}
+		{
+			count: 3
+			id: "72AC67BAD46A905A"
+			item: {
+				count: 1
+				id: "minecraft:diamond"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 6
+			id: "5C6AB163D65FAAED"
+			item: {
+				count: 1
+				id: "minecraft:emerald"
+			}
+			weight: 2.0f
+		}
+		{
+			count: 12
+			id: "719FEF4D9263C3FE"
+			item: {
+				count: 1
+				id: "minecraft:gold_ingot"
+			}
+			weight: 2.0f
+		}
+	]
+	use_title: true
+}

@@ -16,7 +16,12 @@
 			rewards: [
 				{
 					id: "7F09F36A96E7B920"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "35FDFD853680B58E"
+					table_id: 4301784374451181648L
 					type: "loot"
 				}
 			]
@@ -40,7 +45,16 @@
 				{
 					id: "114A56BDFAD8DD8D"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 8
+					id: "13351EAA40555ED4"
+					item: {
+						count: 1
+						id: "minecraft:bread"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -61,7 +75,16 @@
 				{
 					id: "7282C4F537907B60"
 					type: "xp_levels"
-					xp_levels: 2
+					xp_levels: 5
+				}
+				{
+					count: 12
+					id: "3034829108F3186B"
+					item: {
+						count: 1
+						id: "minecraft:cooked_beef"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -81,7 +104,12 @@
 			rewards: [
 				{
 					id: "362A5704CCF0E264"
-					table_id: 8873071041503571705L
+					type: "xp_levels"
+					xp_levels: 5
+				}
+				{
+					id: "761831998C6A7EF4"
+					table_id: 4301784374451181648L
 					type: "loot"
 				}
 			]
@@ -103,7 +131,16 @@
 				{
 					id: "3E27FEBA9E563F05"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 8
+					id: "7BFD54BF9E61C22F"
+					item: {
+						count: 1
+						id: "minecraft:bread"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -124,7 +161,16 @@
 				{
 					id: "1DB3341E46676057"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 6
+					id: "3308AE19DA0E1A65"
+					item: {
+						count: 1
+						id: "minecraft:cooked_beef"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -145,7 +191,16 @@
 				{
 					id: "72CAEBF669F9D40D"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 6
+					id: "504710F8E34F6FAB"
+					item: {
+						count: 1
+						id: "minecraft:cooked_beef"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -166,7 +221,16 @@
 				{
 					id: "15D928F5C4BC0645"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 6
+					id: "71290C8B119D4C2F"
+					item: {
+						count: 1
+						id: "minecraft:cooked_beef"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -187,7 +251,16 @@
 				{
 					id: "53F1373F5C1298CC"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 8
+					id: "76562FA1CC2C43D8"
+					item: {
+						count: 1
+						id: "minecraft:bread"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -208,7 +281,16 @@
 				{
 					id: "347A37902E74F948"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 8
+					id: "5673984ACB14533E"
+					item: {
+						count: 1
+						id: "minecraft:bread"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -229,7 +311,16 @@
 				{
 					id: "1D8C85B2C67BB50F"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 6
+					id: "16592432FFF4065D"
+					item: {
+						count: 1
+						id: "minecraft:cooked_beef"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -250,7 +341,16 @@
 				{
 					id: "5178BDC28C0BC061"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "12D9FEBF623B37AE"
+					item: {
+						count: 1
+						id: "minecraft:experience_bottle"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -271,7 +371,16 @@
 				{
 					id: "755B90C4B754FB7C"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "79784AA2CE334FA1"
+					item: {
+						count: 1
+						id: "minecraft:iron_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -292,7 +401,16 @@
 				{
 					id: "7E849D1ECAE91FCA"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "5CB542CD8305DD82"
+					item: {
+						count: 1
+						id: "minecraft:iron_ingot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -313,7 +431,16 @@
 				{
 					id: "5A95E5020C842D2E"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "7C91F29F6D3A67E4"
+					item: {
+						count: 1
+						id: "minecraft:golden_carrot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -334,7 +461,16 @@
 				{
 					id: "5BC3741BED613AFD"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "71E26848AB267377"
+					item: {
+						count: 1
+						id: "minecraft:experience_bottle"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -355,7 +491,16 @@
 				{
 					id: "1778EA3B7D78E99E"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "13EFC19D3C675903"
+					item: {
+						count: 1
+						id: "minecraft:golden_carrot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -376,7 +521,16 @@
 				{
 					id: "58657A03B795AFA4"
 					type: "xp_levels"
-					xp_levels: 1
+					xp_levels: 3
+				}
+				{
+					count: 4
+					id: "705D95452C8799CF"
+					item: {
+						count: 1
+						id: "minecraft:golden_carrot"
+					}
+					type: "item"
 				}
 			]
 			tasks: [
@@ -396,7 +550,12 @@
 			rewards: [
 				{
 					id: "16A30E5045E81ADB"
-					table_id: 1753254771712731614L
+					type: "xp_levels"
+					xp_levels: 8
+				}
+				{
+					id: "1E296740B3759EAF"
+					table_id: 4442184473641081427L
 					type: "loot"
 				}
 			]
