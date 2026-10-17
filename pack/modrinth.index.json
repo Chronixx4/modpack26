@@ -3094,21 +3094,7 @@
       ],
       "fileSize": 113903
     },
-    {
-      "path": "mods/pneumaticcraft-repressurized-8.2.23+mc1.21.1.jar",
-      "hashes": {
-        "sha1": "44ea59cb9ac3abfc343518e50cc19fe7200a592e",
-        "sha512": "1863243c4e76ecdef60c541e332808df48f50e01d7f75f5b1bd52e38f086925aa715a199775cf885746e3869cfc78ee5ac463fd33a1ac55cccab5394d19e2bfa"
-      },
-      "env": {
-        "client": "required",
-        "server": "required"
-      },
-      "downloads": [
-        "https://cdn.modrinth.com/data/ncAcdgk7/versions/TNzeuLH3/pneumaticcraft-repressurized-8.2.23%2Bmc1.21.1.jar"
-      ],
-      "fileSize": 11884697
-    },
+
     {
       "path": "mods/commoncapabilities-1.21.1-neoforge-2.11.6.jar",
       "hashes": {

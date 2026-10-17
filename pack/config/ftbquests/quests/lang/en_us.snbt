@@ -15,10 +15,6 @@
 		"Actually Additions, Integrated Dynamics, Iron Jetpacks"
 	]
 	chapter.17C5D06A33F35C16.title: "&2Kleine Technik"
-	chapter.190CB3B372E009B8.chapter_subtitle: [
-		"Druckluft, Plastik und Drohnen"
-	]
-	chapter.190CB3B372E009B8.title: "&7PneumaticCraft"
 	chapter.19F27B111E9BFC51.chapter_subtitle: [
 		"Alles in einem Netzwerk: Lagern, Suchen, Autocrafting"
 	]
@@ -292,10 +288,6 @@
 		"Energiezellen puffern Strom fürs Netzwerk. Die dichte Variante brauchst du auch für die drahtlose Konsole."
 	]
 	quest.11499AFEF7539638.title: "Energiespeicher"
-	quest.11562ABB86D7D2D6.quest_desc: [
-		"Für die UV-Lichtbox brauchst du einen &ePCB-Bauplan&r. Wo du ihn bekommst, steht im PneumaticCraft-Handbuch."
-	]
-	quest.11562ABB86D7D2D6.title: "PCB-Bauplan"
 	quest.1165D2479D74D5E8.quest_desc: [
 		"Create: Transmission! überträgt Rotation mit Ketten."
 	]
@@ -304,10 +296,6 @@
 		"Der Zwielichtwald hat keine Geheimnisse mehr vor dir."
 	]
 	quest.11735E4944746904.title: "Herr des Zwielichts"
-	quest.11781295A5104BA9.quest_desc: [
-		"In der Welt gibt es &eÖlseen&r, an der Oberfläche und unter der Erde. Ein paar Eimer Rohöl brauchst du für die Raffinerie."
-	]
-	quest.11781295A5104BA9.title: "Rohöl"
 	quest.117AE7D5B1B27BDE.quest_desc: [
 		"Salbeisamen findest du beim Abbauen von Gras. Pflanz sie auf Ackerland an."
 	]
@@ -338,12 +326,6 @@
 		"Rechtsklick auf den platzierten Tank öffnet unten einen Auslass, der Behälter darunter füllt."
 	]
 	quest.118FA2A77F138F0F.title: "Dunkler Tank"
-	quest.119858F55EEFAEDC.quest_desc: [
-		"Die &eRaffinerie&r trennt Rohöl in Diesel, Kerosin, Benzin und LPG. Je mehr Ausgabe-Blöcke du stapelst, desto mehr Sorten kommen raus."
-		""
-		"Sie braucht &cHitze&r: Details zur Hitze im PneumaticCraft-Handbuch."
-	]
-	quest.119858F55EEFAEDC.title: "Raffinerie"
 	quest.11BAF40516496207.quest_desc: [
 		"Wieder mehr Platz und Slots."
 	]
@@ -562,12 +544,6 @@
 		"Im Nether gibt es Seelenstein-Felder. Darin steckt Soulium-Erz, aus dem du &eSoulium-Staub&r bekommst."
 	]
 	quest.1425F29BA8D3D453.title: "Seelenstein"
-	quest.142CDAE615830C98.quest_desc: [
-		"Die &ePneumatische Rüstung&r läuft mit Luft und wird mit Upgrades erweitert: Nachtsicht, Sprungkraft, Jet-Stiefel und vieles mehr."
-		""
-		"Upgrades steckst du in der Ladestation ein."
-	]
-	quest.142CDAE615830C98.title: "Pneumatische Rüstung"
 	quest.143F37F83EA1417E.quest_desc: [
 		"Jede Runenwaffe bekommt eine zufällige Rune. Wenn sie dir nicht gefällt, bau eine neue."
 	]
@@ -1288,10 +1264,6 @@
 		"Die Amboss-Variante des Lohenbrenners. Was er genau kann, steht in JEI."
 	]
 	quest.1B2917D4769CDB65.title: "Lohen-Schmied"
-	quest.1B304D990F679220.quest_desc: [
-		"Die &eAssembly Line&r bohrt und lasert Items automatisch, z. B. für Spezialteile. Für den Anfang nicht nötig."
-	]
-	quest.1B304D990F679220.title: "Fließband"
 	quest.1B3BB8BD21C0FE73.quest_desc: [
 		"MV-Kabel tragen mehr Strom. Zwischen LV und MV gehört ein Trafo."
 	]
@@ -1390,16 +1362,6 @@
 		"Eine Ablage für ein Item. Ideal unter der Presse oder für den Mechanischen Arm."
 	]
 	quest.1C5A4F3B970A2D6D.title: "Depot"
-	quest.1C63D9F122E6846F.quest_desc: [
-		"Im &eProgrammierer&r baust du das Programm für deine Drohne aus Puzzle-Teilen zusammen. Ausprobieren lohnt sich!"
-		""
-		"Damit hast du PneumaticCraft durch. Glückwunsch!"
-	]
-	quest.1C63D9F122E6846F.title: "Programmierer"
-	quest.1C7435810EDA9579.quest_desc: [
-		"Transistoren und Kondensatoren brauchst du für jede fertige Platine."
-	]
-	quest.1C7435810EDA9579.title: "Bauteile"
 	quest.1C7999CDD98769BB.quest_desc: [
 		"Dank Corpse bleibt bei deinem Tod ein Leichnam mit all deinen Items liegen. Rechtsklick darauf öffnet ihn."
 		""
@@ -1558,12 +1520,6 @@
 		"Der Invoker von Illager Invasion ist ein mächtiger Magier. Er beschwört Fangzähne und Helfer und kann sich schützen."
 	]
 	quest.1DC15E4D98B9576B.title: "Der Invoker"
-	quest.1DC1B8F0F44B6685.quest_desc: [
-		"Der &eLuftkompressor&r verbrennt Brennstoff wie ein Ofen und erzeugt Druckluft. Gib die Luft über Druckrohre an deine Maschinen weiter."
-		""
-		"Tipp: Ein Manometer zeigt dir den Druck an."
-	]
-	quest.1DC1B8F0F44B6685.title: "Luftkompressor"
 	quest.1DE0998C17BA806E.quest_desc: [
 		"Die Wyvern-Werkzeuge werden mit Erwachtem Draconium und Netherit zu &eDraconic-Werkzeugen&r: mehr Energie, mehr Modulplätze."
 	]
@@ -2320,12 +2276,6 @@
 		"Der Apparat steht auf dem Arkanen Kern, Podeste drumherum. Hier entstehen Rüstungen, Schmuck, Bücher und vieles mehr.\n\nDen Aufbau zeigt dir das Handbuch."
 	]
 	quest.36406D66A049744E.title: "Verzauberungsapparat"
-	quest.36503D470E6FC1E4.quest_desc: [
-		"PneumaticCraft beginnt mit einem Knall: Leg Eisenbarren oder Eisenblöcke auf den Boden und spreng sie mit &eTNT&r. Ein Teil wird zu &eKomprimiertem Eisen&r, ein Teil geht verloren."
-		""
-		"Später geht das verlustfrei in der Druckkammer."
-	]
-	quest.36503D470E6FC1E4.title: "Komprimiertes Eisen"
 	quest.36525D334E1A76C6.quest_desc: [
 		"Zutat für bessere Bücher. Wie du es bekommst, zeigt JEI."
 	]
@@ -2570,10 +2520,6 @@
 		"Manipulation und Abschwörung brauchst du für Rüstungs-Upgrades, Stäbe und viele Glyphen."
 	]
 	quest.392F8A297D909754.title: "Weitere Essenzen"
-	quest.393E3D4683D21789.quest_desc: [
-		"Unbestückte Platine plus Transistoren und Kondensatoren ergibt die &eFertige Platine&r. Damit öffnet sich die ganze späte Mod."
-	]
-	quest.393E3D4683D21789.title: "Fertige Platine"
 	quest.3944FA102C49DD02.quest_desc: [
 		"Der Härteste der Mutanten. Er wirft Blöcke und teleportiert sich.\n\nEr lässt die &eEnderseelenhand&r fallen."
 	]
@@ -2642,10 +2588,6 @@
 		"Für Flüssigkeiten und Strom gibt es eigene Rohre. Das Universalrohr kann alles auf einmal."
 	]
 	quest.3A1B4B9BD6C7648F.title: "Mehr Rohre"
-	quest.3A2A0EE84EA56DEB.quest_desc: [
-		"Die &eLadestation&r füllt Luft in Werkzeuge, Rüstung und Drohnen, die du hineinlegst."
-	]
-	quest.3A2A0EE84EA56DEB.title: "Ladestation"
 	quest.3A2B8565006580F9.quest_desc: [
 		"Der &eBlutige Akkumulator&r macht dasselbe wie der aus den Tempeln, läuft aber mit Blut und ohne schlechte Nebenwirkungen auf das Biom."
 		""
@@ -2758,10 +2700,6 @@
 		"Wirf geladenen Certus-Quarz, Netherquarz und Redstone zusammen ins Wasser. Nach kurzer Zeit entsteht &eFluix&r."
 	]
 	quest.3B0CE1F24865E907.title: "Fluix"
-	quest.3B1B379C65EA77BC.quest_desc: [
-		"Belichtete Platinen kommen in den &eÄtztank&r mit &eÄtzsäure&r. Heraus kommen unbestückte Platinen. Fehlschläge lassen sich wiederverwerten."
-	]
-	quest.3B1B379C65EA77BC.title: "Ätzen"
 	quest.3B26A376303852C9.quest_desc: [
 		"Der Lagerkern verbindet alle angrenzenden Truhen und Fässer zu einem Lager. Items, die du hineinschiebst, landen automatisch dort, wo schon dasselbe liegt."
 		""
@@ -2788,10 +2726,6 @@
 		"Blitzdrachen leben in warmen, trockenen Gegenden. Sie greifen mit Blitzen an."
 	]
 	quest.3B4DAD7E75DA8E73.title: "Blitzdrache"
-	quest.3B51228560C837A0.quest_desc: [
-		"Der &eFlüssigkompressor&r verbrennt flüssigen Treibstoff statt Kohle und macht deutlich mehr Luft daraus."
-	]
-	quest.3B51228560C837A0.title: "Flüssigkompressor"
 	quest.3B5C03AA49E84EE4.quest_desc: [
 		"Iesnium-Erz liegt im Nether und ist nur mit Drittem Auge oder Brille sichtbar. Daraus werden Werkzeuge, Geisterlampen und die Bergbau-Dimension."
 	]
@@ -2952,10 +2886,6 @@
 		"Stufe 5: Diamanten, Smaragde und Netherit."
 	]
 	quest.3D0886FD0A32E223.title: "Supremium"
-	quest.3D16E9D7F9136DE9.quest_desc: [
-		"Die &eMinigun&r läuft mit Luft und Munition. Vorher in der Ladestation füllen, dann dreht sie hoch und schießt sehr schnell."
-	]
-	quest.3D16E9D7F9136DE9.title: "Minigun"
 	quest.3D18AD94830CA1AC.quest_desc: [
 		"An der NASA-Werkbank baust du Raketen und Rover. Stahlplatten presst du im Kompressor."
 	]
@@ -3058,10 +2988,6 @@
 		"Vier Augen bekommst du von Mobs, zwei davon baust du aus einem Drop."
 	]
 	quest.3E18E3E244D9ECB4.title: "Augen von Mobs"
-	quest.3E1FAD93F81B5307.quest_desc: [
-		"Stein plus Komprimiertes Eisen ergibt &eVerstärkten Stein&r, daraus werden Ziegel. Das ist das Baumaterial für Kompressoren und die Druckkammer."
-	]
-	quest.3E1FAD93F81B5307.title: "Verstärkter Stein"
 	quest.3E2C5AC4B07DA4F9.quest_desc: [
 		"Das Gehäuse ist die Basis aller Maschinen von Mystical Agriculture."
 	]
@@ -3458,10 +3384,6 @@
 		"Erweiterte Schnittstelle und erweitertes Laufwerk: mehr Plätze pro Block, weniger Platzbedarf im Speicherraum."
 	]
 	quest.52AACD6970BCEA12.title: "Mehr Platz"
-	quest.52B7D2B3E1662907.quest_desc: [
-		"Die &eUV-Lichtbox&r belichtet leere Platinen. Sie braucht Druckluft, und je länger belichtet wird, desto besser."
-	]
-	quest.52B7D2B3E1662907.title: "UV-Lichtbox"
 	quest.52D2A51CDCD2661F.quest_desc: [
 		"Industriepresse macht Pflanzenöl, Industriefermenter macht Ethanol, die Raffinerie mischt beides zu Biodiesel."
 	]
@@ -3580,10 +3502,6 @@
 		"Verstärkte Platten sind Zutat für viele Maschinen und Addons."
 	]
 	quest.53BD55348A6B2EFD.title: "Verstärkte Platten"
-	quest.53C83E6645F9B3E6.quest_desc: [
-		"Gib 64 Komprimiertes Eisen ab und hol dir eine Belohnung."
-	]
-	quest.53C83E6645F9B3E6.title: "Abgabe: Komprimiertes Eisen"
 	quest.53E26D0B0248FF19.quest_desc: [
 		"Der Energiewürfel speichert Strom und lädt Items auf. Später rüstest du ihn Stufe für Stufe auf."
 	]
@@ -3628,10 +3546,6 @@
 		"Essenz-Ackerland erhöht die Ernte von Pflanzen der gleichen Stufe."
 	]
 	quest.548DE04BFBE19EE0.title: "Inferium-Ackerland"
-	quest.54A1DBEB104BDEDA.quest_desc: [
-		"Ein &eAufzug&r aus Basis und Rahmen, der mit Druckluft fährt. Mit dem Elevator Caller rufst du ihn auf jedes Stockwerk."
-	]
-	quest.54A1DBEB104BDEDA.title: "Aufzug"
 	quest.54AB18BE5C3A357F.quest_desc: [
 		"Die beste Angel von Aquaculture."
 	]
@@ -3834,10 +3748,6 @@
 		"Honigkristalle findest du überall in der Bumblezone. Aus den Splittern baust du z. B. einen Honigkristall-Schild."
 	]
 	quest.57208C0C2C420D6C.title: "Honigkristalle"
-	quest.573727DF36677410.quest_desc: [
-		"Druckrohre leiten Luft von Maschine zu Maschine. Jede Maschine hat einen &cHöchstdruck&r: Wird der überschritten, explodiert sie."
-	]
-	quest.573727DF36677410.title: "Druckrohre"
 	quest.573A6DA966E04EE1.quest_desc: [
 		"Der Dieselgenerator verbrennt Biodiesel und liefert richtig viel Strom."
 	]
@@ -3952,10 +3862,6 @@
 		"Patronen baust du an der Ingenieurswerkbank mit der passenden Blaupause."
 	]
 	quest.58696D7FE12AD869.title: "Patronen"
-	quest.5869D4503286A747.quest_desc: [
-		"Eine &eDrohne&r fliegt mit Luft und macht, was du ihr programmierst: abbauen, ernten, Items verteilen, kämpfen."
-	]
-	quest.5869D4503286A747.title: "Drohnen"
 	quest.586EC9D09CA9BB57.quest_desc: [
 		"Schriftrollen findest du in Truhen und bei Händlern. Lesen = einmal zaubern, am Tisch eintragen = für immer im Buch."
 	]
@@ -4106,10 +4012,6 @@
 		"Die vier Element-Samen brauchen Agglomerate als Zutat. Ihre Essenzen stecken in vielen anderen Samen-Rezepten und im Erweckungsaltar."
 	]
 	quest.5A9B42080B092B83.title: "Elemente"
-	quest.5A9EE3254969658A.quest_desc: [
-		"Die &eThermopneumatische Verarbeitungsanlage&r macht aus LPG und Kohle Plastik. Rezept und Bedingungen in JEI."
-	]
-	quest.5A9EE3254969658A.title: "Plastik"
 	quest.5AA7DF14990F98E8.quest_desc: [
 		"Die Reaktionskammer aus AdvancedAE verarbeitet Items zusammen mit Flüssigkeiten und Strom. Sie macht unter anderem Quantenlegierung."
 	]
@@ -4842,10 +4744,6 @@
 		"Skyjade ist ein neuer Edelstein aus Deep Aether. Daraus entstehen Rüstung und Werkzeuge; die Rezepte zeigt JEI."
 	]
 	quest.72B528094A40A18F.title: "Skyjade"
-	quest.72B5C24D234DA8D2.quest_desc: [
-		"Mit dem &eManometer&r siehst du den Druck in Rohren und Maschinen, mit dem &ePneumatischen Schraubenschlüssel&r drehst du Blöcke und baust sie schnell ab."
-	]
-	quest.72B5C24D234DA8D2.title: "Druck messen"
 	quest.72BF08D5E15B69F3.quest_desc: [
 		"Als Lich hast du keinen Hunger mehr, Untote lassen dich in Ruhe und Wunden heilst du mit Seelenenergie. Dafür brennst du in der Sonne, wenn du nichts auf dem Kopf trägst."
 		""
@@ -5136,10 +5034,6 @@
 		"Erweitert ein Zauberbuch um einen Platz."
 	]
 	quest.758E3E4158402D76.title: "Mehr Zauberplätze"
-	quest.75A248C6B8B1FB6B.quest_desc: [
-		"Diesel, Kerosin und LPG sind gute Brennstoffe und Zutaten. LPG brauchst du gleich für Plastik."
-	]
-	quest.75A248C6B8B1FB6B.title: "Treibstoffe"
 	quest.75A34509B82AA848.quest_desc: [
 		"BetterEnd verwandelt die äußeren Inseln: neblige Pilzlande, Chorus-Wälder und Kristallberge."
 	]
@@ -5690,12 +5584,6 @@
 		"Bessere Rohre werden gegossen: geschmolzenes Metall in eine Gussform. JEI zeigt die Schritte."
 	]
 	quest.7BB2021DE12412C8.title: "Gusseisen-Kanone"
-	quest.7BCACB40D971A921.quest_desc: [
-		"Die &eDruckkammer&r ist ein hohler Würfel (mindestens 3x3x3) aus Wänden oder Glas, mit einem &eVentil&r für die Luft und &eInterfaces&r für Items rein und raus."
-		""
-		"Darin werden Items unter Druck umgewandelt, z. B. Eisen zu Komprimiertem Eisen oder Kohleblöcke zu Diamanten. Rezepte in JEI."
-	]
-	quest.7BCACB40D971A921.title: "Druckkammer"
 	quest.7BD663D8850EAB47.quest_desc: [
 		"Magier-Rüstung gibt Mana und Mana-Regeneration. Es gibt drei Stile: Zauberer (leicht), Arkanist (mittel) und Kampfmagier (schwer)."
 	]
@@ -5908,10 +5796,6 @@
 		"Höhere Stufen fliegen schneller und speichern mehr Energie. Die Rezepte aller Stufen findest du in JEI."
 	]
 	quest.7DDCD8B1E7D60BED.title: "Jetpack!"
-	quest.7DDD695F6951857B.quest_desc: [
-		"Die &eLeere Platine&r ist der Rohling für Leiterplatten."
-	]
-	quest.7DDD695F6951857B.title: "Leere Platine"
 	quest.7DEA9045F2922FBA.quest_desc: [
 		"Mit Lapis und Erfahrungsleveln verzauberst du hier Werkzeuge und Rüstung."
 		""
@@ -6072,10 +5956,6 @@
 		"Das volle Set aus Allthemodium. Auch hier ist Netherit die Grundlage."
 	]
 	quest.7FF2105F17625BAB.title: "Allthemodium-Rüstung"
-	quest.7FFE19FFD63DC240.quest_desc: [
-		"Der &eFlux-Kompressor&r macht aus Strom (FE) Druckluft. Ideal, wenn du schon ein Stromnetz hast."
-	]
-	quest.7FFE19FFD63DC240.title: "Flux-Kompressor"
 	reward_table.1854CFECFCB229DE.title: "&aSeltene Kiste"
 	reward_table.34B348DFF91C65B9.title: "&6Legendäre Kiste"
 	reward_table.5E240D7218821E7C.title: "&5Epische Kiste"

@@ -253,7 +253,6 @@ mekanism-tools|Mekanism Tools
 mekanism-additions|Mekanism Additions
 draconic-evolution|Draconic Evolution
 industrial-foregoing|Industrial Foregoing
-pneumaticcraft-repressurized|PneumaticCraft: Repressurized
 immersiveengineering|Immersive Engineering
 extreme-reactors|Extreme Reactors
 oritech|Oritech

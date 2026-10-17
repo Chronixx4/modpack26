@@ -1,5 +1,5 @@
 ﻿Chronicle 0.9.36 - Modliste
-Minecraft 1.21.1, NeoForge 21.1.256   |   343 Mods inkl. Bibliotheken und eigener Arena   |   Stand 2026-10-17
+Minecraft 1.21.1, NeoForge 21.1.256   |   342 Mods inkl. Bibliotheken und eigener Arena   |   Stand 2026-10-17
 
 == Performance und Grafik (20) ==
   All The Leaks                                  1.1.13+1.21.1-neoforge  (CurseForge)
@@ -145,7 +145,7 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   343 Mods inkl. Bibliotheken und eigene
   Steam 'n' Rails Neoforge                       0.2.1+neoforge-mc1.21.1
   Waystones: Sable (Create Aeronautics Addon)    1.0.7
 
-== AE2 und Technik (29) ==
+== AE2 und Technik (28) ==
   Actually Additions                             1.3.26
   AdvancedAE                                     1.6.12-1.21.1
   AE2NetworkAnalyzer                             1.21-2.1.5-neoforge  (CurseForge)
@@ -171,7 +171,6 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   343 Mods inkl. Bibliotheken und eigene
   Mekanism Tools                                 10.7.19.85
   Oritech                                        1.2.13
   Pipez                                          neoforge-1.21.1-1.2.31
-  PneumaticCraft: Repressurized                  8.2.23
   Powah!                                         6.2.10-neoforge
   Refined Storage                                2.0.9
   XyCraft Machines                               0.7.53  (CurseForge)

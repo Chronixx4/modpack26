@@ -8,7 +8,7 @@
 	}
 	id: "5F95191674AA2E82"
 	images: [ ]
-	order_index: 23
+	order_index: 22
 	quest_links: [
 		{
 			id: "1CAF8C96C8E4C2DD"
@@ -24,7 +24,7 @@
 			shape: "rsquare"
 			size: 1.0d
 			x: 20.0d
-			y: -3.0d
+			y: -4.5d
 		}
 	]
 	quests: [
@@ -103,7 +103,7 @@
 				}
 			]
 			x: 2.0d
-			y: -6.0d
+			y: -4.5d
 		}
 		{
 			dependencies: [
@@ -600,7 +600,7 @@
 				}
 			]
 			x: 22.0d
-			y: 3.0d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -658,7 +658,7 @@
 				}
 			]
 			x: 26.0d
-			y: 6.0d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -683,7 +683,7 @@
 				}
 			]
 			x: 28.0d
-			y: 6.0d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -716,7 +716,7 @@
 				}
 			]
 			x: 20.0d
-			y: -4.5d
+			y: -3.0d
 		}
 		{
 			dependencies: [
@@ -741,7 +741,7 @@
 				}
 			]
 			x: 22.0d
-			y: -4.5d
+			y: -3.0d
 		}
 		{
 			dependencies: [
@@ -766,7 +766,7 @@
 				}
 			]
 			x: 16.0d
-			y: 6.0d
+			y: 4.5d
 		}
 		{
 			dependencies: [
