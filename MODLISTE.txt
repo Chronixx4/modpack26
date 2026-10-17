@@ -1,5 +1,5 @@
-﻿Chronicle 0.9.35 - Modliste
-Minecraft 1.21.1, NeoForge 21.1.256   |   342 Mods inkl. Bibliotheken und eigener Arena   |   Stand 2026-10-16
+﻿Chronicle 0.9.36 - Modliste
+Minecraft 1.21.1, NeoForge 21.1.256   |   343 Mods inkl. Bibliotheken und eigener Arena   |   Stand 2026-10-17
 
 == Performance und Grafik (20) ==
   All The Leaks                                  1.1.13+1.21.1-neoforge  (CurseForge)
@@ -39,7 +39,7 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   342 Mods inkl. Bibliotheken und eigene
   Grind enchantments                             4.0.1+neoforge-1.21.1
   Inventory Profiles Next                        neoforge-1.21.1-2.2.5  (nur Client)
   Jade 🔍                                        15.10.6+neoforge
-  Just Enough Items (JEI)                        19.51.0.418
+  Just Enough Items (JEI)                        19.64.0.455
   Just Enough Resources (JER)                    1.6.0.17  (nur Client)
   Keybind Overview                               1.1.0  (nur Client)
   Mouse Tweaks                                   1.21-2.26.1-neoforge  (nur Client)
@@ -55,13 +55,14 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   342 Mods inkl. Bibliotheken und eigene
   Xaero's Minimap                                neoforge-1.21.1-26.6.0  (nur Client)
   Xaero's World Map                              neoforge-1.21.1-1.47.0  (nur Client)
 
-== Multiplayer, Quests und Verwaltung (10) ==
+== Multiplayer, Quests und Verwaltung (11) ==
   FTB Backups 2                                  1.0.28  (CurseForge)
   FTB Chunks                                     2101.1.22  (CurseForge)
   FTB Library                                    2101.1.37  (CurseForge)
   FTB Quests                                     2101.1.36  (CurseForge)
   FTB Teams                                      2101.1.11  (CurseForge)
   FTB Ultimine                                   2101.1.15  (CurseForge)
+  FTB XMod Compat                                21.1.12  (CurseForge)
   KubeJS                                         2101.7.2-build.377
   Open Parties and Claims                        neoforge-1.21.1-0.32.7
   Pufferfish's Skills                            0.19.1
