@@ -102,7 +102,7 @@
 				}
 			]
 			x: 2.0d
-			y: 1.5d
+			y: -3.0d
 		}
 		{
 			dependencies: [
@@ -157,7 +157,7 @@
 				}
 			]
 			x: 2.0d
-			y: -3.0d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -263,7 +263,7 @@
 				}
 			]
 			x: 8.0d
-			y: -1.5d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -304,7 +304,7 @@
 				}
 			]
 			x: 8.0d
-			y: -3.0d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -370,7 +370,7 @@
 				}
 			]
 			x: 10.0d
-			y: 1.5d
+			y: 3.0d
 		}
 		{
 			dependencies: [
@@ -403,7 +403,7 @@
 				}
 			]
 			x: 12.0d
-			y: 1.5d
+			y: 4.5d
 		}
 		{
 			dependencies: [
@@ -428,7 +428,7 @@
 				}
 			]
 			x: 10.0d
-			y: 4.5d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -461,7 +461,7 @@
 				}
 			]
 			x: 12.0d
-			y: 4.5d
+			y: 3.0d
 		}
 		{
 			dependencies: [
@@ -544,7 +544,7 @@
 				}
 			]
 			x: 12.0d
-			y: -1.5d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -754,7 +754,7 @@
 				}
 			]
 			x: 16.0d
-			y: 1.5d
+			y: -3.0d
 		}
 		{
 			dependencies: [
@@ -779,7 +779,7 @@
 				}
 			]
 			x: 16.0d
-			y: -1.5d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -812,7 +812,7 @@
 				}
 			]
 			x: 18.0d
-			y: -1.5d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -839,7 +839,7 @@
 				}
 			]
 			x: 20.0d
-			y: -1.5d
+			y: 1.5d
 		}
 		{
 			dependencies: [
@@ -896,7 +896,7 @@
 				}
 			]
 			x: 16.0d
-			y: -3.0d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -929,7 +929,7 @@
 				}
 			]
 			x: 18.0d
-			y: -3.0d
+			y: -1.5d
 		}
 		{
 			dependencies: [
@@ -1300,7 +1300,7 @@
 				}
 			]
 			x: 24.0d
-			y: 3.0d
+			y: 4.5d
 		}
 		{
 			dependencies: [
@@ -1341,7 +1341,7 @@
 				}
 			]
 			x: 26.0d
-			y: 4.5d
+			y: 6.0d
 		}
 		{
 			dependencies: [
@@ -1366,7 +1366,7 @@
 				}
 			]
 			x: 26.0d
-			y: 3.0d
+			y: 4.5d
 		}
 		{
 			dependencies: [
@@ -1391,7 +1391,7 @@
 				}
 			]
 			x: 28.0d
-			y: 3.0d
+			y: 4.5d
 		}
 		{
 			dependencies: [
@@ -1725,7 +1725,7 @@
 				}
 			]
 			x: 32.0d
-			y: -4.5d
+			y: -6.0d
 		}
 		{
 			dependencies: [
@@ -1758,7 +1758,7 @@
 				}
 			]
 			x: 34.0d
-			y: -4.5d
+			y: -6.0d
 		}
 		{
 			dependencies: [
@@ -1784,7 +1784,7 @@
 				}
 			]
 			x: 34.0d
-			y: -6.0d
+			y: -9.0d
 		}
 		{
 			dependencies: [
