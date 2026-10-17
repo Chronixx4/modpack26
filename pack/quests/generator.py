@@ -626,7 +626,7 @@ def main():
         'lock_message': '',
         'loot_crate_no_drop': {'boss': 0, 'monster': 600, 'passive': 4000},
         'pause_game': False,
-        'progression_mode': 'linear',
+        'progression_mode': 'flexible',
         'show_lock_icons': True,
         'version': 13,
     })
