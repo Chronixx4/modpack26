@@ -242,7 +242,7 @@ public class TerminalScreen extends Screen {
         if (encButton.isHovered() && !list.isEmpty()) gfx.renderTooltip(this.font, this.font.split(Component.literal(list.get(Math.min(encIndex, list.size()-1)).desc()), 240), mouseX, mouseY);
         if (tierButton.isHovered() && t != null) gfx.renderTooltip(this.font, this.font.split(Component.literal(t.desc() + " | " + t.info()), 240), mouseX, mouseY);
         if (goalsButton.isHovered()) gfx.renderTooltip(this.font, this.font.split(Component.literal(goals
-                ? "Ab und zu kommt eine Welle mit Zusatzziel (Kristalle, Beacon, Zielgegner, Kontrollpunkte). Klick schaltet sie fuer diesen Kampf aus."
+                ? "Ab und zu kommt eine Welle mit Zusatzziel (Kristalle, Beacon, Zielgegner, Kontrollpunkte, Lichtkreis). Klick schaltet sie fuer diesen Kampf aus."
                 : "Keine Zufallsmissionen in diesem Kampf. Der Missions-Weg bei der Wegwahl ist dann gesperrt."), 240), mouseX, mouseY);
         // Tooltip fuer Modifikatoren.
         for (int i = 0; i < modButtons.size(); i++) {

@@ -26,13 +26,26 @@ public final class ArenaObjectives {
         int ticks,held,markedSpawned,markedKilled,checkpoint,expectedTargets=1;
         UUID defender;
         float health=100,maxHealth=100;
+        Vec3 circle=Vec3.ZERO;
         final Map<UUID,Integer> lastStrike=new HashMap<>();
         boolean failed;
         Objective(int kind,BlockPos center){this.kind=kind;this.center=center;}
-        boolean complete(){return switch(kind){case 0->crystals.isEmpty();case 1->health>0&&held>=600;case 2->markedSpawned>=expectedTargets&&marked.isEmpty();case 4->checkpoint>=3;default->false;};}
+        boolean complete(){return switch(kind){case 0->crystals.isEmpty();case 1->health>0&&held>=600;case 2->markedSpawned>=expectedTargets&&marked.isEmpty();case 4->checkpoint>=3;case 5->held>=600;default->false;};}
     }
-    /** Active goal types; 3 (escort) was removed because the guide got stuck. */
-    static final int[] KINDS={0,1,2,4};
+    /** Active goal types; 3 (escort) was removed because the guide got stuck, 5 is the moving light circle. */
+    static final int[] KINDS={0,1,2,4,5};
+    static final double CIRCLE_RADIUS=4.5,CIRCLE_SPEED=0.05;
+    /** Moves the circle in a straight line; it has no body, so it can never get stuck. */
+    static Vec3 moveCircle(Vec3 at,Vec3 target,double speed){
+        Vec3 d=target.subtract(at);double len=d.length();
+        return len<=speed?target:at.add(d.scale(speed/len));
+    }
+    /** At least half of the living group (rounded up) must stand inside the circle. */
+    static int circleNeeded(int alive){return Math.max(1,(alive+1)/2);}
+    static void circleTick(Objective o,int inside,int alive){
+        if(o.complete())return;
+        if(inside>=circleNeeded(alive))o.held++;
+    }
     static boolean active(int kind){return Arrays.stream(KINDS).anyMatch(k->k==kind);}
     static int choices(int previous){return active(previous)?KINDS.length-1:KINDS.length;}
     /** Maps a uniform roll to all active goal types except the preceding one. */
@@ -65,6 +78,8 @@ public final class ArenaObjectives {
                 if(!level.addFreshEntity(proxy)){clear(level,o);return new Objective(2,center);}proxy.setInvisible(true);o.defender=proxy.getUUID();
                 o.health=o.maxHealth=ArenaBalance.beaconHealth(players);
             }
+        }else if(kind==5){
+            o.circle=Vec3.atBottomCenterOf(o.points.get(0));o.checkpoint=1;
         }
         return o;
     }
@@ -97,6 +112,16 @@ public final class ArenaObjectives {
             BlockPos point=o.points.get(o.checkpoint);Vec3 at=Vec3.atCenterOf(point);
             captureTick(o,defend(server,level,at,alive,mobs));
             if(o.ticks%20==0)level.sendParticles(net.minecraft.core.particles.ParticleTypes.END_ROD,at.x,at.y+2,at.z,15,2,0.3,2,0);
+        }else if(o.kind==5){
+            Vec3 to=Vec3.atBottomCenterOf(o.points.get(o.checkpoint%o.points.size()));
+            o.circle=moveCircle(o.circle,to,CIRCLE_SPEED);
+            if(o.circle.distanceToSqr(to)<1.0E-4)o.checkpoint++;
+            Vec3 c=o.circle;
+            int inside=(int)alive.stream().map(id->server.getPlayerList().getPlayer(id))
+                    .filter(p->p!=null&&p.level()==level&&!p.isSpectator()&&Math.abs(p.getY()-c.y)<3&&p.position().subtract(c).horizontalDistanceSqr()<CIRCLE_RADIUS*CIRCLE_RADIUS).count();
+            circleTick(o,inside,alive.size());
+            if(o.ticks%5==0)for(int i=0;i<16;i++){double a=Math.PI*2*i/16+o.ticks*0.02;
+                level.sendParticles(net.minecraft.core.particles.ParticleTypes.END_ROD,c.x+Math.cos(a)*CIRCLE_RADIUS,c.y+0.2,c.z+Math.sin(a)*CIRCLE_RADIUS,1,0,0.05,0,0);}
         }
         if(o.kind==2)o.marked.removeIf(id->{Entity e=level.getEntity(id);return e==null||!e.isAlive();});
         if(o.ticks>limit(o)&&!o.complete())o.failed=true;
@@ -109,11 +134,11 @@ public final class ArenaObjectives {
         if(o==null||o.kind!=1||o.complete()||o.failed||!Float.isFinite(damage)||damage<=0)return;
         if(o.ticks-o.lastStrike.getOrDefault(attacker,-100)>=20){o.lastStrike.put(attacker,o.ticks);o.health=Math.max(0,o.health-Math.clamp(damage,1,ArenaBalance.BEACON_MAX_HIT));if(o.health<=0)o.failed=true;}
     }
-    static boolean needsPressure(Objective o){return o!=null&&!o.complete()&&!o.failed&&(o.kind==1||o.kind==4);}
-    public static int limit(Objective o){return o.kind==2?1800:3600;}
-    public static int progress(Objective o){return switch(o.kind){case 0->3-o.crystals.size();case 1->Math.min(30,o.held/20);case 2->o.markedSpawned-o.marked.size();case 4->o.checkpoint*10+o.held/20;default->0;};}
-    public static int target(Objective o){return switch(o.kind){case 1,4->30;case 2->o.expectedTargets;default->3;};}
-    public static String label(Objective o){return switch(o.kind){case 0->"Kristalle rechtsklicken";case 1->"Beacon verteidigen: 30 Sekunden";case 2->"Leuchtende Gegner besiegen";case 4->"Kontrollpunkte halten: "+Math.min(3,o.checkpoint+1)+"/3";default->"";};}
+    static boolean needsPressure(Objective o){return o!=null&&!o.complete()&&!o.failed&&(o.kind==1||o.kind==4||o.kind==5);}
+    public static int limit(Objective o){return o.kind==2?1800:o.kind==5?2400:3600;}
+    public static int progress(Objective o){return switch(o.kind){case 0->3-o.crystals.size();case 1,5->Math.min(30,o.held/20);case 2->o.markedSpawned-o.marked.size();case 4->o.checkpoint*10+o.held/20;default->0;};}
+    public static int target(Objective o){return switch(o.kind){case 1,4,5->30;case 2->o.expectedTargets;default->3;};}
+    public static String label(Objective o){return switch(o.kind){case 0->"Kristalle rechtsklicken";case 1->"Beacon verteidigen: 30 Sekunden";case 2->"Leuchtende Gegner besiegen";case 4->"Kontrollpunkte halten: "+Math.min(3,o.checkpoint+1)+"/3";case 5->"Im wandernden Lichtkreis bleiben";default->"";};}
     public static String status(Objective o){return label(o)+" | "+progress(o)+"/"+target(o)+" | "+Math.max(0,(limit(o)-o.ticks)/20)+" s";}
     public static void clear(ServerLevel level,Objective o){if(level==null||o==null)return;o.originals.forEach(level::setBlockAndUpdate);if(o.defender!=null){Entity e=level.getEntity(o.defender);if(e!=null)e.discard();}}
 }

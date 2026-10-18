@@ -36,7 +36,7 @@ class ArenaPresentationTest {
         var b=new FriendlyByteBuf(Unpooled.buffer());try{b.writeUUID(UUID.randomUUID());b.writeVarInt(5);b.writeVarInt(4);assertThrows(IllegalArgumentException.class,()->ArenaNet.Blessings.CODEC.decode(b));}finally{b.release();}
     }
     @Test void randomSelectionIncludesAllOtherGoalsWithoutImmediateRepeats(){
-        for(int previous:ArenaObjectives.KINDS){Set<Integer> chosen=new HashSet<>();for(int roll=0;roll<ArenaObjectives.choices(previous);roll++)chosen.add(ArenaObjectives.chooseKind(roll,previous));assertEquals(3,chosen.size());assertFalse(chosen.contains(previous));assertTrue(chosen.stream().allMatch(ArenaObjectives::active));}
+        for(int previous:ArenaObjectives.KINDS){Set<Integer> chosen=new HashSet<>();for(int roll=0;roll<ArenaObjectives.choices(previous);roll++)chosen.add(ArenaObjectives.chooseKind(roll,previous));assertEquals(ArenaObjectives.KINDS.length-1,chosen.size());assertFalse(chosen.contains(previous));assertTrue(chosen.stream().allMatch(ArenaObjectives::active));}
     }
     @Test void controlPointsRequireThreeFullCapturesAndFreezeWhenContested(){
         var goal=new ArenaObjectives.Objective(4,BlockPos.ZERO);
@@ -63,9 +63,22 @@ class ArenaPresentationTest {
         }
     }
     @Test void escortIsNeverRolledEvenAfterAnOldEscortOrAtRunStart(){
-        assertFalse(ArenaObjectives.active(3));assertEquals(4,ArenaObjectives.choices(-1));assertEquals(4,ArenaObjectives.choices(3));
-        for(int previous:new int[]{-1,3})for(int roll=0;roll<4;roll++)assertNotEquals(3,ArenaObjectives.chooseKind(roll,previous));
+        assertFalse(ArenaObjectives.active(3));assertTrue(ArenaObjectives.active(5));assertEquals(5,ArenaObjectives.choices(-1));assertEquals(5,ArenaObjectives.choices(3));
+        for(int previous:new int[]{-1,3})for(int roll=0;roll<5;roll++)assertNotEquals(3,ArenaObjectives.chooseKind(roll,previous));
         assertFalse(new ArenaObjectives.Objective(3,BlockPos.ZERO).complete());
+    }
+    @Test void lightCircleMovesStraightAndStopsExactlyOnItsTarget(){
+        var from=new net.minecraft.world.phys.Vec3(0,64,0);var to=new net.minecraft.world.phys.Vec3(10,64,0);
+        var step=ArenaObjectives.moveCircle(from,to,0.05);assertEquals(0.05,step.x,1e-9);assertEquals(64,step.y,1e-9);assertEquals(0,step.z,1e-9);
+        assertEquals(to,ArenaObjectives.moveCircle(new net.minecraft.world.phys.Vec3(9.98,64,0),to,0.05));
+    }
+    @Test void lightCircleNeedsHalfTheGroupInsideAndThirtySeconds(){
+        assertEquals(1,ArenaObjectives.circleNeeded(1));assertEquals(1,ArenaObjectives.circleNeeded(2));assertEquals(2,ArenaObjectives.circleNeeded(3));assertEquals(2,ArenaObjectives.circleNeeded(4));assertEquals(1,ArenaObjectives.circleNeeded(0));
+        var goal=new ArenaObjectives.Objective(5,BlockPos.ZERO);
+        for(int i=0;i<100;i++)ArenaObjectives.circleTick(goal,1,3);assertEquals(0,goal.held);
+        for(int i=0;i<599;i++)ArenaObjectives.circleTick(goal,2,3);assertFalse(goal.complete());
+        ArenaObjectives.circleTick(goal,2,3);assertTrue(goal.complete());assertEquals(30,ArenaObjectives.progress(goal));assertFalse(ArenaObjectives.needsPressure(goal));
+        ArenaObjectives.circleTick(goal,2,3);assertEquals(600,goal.held);
     }
     @Test void enemiesNearAControlPointBlockAdvancement(){
         assertFalse(ArenaObjectives.canAdvance(false,false));assertFalse(ArenaObjectives.canAdvance(true,true));assertTrue(ArenaObjectives.canAdvance(true,false));
