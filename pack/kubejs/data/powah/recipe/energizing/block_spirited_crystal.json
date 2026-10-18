@@ -1,0 +1,13 @@
+{
+  "type": "powah:energizing",
+  "energy": 9000000,
+  "ingredients": [
+    {
+      "tag": "c:storage_blocks/emerald"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "powah:crystal_spirited"
+  }
+}
