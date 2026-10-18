@@ -45,7 +45,6 @@ import net.neoforged.neoforge.event.entity.EntityTeleportEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
 import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
-import net.neoforged.neoforge.event.entity.living.LivingExperienceDropEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
@@ -1443,6 +1442,10 @@ public final class ArenaManager {
         if (event.getLevel().isClientSide() || event.getLevel().dimension() != DIM) return;
         if (event.getEntity() instanceof Vex) {
             event.setCanceled(true);
+        } else if (event.getEntity() instanceof net.minecraft.world.entity.item.ItemEntity item
+                && item.getItem().has(net.minecraft.core.component.DataComponents.JUKEBOX_PLAYABLE)) {
+            // Keine Musik-Discs in der Arena (z. B. Creeper durch Skelett-Pfeil), sie umgehen das Drop-Verbot.
+            event.setCanceled(true);
         } else if (!spawningMob && event.getEntity() instanceof LivingEntity && !(event.getEntity() instanceof Player)
                 && WORMS.matcher(net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(event.getEntity().getType()).getPath()).find()) {
             // Keine Wuermer/Silberfischchen (z. B. aus Mod-Drops von Zombies) in der Arena.
@@ -1588,13 +1591,6 @@ public final class ArenaManager {
 
     @SubscribeEvent
     public void onMobDrops(LivingDropsEvent event) {
-        if (!(event.getEntity() instanceof Player) && event.getEntity().level().dimension() == DIM) {
-            event.setCanceled(true);
-        }
-    }
-
-    @SubscribeEvent
-    public void onMobXp(LivingExperienceDropEvent event) {
         if (!(event.getEntity() instanceof Player) && event.getEntity().level().dimension() == DIM) {
             event.setCanceled(true);
         }
