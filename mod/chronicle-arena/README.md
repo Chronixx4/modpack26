@@ -1,6 +1,6 @@
 # Chronicle Arena
 
-## In Arbeit (nach 0.4.2, noch keine Jar)
+## Update 0.4.3 (vorbereitet)
 
 - Zufallsmission "NPC begleiten" entfernt (Fuehrer blieb haengen).
 - Neue Mission "Wandernder Lichtkreis": Ein Partikelkreis (Radius 4,5) wandert mit 1 Block/s zwischen drei Punkten durch die Arena. Mindestens die Haelfte der lebenden Gruppe (aufgerundet) muss darin stehen, insgesamt 30 s, Zeitlimit 120 s. Ausserhalb laeuft der Fortschritt nicht weiter. Normaler Nachschub wie bei den Kontrollpunkten.
