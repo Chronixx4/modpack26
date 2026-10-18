@@ -1,6 +1,6 @@
 # Chronicle Arena
 
-## Naechstes Update (gesammelt, noch keine Jar)
+## Update 0.4.4 (vorbereitet)
 
 - Gegner in der Arena lassen wieder XP fallen (Item-Loot bleibt aus).
 - Musik-Discs droppen in der Arena nicht mehr (z. B. Creeper durch Skelett-Pfeil).
