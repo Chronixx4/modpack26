@@ -721,6 +721,7 @@ public final class ArenaManager {
         if (tickCounter % 20 == 0) safetyCheck(server);
         if (tickCounter % 20 == 7) for (ServerPlayer sm : server.getPlayerList().getPlayers()) ArenaSmith.apply(sm);
         if (tickCounter % 4 == 0) trails(server);
+        if (tickCounter % 10 == 3) ArenaJetpacks.tick(server);
         if (tickCounter % 20 == 0 || tickCounter % 100 == 0) syncStats(server);
     }
 

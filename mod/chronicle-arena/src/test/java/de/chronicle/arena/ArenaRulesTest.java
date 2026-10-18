@@ -23,4 +23,7 @@ class ArenaRulesTest {
         var hold=new ArenaObjectives.Objective(1,BlockPos.ZERO);hold.held=599;assertFalse(hold.complete());hold.held=600;assertTrue(hold.complete());
         var marked=new ArenaObjectives.Objective(2,BlockPos.ZERO);assertFalse(marked.complete());marked.markedSpawned=1;UUID target=UUID.randomUUID();marked.marked.add(target);assertFalse(marked.complete());ArenaObjectives.killed(marked,target);assertTrue(marked.complete());
     }
+    @Test void onlyIronJetpacksAreBlockedInTheArena(){
+        assertTrue(ArenaJetpacks.jetpack("ironjetpacks"));assertFalse(ArenaJetpacks.jetpack("create_jetpack"));assertFalse(ArenaJetpacks.jetpack("minecraft"));
+    }
 }

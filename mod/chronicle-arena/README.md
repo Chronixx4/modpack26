@@ -7,6 +7,7 @@
 - Missionen jetzt: Kristalle, Beacon, Zielgegner, Kontrollpunkte, Lichtkreis.
 - Beacon verteidigen: 200 LP plus 75 je weiterem Spieler (vorher 100), hoechstens 5 Schaden pro Treffer (vorher 8). Waehrend der Mission nur 60 % der normalen Gegner, gleichzeitig hoechstens 6 plus 4 je weiterem Spieler, Nachschub nur alle 8 s und 1 bis 3 Gegner.
 - Terminal: Schalter "Zufallsmissionen" (AN/aus) pro Kampf. Aus heisst keine Zielwellen und kein Missions-Weg. Der Admin-Schalter "Zielwellen" gilt weiter fuer die ganze Welt.
+- Iron Jetpacks gehen in der Arena-Dimension nicht: Ein angezogenes Jetpack (Brustplatz oder Curios-Slot) kommt alle 0,5 s zurueck ins Inventar, bei vollem Inventar faellt es auf den Boden. Kreativ und Zuschauer sind ausgenommen. Create Jetpack bleibt erlaubt.
 - Paketformat unveraendert (Schalter steckt im Aktions-Bitfeld), Netzwerkversion bleibt 10.
 
 ## Update 0.4.2 (vorbereitet)
