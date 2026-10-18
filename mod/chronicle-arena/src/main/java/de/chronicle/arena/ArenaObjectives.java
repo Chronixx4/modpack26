@@ -24,41 +24,30 @@ public final class ArenaObjectives {
         final Set<UUID> marked=new HashSet<>();
         final List<BlockPos> points=new ArrayList<>();
         int ticks,held,markedSpawned,markedKilled,checkpoint,expectedTargets=1;
-        UUID escort,defender;
-        float health=100;
+        UUID defender;
+        float health=100,maxHealth=100;
         final Map<UUID,Integer> lastStrike=new HashMap<>();
         boolean failed;
         Objective(int kind,BlockPos center){this.kind=kind;this.center=center;}
-        boolean complete(){return switch(kind){case 0->crystals.isEmpty();case 1->health>0&&held>=600;case 2->markedSpawned>=expectedTargets&&marked.isEmpty();case 3,4->checkpoint>=3;default->false;};}
+        boolean complete(){return switch(kind){case 0->crystals.isEmpty();case 1->health>0&&held>=600;case 2->markedSpawned>=expectedTargets&&marked.isEmpty();case 4->checkpoint>=3;default->false;};}
     }
-    /** Maps a uniform roll to all goal types except the preceding one. */
-    static int chooseKind(int roll,int previous){return previous>=0&&previous<5?(roll>=previous?roll+1:roll):roll;}
+    /** Active goal types; 3 (escort) was removed because the guide got stuck. */
+    static final int[] KINDS={0,1,2,4};
+    static boolean active(int kind){return Arrays.stream(KINDS).anyMatch(k->k==kind);}
+    static int choices(int previous){return active(previous)?KINDS.length-1:KINDS.length;}
+    /** Maps a uniform roll to all active goal types except the preceding one. */
+    static int chooseKind(int roll,int previous){
+        int i=0;for(int k:KINDS){if(k==previous)continue;if(i++==roll)return k;}
+        return KINDS[0];
+    }
     static List<BlockPos> routePoints(BlockPos center,int turn){
         List<BlockPos> points=new ArrayList<>();
         // Keep markers away from the red carpets on the four arena axes.
         for(int[] v:new int[][]{{-12,-8},{8,12},{12,-8}}){int x=v[0],z=v[1];for(int i=0;i<Math.floorMod(turn,4);i++){int old=x;x=-z;z=old;}points.add(center.offset(x,0,z));}
         return points;
     }
-    static boolean guideFloor(boolean clearHead,boolean supported,double height){
-        return clearHead&&supported&&Double.isFinite(height)&&height>=0&&height<=0.25;
-    }
-    static boolean stepGuide(ServerLevel level,Entity guide,Vec3 target){
-        Vec3 direction=target.subtract(guide.position()).multiply(1,0,1).normalize();
-        for(double angle:new double[]{0,Math.PI/4,-Math.PI/4,Math.PI/2,-Math.PI/2}){
-            double dx=direction.x*Math.cos(angle)-direction.z*Math.sin(angle),dz=direction.x*Math.sin(angle)+direction.z*Math.cos(angle);
-            Vec3 next=guide.position().add(dx*0.05,0,dz*0.05);BlockPos at=BlockPos.containing(next);
-            var shape=level.getBlockState(at).getCollisionShape(level,at);
-            double height=shape.isEmpty()?0:shape.max(net.minecraft.core.Direction.Axis.Y);
-            if(!guideFloor(level.getBlockState(at.above()).getCollisionShape(level,at.above()).isEmpty(),level.getBlockState(at.below()).isSolid(),height))continue;
-            Vec3 step=new Vec3(next.x,at.getY()+height,next.z);
-            if(level.noCollision(guide,guide.getBoundingBox().move(step.subtract(guide.position())))){
-                guide.teleportTo(step.x,step.y,step.z);return true;
-            }
-        }
-        return false;
-    }
-    public static Objective begin(ServerLevel level,BlockPos center,int previous){
-        int kind=chooseKind(level.getRandom().nextInt(previous>=0?4:5),previous);
+    public static Objective begin(ServerLevel level,BlockPos center,int previous,int players){
+        int kind=chooseKind(level.getRandom().nextInt(choices(previous)),previous);
         Objective o=new Objective(kind,center);
         // Rotate the same safe, short route through four different orientations.
         int turn=level.getRandom().nextInt(4);
@@ -74,15 +63,8 @@ public final class ArenaObjectives {
                 proxy.setNoAi(true);proxy.setNoGravity(true);proxy.setSilent(true);proxy.setPersistenceRequired();proxy.addTag("chronicle_arena_beacon");
                 BlockPos at=o.points.get(0);proxy.moveTo(at.getX()+0.5,at.getY()+1,at.getZ()+0.5,0,0);
                 if(!level.addFreshEntity(proxy)){clear(level,o);return new Objective(2,center);}proxy.setInvisible(true);o.defender=proxy.getUUID();
+                o.health=o.maxHealth=ArenaBalance.beaconHealth(players);
             }
-        }else if(kind==3){
-            Villager guide=EntityType.VILLAGER.create(level);
-            if(guide==null)return new Objective(2,center);
-            guide.setNoAi(true);guide.setInvulnerable(true);guide.setSilent(true);guide.setPersistenceRequired();guide.setGlowingTag(true);
-            guide.setCustomName(Component.literal("Arena-Fuehrer - Bleibt in meiner Naehe!"));guide.setCustomNameVisible(true);
-            guide.moveTo(center.getX()+0.5,center.getY(),center.getZ()+0.5,0,0);
-            if(!level.addFreshEntity(guide))return new Objective(2,center);
-            o.escort=guide.getUUID();
         }
         return o;
     }
@@ -115,15 +97,6 @@ public final class ArenaObjectives {
             BlockPos point=o.points.get(o.checkpoint);Vec3 at=Vec3.atCenterOf(point);
             captureTick(o,defend(server,level,at,alive,mobs));
             if(o.ticks%20==0)level.sendParticles(net.minecraft.core.particles.ParticleTypes.END_ROD,at.x,at.y+2,at.z,15,2,0.3,2,0);
-        }else if(o.kind==3){
-            Entity guide=o.escort==null?null:level.getEntity(o.escort);
-            if(guide==null||!guide.isAlive()){o.failed=true;return;}
-            Vec3 to=Vec3.atBottomCenterOf(o.points.get(o.checkpoint));Vec3 delta=to.subtract(guide.position());
-            if(delta.lengthSqr()<0.25)o.checkpoint++;
-            else if(defend(server,level,guide.position(),alive,mobs)){
-                stepGuide(level,guide,to);
-            }
-            if(o.ticks%10==0)level.sendParticles(net.minecraft.core.particles.ParticleTypes.HAPPY_VILLAGER,to.x,to.y+1,to.z,6,0.4,0.2,0.4,0);
         }
         if(o.kind==2)o.marked.removeIf(id->{Entity e=level.getEntity(id);return e==null||!e.isAlive();});
         if(o.ticks>limit(o)&&!o.complete())o.failed=true;
@@ -134,13 +107,13 @@ public final class ArenaObjectives {
     }
     static void strike(Objective o,UUID attacker,float damage){
         if(o==null||o.kind!=1||o.complete()||o.failed||!Float.isFinite(damage)||damage<=0)return;
-        if(o.ticks-o.lastStrike.getOrDefault(attacker,-100)>=20){o.lastStrike.put(attacker,o.ticks);o.health=Math.max(0,o.health-Math.clamp(damage,1,8));if(o.health<=0)o.failed=true;}
+        if(o.ticks-o.lastStrike.getOrDefault(attacker,-100)>=20){o.lastStrike.put(attacker,o.ticks);o.health=Math.max(0,o.health-Math.clamp(damage,1,ArenaBalance.BEACON_MAX_HIT));if(o.health<=0)o.failed=true;}
     }
-    static boolean needsPressure(Objective o){return o!=null&&!o.complete()&&!o.failed&&(o.kind==1||o.kind==3||o.kind==4);}
+    static boolean needsPressure(Objective o){return o!=null&&!o.complete()&&!o.failed&&(o.kind==1||o.kind==4);}
     public static int limit(Objective o){return o.kind==2?1800:3600;}
-    public static int progress(Objective o){return switch(o.kind){case 0->3-o.crystals.size();case 1->Math.min(30,o.held/20);case 2->o.markedSpawned-o.marked.size();case 3->o.checkpoint;case 4->o.checkpoint*10+o.held/20;default->0;};}
+    public static int progress(Objective o){return switch(o.kind){case 0->3-o.crystals.size();case 1->Math.min(30,o.held/20);case 2->o.markedSpawned-o.marked.size();case 4->o.checkpoint*10+o.held/20;default->0;};}
     public static int target(Objective o){return switch(o.kind){case 1,4->30;case 2->o.expectedTargets;default->3;};}
-    public static String label(Objective o){return switch(o.kind){case 0->"Kristalle rechtsklicken";case 1->"Beacon verteidigen: 30 Sekunden";case 2->"Leuchtende Gegner besiegen";case 3->"NPC folgen (Radius 6); Gegner fernhalten";case 4->"Kontrollpunkte halten: "+Math.min(3,o.checkpoint+1)+"/3";default->"";};}
+    public static String label(Objective o){return switch(o.kind){case 0->"Kristalle rechtsklicken";case 1->"Beacon verteidigen: 30 Sekunden";case 2->"Leuchtende Gegner besiegen";case 4->"Kontrollpunkte halten: "+Math.min(3,o.checkpoint+1)+"/3";default->"";};}
     public static String status(Objective o){return label(o)+" | "+progress(o)+"/"+target(o)+" | "+Math.max(0,(limit(o)-o.ticks)/20)+" s";}
-    public static void clear(ServerLevel level,Objective o){if(level==null||o==null)return;o.originals.forEach(level::setBlockAndUpdate);if(o.defender!=null){Entity e=level.getEntity(o.defender);if(e!=null)e.discard();}if(o.escort!=null){Entity e=level.getEntity(o.escort);if(e!=null)e.discard();}}
+    public static void clear(ServerLevel level,Objective o){if(level==null||o==null)return;o.originals.forEach(level::setBlockAndUpdate);if(o.defender!=null){Entity e=level.getEntity(o.defender);if(e!=null)e.discard();}}
 }

@@ -94,6 +94,8 @@ public final class ArenaManager {
     static final int SHOP_RADIUS = 12;
     static final int ARENA_RADIUS = 40;
     static final int MAX_ALIVE_MOBS = 30;
+    /** Terminal flag in the action mask (bits 0-3 modifiers, 4-5 arena): no random missions in this run. */
+    static final int NO_GOALS = 64;
     static final int PREP_TICKS = 100;
     static final int END_TICKS = 200;
 
@@ -423,23 +425,24 @@ public final class ArenaManager {
             }
         }
         int choice = (action.mask() >> 4) & 3;
-        ArenaParty.propose(sp, enc, tier, group, action.mask() & 15, choice == 0 ? variantFor(enc.theme()) : choice - 1);
+        boolean goals = (action.mask() & NO_GOALS) == 0;
+        ArenaParty.propose(sp, enc, tier, group, action.mask() & 15, choice == 0 ? variantFor(enc.theme()) : choice - 1, goals);
     }
 
     // ------------------------------------------------------------------ Start und Ende
 
-    static void startPrepared(MinecraftServer server, ArenaDefs.Encounter enc, ArenaDefs.Tier tier, List<ServerPlayer> group, int mask, int variant) {
-        if (run == null && !group.isEmpty() && group.stream().allMatch(p -> inLobby(p) && unlocked(p, tier))) startRun(server, enc, tier, group, mask, variant);
+    static void startPrepared(MinecraftServer server, ArenaDefs.Encounter enc, ArenaDefs.Tier tier, List<ServerPlayer> group, int mask, int variant, boolean goals) {
+        if (run == null && !group.isEmpty() && group.stream().allMatch(p -> inLobby(p) && unlocked(p, tier))) startRun(server, enc, tier, group, mask, variant, goals);
     }
 
-    private static void startRun(MinecraftServer server, ArenaDefs.Encounter enc, ArenaDefs.Tier tier, List<ServerPlayer> group, int mask, int variant) {
+    private static void startRun(MinecraftServer server, ArenaDefs.Encounter enc, ArenaDefs.Tier tier, List<ServerPlayer> group, int mask, int variant, boolean goals) {
         ServerLevel level = server.getLevel(DIM);
         if (level == null) return;
         ArenaBuilder.ensureBuilt(level);
         ArenaBuilder.ensureArena(level, centerFor(variant), variant);
         Run r = new Run(enc, tier, group.size(), mask, variant);
         ArenaSettings settings = ArenaSettings.get(server);
-        r.coinPercent = settings.coins; r.goalsEnabled = settings.goals; r.goalInterval = settings.goalInterval;
+        r.coinPercent = settings.coins; r.goalsEnabled = settings.goals && goals; r.goalInterval = settings.goalInterval;
         r.timer = settings.prepSeconds * 20;
         r.adminHealth = settings.health / 100.0; r.adminDamage = settings.damage / 100.0;
         run = r;
@@ -852,10 +855,11 @@ public final class ArenaManager {
         buildWave(level, r);
         r.waveTotal = Math.max(1, r.queue.size());
         r.powerMul = computePower(server, r);
-        r.objective = r.goalsEnabled && (r.routes.mission(r.wave) || r.wave % r.goalInterval == 0) ? ArenaObjectives.begin(level, r.center, r.lastGoal) : null;
+        r.objective = r.goalsEnabled && (r.routes.mission(r.wave) || r.wave % r.goalInterval == 0) ? ArenaObjectives.begin(level, r.center, r.lastGoal, r.alive.size()) : null;
         if(r.objective!=null){
             r.lastGoal=r.objective.kind;
             if(r.objective.kind==2)r.objective.expectedTargets=Math.min(3,Math.max(1,r.queue.size()));
+            if(r.objective.kind==1)trimBeaconWave(r);
         }
         r.offer.clear();
         ArenaPickups.spawn(level,r);ArenaPickups.spawn(level,r);
@@ -877,6 +881,17 @@ public final class ArenaManager {
                         r.miniThisWave ? net.minecraft.ChatFormatting.RED : net.minecraft.ChatFormatting.GRAY), 8, 45, 12);
         r.bar.setName(Component.translatable("bar.chronicle_arena.wave", r.wave, r.totalStr()));
         actionbar(server, r, Component.translatable("msg.chronicle_arena.wave", r.wave, r.totalStr()));
+    }
+
+    /** Beacon waves keep elites and bosses but drop part of the normal enemies. */
+    private static void trimBeaconWave(Run r) {
+        List<Spawn> normal = new ArrayList<>(), special = new ArrayList<>();
+        for (Spawn s : r.queue) (s.elite || s.boss || s.mini ? special : normal).add(s);
+        int keep = ArenaBalance.beaconWave(normal.size());
+        r.queue.clear(); r.queue.addAll(special);
+        // Spread the cut over all pools so later, stronger enemy types stay in the wave.
+        for (int i = 0; i < keep; i++) r.queue.add(normal.get(i * normal.size() / keep));
+        r.waveTotal = Math.max(1, r.queue.size());
     }
 
     private void buildWave(ServerLevel level, Run r) {
@@ -1053,8 +1068,10 @@ public final class ArenaManager {
         });
 
         // Timed objectives retain pressure even when the original wave is cleared.
-        if(ArenaObjectives.needsPressure(r.objective)&&r.fightTicks%80==0){
-            int count=ArenaBalance.reinforcements(r.alive.size(),r.queue.size(),r.mobs.size(),Math.min(r.maxAlive(),12+4*r.alive.size()));
+        boolean beaconGoal=r.objective!=null&&r.objective.kind==1;
+        if(ArenaObjectives.needsPressure(r.objective)&&r.fightTicks%(beaconGoal?160:80)==0){
+            int count=beaconGoal?ArenaBalance.beaconReinforcements(r.alive.size(),r.queue.size(),r.mobs.size(),ArenaBalance.beaconCap(r.alive.size(),r.maxAlive()))
+                    :ArenaBalance.reinforcements(r.alive.size(),r.queue.size(),r.mobs.size(),Math.min(r.maxAlive(),12+4*r.alive.size()));
             List<ArenaDefs.Pool> pools=r.encounter.pools().stream().filter(p->p.fromWave()<=r.wave).toList();
             if(!pools.isEmpty())for(int i=0;i<count;i++)r.queue.add(new Spawn(pools.get(level.getRandom().nextInt(pools.size())).entity(),false,false));
             r.waveTotal=Math.max(r.waveTotal,r.queue.size()+r.mobs.size());
@@ -1063,7 +1080,8 @@ public final class ArenaManager {
         // Nachspawnen.
         if (!r.queue.isEmpty() && tickCounter % 10 == 0) {
             int spawned = 0;
-            while (!r.queue.isEmpty() && r.mobs.size() < r.maxAlive() && spawned < 4) {
+            int cap = ArenaObjectives.defender(level, r.objective) != null ? ArenaBalance.beaconCap(r.alive.size(), r.maxAlive()) : r.maxAlive();
+            while (!r.queue.isEmpty() && r.mobs.size() < cap && spawned < 4) {
                 Spawn s = r.queue.remove(0);
                 LivingEntity le = spawnMob(level, r, s);
                 if (le == null) {
@@ -1825,35 +1843,19 @@ public final class ArenaManager {
             LOGGER.error("ARENA-DEBUG: Extras-Test Fehler", t);
         }
 
-        // Verify objectives and escort navigation against the actual generated geometry in all variants.
+        // Verify that every active goal type can be placed on the generated geometry in all variants.
         int routeOk = 0, routeFail = 0;
         for (BlockPos center : List.of(ARENA, ARENA_B, ARENA_C)) {
             Set<Integer> kinds = new HashSet<>();
-            for (int attempt = 0; attempt < 80 && kinds.size() < 5; attempt++) {
-                ArenaObjectives.Objective goal = ArenaObjectives.begin(level, center, -1);
+            for (int attempt = 0; attempt < 80 && kinds.size() < ArenaObjectives.KINDS.length; attempt++) {
+                ArenaObjectives.Objective goal = ArenaObjectives.begin(level, center, -1, 1);
                 kinds.add(goal.kind);
                 ArenaObjectives.clear(level, goal);
             }
-            if (kinds.size() != 5) { routeFail++; LOGGER.error("ARENA-DEBUG: Zielarten bei {} fehlen: {}", center, kinds); }
-            for (int turn = 0; turn < 4; turn++) {
-                var guide = EntityType.VILLAGER.create(level);
-                if (guide == null) { routeFail++; continue; }
-                guide.setNoAi(true);guide.setInvulnerable(true);guide.moveTo(center.getX()+0.5,center.getY(),center.getZ()+0.5,0,0);
-                if (!level.addFreshEntity(guide)) { routeFail++; continue; }
-                boolean passed = true;int steps = 0;
-                for (BlockPos point : ArenaObjectives.routePoints(center, turn)) {
-                    Vec3 to = Vec3.atBottomCenterOf(point);
-                    while (guide.position().distanceToSqr(to) >= 0.25 && ++steps <= 3600) {
-                        if (!ArenaObjectives.stepGuide(level, guide, to)) { passed=false;break; }
-                    }
-                    if (!passed || steps > 3600) { passed=false;break; }
-                }
-                guide.discard();
-                if (passed) routeOk++;
-                else { routeFail++; LOGGER.error("ARENA-DEBUG: Begleitroute bei {} Orientierung {} blockiert", center, turn); }
-            }
+            if (kinds.size() != ArenaObjectives.KINDS.length) { routeFail++; LOGGER.error("ARENA-DEBUG: Zielarten bei {} fehlen: {}", center, kinds); }
+            else routeOk++;
         }
-        LOGGER.info("ARENA-DEBUG: Ziel-/Begleit-Test fertig, routen_ok={} fehler={}", routeOk, routeFail);
+        LOGGER.info("ARENA-DEBUG: Ziel-Test fertig, arenen_ok={} fehler={}", routeOk, routeFail);
 
         int shopOk = 0;
         for (ArenaDefs.ShopOffer o : ArenaDefs.shopOffers()) {

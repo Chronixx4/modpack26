@@ -14,17 +14,18 @@ public final class ArenaParty {
         final ArenaDefs.Encounter encounter;
         final ArenaDefs.Tier tier;
         final int mask, variant;
+        final boolean goals;
         final Set<UUID> members = new LinkedHashSet<>(), ready = new HashSet<>();
         int age, countdown = -1;
-        Pending(ServerPlayer p, ArenaDefs.Encounter enc, ArenaDefs.Tier tier, List<ServerPlayer> group, int mask, int variant) {
-            leader = p.getUUID(); encounter = enc; this.tier = tier; this.mask = mask; this.variant = variant;
+        Pending(ServerPlayer p, ArenaDefs.Encounter enc, ArenaDefs.Tier tier, List<ServerPlayer> group, int mask, int variant, boolean goals) {
+            leader = p.getUUID(); encounter = enc; this.tier = tier; this.mask = mask; this.variant = variant; this.goals = goals;
             group.forEach(q -> members.add(q.getUUID()));
         }
     }
     public static boolean exists() { return pending != null; }
-    public static void propose(ServerPlayer p, ArenaDefs.Encounter enc, ArenaDefs.Tier tier, List<ServerPlayer> group, int mask, int variant) {
+    public static void propose(ServerPlayer p, ArenaDefs.Encounter enc, ArenaDefs.Tier tier, List<ServerPlayer> group, int mask, int variant, boolean goals) {
         if (pending != null) { p.sendSystemMessage(Component.literal("Es gibt bereits eine Bereitschaftsrunde. /arena bereit")); return; }
-        pending = new Pending(p, enc, tier, group, mask, variant);
+        pending = new Pending(p, enc, tier, group, mask, variant, goals);
         for (ServerPlayer q : group) { q.sendSystemMessage(Component.literal("Arena-Einladung: " + enc.name() + " / " + tier.name() + ". Bestaetigen mit /arena bereit.")); }
         broadcast(p.server, true);
     }
@@ -64,7 +65,8 @@ public final class ArenaParty {
             list.add((pending.ready.contains(id) ? "[Bereit] " : "[Wartet] ") + (member == null ? "Offline" : member.getGameProfile().getName()));
         }
         String summary = pending.encounter.name() + " / " + pending.tier.name() + " | " + ArenaManager.modNames(pending.mask)
-                + " | Arena: " + new String[]{"Klassisch", "Glut", "Eis"}[pending.variant];
+                + " | Arena: " + new String[]{"Klassisch", "Glut", "Eis"}[pending.variant]
+                + (pending.goals ? "" : " | Ohne Missionen");
         PacketDistributor.sendToPlayer(p, new Net.OpenParty(summary, list, pending.ready.contains(p.getUUID()), pending.leader.equals(p.getUUID()), pending.countdown < 0 ? -1 : (pending.countdown + 19) / 20, popup));
     }
     private static void broadcast(MinecraftServer server, boolean popup) {
@@ -83,7 +85,7 @@ public final class ArenaParty {
             if (--r.countdown <= 0) {
                 List<ServerPlayer> players = r.members.stream().map(id -> server.getPlayerList().getPlayer(id)).toList();
                 clear(server, "Alle bereit - der Kampf beginnt!");
-                ArenaManager.startPrepared(server, r.encounter, r.tier, players, r.mask, r.variant);
+                ArenaManager.startPrepared(server, r.encounter, r.tier, players, r.mask, r.variant, r.goals);
                 return;
             }
         }

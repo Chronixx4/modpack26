@@ -20,6 +20,7 @@ public class TerminalScreen extends Screen {
 
     private static String lastEncounter = "", lastTier = "";
     private static int lastMask, lastArena;
+    private static boolean goals = true;
     private final Net.OpenTerminal data;
     private boolean bossMode;
     private int encIndex;
@@ -27,6 +28,7 @@ public class TerminalScreen extends Screen {
     private int mask;
     private int arenaChoice;
     private Button arenaButton;
+    private Button goalsButton;
     private Button modeButton;
     private Button encButton;
     private Button tierButton;
@@ -88,16 +90,20 @@ public class TerminalScreen extends Screen {
             arenaChoice = (arenaChoice + 1) % 4;
             refresh();
         }).bounds(lx, y + 72, w, 20).build());
+        goalsButton = addRenderableWidget(Button.builder(Component.empty(), b -> {
+            goals = !goals;
+            refresh();
+        }).bounds(rx, y + 88, w, 20).build());
         for (int i = 0; i < data.mods().size(); i++) {
             final Net.ModInfo m = data.mods().get(i);
             Button b = Button.builder(Component.empty(), btn -> {
                 mask ^= m.bit();
                 refresh();
-            }).bounds(rx, y + i * 24, w, 20).build();
+            }).bounds(rx, y + i * 22, w, 20).build();
             modButtons.add(addRenderableWidget(b));
         }
         challengeButton = addRenderableWidget(Button.builder(Component.literal("Tages-Challenge waehlen"), b -> applyChallenge())
-                .bounds(rx, y + 100, w, 20).build());
+                .bounds(rx, y + 110, w, 20).build());
         startButton = addRenderableWidget(Button.builder(Component.literal("Vorbereiten"), b -> send(false))
                 .bounds(lx, y + 158, 106, 20).build());
         addRenderableWidget(Button.builder(Component.translatable("gui.chronicle_arena.spectate"), b -> send(true))
@@ -147,6 +153,7 @@ public class TerminalScreen extends Screen {
             if (t.locked()) name = name.copy().append(" ").append(Component.translatable("gui.chronicle_arena.tier_locked_short"));
             tierButton.setMessage(name);
         }
+        goalsButton.setMessage(Component.literal((goals ? "§a[AN] §r" : "§7[aus] §r") + "Zufallsmissionen"));
         arenaButton.setMessage(Component.literal("Arena: " + new String[]{"Auto (nach Gegner)", "Klassisch", "Glut", "Eis"}[arenaChoice]));
         for (int i = 0; i < modButtons.size(); i++) {
             Net.ModInfo m = data.mods().get(i);
@@ -164,7 +171,7 @@ public class TerminalScreen extends Screen {
         String enc = list.isEmpty() ? "" : list.get(Math.min(encIndex, list.size() - 1)).id();
         Net.TierInfo t = tier();
         if (!spectate) { lastEncounter = enc; lastTier = t == null ? "" : t.id(); lastMask = mask; lastArena = arenaChoice; }
-        PacketDistributor.sendToServer(new Net.Action(spectate, enc, t == null ? "" : t.id(), mask | (arenaChoice << 4)));
+        PacketDistributor.sendToServer(new Net.Action(spectate, enc, t == null ? "" : t.id(), mask | (arenaChoice << 4) | (goals ? 0 : 64)));
         onClose();
     }
 
@@ -222,21 +229,21 @@ public class TerminalScreen extends Screen {
 
         // Rechts: Hinweise zu Modifikatoren und Tages-Challenge.
         int bonus = bonusPercent();
-        gfx.drawString(this.font, Component.literal(bonus == 0 ? "Coins: " + data.coinPercent() + "%" : "Coins: " + data.coinPercent() + "% / Bonus +" + bonus + "%"), rx, top + 124,
+        gfx.drawString(this.font, Component.literal(bonus == 0 ? "Coins: " + data.coinPercent() + "%" : "Coins: " + data.coinPercent() + "% / Bonus +" + bonus + "%"), rx, top + 134,
                 bonus == 0 ? 0x999999 : 0xFFD700);
         Net.ChallengeInfo ch = data.challenge();
         if (!ch.encounter().isEmpty()) {
             String txt = (ch.claimed() ? "Heute erledigt" : "Heute: +" + ch.bonusCoins() + " Coins") + " - " + ch.text();
-            int ly = top + 136;
-            int n = 0;
-            for (FormattedCharSequence line : this.font.split(FormattedText.of(txt), 150)) {
-                if (n++ >= 2) break;
-                gfx.drawString(this.font, line, rx, ly, ch.claimed() ? 0x777777 : 0x88CCFF);
-                ly += 10;
-            }
+            // One line only; the full text is in the tooltip of the challenge button.
+            String shown = this.font.width(txt) <= 150 ? txt : this.font.plainSubstrByWidth(txt, 150 - this.font.width("...")) + "...";
+            gfx.drawString(this.font, Component.literal(shown), rx, top + 146, ch.claimed() ? 0x777777 : 0x88CCFF);
+            if (challengeButton.isHovered()) gfx.renderTooltip(this.font, this.font.split(Component.literal(txt), 240), mouseX, mouseY);
         }
         if (encButton.isHovered() && !list.isEmpty()) gfx.renderTooltip(this.font, this.font.split(Component.literal(list.get(Math.min(encIndex, list.size()-1)).desc()), 240), mouseX, mouseY);
         if (tierButton.isHovered() && t != null) gfx.renderTooltip(this.font, this.font.split(Component.literal(t.desc() + " | " + t.info()), 240), mouseX, mouseY);
+        if (goalsButton.isHovered()) gfx.renderTooltip(this.font, this.font.split(Component.literal(goals
+                ? "Ab und zu kommt eine Welle mit Zusatzziel (Kristalle, Beacon, Zielgegner, Kontrollpunkte). Klick schaltet sie fuer diesen Kampf aus."
+                : "Keine Zufallsmissionen in diesem Kampf. Der Missions-Weg bei der Wegwahl ist dann gesperrt."), 240), mouseX, mouseY);
         // Tooltip fuer Modifikatoren.
         for (int i = 0; i < modButtons.size(); i++) {
             if (modButtons.get(i).isHovered()) {

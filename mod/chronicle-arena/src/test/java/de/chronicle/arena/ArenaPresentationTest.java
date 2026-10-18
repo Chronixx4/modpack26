@@ -36,7 +36,7 @@ class ArenaPresentationTest {
         var b=new FriendlyByteBuf(Unpooled.buffer());try{b.writeUUID(UUID.randomUUID());b.writeVarInt(5);b.writeVarInt(4);assertThrows(IllegalArgumentException.class,()->ArenaNet.Blessings.CODEC.decode(b));}finally{b.release();}
     }
     @Test void randomSelectionIncludesAllOtherGoalsWithoutImmediateRepeats(){
-        for(int previous=0;previous<5;previous++){Set<Integer> chosen=new HashSet<>();for(int roll=0;roll<4;roll++)chosen.add(ArenaObjectives.chooseKind(roll,previous));assertEquals(4,chosen.size());assertFalse(chosen.contains(previous));assertTrue(chosen.stream().allMatch(n->n>=0&&n<5));}
+        for(int previous:ArenaObjectives.KINDS){Set<Integer> chosen=new HashSet<>();for(int roll=0;roll<ArenaObjectives.choices(previous);roll++)chosen.add(ArenaObjectives.chooseKind(roll,previous));assertEquals(3,chosen.size());assertFalse(chosen.contains(previous));assertTrue(chosen.stream().allMatch(ArenaObjectives::active));}
     }
     @Test void controlPointsRequireThreeFullCapturesAndFreezeWhenContested(){
         var goal=new ArenaObjectives.Objective(4,BlockPos.ZERO);
@@ -62,13 +62,12 @@ class ArenaPresentationTest {
             }
         }
     }
-    @Test void guideCanStepOnCarpetsAndPressurePlatesWithoutWalkingIntoWallsOrVoid(){
-        assertTrue(ArenaObjectives.guideFloor(true,true,0));assertTrue(ArenaObjectives.guideFloor(true,true,1.0/16));
-        assertTrue(ArenaObjectives.guideFloor(true,true,0.125));assertFalse(ArenaObjectives.guideFloor(true,true,1));
-        assertFalse(ArenaObjectives.guideFloor(false,true,0));assertFalse(ArenaObjectives.guideFloor(true,false,0));assertFalse(ArenaObjectives.guideFloor(true,true,Double.NaN));
+    @Test void escortIsNeverRolledEvenAfterAnOldEscortOrAtRunStart(){
+        assertFalse(ArenaObjectives.active(3));assertEquals(4,ArenaObjectives.choices(-1));assertEquals(4,ArenaObjectives.choices(3));
+        for(int previous:new int[]{-1,3})for(int roll=0;roll<4;roll++)assertNotEquals(3,ArenaObjectives.chooseKind(roll,previous));
+        assertFalse(new ArenaObjectives.Objective(3,BlockPos.ZERO).complete());
     }
-    @Test void escortNeedsAllCheckpointsAndEnemiesBlockAdvancement(){
-        var goal=new ArenaObjectives.Objective(3,BlockPos.ZERO);goal.checkpoint=2;assertFalse(goal.complete());goal.checkpoint=3;assertTrue(goal.complete());
+    @Test void enemiesNearAControlPointBlockAdvancement(){
         assertFalse(ArenaObjectives.canAdvance(false,false));assertFalse(ArenaObjectives.canAdvance(true,true));assertTrue(ArenaObjectives.canAdvance(true,false));
     }
 }

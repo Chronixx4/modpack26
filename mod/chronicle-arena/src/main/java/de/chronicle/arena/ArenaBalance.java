@@ -12,4 +12,12 @@ final class ArenaBalance {
     static int reinforcements(int alive,int queued,int living,int max){
         return Math.max(0,Math.min(2+Math.min(4,Math.max(1,alive)),max-queued-living));
     }
+    /** Beacon mission: more health per player, a lower hit cap and far fewer enemies at once. */
+    static final int BEACON_MAX_HIT=5;
+    static float beaconHealth(int players){return 200+75*Math.max(0,players-1);}
+    static int beaconCap(int players,int maxAlive){return Math.min(maxAlive,6+4*Math.max(0,players-1));}
+    static int beaconWave(int queued){return queued<=0?0:Math.max(1,(int)Math.round(queued*0.6));}
+    static int beaconReinforcements(int alive,int queued,int living,int cap){
+        return Math.max(0,Math.min(1+Math.min(2,Math.max(0,alive-1)),cap-queued-living));
+    }
 }

@@ -1,5 +1,12 @@
 # Chronicle Arena
 
+## In Arbeit (nach 0.4.2, noch keine Jar)
+
+- Zufallsmission "NPC begleiten" entfernt (Fuehrer blieb haengen). Es gibt noch Kristalle, Beacon, Zielgegner und Kontrollpunkte.
+- Beacon verteidigen: 200 LP plus 75 je weiterem Spieler (vorher 100), hoechstens 5 Schaden pro Treffer (vorher 8). Waehrend der Mission nur 60 % der normalen Gegner, gleichzeitig hoechstens 6 plus 4 je weiterem Spieler, Nachschub nur alle 8 s und 1 bis 3 Gegner.
+- Terminal: Schalter "Zufallsmissionen" (AN/aus) pro Kampf. Aus heisst keine Zielwellen und kein Missions-Weg. Der Admin-Schalter "Zielwellen" gilt weiter fuer die ganze Welt.
+- Paketformat unveraendert (Schalter steckt im Aktions-Bitfeld), Netzwerkversion bleibt 10.
+
 ## Update 0.4.2 (vorbereitet)
 
 Fluch-Karten, Haendler-Weg, Boss-Phasen, Bestzeiten-Tafel, Trainingsdummy, Balance-Log, 14 neue Bosse und 4 Wellen-Themen. Details: [RELEASE-0.4.2.md](RELEASE-0.4.2.md).

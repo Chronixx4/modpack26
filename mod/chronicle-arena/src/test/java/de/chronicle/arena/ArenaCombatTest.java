@@ -15,10 +15,10 @@ class ArenaCombatTest {
     }
     @Test void beaconHasFiniteHealthAndOneStrikePerMobPerSecond(){
         var o=new ArenaObjectives.Objective(1,BlockPos.ZERO);UUID enemy=UUID.randomUUID();
-        ArenaObjectives.strike(o,enemy,1000);assertEquals(92,o.health);
-        ArenaObjectives.strike(o,enemy,8);assertEquals(92,o.health);
-        o.ticks=20;ArenaObjectives.strike(o,enemy,8);assertEquals(84,o.health);
-        for(int i=0;i<11;i++){o.ticks+=20;ArenaObjectives.strike(o,enemy,8);}
+        ArenaObjectives.strike(o,enemy,1000);assertEquals(95,o.health);
+        ArenaObjectives.strike(o,enemy,8);assertEquals(95,o.health);
+        o.ticks=20;ArenaObjectives.strike(o,enemy,8);assertEquals(90,o.health);
+        for(int i=0;i<18;i++){o.ticks+=20;ArenaObjectives.strike(o,enemy,8);}
         assertEquals(0,o.health);assertTrue(o.failed);o.held=600;assertFalse(o.complete());
     }
     @Test void completeBeaconIsSafeAndInvalidDamageCannotCorruptHealth(){
@@ -31,6 +31,16 @@ class ArenaCombatTest {
         assertEquals(1,ArenaBalance.reinforcements(4,3,12,16));
         assertEquals(0,ArenaBalance.reinforcements(4,3,20,16));
         var hold=new ArenaObjectives.Objective(4,BlockPos.ZERO);assertTrue(ArenaObjectives.needsPressure(hold));hold.checkpoint=3;assertFalse(ArenaObjectives.needsPressure(hold));
+    }
+    @Test void beaconHealthGrowsWithPlayersWhileEnemyCountStaysLow(){
+        assertEquals(200,ArenaBalance.beaconHealth(1));assertEquals(275,ArenaBalance.beaconHealth(2));assertEquals(425,ArenaBalance.beaconHealth(4));assertEquals(200,ArenaBalance.beaconHealth(0));
+        assertEquals(6,ArenaBalance.beaconCap(1,30));assertEquals(18,ArenaBalance.beaconCap(4,54));assertEquals(10,ArenaBalance.beaconCap(9,10));
+        assertEquals(6,ArenaBalance.beaconWave(10));assertEquals(1,ArenaBalance.beaconWave(1));assertEquals(0,ArenaBalance.beaconWave(0));
+    }
+    @Test void beaconReinforcementsAreSmallAndRespectTheBeaconCap(){
+        assertEquals(1,ArenaBalance.beaconReinforcements(1,0,0,6));assertEquals(3,ArenaBalance.beaconReinforcements(4,0,0,18));
+        assertEquals(1,ArenaBalance.beaconReinforcements(4,2,15,18));assertEquals(0,ArenaBalance.beaconReinforcements(1,2,4,6));
+        assertTrue(ArenaBalance.beaconReinforcements(1,0,0,6)<ArenaBalance.reinforcements(1,0,0,16));
     }
     @Test void regenerationWaitsForDamageAndNeverExceedsItsStackCap(){
         assertFalse(ArenaBalance.canRegen(1,120,50,0,false));
