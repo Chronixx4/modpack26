@@ -1,6 +1,6 @@
 # Chronicle Arena
 
-## Neu seit 0.4.4 (nur Quellen, noch keine Jar)
+## Update 0.4.5
 
 - **Crash- und Disconnect-Schutz:** Wer im Kampf rausfliegt, behaelt seinen Platz 3 Minuten. Die anderen kaempfen weiter; war er der letzte Lebende, pausiert der Kampf (Gegner eingefroren, Kampfzeit steht). Beim Wiederkommen geht es lebend mit allen Segen weiter (3 s Schutz), Gefallene kommen als wiederbelebbare Zuschauer zurueck. Laeuft die Frist ab, ist der Platz weg; das Ergebnis (Sieg-Belohnung oder Abgrund-Beute) kommt trotzdem beim naechsten Login.
 - **Kampf uebersteht einen Neustart:** Der Stand wird alle 5 s und beim Stoppen in der Welt gesichert (`chronicle_arena_resume`). Nach dem Start geht es an der letzten fertigen Welle weiter (Segen, Wiederbelebungen, Gruppenweg, Statistik bleiben), alle haben 5 Minuten zum Zurueckkommen. Gegner, Runen und Beacon aus einem abgebrochenen Kampf werden beim Laden entfernt, Bloecke eines Wellenziels zurueckgesetzt. Nach einem echten Absturz gilt der Stand des letzten Autosaves.

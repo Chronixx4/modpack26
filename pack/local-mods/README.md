@@ -1,8 +1,8 @@
 # Eigene Mods fuer den Windows-Builder
 
-`chronicle-arena-0.4.4.jar` ist der Build des Arena-Quellstands auf diesem
-Arbeitsbranch (0.4.2 plus neue Zufallsmissionen, Missionen im Terminal abschaltbar, Jetpacks in der Arena gesperrt, Mobs droppen wieder XP, keine Musik-Discs; noch nicht veroeffentlicht). Die passende SHA-256-Pruefsumme
-steht in `SHA256SUMS.txt`. Build- und Teststatus: Java-21-Build, 55 automatisierte Tests gruen, im Spiel ungeprueft.
+`chronicle-arena-0.4.5.jar` ist der Build des Arena-Quellstands auf diesem
+Arbeitsbranch (0.4.4 plus Crash-/Disconnect-Schutz, Kampf uebersteht Neustart, Tages-/Wochen-Challenge mit festem Seed und eigener Tafel, zwei neue Bosse; Netzwerkversion 11; noch nicht veroeffentlicht). Die passende SHA-256-Pruefsumme
+steht in `SHA256SUMS.txt`. Build- und Teststatus: Java-21-Build, 65 automatisierte Tests gruen, im Spiel ungeprueft.
 
 Der PowerShell-Builder liest `mod_version` aus `mod/chronicle-arena/gradle.properties`,
 prueft die passende JAR per SHA-256 und kopiert sie in Client und Server.
