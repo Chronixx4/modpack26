@@ -69,6 +69,11 @@ public final class ArenaStats {
 
     public static void setChallengeDay(ServerPlayer p, int day) { tag(p).putInt("challenge_day", day); }
 
+    /** Zuletzt abgeholte Wochen-Challenge (-1 = nie, damit Woche 0 nicht als erledigt gilt). */
+    public static int challengeWeek(ServerPlayer p) { CompoundTag t = tag(p); return t.contains("challenge_week") ? t.getInt("challenge_week") : -1; }
+
+    public static void setChallengeWeek(ServerPlayer p, int week) { tag(p).putInt("challenge_week", week); }
+
     public static void addCoins(ServerPlayer p, int n) {
         CompoundTag t = tag(p);
         t.putInt("coins", Math.max(0, t.getInt("coins") + n));

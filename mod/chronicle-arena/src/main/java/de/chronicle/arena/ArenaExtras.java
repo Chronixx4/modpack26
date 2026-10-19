@@ -54,9 +54,9 @@ final class ArenaExtras {
         };
     }
 
-    static int rollEvent(ServerLevel level, int wave, boolean bossWave) {
-        if (bossWave || wave < 3 || level.getRandom().nextFloat() > 0.3F) return EV_NONE;
-        return 1 + level.getRandom().nextInt(3);
+    static int rollEvent(net.minecraft.util.RandomSource rnd, int wave, boolean bossWave) {
+        if (bossWave || wave < 3 || rnd.nextFloat() > 0.3F) return EV_NONE;
+        return 1 + rnd.nextInt(3);
     }
 
     static double eventCoinMult(int ev) {

@@ -1,0 +1,21 @@
+{
+  "type": "boss",
+  "order": 38,
+  "name": "Captain Cornelia (Aquamirae)",
+  "description": "Die Geisterkapitaenin aus dem Eislabyrinth. Ab halber Gesundheit kommt ihre ertrunkene Mannschaft.",
+  "icon": "minecraft:nautilus_shell",
+  "boss": {
+    "entity": "aquamirae:captain_cornelia"
+  },
+  "adds": [
+    {
+      "entity": "minecraft:drowned",
+      "count": 4
+    },
+    {
+      "entity": "minecraft:stray",
+      "count": 2
+    }
+  ],
+  "theme": "ice"
+}

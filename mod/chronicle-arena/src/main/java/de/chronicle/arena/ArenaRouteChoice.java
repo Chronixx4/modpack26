@@ -89,6 +89,25 @@ public final class ArenaRouteChoice {
     public double damage(int wave) { return active(wave) == Route.RISK ? 1.15 : 1; }
     public double coins(int wave) { return active(wave) == Route.RISK ? 1.5 : 1; }
     public boolean mission(int wave) { return selected == Route.MISSION && wave == checkpoint + 1; }
+    /** Fuer den Neustart-Schutz: eine offene Abstimmung wird nicht gespeichert, sie startet danach neu. */
+    public net.minecraft.nbt.CompoundTag save() {
+        var tag = new net.minecraft.nbt.CompoundTag();
+        if (voting) return tag;
+        tag.putInt("checkpoint", checkpoint);
+        tag.putInt("selected", selected == null ? -1 : selected.ordinal());
+        tag.putBoolean("mission_claimed", missionClaimed);
+        tag.putBoolean("goals", goalsEnabled);
+        return tag;
+    }
+    public void load(net.minecraft.nbt.CompoundTag tag) {
+        voting = false;
+        votes.clear();
+        checkpoint = tag.getInt("checkpoint");
+        int sel = tag.contains("selected") ? tag.getInt("selected") : -1;
+        selected = sel >= 0 && sel < Route.values().length ? Route.values()[sel] : null;
+        missionClaimed = tag.getBoolean("mission_claimed");
+        goalsEnabled = tag.getBoolean("goals");
+    }
     public boolean claimMission(int wave, boolean complete) {
         if (!mission(wave) || !complete || missionClaimed) return false;
         missionClaimed = true;

@@ -1,5 +1,14 @@
 # Chronicle Arena
 
+## Neu seit 0.4.4 (nur Quellen, noch keine Jar)
+
+- **Crash- und Disconnect-Schutz:** Wer im Kampf rausfliegt, behaelt seinen Platz 3 Minuten. Die anderen kaempfen weiter; war er der letzte Lebende, pausiert der Kampf (Gegner eingefroren, Kampfzeit steht). Beim Wiederkommen geht es lebend mit allen Segen weiter (3 s Schutz), Gefallene kommen als wiederbelebbare Zuschauer zurueck. Laeuft die Frist ab, ist der Platz weg; das Ergebnis (Sieg-Belohnung oder Abgrund-Beute) kommt trotzdem beim naechsten Login.
+- **Kampf uebersteht einen Neustart:** Der Stand wird alle 5 s und beim Stoppen in der Welt gesichert (`chronicle_arena_resume`). Nach dem Start geht es an der letzten fertigen Welle weiter (Segen, Wiederbelebungen, Gruppenweg, Statistik bleiben), alle haben 5 Minuten zum Zurueckkommen. Gegner, Runen und Beacon aus einem abgebrochenen Kampf werden beim Laden entfernt, Bloecke eines Wellenziels zurueckgesetzt. Nach einem echten Absturz gilt der Stand des letzten Autosaves.
+- **Tages- und Wochen-Challenge:** Feste Begegnung, Stufe, Modifikatoren und ein fester Seed, damit alle dieselben Wellen bekommen (Zusammensetzung, Elite, Klassen, Ereignisse, Zielwellen, Segen-Angebote). Woche: Silber bis Chronicle, mindestens zwei Modifikatoren, 5-facher Bonus statt 2-fach, Wechsel montags (UTC). Bonus einmal pro Zeitraum. Im Terminal Knoepfe "Tag" und "Woche"; bei einer Challenge sind Arena (nach Gegner) und Zielwellen fest. Eigene Tafel in der Lobby (Westseite, beste 5 je Zeitraum, Sieg nach Zeit, sonst Wellen), auch per `/arena challenge`.
+- **Zwei neue Bosse:** Captain Cornelia (Aquamirae, Eisarena, mit Ertrunkenen) und Uraltes Relikt (Cataclysm, mit Wuestenkriegern).
+- Netzwerkversion 11 (Terminal-Paket hat jetzt beide Challenges), Server und Clients brauchen dieselbe Version.
+- Im Spiel ungetestet, nur gebaut und Unit-Tests (65 gruen).
+
 ## Update 0.4.4 (vorbereitet)
 
 - Gegner in der Arena lassen wieder XP fallen (Item-Loot bleibt aus).

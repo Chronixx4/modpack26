@@ -59,11 +59,13 @@ public final class ArenaObjectives {
         for(int[] v:new int[][]{{-12,-8},{8,12},{12,-8}}){int x=v[0],z=v[1];for(int i=0;i<Math.floorMod(turn,4);i++){int old=x;x=-z;z=old;}points.add(center.offset(x,0,z));}
         return points;
     }
-    public static Objective begin(ServerLevel level,BlockPos center,int previous,int players){
-        int kind=chooseKind(level.getRandom().nextInt(choices(previous)),previous);
+    public static Objective begin(ServerLevel level,BlockPos center,int previous,int players){return begin(level,center,previous,players,level.getRandom());}
+    /** rnd: the run's wave random, so seeded challenges get the same goals. */
+    public static Objective begin(ServerLevel level,BlockPos center,int previous,int players,net.minecraft.util.RandomSource rnd){
+        int kind=chooseKind(rnd.nextInt(choices(previous)),previous);
         Objective o=new Objective(kind,center);
         // Rotate the same safe, short route through four different orientations.
-        int turn=level.getRandom().nextInt(4);
+        int turn=rnd.nextInt(4);
         o.points.addAll(routePoints(center,turn));
         if(kind==0||kind==1||kind==4){
             List<BlockPos> needed=kind==1?List.of(o.points.get(0)):o.points;

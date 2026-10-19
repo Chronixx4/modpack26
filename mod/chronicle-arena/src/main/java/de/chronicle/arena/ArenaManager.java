@@ -54,8 +54,6 @@ import net.neoforged.neoforge.items.ItemHandlerHelper;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.slf4j.Logger;
 
-import java.time.LocalDate;
-import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -138,21 +136,18 @@ public final class ArenaManager {
         return sb.length() == 0 ? "keine" : sb.toString();
     }
 
-    // ------------------------------------------------------------------ Tages-Challenge
+    // ------------------------------------------------------------------ Crash- und Disconnect-Schutz
 
-    record Challenge(int day, ArenaDefs.Encounter encounter, ArenaDefs.Tier tier, int mask, int bonus) {}
+    /** Wie lange ein Platz frei bleibt: nach einem Disconnect 3 Minuten, nach einem Server-Neustart 5 Minuten. */
+    static final int AWAY_TICKS = 3 * 60 * 20;
+    static final int RESUME_TICKS = 5 * 60 * 20;
+    static final String MOB_TAG = "chronicle_arena_mob";
 
-    static Challenge dailyChallenge() {
-        List<ArenaDefs.Encounter> encs = ArenaDefs.encounters();
-        List<ArenaDefs.Tier> tiers = ArenaDefs.tiers();
-        if (encs.isEmpty() || tiers.isEmpty()) return null;
-        int day = (int) LocalDate.now(ZoneOffset.UTC).toEpochDay();
-        java.util.Random rnd = new java.util.Random(day * 7919L + 13L);
-        ArenaDefs.Encounter enc = encs.get(rnd.nextInt(encs.size()));
-        ArenaDefs.Tier tier = tiers.get(rnd.nextInt(Math.min(3, tiers.size())));
-        int mask = 1 + rnd.nextInt(15);
-        int bonus = (int) Math.round(tier.tokens() * (enc.boss() ? 2 : 1) * coinMult(mask) * 2.0);
-        return new Challenge(day, enc, tier, mask, bonus);
+    /** Offline-Teilnehmer: Frist (Server-Tick), lebte er noch, wo lag er als Gefallener. */
+    record Away(int deadline, boolean alive, Vec3 fallen) {}
+
+    static long waveSeed(long seed, int wave) {
+        return seed ^ (wave * 0x9E3779B97F4A7C15L);
     }
 
     // ------------------------------------------------------------------ Run
@@ -237,6 +232,16 @@ public final class ArenaManager {
         final long[] fountainReady = new long[4];
         final long[] trapReady = new long[8];
         final Map<UUID, long[]> stat = new HashMap<>();
+        final Map<UUID, Away> away = new HashMap<>();
+        /** Lebend rausgeflogen und nicht zurueck: bekommt das Ergebnis beim naechsten Login. */
+        final Set<UUID> dropped = new HashSet<>();
+        boolean paused;
+        /** Wellen-Seed; bei Challenges fest, damit alle dieselben Wellen bekommen. */
+        long seed = new java.util.Random().nextLong();
+        final net.minecraft.util.RandomSource rng = net.minecraft.util.RandomSource.create();
+        /** -1 = normaler Kampf, sonst ArenaChallenges.DAILY/WEEKLY. */
+        final int challenge;
+        int challengePeriod = -1;
 
         long[] stat(UUID id) {
             return stat.computeIfAbsent(id, k -> new long[4]);
@@ -246,6 +251,7 @@ public final class ArenaManager {
             this.variant = variant;
             this.center = centerFor(variant);
             this.mask = mask;
+            this.challenge = ArenaChallenges.kindOf(mask);
             this.encounter = encounter;
             this.tier = tier;
             int extra = Math.max(0, players - 1);
@@ -335,13 +341,16 @@ public final class ArenaManager {
         }
         List<Net.ModInfo> mods = new ArrayList<>();
         for (int i = 0; i < MOD_BITS.length; i++) mods.add(new Net.ModInfo(MOD_BITS[i], MOD_NAMES[i], MOD_DESCS[i], MOD_BONUS[i]));
-        Challenge ch = dailyChallenge();
-        Net.ChallengeInfo chi = ch == null ? new Net.ChallengeInfo("", "", 0, true, 0, "")
-                : new Net.ChallengeInfo(ch.encounter().id().toString(), ch.tier().id().toString(), ch.mask(),
-                ArenaStats.challengeDay(sp) == ch.day(), (int)Math.round(ch.bonus() * ArenaSettings.get(sp.server).coins / 100.0),
-                ch.encounter().name() + " / " + ch.tier().name() + " / " + modNames(ch.mask()));
-        PacketDistributor.sendToPlayer(sp, new Net.OpenTerminal(run != null || ArenaParty.exists(), status, tiers, encs, mods, chi, sp.hasPermissions(2), ArenaSettings.get(sp.server).coins));
+        PacketDistributor.sendToPlayer(sp, new Net.OpenTerminal(run != null || ArenaParty.exists(), status, tiers, encs, mods,
+                challengeInfo(sp, ArenaChallenges.DAILY), challengeInfo(sp, ArenaChallenges.WEEKLY), sp.hasPermissions(2), ArenaSettings.get(sp.server).coins));
         sendStats(sp);
+    }
+
+    private static Net.ChallengeInfo challengeInfo(ServerPlayer sp, int kind) {
+        ArenaChallenges.Challenge ch = ArenaChallenges.get(kind);
+        if (ch == null) return new Net.ChallengeInfo("", "", 0, true, 0, "");
+        return new Net.ChallengeInfo(ch.encounter().id().toString(), ch.tier().id().toString(), ch.mask(),
+                ArenaChallenges.claimed(sp, kind, ch.period()), (int) Math.round(ch.bonus() * ArenaSettings.get(sp.server).coins / 100.0), ch.text());
     }
 
     public static void openShop(ServerPlayer sp) {
@@ -403,7 +412,10 @@ public final class ArenaManager {
         }
         ArenaDefs.Encounter enc = ArenaDefs.encounter(ResourceLocation.tryParse(action.encounter()));
         ArenaDefs.Tier tier = ArenaDefs.tier(ResourceLocation.tryParse(action.tier()));
-        if (enc == null || tier == null) {
+        int kind = ArenaChallenges.kindOf(action.mask());
+        ArenaChallenges.Challenge ch = kind < 0 ? null : ArenaChallenges.get(kind);
+        if (ch != null) { enc = ch.encounter(); tier = ch.tier(); }
+        if (enc == null || tier == null || (kind >= 0 && ch == null)) {
             sp.sendSystemMessage(Component.translatable("msg.chronicle_arena.bad_choice"));
             return;
         }
@@ -425,6 +437,8 @@ public final class ArenaManager {
         }
         int choice = (action.mask() >> 4) & 3;
         boolean goals = (action.mask() & NO_GOALS) == 0;
+        // Challenges: feste Modifikatoren, Arena nach Gegner und Zielwellen an, damit alle gleich spielen.
+        if (ch != null) { ArenaParty.propose(sp, enc, tier, group, ch.mask() | ch.flag(), variantFor(enc.theme()), true); return; }
         ArenaParty.propose(sp, enc, tier, group, action.mask() & 15, choice == 0 ? variantFor(enc.theme()) : choice - 1, goals);
     }
 
@@ -444,6 +458,10 @@ public final class ArenaManager {
         r.coinPercent = settings.coins; r.goalsEnabled = settings.goals && goals; r.goalInterval = settings.goalInterval;
         r.timer = settings.prepSeconds * 20;
         r.adminHealth = settings.health / 100.0; r.adminDamage = settings.damage / 100.0;
+        if (r.challenge >= 0) {
+            ArenaChallenges.Challenge ch = ArenaChallenges.get(r.challenge);
+            if (ch != null) { r.seed = ch.seed(); r.challengePeriod = ch.period(); }
+        }
         run = r;
         int i = 0;
         for (ServerPlayer p : group) {
@@ -461,10 +479,13 @@ public final class ArenaManager {
             r.participants.add(p.getUUID());
             r.bar.addPlayer(p);
             p.sendSystemMessage(Component.translatable("msg.chronicle_arena.start", enc.name(), tier.name(), group.size()));
-            if (mask != 0) p.sendSystemMessage(Component.literal("Modifikatoren: " + modNames(mask) + " (Coins x" + coinMult(mask) + ")"));
+            if ((mask & 15) != 0) p.sendSystemMessage(Component.literal("Modifikatoren: " + modNames(mask) + " (Coins x" + coinMult(mask) + ")"));
+            if (r.challenge >= 0) p.sendSystemMessage(Component.literal(ArenaChallenges.LABEL[r.challenge] + ": fester Seed, alle bekommen dieselben Wellen. Ergebnis kommt auf die Tafel in der Lobby.")
+                    .withStyle(net.minecraft.ChatFormatting.AQUA));
             i++;
         }
         r.bar.setName(Component.translatable("bar.chronicle_arena.prepare", enc.name()));
+        ArenaResume.store(server, r);
         LOGGER.info("Arena-Run gestartet: {} / {} mit {} Spielern", enc.id(), tier.id(), group.size());
     }
 
@@ -527,6 +548,24 @@ public final class ArenaManager {
                 if (rp != null && r.involves(id)) rp.sendSystemMessage(Component.literal("Neuer Rekord! Siehe Bestzeiten-Tafel in der Lobby."));
             }
         }
+        int place = ArenaChallenges.submit(server, r, won);
+        if (place > 0) {
+            for (UUID id : r.participants) {
+                ServerPlayer rp = server.getPlayerList().getPlayer(id);
+                if (rp != null && r.involves(id)) rp.sendSystemMessage(Component.literal(ArenaChallenges.LABEL[r.challenge] + ": Platz " + place + " auf der Tafel!")
+                        .withStyle(net.minecraft.ChatFormatting.AQUA));
+            }
+        }
+        ArenaResume.clearRun(server);
+        // Wer lebend rausgeflogen ist, bekommt das Ergebnis jetzt (falls wieder online, aber nicht mehr im Kampf) oder beim naechsten Login.
+        for (UUID id : r.dropped) {
+            if (r.involves(id)) continue;
+            ServerPlayer dp = server.getPlayerList().getPlayer(id);
+            if (dp != null) grantResult(dp, r, won);
+            else ArenaResume.addPending(server, id, ArenaResume.result(r, won));
+        }
+        r.dropped.clear();
+        r.away.clear();
         for (UUID id : r.participants) {
             ServerPlayer p = server.getPlayerList().getPlayer(id);
             if (p == null || level == null || !r.involves(id)) continue;
@@ -596,13 +635,15 @@ public final class ArenaManager {
         }
         if (tier.xp() > 0) { p.giveExperiencePoints(tier.xp()); r.rewardXp.put(p.getUUID(),tier.xp()); }
         int coins = (int) Math.round(tier.tokens() * (r.encounter.boss() ? 2 : 1) * coinMult(r.mask) * r.coinPercent / 100.0);
-        Challenge ch = dailyChallenge();
-        if (ch != null && ch.encounter() == r.encounter && ch.tier() == r.tier && ch.mask() == r.mask
-                && ArenaStats.challengeDay(p) != ch.day()) {
-            ArenaStats.setChallengeDay(p, ch.day());
-            int bonus = (int) Math.round(ch.bonus() * r.coinPercent / 100.0);
-            coins += bonus;
-            p.sendSystemMessage(Component.literal("Tages-Challenge geschafft: +" + bonus + " Bonus-Coins!"));
+        if (r.challenge >= 0 && r.challengePeriod == ArenaChallenges.period(r.challenge)
+                && !ArenaChallenges.claimed(p, r.challenge, r.challengePeriod)) {
+            ArenaChallenges.Challenge ch = ArenaChallenges.get(r.challenge);
+            if (ch != null) {
+                ArenaChallenges.claim(p, r.challenge, r.challengePeriod);
+                int bonus = (int) Math.round(ch.bonus() * r.coinPercent / 100.0);
+                coins += bonus;
+                p.sendSystemMessage(Component.literal(ArenaChallenges.LABEL[r.challenge] + " geschafft: +" + bonus + " Bonus-Coins!"));
+            }
         }
         if (coins > 0) {
             ArenaStats.addCoins(p, coins);
@@ -623,6 +664,7 @@ public final class ArenaManager {
         Run r = run;
         run = null;
         if (r == null) return;
+        ArenaResume.clearRun(server);
         r.bar.removeAllPlayers();
         ArenaObjectives.clear(server.getLevel(DIM), r.objective);
         ArenaPickups.clear(server.getLevel(DIM),r);
@@ -702,9 +744,134 @@ public final class ArenaManager {
         r.killcamTicks.remove(sp.getUUID());
         sp.setCamera(sp);
         r.bar.removePlayer(sp);
-        if (wasAlive && r.alive.isEmpty() && r.state != State.ENDING) {
+        if (wasAlive && r.alive.isEmpty() && r.state != State.ENDING && !waitingForReturn(r)) {
             finish(sp.server, false);
         }
+    }
+
+    static boolean waitingForReturn(Run r) {
+        for (Away a : r.away.values()) if (a.alive()) return true;
+        return false;
+    }
+
+    /** Verbindung weg (Crash, Timeout): Platz bleibt frei, der Kampf laeuft fuer die anderen weiter oder pausiert. */
+    private static void disconnect(ServerPlayer sp, Run r) {
+        UUID id = sp.getUUID();
+        boolean wasAlive = r.alive.remove(id);
+        r.spectators.remove(id);
+        Vec3 fallen = r.fallen.remove(id);
+        r.reviving.remove(id);
+        r.killcamTarget.remove(id);
+        r.killcamTicks.remove(id);
+        r.bar.removePlayer(sp);
+        r.away.put(id, new Away(tickCounter + AWAY_TICKS, wasAlive, fallen));
+        if (wasAlive) r.dropped.add(id);
+        for (ServerPlayer other : runPlayers(sp.server, r)) {
+            other.sendSystemMessage(Component.literal(sp.getGameProfile().getName() + " ist rausgeflogen. Der Platz bleibt 3 Minuten frei.")
+                    .withStyle(net.minecraft.ChatFormatting.YELLOW));
+        }
+        LOGGER.info("Arena: {} getrennt (lebend={}), Platz bleibt frei", sp.getGameProfile().getName(), wasAlive);
+    }
+
+    /** Zurueck nach Disconnect oder Neustart: lebend wieder in den Kampf, Gefallene wieder als Zuschauer. */
+    private static void rejoin(ServerPlayer sp, Run r) {
+        UUID id = sp.getUUID();
+        Away a = r.away.remove(id);
+        ServerLevel level = sp.server.getLevel(DIM);
+        if (a == null || level == null) return;
+        r.dropped.remove(id);
+        r.names.put(id, sp.getGameProfile().getName());
+        rememberMode(sp);
+        r.bar.addPlayer(sp);
+        PacketDistributor.sendToPlayer(sp, ArenaNet.Battle.EMPTY);
+        if (a.alive()) {
+            r.alive.add(id);
+            sp.setGameMode(GameType.SURVIVAL);
+            double angle = Math.PI * 2.0 * r.alive.size() / Math.max(1, r.participants.size());
+            teleport(sp, level, r.center.getX() + 0.5 + Math.cos(angle) * 3.0, r.center.getY(), r.center.getZ() + 0.5 + Math.sin(angle) * 3.0, 0.0F);
+            int[] st = r.bless.get(id);
+            if (st != null) ArenaShow.apply(sp, st);
+            sp.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 60, 4));
+            sp.sendSystemMessage(Component.literal("Willkommen zurueck! Der Kampf laeuft weiter (Welle " + Math.max(1, r.wave) + ").")
+                    .withStyle(net.minecraft.ChatFormatting.GREEN));
+            if (r.state == State.PREP && !r.offer.isEmpty() && !r.picked.contains(id)) openBlessings(sp, true);
+        } else {
+            r.spectators.add(id);
+            Vec3 pos = a.fallen() != null ? a.fallen() : Vec3.atBottomCenterOf(r.center);
+            r.fallen.put(id, pos);
+            sp.setGameMode(GameType.SPECTATOR);
+            teleport(sp, level, pos.x, Math.max(pos.y, r.center.getY()) + 2.0, pos.z, 0.0F);
+            sp.sendSystemMessage(Component.literal("Willkommen zurueck! Du bist noch gefallen und kannst wiederbelebt werden."));
+        }
+        for (ServerPlayer other : runPlayers(sp.server, r)) {
+            if (other != sp) other.sendSystemMessage(Component.literal(sp.getGameProfile().getName() + " ist wieder da."));
+        }
+        sendStats(sp);
+    }
+
+    /** Ergebnis fuer jemanden, der beim Kampfende nicht dabei war (keine Extra-Kiste fuers Ueberleben). */
+    private static void grantResult(ServerPlayer p, Run r, boolean won) {
+        ServerLevel level = p.serverLevel();
+        if (won) {
+            p.sendSystemMessage(Component.literal("Dein Arena-Kampf wurde gewonnen, waehrend du weg warst. Hier ist deine Belohnung.")
+                    .withStyle(net.minecraft.ChatFormatting.GOLD));
+            recordWin(p, r);
+            reward(p, level, r);
+        } else if (r.endless) {
+            p.sendSystemMessage(Component.literal("Dein Abgrund-Kampf ist vorbei. Hier ist das Ergebnis."));
+            endlessResult(p, level, r);
+        } else {
+            p.sendSystemMessage(Component.literal("Dein letzter Arena-Kampf ist vorbei: Niederlage in Welle " + Math.max(1, r.wave) + ".")
+                    .withStyle(net.minecraft.ChatFormatting.GRAY));
+        }
+    }
+
+    private static void grantPending(ServerPlayer sp) {
+        CompoundTag tag = ArenaResume.takePending(sp.server, sp.getUUID());
+        if (tag == null) return;
+        Run r = ArenaResume.shell(tag);
+        if (r == null) return;
+        grantResult(sp, r, tag.getBoolean("won"));
+    }
+
+    /** Offline-Fristen pruefen; Abgelaufene verlieren ihren Platz (das Ergebnis bekommen sie trotzdem). */
+    private static void tickAway(MinecraftServer server, Run r) {
+        if (r.away.isEmpty()) return;
+        for (Iterator<Map.Entry<UUID, Away>> it = r.away.entrySet().iterator(); it.hasNext(); ) {
+            Map.Entry<UUID, Away> en = it.next();
+            if (en.getValue().deadline() > tickCounter) continue;
+            it.remove();
+            for (ServerPlayer other : runPlayers(server, r)) {
+                other.sendSystemMessage(Component.literal(r.names.getOrDefault(en.getKey(), "Ein Spieler") + " ist nicht rechtzeitig zurueckgekommen."));
+            }
+        }
+    }
+
+    private static void pause(MinecraftServer server, ServerLevel level, Run r) {
+        if (!r.paused) {
+            r.paused = true;
+            for (UUID id : r.mobs) if (level.getEntity(id) instanceof Mob m) m.setNoAi(true);
+            ArenaShow.stopMusic(runPlayers(server, r));
+            r.bar.setName(Component.literal("Kampf pausiert"));
+            LOGGER.info("Arena: Kampf pausiert, warte auf {}", r.away.keySet());
+        }
+        if (tickCounter % 20 != 0) return;
+        StringBuilder names = new StringBuilder();
+        int left = 0;
+        for (Map.Entry<UUID, Away> en : r.away.entrySet()) {
+            if (!en.getValue().alive()) continue;
+            names.append(names.length() > 0 ? ", " : "").append(r.names.getOrDefault(en.getKey(), "?"));
+            left = Math.max(left, en.getValue().deadline() - tickCounter);
+        }
+        actionbar(server, r, Component.literal("Kampf pausiert: warte auf " + names + " (" + formatTime(Math.max(0, left)) + ")")
+                .withStyle(net.minecraft.ChatFormatting.YELLOW));
+    }
+
+    private static void resume(ServerLevel level, Run r) {
+        r.paused = false;
+        r.musicTimer = 0;
+        for (UUID id : r.mobs) if (level.getEntity(id) instanceof Mob m) m.setNoAi(false);
+        LOGGER.info("Arena: Kampf geht weiter");
     }
 
     // ------------------------------------------------------------------ Tick
@@ -722,6 +889,7 @@ public final class ArenaManager {
         if (tickCounter % 4 == 0) trails(server);
         if (tickCounter % 10 == 3) ArenaJetpacks.tick(server);
         if (tickCounter % 20 == 0 || tickCounter % 100 == 0) syncStats(server);
+        if (run != null && run.state != State.ENDING && tickCounter % 100 == 50) ArenaResume.store(server, run);
     }
 
     private void trails(MinecraftServer server) {
@@ -757,11 +925,20 @@ public final class ArenaManager {
         for (Iterator<UUID> it = r.alive.iterator(); it.hasNext(); ) {
             UUID id = it.next();
             ServerPlayer p = server.getPlayerList().getPlayer(id);
-            if (p == null || p.level().dimension() != DIM) {
+            if (p == null) {
                 it.remove();
-                if (p != null) { r.bar.removePlayer(p); ArenaRoutes.close(p, r); }
+                if (r.state != State.ENDING) { r.away.put(id, new Away(tickCounter + AWAY_TICKS, true, null)); r.dropped.add(id); }
+            } else if (p.level().dimension() != DIM) {
+                it.remove();
+                r.bar.removePlayer(p); ArenaRoutes.close(p, r);
             }
         }
+        tickAway(server, r);
+        if (r.state != State.ENDING && r.alive.isEmpty() && r.lossDelay == 0 && waitingForReturn(r)) {
+            pause(server, level, r);
+            return;
+        }
+        if (r.paused) resume(level, r);
         tickKillcam(server, level, r);
         if (r.lossDelay > 0) {
             if (--r.lossDelay == 0) finish(server, false);
@@ -840,6 +1017,7 @@ public final class ArenaManager {
             r.started = true;
             r.state = State.BOSS;
             r.wave = 1;
+            r.rng.setSeed(waveSeed(r.seed, 1));
             r.powerMul = computePower(server, r);
             r.queue.add(new Spawn(r.encounter.bossEntity(), false, true));
             ArenaPickups.spawn(level,r);ArenaPickups.spawn(level,r);
@@ -852,10 +1030,11 @@ public final class ArenaManager {
         r.started = true;
         r.state = State.WAVE;
         r.wave++;
+        r.rng.setSeed(waveSeed(r.seed, r.wave));
         buildWave(level, r);
         r.waveTotal = Math.max(1, r.queue.size());
         r.powerMul = computePower(server, r);
-        r.objective = r.goalsEnabled && (r.routes.mission(r.wave) || r.wave % r.goalInterval == 0) ? ArenaObjectives.begin(level, r.center, r.lastGoal, r.alive.size()) : null;
+        r.objective = r.goalsEnabled && (r.routes.mission(r.wave) || r.wave % r.goalInterval == 0) ? ArenaObjectives.begin(level, r.center, r.lastGoal, r.alive.size(), r.rng) : null;
         if(r.objective!=null){
             r.lastGoal=r.objective.kind;
             if(r.objective.kind==2)r.objective.expectedTargets=Math.min(3,Math.max(1,r.queue.size()));
@@ -863,7 +1042,7 @@ public final class ArenaManager {
         }
         r.offer.clear();
         ArenaPickups.spawn(level,r);ArenaPickups.spawn(level,r);
-        r.event = ArenaExtras.rollEvent(level, r.wave, false);
+        r.event = ArenaExtras.rollEvent(r.rng, r.wave, false);
         r.bar.setColor(r.event == ArenaExtras.EV_BLUTMOND ? BossEvent.BossBarColor.RED
                 : r.event == ArenaExtras.EV_GEWITTER ? BossEvent.BossBarColor.YELLOW
                 : r.event == ArenaExtras.EV_MONDSPRUNG ? BossEvent.BossBarColor.BLUE : BossEvent.BossBarColor.PURPLE);
@@ -911,7 +1090,7 @@ public final class ArenaManager {
         if (w >= 3) {
             float chance = Math.min(0.28F, 0.08F + 0.015F * w);
             for (Spawn sp : r.queue) {
-                if (!sp.elite && !sp.boss && level.getRandom().nextFloat() < chance) sp.cls = 1 + level.getRandom().nextInt(3);
+                if (!sp.elite && !sp.boss && r.rng.nextFloat() < chance) sp.cls = 1 + r.rng.nextInt(3);
             }
         }
         if (w >= 4) {
@@ -942,7 +1121,7 @@ public final class ArenaManager {
             r.queue.add(new Spawn(e.finale(), true, false));
         }
         // Mischen, damit nicht alle gleichen Mobs hintereinander kommen.
-        java.util.Collections.shuffle(r.queue, new java.util.Random(level.getRandom().nextLong()));
+        java.util.Collections.shuffle(r.queue, new java.util.Random(r.rng.nextLong()));
     }
 
     private static final int REVIVE_TICKS = 80;
@@ -1073,7 +1252,7 @@ public final class ArenaManager {
             int count=beaconGoal?ArenaBalance.beaconReinforcements(r.alive.size(),r.queue.size(),r.mobs.size(),ArenaBalance.beaconCap(r.alive.size(),r.maxAlive()))
                     :ArenaBalance.reinforcements(r.alive.size(),r.queue.size(),r.mobs.size(),Math.min(r.maxAlive(),12+4*r.alive.size()));
             List<ArenaDefs.Pool> pools=r.encounter.pools().stream().filter(p->p.fromWave()<=r.wave).toList();
-            if(!pools.isEmpty())for(int i=0;i<count;i++)r.queue.add(new Spawn(pools.get(level.getRandom().nextInt(pools.size())).entity(),false,false));
+            if(!pools.isEmpty())for(int i=0;i<count;i++)r.queue.add(new Spawn(pools.get(r.rng.nextInt(pools.size())).entity(),false,false));
             r.waveTotal=Math.max(r.waveTotal,r.queue.size()+r.mobs.size());
         }
         ArenaPickups.tick(level,r);
@@ -1208,7 +1387,7 @@ public final class ArenaManager {
     }
 
     private static boolean eliteRoll(ServerLevel level, Run r) {
-        return (r.mask & MOD_ELITE) != 0 && level.getRandom().nextFloat() < 0.3F;
+        return (r.mask & MOD_ELITE) != 0 && r.rng.nextFloat() < 0.3F;
     }
 
     private static final java.util.regex.Pattern WORMS = java.util.regex.Pattern.compile("silverfish|endermite|worm|maggot|larva|grub|parasite|leech|mite");
@@ -1237,6 +1416,7 @@ public final class ArenaManager {
             mob.finalizeSpawn(level, level.getCurrentDifficultyAt(le.blockPosition()), MobSpawnType.EVENT, null);
             mob.setPersistenceRequired();
         }
+        le.addTag(MOB_TAG);
         double h = r.adminHealth * r.healthScale * (1.0 + 0.25 * r.extra) * r.growth(0.04, 0.06) * r.powerMul * r.routes.health(r.wave)
                 * (s.mini ? (r.extra == 0 ? 1.75 : 2.5) : s.elite ? 2.0 : 1.0);
         if (s.mini) {
@@ -1354,7 +1534,7 @@ public final class ArenaManager {
 
     private static void offerBlessings(MinecraftServer server, Run r) {
         List<ArenaShow.Blessing> all = new ArrayList<>(List.of(ArenaShow.Blessing.values()));
-        java.util.Collections.shuffle(all);
+        java.util.Collections.shuffle(all, new java.util.Random(waveSeed(r.seed, r.wave) + 17L));
         if ((r.mask & MOD_NOHEAL) != 0) all.removeIf(b -> b == ArenaShow.Blessing.REGEN || b == ArenaShow.Blessing.VAMPIR || b == ArenaShow.Blessing.ASH);
         // Hoechstens eine Fluch-Karte pro Angebot.
         List<ArenaShow.Blessing> pick = new ArrayList<>();
@@ -1411,6 +1591,8 @@ public final class ArenaManager {
         if (level == null) return;
         ArenaExtras.deduplicateBoard(level);
         ArenaLog.dedupe(level);
+        ArenaChallenges.dedupe(level);
+        ArenaChallenges.tick(server, level);
         for (ServerPlayer p : level.players()) {
             if (p.isCreative() && !p.isSpectator()) continue;
             boolean inRun = run != null && run.involves(p.getUUID());
@@ -1440,7 +1622,7 @@ public final class ArenaManager {
     @SubscribeEvent
     public void onJoin(EntityJoinLevelEvent event) {
         if (event.getLevel().isClientSide() || event.getLevel().dimension() != DIM) return;
-        if (event.getEntity() instanceof Vex) {
+        if (event.getEntity() instanceof Vex || (event.loadedFromDisk() && stale(event.getEntity()))) {
             event.setCanceled(true);
         } else if (event.getEntity() instanceof net.minecraft.world.entity.item.ItemEntity item
                 && item.getItem().has(net.minecraft.core.component.DataComponents.JUKEBOX_PLAYABLE)) {
@@ -1454,6 +1636,16 @@ public final class ArenaManager {
             le.removeEffect(MobEffects.INVISIBILITY);
             le.setInvisible(false);
         }
+    }
+
+    /** Gegner, Runen und Beacon aus einem Kampf, der nicht mehr laeuft (z. B. nach einem Absturz). */
+    private static boolean stale(Entity e) {
+        Set<String> tags = e.getTags();
+        Run r = run;
+        if (tags.contains(MOB_TAG)) return r == null || !r.mobs.contains(e.getUUID());
+        if (tags.contains("chronicle_arena_pickup")) return r == null || !r.pickups.containsKey(e.getUUID());
+        if (tags.contains("chronicle_arena_beacon")) return r == null || r.objective == null || !e.getUUID().equals(r.objective.defender);
+        return false;
     }
 
     @SubscribeEvent
@@ -1511,7 +1703,7 @@ public final class ArenaManager {
             ArenaShow.title(List.of(sp), ArenaShow.big("BESIEGT", net.minecraft.ChatFormatting.DARK_RED),
                     Component.literal("von " + slayer.getDisplayName().getString()).withStyle(net.minecraft.ChatFormatting.GRAY), 5, 70, 15);
         }
-        if (r.alive.isEmpty()) {
+        if (r.alive.isEmpty() && !waitingForReturn(r)) {
             if (r.killcamTicks.isEmpty()) finish(sp.server, false);
             else r.lossDelay = 105;
         }
@@ -1650,7 +1842,9 @@ public final class ArenaManager {
     @SubscribeEvent
     public void onLogout(PlayerEvent.PlayerLoggedOutEvent event) {
         if (event.getEntity() instanceof ServerPlayer sp && sp.level().dimension() == DIM) {
-            removeFromRun(sp);
+            Run r = run;
+            if (r != null && r.state != State.ENDING && r.involves(sp.getUUID())) disconnect(sp, r);
+            else removeFromRun(sp);
         }
         ArenaPresentation.forget(event.getEntity().getUUID());
         ArenaLog.forget(event.getEntity().getUUID());
@@ -1658,10 +1852,14 @@ public final class ArenaManager {
 
     @SubscribeEvent
     public void onLogin(PlayerEvent.PlayerLoggedInEvent event) {
-        if (event.getEntity() instanceof ServerPlayer sp && sp.level().dimension() == DIM
-                && (run == null || !run.involves(sp.getUUID()))) {
+        if (!(event.getEntity() instanceof ServerPlayer sp)) return;
+        Run r = run;
+        if (r != null && r.state != State.ENDING && r.away.containsKey(sp.getUUID())) {
+            rejoin(sp, r);
+        } else if (sp.level().dimension() == DIM && (r == null || !r.involves(sp.getUUID()))) {
             leave(sp);
         }
+        grantPending(sp);
     }
 
     @SubscribeEvent
@@ -1675,9 +1873,36 @@ public final class ArenaManager {
     /** Nur fuer den Entwicklungs-Selbsttest: gradle runServer -Dchronicle_arena.selftest=true. */
     @SubscribeEvent
     public void onServerStarted(net.neoforged.neoforge.event.server.ServerStartedEvent event) {
+        resumeAfterRestart(event.getServer());
         if (Boolean.getBoolean("chronicle_arena.selftest")) {
             debug(event.getServer());
             event.getServer().halt(false);
+        }
+    }
+
+    private static void resumeAfterRestart(MinecraftServer server) {
+        if (run != null) return;
+        try {
+            ArenaResume data = ArenaResume.get(server);
+            if (data.run == null) return;
+            ServerLevel level = server.getLevel(DIM);
+            Run r = level == null ? null : ArenaResume.read(data.run, level, tickCounter + RESUME_TICKS);
+            if (r == null || r.away.isEmpty()) {
+                LOGGER.warn("Arena: gespeicherter Kampf passt nicht mehr zum Datapack oder hat keine Spieler, verworfen");
+                // Ergebnisse trotzdem sichern, damit niemand seine Abgrund-Wellen verliert.
+                if (r != null) for (UUID id : r.dropped) data.pending.put(id, ArenaResume.result(r, false));
+                data.run = null;
+                data.setDirty();
+                return;
+            }
+            ArenaSettings settings = ArenaSettings.get(server);
+            r.timer = settings.prepSeconds * 20;
+            r.bar.setName(Component.literal("Kampf pausiert"));
+            run = r;
+            LOGGER.info("Arena: Kampf nach Neustart wiederhergestellt ({} / {}, Welle {} fertig, {} Spieler)",
+                    r.encounter.id(), r.tier.id(), r.completedWaves, r.away.size());
+        } catch (RuntimeException e) {
+            LOGGER.warn("Arena: Kampf konnte nach dem Neustart nicht wiederhergestellt werden: {}", e.toString());
         }
     }
 
@@ -1697,6 +1922,7 @@ public final class ArenaManager {
                     leave(p);
                     return 1;
                 }))
+                .then(Commands.literal("challenge").executes(ctx -> { ctx.getSource().sendSystemMessage(Component.literal(ArenaChallenges.text(ctx.getSource().getServer()))); return 1; }))
                 .then(Commands.literal("rekorde").executes(ctx -> { ctx.getSource().sendSystemMessage(Component.literal(ArenaLog.recordsChat(ctx.getSource().getServer()))); return 1; }))
                 .then(Commands.literal("training").executes(ctx -> {
                     ServerPlayer p = ctx.getSource().getPlayerOrException();
@@ -1845,7 +2071,7 @@ public final class ArenaManager {
         for (BlockPos center : List.of(ARENA, ARENA_B, ARENA_C)) {
             Set<Integer> kinds = new HashSet<>();
             for (int attempt = 0; attempt < 80 && kinds.size() < ArenaObjectives.KINDS.length; attempt++) {
-                ArenaObjectives.Objective goal = ArenaObjectives.begin(level, center, -1, 1);
+                ArenaObjectives.Objective goal = ArenaObjectives.begin(level, center, -1, 1, level.getRandom());
                 kinds.add(goal.kind);
                 ArenaObjectives.clear(level, goal);
             }
@@ -1867,9 +2093,11 @@ public final class ArenaManager {
         for (ArenaDefs.ShopOffer o : ArenaDefs.shopOffers()) {
             if ("trail".equals(o.cosmetic()) && ArenaFx.trail(o.value()) == null) LOGGER.error("ARENA-DEBUG: Spur {} ohne Partikel", o.id());
         }
-        Challenge ch = dailyChallenge();
-        LOGGER.info("ARENA-DEBUG: Tages-Challenge {} / {} / {} (Bonus {}), Rangliste {} Eintraege", ch == null ? "-" : ch.encounter().id(),
-                ch == null ? "-" : ch.tier().id(), ch == null ? 0 : modNames(ch.mask()), ch == null ? 0 : ch.bonus(), ArenaStats.top(server, 10).size());
+        for (int kind = ArenaChallenges.DAILY; kind <= ArenaChallenges.WEEKLY; kind++) {
+            ArenaChallenges.Challenge ch = ArenaChallenges.get(kind);
+            LOGGER.info("ARENA-DEBUG: {} {} (Bonus {})", ArenaChallenges.LABEL[kind], ch == null ? "-" : ch.text(), ch == null ? 0 : ch.bonus());
+        }
+        LOGGER.info("ARENA-DEBUG: Rangliste {} Eintraege", ArenaStats.top(server, 10).size());
     }
 
     // ------------------------------------------------------------------ Hilfen
@@ -2092,10 +2320,23 @@ public final class ArenaManager {
         openAdmin(p);
     }
     @SubscribeEvent public void onStopping(net.neoforged.neoforge.event.server.ServerStoppingEvent event) {
-        ArenaParty.clear(event.getServer(), "Server wird beendet.");
-        if (run != null) endRun(event.getServer());
+        MinecraftServer server = event.getServer();
+        ArenaParty.clear(server, "Server wird beendet.");
+        Run r = run;
+        if (r == null) return;
+        if (r.state == State.ENDING) { endRun(server); return; }
+        // Kampf sichern; Spieler bleiben, wo sie sind, und machen nach dem Neustart an der letzten Wellengrenze weiter.
+        ArenaResume.store(server, r);
+        ServerLevel level = server.getLevel(DIM);
+        ArenaObjectives.clear(level, r.objective);
+        ArenaPickups.clear(level, r);
+        discardMobs(server, r);
+        if (level != null) ArenaExtras.clearFountainLabels(server, level);
+        r.bar.removeAllPlayers();
+        run = null;
+        LOGGER.info("Arena: Kampf fuer den Neustart gesichert (Welle {} fertig)", r.completedWaves);
     }
     @SubscribeEvent public void onStopped(net.neoforged.neoforge.event.server.ServerStoppedEvent event) {
-        run = null; ArenaPresentation.clear(); ArenaParty.clear(event.getServer(), "Server beendet."); statsDirty.clear(); tickCounter = 0;
+        run = null; ArenaPresentation.clear(); ArenaParty.clear(event.getServer(), "Server beendet."); statsDirty.clear(); tickCounter = 0; ArenaChallenges.reset();
     }
 }

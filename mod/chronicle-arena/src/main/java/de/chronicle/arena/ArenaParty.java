@@ -64,7 +64,7 @@ public final class ArenaParty {
             ServerPlayer member = p.server.getPlayerList().getPlayer(id);
             list.add((pending.ready.contains(id) ? "[Bereit] " : "[Wartet] ") + (member == null ? "Offline" : member.getGameProfile().getName()));
         }
-        String summary = pending.encounter.name() + " / " + pending.tier.name() + " | " + ArenaManager.modNames(pending.mask)
+        String summary = pending.encounter.name() + " / " + pending.tier.name() + " | " + ArenaManager.modNames(pending.mask) + (ArenaChallenges.kindOf(pending.mask) >= 0 ? " | " + ArenaChallenges.LABEL[ArenaChallenges.kindOf(pending.mask)] : "")
                 + " | Arena: " + new String[]{"Klassisch", "Glut", "Eis"}[pending.variant]
                 + (pending.goals ? "" : " | Ohne Missionen");
         PacketDistributor.sendToPlayer(p, new Net.OpenParty(summary, list, pending.ready.contains(p.getUUID()), pending.leader.equals(p.getUUID()), pending.countdown < 0 ? -1 : (pending.countdown + 19) / 20, popup));

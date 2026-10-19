@@ -34,6 +34,7 @@ public class TerminalScreen extends Screen {
     private Button tierButton;
     private Button startButton;
     private Button challengeButton;
+    private Button weeklyButton;
     private final List<Button> modButtons = new ArrayList<>();
 
     public TerminalScreen(Net.OpenTerminal data) {
@@ -102,8 +103,10 @@ public class TerminalScreen extends Screen {
             }).bounds(rx, y + i * 22, w, 20).build();
             modButtons.add(addRenderableWidget(b));
         }
-        challengeButton = addRenderableWidget(Button.builder(Component.literal("Tages-Challenge waehlen"), b -> applyChallenge())
-                .bounds(rx, y + 110, w, 20).build());
+        challengeButton = addRenderableWidget(Button.builder(Component.literal("Tag"), b -> applyChallenge(data.challenge()))
+                .bounds(rx, y + 110, 73, 20).build());
+        weeklyButton = addRenderableWidget(Button.builder(Component.literal("Woche"), b -> applyChallenge(data.weekly()))
+                .bounds(rx + 77, y + 110, 73, 20).build());
         startButton = addRenderableWidget(Button.builder(Component.literal("Vorbereiten"), b -> send(false))
                 .bounds(lx, y + 158, 106, 20).build());
         addRenderableWidget(Button.builder(Component.translatable("gui.chronicle_arena.spectate"), b -> send(true))
@@ -124,8 +127,7 @@ public class TerminalScreen extends Screen {
         mask = lastMask; arenaChoice = lastArena; refresh();
     }
 
-    private void applyChallenge() {
-        Net.ChallengeInfo ch = data.challenge();
+    private void applyChallenge(Net.ChallengeInfo ch) {
         if (ch.encounter().isEmpty()) return;
         for (int i = 0; i < data.tiers().size(); i++) if (data.tiers().get(i).id().equals(ch.tier())) tierIndex = i;
         for (Net.EncInfo e : data.encounters()) {
@@ -160,10 +162,20 @@ public class TerminalScreen extends Screen {
             boolean on = (mask & m.bit()) != 0;
             modButtons.get(i).setMessage(Component.literal((on ? "§a[AN] §r" : "§7[aus] §r") + m.name() + " +" + m.bonus() + "%"));
         }
-        Net.ChallengeInfo ch = data.challenge();
-        challengeButton.active = !ch.encounter().isEmpty();
-        challengeButton.setMessage(Component.literal(ch.claimed() ? "Tages-Challenge (heute erledigt)" : "Tages-Challenge waehlen"));
+        challengeButton.active = !data.challenge().encounter().isEmpty();
+        challengeButton.setMessage(Component.literal((selected(data.challenge()) ? "§a" : "") + (data.challenge().claimed() ? "Tag fertig" : "Tages-Ch.")));
+        weeklyButton.active = !data.weekly().encounter().isEmpty();
+        weeklyButton.setMessage(Component.literal((selected(data.weekly()) ? "§a" : "") + (data.weekly().claimed() ? "Woche fertig" : "Wochen-Ch.")));
         startButton.active = !data.running() && !list.isEmpty() && t != null && !t.locked() && !(bossMode && t.id().endsWith(":abgrund"));
+    }
+
+    /** Stimmt die aktuelle Auswahl mit der Challenge ueberein? Dann startet der Kampf mit ihrem festen Seed. */
+    private boolean selected(Net.ChallengeInfo ch) {
+        if (ch.encounter().isEmpty()) return false;
+        List<Net.EncInfo> list = current();
+        Net.TierInfo t = tier();
+        return !list.isEmpty() && t != null && list.get(Math.min(encIndex, list.size() - 1)).id().equals(ch.encounter())
+                && t.id().equals(ch.tier()) && mask == ch.mask();
     }
 
     private void send(boolean spectate) {
@@ -171,7 +183,9 @@ public class TerminalScreen extends Screen {
         String enc = list.isEmpty() ? "" : list.get(Math.min(encIndex, list.size() - 1)).id();
         Net.TierInfo t = tier();
         if (!spectate) { lastEncounter = enc; lastTier = t == null ? "" : t.id(); lastMask = mask; lastArena = arenaChoice; }
-        PacketDistributor.sendToServer(new Net.Action(spectate, enc, t == null ? "" : t.id(), mask | (arenaChoice << 4) | (goals ? 0 : 64)));
+        // 128 = Tages-, 256 = Wochen-Challenge (Server erzwingt dann Begegnung, Stufe und Modifikatoren).
+        int challenge = selected(data.challenge()) ? 128 : selected(data.weekly()) ? 256 : 0;
+        PacketDistributor.sendToServer(new Net.Action(spectate, enc, t == null ? "" : t.id(), mask | (arenaChoice << 4) | (goals ? 0 : 64) | challenge));
         onClose();
     }
 
@@ -231,13 +245,21 @@ public class TerminalScreen extends Screen {
         int bonus = bonusPercent();
         gfx.drawString(this.font, Component.literal(bonus == 0 ? "Coins: " + data.coinPercent() + "%" : "Coins: " + data.coinPercent() + "% / Bonus +" + bonus + "%"), rx, top + 134,
                 bonus == 0 ? 0x999999 : 0xFFD700);
-        Net.ChallengeInfo ch = data.challenge();
-        if (!ch.encounter().isEmpty()) {
-            String txt = (ch.claimed() ? "Heute erledigt" : "Heute: +" + ch.bonusCoins() + " Coins") + " - " + ch.text();
-            // One line only; the full text is in the tooltip of the challenge button.
-            String shown = this.font.width(txt) <= 150 ? txt : this.font.plainSubstrByWidth(txt, 150 - this.font.width("...")) + "...";
-            gfx.drawString(this.font, Component.literal(shown), rx, top + 146, ch.claimed() ? 0x777777 : 0x88CCFF);
-            if (challengeButton.isHovered()) gfx.renderTooltip(this.font, this.font.split(Component.literal(txt), 240), mouseX, mouseY);
+        Net.ChallengeInfo ch = data.challenge(), wk = data.weekly();
+        if (!ch.encounter().isEmpty() || !wk.encounter().isEmpty()) {
+            String txt = "Challenge: Tag " + (ch.claimed() ? "erledigt" : "+" + ch.bonusCoins()) + " | Woche " + (wk.claimed() ? "erledigt" : "+" + wk.bonusCoins());
+            gfx.drawString(this.font, Component.literal(txt), rx, top + 146, selected(ch) || selected(wk) ? 0x55FF55 : 0x88CCFF);
+        }
+        for (int k = 0; k < 2; k++) {
+            Net.ChallengeInfo c = k == 0 ? ch : wk;
+            if (c.encounter().isEmpty() || !(k == 0 ? challengeButton : weeklyButton).isHovered()) continue;
+            String tip = (k == 0 ? "Tages-Challenge: " : "Wochen-Challenge: ") + c.text() + "\n"
+                    + (c.claimed() ? "Bonus schon abgeholt, die Bestenliste zaehlt trotzdem." : "Bonus beim Sieg: +" + c.bonusCoins() + " Coins (einmal).")
+                    + "\nFester Seed: alle bekommen dieselben Wellen. Eigene Tafel in der Lobby, /arena challenge."
+                    + "\nKlick waehlt alles aus, dann Vorbereiten.";
+            List<FormattedCharSequence> lines = new ArrayList<>();
+            for (String part : tip.split("\n")) lines.addAll(this.font.split(Component.literal(part), 240));
+            gfx.renderTooltip(this.font, lines, mouseX, mouseY);
         }
         if (encButton.isHovered() && !list.isEmpty()) gfx.renderTooltip(this.font, this.font.split(Component.literal(list.get(Math.min(encIndex, list.size()-1)).desc()), 240), mouseX, mouseY);
         if (tierButton.isHovered() && t != null) gfx.renderTooltip(this.font, this.font.split(Component.literal(t.desc() + " | " + t.info()), 240), mouseX, mouseY);

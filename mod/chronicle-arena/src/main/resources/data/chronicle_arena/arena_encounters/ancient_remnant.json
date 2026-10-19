@@ -1,0 +1,21 @@
+{
+  "type": "boss",
+  "order": 39,
+  "name": "Uraltes Relikt (Cataclysm)",
+  "description": "Der Waechter der verschuetteten Wuestenstadt. Schwer, langsam und mit Sandsturm. Ab halber Gesundheit kommen Wuestenkrieger dazu.",
+  "icon": "minecraft:chiseled_sandstone",
+  "boss": {
+    "entity": "cataclysm:ancient_remnant"
+  },
+  "adds": [
+    {
+      "entity": "minecraft:husk",
+      "count": 4
+    },
+    {
+      "entity": "minecraft:skeleton",
+      "count": 2
+    }
+  ],
+  "theme": "desert"
+}

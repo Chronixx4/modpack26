@@ -23,7 +23,7 @@ public final class Net {
     }
 
     public static void register(RegisterPayloadHandlersEvent event) {
-        PayloadRegistrar reg = event.registrar("10");
+        PayloadRegistrar reg = event.registrar("11");
         ArenaNet.register(reg);
         reg.playToClient(OpenParty.TYPE, OpenParty.CODEC,
                 (payload, ctx) -> ctx.enqueueWork(() -> de.chronicle.arena.client.ClientHooks.openParty(payload)));
@@ -69,7 +69,7 @@ public final class Net {
 
     /** Server -> Client: Inhalt des Kampf-Menues. */
     public record OpenTerminal(boolean running, String status, List<TierInfo> tiers, List<EncInfo> encounters,
-                               List<ModInfo> mods, ChallengeInfo challenge, boolean admin, int coinPercent)
+                               List<ModInfo> mods, ChallengeInfo challenge, ChallengeInfo weekly, boolean admin, int coinPercent)
             implements CustomPacketPayload {
         public static final Type<OpenTerminal> TYPE = new Type<>(ChronicleArena.id("open_terminal"));
         public static final StreamCodec<FriendlyByteBuf, OpenTerminal> CODEC = StreamCodec.of(OpenTerminal::write, OpenTerminal::read);
@@ -102,12 +102,21 @@ public final class Net {
                 buf.writeUtf(m.desc, 256);
                 buf.writeVarInt(m.bonus);
             }
-            buf.writeUtf(p.challenge.encounter);
-            buf.writeUtf(p.challenge.tier);
-            buf.writeVarInt(p.challenge.mask);
-            buf.writeBoolean(p.challenge.claimed);
-            buf.writeVarInt(p.challenge.bonusCoins);
-            buf.writeUtf(p.challenge.text, 256);
+            writeChallenge(buf, p.challenge);
+            writeChallenge(buf, p.weekly);
+        }
+
+        private static void writeChallenge(FriendlyByteBuf buf, ChallengeInfo c) {
+            buf.writeUtf(c.encounter);
+            buf.writeUtf(c.tier);
+            buf.writeVarInt(c.mask);
+            buf.writeBoolean(c.claimed);
+            buf.writeVarInt(c.bonusCoins);
+            buf.writeUtf(c.text, 256);
+        }
+
+        private static ChallengeInfo readChallenge(FriendlyByteBuf buf) {
+            return new ChallengeInfo(buf.readUtf(), buf.readUtf(), buf.readVarInt(), buf.readBoolean(), buf.readVarInt(), buf.readUtf(256));
         }
 
         private static OpenTerminal read(FriendlyByteBuf buf) {
@@ -128,9 +137,9 @@ public final class Net {
             int nm = readCount(buf,16);
             List<ModInfo> mods = new ArrayList<>();
             for (int i = 0; i < nm; i++) mods.add(new ModInfo(buf.readVarInt(), buf.readUtf(), buf.readUtf(256), buf.readVarInt()));
-            ChallengeInfo ch = new ChallengeInfo(buf.readUtf(), buf.readUtf(), buf.readVarInt(), buf.readBoolean(),
-                    buf.readVarInt(), buf.readUtf(256));
-            return new OpenTerminal(running, status, tiers, encs, mods, ch, admin, coinPercent);
+            ChallengeInfo ch = readChallenge(buf);
+            ChallengeInfo weekly = readChallenge(buf);
+            return new OpenTerminal(running, status, tiers, encs, mods, ch, weekly, admin, coinPercent);
         }
 
         @Override
