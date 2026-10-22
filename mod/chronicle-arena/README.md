@@ -1,6 +1,6 @@
 # Chronicle Arena
 
-## Naechstes Update (vorbereitet, noch keine Jar): Burg halten
+## Update 0.5.0: Burg halten
 
 - **Neuer Modus "Burg halten" (Tower Defense):** Im Terminal den Modus-Knopf auf "Burg halten" stellen (Wellen -> Boss -> Burg halten), Begegnung und Stufe wie bei Wellen waehlen. Gekaempft wird im neuen Burghof (bei z 1100, wird beim ersten Kampf gebaut).
 - Gegner kommen am Tor und laufen einen festen, breiten Schlangenpfad zum Kristall. Sie greifen Spieler nur an, wenn man ihnen sehr nahe kommt (4,5 Bloecke); Golems greifen sie an. Wer haengen bleibt, wird nach 8 s zum naechsten Wegpunkt gesetzt.
