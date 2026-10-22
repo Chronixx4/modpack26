@@ -65,7 +65,7 @@ public final class ArenaParty {
             list.add((pending.ready.contains(id) ? "[Bereit] " : "[Wartet] ") + (member == null ? "Offline" : member.getGameProfile().getName()));
         }
         String summary = pending.encounter.name() + " / " + pending.tier.name() + " | " + ArenaManager.modNames(pending.mask) + (ArenaChallenges.kindOf(pending.mask) >= 0 ? " | " + ArenaChallenges.LABEL[ArenaChallenges.kindOf(pending.mask)] : "")
-                + " | Arena: " + new String[]{"Klassisch", "Glut", "Eis"}[pending.variant]
+                + ((pending.mask & ArenaManager.MODE_SIEGE) != 0 ? " | Burg halten (Burghof)" : " | Arena: " + new String[]{"Klassisch", "Glut", "Eis"}[pending.variant])
                 + (pending.goals ? "" : " | Ohne Missionen");
         PacketDistributor.sendToPlayer(p, new Net.OpenParty(summary, list, pending.ready.contains(p.getUUID()), pending.leader.equals(p.getUUID()), pending.countdown < 0 ? -1 : (pending.countdown + 19) / 20, popup));
     }

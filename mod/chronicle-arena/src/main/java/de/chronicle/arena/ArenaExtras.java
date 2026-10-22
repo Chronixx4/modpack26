@@ -146,6 +146,8 @@ final class ArenaExtras {
                 p.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 70, 0, true, false));
             }
         }
+        // Brunnen und Fallen gibt es nur auf der normalen Arena-Karte.
+        if (!r.mode.arenaMap()) return;
         // Heilbrunnen.
         for (int i = 0; i < FOUNTAINS.length; i++) {
             double fx = c.getX() + 0.5 + FOUNTAINS[i][0];

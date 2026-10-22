@@ -29,10 +29,11 @@ public final class ArenaHud {
         int w=Math.min(220,g.guiWidth()-130);if(w<100)return;
         int x=g.guiWidth()-w-6,y=40;
         int goalLines=b.goal().isEmpty()?0:f.split(net.minecraft.network.chat.Component.literal(b.goal()),w-12).size();
+        int infoLines=b.info().isEmpty()?0:f.split(net.minecraft.network.chat.Component.literal(b.info()),w-12).size();
         int pickupLines=b.pickups().isEmpty()?0:f.split(net.minecraft.network.chat.Component.literal(b.pickups()),w-12).size();
         var heading=net.minecraft.network.chat.Component.literal(b.phase()+" | "+(b.total()==0?"Welle "+b.wave():"Welle "+b.wave()+"/"+b.total()));
         int headerExtra=Math.max(0,f.split(heading,w-12).size()-1)*10;
-        int h=48+headerExtra+(goalLines==0?0:goalLines*10+30)+(b.objectiveMaxHealth()>0?24:0)+(pickupLines>0?pickupLines*10+5:0);
+        int h=48+headerExtra+(goalLines==0?0:goalLines*10+30)+(b.objectiveMaxHealth()>0?24:0)+(pickupLines>0?pickupLines*10+5:0)+(infoLines>0?infoLines*10+3:0);
         g.fill(x-1,y-1,x+w+1,y+h+1,0xFF9B5CFF);g.fillGradient(x,y,x+w,y+h,0xD0201638,0xD00B0914);
         g.drawWordWrap(f,heading,x+6,y+5,w-12,0xFFD700);
         g.drawString(f,"Gegner: "+b.enemies(),x+6,y+18+headerExtra,0xFFFFFF);
@@ -46,9 +47,10 @@ public final class ArenaHud {
             bottom=gy+23;
         }
         if(b.objectiveMaxHealth()>0){
-            g.drawString(f,"Beacon: "+b.objectiveHealth()+"/"+b.objectiveMaxHealth()+" LP",x+6,bottom,b.objectiveHealth()<=30?0xFF7777:0x55FF55);
+            g.drawString(f,(b.healthLabel().isEmpty()?"Beacon":b.healthLabel())+": "+b.objectiveHealth()+"/"+b.objectiveMaxHealth()+" LP",x+6,bottom,b.objectiveHealth()<=30?0xFF7777:0x55FF55);
             g.fill(x+6,bottom+12,x+w-6,bottom+16,0xFF322448);int hp=(int)((w-12)*Math.clamp(b.objectiveHealth()/(double)b.objectiveMaxHealth(),0,1));g.fill(x+6,bottom+12,x+6+hp,bottom+16,0xFF55CC77);bottom+=24;
         }
+        if(infoLines>0){g.drawWordWrap(f,net.minecraft.network.chat.Component.literal(b.info()),x+6,bottom,w-12,0xFFD36B);bottom+=infoLines*10+3;}
         if(pickupLines>0)g.drawWordWrap(f,net.minecraft.network.chat.Component.literal(b.pickups()),x+6,bottom,w-12,0x7FE0FF);
     }
     private static void draw(GuiGraphics g) {

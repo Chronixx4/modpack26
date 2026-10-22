@@ -23,7 +23,7 @@ public final class Net {
     }
 
     public static void register(RegisterPayloadHandlersEvent event) {
-        PayloadRegistrar reg = event.registrar("11");
+        PayloadRegistrar reg = event.registrar("12");
         ArenaNet.register(reg);
         reg.playToClient(OpenParty.TYPE, OpenParty.CODEC,
                 (payload, ctx) -> ctx.enqueueWork(() -> de.chronicle.arena.client.ClientHooks.openParty(payload)));

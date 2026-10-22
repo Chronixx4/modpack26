@@ -93,6 +93,10 @@ public final class ArenaManager {
     static final int MAX_ALIVE_MOBS = 30;
     /** Terminal flag in the action mask (bits 0-3 modifiers, 4-5 arena): no random missions in this run. */
     static final int NO_GOALS = 64;
+    /** Terminal flag: Burg halten statt normaler Wellen (bleibt in der Maske, damit Neustart und "Nochmal" ihn kennen). */
+    static final int MODE_SIEGE = 512;
+    /** Golem-Waechter von Burg halten: Spieler koennen ihnen nicht schaden. */
+    static final String GOLEM_TAG = "chronicle_siege_golem";
     static final int PREP_TICKS = 100;
     static final int END_TICKS = 200;
 
@@ -184,8 +188,11 @@ public final class ArenaManager {
         final double damageScale;
         final double countScale;
         final int totalWaves;
-        final BlockPos center;
-        final int variant;
+        BlockPos center;
+        int variant;
+        final ArenaMode mode;
+        /** Zusatzlogik des Modus (Burg halten); null bei Wellen und Boss. */
+        final ModeLogic logic;
         final boolean endless;
         final int extra;
         final int mask;
@@ -256,6 +263,7 @@ public final class ArenaManager {
             this.tier = tier;
             int extra = Math.max(0, players - 1);
             this.extra = extra;
+            this.mode = (mask & MODE_SIEGE) != 0 && !encounter.boss() ? ArenaMode.SIEGE : encounter.boss() ? ArenaMode.BOSS : ArenaMode.WAVES;
             this.endless = tier.waves() <= 0 && !encounter.boss();
             boolean waves = !encounter.boss();
             this.healthScale = tier.health() * (waves ? tier.waveHealth() : 1.0);
@@ -263,6 +271,7 @@ public final class ArenaManager {
             this.countScale = tier.count() * (waves ? tier.waveCount() : 1.0) * (1.0 + 0.35 * extra);
             this.totalWaves = encounter.boss() ? 1 : tier.waves() <= 0 ? Integer.MAX_VALUE : tier.waves();
             bar.setProgress(1.0F);
+            this.logic = ModeLogic.create(this);
         }
 
         String totalStr() {
@@ -423,6 +432,11 @@ public final class ArenaManager {
             sp.sendSystemMessage(Component.literal("Der Abgrund (Endlos) geht nur im Wellen-Modus."));
             return;
         }
+        boolean siege = ch == null && (action.mask() & MODE_SIEGE) != 0;
+        if (siege && enc.boss()) {
+            sp.sendSystemMessage(Component.literal("Burg halten braucht eine Wellen-Begegnung, keinen Boss."));
+            return;
+        }
         List<ServerPlayer> group = playersInLobby(sp.server);
         if (!group.contains(sp)) group.add(sp);
         for (ServerPlayer p : group) {
@@ -439,7 +453,7 @@ public final class ArenaManager {
         boolean goals = (action.mask() & NO_GOALS) == 0;
         // Challenges: feste Modifikatoren, Arena nach Gegner und Zielwellen an, damit alle gleich spielen.
         if (ch != null) { ArenaParty.propose(sp, enc, tier, group, ch.mask() | ch.flag(), variantFor(enc.theme()), true); return; }
-        ArenaParty.propose(sp, enc, tier, group, action.mask() & 15, choice == 0 ? variantFor(enc.theme()) : choice - 1, goals);
+        ArenaParty.propose(sp, enc, tier, group, (action.mask() & 15) | (siege ? MODE_SIEGE : 0), choice == 0 ? variantFor(enc.theme()) : choice - 1, goals);
     }
 
     // ------------------------------------------------------------------ Start und Ende
@@ -452,8 +466,9 @@ public final class ArenaManager {
         ServerLevel level = server.getLevel(DIM);
         if (level == null) return;
         ArenaBuilder.ensureBuilt(level);
-        ArenaBuilder.ensureArena(level, centerFor(variant), variant);
         Run r = new Run(enc, tier, group.size(), mask, variant);
+        if (r.mode.arenaMap()) ArenaBuilder.ensureArena(level, centerFor(variant), variant);
+        if (r.logic != null) r.logic.start(level);
         ArenaSettings settings = ArenaSettings.get(server);
         r.coinPercent = settings.coins; r.goalsEnabled = settings.goals && goals; r.goalInterval = settings.goalInterval;
         r.timer = settings.prepSeconds * 20;
@@ -473,7 +488,9 @@ public final class ArenaManager {
             p.getFoodData().setFoodLevel(20);
             p.removeAllEffects();
             double angle = (Math.PI * 2.0 * i) / group.size();
-            teleport(p, level, r.center.getX() + 0.5 + Math.cos(angle) * 4.0, r.center.getY(),
+            Vec3 at = r.logic != null ? r.logic.startPos(i, group.size()) : null;
+            if (at != null) teleport(p, level, at.x, at.y, at.z, 180.0F);
+            else teleport(p, level, r.center.getX() + 0.5 + Math.cos(angle) * 4.0, r.center.getY(),
                     r.center.getZ() + 0.5 + Math.sin(angle) * 4.0, 0.0F);
             r.alive.add(p.getUUID());
             r.participants.add(p.getUUID());
@@ -485,6 +502,7 @@ public final class ArenaManager {
             i++;
         }
         r.bar.setName(Component.translatable("bar.chronicle_arena.prepare", enc.name()));
+        if (r.logic != null) r.logic.started(server, level);
         ArenaResume.store(server, r);
         LOGGER.info("Arena-Run gestartet: {} / {} mit {} Spielern", enc.id(), tier.id(), group.size());
     }
@@ -530,6 +548,7 @@ public final class ArenaManager {
         ArenaObjectives.clear(server.getLevel(DIM), r.objective);
         ArenaPickups.clear(server.getLevel(DIM),r);
         discardMobs(server, r);
+        if (r.logic != null) r.logic.clear(server.getLevel(DIM));
         r.queue.clear();
         for (UUID kc : r.killcamTicks.keySet()) {
             ServerPlayer kp = server.getPlayerList().getPlayer(kc);
@@ -593,10 +612,12 @@ public final class ArenaManager {
 
     private static void endlessResult(ServerPlayer p, ServerLevel level, Run r) {
         int reached = r.completedWaves;
-        int old = ArenaStats.endlessBest(p);
+        boolean siege = r.mode == ArenaMode.SIEGE;
+        int old = siege ? ArenaStats.siegeBest(p) : ArenaStats.endlessBest(p);
         boolean record = reached > old;
-        if (record) ArenaStats.setEndlessBest(p, reached);
-        ArenaShow.title(List.of(p), ArenaShow.big("ABGRUND: WELLE " + reached, net.minecraft.ChatFormatting.DARK_PURPLE),
+        if (record && siege) ArenaStats.setSiegeBest(p, reached);
+        else if (record) ArenaStats.setEndlessBest(p, reached);
+        ArenaShow.title(List.of(p), ArenaShow.big((siege ? "BURG: WELLE " : "ABGRUND: WELLE ") + reached, net.minecraft.ChatFormatting.DARK_PURPLE),
                 Component.literal(record ? "Neuer Rekord!" : "Rekord: Welle " + old).withStyle(net.minecraft.ChatFormatting.YELLOW), 10, 80, 20);
         if (r.tier.loot() != null) {
             ResourceKey<LootTable> key = ResourceKey.create(Registries.LOOT_TABLE, r.tier.loot());
@@ -670,6 +691,7 @@ public final class ArenaManager {
         ArenaPickups.clear(server.getLevel(DIM),r);
         discardMobs(server, r);
         ServerLevel level = server.getLevel(DIM);
+        if (r.logic != null) r.logic.clear(level);
         if (level != null) ArenaExtras.clearFountainLabels(server, level);
         Set<UUID> all = new HashSet<>(r.alive);
         all.addAll(r.spectators);
@@ -987,7 +1009,8 @@ public final class ArenaManager {
                         break;
                     }
                 }
-                if (ArenaRoutes.tick(server, r)) break;
+                if ((r.logic == null || r.logic.routes()) && ArenaRoutes.tick(server, r)) break;
+                if (r.logic != null && r.logic.holdPrep(server, level, tickCounter)) break;
                 if (r.started && r.timer > 0 && r.timer <= 60 && r.timer % 20 == 0) {
                     ArenaShow.title(runPlayers(server, r), ArenaShow.big(String.valueOf(r.timer / 20), net.minecraft.ChatFormatting.GOLD),
                             Component.literal("Naechste Welle"), 0, 18, 2);
@@ -1032,9 +1055,12 @@ public final class ArenaManager {
         r.wave++;
         r.rng.setSeed(waveSeed(r.seed, r.wave));
         buildWave(level, r);
+        if (r.logic != null) r.logic.afterBuildWave(level);
         r.waveTotal = Math.max(1, r.queue.size());
         r.powerMul = computePower(server, r);
-        r.objective = r.goalsEnabled && (r.routes.mission(r.wave) || r.wave % r.goalInterval == 0) ? ArenaObjectives.begin(level, r.center, r.lastGoal, r.alive.size(), r.rng) : null;
+        Boolean forced = r.logic != null ? r.logic.objectiveNow() : null;
+        boolean goal = forced != null ? forced : r.goalsEnabled && (r.routes.mission(r.wave) || r.wave % r.goalInterval == 0);
+        r.objective = goal ? ArenaObjectives.begin(level, r.center, r.lastGoal, r.alive.size(), r.rng) : null;
         if(r.objective!=null){
             r.lastGoal=r.objective.kind;
             if(r.objective.kind==2)r.objective.expectedTargets=Math.min(3,Math.max(1,r.queue.size()));
@@ -1093,7 +1119,7 @@ public final class ArenaManager {
                 if (!sp.elite && !sp.boss && r.rng.nextFloat() < chance) sp.cls = 1 + r.rng.nextInt(3);
             }
         }
-        if (w >= 4) {
+        if (w >= 4 && (r.logic == null || r.logic.shooters())) {
             int shooters = Math.min(4, 1 + (w - 4) / 6);
             for (int i = 0; i < shooters; i++) {
                 Spawn sh = new Spawn(ResourceLocation.withDefaultNamespace("skeleton"), false, false);
@@ -1296,8 +1322,13 @@ public final class ArenaManager {
         tickRevive(server, level, r);
         ArenaExtras.tick(server, level, r, tickCounter);
 
-        // Aggro halten.
-        if (tickCounter % 40 == 0) {
+        if (r.logic != null) {
+            r.logic.tickFight(server, level, tickCounter);
+            if (r.logic.lost()) { finish(server, false); return; }
+        }
+
+        // Aggro halten (nicht, wenn der Modus die Laufwege selbst steuert).
+        if (tickCounter % 40 == 0 && (r.logic == null || !r.logic.controlsAi())) {
             for (UUID id : r.mobs) {
                 if (level.getEntity(id) instanceof Mob m) {
                     LivingEntity beacon=ArenaObjectives.defender(level,r.objective);
@@ -1362,6 +1393,7 @@ public final class ArenaManager {
         r.objective = null;
         r.event = ArenaExtras.EV_NONE;
         r.classes.clear();
+        if (r.logic != null && r.logic.waveCleared(server, level)) return;
         if (r.state == State.BOSS) {
             finish(server, true);
         } else if (r.wave >= r.totalWaves) {
@@ -1370,7 +1402,8 @@ public final class ArenaManager {
             // Kleine Pause, Spieler werden etwas geheilt.
             r.state = State.PREP;
             boolean offer = r.wave % 5 == 0;
-            r.timer = offer ? 400 : 100;
+            int pause = r.logic != null ? r.logic.pauseTicks(offer) : -1;
+            r.timer = pause >= 0 ? pause : offer ? 400 : 100;
             ArenaShow.title(runPlayers(server, r), ArenaShow.big("WELLE " + r.wave + " GESCHAFFT", net.minecraft.ChatFormatting.GREEN),
                     Component.literal(offer ? "Segen, +1 Wiederbelebung, danach Gruppenweg waehlen" : "Kurze Pause").withStyle(net.minecraft.ChatFormatting.GRAY), 5, 40, 10);
             if (offer) {
@@ -1406,7 +1439,12 @@ public final class ArenaManager {
         double x = r.center.getX() + 0.5 + Math.cos(angle) * dist;
         double z = r.center.getZ() + 0.5 + Math.sin(angle) * dist;
         double y = r.center.getY();
-        if (s.cls == ArenaExtras.CL_SCHUETZE) {
+        Vec3 custom = r.logic != null ? r.logic.spawnPos(level, s) : null;
+        if (custom != null) {
+            x = custom.x;
+            y = custom.y;
+            z = custom.z;
+        } else if (s.cls == ArenaExtras.CL_SCHUETZE) {
             x = r.center.getX() + 0.5 + Math.cos(angle) * 35.6;
             z = r.center.getZ() + 0.5 + Math.sin(angle) * 35.6;
             y = r.center.getY() + 8.0;
@@ -1457,7 +1495,8 @@ public final class ArenaManager {
         try { added = level.addFreshEntity(le); } finally { spawningMob = false; }
         if (!added) return null;
         ArenaObjectives.spawned(r.objective, le);
-        if (le instanceof Mob mob) {
+        if (r.logic != null) r.logic.spawned(le, s);
+        if (le instanceof Mob mob && (r.logic == null || !r.logic.controlsAi())) {
             LivingEntity target = ArenaObjectives.defender(level,r.objective);
             if(target==null)target=nearestAlive(level.getServer(),r,le.position());
             if (target != null) mob.setTarget(target);
@@ -1645,11 +1684,14 @@ public final class ArenaManager {
         if (tags.contains(MOB_TAG)) return r == null || !r.mobs.contains(e.getUUID());
         if (tags.contains("chronicle_arena_pickup")) return r == null || !r.pickups.containsKey(e.getUUID());
         if (tags.contains("chronicle_arena_beacon")) return r == null || r.objective == null || !e.getUUID().equals(r.objective.defender);
+        // Golems und Schilder von Burg halten werden nach einem Neustart vom Modus neu gesetzt.
+        if (tags.contains(GOLEM_TAG) || tags.contains(ArenaLabels.TAG)) return true;
         return false;
     }
 
     @SubscribeEvent
     public void onTarget(net.neoforged.neoforge.event.entity.living.LivingChangeTargetEvent event){
+        if(run!=null&&run.logic!=null&&run.mobs.contains(event.getEntity().getUUID())&&!run.logic.allowTarget(event.getEntity(),event.getNewAboutToBeSetTarget())){event.setCanceled(true);return;}
         if(run!=null&&run.mobs.contains(event.getEntity().getUUID())&&event.getEntity().level() instanceof ServerLevel level){LivingEntity beacon=ArenaObjectives.defender(level,run.objective);if(beacon!=null)event.setNewAboutToBeSetTarget(beacon);}
     }
     @SubscribeEvent
@@ -1659,6 +1701,7 @@ public final class ArenaManager {
     @SubscribeEvent
     public void onIncomingDamage(LivingIncomingDamageEvent event) {
         if (ArenaLog.dummyHit(event)) return;
+        if (event.getEntity().getTags().contains(GOLEM_TAG) && event.getSource().getEntity() instanceof Player) { event.setCanceled(true); return; }
         if(run!=null&&run.objective!=null&&event.getEntity().getUUID().equals(run.objective.defender)){
             if(event.getSource().getEntity()!=null&&run.mobs.contains(event.getSource().getEntity().getUUID()))ArenaObjectives.strike(run.objective,event.getSource().getEntity().getUUID(),event.getAmount());
             event.setCanceled(true);return;
@@ -1716,6 +1759,10 @@ public final class ArenaManager {
                 && ArenaObjectives.interact(player, event.getPos(), run.objective)) {
             event.setCanceled(true); event.setCancellationResult(net.minecraft.world.InteractionResult.SUCCESS); return;
         }
+        if (run != null && run.logic != null && event.getEntity() instanceof ServerPlayer player && run.alive.contains(player.getUUID())
+                && run.logic.interact(player, event.getPos())) {
+            event.setCanceled(true); event.setCancellationResult(net.minecraft.world.InteractionResult.SUCCESS); return;
+        }
         if (!event.getPos().equals(ArenaDecor.SMITH_ANVIL)) return;
         event.setCanceled(true);
         event.setCancellationResult(net.minecraft.world.InteractionResult.SUCCESS);
@@ -1748,6 +1795,9 @@ public final class ArenaManager {
         }
         if (dead instanceof Player) return;
         ArenaObjectives.killed(r.objective, dead.getUUID());
+        if (r.logic != null && r.mobs.contains(dead.getUUID())) {
+            r.logic.mobDied(dead, event.getSource().getEntity() instanceof ServerPlayer k && r.alive.contains(k.getUUID()) ? k : null);
+        }
         if (event.getSource().getEntity() instanceof ServerPlayer killer && r.alive.contains(killer.getUUID())
                 && r.mobs.contains(dead.getUUID())) {
             ArenaStats.addKill(killer);
@@ -1993,6 +2043,9 @@ public final class ArenaManager {
         ArenaBuilder.ensureArena(level, ARENA_B, 1);
         ArenaBuilder.ensureArena(level, ARENA_C, 2);
         dumpBlocks(level);
+        ArenaMaps.ensureSiege(level);
+        LOGGER.info("ARENA-DEBUG: Burghof Marker={}, Kristall={}", level.getBlockState(new BlockPos(ArenaSiege.CENTER.getX(), 60, ArenaSiege.CENTER.getZ())).getBlock(),
+                level.getBlockState(ArenaSiege.at(ArenaSiege.CORE[0], 0, ArenaSiege.CORE[1])).getBlock());
         LOGGER.info("ARENA-DEBUG: Arena gebaut, Marker={}, Terminal={}, Portal={}",
                 level.getBlockState(new BlockPos(0, 60, 200)).getBlock(),
                 level.getBlockState(LOBBY).getBlock(),
@@ -2291,6 +2344,12 @@ public final class ArenaManager {
         };
         return new ArenaNet.BlessInfo(b.label,b.desc,"minecraft:"+icon,stacks[b.ordinal()],synergy);
     }
+    public static void menuPick(ServerPlayer p, ArenaNet.MenuPick pick) {
+        Run r = run;
+        if (r == null || r.logic == null || p.level().dimension() != DIM || !r.alive.contains(p.getUUID())) return;
+        r.logic.menuPick(p, pick.menu(), pick.option());
+    }
+
     public static void control(ServerPlayer p, Net.Control control) {
         switch (control.action()) {
             case "ready" -> ArenaParty.toggle(p);
@@ -2331,6 +2390,7 @@ public final class ArenaManager {
         ArenaObjectives.clear(level, r.objective);
         ArenaPickups.clear(level, r);
         discardMobs(server, r);
+        if (r.logic != null) r.logic.clear(level);
         if (level != null) ArenaExtras.clearFountainLabels(server, level);
         r.bar.removeAllPlayers();
         run = null;

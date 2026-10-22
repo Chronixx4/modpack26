@@ -67,6 +67,11 @@ public final class ArenaStats {
 
     public static void setEndlessBest(ServerPlayer p, int w) { tag(p).putInt("endless_best", w); }
 
+    /** Beste Welle in Burg halten auf der endlosen Stufe. */
+    public static int siegeBest(ServerPlayer p) { return tag(p).getInt("siege_best"); }
+
+    public static void setSiegeBest(ServerPlayer p, int w) { tag(p).putInt("siege_best", w); }
+
     public static void setChallengeDay(ServerPlayer p, int day) { tag(p).putInt("challenge_day", day); }
 
     /** Zuletzt abgeholte Wochen-Challenge (-1 = nie, damit Woche 0 nicht als erledigt gilt). */

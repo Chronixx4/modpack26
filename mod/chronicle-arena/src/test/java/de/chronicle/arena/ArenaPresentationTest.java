@@ -13,7 +13,7 @@ class ArenaPresentationTest {
         var b=new FriendlyByteBuf(Unpooled.buffer());try{codec.encode(b,value);assertEquals(value,codec.decode(b));assertFalse(b.isReadable());}finally{b.release();}
     }
     @Test void combatStatusAndClearPreserveProgressAndDeadline(){
-        roundTrip(ArenaNet.Battle.CODEC,new ArenaNet.Battle(true,"Wellenkampf",9,12,7,2,"Kristalle",2,3,42,75,100,"Echo: 3"));
+        roundTrip(ArenaNet.Battle.CODEC,new ArenaNet.Battle(true,"Wellenkampf",9,12,7,2,"Kristalle",2,3,42,75,100,"Echo: 3","Kasse: 120 Punkte","Kristall"));
         roundTrip(ArenaNet.Battle.CODEC,ArenaNet.Battle.EMPTY);
     }
     @Test void blessingCardsAndSelectionPreserveRunAndWaveIdentity(){

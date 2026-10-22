@@ -28,6 +28,12 @@ public final class ClientHooks {
             else screen.update(payload);
         }else if(payload.open()&&payload.popup())mc.setScreen(new RouteScreen(payload));
     }
+    public static void menu(de.chronicle.arena.ArenaNet.Menu payload){
+        var mc=Minecraft.getInstance();
+        if(payload.id().isEmpty()){if(mc.screen instanceof ModeMenuScreen)mc.setScreen(null);return;}
+        if(mc.screen instanceof ModeMenuScreen screen&&screen.id().equals(payload.id()))screen.update(payload);
+        else if(payload.popup())mc.setScreen(new ModeMenuScreen(payload));
+    }
     public static void result(de.chronicle.arena.ArenaNet.Result payload){Minecraft.getInstance().setScreen(new ResultScreen(payload));}
     public static void openParty(Net.OpenParty payload) {
         var mc = Minecraft.getInstance();

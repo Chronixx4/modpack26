@@ -122,6 +122,7 @@ final class ArenaResume extends SavedData {
         t.putInt("revives", r.revives);
         t.putInt("last_goal", r.lastGoal);
         t.put("routes", r.routes.save());
+        if (r.logic != null) t.put("mode_data", r.logic.save());
         ListTag ps = new ListTag();
         for (UUID id : r.participants) {
             CompoundTag p = new CompoundTag();
@@ -191,6 +192,11 @@ final class ArenaResume extends SavedData {
         r.revives = t.getInt("revives");
         r.lastGoal = t.contains("last_goal") ? t.getInt("last_goal") : -1;
         r.routes.load(t.getCompound("routes"));
+        if (r.logic != null && level != null) {
+            // Burg halten: Karte, Tuerme und Kasse wiederherstellen (ohne Stand: frisch aufbauen).
+            if (t.contains("mode_data")) r.logic.load(t.getCompound("mode_data"), level);
+            else r.logic.start(level);
+        }
         for (Tag e : t.getList("players", Tag.TAG_COMPOUND)) {
             CompoundTag p = (CompoundTag) e;
             if (!p.hasUUID("id")) continue;

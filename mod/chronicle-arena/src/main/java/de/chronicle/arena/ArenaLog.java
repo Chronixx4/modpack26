@@ -52,7 +52,7 @@ final class ArenaLog {
             o.addProperty("zeit", java.time.Instant.now().toString());
             o.addProperty("run", r.id.toString());
             o.addProperty("begegnung", r.encounter.id().toString());
-            o.addProperty("modus", r.encounter.boss() ? "boss" : r.endless ? "abgrund" : "wellen");
+            o.addProperty("modus", r.mode == ArenaMode.SIEGE ? (r.endless ? "burg_abgrund" : "burg") : r.encounter.boss() ? "boss" : r.endless ? "abgrund" : "wellen");
             o.addProperty("stufe", r.tier.id().toString());
             o.addProperty("sieg", won);
             o.addProperty("welle", r.wave);
@@ -128,7 +128,8 @@ final class ArenaLog {
     }
 
     private static String key(ArenaManager.Run r) {
-        return r.tier.id() + "|" + (r.participants.size() > 1 ? "koop" : "solo");
+        // Burg halten bekommt eigene Rekorde, damit sie nicht mit den Wellen-Bestzeiten vermischt werden.
+        return (r.mode == ArenaMode.SIEGE ? "burg|" : "") + r.tier.id() + "|" + (r.participants.size() > 1 ? "koop" : "solo");
     }
 
     /** Neuer Rekord? Siege zaehlen die Kampfzeit (kleiner ist besser), der Abgrund die Wellen (groesser ist besser). */
@@ -163,11 +164,11 @@ final class ArenaLog {
         StringBuilder sb = new StringBuilder("BESTZEITEN\n");
         List<ArenaDefs.Tier> tiers = ArenaDefs.tiers();
         tiers.sort(Comparator.comparingInt(ArenaDefs.Tier::order));
-        for (ArenaDefs.Tier t : tiers) {
+        for (String prefix : new String[] {"", "burg|"}) for (ArenaDefs.Tier t : tiers) {
             for (String mode : new String[] {"solo", "koop"}) {
-                Rec r = rec.map.get(t.id() + "|" + mode);
+                Rec r = rec.map.get(prefix + t.id() + "|" + mode);
                 if (r == null) continue;
-                sb.append(t.name()).append(' ').append(mode.equals("solo") ? "Solo" : "Koop").append(": ");
+                sb.append(prefix.isEmpty() ? "" : "Burg ").append(t.name()).append(' ').append(mode.equals("solo") ? "Solo" : "Koop").append(": ");
                 sb.append(t.waves() <= 0 ? "Welle " + r.value() : ArenaManager.formatTime(r.value()));
                 sb.append(" - ").append(r.names()).append("\n");
             }

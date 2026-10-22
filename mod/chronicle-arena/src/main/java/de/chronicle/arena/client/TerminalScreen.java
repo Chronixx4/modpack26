@@ -19,10 +19,14 @@ public class TerminalScreen extends Screen {
     private static final int[] TIER_COLORS = {0xCD7F32, 0xC0C0C0, 0xFFD700, 0xB366FF};
 
     private static String lastEncounter = "", lastTier = "";
-    private static int lastMask, lastArena;
+    private static int lastMask, lastArena, lastMode;
+    /** Terminal-Flag fuer Burg halten (wie ArenaManager.MODE_SIEGE). */
+    private static final int MODE_SIEGE = 512;
     private static boolean goals = true;
     private final Net.OpenTerminal data;
     private boolean bossMode;
+    /** 0 = Wellen, 1 = Boss, 2 = Burg halten (nutzt Wellen-Begegnungen). */
+    private int mode;
     private int encIndex;
     private int tierIndex;
     private int mask;
@@ -42,7 +46,7 @@ public class TerminalScreen extends Screen {
         this.data = data;
     }
 
-    static void clearLast(){lastEncounter="";lastTier="";lastMask=0;lastArena=0;}
+    static void clearLast(){lastEncounter="";lastTier="";lastMask=0;lastArena=0;lastMode=0;}
 
     private List<Net.EncInfo> current() {
         List<Net.EncInfo> out = new ArrayList<>();
@@ -69,7 +73,7 @@ public class TerminalScreen extends Screen {
         int w = 150;
         int y = Math.max(48, this.height / 2 - 82);
         modeButton = addRenderableWidget(Button.builder(Component.empty(), b -> {
-            bossMode = !bossMode;
+            setMode((mode + 1) % 3);
             encIndex = 0;
             refresh();
         }).bounds(lx, y, w, 20).build());
@@ -119,8 +123,14 @@ public class TerminalScreen extends Screen {
         refresh();
     }
 
+    private void setMode(int m) {
+        mode = m;
+        bossMode = m == 1;
+    }
+
     private void restoreLast() {
-        for (Net.EncInfo e : data.encounters()) if (e.id().equals(lastEncounter)) bossMode = e.boss();
+        setMode(lastMode);
+        for (Net.EncInfo e : data.encounters()) if (e.id().equals(lastEncounter) && e.boss() != bossMode) setMode(e.boss() ? 1 : 0);
         List<Net.EncInfo> list = current();
         for (int i = 0; i < list.size(); i++) if (list.get(i).id().equals(lastEncounter)) encIndex = i;
         for (int i = 0; i < data.tiers().size(); i++) if (data.tiers().get(i).id().equals(lastTier)) tierIndex = i;
@@ -132,7 +142,7 @@ public class TerminalScreen extends Screen {
         for (int i = 0; i < data.tiers().size(); i++) if (data.tiers().get(i).id().equals(ch.tier())) tierIndex = i;
         for (Net.EncInfo e : data.encounters()) {
             if (e.id().equals(ch.encounter())) {
-                bossMode = e.boss();
+                setMode(e.boss() ? 1 : 0);
                 List<Net.EncInfo> list = current();
                 for (int i = 0; i < list.size(); i++) if (list.get(i).id().equals(ch.encounter())) encIndex = i;
             }
@@ -142,7 +152,7 @@ public class TerminalScreen extends Screen {
     }
 
     private void refresh() {
-        modeButton.setMessage(Component.translatable(bossMode ? "gui.chronicle_arena.mode_boss" : "gui.chronicle_arena.mode_waves"));
+        modeButton.setMessage(mode == 2 ? Component.literal("Modus: Burg halten") : Component.translatable(bossMode ? "gui.chronicle_arena.mode_boss" : "gui.chronicle_arena.mode_waves"));
         List<Net.EncInfo> list = current();
         encButton.setMessage(list.isEmpty() ? Component.translatable("gui.chronicle_arena.none")
                 : Component.literal(list.get(Math.min(encIndex, list.size() - 1)).name()));
@@ -155,8 +165,10 @@ public class TerminalScreen extends Screen {
             if (t.locked()) name = name.copy().append(" ").append(Component.translatable("gui.chronicle_arena.tier_locked_short"));
             tierButton.setMessage(name);
         }
-        goalsButton.setMessage(Component.literal((goals ? "§a[AN] §r" : "§7[aus] §r") + "Zufallsmissionen"));
-        arenaButton.setMessage(Component.literal("Arena: " + new String[]{"Auto (nach Gegner)", "Klassisch", "Glut", "Eis"}[arenaChoice]));
+        goalsButton.setMessage(Component.literal(mode == 2 ? "§7Missionen: nicht bei Burg" : (goals ? "§a[AN] §r" : "§7[aus] §r") + "Zufallsmissionen"));
+        goalsButton.active = mode != 2;
+        arenaButton.setMessage(Component.literal(mode == 2 ? "Karte: Burghof" : "Arena: " + new String[]{"Auto (nach Gegner)", "Klassisch", "Glut", "Eis"}[arenaChoice]));
+        arenaButton.active = mode != 2;
         for (int i = 0; i < modButtons.size(); i++) {
             Net.ModInfo m = data.mods().get(i);
             boolean on = (mask & m.bit()) != 0;
@@ -175,17 +187,17 @@ public class TerminalScreen extends Screen {
         List<Net.EncInfo> list = current();
         Net.TierInfo t = tier();
         return !list.isEmpty() && t != null && list.get(Math.min(encIndex, list.size() - 1)).id().equals(ch.encounter())
-                && t.id().equals(ch.tier()) && mask == ch.mask();
+                && t.id().equals(ch.tier()) && mask == ch.mask() && mode != 2;
     }
 
     private void send(boolean spectate) {
         List<Net.EncInfo> list = current();
         String enc = list.isEmpty() ? "" : list.get(Math.min(encIndex, list.size() - 1)).id();
         Net.TierInfo t = tier();
-        if (!spectate) { lastEncounter = enc; lastTier = t == null ? "" : t.id(); lastMask = mask; lastArena = arenaChoice; }
+        if (!spectate) { lastEncounter = enc; lastTier = t == null ? "" : t.id(); lastMask = mask; lastArena = arenaChoice; lastMode = mode; }
         // 128 = Tages-, 256 = Wochen-Challenge (Server erzwingt dann Begegnung, Stufe und Modifikatoren).
         int challenge = selected(data.challenge()) ? 128 : selected(data.weekly()) ? 256 : 0;
-        PacketDistributor.sendToServer(new Net.Action(spectate, enc, t == null ? "" : t.id(), mask | (arenaChoice << 4) | (goals ? 0 : 64) | challenge));
+        PacketDistributor.sendToServer(new Net.Action(spectate, enc, t == null ? "" : t.id(), mask | (arenaChoice << 4) | (goals ? 0 : 64) | challenge | (mode == 2 ? MODE_SIEGE : 0)));
         onClose();
     }
 
@@ -263,7 +275,10 @@ public class TerminalScreen extends Screen {
         }
         if (encButton.isHovered() && !list.isEmpty()) gfx.renderTooltip(this.font, this.font.split(Component.literal(list.get(Math.min(encIndex, list.size()-1)).desc()), 240), mouseX, mouseY);
         if (tierButton.isHovered() && t != null) gfx.renderTooltip(this.font, this.font.split(Component.literal(t.desc() + " | " + t.info()), 240), mouseX, mouseY);
-        if (goalsButton.isHovered()) gfx.renderTooltip(this.font, this.font.split(Component.literal(goals
+        if (modeButton.isHovered()) gfx.renderTooltip(this.font, this.font.split(Component.literal(mode == 2
+                ? "Burg halten: Gegner laufen einen festen Pfad zum Kristall. Baut mit der Gruppenkasse Tuerme auf den Bauplaetzen (Rechtsklick) und kaempft mit. Kommt ein Gegner durch, verliert der Kristall Leben. Klick wechselt den Modus."
+                : "Klick wechselt den Modus: Wellen, Boss, Burg halten."), 240), mouseX, mouseY);
+        else if (goalsButton.isHovered()) gfx.renderTooltip(this.font, this.font.split(Component.literal(goals
                 ? "Ab und zu kommt eine Welle mit Zusatzziel (Kristalle, Beacon, Zielgegner, Kontrollpunkte, Lichtkreis). Klick schaltet sie fuer diesen Kampf aus."
                 : "Keine Zufallsmissionen in diesem Kampf. Der Missions-Weg bei der Wegwahl ist dann gesperrt."), 240), mouseX, mouseY);
         // Tooltip fuer Modifikatoren.

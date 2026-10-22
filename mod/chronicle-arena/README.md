@@ -1,5 +1,18 @@
 # Chronicle Arena
 
+## Naechstes Update (vorbereitet, noch keine Jar): Burg halten
+
+- **Neuer Modus "Burg halten" (Tower Defense):** Im Terminal den Modus-Knopf auf "Burg halten" stellen (Wellen -> Boss -> Burg halten), Begegnung und Stufe wie bei Wellen waehlen. Gekaempft wird im neuen Burghof (bei z 1100, wird beim ersten Kampf gebaut).
+- Gegner kommen am Tor und laufen einen festen, breiten Schlangenpfad zum Kristall. Sie greifen Spieler nur an, wenn man ihnen sehr nahe kommt (4,5 Bloecke); Golems greifen sie an. Wer haengen bleibt, wird nach 8 s zum naechsten Wegpunkt gesetzt.
+- **Kristall:** 100 Leben plus 25 je weiterem Spieler. Kommt ein Gegner durch, verliert er 5 (normal), 15 (Elite) oder 30 (Mini-Boss/Finale) Leben. Bei 0 ist der Kampf verloren. Rechtsklick auf den Kristall: reparieren (+25 fuer 150 Punkte) oder die naechste Welle sofort starten.
+- **Gemeinsame Kasse:** Start 300 Punkte, 10 je Kill (Elite 30, Mini-Boss 100, auch Turm-Kills), Bonus 50 + 10 je Welle fuer jede gehaltene Welle. Durchgekommene Gegner bringen nichts.
+- **12 Bauplaetze** (Rechtsklick): Pfeilturm (100/150/250, trifft den Gegner, der am weitesten ist), Frostturm (150/200/300, verlangsamt), Flammenwerfer (150/200/300, Feuer im Umkreis), Golem-Wache (250/300/400, Stufe 3 = zwei Golems). Drei Stufen, Abreissen gibt die Haelfte zurueck. Bauen geht auch waehrend der Welle. Turmschaden waechst mit Stufe und Welle wie die Gegner.
+- Bauphase 25 s vor jeder Welle. Segen alle 5 Wellen wie gewohnt, kein Gruppenweg, keine Zufallsmissionen, keine Balkon-Schuetzen. Abgrund-Stufe = endlose Burg mit eigenem Rekord (`siege_best`).
+- Eigene Bestzeiten auf der Tafel ("Burg ..."), Crash-/Neustart-Schutz wie bei Wellen (Tuerme, Kasse und Kristall werden gespeichert).
+- HUD zeigt Kristall-Leben und Kasse. Netzwerkversion 12 (Kampf-HUD und neues Modus-Menue), Server und Clients brauchen dieselbe Version.
+- Werte sind vorerst fest im Code; ins Admin-Panel kommen sie mit dem Admin-Umbau.
+- Im Spiel ungetestet, nur gebaut und Unit-Tests (71 gruen).
+
 ## Update 0.4.5
 
 - **Crash- und Disconnect-Schutz:** Wer im Kampf rausfliegt, behaelt seinen Platz 3 Minuten. Die anderen kaempfen weiter; war er der letzte Lebende, pausiert der Kampf (Gegner eingefroren, Kampfzeit steht). Beim Wiederkommen geht es lebend mit allen Segen weiter (3 s Schutz), Gefallene kommen als wiederbelebbare Zuschauer zurueck. Laeuft die Frist ab, ist der Platz weg; das Ergebnis (Sieg-Belohnung oder Abgrund-Beute) kommt trotzdem beim naechsten Login.

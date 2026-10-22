@@ -18,15 +18,18 @@ public final class ArenaNet {
         r.playToClient(Result.TYPE,Result.CODEC,(p,c)->c.enqueueWork(()->de.chronicle.arena.client.ClientHooks.result(p)));
         r.playToServer(Pick.TYPE,Pick.CODEC,(p,c)->c.enqueueWork(()->{if(c.player() instanceof ServerPlayer sp)ArenaManager.pick(sp,p);}));
         r.playToServer(Retry.TYPE,Retry.CODEC,(p,c)->c.enqueueWork(()->{if(c.player() instanceof ServerPlayer sp)ArenaPresentation.retry(sp,p.run());}));
+        r.playToClient(Menu.TYPE,Menu.CODEC,(p,c)->c.enqueueWork(()->de.chronicle.arena.client.ClientHooks.menu(p)));
+        r.playToServer(MenuPick.TYPE,MenuPick.CODEC,(p,c)->c.enqueueWork(()->{if(c.player() instanceof ServerPlayer sp)ArenaManager.menuPick(sp,p);}));
     }
     private static int count(FriendlyByteBuf b,int max){int n=b.readVarInt();if(n<0||n>max)throw new IllegalArgumentException("Invalid arena list size");return n;}
     private static void strings(FriendlyByteBuf b,List<String> list,int max){if(list.size()>max)throw new IllegalArgumentException("Arena list too large");b.writeVarInt(list.size());for(String s:list)b.writeUtf(s,512);}
     private static List<String> strings(FriendlyByteBuf b,int max){int n=count(b,max);List<String> out=new ArrayList<>();for(int i=0;i<n;i++)out.add(b.readUtf(512));return List.copyOf(out);}
-    public record Battle(boolean active,String phase,int wave,int total,int enemies,int revives,String goal,int progress,int target,int seconds,int objectiveHealth,int objectiveMaxHealth,String pickups) implements CustomPacketPayload {
+    /** info = Zusatzzeile fuer diesen Spieler (z. B. Baukasse), healthLabel = Name des Schutzziels (Beacon, Kristall). */
+    public record Battle(boolean active,String phase,int wave,int total,int enemies,int revives,String goal,int progress,int target,int seconds,int objectiveHealth,int objectiveMaxHealth,String pickups,String info,String healthLabel) implements CustomPacketPayload {
         public static final Type<Battle> TYPE=new Type<>(ChronicleArena.id("battle"));
-        public static final Battle EMPTY=new Battle(false,"",0,0,0,0,"",0,0,0,0,0,"");
-        public static final StreamCodec<FriendlyByteBuf,Battle> CODEC=StreamCodec.of((b,p)->{b.writeBoolean(p.active);b.writeUtf(p.phase,128);b.writeVarInt(p.wave);b.writeVarInt(p.total);b.writeVarInt(p.enemies);b.writeVarInt(p.revives);b.writeUtf(p.goal,256);b.writeVarInt(p.progress);b.writeVarInt(p.target);b.writeVarInt(p.seconds);b.writeVarInt(p.objectiveHealth);b.writeVarInt(p.objectiveMaxHealth);b.writeUtf(p.pickups,128);},b->new Battle(b.readBoolean(),b.readUtf(128),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readUtf(256),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readUtf(128)));
-        public Battle withPickups(String value){return new Battle(active,phase,wave,total,enemies,revives,goal,progress,target,seconds,objectiveHealth,objectiveMaxHealth,value);}
+        public static final Battle EMPTY=new Battle(false,"",0,0,0,0,"",0,0,0,0,0,"","","");
+        public static final StreamCodec<FriendlyByteBuf,Battle> CODEC=StreamCodec.of((b,p)->{b.writeBoolean(p.active);b.writeUtf(p.phase,128);b.writeVarInt(p.wave);b.writeVarInt(p.total);b.writeVarInt(p.enemies);b.writeVarInt(p.revives);b.writeUtf(p.goal,256);b.writeVarInt(p.progress);b.writeVarInt(p.target);b.writeVarInt(p.seconds);b.writeVarInt(p.objectiveHealth);b.writeVarInt(p.objectiveMaxHealth);b.writeUtf(p.pickups,128);b.writeUtf(p.info,256);b.writeUtf(p.healthLabel,64);},b->new Battle(b.readBoolean(),b.readUtf(128),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readUtf(256),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readVarInt(),b.readUtf(128),b.readUtf(256),b.readUtf(64)));
+        public Battle forPlayer(String pickups,String info){return new Battle(active,phase,wave,total,enemies,revives,goal,progress,target,seconds,objectiveHealth,objectiveMaxHealth,pickups,info,healthLabel);}
         public Type<Battle> type(){return TYPE;}
     }
     public record Routes(UUID run,int wave,boolean open,int seconds,int voted,int voters,int risk,int recovery,int mission,int merchant,int choice,boolean goalsEnabled,boolean noHeal,boolean popup) implements CustomPacketPayload {
@@ -66,5 +69,31 @@ public final class ArenaNet {
         public static final Type<Retry> TYPE=new Type<>(ChronicleArena.id("retry"));
         public static final StreamCodec<FriendlyByteBuf,Retry> CODEC=StreamCodec.of((b,p)->b.writeUUID(p.run),b->new Retry(b.readUUID()));
         public Type<Retry> type(){return TYPE;}
+    }
+    /**
+     * Modus-Menue (z. B. Turm bauen bei Burg halten).
+     * state: 0 = waehlbar, 1 = gesperrt, 2 = aktiv/gewaehlt; votes ab 0 zeigt Stimmen an; negativer Preis = ohne Preis.
+     */
+    public record MenuOption(int id,String label,String desc,String icon,int price,int state,int votes) {}
+    public record Menu(String id,String title,String subtitle,List<MenuOption> options,int points,int seconds,boolean popup) implements CustomPacketPayload {
+        public static final Type<Menu> TYPE=new Type<>(ChronicleArena.id("menu"));
+        public static Menu close(){return new Menu("","","",List.of(),-1,0,false);}
+        public static final StreamCodec<FriendlyByteBuf,Menu> CODEC=StreamCodec.of((b,p)->{
+            b.writeUtf(p.id,64);b.writeUtf(p.title,128);b.writeUtf(p.subtitle,256);
+            if(p.options.size()>16)throw new IllegalArgumentException("Too many menu options");
+            b.writeVarInt(p.options.size());
+            for(var o:p.options){b.writeVarInt(o.id);b.writeUtf(o.label,128);b.writeUtf(o.desc,512);b.writeUtf(o.icon,128);b.writeInt(o.price);b.writeVarInt(o.state);b.writeInt(o.votes);}
+            b.writeInt(p.points);b.writeVarInt(p.seconds);b.writeBoolean(p.popup);
+        },b->{
+            String id=b.readUtf(64),title=b.readUtf(128),sub=b.readUtf(256);int n=count(b,16);List<MenuOption> opts=new ArrayList<>();
+            for(int i=0;i<n;i++)opts.add(new MenuOption(b.readVarInt(),b.readUtf(128),b.readUtf(512),b.readUtf(128),b.readInt(),b.readVarInt(),b.readInt()));
+            return new Menu(id,title,sub,List.copyOf(opts),b.readInt(),b.readVarInt(),b.readBoolean());
+        });
+        public Type<Menu> type(){return TYPE;}
+    }
+    public record MenuPick(String menu,int option) implements CustomPacketPayload {
+        public static final Type<MenuPick> TYPE=new Type<>(ChronicleArena.id("menu_pick"));
+        public static final StreamCodec<FriendlyByteBuf,MenuPick> CODEC=StreamCodec.of((b,p)->{b.writeUtf(p.menu,64);b.writeVarInt(p.option);},b->new MenuPick(b.readUtf(64),b.readVarInt()));
+        public Type<MenuPick> type(){return TYPE;}
     }
 }
