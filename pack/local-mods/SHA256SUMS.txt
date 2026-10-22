@@ -1,1 +1,1 @@
-f40990339e49497796a3e6ca26e550912dbef9f82ede38ad4d6be2c9b5128895  chronicle-arena-0.5.1.jar
+330468065e3864b7daee83d7622b09b3365e394fbffddd2fc8cc8be4f32985b6  chronicle-arena-0.5.2.jar

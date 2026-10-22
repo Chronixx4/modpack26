@@ -1,6 +1,6 @@
 # Chronicle Arena
 
-## Update 0.5.2 (in Arbeit): Burg halten im Koop
+## Update 0.5.2: Burg halten im Koop
 
 - **Tuerme besteigen:** Im Menue von Pfeil-, Frost-, Feuerturm und Moerser "Turm besteigen". Solange jemand oben steht, macht der Turm 50 % mehr Schaden (gruene Partikel). Vom Pfeilturm aus zaehlen auch eigene Pfeile (+25 %), sonst gilt weiter: selbst kaempfen nur auf dem Weg. "Herunterklettern" setzt einen hinter den Turm.
 - **Fallen auf dem Weg:** Schleichen + Rechtsklick auf den Weg. Stachelfalle (60, 30 Treffer), Teergrube (50, stark verlangsamt, 3 Wellen), Sprengfalle (90, einmalig, Umkreis 3,5). 3x3 Felder, hoechstens 6, nicht am Tor. Werden mit dem Kampf gespeichert.

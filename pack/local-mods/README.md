@@ -1,6 +1,6 @@
 # Eigene Mods fuer den Windows-Builder
 
-`chronicle-arena-0.5.1.jar` ist der Build des Arena-Quellstands auf diesem
+`chronicle-arena-0.5.2.jar` ist der Build des Arena-Quellstands auf diesem
 Arbeitsbranch (0.4.5 plus neuer Modus "Burg halten" (Tower Defense); Netzwerkversion 12; noch nicht veroeffentlicht). Die passende SHA-256-Pruefsumme
 steht in `SHA256SUMS.txt`. Build- und Teststatus: Java-21-Build, 71 automatisierte Tests gruen, im Spiel ungeprueft.
 
