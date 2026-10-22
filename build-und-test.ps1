@@ -385,7 +385,7 @@ foreach ($l in ($ModListRaw -split "`r?`n")) {
 # Kategorien der CurseForge-Jars (Dateiname -> Kategorie)
 $cfCat = [ordered]@{
   'twilightforest' = 'Dimensionen'; 'ExtendedAE' = 'AE2 und Technik'; 'AE2NetworkAnalyzer' = 'AE2 und Technik'
-  'ars_' = 'Magie'; 'ftb' = 'Multiplayer, Quests und Verwaltung'; 'allthemodium' = 'Dimensionen'; 'alltheleaks' = 'Performance und Grafik'; 'minebohrer' = 'Ressourcen und Landwirtschaft'; 'buildinggadgets2' = 'Deko und Bauen'; 'xycraft_machines' = 'AE2 und Technik'; 'xycraft_world' = 'Ressourcen und Landwirtschaft'; 'xycraft_core' = 'Bibliotheken (werden automatisch gebraucht)'; 'bytebuddies' = 'AE2 und Technik'; 'aeroportals' = 'Create und Addons'
+  'ars_' = 'Magie'; 'ftb' = 'Multiplayer, Quests und Verwaltung'; 'allthemodium' = 'Dimensionen'; 'alltheleaks' = 'Performance und Grafik'; 'minebohrer' = 'Ressourcen und Landwirtschaft'; 'buildinggadgets2' = 'Deko und Bauen'; 'xycraft_machines' = 'AE2 und Technik'; 'xycraft_world' = 'Ressourcen und Landwirtschaft'; 'xycraft_core' = 'Bibliotheken (werden automatisch gebraucht)'; 'bytebuddies' = 'AE2 und Technik'; 'aeroportals' = 'Create und Addons'; 'dragonrework' = 'Mobs und Bosse'
 }
 
 $vq = '?loaders=' + [uri]::EscapeDataString('["neoforge"]') + '&game_versions=' + [uri]::EscapeDataString('["1.21.1"]')

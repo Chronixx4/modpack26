@@ -1,5 +1,5 @@
 ﻿Chronicle 0.9.37 - Modliste
-Minecraft 1.21.1, NeoForge 21.1.256   |   342 Mods inkl. Bibliotheken und eigener Arena   |   Stand 2026-10-17
+Minecraft 1.21.1, NeoForge 21.1.256   |   343 Mods inkl. Bibliotheken und eigener Arena   |   Stand 2026-10-17
 
 == Performance und Grafik (20) ==
   All The Leaks                                  1.1.13+1.21.1-neoforge  (CurseForge)
@@ -229,10 +229,11 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   342 Mods inkl. Bibliotheken und eigene
   YUNG's Better Witch Huts                       1.21.1-NeoForge-4.1.1
   YUNG's Bridges                                 1.21.1-NeoForge-5.1.1
 
-== Mobs und Bosse (20) ==
+== Mobs und Bosse (21) ==
   Aquamirae                                      7.2.10
   Born in Chaos                                  1.7.6
   Bosses'Rise                                    2.1.2
+  Dragon Rework (Enderdrache)                    0.8.0  (eigene Mod)
   Cataclysm x Create Integration                 1.21.1-Neoforge+mod
   Chronicle Arena                                0.4.2  (eigene Mod)
   Eternal Hunts [Cataclysm & Mowzie's Mobs & Born in Chaos] 0.2.4-1.21.1
