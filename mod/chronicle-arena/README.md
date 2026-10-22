@@ -1,5 +1,18 @@
 # Chronicle Arena
 
+## Update 0.5.1 (in Arbeit): Burg halten ueberarbeitet
+
+- **Echte Tuerme:** Jeder Turm ist ein 3x3-Bauwerk, das zeigt, was er ist (Holzturm mit Zielscheibe, Eisspitze, Feuerbecken, Moerser, Golem-Kaserne mit Gitter, Goldmine). Jede Stufe macht ihn hoeher und prachtvoller. Schuesse sind als Pfeil-, Flammen- oder Rauchspur zu sehen.
+- **Zwei neue Tuerme:** Moerser (175/225/325, Flaechenschaden, stark gegen Gepanzerte) und Goldmine (150/200/300, kaempft nicht, +30/50/80 Punkte nach jeder Welle).
+- **Gegner bleiben auf dem Weg:** Kein Rueckstoss mehr, wer trotzdem vom Weg kommt (Schubsen, Fliegen), wird sofort zurueckgesetzt. Festhaengen nach 5 s statt 8 s.
+- **Selbst kaempfen nur auf dem Weg:** Spieler treffen Gegner nur, wenn sie selbst auf dem Pfad stehen (auch mit Pfeilen). Dort greifen die Gegner sie dann auch an. Neben dem Weg kommt der Hinweis "Nur vom Weg aus!".
+- **Mehr Gegner, gemischt:** 60 % mehr Gegner pro Welle, dafuer 25 % weniger Leben und 30 % schneller. Ab Welle 3 Laeufer (schnell, wenig Leben, Feuer +50 %), ab Welle 5 Gepanzerte (langsam, mehr Leben, Pfeile nur 40 %, Moerser +60 %).
+- **Mehr Tempo und Geld:** Erste Bauphase 15 s, danach 8 s Pause (20 s bei Segen). "Welle jetzt starten" in jedem Bauplatz-Menue. Start 500 Punkte, Pfeilturm 75, Feuerturm 100.
+- **Kristall-Schockwelle:** Am Kristall, kostenlos alle 60 s, trifft alle Gegner bis 12 Bloecke um den Kristall und friert sie kurz ein. Abklingzeit im HUD.
+- **Neue Karte:** 23 Bauplaetze, alle 5 Bloecke neben der Pfadmitte (auch der Feuerturm trifft jetzt). Mauern mit Zinnen und Ecktuermen, Torhaus mit Fallgitter und Seelenfeuer, Wiese mit Blumen und Buesche, Laternenpfaehle am Weg, Banner, Kristall als Leuchtfeuer mit violettem Strahl. Wird beim naechsten Kampf neu gebaut (neuer Markerblock).
+- Ein gesicherter Stand aus 0.5.0 (alte Bauplaetze) wird beim Laden gutgeschrieben statt aufgestellt.
+- Im Spiel ungetestet, nur gebaut und Unit-Tests (72 gruen).
+
 ## Update 0.5.0: Burg halten
 
 - **Neuer Modus "Burg halten" (Tower Defense):** Im Terminal den Modus-Knopf auf "Burg halten" stellen (Wellen -> Boss -> Burg halten), Begegnung und Stufe wie bei Wellen waehlen. Gekaempft wird im neuen Burghof (bei z 1100, wird beim ersten Kampf gebaut).

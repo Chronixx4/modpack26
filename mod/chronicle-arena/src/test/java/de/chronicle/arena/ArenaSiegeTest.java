@@ -44,7 +44,19 @@ class ArenaSiegeTest {
             for(int x=-ArenaSiege.HALF;x<=ArenaSiege.HALF&&!reach;x++)for(int z=-ArenaSiege.HALF;z<=ArenaSiege.HALF;z++)
                 if(ArenaSiege.onPath(x,z)&&Math.hypot(x-pad[0],z-pad[1])<=ArenaSiege.Tower.ARROW.range(1)){reach=true;break;}
             assertTrue(reach,"Bauplatz ohne Pfad in Reichweite: "+Arrays.toString(pad));
+            // Auch der Feuerturm (Stufe 1) erreicht die Pfadmitte.
+            boolean mid=false;
+            for(int i=1;i<ArenaSiege.PATH.length&&!mid;i++){
+                int[] a=ArenaSiege.PATH[i-1],b=ArenaSiege.PATH[i];
+                for(int x=Math.min(a[0],b[0]);x<=Math.max(a[0],b[0])&&!mid;x++)for(int z=Math.min(a[1],b[1]);z<=Math.max(a[1],b[1]);z++)
+                    if(Math.hypot(x-pad[0],z-pad[1])<=ArenaSiege.Tower.FLAME.range(1)){mid=true;break;}
+            }
+            assertTrue(mid,"Feuerturm erreicht den Pfad nicht: "+Arrays.toString(pad));
+            // Golems stehen auf dem Weg vor ihrer Kaserne.
+            var f=ArenaSiege.facing(i0(pad));
+            assertTrue(ArenaSiege.onPath(pad[0]+f.getStepX()*3,pad[1]+f.getStepZ()*3),"Kaserne zeigt nicht zum Weg: "+Arrays.toString(pad));
         }
+        assertTrue(ArenaSiege.PADS.length>=20,"Zu wenige Bauplaetze");
     }
 
     @Test void terminalFlagSelectsSiegeOnlyForWaveEncounters(){
@@ -82,7 +94,7 @@ class ArenaSiegeTest {
         assertEquals(275,tag.getInt("points"));assertEquals(40,tag.getInt("core"));assertEquals(125,tag.getInt("core_max"));
         assertEquals(ArenaSiege.Tower.FROST.ordinal(),tag.getIntArray("type")[3]);assertEquals(2,tag.getIntArray("level")[3]);assertEquals(350,tag.getIntArray("spent")[3]);
         s.core=0;assertTrue(s.lost());
-        assertEquals(100,s.price(ArenaSiege.Tower.ARROW,0));assertEquals(250,s.price(ArenaSiege.Tower.ARROW,2));
+        assertEquals(75,s.price(ArenaSiege.Tower.ARROW,0));assertEquals(200,s.price(ArenaSiege.Tower.ARROW,2));
         assertTrue(ArenaSiege.progress(3,1.0)>ArenaSiege.progress(2,0.0),"Wer weiter ist, wird zuerst beschossen");
     }
 
@@ -97,5 +109,25 @@ class ArenaSiegeTest {
         var close=ArenaNet.Menu.close();assertTrue(close.id().isEmpty());
     }
 
-    private static LivingEntity mob(){LivingEntity e=mock(LivingEntity.class);UUID id=UUID.randomUUID();when(e.getUUID()).thenReturn(id);return e;}
+    private static int i0(int[] pad){for(int i=0;i<ArenaSiege.PADS.length;i++)if(ArenaSiege.PADS[i]==pad)return i;return -1;}
+
+    @Test void mobsAreHeldOnThePathAndRolesMatchTowers(){
+        for(int wp=1;wp<ArenaSiege.PATH.length;wp++){
+            var far=new net.minecraft.world.phys.Vec3(ArenaSiege.CENTER.getX()+40,ArenaSiege.CENTER.getY()+5,ArenaSiege.CENTER.getZ()-40);
+            assertTrue(ArenaSiege.onPath(ArenaSiege.clampToSegment(far,wp)),"Zuruecksetzen landet neben dem Weg (Stueck "+wp+")");
+        }
+        assertEquals(ArenaSiege.NORMAL,ArenaSiege.rollRole(1,false,0.0));
+        assertEquals(ArenaSiege.RUNNER,ArenaSiege.rollRole(3,false,0.1));
+        assertEquals(ArenaSiege.ARMORED,ArenaSiege.rollRole(5,false,0.3));
+        assertEquals(ArenaSiege.LEADER,ArenaSiege.rollRole(1,true,0.9));
+        assertTrue(ArenaSiege.Tower.CANNON.vs(ArenaSiege.ARMORED)>1&&ArenaSiege.Tower.ARROW.vs(ArenaSiege.ARMORED)<1);
+        assertTrue(ArenaSiege.Tower.FLAME.vs(ArenaSiege.RUNNER)>1);
+        var r=new ArenaManager.Run(enc(false),tier(10),1,ArenaManager.MODE_SIEGE,0);
+        var s=(ArenaSiege)r.logic;
+        assertEquals(500,s.points);
+        s.type[0]=ArenaSiege.Tower.MINE.ordinal();s.level[0]=2;s.type[1]=ArenaSiege.Tower.MINE.ordinal();s.level[1]=1;
+        assertEquals(80,s.mineIncome());
+    }
+
+    private static LivingEntity mob(){LivingEntity e=mock(LivingEntity.class);UUID id=UUID.randomUUID();when(e.getUUID()).thenReturn(id);when(e.getRandom()).thenReturn(net.minecraft.util.RandomSource.create(1));return e;}
 }
