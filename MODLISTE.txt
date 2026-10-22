@@ -233,7 +233,7 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   343 Mods inkl. Bibliotheken und eigene
   Aquamirae                                      7.2.10
   Born in Chaos                                  1.7.6
   Bosses'Rise                                    2.1.2
-  Dragon Rework (Enderdrache)                    0.8.0  (eigene Mod)
+  Dragon Rework (Enderdrache)                    0.8.1  (eigene Mod)
   Cataclysm x Create Integration                 1.21.1-Neoforge+mod
   Chronicle Arena                                0.4.2  (eigene Mod)
   Eternal Hunts [Cataclysm & Mowzie's Mobs & Born in Chaos] 0.2.4-1.21.1
