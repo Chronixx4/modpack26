@@ -1632,6 +1632,7 @@ public final class ArenaManager {
         ArenaLog.dedupe(level);
         ArenaChallenges.dedupe(level);
         ArenaChallenges.tick(server, level);
+        ArenaInfo.tick(level);
         for (ServerPlayer p : level.players()) {
             if (p.isCreative() && !p.isSpectator()) continue;
             boolean inRun = run != null && run.involves(p.getUUID());

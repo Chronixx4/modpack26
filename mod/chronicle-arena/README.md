@@ -1,6 +1,6 @@
 # Chronicle Arena
 
-## Update 0.5.1 (in Arbeit): Burg halten ueberarbeitet
+## Update 0.5.1: Burg halten ueberarbeitet, Infotafeln
 
 - **Echte Tuerme:** Jeder Turm ist ein 3x3-Bauwerk, das zeigt, was er ist (Holzturm mit Zielscheibe, Eisspitze, Feuerbecken, Moerser, Golem-Kaserne mit Gitter, Goldmine). Jede Stufe macht ihn hoeher und prachtvoller. Schuesse sind als Pfeil-, Flammen- oder Rauchspur zu sehen.
 - **Zwei neue Tuerme:** Moerser (175/225/325, Flaechenschaden, stark gegen Gepanzerte) und Goldmine (150/200/300, kaempft nicht, +30/50/80 Punkte nach jeder Welle).
@@ -10,6 +10,7 @@
 - **Mehr Tempo und Geld:** Erste Bauphase 15 s, danach 8 s Pause (20 s bei Segen). "Welle jetzt starten" in jedem Bauplatz-Menue. Start 500 Punkte, Pfeilturm 75, Feuerturm 100.
 - **Kristall-Schockwelle:** Am Kristall, kostenlos alle 60 s, trifft alle Gegner bis 12 Bloecke um den Kristall und friert sie kurz ein. Abklingzeit im HUD.
 - **Neue Karte:** 23 Bauplaetze, alle 5 Bloecke neben der Pfadmitte (auch der Feuerturm trifft jetzt). Mauern mit Zinnen und Ecktuermen, Torhaus mit Fallgitter und Seelenfeuer, Wiese mit Blumen und Buesche, Laternenpfaehle am Weg, Banner, Kristall als Leuchtfeuer mit violettem Strahl. Wird beim naechsten Kampf neu gebaut (neuer Markerblock).
+- **Infotafeln in der Lobby** (ueber den oestlichen Zauberecken): Uebersicht, was es in der Arena gibt, und eine Vorschau auf den kommenden Bunker-Modus (Zombie-Modus). Werden neu geschrieben, wenn sie fehlen.
 - Ein gesicherter Stand aus 0.5.0 (alte Bauplaetze) wird beim Laden gutgeschrieben statt aufgestellt.
 - Im Spiel ungetestet, nur gebaut und Unit-Tests (72 gruen).
 
