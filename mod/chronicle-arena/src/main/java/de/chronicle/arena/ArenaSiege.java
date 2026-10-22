@@ -48,6 +48,12 @@ final class ArenaSiege extends ModeLogic {
     static final BlockPos CENTER = new BlockPos(0, 64, 1100);
     /** Wegpunkte (x, z relativ zur Mitte): Tor -> Schlangenlinie -> vor dem Kristall. */
     static final int[][] PATH = {{-24, -28}, {-24, -16}, {24, -16}, {24, 0}, {-24, 0}, {-24, 16}, {0, 16}, {0, 23}};
+    /** Zweiter Weg vom Osttor, offen ab Welle SECOND_GATE_WAVE. */
+    static final int[][] PATH2 = {{30, 14}, {20, 14}, {20, 28}, {5, 28}};
+    static final int[][][] PATHS = {PATH, PATH2};
+    static final int SECOND_GATE_WAVE = 10;
+    /** Osttor: Mitte der Oeffnung (z) in der Ostmauer. */
+    static final int GATE2_Z = 14;
     static final int[] CORE = {0, 27};
     /** Bauplaetze (3x3), alle 5 Bloecke neben der Pfadmitte, damit auch kurze Reichweiten treffen. */
     static final int[][] PADS = {
@@ -56,7 +62,8 @@ final class ArenaSiege extends ModeLogic {
             {-16, -5}, {-6, -5}, {4, -5}, {14, -5}, {29, -8},
             {-16, 5}, {-6, 5}, {4, 5}, {14, 5}, {-29, 8},
             {-16, 11}, {-6, 11}, {5, 16},
-            {-5, 22}, {5, 22}};
+            {-5, 22}, {5, 22},
+            {26, 9}, {25, 19}, {15, 19}, {11, 23}};
     static final int HALF = 32;
     /** Grundwerte; kommen spaeter ins Admin-Panel. Prozentwerte wirken als Faktor. */
     static final int CORE_HP = 100, CORE_HP_PLAYER = 25, START_POINTS = 500, FIRST_BUILD_SECONDS = 15, PAUSE_SECONDS = 8;
@@ -64,9 +71,12 @@ final class ArenaSiege extends ModeLogic {
     /** Gegner pro Welle im Vergleich zum Wellen-Modus; dafuer hat jeder weniger Leben. */
     static final double COUNT_FACTOR = 1.6, HEALTH_FACTOR = 0.75, SPEED_BONUS = 0.3;
     static final int SHOCK_COOLDOWN = 60 * 20;
+    /** Besetzter Turm: Schadensfaktor; eigener Fernkampf vom Pfeilturm aus. */
+    static final double MANNED_BONUS = 1.5, ARCHER_BONUS = 1.25;
+    static final int MAX_TRAPS = 6;
 
     /** Gegnerrollen: bestimmen Tempo, Leben und welche Tuerme gut wirken. */
-    static final int NORMAL = 0, RUNNER = 1, ARMORED = 2, LEADER = 3;
+    static final int NORMAL = 0, RUNNER = 1, ARMORED = 2, LEADER = 3, SABOTEUR = 4, SHADE = 5;
 
     enum Tower {
         ARROW("Pfeilturm", "Holzturm mit Schuetzen. Trifft den Gegner, der am weitesten gekommen ist. Schwach gegen Gepanzerte.", "minecraft:bow", 75, 125, 200),
@@ -123,6 +133,8 @@ final class ArenaSiege extends ModeLogic {
         /** Schadensfaktor gegen eine Gegnerrolle. */
         double vs(int role) {
             return switch (role) {
+                case SABOTEUR -> 0.0;
+                case SHADE -> 0.2;
                 case RUNNER -> this == FLAME ? 1.5 : this == CANNON ? 0.6 : 1.0;
                 case ARMORED -> this == ARROW ? 0.4 : this == FROST ? 0.5 : this == CANNON ? 1.6 : 1.0;
                 default -> 1.0;
@@ -131,6 +143,44 @@ final class ArenaSiege extends ModeLogic {
 
         /** Hoehe des Turmkoerpers; die Spitze sitzt darueber. */
         int height(int level) { return this == MINE ? 1 + level : 3 + level; }
+
+        /** Kann ein Spieler oben stehen und den Turm verstaerken? */
+        boolean mannable() { return this == ARROW || this == FROST || this == FLAME || this == CANNON; }
+    }
+
+    /** Fallen, die Spieler (schleichend, Rechtsklick auf den Weg) direkt auf den Pfad legen. */
+    enum TrapType {
+        SPIKES("Stachelfalle", "Sticht alle Gegner darauf, 30 Treffer lang.", "minecraft:pointed_dripstone", 60, 30),
+        TAR("Teergrube", "Macht Gegner darauf sehr langsam. Haelt 3 Wellen.", "minecraft:black_dye", 50, 3),
+        BOMB("Sprengfalle", "Explodiert beim ersten Gegner und trifft alles im Umkreis von 3,5 Bloecken hart. Einmalig.", "minecraft:tnt", 90, 1);
+
+        final String title, desc, icon;
+        final int price, charges;
+
+        TrapType(String title, String desc, String icon, int price, int charges) {
+            this.title = title;
+            this.desc = desc;
+            this.icon = icon;
+            this.price = price;
+            this.charges = charges;
+        }
+
+        Block carpet() { return this == SPIKES ? Blocks.LIGHT_GRAY_CARPET : this == TAR ? Blocks.BLACK_CARPET : Blocks.RED_CARPET; }
+    }
+
+    static final class Trap {
+        final int x, z;
+        final TrapType type;
+        int charges;
+
+        Trap(int x, int z, TrapType type, int charges) {
+            this.x = x;
+            this.z = z;
+            this.type = type;
+            this.charges = charges;
+        }
+
+        boolean covers(int cx, int cz) { return Math.abs(cx - x) <= 1 && Math.abs(cz - z) <= 1; }
     }
 
     static final String[] ROMAN = {"", "I", "II", "III"};
@@ -152,6 +202,13 @@ final class ArenaSiege extends ModeLogic {
     private final Map<UUID, double[]> stuck = new HashMap<>();
     private final Set<UUID> leaked = new HashSet<>();
     private final Map<UUID, Long> hint = new HashMap<>();
+    final Map<UUID, Integer> pathOf = new HashMap<>();
+    private int nextPath;
+    final List<Trap> traps = new ArrayList<>();
+    /** Saboteur -> Bauplatz, den er lahmlegt. */
+    final Map<UUID, Integer> jam = new HashMap<>();
+    private int saboteurs;
+    private boolean gate2Open;
 
     ArenaSiege(ArenaManager.Run r) {
         super(r);
@@ -160,9 +217,13 @@ final class ArenaSiege extends ModeLogic {
 
     static BlockPos at(int x, int y, int z) { return CENTER.offset(x, y, z); }
 
-    static Vec3 point(int i) {
-        return new Vec3(CENTER.getX() + PATH[i][0] + 0.5, CENTER.getY(), CENTER.getZ() + PATH[i][1] + 0.5);
+    static Vec3 point(int i) { return point(PATH, i); }
+
+    static Vec3 point(int[][] path, int i) {
+        return new Vec3(CENTER.getX() + path[i][0] + 0.5, CENTER.getY(), CENTER.getZ() + path[i][1] + 0.5);
     }
+
+    private int[][] pathFor(UUID id) { return PATHS[pathOf.getOrDefault(id, 0)]; }
 
     /** Wie weit ein Gegner gekommen ist (fuer die Zielwahl der Tuerme): Wegpunkt zaehlt, dann Restabstand. */
     static double progress(int wp, double distToNext) { return wp * 1000.0 - distToNext; }
@@ -174,11 +235,16 @@ final class ArenaSiege extends ModeLogic {
         return len;
     }
 
-    /** Liegt (x, z) auf dem Pfad (halbe Breite 2)? */
+    /** Liegt (x, z) auf einem der Pfade (halbe Breite 2)? */
     static boolean onPath(int x, int z) {
-        for (int i = 1; i < PATH.length; i++) {
-            int x0 = Math.min(PATH[i - 1][0], PATH[i][0]) - 2, x1 = Math.max(PATH[i - 1][0], PATH[i][0]) + 2;
-            int z0 = Math.min(PATH[i - 1][1], PATH[i][1]) - 2, z1 = Math.max(PATH[i - 1][1], PATH[i][1]) + 2;
+        for (int[][] path : PATHS) if (onPath(path, x, z)) return true;
+        return false;
+    }
+
+    static boolean onPath(int[][] path, int x, int z) {
+        for (int i = 1; i < path.length; i++) {
+            int x0 = Math.min(path[i - 1][0], path[i][0]) - 2, x1 = Math.max(path[i - 1][0], path[i][0]) + 2;
+            int z0 = Math.min(path[i - 1][1], path[i][1]) - 2, z1 = Math.max(path[i - 1][1], path[i][1]) + 2;
             if (x >= x0 && x <= x1 && z >= z0 && z <= z1) return true;
         }
         return false;
@@ -190,10 +256,12 @@ final class ArenaSiege extends ModeLogic {
     }
 
     /** Naechster Punkt auf dem Pfadstueck vor Wegpunkt wp (Weltkoordinaten), mit Abstand zum Rand. */
-    static Vec3 clampToSegment(Vec3 pos, int wp) {
-        int i = Math.max(1, Math.min(PATH.length - 1, wp));
-        double ax = CENTER.getX() + PATH[i - 1][0] + 0.5, az = CENTER.getZ() + PATH[i - 1][1] + 0.5;
-        double bx = CENTER.getX() + PATH[i][0] + 0.5, bz = CENTER.getZ() + PATH[i][1] + 0.5;
+    static Vec3 clampToSegment(Vec3 pos, int wp) { return clampToSegment(PATH, pos, wp); }
+
+    static Vec3 clampToSegment(int[][] path, Vec3 pos, int wp) {
+        int i = Math.max(1, Math.min(path.length - 1, wp));
+        double ax = CENTER.getX() + path[i - 1][0] + 0.5, az = CENTER.getZ() + path[i - 1][1] + 0.5;
+        double bx = CENTER.getX() + path[i][0] + 0.5, bz = CENTER.getZ() + path[i][1] + 0.5;
         double x = Math.max(Math.min(ax, bx) - 1.0, Math.min(Math.max(ax, bx) + 1.0, pos.x));
         double z = Math.max(Math.min(az, bz) - 1.0, Math.min(Math.max(az, bz) + 1.0, pos.z));
         return new Vec3(x, CENTER.getY(), z);
@@ -208,8 +276,12 @@ final class ArenaSiege extends ModeLogic {
         if (special) return LEADER;
         if (wave >= 3 && roll < 0.2) return RUNNER;
         if (wave >= 5 && roll < 0.35) return ARMORED;
+        if (wave >= 6 && roll < 0.45) return SHADE;
         return NORMAL;
     }
+
+    /** Wie viele Saboteure eine Welle bringt. */
+    static int saboteurQuota(int wave) { return wave < 4 ? 0 : 1 + wave / 8; }
 
     // ------------------------------------------------------------------ Start und Karte
 
@@ -221,6 +293,8 @@ final class ArenaSiege extends ModeLogic {
         points = START_POINTS;
         shockCooldown = 0;
         resetPads(lvl);
+        clearTraps(lvl);
+        gate(lvl, false);
         labels(lvl);
     }
 
@@ -229,14 +303,15 @@ final class ArenaSiege extends ModeLogic {
         for (UUID id : r.participants) {
             ServerPlayer p = server.getPlayerList().getPlayer(id);
             if (p == null) continue;
-            p.sendSystemMessage(Component.literal("Burg halten: Rechtsklick auf einen Bauplatz baut Tuerme. Gegner treffen kannst du nur, wenn du selbst auf dem Weg stehst."
-                    + " Am Kristall: reparieren, Schockwelle, Welle sofort starten.").withStyle(ChatFormatting.AQUA));
+            p.sendSystemMessage(Component.literal("Burg halten: Rechtsklick auf einen Bauplatz baut Tuerme, ueber das Menue kannst du sie auch besteigen (+50 % Schaden)."
+                    + " Gegner triffst du nur vom Weg aus oder mit Pfeilen vom Pfeilturm. Schleichen + Rechtsklick auf den Weg legt Fallen."
+                    + " Saboteure legen Tuerme lahm, die musst du selbst erledigen. Ab Welle " + SECOND_GATE_WAVE + " oeffnet sich das Osttor.").withStyle(ChatFormatting.AQUA));
         }
     }
 
     @Override Vec3 startPos(int i, int n) {
         double off = (i - (n - 1) / 2.0) * 1.6;
-        return new Vec3(CENTER.getX() + 12.5 + off, CENTER.getY(), CENTER.getZ() + 23.5);
+        return new Vec3(CENTER.getX() + 8.5 + off, CENTER.getY(), CENTER.getZ() + 19.5);
     }
 
     private void resetPads(ServerLevel lvl) {
@@ -290,7 +365,7 @@ final class ArenaSiege extends ModeLogic {
                 Block b = switch (t) {
                     case ARROW -> c ? Blocks.STRIPPED_SPRUCE_LOG : s && y == h - 2 ? Blocks.SPRUCE_FENCE : Blocks.SPRUCE_PLANKS;
                     case FROST -> c ? (y < h - 1 ? Blocks.BLUE_ICE : Blocks.SNOW_BLOCK) : s ? (y % 2 == 0 ? Blocks.PACKED_ICE : Blocks.LIGHT_BLUE_STAINED_GLASS) : Blocks.PACKED_ICE;
-                    case FLAME -> c ? Blocks.RED_NETHER_BRICKS : s && y == h - 1 ? Blocks.MAGMA_BLOCK : Blocks.NETHER_BRICKS;
+                    case FLAME -> c ? (y == h - 1 ? Blocks.MAGMA_BLOCK : Blocks.RED_NETHER_BRICKS) : Blocks.NETHER_BRICKS;
                     case CANNON -> c ? Blocks.POLISHED_BLACKSTONE_BRICKS : s && y == h - 1 ? Blocks.GILDED_BLACKSTONE : Blocks.POLISHED_BLACKSTONE;
                     case GOLEM -> c ? (y == h - 1 ? Blocks.CHISELED_STONE_BRICKS : Blocks.STONE_BRICKS) : s ? (y == h - 1 ? Blocks.STONE_BRICKS : Blocks.IRON_BARS) : Blocks.IRON_BLOCK;
                     case MINE -> c ? Blocks.OAK_LOG : s ? (y == 0 ? Blocks.BARREL : Blocks.OAK_PLANKS) : Blocks.RAW_GOLD_BLOCK;
@@ -381,6 +456,11 @@ final class ArenaSiege extends ModeLogic {
     @Override int pauseTicks(boolean offer) { return offer ? 20 * 20 : PAUSE_SECONDS * 20; }
 
     @Override Vec3 spawnPos(ServerLevel lvl, ArenaManager.Spawn s) {
+        nextPath = gate2Open && lvl.getRandom().nextDouble() < 0.4 ? 1 : 0;
+        if (nextPath == 1) {
+            Vec3 gate = point(PATH2, 0);
+            return gate.add((lvl.getRandom().nextDouble() - 0.5) * 2.0, 0, (lvl.getRandom().nextDouble() - 0.5) * 3.0);
+        }
         Vec3 gate = point(0);
         return gate.add((lvl.getRandom().nextDouble() - 0.5) * 3.0, 0, (lvl.getRandom().nextDouble() - 0.5) * 2.0);
     }
@@ -388,12 +468,20 @@ final class ArenaSiege extends ModeLogic {
     @Override void spawned(LivingEntity le, ArenaManager.Spawn s) {
         UUID id = le.getUUID();
         waypoint.put(id, 1);
+        pathOf.put(id, nextPath);
+        nextPath = 0;
         worth.put(id, s.mini || s.boss ? 10 : s.elite ? 3 : 1);
         int ro = rollRole(r.wave, s.mini || s.boss, le.getRandom().nextDouble());
+        int quota = saboteurQuota(r.wave);
+        if (ro == NORMAL && saboteurs < quota && (le.getRandom().nextDouble() < 0.1 || r.queue.size() < quota - saboteurs)) {
+            ro = SABOTEUR;
+            saboteurs++;
+        }
         role.put(id, ro);
         double hp = HEALTH_FACTOR * switch (ro) {
             case RUNNER -> 0.6;
             case ARMORED -> 1.3;
+            case SABOTEUR -> 1.5;
             default -> 1.0;
         };
         double speed = SPEED_BONUS + (ro == RUNNER ? 0.5 : ro == ARMORED ? -0.15 : 0);
@@ -401,10 +489,23 @@ final class ArenaSiege extends ModeLogic {
         modify(le, Attributes.MOVEMENT_SPEED, "siege_speed", speed);
         modify(le, Attributes.KNOCKBACK_RESISTANCE, "siege_knockback", 1.0);
         le.setHealth(le.getMaxHealth());
-        if (!le.hasCustomName() && (ro == RUNNER || ro == ARMORED)) {
-            le.setCustomName(Component.literal(ro == RUNNER ? "Laeufer" : "Gepanzert").withStyle(ro == RUNNER ? ChatFormatting.YELLOW : ChatFormatting.GRAY));
+        if (ro == SABOTEUR || !le.hasCustomName() && (ro == RUNNER || ro == ARMORED || ro == SHADE)) {
+            String name = switch (ro) {
+                case RUNNER -> "Laeufer";
+                case ARMORED -> "Gepanzert";
+                case SHADE -> "Schemen";
+                default -> "Saboteur";
+            };
+            ChatFormatting color = switch (ro) {
+                case RUNNER -> ChatFormatting.YELLOW;
+                case ARMORED -> ChatFormatting.GRAY;
+                case SHADE -> ChatFormatting.DARK_AQUA;
+                default -> ChatFormatting.RED;
+            };
+            le.setCustomName(Component.literal(name).withStyle(color));
             le.setCustomNameVisible(true);
         }
+        if (ro == SABOTEUR) le.setGlowingTag(true);
         if (ro == ARMORED && le instanceof Mob m) {
             m.setItemSlot(EquipmentSlot.CHEST, new ItemStack(Items.IRON_CHESTPLATE));
             m.setItemSlot(EquipmentSlot.HEAD, new ItemStack(Items.IRON_HELMET));
@@ -426,14 +527,16 @@ final class ArenaSiege extends ModeLogic {
         return target instanceof ServerPlayer && onPath(target.position()) && mob.distanceToSqr(target) < 6.0 * 6.0;
     }
 
-    /** Spieler treffen Gegner nur, wenn sie selbst auf dem Weg stehen. */
-    @Override float playerHit(ServerPlayer attacker, LivingEntity mob, float amount) {
+    /** Spieler treffen Gegner nur, wenn sie selbst auf dem Weg stehen, oder mit Fernkampf von einem besetzten Pfeilturm. */
+    @Override float playerHit(ServerPlayer attacker, LivingEntity mob, float amount, boolean ranged) {
         if (onPath(attacker.position())) return amount;
+        int on = mannedBy(attacker);
+        if (ranged && on >= 0 && type[on] == Tower.ARROW.ordinal()) return (float) (amount * ARCHER_BONUS);
         long now = attacker.level().getGameTime();
         Long last = hint.get(attacker.getUUID());
         if (last == null || now - last > 60) {
             hint.put(attacker.getUUID(), now);
-            attacker.displayClientMessage(Component.literal("Nur vom Weg aus! Stell dich auf den Pfad, um selbst zu kaempfen.").withStyle(ChatFormatting.GOLD), true);
+            attacker.displayClientMessage(Component.literal("Nur vom Weg aus oder mit Pfeilen vom Pfeilturm!").withStyle(ChatFormatting.GOLD), true);
         }
         return 0;
     }
@@ -449,6 +552,26 @@ final class ArenaSiege extends ModeLogic {
         }
         // Gefallene Golems kommen zu jeder Welle zurueck.
         for (int i = 0; i < PADS.length; i++) if (type[i] == Tower.GOLEM.ordinal()) spawnGolems(lvl, i);
+        saboteurs = 0;
+        jam.clear();
+        if (r.wave >= SECOND_GATE_WAVE && !gate2Open) {
+            gate(lvl, true);
+            for (UUID id : r.alive) {
+                ServerPlayer p = lvl.getServer().getPlayerList().getPlayer(id);
+                if (p == null) continue;
+                p.sendSystemMessage(Component.literal("Das Osttor ist offen! Ab jetzt kommen Gegner von zwei Seiten.").withStyle(ChatFormatting.RED));
+                ArenaShow.title(List.of(p), ArenaShow.big("OSTTOR OFFEN", ChatFormatting.RED), Component.literal("Gegner von zwei Seiten").withStyle(ChatFormatting.GRAY), 5, 50, 10);
+            }
+        }
+    }
+
+    /** Fallgitter des Osttors: geschlossen bis Welle SECOND_GATE_WAVE. */
+    void gate(ServerLevel lvl, boolean open) {
+        gate2Open = open;
+        for (int dz = -2; dz <= 2; dz++) for (int y = 0; y <= 4; y++) {
+            boolean bars = !open || y >= 3;
+            lvl.setBlock(at(HALF + 1, y, GATE2_Z + dz), bars ? Blocks.IRON_BARS.defaultBlockState() : Blocks.AIR.defaultBlockState(), 2);
+        }
     }
 
     @Override void tickFight(MinecraftServer server, ServerLevel lvl, int tick) {
@@ -459,6 +582,7 @@ final class ArenaSiege extends ModeLogic {
         if (tick % 10 == 0) steer(server, lvl);
         if (shockCooldown > 0) shockCooldown--;
         towers(lvl, tick);
+        if (tick % 10 == 0) traps(lvl);
         if (tick % 40 == 0) leash(lvl);
         if (tick % 20 == 0) {
             coreLabel(lvl);
@@ -466,6 +590,16 @@ final class ArenaSiege extends ModeLogic {
             lvl.sendParticles(ParticleTypes.END_ROD, cx, CENTER.getY() + 4.0, cz, 6, 0.3, 0.6, 0.3, 0.01);
             Vec3 gate = point(0);
             lvl.sendParticles(ParticleTypes.SOUL_FIRE_FLAME, gate.x, gate.y + 1.0, gate.z - 3.0, 8, 1.5, 1.0, 0.3, 0.01);
+            if (gate2Open) {
+                Vec3 g2 = point(PATH2, 0);
+                lvl.sendParticles(ParticleTypes.SOUL_FIRE_FLAME, g2.x + 2.0, g2.y + 1.0, g2.z, 8, 0.3, 1.0, 1.5, 0.01);
+            }
+            for (var en : jam.entrySet()) {
+                int i = en.getValue();
+                lvl.sendParticles(ParticleTypes.LARGE_SMOKE, CENTER.getX() + PADS[i][0] + 0.5, CENTER.getY() + muzzle(i), CENTER.getZ() + PADS[i][1] + 0.5, 6, 0.6, 0.4, 0.6, 0.01);
+            }
+            for (int i = 0; i < PADS.length; i++) if (manned(lvl, i) != null)
+                lvl.sendParticles(ParticleTypes.HAPPY_VILLAGER, CENTER.getX() + PADS[i][0] + 0.5, CENTER.getY() + muzzle(i) + 1.5, CENTER.getZ() + PADS[i][1] + 0.5, 4, 0.8, 0.3, 0.8, 0);
         }
     }
 
@@ -485,7 +619,7 @@ final class ArenaSiege extends ModeLogic {
             if (!(lvl.getEntity(id) instanceof LivingEntity m) || !m.isAlive()) continue;
             boolean high = m.getY() > CENTER.getY() + 2.5;
             if (onPath(m.position()) && !high) continue;
-            Vec3 back = clampToSegment(m.position(), waypoint.getOrDefault(id, 1));
+            Vec3 back = clampToSegment(pathFor(id), m.position(), waypoint.getOrDefault(id, 1));
             m.teleportTo(back.x, back.y, back.z);
             m.setDeltaMovement(Vec3.ZERO);
         }
@@ -495,12 +629,13 @@ final class ArenaSiege extends ModeLogic {
     private void steer(MinecraftServer server, ServerLevel lvl) {
         for (UUID id : r.mobs) {
             if (!(lvl.getEntity(id) instanceof Mob m) || !m.isAlive()) continue;
+            int[][] path = pathFor(id);
             int wp = waypoint.getOrDefault(id, 1);
-            Vec3 target = point(wp);
-            if (m.position().subtract(target).horizontalDistanceSqr() < 1.8 * 1.8 && wp < PATH.length - 1) {
+            Vec3 target = point(path, wp);
+            if (m.position().subtract(target).horizontalDistanceSqr() < 1.8 * 1.8 && wp < path.length - 1) {
                 wp++;
                 waypoint.put(id, wp);
-                target = point(wp);
+                target = point(path, wp);
             }
             LivingEntity cur = m.getTarget();
             if (cur instanceof IronGolem g && g.isAlive() && m.distanceToSqr(g) < 4.0 * 4.0) continue;
@@ -514,6 +649,27 @@ final class ArenaSiege extends ModeLogic {
                 continue;
             }
             if (cur != null) m.setTarget(null);
+            // Saboteur: bleibt am naechsten Turm stehen und legt ihn lahm.
+            if (role.getOrDefault(id, NORMAL) == SABOTEUR) {
+                Integer j = jam.get(id);
+                if (j == null || type[j] < 0) {
+                    j = nearestTower(m.position(), 7.0);
+                    if (j != null) {
+                        jam.put(id, j);
+                        Tower t = Tower.values()[type[j]];
+                        for (UUID pid : r.alive) {
+                            ServerPlayer p = server.getPlayerList().getPlayer(pid);
+                            if (p != null) p.displayClientMessage(Component.literal("Ein Saboteur legt " + t.title + " (Platz " + (j + 1) + ") lahm! Nur ihr koennt ihn stoppen.")
+                                    .withStyle(ChatFormatting.RED), true);
+                        }
+                    } else jam.remove(id);
+                }
+                if (j != null) {
+                    m.getNavigation().stop();
+                    stuck.remove(id);
+                    continue;
+                }
+            }
             m.getNavigation().moveTo(target.x, target.y, target.z, 1.0);
             // Haengt ein Gegner 5 Sekunden fest, wird er auf den naechsten Wegpunkt gesetzt.
             double[] st = stuck.computeIfAbsent(id, k -> new double[]{m.getX(), m.getZ(), 0});
@@ -531,9 +687,10 @@ final class ArenaSiege extends ModeLogic {
     }
 
     private void leaks(MinecraftServer server, ServerLevel lvl) {
-        Vec3 end = point(PATH.length - 1);
         for (UUID id : new ArrayList<>(r.mobs)) {
-            if (waypoint.getOrDefault(id, 0) < PATH.length - 1) continue;
+            int[][] path = pathFor(id);
+            Vec3 end = point(path, path.length - 1);
+            if (waypoint.getOrDefault(id, 0) < path.length - 1) continue;
             if (!(lvl.getEntity(id) instanceof LivingEntity m) || !m.isAlive()) continue;
             if (m.position().subtract(end).horizontalDistanceSqr() > 2.2 * 2.2) continue;
             int dmg = (int) Math.round(leakDamage(worth.getOrDefault(id, 1)) * LEAK_PCT / 100.0);
@@ -556,16 +713,158 @@ final class ArenaSiege extends ModeLogic {
     }
 
     private void hit(ServerLevel lvl, LivingEntity m, Tower t, float dmg, net.minecraft.world.damagesource.DamageSource src) {
+        double f = t.vs(role.getOrDefault(m.getUUID(), NORMAL));
+        if (f <= 0) return;
         m.invulnerableTime = 0;
-        m.hurt(src, (float) (dmg * t.vs(role.getOrDefault(m.getUUID(), NORMAL))));
+        m.hurt(src, (float) (dmg * f));
+    }
+
+    /** Naechster Turm (nicht Goldmine) innerhalb von max Bloecken, sonst null. */
+    private Integer nearestTower(Vec3 pos, double max) {
+        Integer best = null;
+        double bestD = max * max;
+        for (int i = 0; i < PADS.length; i++) {
+            if (type[i] < 0 || type[i] == Tower.MINE.ordinal()) continue;
+            double dx = pos.x - (CENTER.getX() + PADS[i][0] + 0.5), dz = pos.z - (CENTER.getZ() + PADS[i][1] + 0.5);
+            double d = dx * dx + dz * dz;
+            if (d <= bestD) { bestD = d; best = i; }
+        }
+        return best;
+    }
+
+    /** Wird der Turm gerade von einem lebenden Saboteur lahmgelegt? */
+    boolean jammed(ServerLevel lvl, int i) {
+        for (var en : jam.entrySet()) {
+            if (en.getValue() != i) continue;
+            if (lvl == null || lvl.getEntity(en.getKey()) instanceof LivingEntity m && m.isAlive()) return true;
+        }
+        return false;
+    }
+
+    /** Hoehe, auf der man oben auf dem Turm steht (Seite zum Weg). */
+    private int standY(ServerLevel lvl, int i) {
+        Direction f = facing(i);
+        int x = PADS[i][0] + f.getStepX(), z = PADS[i][1] + f.getStepZ();
+        int y = Tower.values()[type[i]].height(level[i]);
+        while (y < 12 && !lvl.getBlockState(at(x, y, z)).isAir()) y++;
+        return y;
+    }
+
+    /** Spieler, der oben auf dem Turm steht, sonst null. */
+    ServerPlayer manned(ServerLevel lvl, int i) {
+        if (type[i] < 0 || !Tower.values()[type[i]].mannable()) return null;
+        double cx = CENTER.getX() + PADS[i][0] + 0.5, cz = CENTER.getZ() + PADS[i][1] + 0.5;
+        double minY = CENTER.getY() + Tower.values()[type[i]].height(level[i]) - 0.5;
+        for (UUID id : r.alive) {
+            ServerPlayer p = lvl.getServer().getPlayerList().getPlayer(id);
+            if (p != null && p.level() == lvl && !p.isSpectator() && Math.abs(p.getX() - cx) <= 1.7 && Math.abs(p.getZ() - cz) <= 1.7 && p.getY() >= minY) return p;
+        }
+        return null;
+    }
+
+    /** Auf welchem Turm steht der Spieler? -1 = keinem. */
+    int mannedBy(ServerPlayer p) {
+        ServerLevel lvl = p.serverLevel();
+        for (int i = 0; i < PADS.length; i++) if (manned(lvl, i) == p) return i;
+        return -1;
+    }
+
+    // ------------------------------------------------------------------ Fallen
+
+    private void traps(ServerLevel lvl) {
+        for (Trap tr : new ArrayList<>(traps)) {
+            double cx = CENTER.getX() + tr.x + 0.5, cz = CENTER.getZ() + tr.z + 0.5;
+            List<LivingEntity> on = new ArrayList<>();
+            for (UUID id : r.mobs) {
+                if (lvl.getEntity(id) instanceof LivingEntity m && m.isAlive() && Math.abs(m.getX() - cx) <= 1.6 && Math.abs(m.getZ() - cz) <= 1.6) on.add(m);
+            }
+            if (on.isEmpty()) continue;
+            switch (tr.type) {
+                case SPIKES -> {
+                    for (LivingEntity m : on) {
+                        if (tr.charges <= 0) break;
+                        m.invulnerableTime = 0;
+                        m.hurt(lvl.damageSources().cactus(), (float) (3.0 * towerScale()));
+                        tr.charges--;
+                    }
+                    lvl.sendParticles(ParticleTypes.CRIT, cx, CENTER.getY() + 0.3, cz, 10, 1.0, 0.1, 1.0, 0.05);
+                }
+                case TAR -> {
+                    for (LivingEntity m : on) m.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 30, 3, false, true));
+                    lvl.sendParticles(ParticleTypes.SQUID_INK, cx, CENTER.getY() + 0.2, cz, 4, 1.0, 0.05, 1.0, 0.01);
+                }
+                case BOMB -> {
+                    for (UUID id : r.mobs) {
+                        if (lvl.getEntity(id) instanceof LivingEntity m && m.isAlive() && m.position().distanceToSqr(cx, CENTER.getY(), cz) <= 3.5 * 3.5) {
+                            m.invulnerableTime = 0;
+                            m.hurt(lvl.damageSources().explosion(null, null), (float) (25.0 * towerScale()));
+                        }
+                    }
+                    lvl.sendParticles(ParticleTypes.EXPLOSION_EMITTER, cx, CENTER.getY() + 0.5, cz, 1, 0, 0, 0, 0);
+                    lvl.playSound(null, cx, CENTER.getY(), cz, SoundEvents.GENERIC_EXPLODE.value(), SoundSource.BLOCKS, 1.0F, 1.0F);
+                    tr.charges = 0;
+                }
+            }
+            if (tr.charges <= 0) removeTrap(lvl, tr);
+        }
+    }
+
+    Trap trapAt(int x, int z) {
+        for (Trap t : traps) if (t.covers(x, z)) return t;
+        return null;
+    }
+
+    /** Darf hier eine Falle (3x3) liegen? Ganz auf dem Weg, nicht am Tor, nicht ueber einer anderen Falle. */
+    boolean trapFits(int x, int z) {
+        for (int dx = -1; dx <= 1; dx++) for (int dz = -1; dz <= 1; dz++) if (!onPath(x + dx, z + dz)) return false;
+        for (Trap t : traps) if (Math.abs(t.x - x) <= 2 && Math.abs(t.z - z) <= 2) return false;
+        for (int[][] path : PATHS) if (Math.abs(x - path[0][0]) <= 3 && Math.abs(z - path[0][1]) <= 3) return false;
+        return true;
+    }
+
+    private void placeTrap(ServerLevel lvl, Trap t) {
+        for (int dx = -1; dx <= 1; dx++) for (int dz = -1; dz <= 1; dz++) {
+            boolean show = t.type != TrapType.BOMB || dx == 0 && dz == 0;
+            lvl.setBlock(at(t.x + dx, 0, t.z + dz), show ? t.type.carpet().defaultBlockState() : Blocks.AIR.defaultBlockState(), 2);
+        }
+    }
+
+    private void removeTrap(ServerLevel lvl, Trap t) {
+        traps.remove(t);
+        for (int dx = -1; dx <= 1; dx++) for (int dz = -1; dz <= 1; dz++) lvl.setBlock(at(t.x + dx, 0, t.z + dz), Blocks.AIR.defaultBlockState(), 2);
+    }
+
+    private void clearTraps(ServerLevel lvl) {
+        for (Trap t : new ArrayList<>(traps)) removeTrap(lvl, t);
+    }
+
+    private void trapMenu(ServerPlayer p, int x, int z, boolean popup) {
+        List<ArenaNet.MenuOption> opts = new ArrayList<>();
+        Trap here = trapAt(x, z);
+        String title;
+        if (here != null) {
+            title = here.type.title;
+            String left = here.type == TrapType.SPIKES ? here.charges + " Treffer uebrig." : here.type == TrapType.TAR ? "Noch " + here.charges + " Wellen." : "Wartet auf den ersten Gegner.";
+            opts.add(new ArenaNet.MenuOption(11, "Falle entfernen", left + " Keine Punkte zurueck.", "minecraft:barrier", -1, 0, -1));
+        } else {
+            title = "Falle legen";
+            boolean fits = trapFits(x, z), room = traps.size() < MAX_TRAPS;
+            for (TrapType t : TrapType.values()) {
+                opts.add(new ArenaNet.MenuOption(t.ordinal(), t.title, t.desc, t.icon, t.price, fits && room && points >= t.price ? 0 : 1, -1));
+            }
+            if (!fits) title += " (hier kein Platz)";
+            else if (!room) title += " (hoechstens " + MAX_TRAPS + ")";
+        }
+        PacketDistributor.sendToPlayer(p, new ArenaNet.Menu("siege_trap_" + x + "_" + z, title, "3x3 Felder auf dem Weg. Fallen liegen auch fuer euch, tun euch aber nichts.", opts, points, 0, popup));
     }
 
     private LivingEntity furthest(List<LivingEntity> list) {
         LivingEntity best = null;
         double bestP = -1e9;
         for (LivingEntity m : list) {
+            int[][] path = pathFor(m.getUUID());
             int wp = waypoint.getOrDefault(m.getUUID(), 1);
-            double pr = progress(wp, Math.sqrt(m.position().subtract(point(Math.min(wp, PATH.length - 1))).horizontalDistanceSqr()));
+            double pr = progress(wp + (PATH.length - path.length), Math.sqrt(m.position().subtract(point(path, Math.min(wp, path.length - 1))).horizontalDistanceSqr()));
             if (pr > bestP) { bestP = pr; best = m; }
         }
         return best;
@@ -577,17 +876,18 @@ final class ArenaSiege extends ModeLogic {
             Tower t = Tower.values()[type[i]];
             if (t == Tower.GOLEM || t == Tower.MINE) continue;
             if (cooldown[i] > 0) { cooldown[i]--; continue; }
+            if (jammed(lvl, i)) continue;
             int lv = level[i];
             Vec3 pos = new Vec3(CENTER.getX() + PADS[i][0] + 0.5, CENTER.getY() + muzzle(i) + 0.5, CENTER.getZ() + PADS[i][1] + 0.5);
             double range = t.range(lv);
             List<LivingEntity> inRange = new ArrayList<>();
             for (UUID id : r.mobs) {
-                if (lvl.getEntity(id) instanceof LivingEntity m && m.isAlive()
+                if (lvl.getEntity(id) instanceof LivingEntity m && m.isAlive() && t.vs(role.getOrDefault(id, NORMAL)) > 0
                         && m.position().subtract(pos).horizontalDistanceSqr() <= range * range) inRange.add(m);
             }
             if (inRange.isEmpty()) continue;
             cooldown[i] = t.interval(lv);
-            float dmg = (float) (t.damage(lv) * towerScale());
+            float dmg = (float) (t.damage(lv) * towerScale() * (manned(lvl, i) != null ? MANNED_BONUS : 1.0));
             switch (t) {
                 case ARROW -> {
                     LivingEntity best = furthest(inRange);
@@ -690,6 +990,8 @@ final class ArenaSiege extends ModeLogic {
         waypoint.remove(id);
         stuck.remove(id);
         role.remove(id);
+        pathOf.remove(id);
+        jam.remove(id);
         int w = worth.getOrDefault(id, 1);
         worth.remove(id);
         if (leaked.remove(id)) return;
@@ -718,7 +1020,10 @@ final class ArenaSiege extends ModeLogic {
         stuck.clear();
         worth.clear();
         role.clear();
+        pathOf.clear();
+        jam.clear();
         leaked.clear();
+        for (Trap t : new ArrayList<>(traps)) if (t.type == TrapType.TAR && --t.charges <= 0) removeTrap(lvl, t);
         return false;
     }
 
@@ -741,6 +1046,13 @@ final class ArenaSiege extends ModeLogic {
         int pad = padAt(pos);
         if (pad >= 0) { padMenu(p, pad, true); return true; }
         if (isCore(pos)) { coreMenu(p, true); return true; }
+        int x = pos.getX() - CENTER.getX(), z = pos.getZ() - CENTER.getZ(), y = pos.getY() - CENTER.getY();
+        if (p.isShiftKeyDown() && (y == -1 || y == 0) && onPath(x, z)) {
+            Trap t = trapAt(x, z);
+            if (t != null) trapMenu(p, t.x, t.z, true);
+            else trapMenu(p, x, z, true);
+            return true;
+        }
         return false;
     }
 
@@ -763,7 +1075,14 @@ final class ArenaSiege extends ModeLogic {
                 opts.add(new ArenaNet.MenuOption(10, "Hoechste Stufe", "Dieser Turm ist voll ausgebaut.", t.icon, -1, 1, -1));
             }
             opts.add(new ArenaNet.MenuOption(11, "Abreissen", "Gibt die Haelfte der investierten Punkte zurueck (" + spent[i] / 2 + ").", "minecraft:barrier", -1, 0, -1));
+            if (t.mannable()) {
+                ServerPlayer on = manned(p.serverLevel(), i);
+                if (on == p) opts.add(new ArenaNet.MenuOption(22, "Herunterklettern", "Zurueck auf den Boden hinter dem Turm.", "minecraft:ladder", -1, 0, -1));
+                else opts.add(new ArenaNet.MenuOption(21, "Turm besteigen", "Oben macht der Turm 50 % mehr Schaden."
+                        + (t == Tower.ARROW ? " Vom Pfeilturm aus treffen auch deine Pfeile (+25 %)." : ""), "minecraft:ladder", -1, on == null ? 0 : 1, -1));
+            }
         }
+        if (jammed(p.serverLevel(), i)) opts.add(0, new ArenaNet.MenuOption(30, "Lahmgelegt!", "Ein Saboteur steht am Turm. Erledigt ihn, dann feuert der Turm wieder.", "minecraft:redstone", -1, 1, -1));
         if (canStart()) opts.add(new ArenaNet.MenuOption(20, "Welle jetzt starten", "Bauphase beenden, die naechste Welle kommt in 3 Sekunden.", "minecraft:bell", -1, 0, -1));
         String title = type[i] < 0 ? "Bauplatz " + (i + 1) : Tower.values()[type[i]].title + " " + ROMAN[level[i]];
         PacketDistributor.sendToPlayer(p, new ArenaNet.Menu("siege_pad_" + i, title, "Gemeinsame Kasse der Gruppe. Bauen geht jederzeit, auch waehrend der Welle.", opts, points, 0, popup));
@@ -830,12 +1149,48 @@ final class ArenaSiege extends ModeLogic {
             coreMenu(p, false);
             return;
         }
+        if (menu.startsWith("siege_trap_")) {
+            String[] parts = menu.substring(11).split("_");
+            int x, z;
+            try { x = Integer.parseInt(parts[0]); z = Integer.parseInt(parts[1]); } catch (RuntimeException e) { return; }
+            Trap here = trapAt(x, z);
+            if (here != null && option == 11) {
+                removeTrap(lvl, here);
+                trapMenu(p, x, z, false);
+                return;
+            }
+            if (here == null && option >= 0 && option < TrapType.values().length && trapFits(x, z) && traps.size() < MAX_TRAPS) {
+                TrapType t = TrapType.values()[option];
+                if (points < t.price) return;
+                points -= t.price;
+                Trap tr = new Trap(x, z, t, t.charges);
+                traps.add(tr);
+                placeTrap(lvl, tr);
+                lvl.playSound(null, p.blockPosition(), SoundEvents.CHAIN_PLACE, SoundSource.BLOCKS, 0.8F, 0.9F);
+                say(p, p.getGameProfile().getName() + " legt eine " + t.title + ".");
+                PacketDistributor.sendToPlayer(p, ArenaNet.Menu.close());
+            }
+            return;
+        }
         if (!menu.startsWith("siege_pad_")) return;
         int i;
         try { i = Integer.parseInt(menu.substring(10)); } catch (NumberFormatException e) { return; }
         if (i < 0 || i >= PADS.length) return;
         if (option == 20) {
             if (canStart()) startNow = true;
+            PacketDistributor.sendToPlayer(p, ArenaNet.Menu.close());
+            return;
+        }
+        if (option == 21 && type[i] >= 0 && Tower.values()[type[i]].mannable() && manned(lvl, i) == null) {
+            Direction f = facing(i);
+            p.teleportTo(CENTER.getX() + PADS[i][0] + 0.5 + f.getStepX(), CENTER.getY() + standY(lvl, i), CENTER.getZ() + PADS[i][1] + 0.5 + f.getStepZ());
+            PacketDistributor.sendToPlayer(p, ArenaNet.Menu.close());
+            return;
+        }
+        if (option == 22 && manned(lvl, i) == p) {
+            Direction f = facing(i);
+            p.teleportTo(CENTER.getX() + PADS[i][0] + 0.5 - f.getStepX() * 2.5, CENTER.getY(), CENTER.getZ() + PADS[i][1] + 0.5 - f.getStepZ() * 2.5);
+            p.fallDistance = 0;
             PacketDistributor.sendToPlayer(p, ArenaNet.Menu.close());
             return;
         }
@@ -892,6 +1247,8 @@ final class ArenaSiege extends ModeLogic {
     @Override void clear(ServerLevel lvl) {
         if (lvl == null) return;
         resetPads(lvl);
+        clearTraps(lvl);
+        gate(lvl, false);
         ArenaLabels.remove(lvl, "chronicle_siege");
         java.util.Arrays.fill(padLabels, null);
         coreLabel = null;
@@ -906,6 +1263,15 @@ final class ArenaSiege extends ModeLogic {
         t.putIntArray("type", type);
         t.putIntArray("level", level);
         t.putIntArray("spent", spent);
+        int[] tr = new int[traps.size() * 4];
+        for (int k = 0; k < traps.size(); k++) {
+            Trap x = traps.get(k);
+            tr[k * 4] = x.x;
+            tr[k * 4 + 1] = x.z;
+            tr[k * 4 + 2] = x.type.ordinal();
+            tr[k * 4 + 3] = x.charges;
+        }
+        t.putIntArray("traps", tr);
         return t;
     }
 
@@ -928,6 +1294,15 @@ final class ArenaSiege extends ModeLogic {
             spent[i] = spend;
             if (typ >= 0) placeTower(lvl, i);
         }
+        clearTraps(lvl);
+        int[] tr = t.getIntArray("traps");
+        for (int k = 0; k + 3 < tr.length; k += 4) {
+            if (tr[k + 2] < 0 || tr[k + 2] >= TrapType.values().length || !trapFits(tr[k], tr[k + 1])) continue;
+            Trap x = new Trap(tr[k], tr[k + 1], TrapType.values()[tr[k + 2]], tr[k + 3]);
+            traps.add(x);
+            placeTrap(lvl, x);
+        }
+        gate(lvl, r.wave >= SECOND_GATE_WAVE);
         ArenaLabels.remove(lvl, "chronicle_siege");
         labels(lvl);
     }

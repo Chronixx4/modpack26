@@ -18,6 +18,8 @@ import java.util.List;
 final class ArenaInfo {
     private static final Logger LOGGER = LogUtils.getLogger();
     static final String TAG = "chronicle_info";
+    /** Neue Textfassung = neues Tag, damit alte Tafeln ersetzt werden. */
+    static final String VERSION = "chronicle_info_2";
 
     private ArenaInfo() {}
 
@@ -28,7 +30,8 @@ final class ArenaInfo {
             "Abgrund: endlose Wellen mit eigenem Rekord",
             "Boss-Kaempfe mit Phasen bei 75/50/25 %",
             "NEU: Burg halten - Tower Defense im Burghof",
-            "(Modus-Knopf im Terminal)",
+            "(Modus-Knopf im Terminal, Tuerme besteigen,",
+            "Fallen legen, ab Welle 10 zwei Tore)",
             "",
             "Missionen, Gruppenweg, Haendler-Weg",
             "Segen alle 5 Wellen, Fluch-Karten",
@@ -41,15 +44,14 @@ final class ArenaInfo {
 
     static final String TEASER = String.join("\n",
             "DEMNAECHST: BUNKER",
-            "Zombie-Modus im Stil von Call of Duty",
+            "Ein neuer Ueberlebensmodus",
             "",
             "Endlose Runden, Gegner brechen durch",
             "Fenster und Gaenge",
             "Punkte fuer jeden Treffer und Kill",
             "Tueren freikaufen, neue Raeume entdecken",
-            "Perk-Automaten: Zaehigkeit, Schnellhand,",
-            "Sprinter, Wiederbeleber",
-            "Waffen und Traenke an der Wand kaufen",
+            "Automaten mit Verstaerkungen fuer den Lauf",
+            "Ausruestung an der Wand kaufen",
             "Strom-Schalter fuer Fallen und Automaten",
             "Versteckte Geheimnisse ...",
             "",
@@ -62,9 +64,13 @@ final class ArenaInfo {
             if (p.distanceToSqr(ArenaManager.LOBBY.getX() + 0.5, p.getY(), ArenaManager.LOBBY.getZ() + 0.5) < 40 * 40) { near = true; break; }
         }
         if (!near) return;
-        int count = 0;
-        for (Entity e : level.getAllEntities()) if (e.getTags().contains(TAG)) count++;
-        if (count != 2) refresh(level);
+        int count = 0, current = 0;
+        for (Entity e : level.getAllEntities()) {
+            if (!e.getTags().contains(TAG)) continue;
+            count++;
+            if (e.getTags().contains(VERSION)) current++;
+        }
+        if (count != 2 || current != 2) refresh(level);
     }
 
     static void refresh(ServerLevel level) {
@@ -91,6 +97,7 @@ final class ArenaInfo {
         if (e == null) return;
         e.load(data);
         e.addTag(TAG);
+        e.addTag(VERSION);
         e.moveTo(x, y, z, 0, 0);
         level.addFreshEntity(e);
     }

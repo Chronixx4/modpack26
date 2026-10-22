@@ -14,7 +14,7 @@ import org.slf4j.Logger;
  */
 final class ArenaMaps {
     private static final Logger LOGGER = LogUtils.getLogger();
-    private static final Block SIEGE_MARKER = Blocks.CHISELED_TUFF_BRICKS;
+    private static final Block SIEGE_MARKER = Blocks.CHISELED_COPPER;
 
     private ArenaMaps() {}
 
@@ -43,7 +43,8 @@ final class ArenaMaps {
         for (int dx = -1; dx <= 1; dx++) for (int dz = -1; dz <= 1; dz++) if (ArenaSiege.onPath(x + dx, z + dz)) return false;
         for (int[] pad : ArenaSiege.PADS) if (Math.abs(x - pad[0]) <= 3 && Math.abs(z - pad[1]) <= 3) return false;
         if (Math.abs(x - ArenaSiege.CORE[0]) <= 4 && Math.abs(z - ArenaSiege.CORE[1]) <= 4) return false;
-        if (x >= 8 && x <= 18 && z >= 19 && z <= 28) return false;
+        if (x >= 5 && x <= 12 && z >= 18 && z <= 21) return false;
+        if (x > ArenaSiege.HALF - 5 && Math.abs(z - ArenaSiege.GATE2_Z) <= 4) return false;
         return Math.abs(x - ArenaSiege.PATH[0][0]) > 4 || z > ArenaSiege.PATH[0][1] + 2;
     }
 
@@ -127,7 +128,7 @@ final class ArenaMaps {
         }
         // Wandbehaenge an den Innenseiten.
         for (int i = -h + 4; i <= h - 4; i += 8) {
-            set(level, c.offset(h, 3, i), Blocks.RED_WALL_BANNER.defaultBlockState().setValue(net.minecraft.world.level.block.WallBannerBlock.FACING, net.minecraft.core.Direction.WEST));
+            if (Math.abs(i - ArenaSiege.GATE2_Z) > 5) set(level, c.offset(h, 3, i), Blocks.RED_WALL_BANNER.defaultBlockState().setValue(net.minecraft.world.level.block.WallBannerBlock.FACING, net.minecraft.core.Direction.WEST));
             set(level, c.offset(-h, 3, i), Blocks.RED_WALL_BANNER.defaultBlockState().setValue(net.minecraft.world.level.block.WallBannerBlock.FACING, net.minecraft.core.Direction.EAST));
             set(level, c.offset(i, 3, h), Blocks.RED_WALL_BANNER.defaultBlockState().setValue(net.minecraft.world.level.block.WallBannerBlock.FACING, net.minecraft.core.Direction.NORTH));
             if (Math.abs(i - gx) > 5) set(level, c.offset(i, 3, -h), Blocks.RED_WALL_BANNER.defaultBlockState().setValue(net.minecraft.world.level.block.WallBannerBlock.FACING, net.minecraft.core.Direction.SOUTH));
@@ -171,6 +172,23 @@ final class ArenaMaps {
         for (int s : new int[]{-3, 3}) {
             set(level, c.offset(gx + s, 0, -h), Blocks.POLISHED_DEEPSLATE);
             set(level, c.offset(gx + s, 1, -h), Blocks.SOUL_CAMPFIRE);
+        }
+        // Osttor (zweiter Weg): gleiches Torhaus in der Ostmauer, Fallgitter setzt der Modus.
+        int g2 = ArenaSiege.GATE2_Z;
+        for (int dz = -4; dz <= 4; dz++) {
+            for (int y = 0; y <= 8; y++) {
+                boolean post = Math.abs(dz) >= 3;
+                boolean top = y >= 5;
+                for (int xx = h + 1; xx <= h + 2; xx++) {
+                    if (post || top) set(level, c.offset(xx, y, g2 + dz), top && !post ? Blocks.DEEPSLATE_BRICKS : Blocks.POLISHED_DEEPSLATE);
+                    else set(level, c.offset(xx, y, g2 + dz), xx == h + 2 ? Blocks.BLACK_CONCRETE : Blocks.IRON_BARS);
+                }
+            }
+            if (Math.floorMod(dz, 2) == 0) set(level, c.offset(h + 1, 9, g2 + dz), Blocks.DEEPSLATE_BRICKS);
+        }
+        for (int sd : new int[]{-3, 3}) {
+            set(level, c.offset(h, 0, g2 + sd), Blocks.POLISHED_DEEPSLATE);
+            set(level, c.offset(h, 1, g2 + sd), Blocks.SOUL_CAMPFIRE);
         }
         level.setBlock(marker, SIEGE_MARKER.defaultBlockState(), 2);
         LOGGER.info("Arena: Burghof bei {} gebaut", c);

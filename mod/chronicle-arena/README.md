@@ -1,5 +1,15 @@
 # Chronicle Arena
 
+## Update 0.5.2 (in Arbeit): Burg halten im Koop
+
+- **Tuerme besteigen:** Im Menue von Pfeil-, Frost-, Feuerturm und Moerser "Turm besteigen". Solange jemand oben steht, macht der Turm 50 % mehr Schaden (gruene Partikel). Vom Pfeilturm aus zaehlen auch eigene Pfeile (+25 %), sonst gilt weiter: selbst kaempfen nur auf dem Weg. "Herunterklettern" setzt einen hinter den Turm.
+- **Fallen auf dem Weg:** Schleichen + Rechtsklick auf den Weg. Stachelfalle (60, 30 Treffer), Teergrube (50, stark verlangsamt, 3 Wellen), Sprengfalle (90, einmalig, Umkreis 3,5). 3x3 Felder, hoechstens 6, nicht am Tor. Werden mit dem Kampf gespeichert.
+- **Gegner nur fuer Spieler:** Saboteure (ab Welle 4, 1 + Welle/8 pro Welle, leuchten rot) bleiben am naechsten Turm stehen und legen ihn lahm (Rauch, Hinweis im Menue). Tuerme treffen sie nicht, nur Spieler, Golems und Fallen. Schemen (ab Welle 6) nehmen von Tuermen nur 20 % Schaden.
+- **Zweites Tor ab Welle 10:** Das Osttor oeffnet sich (Titel und Meldung), 40 % der Gegner kommen dann ueber einen eigenen kurzen Weg rechts unten zum Kristall. Vier neue Bauplaetze an diesem Weg (27 insgesamt). Startplatz der Gruppe verlegt.
+- Infotafel: Bunker-Vorschau ohne Bezug auf andere Spiele, Burg-halten-Zeile ergaenzt. Alte Tafeln werden automatisch ersetzt.
+- Burghof wird wegen des Osttors beim naechsten Kampf neu gebaut.
+- Im Spiel ungetestet, nur gebaut und Unit-Tests (73 gruen).
+
 ## Update 0.5.1: Burg halten ueberarbeitet, Infotafeln
 
 - **Echte Tuerme:** Jeder Turm ist ein 3x3-Bauwerk, das zeigt, was er ist (Holzturm mit Zielscheibe, Eisspitze, Feuerbecken, Moerser, Golem-Kaserne mit Gitter, Goldmine). Jede Stufe macht ihn hoeher und prachtvoller. Schuesse sind als Pfeil-, Flammen- oder Rauchspur zu sehen.

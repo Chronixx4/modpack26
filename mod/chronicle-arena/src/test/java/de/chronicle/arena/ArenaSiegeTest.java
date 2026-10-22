@@ -46,8 +46,8 @@ class ArenaSiegeTest {
             assertTrue(reach,"Bauplatz ohne Pfad in Reichweite: "+Arrays.toString(pad));
             // Auch der Feuerturm (Stufe 1) erreicht die Pfadmitte.
             boolean mid=false;
-            for(int i=1;i<ArenaSiege.PATH.length&&!mid;i++){
-                int[] a=ArenaSiege.PATH[i-1],b=ArenaSiege.PATH[i];
+            for(int[][] path:ArenaSiege.PATHS)for(int i=1;i<path.length&&!mid;i++){
+                int[] a=path[i-1],b=path[i];
                 for(int x=Math.min(a[0],b[0]);x<=Math.max(a[0],b[0])&&!mid;x++)for(int z=Math.min(a[1],b[1]);z<=Math.max(a[1],b[1]);z++)
                     if(Math.hypot(x-pad[0],z-pad[1])<=ArenaSiege.Tower.FLAME.range(1)){mid=true;break;}
             }
@@ -107,6 +107,32 @@ class ArenaSiegeTest {
         var c=new FriendlyByteBuf(Unpooled.buffer());
         try{var pick=new ArenaNet.MenuPick("siege_core",1);ArenaNet.MenuPick.CODEC.encode(c,pick);assertEquals(pick,ArenaNet.MenuPick.CODEC.decode(c));}finally{c.release();}
         var close=ArenaNet.Menu.close();assertTrue(close.id().isEmpty());
+    }
+
+    @Test void secondGatePathTrapsAndSaboteurs(){
+        var p2=ArenaSiege.PATH2;
+        for(int i=1;i<p2.length;i++)assertTrue(p2[i-1][0]==p2[i][0]||p2[i-1][1]==p2[i][1],"Osttor-Pfad schraeg");
+        assertEquals(ArenaSiege.HALF-2,p2[0][0],"Osttor-Pfad beginnt nicht an der Ostmauer");
+        assertEquals(ArenaSiege.GATE2_Z,p2[0][1]);
+        // Die Wege kreuzen sich nicht.
+        for(int x=-ArenaSiege.HALF;x<=ArenaSiege.HALF;x++)for(int z=-ArenaSiege.HALF;z<=ArenaSiege.HALF;z++)
+            assertFalse(ArenaSiege.onPath(ArenaSiege.PATH,x,z)&&ArenaSiege.onPath(p2,x,z),"Wege ueberschneiden sich bei "+x+","+z);
+        var r=new ArenaManager.Run(enc(false),tier(20),1,ArenaManager.MODE_SIEGE,0);
+        var s=(ArenaSiege)r.logic;
+        assertTrue(s.trapFits(0,-16));
+        assertFalse(s.trapFits(0,-13),"Falle ragt vom Weg");
+        assertFalse(s.trapFits(-24,-28),"Falle am Tor");
+        s.traps.add(new ArenaSiege.Trap(0,-16,ArenaSiege.TrapType.SPIKES,30));
+        assertFalse(s.trapFits(2,-16),"Fallen ueberlappen");
+        assertTrue(s.trapFits(3,-16));
+        assertSame(s.traps.get(0),s.trapAt(1,-15));
+        var tag=s.save();
+        assertArrayEquals(new int[]{0,-16,0,30},tag.getIntArray("traps"));
+        assertEquals(0,ArenaSiege.saboteurQuota(3));assertEquals(1,ArenaSiege.saboteurQuota(4));assertEquals(3,ArenaSiege.saboteurQuota(16));
+        for(var t:ArenaSiege.Tower.values())assertEquals(0.0,t.vs(ArenaSiege.SABOTEUR),1e-9,"Tuerme duerfen Saboteure nicht treffen");
+        assertTrue(ArenaSiege.Tower.ARROW.vs(ArenaSiege.SHADE)<0.5);
+        s.jam.put(UUID.randomUUID(),3);
+        assertTrue(s.jammed(null,3));assertFalse(s.jammed(null,4));
     }
 
     private static int i0(int[] pad){for(int i=0;i<ArenaSiege.PADS.length;i++)if(ArenaSiege.PADS[i]==pad)return i;return -1;}

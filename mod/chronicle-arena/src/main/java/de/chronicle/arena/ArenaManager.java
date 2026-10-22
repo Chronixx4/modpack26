@@ -1710,7 +1710,7 @@ public final class ArenaManager {
         if (run != null && run.mobs.contains(event.getEntity().getUUID())
                 && event.getSource().getEntity() instanceof ServerPlayer attacker && run.alive.contains(attacker.getUUID())) {
             if (run.logic != null) {
-                float allowed = run.logic.playerHit(attacker, event.getEntity(), event.getAmount());
+                float allowed = run.logic.playerHit(attacker, event.getEntity(), event.getAmount(), event.getSource().getDirectEntity() instanceof net.minecraft.world.entity.projectile.Projectile);
                 if (allowed <= 0) { event.setCanceled(true); return; }
                 event.setAmount(allowed);
             }

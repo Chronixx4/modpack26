@@ -55,7 +55,7 @@ abstract class ModeLogic {
     boolean allowTarget(LivingEntity mob, LivingEntity target) { return true; }
 
     /** Schaden eines Spielers an einem Gegner des Kampfes; 0 oder weniger = Treffer zaehlt nicht. */
-    float playerHit(ServerPlayer attacker, LivingEntity mob, float amount) { return amount; }
+    float playerHit(ServerPlayer attacker, LivingEntity mob, float amount, boolean ranged) { return amount; }
 
     /** Jeder Kampf-Tick. */
     void tickFight(MinecraftServer server, ServerLevel level, int tick) {}
