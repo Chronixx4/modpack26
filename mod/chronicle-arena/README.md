@@ -1,10 +1,13 @@
 # Chronicle Arena
 
-## Update 0.5.3 (in Arbeit): Neues Terminal
+## Update 0.5.3 (in Arbeit): Neues Terminal, Shop und Schmied
 
 - Groesseres Terminal-Fenster (bis 460x286 GUI-Pixel, passt sich kleinen Fenstern an) im Arena-Stil mit eigener Steinkachel als Hintergrund und eigenen AN/AUS-Schaltern (`textures/gui/terminal`).
 - **Reiter links** (Klick oder Tab-Taste): **Modus** (grosse Karten fuer Wellen, Bosskampf, Burg halten; Vorschau "Demnaechst": Expedition, Bunker), **Begegnung** (scrollbare Liste mit Symbolen, Details rechts, Suchen-Knopf, Stufen als farbige Chips mit Tooltip, Arena-Wahl), **Optionen** (Modifikatoren als Schalter mit Bonus, Zufallsmissionen, "Alle aus"), **Challenges** (Tag und Woche als Karten mit Text, Bonus, "Auswaehlen").
 - Unter den Reitern steht immer die aktuelle Auswahl (Modus, Begegnung, Stufe, Bonus, Challenge). Fussleiste: Vorbereiten (Tooltip sagt, warum es gerade nicht geht), Zuschauen, Letzte Auswahl, Admin, Schliessen. Der zuletzt offene Reiter bleibt gemerkt.
+- **Shop** im selben Stil (`ShopScreen`): Kategorien als Reiter links mit Anzahl, Suchfeld unten in der Seitenleiste (sucht ueber alle Kategorien, Tippen springt direkt hinein), Raster mit 22er-Feldern (zu teuer = rot, gekauft/angelegt = gruene Markierung), Item-Tooltip mit Preis, Detailfeld rechts mit grossem Symbol, Preis, Werten und Kaufen/Ausruesten/Ablegen. Fussleiste: Seiten (auch Mausrad), Sortierung (Standard, Preis auf-/absteigend). Kategorie und Sortierung bleiben gemerkt.
+- **Schmied** im selben Stil (`SmithScreen`): links Amboss, Guthaben und Gesamtstufe mit Balken, rechts eine Zeile pro Verbesserung mit Symbol, Stufen-Kaestchen, Beschreibung und Kaufknopf (Tooltip sagt, wie viele Coins fehlen). Die Scrollposition bleibt beim Neuoeffnen nach dem Kauf erhalten. Text von Schmiedeglut gekuerzt.
+- Gemeinsame Basis `ArenaScreen` (Rahmen, Reiter, Knoepfe, Tooltips) fuer Terminal, Shop und Schmied.
 - Nur Client, keine Netzwerk-Aenderung (Netzwerkversion bleibt 12).
 - Im Spiel ungetestet, nur gebaut und Unit-Tests (73 gruen).
 

@@ -39,7 +39,7 @@ public final class ArenaSmith {
             new Up("standfest", "Standfest", "+10 % Rueckstossresistenz pro Stufe", 3, 25, Attributes.KNOCKBACK_RESISTANCE, AttributeModifier.Operation.ADD_VALUE, 0.1),
             new Up("reichweite", "Reichweite", "+0,4 Bloecke Reichweite pro Stufe", 3, 40, Attributes.ENTITY_INTERACTION_RANGE, AttributeModifier.Operation.ADD_VALUE, 0.4),
             new Up(LEBENSFUNKE, "Lebensfunke", "Kills heilen 0,5 Herz pro Stufe", 3, 45, null, null, 0),
-            new Up(GLUT, "Schmiedeglut", "Treffer setzen Gegner 2 s pro Stufe in Brand", 3, 45, null, null, 0));
+            new Up(GLUT, "Schmiedeglut", "Treffer setzen 2 s pro Stufe in Brand", 3, 45, null, null, 0));
 
     public static int level(ServerPlayer p, String id) {
         return ArenaStats.smithLevel(p, id);

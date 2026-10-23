@@ -1,18 +1,10 @@
 package de.chronicle.arena.client;
 
-import de.chronicle.arena.ChronicleArena;
 import de.chronicle.arena.Net;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.resources.sounds.SimpleSoundInstance;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.FormattedText;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.network.PacketDistributor;
 
 import java.util.ArrayList;
@@ -22,12 +14,8 @@ import java.util.List;
  * Terminal der Arena: grosses Fenster mit Reitern (Modus, Begegnung, Optionen, Challenges) links,
  * Inhalt rechts und Fussleiste mit Start. Alles selbst gezeichnet (eigene Hintergrund- und Schalter-Texturen).
  */
-public class TerminalScreen extends Screen {
+public class TerminalScreen extends ArenaScreen {
     private static final int[] TIER_COLORS = {0xCD7F32, 0xC0C0C0, 0xFFD700, 0xB366FF, 0xFF5555};
-    private static final int GOLD = 0xFFD36B, TEXT = 0xE8E0F8, MUTED = 0x9A90B0, GREEN = 0x6BE08A, RED = 0xFF7777;
-    private static final ResourceLocation BG = ChronicleArena.id("textures/gui/terminal/background.png");
-    private static final ResourceLocation SWITCH_ON = ChronicleArena.id("textures/gui/terminal/switch_on.png");
-    private static final ResourceLocation SWITCH_OFF = ChronicleArena.id("textures/gui/terminal/switch_off.png");
     /** Terminal-Flag fuer Burg halten (wie ArenaManager.MODE_SIEGE). */
     private static final int MODE_SIEGE = 512;
 
@@ -49,16 +37,6 @@ public class TerminalScreen extends Screen {
     /** 0 = Wellen, 1 = Boss, 2 = Burg halten (nutzt Wellen-Begegnungen). */
     private int mode;
     private int encIndex, tierIndex, mask, arenaChoice, listScroll;
-    private int x0, y0, x1, y1;
-
-    /** Klickflaechen des letzten Bildes (das Fenster wird jedes Bild neu aufgebaut). */
-    private record Hit(int x, int y, int w, int h, Runnable action, String tip) {
-        boolean in(double mx, double my) { return mx >= x && mx < x + w && my >= y && my < y + h; }
-    }
-
-    private final List<Hit> hits = new ArrayList<>();
-    private final List<Hit> next = new ArrayList<>();
-
     public TerminalScreen(Net.OpenTerminal data) {
         super(Component.translatable("gui.chronicle_arena.title"));
         this.data = data;
@@ -91,13 +69,9 @@ public class TerminalScreen extends Screen {
 
     // ------------------------------------------------------------------ Aufbau
 
-    @Override protected void init() {
-        int w = Math.min(460, width - 16), h = Math.min(286, height - 16);
-        x0 = (width - w) / 2;
-        y0 = (height - h) / 2;
-        x1 = x0 + w;
-        y1 = y0 + h;
-    }
+    @Override protected void init() { layout(460, 286); }
+
+    @Override int accent() { return tierColor(tierIndex); }
 
     private void setMode(int m) {
         if (m != mode) { encIndex = 0; listScroll = 0; }
@@ -157,19 +131,6 @@ public class TerminalScreen extends Screen {
 
     // ------------------------------------------------------------------ Eingabe
 
-    @Override public boolean mouseClicked(double mx, double my, int button) {
-        if (button == 0) {
-            for (Hit h : hits) {
-                if (h.action != null && h.in(mx, my)) {
-                    Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_BUTTON_CLICK, 1.0F));
-                    h.action.run();
-                    return true;
-                }
-            }
-        }
-        return super.mouseClicked(mx, my, button);
-    }
-
     @Override public boolean mouseScrolled(double mx, double my, double dx, double dy) {
         if (tab == 1) {
             listScroll = Math.max(0, Math.min(Math.max(0, current().size() - listRows()), listScroll - (int) Math.signum(dy)));
@@ -189,35 +150,14 @@ public class TerminalScreen extends Screen {
 
     // ------------------------------------------------------------------ Zeichnen
 
-    @Override public void renderBackground(GuiGraphics g, int mx, int my, float tick) {
-        super.renderBackground(g, mx, my, tick);
-        Panel.draw(g, x0, y0, x1, y1, 30, tierColor(tierIndex));
-        // Inhaltsflaeche mit Steinkachel.
-        int cx0 = x0 + 112, cy0 = y0 + 36, cx1 = x1 - 8, cy1 = y1 - 34;
-        g.enableScissor(cx0, cy0, cx1, cy1);
-        for (int x = cx0; x < cx1; x += 32) for (int y = cy0; y < cy1; y += 32) g.blit(BG, x, y, 0, 0, 32, 32, 32, 32);
-        g.disableScissor();
-        g.fill(cx0, cy0, cx1, cy1, 0x66000000);
-        frame(g, cx0 - 1, cy0 - 1, cx1 + 1, cy1 + 1, 0xFF5A2DA0);
-        // Seitenleiste.
-        g.fillGradient(x0 + 6, y0 + 36, x0 + 106, y1 - 34, 0xCC24173F, 0xCC120B20);
-        frame(g, x0 + 5, y0 + 35, x0 + 107, y1 - 33, 0xFF3A2370);
-    }
-
-    private static void frame(GuiGraphics g, int x0, int y0, int x1, int y1, int c) {
-        g.fill(x0, y0, x1, y0 + 1, c);
-        g.fill(x0, y1 - 1, x1, y1, c);
-        g.fill(x0, y0, x0 + 1, y1, c);
-        g.fill(x1 - 1, y0, x1, y1, c);
-    }
-
-    @Override public void render(GuiGraphics g, int mx, int my, float tick) {
-        super.render(g, mx, my, tick);
-        next.clear();
+    @Override void draw(GuiGraphics g, int mx, int my) {
         // Kopfzeile.
         g.drawCenteredString(font, "CHRONICLE ARENA", (x0 + x1) / 2, y0 + 7, GOLD);
         g.drawCenteredString(font, data.status(), (x0 + x1) / 2, y0 + 18, data.running() ? 0xFFAA00 : GREEN);
-        tabs(g, mx, my);
+        tabs(g, TABS, TAB_ICONS, null, tab, 26, mx, my, t -> {
+            tab = t;
+            if (t == 1) listScroll = Math.max(0, encIndex - listRows() / 2);
+        });
         summary(g);
         switch (tab) {
             case 0 -> modeTab(g, mx, my);
@@ -226,70 +166,6 @@ public class TerminalScreen extends Screen {
             default -> challengeTab(g, mx, my);
         }
         footer(g, mx, my);
-        hits.clear();
-        hits.addAll(next);
-        for (Hit h : hits) {
-            if (h.tip != null && !h.tip.isEmpty() && h.in(mx, my)) {
-                List<FormattedCharSequence> lines = new ArrayList<>();
-                for (String part : h.tip.split("\n")) lines.addAll(font.split(Component.literal(part), 240));
-                g.renderTooltip(font, lines, mx, my);
-                break;
-            }
-        }
-    }
-
-    private void hit(int x, int y, int w, int h, Runnable action, String tip) { next.add(new Hit(x, y, w, h, action, tip)); }
-
-    /** Knopf im Arena-Stil; style 0 = normal, 1 = Hauptknopf (gold), 2 = gewaehlt. */
-    private void button(GuiGraphics g, int x, int y, int w, int h, String label, boolean active, int style, int mx, int my, Runnable action, String tip) {
-        boolean hover = active && mx >= x && mx < x + w && my >= y && my < y + h;
-        int border = !active ? 0xFF2A2440 : style == 1 ? 0xFFFFD36B : style == 2 ? 0xFFFFD36B : hover ? 0xFFB98CFF : 0xFF6B4BB0;
-        int top = !active ? 0xFF1E1830 : style == 1 ? (hover ? 0xFF8A6A1E : 0xFF6E521A) : style == 2 ? 0xFF4A3480 : hover ? 0xFF3E2C6E : 0xFF2C1F50;
-        int bottom = !active ? 0xFF151022 : style == 1 ? 0xFF3A2A0C : 0xFF171026;
-        g.fill(x, y, x + w, y + h, border);
-        g.fillGradient(x + 1, y + 1, x + w - 1, y + h - 1, top, bottom);
-        g.fill(x + 1, y + 1, x + w - 1, y + 2, 0x33FFFFFF);
-        int color = !active ? 0x6A6080 : style == 1 ? 0xFFF2C8 : TEXT;
-        g.drawCenteredString(font, font.plainSubstrByWidth(label, w - 6), x + w / 2, y + (h - 8) / 2, color);
-        hit(x, y, w, h, active ? action : null, tip);
-    }
-
-    private void item(GuiGraphics g, String id, int x, int y, float scale) {
-        ResourceLocation rl = ResourceLocation.tryParse(id);
-        if (rl == null || !BuiltInRegistries.ITEM.containsKey(rl)) return;
-        g.pose().pushPose();
-        g.pose().translate(x, y, 0);
-        g.pose().scale(scale, scale, 1);
-        g.renderItem(new ItemStack(BuiltInRegistries.ITEM.get(rl)), 0, 0);
-        g.pose().popPose();
-    }
-
-    private int wrap(GuiGraphics g, String text, int x, int y, int w, int maxLines, int color) {
-        int n = 0;
-        for (FormattedCharSequence line : font.split(FormattedText.of(text), w)) {
-            if (n >= maxLines) break;
-            g.drawString(font, line, x, y + n * 10, color);
-            n++;
-        }
-        return n;
-    }
-
-    private void tabs(GuiGraphics g, int mx, int my) {
-        int x = x0 + 10, y = y0 + 42;
-        for (int i = 0; i < TABS.length; i++) {
-            final int t = i;
-            boolean sel = tab == i, hover = mx >= x && mx < x + 92 && my >= y && my < y + 22;
-            g.fill(x, y, x + 92, y + 22, sel ? 0xFFFFD36B : hover ? 0xFF6B4BB0 : 0xFF2A1F45);
-            g.fillGradient(x + 1, y + 1, x + 92 - (sel ? 0 : 1), y + 21, sel ? 0xFF4A3480 : 0xFF2C1F50, sel ? 0xFF2A1D4A : 0xFF171026);
-            if (sel) g.fill(x, y + 1, x + 3, y + 21, 0xFFFFD36B);
-            item(g, TAB_ICONS[i], x + 5, y + 3, 1.0F);
-            g.drawString(font, TABS[i], x + 25, y + 7, sel ? GOLD : TEXT);
-            hit(x, y, 92, 22, () -> {
-                tab = t;
-                if (t == 1) listScroll = Math.max(0, encIndex - listRows() / 2);
-            }, null);
-            y += 26;
-        }
     }
 
     /** Kurze Zusammenfassung der Auswahl unter den Reitern. */
@@ -499,6 +375,4 @@ public class TerminalScreen extends Screen {
         button(g, right - 72, y, 72, 20, "Schliessen", true, 0, mx, my, this::onClose, null);
         if (data.admin()) button(g, right - 72 - 4 - 64, y, 64, 20, "Admin", true, 0, mx, my, () -> PacketDistributor.sendToServer(new Net.Control("admin")), "Admin-Panel");
     }
-
-    @Override public boolean isPauseScreen() { return false; }
 }

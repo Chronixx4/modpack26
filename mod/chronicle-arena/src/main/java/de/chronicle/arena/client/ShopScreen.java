@@ -2,40 +2,34 @@ package de.chronicle.arena.client;
 
 import de.chronicle.arena.Net;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.network.chat.Component;
+import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.network.PacketDistributor;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
+import java.util.Locale;
 
 /**
- * Arena-Shop: Kategorien links, Raster mit Gegenstaenden in der Mitte, Details und Kaufen rechts.
- * Der Mauszeiger zeigt den vollen Item-Tooltip (Verzauberungen, Werte).
+ * Arena-Shop im Stil des Terminals: Kategorien als Reiter links, Raster mit Angeboten in der Mitte,
+ * Details und Kaufen rechts. Suche geht ueber alle Kategorien.
  */
-public class ShopScreen extends Screen {
+public class ShopScreen extends ArenaScreen {
     private static final String[] CATEGORIES = {"verbrauch", "waffen", "ruestung", "werkzeug", "material", "magie", "kosmetik", "runen"};
-    private int cols = 6;
-    private int panelWidth;
-    private static final int ROWS = 5;
-    private static final int SLOT = 20;
+    private static final String[] ICONS = {"minecraft:golden_apple", "minecraft:diamond_sword", "minecraft:diamond_chestplate", "minecraft:diamond_pickaxe",
+            "minecraft:iron_ingot", "minecraft:enchanted_book", "minecraft:name_tag", "minecraft:amethyst_shard"};
+    private static final String[] SORTS = {"Standard", "Preis aufsteigend", "Preis absteigend"};
+    private static final int SLOT = 22, DETAIL = 134;
 
+    private static int lastCategory, lastSort;
     private final Net.OpenShop data;
-    private final List<Button> tabButtons = new ArrayList<>();
-    private Button buyButton;
-    private Button prevButton;
-    private Button nextButton;
     private int tokens;
-    private int category;
-    private int page;
+    private int category = lastCategory, sort = lastSort, page;
     private Net.ShopInfo selected;
-
-    private int left;
-    private int top;
+    private EditBox search;
 
     public ShopScreen(Net.OpenShop data) {
         super(Component.translatable("gui.chronicle_arena.shop_title"));
@@ -45,8 +39,7 @@ public class ShopScreen extends Screen {
 
     public void statsChanged() {
         Net.Stats st = ClientState.stats;
-        if (st != null) this.tokens = st.coins();
-        updateButtons();
+        if (st != null) tokens = st.coins();
     }
 
     private boolean owned(Net.ShopInfo s) {
@@ -59,151 +52,219 @@ public class ShopScreen extends Screen {
         return st != null && (st.titleId().equals(s.id()) || st.trailId().equals(s.id()));
     }
 
+    private boolean cosmeticOwned(Net.ShopInfo s) { return !s.cosmetic().isEmpty() && owned(s); }
+
+    private String query() { return search == null ? "" : search.getValue().trim().toLowerCase(Locale.ROOT); }
+
     private List<Net.ShopInfo> items() {
+        String q = query();
         List<Net.ShopInfo> out = new ArrayList<>();
-        for (Net.ShopInfo s : data.offers()) if (s.category().equals(CATEGORIES[category])) out.add(s);
+        for (Net.ShopInfo s : data.offers()) {
+            if (q.isEmpty() ? s.category().equals(CATEGORIES[category]) : s.name().toLowerCase(Locale.ROOT).contains(q)) out.add(s);
+        }
+        if (sort == 1) out.sort(Comparator.comparingInt(Net.ShopInfo::price));
+        if (sort == 2) out.sort(Comparator.comparingInt(Net.ShopInfo::price).reversed());
         return out;
     }
 
-    private Map<String, Integer> counts() {
-        Map<String, Integer> m = new LinkedHashMap<>();
-        for (String c : CATEGORIES) m.put(c, 0);
-        for (Net.ShopInfo s : data.offers()) m.merge(s.category(), 1, Integer::sum);
-        return m;
+    private int count(String cat) {
+        int n = 0;
+        for (Net.ShopInfo s : data.offers()) if (s.category().equals(cat)) n++;
+        return n;
     }
 
-    private int pages() {
-        return Math.max(1, (items().size() + cols * ROWS - 1) / (cols * ROWS));
+    // ------------------------------------------------------------------ Raster
+
+    private int gridX() { return contentX0() + 8; }
+
+    private int gridY() { return contentY0() + 24; }
+
+    private int cols() { return Math.max(4, (contentX1() - DETAIL - 12 - gridX()) / SLOT); }
+
+    private int rows() { return Math.max(3, (contentY1() - 6 - gridY()) / SLOT); }
+
+    private int perPage() { return cols() * rows(); }
+
+    private int pages() { return Math.max(1, (items().size() + perPage() - 1) / perPage()); }
+
+    private void pick(int c) {
+        category = c;
+        page = 0;
+        if (search != null) search.setValue("");
     }
 
-    @Override
-    protected void init() {
-        tabButtons.clear();
-        panelWidth = Math.min(380, this.width - 20);
-        cols = Math.max(3, Math.min(6, (panelWidth - 238) / SLOT));
-        left = (this.width - panelWidth) / 2;
-        top = this.height / 2 - 105;
+    // ------------------------------------------------------------------ Aufbau
+
+    @Override protected void init() {
+        layout(460, 286);
+        String old = search == null ? "" : search.getValue();
+        // Suchfeld unten in der Seitenleiste, unter den Kategorien.
+        search = new EditBox(font, x0 + 15, y1 - 47, 84, 10, Component.literal("Suchen"));
+        search.setBordered(false);
+        search.setMaxLength(40);
+        search.setHint(Component.literal("Suchen ...").withColor(0x6A6080));
+        search.setValue(old);
+        search.setResponder(v -> page = 0);
+        addRenderableWidget(search);
+    }
+
+    @Override public void onClose() {
+        lastCategory = category;
+        lastSort = sort;
+        super.onClose();
+    }
+
+    @Override public boolean mouseScrolled(double mx, double my, double dx, double dy) {
+        if (pages() > 1) {
+            page = Math.floorMod(page - (int) Math.signum(dy), pages());
+            return true;
+        }
+        return super.mouseScrolled(mx, my, dx, dy);
+    }
+
+    @Override public boolean keyPressed(int key, int scan, int mods) {
+        // Tab wechselt die Kategorie, solange das Suchfeld leer ist.
+        if (key == 258 && query().isEmpty()) {
+            pick((category + (hasShiftDown() ? CATEGORIES.length - 1 : 1)) % CATEGORIES.length);
+            return true;
+        }
+        // Buchstaben gehen ins Suchfeld, auch ohne vorher hineinzuklicken.
+        if (search.isFocused() && key != 256) {
+            search.keyPressed(key, scan, mods);
+            return true;
+        }
+        return super.keyPressed(key, scan, mods);
+    }
+
+    @Override public boolean charTyped(char c, int mods) {
+        if (!search.isFocused() && !Character.isISOControl(c)) {
+            setFocused(search);
+            search.setFocused(true);
+        }
+        return super.charTyped(c, mods);
+    }
+
+    // ------------------------------------------------------------------ Zeichnen
+
+    @Override public void renderBackground(GuiGraphics g, int mx, int my, float tick) {
+        super.renderBackground(g, mx, my, tick);
+        // Rahmen fuers Suchfeld (das Feld selbst ist randlos und kommt danach als Widget).
+        int sx = search.getX() - 5, sy = search.getY() - 3;
+        g.fill(sx, sy, sx + 92, sy + 14, search.isFocused() ? 0xFFB98CFF : 0xFF4A3480);
+        g.fill(sx + 1, sy + 1, sx + 91, sy + 13, 0xF0100A1A);
+    }
+
+    @Override void draw(GuiGraphics g, int mx, int my) {
+        g.drawCenteredString(font, "ARENA-SHOP", (x0 + x1) / 2, y0 + 7, GOLD);
+        g.drawCenteredString(font, "Ausruestung fuer deine Kaempfe", (x0 + x1) / 2, y0 + 18, MUTED);
+        g.drawString(font, "Guthaben", x1 - 22 - font.width("Guthaben"), y0 + 7, MUTED);
+        coins(g, tokens, x1 - 22, y0 + 18, GOLD);
+
+        String[] names = new String[CATEGORIES.length], badges = new String[CATEGORIES.length];
         for (int i = 0; i < CATEGORIES.length; i++) {
-            final int idx = i;
-            Button b = Button.builder(Component.translatable("gui.chronicle_arena.cat_" + CATEGORIES[i]), btn -> {
-                category = idx;
-                page = 0;
-                selected = null;
-                updateButtons();
-            }).bounds(left + 6, top + 36 + i * 20, 84, 18).build();
-            tabButtons.add(addRenderableWidget(b));
+            names[i] = Component.translatable("gui.chronicle_arena.cat_" + CATEGORIES[i]).getString();
+            badges[i] = String.valueOf(count(CATEGORIES[i]));
         }
-        prevButton = addRenderableWidget(Button.builder(Component.literal("<"), b -> {
-            page = (page + pages() - 1) % pages();
-            updateButtons();
-        }).bounds(left + 98, top + 36 + ROWS * SLOT + 8, 24, 18).build());
-        nextButton = addRenderableWidget(Button.builder(Component.literal(">"), b -> {
-            page = (page + 1) % pages();
-            updateButtons();
-        }).bounds(left + 98 + cols * SLOT - 24, top + 36 + ROWS * SLOT + 8, 24, 18).build());
-        buyButton = addRenderableWidget(Button.builder(Component.translatable("gui.chronicle_arena.buy"), b -> {
-            if (selected != null) PacketDistributor.sendToServer(new Net.Buy(selected.id()));
-        }).bounds(left + 98 + cols * SLOT + 14, top + 196, 108, 20).build());
-        addRenderableWidget(Button.builder(Component.translatable("gui.chronicle_arena.close"), b -> onClose())
-                .bounds(left + 6, top + 36 + CATEGORIES.length * 20 + 6, 84, 20).build());
-        updateButtons();
+        tabs(g, names, ICONS, badges, query().isEmpty() ? category : -1, 24, mx, my, this::pick);
+
+        grid(g, mx, my);
+        detail(g, mx, my);
+        footer(g, mx, my);
     }
 
-    private void updateButtons() {
-        Map<String, Integer> counts = counts();
-        for (int i = 0; i < tabButtons.size(); i++) {
-            Button b = tabButtons.get(i);
-            b.active = i != category && counts.getOrDefault(CATEGORIES[i], 0) > 0;
-        }
-        prevButton.active = nextButton.active = pages() > 1;
-        buyButton.active = selected != null && (tokens >= selected.price() || (!selected.cosmetic().isEmpty() && owned(selected)));
-        if (selected == null || selected.cosmetic().isEmpty()) {
-            buyButton.setMessage(Component.translatable("gui.chronicle_arena.buy"));
-        } else if (owned(selected)) {
-            buyButton.setMessage(Component.literal(equipped(selected) ? "Ablegen" : "Ausruesten"));
-        } else {
-            buyButton.setMessage(Component.translatable("gui.chronicle_arena.buy"));
-        }
-    }
-
-    @Override
-    public boolean mouseClicked(double mx, double my, int button) {
+    private void grid(GuiGraphics g, int mx, int my) {
         List<Net.ShopInfo> list = items();
-        int gx = left + 98;
-        int gy = top + 36;
-        if (mx >= gx && my >= gy && mx < gx + cols * SLOT && my < gy + ROWS * SLOT) {
-            int col = (int) ((mx - gx) / SLOT);
-            int row = (int) ((my - gy) / SLOT);
-            int idx = page * cols * ROWS + row * cols + col;
-            if (idx < list.size()) {
-                selected = list.get(idx);
-                updateButtons();
-                return true;
-            }
-        }
-        return super.mouseClicked(mx, my, button);
-    }
+        page = Math.min(page, pages() - 1);
+        int gx = gridX(), gy = gridY(), cols = cols(), rows = rows();
+        String head = query().isEmpty() ? Component.translatable("gui.chronicle_arena.cat_" + CATEGORIES[category]).getString() : "Suche";
+        g.drawString(font, head, gx, contentY0() + 8, GOLD);
+        g.drawString(font, list.size() + (list.size() == 1 ? " Angebot" : " Angebote"), gx + font.width(head) + 6, contentY0() + 8, MUTED);
 
-    @Override
-    public void renderBackground(GuiGraphics gfx, int mouseX, int mouseY, float partialTick) {
-        super.renderBackground(gfx, mouseX, mouseY, partialTick);
-        Panel.draw(gfx, left, top, left + panelWidth, top + 224, 28, 0xFFD36B);
-        gfx.fill(left + 94, top + 32, left + 96, top + 220, 0xFF2A2440);
-    }
-
-    @Override
-    public void render(GuiGraphics gfx, int mouseX, int mouseY, float partialTick) {
-        super.render(gfx, mouseX, mouseY, partialTick);
-        gfx.drawString(this.font, this.title, left + 8, top + 10, 0xE0B8FF);
-        Component tk = Component.translatable("gui.chronicle_arena.tokens", tokens);
-        gfx.drawString(this.font, tk, left + panelWidth - 8 - this.font.width(tk), top + 10, 0xFFD700);
-
-        List<Net.ShopInfo> list = items();
-        int gx = left + 98;
-        int gy = top + 36;
-        Net.ShopInfo hover = null;
-        for (int row = 0; row < ROWS; row++) {
-            for (int col = 0; col < cols; col++) {
-                int idx = page * cols * ROWS + row * cols + col;
-                int x = gx + col * SLOT;
-                int y = gy + row * SLOT;
-                boolean has = idx < list.size();
-                Net.ShopInfo s = has ? list.get(idx) : null;
-                int bg = s == null ? 0xFF1A1726 : s == selected ? 0xFF6A3FB0 : (tokens >= s.price() || owned(s)) ? 0xFF2A2440 : 0xFF3A2430;
-                gfx.fill(x, y, x + SLOT - 1, y + SLOT - 1, bg);
-                if (s != null && equipped(s)) gfx.fill(x, y + SLOT - 3, x + SLOT - 1, y + SLOT - 1, 0xFF55FF55);
-                if (s != null) {
-                    gfx.renderItem(s.stack(), x + 1, y + 1);
-                    gfx.renderItemDecorations(this.font, s.stack(), x + 1, y + 1);
-                    if (mouseX >= x && mouseX < x + SLOT - 1 && mouseY >= y && mouseY < y + SLOT - 1) hover = s;
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < cols; c++) {
+                int idx = page * cols * rows + r * cols + c, x = gx + c * SLOT, y = gy + r * SLOT;
+                if (idx >= list.size()) {
+                    g.fill(x, y, x + SLOT - 2, y + SLOT - 2, 0x80100A1A);
+                    continue;
                 }
+                Net.ShopInfo s = list.get(idx);
+                boolean sel = s == selected, hover = over(mx, my, x, y, SLOT - 2, SLOT - 2);
+                boolean afford = tokens >= s.price() || cosmeticOwned(s);
+                g.fill(x, y, x + SLOT - 2, y + SLOT - 2, sel ? 0xFFFFD36B : hover ? 0xFFB98CFF : afford ? 0xFF4A3480 : 0xFF5A2A3A);
+                g.fillGradient(x + 1, y + 1, x + SLOT - 3, y + SLOT - 3, sel ? 0xF0402A70 : afford ? 0xF02A1D4A : 0xF0301424, 0xF0120B20);
+                g.renderItem(s.stack(), x + 2, y + 2);
+                g.renderItemDecorations(font, s.stack(), x + 2, y + 2);
+                if (equipped(s)) g.fill(x + 1, y + SLOT - 5, x + SLOT - 3, y + SLOT - 3, 0xFF6BE08A);
+                else if (cosmeticOwned(s)) g.fill(x + SLOT - 7, y + 2, x + SLOT - 4, y + 5, 0xFF6BE08A);
+                hit(x, y, SLOT - 2, SLOT - 2, () -> selected = s, null);
+                if (hover) itemTooltip(s.stack(), cosmeticOwned(s) ? "Gekauft" : "Preis: " + s.price() + " Coins");
             }
         }
-        gfx.drawCenteredString(this.font, Component.translatable("gui.chronicle_arena.page", page + 1, pages()),
-                gx + cols * SLOT / 2, gy + ROWS * SLOT + 13, 0xAAAAAA);
-
-        // Detailbereich rechts.
-        int dx = left + 98 + cols * SLOT + 14;
-        if (selected != null) {
-            ItemStack st = selected.stack();
-            gfx.renderItem(st, dx, top + 36);
-            gfx.drawString(this.font, this.font.plainSubstrByWidth(selected.name(), 86), dx + 22, top + 36, 0xFFFFFF);
-            gfx.drawString(this.font, owned(selected) ? Component.literal("Gekauft") : Component.translatable("gui.chronicle_arena.tokens", selected.price()), dx + 22, top + 47,
-                    owned(selected) ? 0x55FF55 : tokens >= selected.price() ? 0xFFD700 : 0xFF6666);
-            List<Component> tip = Screen.getTooltipFromItem(this.minecraft, st);
-            int ly = top + 66;
-            for (int i = 1; i < tip.size() && i < 11; i++) {
-                gfx.drawString(this.font, this.font.substrByWidth(tip.get(i), 106).getString(), dx, ly, 0xBBBBBB);
-                ly += 10;
-            }
-        } else {
-            gfx.drawString(this.font, Component.translatable("gui.chronicle_arena.pick"), dx, top + 40, 0x888888);
-        }
-        if (hover != null) gfx.renderTooltip(this.font, hover.stack(), mouseX, mouseY);
+        if (list.isEmpty()) g.drawCenteredString(font, "Nichts gefunden", gx + cols * SLOT / 2, gy + rows * SLOT / 2 - 4, MUTED);
     }
 
-    @Override
-    public boolean isPauseScreen() {
-        return false;
+    private void detail(GuiGraphics g, int mx, int my) {
+        int dx0 = contentX1() - DETAIL - 4, dx1 = contentX1() - 6, dy0 = contentY0() + 6, dy1 = contentY1() - 6;
+        g.fill(dx0, dy0, dx1, dy1, 0xFF4A3480);
+        g.fillGradient(dx0 + 1, dy0 + 1, dx1 - 1, dy1 - 1, 0xF02A1D4A, 0xF0120B20);
+        int x = dx0 + 6, w = dx1 - dx0 - 12, y = dy0 + 6;
+        Net.ShopInfo s = selected;
+        if (s == null) {
+            item(g, "minecraft:chest", x + w / 2 - 16, y + 30, 2.0F);
+            wrap(g, "Waehle links ein Angebot. Mit der Maus darueber siehst du alle Werte.", x, y + 72, w, 5, MUTED);
+            return;
+        }
+        ItemStack st = s.stack();
+        item(g, st, x, y, 2.0F);
+        if (over(mx, my, x, y, 32, 32)) itemTooltip(st, null);
+        int n = 0;
+        for (FormattedCharSequence line : font.split(Component.literal(s.name()), w - 36)) {
+            if (n >= 3) break;
+            g.drawString(font, line, x + 36, y + 2 + n * 10, GOLD);
+            n++;
+        }
+        y += 38;
+        g.fill(x, y, x + w, y + 1, 0xFF3A2370);
+        y += 5;
+        if (cosmeticOwned(s)) {
+            g.drawString(font, equipped(s) ? "Gekauft, angelegt" : "Gekauft", x, y, GREEN);
+        } else {
+            g.drawString(font, "Preis", x, y, MUTED);
+            coins(g, s.price(), x + w, y, tokens >= s.price() ? GOLD : RED);
+        }
+        y += 14;
+        // Werte aus dem Item-Tooltip (ohne Namen), so viele wie Platz ist.
+        List<Component> tip = getTooltipFromItem(minecraft, st);
+        int maxY = dy1 - 30;
+        for (int i = 1; i < tip.size(); i++) {
+            for (FormattedCharSequence line : font.split(tip.get(i), w)) {
+                if (y + 9 > maxY) break;
+                g.drawString(font, line, x, y, 0xBBB0D0);
+                y += 10;
+            }
+        }
+        String label;
+        boolean active;
+        if (cosmeticOwned(s)) {
+            label = equipped(s) ? "Ablegen" : "Ausruesten";
+            active = true;
+        } else {
+            label = "Kaufen";
+            active = tokens >= s.price();
+        }
+        String why = active ? null : "Dir fehlen " + (s.price() - tokens) + " Coins.";
+        button(g, x, dy1 - 26, w, 20, label, active, 1, mx, my, () -> PacketDistributor.sendToServer(new Net.Buy(s.id())), why);
+    }
+
+    private void footer(GuiGraphics g, int mx, int my) {
+        int y = y1 - 26;
+        button(g, x0 + 8, y, 98, 20, "Schliessen", true, 0, mx, my, this::onClose, null);
+        int gx = gridX(), gw = cols() * SLOT - 2;
+        boolean more = pages() > 1;
+        button(g, gx, y, 22, 20, "<", more, 0, mx, my, () -> page = Math.floorMod(page - 1, pages()), null);
+        button(g, gx + gw - 22, y, 22, 20, ">", more, 0, mx, my, () -> page = Math.floorMod(page + 1, pages()), null);
+        g.drawCenteredString(font, "Seite " + (page + 1) + " / " + pages(), gx + gw / 2, y + 6, more ? TEXT : MUTED);
+        int sx = contentX1() - DETAIL - 4;
+        button(g, sx, y, contentX1() - 6 - sx, 20, SORTS[sort], true, 0, mx, my, () -> sort = (sort + 1) % SORTS.length, "Sortierung wechseln");
     }
 }
