@@ -1,5 +1,13 @@
 # Chronicle Arena
 
+## Update 0.5.3 (in Arbeit): Neues Terminal
+
+- Groesseres Terminal-Fenster (bis 460x286 GUI-Pixel, passt sich kleinen Fenstern an) im Arena-Stil mit eigener Steinkachel als Hintergrund und eigenen AN/AUS-Schaltern (`textures/gui/terminal`).
+- **Reiter links** (Klick oder Tab-Taste): **Modus** (grosse Karten fuer Wellen, Bosskampf, Burg halten; Vorschau "Demnaechst": Expedition, Bunker), **Begegnung** (scrollbare Liste mit Symbolen, Details rechts, Suchen-Knopf, Stufen als farbige Chips mit Tooltip, Arena-Wahl), **Optionen** (Modifikatoren als Schalter mit Bonus, Zufallsmissionen, "Alle aus"), **Challenges** (Tag und Woche als Karten mit Text, Bonus, "Auswaehlen").
+- Unter den Reitern steht immer die aktuelle Auswahl (Modus, Begegnung, Stufe, Bonus, Challenge). Fussleiste: Vorbereiten (Tooltip sagt, warum es gerade nicht geht), Zuschauen, Letzte Auswahl, Admin, Schliessen. Der zuletzt offene Reiter bleibt gemerkt.
+- Nur Client, keine Netzwerk-Aenderung (Netzwerkversion bleibt 12).
+- Im Spiel ungetestet, nur gebaut und Unit-Tests (73 gruen).
+
 ## Update 0.5.2: Burg halten im Koop
 
 - **Tuerme besteigen:** Im Menue von Pfeil-, Frost-, Feuerturm und Moerser "Turm besteigen". Solange jemand oben steht, macht der Turm 50 % mehr Schaden (gruene Partikel). Vom Pfeilturm aus zaehlen auch eigene Pfeile (+25 %), sonst gilt weiter: selbst kaempfen nur auf dem Weg. "Herunterklettern" setzt einen hinter den Turm.
