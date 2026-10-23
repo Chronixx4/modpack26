@@ -1,6 +1,17 @@
 # Chronicle Arena
 
-## Update 0.5.3 (in Arbeit): Neues Terminal, Shop und Schmied
+## Update 0.5.3 (in Arbeit): Burg-Koop 2, neues Terminal, Shop und Schmied
+
+- **Rollen (Burg halten):** Beim Start oeffnet sich die Rollenwahl (auch am Kristall), wechseln bis zur ersten Welle, danach Zufall fuer alle ohne Wahl. Mehrfach dieselbe Rolle ist erlaubt.
+  - Baumeister: Tuerme, Ausbauten und Fallen 15 % billiger. Faehigkeit **Ueberladung**: Tuerme bis 12 Bloecke feuern 10 s doppelt so schnell.
+  - Waechter: +4 Herzen, auf dem Weg +30 % Schaden. **Kampfschrei**: Gegner bis 6 Bloecke stehen 3 s still, selbst 8 s Resistenz II.
+  - Magier: Faehigkeit laedt in 30 statt 60 s. **Arkanregen**: drei Einschlaege (Radius 4) auf die angeschaute Stelle.
+  - Versorger: Kristall-Reparatur +40 statt +25, heilt Golems in 8 Bloecken. **Heilwelle**: Kristall +15, Golems voll, Mitspieler bis 10 Bloecke +3 Herzen (nicht bei "Kein Heilen").
+- **Faehigkeit** ueber einen goldenen Gegenstand im Inventar (Rechtsklick, nur waehrend einer Welle, Abklingzeit auch im HUD). Wegwerfen geht nicht, er verschwindet nach dem Kampf.
+- **Kristall-Splitter:** Elite, Anfuehrer und Bosse (Gepanzerte zu 35 %) lassen einen leuchtenden Splitter fallen (30 s). Drueberlaufen hebt ihn auf, am Kristall abgeben: +5 Leben pro Splitter, bei vollem Kristall +20 Punkte.
+- **Abstimmung** nach jeder Welle (nicht nach Segen-Wellen als Popup, dann am Kristall): Ruhig, Horde (+50 % Gegner, +40 % Punkte), Sturm (+30 % Tempo, +30 %), Eisenhaut (+40 % Leben, +35 %). Mehrheit, Gleichstand = Wahl weiter oben in der Liste.
+- **Burg-Bilanz** am Ende im Chat: pro Spieler Rolle, Kills, gebaut, Splitter, Saboteure, Faehigkeiten und Wertung, dazu der MVP.
+- Infotafel in der Lobby erwaehnt Rollen, Splitter und Abstimmung (neue Tafel-Version).
 
 - Groesseres Terminal-Fenster (bis 460x286 GUI-Pixel, passt sich kleinen Fenstern an) im Arena-Stil mit eigener Steinkachel als Hintergrund und eigenen AN/AUS-Schaltern (`textures/gui/terminal`).
 - **Reiter links** (Klick oder Tab-Taste): **Modus** (grosse Karten fuer Wellen, Bosskampf, Burg halten; Vorschau "Demnaechst": Expedition, Bunker), **Begegnung** (scrollbare Liste mit Symbolen, Details rechts, Suchen-Knopf, Stufen als farbige Chips mit Tooltip, Arena-Wahl), **Optionen** (Modifikatoren als Schalter mit Bonus, Zufallsmissionen, "Alle aus"), **Challenges** (Tag und Woche als Karten mit Text, Bonus, "Auswaehlen").
@@ -9,7 +20,7 @@
 - **Schmied** im selben Stil (`SmithScreen`): links Amboss, Guthaben und Gesamtstufe mit Balken, rechts eine Zeile pro Verbesserung mit Symbol, Stufen-Kaestchen, Beschreibung und Kaufknopf (Tooltip sagt, wie viele Coins fehlen). Die Scrollposition bleibt beim Neuoeffnen nach dem Kauf erhalten. Text von Schmiedeglut gekuerzt.
 - Gemeinsame Basis `ArenaScreen` (Rahmen, Reiter, Knoepfe, Tooltips) fuer Terminal, Shop und Schmied.
 - Nur Client, keine Netzwerk-Aenderung (Netzwerkversion bleibt 12).
-- Im Spiel ungetestet, nur gebaut und Unit-Tests (73 gruen).
+- Im Spiel ungetestet, nur gebaut und Unit-Tests (75 gruen).
 
 ## Update 0.5.2: Burg halten im Koop
 
@@ -19,7 +30,7 @@
 - **Zweites Tor ab Welle 10:** Das Osttor oeffnet sich (Titel und Meldung), 40 % der Gegner kommen dann ueber einen eigenen kurzen Weg rechts unten zum Kristall. Vier neue Bauplaetze an diesem Weg (27 insgesamt). Startplatz der Gruppe verlegt.
 - Infotafel: Bunker-Vorschau ohne Bezug auf andere Spiele, Burg-halten-Zeile ergaenzt. Alte Tafeln werden automatisch ersetzt.
 - Burghof wird wegen des Osttors beim naechsten Kampf neu gebaut.
-- Im Spiel ungetestet, nur gebaut und Unit-Tests (73 gruen).
+- Im Spiel ungetestet, nur gebaut und Unit-Tests (75 gruen).
 
 ## Update 0.5.1: Burg halten ueberarbeitet, Infotafeln
 

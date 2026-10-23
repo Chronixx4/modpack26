@@ -78,6 +78,12 @@ abstract class ModeLogic {
     /** Auswahl in einem Modus-Menue. */
     void menuPick(ServerPlayer p, String menu, int option) {}
 
+    /** Rechtsklick mit einem Gegenstand; true = verbraucht. */
+    boolean useItem(ServerPlayer p, net.minecraft.world.item.ItemStack stack) { return false; }
+
+    /** Kampf gewonnen oder verloren (vor clear), z. B. fuer eine Bilanz. */
+    void finished(MinecraftServer server, boolean won) {}
+
     /** Ein Gegner des Kampfes ist gestorben oder verschwunden; killer kann null sein. */
     void mobDied(LivingEntity dead, ServerPlayer killer) {}
 

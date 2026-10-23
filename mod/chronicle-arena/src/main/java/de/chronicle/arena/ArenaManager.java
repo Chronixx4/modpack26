@@ -548,7 +548,10 @@ public final class ArenaManager {
         ArenaObjectives.clear(server.getLevel(DIM), r.objective);
         ArenaPickups.clear(server.getLevel(DIM),r);
         discardMobs(server, r);
-        if (r.logic != null) r.logic.clear(server.getLevel(DIM));
+        if (r.logic != null) {
+            r.logic.finished(server, won);
+            r.logic.clear(server.getLevel(DIM));
+        }
         r.queue.clear();
         for (UUID kc : r.killcamTicks.keySet()) {
             ServerPlayer kp = server.getPlayerList().getPlayer(kc);
@@ -1756,6 +1759,22 @@ public final class ArenaManager {
             if (r.killcamTicks.isEmpty()) finish(sp.server, false);
             else r.lossDelay = 105;
         }
+    }
+
+    /** Faehigkeits-Gegenstaende (Burg halten): Rechtsklick an den Modus; ohne laufenden Kampf verschwinden sie. */
+    @SubscribeEvent
+    public void onRightClickItem(net.neoforged.neoforge.event.entity.player.PlayerInteractEvent.RightClickItem event) {
+        if (!(event.getEntity() instanceof ServerPlayer player) || SiegeCrew.abilityRole(event.getItemStack()) < 0) return;
+        event.setCanceled(true);
+        event.setCancellationResult(net.minecraft.world.InteractionResult.SUCCESS);
+        Run r = run;
+        if (r == null || r.logic == null || !r.alive.contains(player.getUUID()) || !r.logic.useItem(player, event.getItemStack())) event.getItemStack().setCount(0);
+    }
+
+    /** Faehigkeits-Gegenstaende lassen sich nicht wegwerfen (der Modus gibt sie sonst gleich wieder). */
+    @SubscribeEvent
+    public void onToss(net.neoforged.neoforge.event.entity.item.ItemTossEvent event) {
+        if (SiegeCrew.abilityRole(event.getEntity().getItem()) >= 0) event.getEntity().discard();
     }
 
     @SubscribeEvent

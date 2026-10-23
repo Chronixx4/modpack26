@@ -156,4 +156,34 @@ class ArenaSiegeTest {
     }
 
     private static LivingEntity mob(){LivingEntity e=mock(LivingEntity.class);UUID id=UUID.randomUUID();when(e.getUUID()).thenReturn(id);when(e.getRandom()).thenReturn(net.minecraft.util.RandomSource.create(1));return e;}
+
+    @Test void crewRolesVotesAndScore(){
+        assertEquals(4,SiegeCrew.ROLES.length);
+        assertEquals(SiegeCrew.ROLES.length,SiegeCrew.ROLE_DESC.length);
+        assertEquals(SiegeCrew.ROLES.length,SiegeCrew.ABILITY.length);
+        assertEquals(85,SiegeCrew.cost(100,SiegeCrew.BUILDER));
+        assertEquals(100,SiegeCrew.cost(100,SiegeCrew.GUARD));
+        assertEquals(100,SiegeCrew.cost(100,-1));
+        assertEquals(2*SiegeCrew.MAGE_COOLDOWN,SiegeCrew.cooldown(SiegeCrew.BUILDER));
+        assertEquals(SiegeCrew.CALM,SiegeCrew.winner(new int[]{0,0,0,0}),"Ohne Stimmen bleibt es ruhig");
+        assertEquals(SiegeCrew.HORDE,SiegeCrew.winner(new int[]{1,2,1,0}));
+        assertEquals(SiegeCrew.HORDE,SiegeCrew.winner(new int[]{0,1,1,1}),"Gleichstand: die erste in der Liste");
+        assertEquals(SiegeCrew.CALM,SiegeCrew.winner(new int[]{2,2,0,0}));
+        assertEquals(100,SiegeCrew.withBonus(100,SiegeCrew.CALM));
+        assertEquals(140,SiegeCrew.withBonus(100,SiegeCrew.HORDE));
+        for(int v=1;v<SiegeCrew.VOTES.length;v++)assertTrue(SiegeCrew.VOTE_BONUS[v]>0,"Risiko ohne Bonus: "+SiegeCrew.VOTES[v]);
+        int[] st=new int[SiegeCrew.STATS];st[SiegeCrew.KILLS]=10;st[SiegeCrew.BUILT]=2;st[SiegeCrew.SHARDS]=1;st[SiegeCrew.SABOTEURS]=1;st[SiegeCrew.ABILITIES]=3;
+        assertEquals(10+6+5+4+6,SiegeCrew.score(st));
+        assertTrue(SiegeCrew.line("Alex",st).startsWith("Alex: 10 Kills"));
+    }
+
+    @Test void abilityItemsCarryTheirRole(){
+        for(int role=0;role<SiegeCrew.ROLES.length;role++){
+            var st=SiegeCrew.abilityItem(role);
+            assertEquals(role,SiegeCrew.abilityRole(st));
+            assertTrue(st.getHoverName().getString().startsWith(SiegeCrew.ABILITY[role]));
+        }
+        assertEquals(-1,SiegeCrew.abilityRole(new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.BRICK)));
+        assertEquals(-1,SiegeCrew.abilityRole(SiegeCrew.shard()));
+    }
 }

@@ -209,6 +209,22 @@ final class ArenaSiege extends ModeLogic {
     final Map<UUID, Integer> jam = new HashMap<>();
     private int saboteurs;
     private boolean gate2Open;
+    /** Koop: Rolle pro Spieler, Bereitschaft der Faehigkeit (Spielzeit), getragene Splitter, Statistik, Stimmen. */
+    final Map<UUID, Integer> crew = new HashMap<>();
+    private final Map<UUID, Long> ready = new HashMap<>();
+    final Map<UUID, Integer> carried = new HashMap<>();
+    final Map<UUID, int[]> stats = new HashMap<>();
+    private final Map<UUID, String> names = new HashMap<>();
+    final Map<UUID, Integer> votes = new HashMap<>();
+    private final Map<UUID, Long> shards = new HashMap<>();
+    private final long[] overload = new long[PADS.length];
+    private final List<double[]> rains = new ArrayList<>();
+    boolean rolesLocked, voteOpen;
+    /** Abstimmungsergebnis fuer die laufende Welle (SiegeCrew.CALM ...). */
+    int activeVote;
+    /** Spielzeit der Arena-Welt beim letzten Tick (fuer die HUD-Anzeige der Abklingzeit). */
+    private long now;
+    private static final net.minecraft.resources.ResourceLocation GUARD_HP = ChronicleArena.id("siege_guard_hp");
 
     ArenaSiege(ArenaManager.Run r) {
         super(r);
@@ -291,6 +307,13 @@ final class ArenaSiege extends ModeLogic {
         r.variant = 0;
         coreMax = core = CORE_HP + CORE_HP_PLAYER * r.extra;
         points = START_POINTS;
+        crew.clear();
+        ready.clear();
+        carried.clear();
+        stats.clear();
+        votes.clear();
+        rolesLocked = voteOpen = false;
+        activeVote = SiegeCrew.CALM;
         shockCooldown = 0;
         resetPads(lvl);
         clearTraps(lvl);
@@ -306,6 +329,9 @@ final class ArenaSiege extends ModeLogic {
             p.sendSystemMessage(Component.literal("Burg halten: Rechtsklick auf einen Bauplatz baut Tuerme, ueber das Menue kannst du sie auch besteigen (+50 % Schaden)."
                     + " Gegner triffst du nur vom Weg aus oder mit Pfeilen vom Pfeilturm. Schleichen + Rechtsklick auf den Weg legt Fallen."
                     + " Saboteure legen Tuerme lahm, die musst du selbst erledigen. Ab Welle " + SECOND_GATE_WAVE + " oeffnet sich das Osttor.").withStyle(ChatFormatting.AQUA));
+            p.sendSystemMessage(Component.literal("Waehlt eure Rollen (bis zur ersten Welle, sonst Zufall). Starke Gegner lassen Kristall-Splitter fallen: aufheben und zum Kristall tragen."
+                    + " Vor jeder weiteren Welle stimmt ihr ueber die naechste ab.").withStyle(ChatFormatting.LIGHT_PURPLE));
+            roleMenu(p, true);
         }
     }
 
@@ -483,8 +509,8 @@ final class ArenaSiege extends ModeLogic {
             case ARMORED -> 1.3;
             case SABOTEUR -> 1.5;
             default -> 1.0;
-        };
-        double speed = SPEED_BONUS + (ro == RUNNER ? 0.5 : ro == ARMORED ? -0.15 : 0);
+        } * (activeVote == SiegeCrew.IRON ? 1.4 : 1.0);
+        double speed = SPEED_BONUS + (ro == RUNNER ? 0.5 : ro == ARMORED ? -0.15 : 0) + (activeVote == SiegeCrew.STORM ? 0.3 : 0);
         modify(le, Attributes.MAX_HEALTH, "siege_health", hp - 1.0);
         modify(le, Attributes.MOVEMENT_SPEED, "siege_speed", speed);
         modify(le, Attributes.KNOCKBACK_RESISTANCE, "siege_knockback", 1.0);
@@ -529,7 +555,7 @@ final class ArenaSiege extends ModeLogic {
 
     /** Spieler treffen Gegner nur, wenn sie selbst auf dem Weg stehen, oder mit Fernkampf von einem besetzten Pfeilturm. */
     @Override float playerHit(ServerPlayer attacker, LivingEntity mob, float amount, boolean ranged) {
-        if (onPath(attacker.position())) return amount;
+        if (onPath(attacker.position())) return crew.getOrDefault(attacker.getUUID(), -1) == SiegeCrew.GUARD ? (float) (amount * SiegeCrew.GUARD_PATH_BONUS) : amount;
         int on = mannedBy(attacker);
         if (ranged && on >= 0 && type[on] == Tower.ARROW.ordinal()) return (float) (amount * ARCHER_BONUS);
         long now = attacker.level().getGameTime();
@@ -543,9 +569,11 @@ final class ArenaSiege extends ModeLogic {
 
     @Override void afterBuildWave(ServerLevel lvl) {
         // Mehr Gegner als im Wellen-Modus, dafuer schwaecher (siehe spawned).
+        lockRoles(lvl.getServer());
+        resolveVote(lvl.getServer());
         List<ArenaManager.Spawn> normal = new ArrayList<>();
         for (ArenaManager.Spawn s : r.queue) if (!s.elite && !s.boss && !s.mini) normal.add(s);
-        int extra = (int) Math.round(normal.size() * (COUNT_FACTOR - 1.0));
+        int extra = (int) Math.round(normal.size() * (COUNT_FACTOR * (activeVote == SiegeCrew.HORDE ? 1.5 : 1.0) - 1.0));
         for (int k = 0; k < extra && !normal.isEmpty(); k++) {
             ArenaManager.Spawn copy = new ArenaManager.Spawn(normal.get(k % normal.size()).entity, false, false);
             r.queue.add(lvl.getRandom().nextInt(r.queue.size() + 1), copy);
@@ -575,11 +603,16 @@ final class ArenaSiege extends ModeLogic {
     }
 
     @Override void tickFight(MinecraftServer server, ServerLevel lvl, int tick) {
+        now = lvl.getGameTime();
         if (tick % 5 == 0) {
             keepOnPath(lvl);
             leaks(server, lvl);
         }
         if (tick % 10 == 0) steer(server, lvl);
+        if (tick % 5 == 0) shards(server, lvl);
+        if (tick % 10 == 0) rains(lvl);
+        if (tick % 40 == 0) ensureCrew(server);
+        if (tick % 100 == 0) supplyAura(server, lvl);
         if (shockCooldown > 0) shockCooldown--;
         towers(lvl, tick);
         if (tick % 10 == 0) traps(lvl);
@@ -604,12 +637,15 @@ final class ArenaSiege extends ModeLogic {
     }
 
     @Override boolean holdPrep(MinecraftServer server, ServerLevel lvl, int tick) {
+        now = lvl.getGameTime();
         if (shockCooldown > 0) shockCooldown--;
         if (startNow) {
             startNow = false;
             r.timer = Math.min(r.timer, 60);
         }
         if (tick % 20 == 0) coreLabel(lvl);
+        if (tick % 5 == 0) shards(lvl.getServer(), lvl);
+        if (tick % 40 == 0) ensureCrew(server);
         return false;
     }
 
@@ -850,7 +886,8 @@ final class ArenaSiege extends ModeLogic {
             title = "Falle legen";
             boolean fits = trapFits(x, z), room = traps.size() < MAX_TRAPS;
             for (TrapType t : TrapType.values()) {
-                opts.add(new ArenaNet.MenuOption(t.ordinal(), t.title, t.desc, t.icon, t.price, fits && room && points >= t.price ? 0 : 1, -1));
+                int price = cost(p, t.price);
+                opts.add(new ArenaNet.MenuOption(t.ordinal(), t.title, t.desc, t.icon, price, fits && room && points >= price ? 0 : 1, -1));
             }
             if (!fits) title += " (hier kein Platz)";
             else if (!room) title += " (hoechstens " + MAX_TRAPS + ")";
@@ -886,7 +923,7 @@ final class ArenaSiege extends ModeLogic {
                         && m.position().subtract(pos).horizontalDistanceSqr() <= range * range) inRange.add(m);
             }
             if (inRange.isEmpty()) continue;
-            cooldown[i] = t.interval(lv);
+            cooldown[i] = overload[i] > lvl.getGameTime() ? Math.max(1, t.interval(lv) / 2) : t.interval(lv);
             float dmg = (float) (t.damage(lv) * towerScale() * (manned(lvl, i) != null ? MANNED_BONUS : 1.0));
             switch (t) {
                 case ARROW -> {
@@ -989,13 +1026,19 @@ final class ArenaSiege extends ModeLogic {
         UUID id = dead.getUUID();
         waypoint.remove(id);
         stuck.remove(id);
+        int ro = role.getOrDefault(id, NORMAL);
         role.remove(id);
         pathOf.remove(id);
         jam.remove(id);
         int w = worth.getOrDefault(id, 1);
         worth.remove(id);
         if (leaked.remove(id)) return;
-        points += (int) Math.round(10 * w * KILL_PCT / 100.0);
+        points += SiegeCrew.withBonus((int) Math.round(10 * w * KILL_PCT / 100.0), activeVote);
+        if (killer != null) {
+            stat(killer, SiegeCrew.KILLS);
+            if (ro == SABOTEUR) stat(killer, SiegeCrew.SABOTEURS);
+        }
+        if (dead.level() instanceof ServerLevel lvl && (w >= 3 || ro == LEADER || ro == ARMORED && dead.getRandom().nextDouble() < 0.35)) dropShard(lvl, dead.position());
     }
 
     @Override boolean lost() { return core <= 0; }
@@ -1008,7 +1051,7 @@ final class ArenaSiege extends ModeLogic {
     }
 
     @Override boolean waveCleared(MinecraftServer server, ServerLevel lvl) {
-        int bonus = (int) Math.round((50 + 10 * r.wave) * KILL_PCT / 100.0);
+        int bonus = SiegeCrew.withBonus((int) Math.round((50 + 10 * r.wave) * KILL_PCT / 100.0), activeVote);
         int mines = mineIncome();
         points += bonus + mines;
         for (UUID id : r.alive) {
@@ -1024,6 +1067,8 @@ final class ArenaSiege extends ModeLogic {
         jam.clear();
         leaked.clear();
         for (Trap t : new ArrayList<>(traps)) if (t.type == TrapType.TAR && --t.charges <= 0) removeTrap(lvl, t);
+        activeVote = SiegeCrew.CALM;
+        openVote(server);
         return false;
     }
 
@@ -1062,14 +1107,14 @@ final class ArenaSiege extends ModeLogic {
         List<ArenaNet.MenuOption> opts = new ArrayList<>();
         if (type[i] < 0) {
             for (Tower t : Tower.values()) {
-                int price = price(t, 0);
+                int price = cost(p, price(t, 0));
                 String extra = t == Tower.MINE ? " +" + Tower.income(1) + " Punkte pro Welle." : t == Tower.GOLEM ? "" : " Reichweite " + (int) t.range(1) + ".";
                 opts.add(new ArenaNet.MenuOption(t.ordinal(), t.title, t.desc + extra, t.icon, price, points >= price ? 0 : 1, -1));
             }
         } else {
             Tower t = Tower.values()[type[i]];
             if (level[i] < 3) {
-                int price = price(t, level[i]);
+                int price = cost(p, price(t, level[i]));
                 opts.add(new ArenaNet.MenuOption(10, "Ausbauen auf Stufe " + ROMAN[level[i] + 1], upgradeText(t, level[i] + 1), t.icon, price, points >= price ? 0 : 1, -1));
             } else {
                 opts.add(new ArenaNet.MenuOption(10, "Hoechste Stufe", "Dieser Turm ist voll ausgebaut.", t.icon, -1, 1, -1));
@@ -1102,13 +1147,15 @@ final class ArenaSiege extends ModeLogic {
     private void coreMenu(ServerPlayer p, boolean popup) {
         int price = (int) Math.round(150 * COST_PCT / 100.0);
         List<ArenaNet.MenuOption> opts = new ArrayList<>();
-        opts.add(new ArenaNet.MenuOption(0, "Kristall reparieren", "+25 Leben (hoechstens bis zum Maximum).", "minecraft:amethyst_shard", price,
+        opts.add(new ArenaNet.MenuOption(0, "Kristall reparieren", "+" + repair(p) + " Leben (hoechstens bis zum Maximum).", "minecraft:amethyst_shard", price,
                 points >= price && core < coreMax ? 0 : 1, -1));
         boolean fight = r.state != ArenaManager.State.PREP;
         String shock = shockCooldown > 0 ? "Laedt noch " + (shockCooldown + 19) / 20 + " s." : "Bereit.";
         opts.add(new ArenaNet.MenuOption(2, "Schockwelle", "Trifft alle Gegner bis 12 Bloecke um den Kristall hart und friert sie kurz ein. Kostenlos, alle 60 s. " + shock,
                 "minecraft:echo_shard", -1, fight && shockCooldown <= 0 ? 0 : 1, -1));
         opts.add(new ArenaNet.MenuOption(1, "Welle sofort starten", "Bauphase beenden, die naechste Welle kommt in 3 Sekunden.", "minecraft:bell", -1, canStart() ? 0 : 1, -1));
+        if (!rolesLocked) opts.add(new ArenaNet.MenuOption(3, "Rolle waehlen", "Baumeister, Waechter, Magier oder Versorger. Geht bis zur ersten Welle.", "minecraft:armor_stand", -1, 0, -1));
+        if (voteOpen) opts.add(new ArenaNet.MenuOption(4, "Naechste Welle abstimmen", "Mehr Risiko, mehr Punkte. Die Mehrheit entscheidet.", "minecraft:paper", -1, 0, -1));
         PacketDistributor.sendToPlayer(p, new ArenaNet.Menu("siege_core", "Kristall " + Math.max(0, core) + " / " + coreMax, "Faellt der Kristall, ist der Kampf verloren.", opts, points, 0, popup));
     }
 
@@ -1138,15 +1185,37 @@ final class ArenaSiege extends ModeLogic {
                 int price = (int) Math.round(150 * COST_PCT / 100.0);
                 if (points < price || core >= coreMax) return;
                 points -= price;
-                core = Math.min(coreMax, core + 25);
+                core = Math.min(coreMax, core + repair(p));
                 coreLabel(lvl);
                 lvl.playSound(null, p.blockPosition(), SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.BLOCKS, 1.0F, 1.4F);
             } else if (option == 1 && canStart()) {
                 startNow = true;
             } else if (option == 2) {
                 shock(p, lvl);
+            } else if (option == 3 && !rolesLocked) {
+                roleMenu(p, false);
+                return;
+            } else if (option == 4 && voteOpen) {
+                voteMenu(p, false);
+                return;
             }
             coreMenu(p, false);
+            return;
+        }
+        if (menu.equals("siege_role")) {
+            if (!rolesLocked && option >= 0 && option < SiegeCrew.ROLES.length) setRole(p, option, true);
+            for (UUID id : r.alive) {
+                ServerPlayer o = p.server.getPlayerList().getPlayer(id);
+                if (o != null) roleMenu(o, false);
+            }
+            return;
+        }
+        if (menu.equals("siege_vote")) {
+            if (voteOpen && option >= 0 && option < SiegeCrew.VOTES.length) votes.put(p.getUUID(), option);
+            for (UUID id : r.alive) {
+                ServerPlayer o = p.server.getPlayerList().getPlayer(id);
+                if (o != null) voteMenu(o, false);
+            }
             return;
         }
         if (menu.startsWith("siege_trap_")) {
@@ -1161,8 +1230,10 @@ final class ArenaSiege extends ModeLogic {
             }
             if (here == null && option >= 0 && option < TrapType.values().length && trapFits(x, z) && traps.size() < MAX_TRAPS) {
                 TrapType t = TrapType.values()[option];
-                if (points < t.price) return;
-                points -= t.price;
+                int price = cost(p, t.price);
+                if (points < price) return;
+                points -= price;
+                stat(p, SiegeCrew.BUILT);
                 Trap tr = new Trap(x, z, t, t.charges);
                 traps.add(tr);
                 placeTrap(lvl, tr);
@@ -1196,20 +1267,22 @@ final class ArenaSiege extends ModeLogic {
         }
         if (type[i] < 0 && option >= 0 && option < Tower.values().length) {
             Tower t = Tower.values()[option];
-            int price = price(t, 0);
+            int price = cost(p, price(t, 0));
             if (points < price) return;
             points -= price;
             spent[i] += price;
+            stat(p, SiegeCrew.BUILT);
             type[i] = option;
             level[i] = 1;
             placeTower(lvl, i);
             say(p, p.getGameProfile().getName() + " baut " + t.title + " auf Platz " + (i + 1) + ".");
         } else if (type[i] >= 0 && option == 10 && level[i] < 3) {
             Tower t = Tower.values()[type[i]];
-            int price = price(t, level[i]);
+            int price = cost(p, price(t, level[i]));
             if (points < price) return;
             points -= price;
             spent[i] += price;
+            stat(p, SiegeCrew.BUILT);
             level[i]++;
             placeTower(lvl, i);
             say(p, p.getGameProfile().getName() + " baut " + t.title + " auf Stufe " + ROMAN[level[i]] + " aus.");
@@ -1232,12 +1305,370 @@ final class ArenaSiege extends ModeLogic {
         }
     }
 
+    // ------------------------------------------------------------------ Koop: Rollen, Faehigkeiten, Splitter, Abstimmung
+
+    private int roleOf(ServerPlayer p) { return crew.getOrDefault(p.getUUID(), -1); }
+
+    private int cost(ServerPlayer p, int price) { return SiegeCrew.cost(price, roleOf(p)); }
+
+    private int repair(ServerPlayer p) { return roleOf(p) == SiegeCrew.SUPPLY ? SiegeCrew.SUPPLY_REPAIR : SiegeCrew.REPAIR; }
+
+    private void stat(ServerPlayer p, int kind) {
+        names.put(p.getUUID(), p.getGameProfile().getName());
+        stats.computeIfAbsent(p.getUUID(), k -> new int[SiegeCrew.STATS])[kind]++;
+    }
+
+    private void roleMenu(ServerPlayer p, boolean popup) {
+        int mine = roleOf(p);
+        List<ArenaNet.MenuOption> opts = new ArrayList<>();
+        for (int i = 0; i < SiegeCrew.ROLES.length; i++) {
+            int count = 0;
+            for (int v : crew.values()) if (v == i) count++;
+            opts.add(new ArenaNet.MenuOption(i, SiegeCrew.ROLES[i], SiegeCrew.ROLE_DESC[i], SiegeCrew.ROLE_ICONS[i], -1,
+                    mine == i ? 2 : rolesLocked ? 1 : 0, count));
+        }
+        String sub = rolesLocked ? "Die Rollen stehen fest." : mine >= 0
+                ? "Du spielst " + SiegeCrew.ROLES[mine] + ". Wechseln geht bis zur ersten Welle."
+                : "Gilt fuer den ganzen Kampf. Wer bis zur ersten Welle nichts waehlt, bekommt eine Zufallsrolle. Mehrfach erlaubt.";
+        PacketDistributor.sendToPlayer(p, new ArenaNet.Menu("siege_role", "Rolle waehlen", sub, opts, -1, 0, popup));
+    }
+
+    void setRole(ServerPlayer p, int role, boolean announce) {
+        crew.put(p.getUUID(), role);
+        names.put(p.getUUID(), p.getGameProfile().getName());
+        stats.computeIfAbsent(p.getUUID(), k -> new int[SiegeCrew.STATS]);
+        applyRole(p);
+        if (announce) say(p, p.getGameProfile().getName() + " spielt " + SiegeCrew.ROLES[role] + ".");
+    }
+
+    /** Lebens-Bonus und Faehigkeits-Gegenstand passend zur Rolle (auch nach Neustart oder Wiederbeitritt). */
+    private void applyRole(ServerPlayer p) {
+        int role = roleOf(p);
+        SiegeCrew.strip(p, role);
+        AttributeInstance hp = p.getAttribute(Attributes.MAX_HEALTH);
+        if (hp != null) {
+            boolean has = hp.getModifier(GUARD_HP) != null;
+            if (role == SiegeCrew.GUARD && !has) {
+                hp.addTransientModifier(new AttributeModifier(GUARD_HP, SiegeCrew.GUARD_HEALTH, AttributeModifier.Operation.ADD_VALUE));
+                p.heal((float) SiegeCrew.GUARD_HEALTH);
+            } else if (role != SiegeCrew.GUARD && has) {
+                hp.removeModifier(GUARD_HP);
+                if (p.getHealth() > p.getMaxHealth()) p.setHealth(p.getMaxHealth());
+            }
+        }
+        if (role >= 0 && !SiegeCrew.has(p, role) && !p.getInventory().add(SiegeCrew.abilityItem(role)))
+            p.displayClientMessage(Component.literal("Inventar voll: kein Platz fuer deine Faehigkeit!").withStyle(ChatFormatting.RED), true);
+    }
+
+    private void ensureCrew(MinecraftServer server) {
+        for (UUID id : r.alive) {
+            ServerPlayer p = server.getPlayerList().getPlayer(id);
+            if (p != null && crew.containsKey(id)) applyRole(p);
+        }
+    }
+
+    /** Erste Welle: wer noch keine Rolle hat, bekommt eine zufaellige; danach steht alles fest. */
+    private void lockRoles(MinecraftServer server) {
+        if (rolesLocked) return;
+        rolesLocked = true;
+        for (UUID id : r.alive) {
+            ServerPlayer p = server.getPlayerList().getPlayer(id);
+            if (p == null) continue;
+            if (!crew.containsKey(id)) setRole(p, p.getRandom().nextInt(SiegeCrew.ROLES.length), true);
+            roleMenu(p, false);
+            p.sendSystemMessage(Component.literal("Deine Rolle: " + SiegeCrew.ROLES[roleOf(p)] + ". Faehigkeit " + SiegeCrew.ABILITY[roleOf(p)]
+                    + " per Rechtsklick mit dem goldenen Gegenstand.").withStyle(ChatFormatting.GOLD));
+        }
+    }
+
+    // ---- Faehigkeiten
+
+    @Override boolean useItem(ServerPlayer p, ItemStack stack) {
+        int role = SiegeCrew.abilityRole(stack);
+        if (role < 0) return false;
+        if (role != roleOf(p)) {
+            stack.setCount(0);
+            return true;
+        }
+        if (r.state == ArenaManager.State.PREP) {
+            p.displayClientMessage(Component.literal(SiegeCrew.ABILITY[role] + " geht nur waehrend einer Welle.").withStyle(ChatFormatting.GOLD), true);
+            return true;
+        }
+        ServerLevel lvl = p.serverLevel();
+        long now = lvl.getGameTime();
+        long at = ready.getOrDefault(p.getUUID(), 0L);
+        if (now < at) {
+            p.displayClientMessage(Component.literal(SiegeCrew.ABILITY[role] + " laedt noch " + (at - now + 19) / 20 + " s.").withStyle(ChatFormatting.GOLD), true);
+            return true;
+        }
+        boolean used = switch (role) {
+            case SiegeCrew.BUILDER -> overload(p, lvl, now);
+            case SiegeCrew.GUARD -> warcry(p, lvl);
+            case SiegeCrew.MAGE -> arcaneRain(p, lvl);
+            default -> healWave(p, lvl);
+        };
+        if (!used) return true;
+        int cd = SiegeCrew.cooldown(role);
+        ready.put(p.getUUID(), now + cd);
+        p.getCooldowns().addCooldown(stack.getItem(), cd);
+        stat(p, SiegeCrew.ABILITIES);
+        say(p, p.getGameProfile().getName() + " setzt " + SiegeCrew.ABILITY[role] + " ein.");
+        return true;
+    }
+
+    private boolean overload(ServerPlayer p, ServerLevel lvl, long now) {
+        int n = 0;
+        for (int i = 0; i < PADS.length; i++) {
+            if (type[i] < 0 || type[i] == Tower.GOLEM.ordinal() || type[i] == Tower.MINE.ordinal()) continue;
+            double dx = p.getX() - (CENTER.getX() + PADS[i][0] + 0.5), dz = p.getZ() - (CENTER.getZ() + PADS[i][1] + 0.5);
+            if (dx * dx + dz * dz > 12 * 12) continue;
+            overload[i] = now + 200;
+            n++;
+            lvl.sendParticles(ParticleTypes.ELECTRIC_SPARK, CENTER.getX() + PADS[i][0] + 0.5, CENTER.getY() + muzzle(i) + 0.5, CENTER.getZ() + PADS[i][1] + 0.5, 30, 0.8, 0.8, 0.8, 0.1);
+        }
+        if (n == 0) {
+            p.displayClientMessage(Component.literal("Kein Turm in 12 Bloecken.").withStyle(ChatFormatting.GOLD), true);
+            return false;
+        }
+        lvl.playSound(null, p.blockPosition(), SoundEvents.BEACON_POWER_SELECT, SoundSource.PLAYERS, 1.0F, 1.6F);
+        return true;
+    }
+
+    private boolean warcry(ServerPlayer p, ServerLevel lvl) {
+        for (UUID id : r.mobs) {
+            if (lvl.getEntity(id) instanceof LivingEntity m && m.isAlive() && m.distanceToSqr(p) <= 6 * 6) {
+                m.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 10, false, true));
+                m.addEffect(new MobEffectInstance(MobEffects.GLOWING, 60, 0, false, false));
+            }
+        }
+        p.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 160, 1, false, true));
+        lvl.sendParticles(ParticleTypes.SONIC_BOOM, p.getX(), p.getY() + 1.0, p.getZ(), 1, 0, 0, 0, 0);
+        lvl.playSound(null, p.blockPosition(), SoundEvents.RAVAGER_ROAR, SoundSource.PLAYERS, 1.0F, 1.2F);
+        return true;
+    }
+
+    private boolean arcaneRain(ServerPlayer p, ServerLevel lvl) {
+        net.minecraft.world.phys.HitResult hit = p.pick(48.0, 0, false);
+        if (hit.getType() == net.minecraft.world.phys.HitResult.Type.MISS) {
+            p.displayClientMessage(Component.literal("Schau auf die Stelle, die getroffen werden soll.").withStyle(ChatFormatting.GOLD), true);
+            return false;
+        }
+        Vec3 at = hit.getLocation();
+        rains.add(new double[]{at.x, CENTER.getY(), at.z, 3});
+        lvl.playSound(null, at.x, at.y, at.z, SoundEvents.EVOKER_CAST_SPELL, SoundSource.PLAYERS, 1.2F, 0.8F);
+        return true;
+    }
+
+    /** Arkanregen: drei Einschlaege im Abstand einer halben Sekunde. */
+    private void rains(ServerLevel lvl) {
+        for (var it = rains.iterator(); it.hasNext(); ) {
+            double[] rn = it.next();
+            Vec3 c = new Vec3(rn[0], rn[1], rn[2]);
+            float dmg = (float) (8 * towerScale());
+            for (UUID id : r.mobs) {
+                if (lvl.getEntity(id) instanceof LivingEntity m && m.isAlive() && m.position().distanceToSqr(c) <= 4 * 4) {
+                    m.invulnerableTime = 0;
+                    m.hurt(lvl.damageSources().magic(), dmg);
+                }
+            }
+            lvl.sendParticles(ParticleTypes.WITCH, c.x, c.y + 4.0, c.z, 40, 2.0, 2.0, 2.0, 0.05);
+            lvl.sendParticles(ParticleTypes.EXPLOSION, c.x, c.y + 0.5, c.z, 3, 2.0, 0.2, 2.0, 0);
+            lvl.playSound(null, c.x, c.y, c.z, SoundEvents.GENERIC_EXPLODE.value(), SoundSource.PLAYERS, 0.5F, 1.6F);
+            if (--rn[3] <= 0) it.remove();
+        }
+    }
+
+    private boolean healWave(ServerPlayer p, ServerLevel lvl) {
+        core = Math.min(coreMax, core + 15);
+        coreLabel(lvl);
+        for (List<UUID> list : golems.values()) {
+            for (UUID id : list) if (lvl.getEntity(id) instanceof IronGolem g && g.isAlive()) g.setHealth(g.getMaxHealth());
+        }
+        if ((r.mask & ArenaManager.MOD_NOHEAL) == 0) {
+            for (UUID id : r.alive) {
+                ServerPlayer o = lvl.getServer().getPlayerList().getPlayer(id);
+                if (o != null && o.level() == lvl && o.distanceToSqr(p) <= 10 * 10) o.heal(6.0F);
+            }
+        }
+        lvl.sendParticles(ParticleTypes.HEART, p.getX(), p.getY() + 1.0, p.getZ(), 20, 3.0, 1.0, 3.0, 0);
+        lvl.playSound(null, p.blockPosition(), SoundEvents.AMETHYST_BLOCK_RESONATE, SoundSource.PLAYERS, 1.2F, 1.2F);
+        return true;
+    }
+
+    /** Versorger: Golems in 8 Bloecken heilen alle 5 Sekunden. */
+    private void supplyAura(MinecraftServer server, ServerLevel lvl) {
+        for (UUID id : r.alive) {
+            if (crew.getOrDefault(id, -1) != SiegeCrew.SUPPLY) continue;
+            ServerPlayer p = server.getPlayerList().getPlayer(id);
+            if (p == null || p.level() != lvl) continue;
+            for (List<UUID> list : golems.values()) {
+                for (UUID gid : list) {
+                    if (lvl.getEntity(gid) instanceof IronGolem g && g.isAlive() && g.distanceToSqr(p) <= 8 * 8 && g.getHealth() < g.getMaxHealth()) {
+                        g.heal(8.0F);
+                        lvl.sendParticles(ParticleTypes.HEART, g.getX(), g.getY() + 2.5, g.getZ(), 2, 0.4, 0.2, 0.4, 0);
+                    }
+                }
+            }
+        }
+    }
+
+    // ---- Splitter
+
+    private void dropShard(ServerLevel lvl, Vec3 pos) {
+        net.minecraft.world.entity.item.ItemEntity item = new net.minecraft.world.entity.item.ItemEntity(lvl, pos.x, CENTER.getY() + 0.2, pos.z, SiegeCrew.shard(), 0, 0.2, 0);
+        item.addTag("chronicle_arena_pickup");
+        item.setGlowingTag(true);
+        item.setUnlimitedLifetime();
+        if (lvl.addFreshEntity(item)) shards.put(item.getUUID(), lvl.getGameTime() + SiegeCrew.SHARD_TICKS);
+    }
+
+    /** Splitter aufheben (darueber laufen) und am Kristall abgeben. */
+    private void shards(MinecraftServer server, ServerLevel lvl) {
+        long now = lvl.getGameTime();
+        for (var it = shards.entrySet().iterator(); it.hasNext(); ) {
+            var en = it.next();
+            if (!(lvl.getEntity(en.getKey()) instanceof net.minecraft.world.entity.item.ItemEntity item) || !item.isAlive()) { it.remove(); continue; }
+            if (now > en.getValue()) {
+                lvl.sendParticles(ParticleTypes.SMOKE, item.getX(), item.getY() + 0.3, item.getZ(), 6, 0.2, 0.2, 0.2, 0.01);
+                item.discard();
+                it.remove();
+                continue;
+            }
+            for (UUID id : r.alive) {
+                ServerPlayer p = server.getPlayerList().getPlayer(id);
+                if (p == null || p.level() != lvl || p.isSpectator() || p.distanceToSqr(item) > 1.8 * 1.8) continue;
+                carried.merge(id, 1, Integer::sum);
+                item.discard();
+                it.remove();
+                lvl.playSound(null, p.blockPosition(), SoundEvents.ITEM_PICKUP, SoundSource.PLAYERS, 1.0F, 1.2F);
+                p.displayClientMessage(Component.literal("Kristall-Splitter (" + carried.get(id) + ") - bring ihn zum Kristall!").withStyle(ChatFormatting.LIGHT_PURPLE), true);
+                break;
+            }
+        }
+        double cx = CENTER.getX() + CORE[0] + 0.5, cz = CENTER.getZ() + CORE[1] + 0.5;
+        for (UUID id : r.alive) {
+            int n = carried.getOrDefault(id, 0);
+            ServerPlayer p = server.getPlayerList().getPlayer(id);
+            if (n <= 0 || p == null || p.level() != lvl) continue;
+            double dx = p.getX() - cx, dz = p.getZ() - cz;
+            if (dx * dx + dz * dz > 4.5 * 4.5) continue;
+            carried.remove(id);
+            int heal = 0, bonus = 0;
+            for (int k = 0; k < n; k++) {
+                if (core < coreMax) {
+                    int add = Math.min(SiegeCrew.SHARD_HEAL, coreMax - core);
+                    core += add;
+                    heal += add;
+                } else {
+                    points += SiegeCrew.SHARD_POINTS;
+                    bonus += SiegeCrew.SHARD_POINTS;
+                }
+                stat(p, SiegeCrew.SHARDS);
+            }
+            coreLabel(lvl);
+            lvl.sendParticles(ParticleTypes.END_ROD, cx, CENTER.getY() + 3.0, cz, 30, 0.6, 1.2, 0.6, 0.05);
+            lvl.playSound(null, cx, CENTER.getY() + 2, cz, SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.BLOCKS, 1.5F, 1.0F);
+            say(p, p.getGameProfile().getName() + " bringt " + n + (n == 1 ? " Splitter" : " Splitter") + " zum Kristall"
+                    + (heal > 0 ? ": +" + heal + " Leben" : "") + (bonus > 0 ? (heal > 0 ? ", " : ": ") + "+" + bonus + " Punkte" : "") + ".");
+        }
+    }
+
+    // ---- Abstimmung
+
+    private void voteMenu(ServerPlayer p, boolean popup) {
+        int mine = votes.getOrDefault(p.getUUID(), -1);
+        int[] counts = voteCounts();
+        List<ArenaNet.MenuOption> opts = new ArrayList<>();
+        for (int i = 0; i < SiegeCrew.VOTES.length; i++) {
+            opts.add(new ArenaNet.MenuOption(i, SiegeCrew.VOTES[i], SiegeCrew.VOTE_DESC[i], SiegeCrew.VOTE_ICONS[i], -1,
+                    mine == i ? 2 : voteOpen ? 0 : 1, counts[i]));
+        }
+        String sub = voteOpen ? "Gilt fuer Welle " + (r.wave + 1) + ". Mehrheit entscheidet, bei Gleichstand die ruhigere Wahl." : "Die Abstimmung ist vorbei.";
+        PacketDistributor.sendToPlayer(p, new ArenaNet.Menu("siege_vote", "Naechste Welle", sub, opts, -1, 0, popup));
+    }
+
+    private int[] voteCounts() {
+        int[] counts = new int[SiegeCrew.VOTES.length];
+        for (int v : votes.values()) if (v >= 0 && v < counts.length) counts[v]++;
+        return counts;
+    }
+
+    /** Nach einer Welle (nicht nach der letzten): Abstimmung oeffnen. Bei Segen-Wellen ohne Popup, das Menue gibt es am Kristall. */
+    private void openVote(MinecraftServer server) {
+        votes.clear();
+        if (r.wave >= r.totalWaves) return;
+        voteOpen = true;
+        boolean popup = r.wave % 5 != 0;
+        for (UUID id : r.alive) {
+            ServerPlayer p = server.getPlayerList().getPlayer(id);
+            if (p == null) continue;
+            if (popup) voteMenu(p, true);
+            else p.sendSystemMessage(Component.literal("Abstimmung fuer die naechste Welle: am Kristall (Rechtsklick).").withStyle(ChatFormatting.LIGHT_PURPLE));
+        }
+    }
+
+    private void resolveVote(MinecraftServer server) {
+        if (!voteOpen) {
+            activeVote = SiegeCrew.CALM;
+            return;
+        }
+        voteOpen = false;
+        activeVote = SiegeCrew.winner(voteCounts());
+        for (UUID id : r.alive) {
+            ServerPlayer p = server.getPlayerList().getPlayer(id);
+            if (p == null) continue;
+            voteMenu(p, false);
+            if (activeVote != SiegeCrew.CALM)
+                p.sendSystemMessage(Component.literal("Abgestimmt: " + SiegeCrew.VOTES[activeVote] + "! " + SiegeCrew.VOTE_DESC[activeVote]).withStyle(ChatFormatting.GOLD));
+        }
+        votes.clear();
+    }
+
+    // ---- Bilanz
+
+    @Override void finished(MinecraftServer server, boolean won) {
+        List<UUID> ids = new ArrayList<>(stats.keySet());
+        if (ids.isEmpty()) return;
+        ids.sort((a, b) -> Integer.compare(SiegeCrew.score(stats.get(b)), SiegeCrew.score(stats.get(a))));
+        List<String> lines = new ArrayList<>();
+        for (UUID id : ids) {
+            ServerPlayer p = server.getPlayerList().getPlayer(id);
+            String name = p != null ? p.getGameProfile().getName() : names.getOrDefault(id, "?");
+            int role = crew.getOrDefault(id, -1);
+            lines.add(SiegeCrew.line(name + (role >= 0 ? " [" + SiegeCrew.ROLES[role] + "]" : ""), stats.get(id)));
+        }
+        UUID best = ids.get(0);
+        ServerPlayer bp = server.getPlayerList().getPlayer(best);
+        String mvp = bp != null ? bp.getGameProfile().getName() : names.getOrDefault(best, "?");
+        Set<UUID> all = new HashSet<>(r.participants);
+        all.addAll(r.alive);
+        for (UUID id : all) {
+            ServerPlayer p = server.getPlayerList().getPlayer(id);
+            if (p == null) continue;
+            p.sendSystemMessage(Component.literal("--- Burg-Bilanz ---").withStyle(ChatFormatting.GOLD));
+            if (ids.size() > 1) p.sendSystemMessage(Component.literal("MVP: " + mvp).withStyle(ChatFormatting.YELLOW, ChatFormatting.BOLD));
+            for (String l : lines) p.sendSystemMessage(Component.literal(l).withStyle(ChatFormatting.GRAY));
+        }
+    }
+
     // ------------------------------------------------------------------ Anzeige, Ende, Neustart
 
-    @Override String phase() { return r.state == ArenaManager.State.PREP ? "Burg halten | Bauphase" : "Burg halten"; }
+    @Override String phase() {
+        if (r.state == ArenaManager.State.PREP) return voteOpen ? "Burg halten | Bauphase, Abstimmung" : "Burg halten | Bauphase";
+        return activeVote != SiegeCrew.CALM ? "Burg halten | " + SiegeCrew.VOTES[activeVote] : "Burg halten";
+    }
 
     @Override String info(UUID id) {
-        return "Kasse: " + points + " Punkte | Schockwelle " + (shockCooldown > 0 ? (shockCooldown + 19) / 20 + " s" : "bereit");
+        StringBuilder b = new StringBuilder("Kasse: ").append(points).append(" Punkte | Schockwelle ")
+                .append(shockCooldown > 0 ? (shockCooldown + 19) / 20 + " s" : "bereit");
+        int role = crew.getOrDefault(id, -1);
+        if (role >= 0) {
+            long left = ready.getOrDefault(id, 0L) - now;
+            b.append(" | ").append(SiegeCrew.ABILITY[role]).append(left > 0 ? " " + (left + 19) / 20 + " s" : " bereit");
+        }
+        int n = carried.getOrDefault(id, 0);
+        if (n > 0) b.append(" | Splitter: ").append(n);
+        return b.toString();
     }
 
     @Override int coreHealth() { return Math.max(0, core); }
@@ -1252,6 +1683,21 @@ final class ArenaSiege extends ModeLogic {
         ArenaLabels.remove(lvl, "chronicle_siege");
         java.util.Arrays.fill(padLabels, null);
         coreLabel = null;
+        for (UUID id : shards.keySet()) if (lvl.getEntity(id) instanceof Entity e) e.discard();
+        shards.clear();
+        rains.clear();
+        Set<UUID> all = new HashSet<>(r.participants);
+        all.addAll(r.alive);
+        for (UUID id : all) {
+            ServerPlayer p = lvl.getServer().getPlayerList().getPlayer(id);
+            if (p == null) continue;
+            SiegeCrew.strip(p, -1);
+            AttributeInstance hp = p.getAttribute(Attributes.MAX_HEALTH);
+            if (hp != null && hp.getModifier(GUARD_HP) != null) {
+                hp.removeModifier(GUARD_HP);
+                if (p.getHealth() > p.getMaxHealth()) p.setHealth(p.getMaxHealth());
+            }
+        }
     }
 
     @Override CompoundTag save() {
@@ -1272,6 +1718,22 @@ final class ArenaSiege extends ModeLogic {
             tr[k * 4 + 3] = x.charges;
         }
         t.putIntArray("traps", tr);
+        CompoundTag c = new CompoundTag();
+        Set<UUID> ids = new HashSet<>(crew.keySet());
+        ids.addAll(stats.keySet());
+        ids.addAll(carried.keySet());
+        for (UUID id : ids) {
+            int[] st = stats.getOrDefault(id, new int[SiegeCrew.STATS]);
+            int[] row = new int[SiegeCrew.STATS + 2];
+            row[0] = crew.getOrDefault(id, -1);
+            row[1] = carried.getOrDefault(id, 0);
+            System.arraycopy(st, 0, row, 2, SiegeCrew.STATS);
+            c.putIntArray(id.toString(), row);
+            if (names.containsKey(id)) c.putString(id + "_name", names.get(id));
+        }
+        t.put("crew", c);
+        t.putBoolean("roles_locked", rolesLocked);
+        t.putInt("vote", activeVote);
         return t;
     }
 
@@ -1305,5 +1767,23 @@ final class ArenaSiege extends ModeLogic {
         gate(lvl, r.wave >= SECOND_GATE_WAVE);
         ArenaLabels.remove(lvl, "chronicle_siege");
         labels(lvl);
+        crew.clear();
+        stats.clear();
+        carried.clear();
+        CompoundTag c = t.getCompound("crew");
+        for (String key : c.getAllKeys()) {
+            if (key.endsWith("_name")) continue;
+            UUID id;
+            try { id = UUID.fromString(key); } catch (IllegalArgumentException e) { continue; }
+            int[] row = c.getIntArray(key);
+            if (row.length < SiegeCrew.STATS + 2) continue;
+            if (row[0] >= 0 && row[0] < SiegeCrew.ROLES.length) crew.put(id, row[0]);
+            if (row[1] > 0) carried.put(id, row[1]);
+            stats.put(id, java.util.Arrays.copyOfRange(row, 2, 2 + SiegeCrew.STATS));
+            if (c.contains(key + "_name")) names.put(id, c.getString(key + "_name"));
+        }
+        rolesLocked = t.getBoolean("roles_locked") || r.wave >= 1;
+        activeVote = Math.max(0, Math.min(SiegeCrew.VOTES.length - 1, t.getInt("vote")));
+        voteOpen = false;
     }
 }

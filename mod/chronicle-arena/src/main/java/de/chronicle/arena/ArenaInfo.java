@@ -19,7 +19,7 @@ final class ArenaInfo {
     private static final Logger LOGGER = LogUtils.getLogger();
     static final String TAG = "chronicle_info";
     /** Neue Textfassung = neues Tag, damit alte Tafeln ersetzt werden. */
-    static final String VERSION = "chronicle_info_2";
+    static final String VERSION = "chronicle_info_3";
 
     private ArenaInfo() {}
 
@@ -30,8 +30,9 @@ final class ArenaInfo {
             "Abgrund: endlose Wellen mit eigenem Rekord",
             "Boss-Kaempfe mit Phasen bei 75/50/25 %",
             "NEU: Burg halten - Tower Defense im Burghof",
-            "(Modus-Knopf im Terminal, Tuerme besteigen,",
-            "Fallen legen, ab Welle 10 zwei Tore)",
+            "(Modus-Knopf im Terminal, Rollen mit Faehigkeit,",
+            "Tuerme besteigen, Fallen, Kristall-Splitter,",
+            "Abstimmung vor jeder Welle, ab Welle 10 zwei Tore)",
             "",
             "Missionen, Gruppenweg, Haendler-Weg",
             "Segen alle 5 Wellen, Fluch-Karten",
