@@ -1,8 +1,8 @@
 // Mobdeckel: begrenzt Gegner in der Naehe, egal wie sie entstehen (Spawner, Raids, Strukturen, Patrouillen).
 // Vanilla begrenzt nur pro Spawner (MaxNearbyEntities), nicht ueber alle Spawner einer Anlage.
 // Haengt am Betreten der Welt, weil Spawner mit eigenen Daten (Festung in The Other) kein checkSpawn ausloesen.
-const MOB_DECKEL = 40
-const MOB_RADIUS = 100
+const MOB_DECKEL = 35
+const MOB_RADIUS = 40
 const MobAABB = Java.loadClass('net.minecraft.world.phys.AABB')
 const MobEnemy = Java.loadClass('net.minecraft.world.entity.monster.Enemy')
 
