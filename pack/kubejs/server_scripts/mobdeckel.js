@@ -2,7 +2,7 @@
 // Vanilla begrenzt nur pro Spawner (MaxNearbyEntities), nicht ueber alle Spawner einer Anlage.
 const MOB_DECKEL = 30
 const MOB_RADIUS = 40
-const ARTEN = ['spawner', 'natural', 'chunk_generation', 'patrol']
+const ARTEN = ['spawner', 'natural', 'chunk_generation', 'patrol', 'event', 'structure']
 const AABB = Java.loadClass('net.minecraft.world.phys.AABB')
 const Enemy = Java.loadClass('net.minecraft.world.entity.monster.Enemy')
 
