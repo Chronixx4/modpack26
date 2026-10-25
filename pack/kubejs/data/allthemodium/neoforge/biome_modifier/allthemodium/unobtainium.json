@@ -1,0 +1,15 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": [
+    "minecraft:end_highlands",
+    "minecraft:end_midlands",
+    "minecraft:end_barrens",
+    "#wover:is_end/land",
+    "#wover:is_end/highland",
+    "#wover:is_end/midland",
+    "#wover:is_end/barrens",
+    "#enderscape:enderscape_biomes"
+  ],
+  "features": "allthemodium:unobtainium_ore",
+  "step": "underground_ores"
+}
