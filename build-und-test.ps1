@@ -25,7 +25,7 @@ New-Item -ItemType Directory -Force -Path $Work, $Cache, $CfDir | Out-Null
 # CurseForge-Mods automatisch aus dem Download-Ordner holen (falls dort vorhanden)
 $dl = Join-Path $env:USERPROFILE 'Downloads'
 $cfPatterns = @('*twilightforest*1.21.1*.jar','ExtendedAE-1.21-*neoforge*.jar','ars_elemental-1.21.1-*.jar','ars_technica-1.21.1-*.jar',
-                '*ftb*quests*2101*.jar','*ftb*library*2101*.jar','*ftb*teams*2101*.jar','*ftbbackups2*neoforge*.jar','AE2NetworkAnalyzer-1.21-*neoforge*.jar','allthemodium-*_mc_1.21.1.jar','alltheleaks-*neoforge*.jar','minebohrer-*neoforge*.jar','buildinggadgets2-*.jar','xycraft_core-*.jar','xycraft_world-*.jar','xycraft_machines-*.jar','bytebuddies-0.9.2.jar','*ftb*chunks*2101*.jar','*ftb*ultimine*2101*.jar','*ftb*xmod*compat*neoforge*.jar','aeroportals-1.21.1-*.jar')
+                '*ftb*quests*2101*.jar','*ftb*library*2101*.jar','*ftb*teams*2101*.jar','*ftbbackups2*neoforge*.jar','AE2NetworkAnalyzer-1.21-*neoforge*.jar','allthemodium-*_mc_1.21.1.jar','alltheleaks-*neoforge*.jar','minebohrer-*neoforge*.jar','buildinggadgets2-*.jar','xycraft_core-*.jar','xycraft_world-*.jar','xycraft_machines-*.jar','bytebuddies-0.9.2.jar','*ftb*chunks*2101*.jar','*ftb*ultimine*2101*.jar','*ftb*xmod*compat*neoforge*.jar','aeroportals-1.21.1-*.jar','FluxNetworks-*.jar','ae2jeiintegration-*.jar','ae_universal_press-*.jar','aerowarptics-*.jar','allthearcanistgear-*.jar','alltheores-*.jar','ars_elemancy-*.jar','disenchantanvil-*.jar','dragonrework-*.jar','framework-neoforge-*.jar','refurbished_furniture-*.jar','sbw-optimized-*.jar','set-home-waypoints-*.jar','shrink-*.jar','trashslot-*.jar')
 if (Test-Path $dl) {
   foreach ($pat in $cfPatterns) {
     $hit = Get-ChildItem -Path $dl -Filter $pat -ErrorAction SilentlyContinue | Where-Object { $_.Name -notmatch 'fabric' } | Sort-Object LastWriteTime | Select-Object -Last 1
@@ -105,6 +105,7 @@ $out = New-Object System.Collections.Generic.List[string]
 # ---------------------------------------------------------------------------
 $ModListRaw = @'
 # Performance und Grafik
+lightspeedre|LightSpeedRe
 sodium|Sodium
 iris|Iris Shaders|^1\.8\.14
 modernfix|ModernFix
@@ -124,6 +125,9 @@ moreculling|More Culling
 packet-fixer|Packet Fixer
 notimeout|NoTimeOut
 # Komfort und Oberflaeche
+pylons|Pylons
+simple-magnets|Simple Magnets
+tempad|Tempad
 jei|Just Enough Items (JEI)
 almostunified|Almost Unified
 jade|Jade
@@ -154,6 +158,7 @@ simple-voice-chat|Simple Voice Chat
 kubejs|KubeJS
 skills|Pufferfish's Skills
 # Lagerung und Rucksaecke
+dimstorage|DimStorage
 toms-storage|Tom's Simple Storage Mod|^1\.21-2\.4\.2$
 sophisticated-backpacks|Sophisticated Backpacks
 sophisticated-storage|Sophisticated Storage
@@ -161,6 +166,7 @@ storagedrawers|Storage Drawers
 travelersbackpack|Traveler's Backpack
 sophisticated-storage-create-integration|Sophisticated Storage Create Integration
 # Magie
+ars-controle|Ars Controle
 mahou-tsukai|Mahou Tsukai|^1\.36\.27$
 ars-nouveau|Ars Nouveau
 ars-additions|Ars Additions
@@ -226,6 +232,7 @@ create-ultimate-factory|Create: Ultimate Factory
 create-factory|Create: Factory
 create-wizardry|Create: Wizardry
 # AE2 und Technik
+aeinfinitybooster|AEInfinityBooster
 buddy-drones|Buddy Drones|^1\.1\.0$
 ae2|Applied Energistics 2
 applied-energistics-2-wireless-terminals|AE2 Wireless Terminals
@@ -253,6 +260,8 @@ integrated-dynamics|Integrated Dynamics
 pipez|Pipez
 refined-storage|Refined Storage
 # Ressourcen und Landwirtschaft
+farming-for-blockheads|Farming for Blockheads
+iron-furnaces|Iron Furnaces
 gensokyo-delight-youkais-feasts|Gensokyo Delight ~ Youkais' Feasts|^1\.1\.1$
 mystical-agriculture|Mystical Agriculture
 productivebees|Productive Bees
@@ -300,6 +309,7 @@ towns-and-towers|Towns and Towers
 idas|Integrated Dungeons and Structures
 lootr|Lootr
 # Mobs und Bosse
+hostile-neural-networks|Hostile Neural Networks
 l_enders-cataclysm|L_Ender's Cataclysm
 mowzies-mobs|Mowzie's Mobs
 integrated-mowzies-mobs|Integrated Mowzie's Mobs
@@ -339,6 +349,10 @@ waystones|Waystones
 elevatormod|Elevator Mod
 immersive-aircraft|Immersive Aircraft
 # Deko und Bauen
+connected-glass|Connected Glass
+furnitury|Furnitury
+luminax|Luminax
+night-lights|Night Lights
 supplementaries|Supplementaries
 amendments|Amendments
 quark|Quark
@@ -354,6 +368,9 @@ framedblocks|FramedBlocks
 another-furniture|Another Furniture
 decocraft|Decocraft
 # Bibliotheken (fehlen auf Modrinth als Abhaengigkeit)
+edivadlib|EdivadLib
+toadlib|ToadLib
+fusion-connected-textures|Fusion (Connected Textures)
 deimos|Deimos|^1\.21\.1-neoforge-2\.7$
 irons-lib|Iron's Lib|^1\.21\.1-2
 bundle-api|Bundle API
@@ -374,6 +391,7 @@ foreach ($l in ($ModListRaw -split "`r?`n")) {
 }
 # Kategorien der CurseForge-Jars (Dateiname -> Kategorie)
 $cfCat = [ordered]@{
+  'FluxNetworks' = 'AE2 und Technik'; 'ae2jeiintegration' = 'AE2 und Technik'; 'ae_universal_press' = 'AE2 und Technik'; 'aerowarptics' = 'Create und Addons'; 'allthearcanistgear' = 'Waffen, Ruestung und Ausruestung'; 'alltheores' = 'Ressourcen und Landwirtschaft'; 'disenchantanvil' = 'Komfort und Oberflaeche'; 'dragonrework' = 'Mobs und Bosse'; 'framework' = 'Bibliotheken (werden automatisch gebraucht)'; 'refurbished_furniture' = 'Deko und Bauen'; 'sbw-optimized' = 'Performance und Grafik'; 'set-home-waypoints' = 'Komfort und Oberflaeche'; 'shrink' = 'Komfort und Oberflaeche'; 'trashslot' = 'Komfort und Oberflaeche'
   'twilightforest' = 'Dimensionen'; 'ExtendedAE' = 'AE2 und Technik'; 'AE2NetworkAnalyzer' = 'AE2 und Technik'
   'ars_' = 'Magie'; 'ftb' = 'Multiplayer, Quests und Verwaltung'; 'allthemodium' = 'Dimensionen'; 'alltheleaks' = 'Performance und Grafik'; 'minebohrer' = 'Ressourcen und Landwirtschaft'; 'buildinggadgets2' = 'Deko und Bauen'; 'xycraft_machines' = 'AE2 und Technik'; 'xycraft_world' = 'Ressourcen und Landwirtschaft'; 'xycraft_core' = 'Bibliotheken (werden automatisch gebraucht)'; 'bytebuddies' = 'AE2 und Technik'; 'aeroportals' = 'Create und Addons'
 }
