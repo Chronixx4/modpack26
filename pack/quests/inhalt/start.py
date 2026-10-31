@@ -41,8 +41,8 @@ kapitel('willkommen', '&eWillkommen', 'minecraft:writable_book', 'Erst mal ankom
         '&eTipp:&r Gerichte mit hoher Sättigung halten viel länger vor als rohes Zeug.',
     ], nach=['jade']),
     Q('inventar', 'Inventar sortieren', 'check', [
-        'Inventory Profiles Next fügt Sortier-Knöpfe an Inventar und Kisten hinzu.',
-        'Mouse Tweaks: Mit gedrückter Maustaste über Slots ziehen verteilt Items, Shift + Ziehen verschiebt viele Stacks auf einmal, das Mausrad schiebt einzelne Items.',
+        'Optional (Extras-Paket): Inventory Profiles Next fügt Sortier-Knöpfe an Inventar und Kisten hinzu.',
+        'Optional (Extras-Paket): Mouse Tweaks: Mit gedrückter Maustaste über Slots ziehen verteilt Items, Shift + Ziehen verschiebt viele Stacks auf einmal, das Mausrad schiebt einzelne Items.',
     ], nach=['emi']),
     Q('muell', 'Mülleimer', 'check',
       'Trash Cans: Die Item-Abfalltonne löscht alles, was hineinkommt. Es gibt auch Tonnen für Flüssigkeiten und Energie. Praktisch am Ende einer Farm.',
@@ -51,8 +51,8 @@ kapitel('willkommen', '&eWillkommen', 'minecraft:writable_book', 'Erst mal ankom
       'Wenn zwei Mods dasselbe Rezept nutzen, erscheint an der Werkbank ein kleiner Knopf. Damit wählst du aus, welches Ergebnis du willst.',
       nach=['emi']),
     Q('karte', 'Minimap und Weltkarte', 'check', [
-        'Oben rechts ist die Xaero-Minimap. Mit &eM&r öffnest du die große Weltkarte, mit &eB&r setzt du einen Wegpunkt.',
-        'Wenn du stirbst, wird automatisch ein Todes-Wegpunkt gesetzt.',
+        'Optional (Extras-Paket): Mit der Xaero-Minimap siehst du oben rechts die Karte. Mit &eM&r öffnest du die große Weltkarte, mit &eB&r setzt du einen Wegpunkt.',
+        'Ohne Karte merk dir die Koordinaten (&eF3&r) deines Hauses. Mit Xaero wird bei deinem Tod automatisch ein Todes-Wegpunkt gesetzt.',
     ], nach=['emi'], haupt=True),
     Q('tod', 'Gestorben? Kein Drama', 'check', [
         'Dank Corpse bleibt bei deinem Tod ein Leichnam mit all deinen Items liegen. Rechtsklick darauf öffnet ihn.',
@@ -67,7 +67,7 @@ kapitel('willkommen', '&eWillkommen', 'minecraft:writable_book', 'Erst mal ankom
         'Wer weiter weg ist, hört dich leiser. In Gruppen hören sich alle überall.',
     ], nach=['team']),
     Q('claims', 'Grundstück sichern', 'check', [
-        'Open Parties and Claims schützt deine Chunks vor Fremden und Mobs-Griefing. Chunks beanspruchst du direkt auf der Xaero-Weltkarte (Rechtsklick) oder im Claims-Menü.',
+        'Open Parties and Claims schützt deine Chunks vor Fremden und Mobs-Griefing. Chunks beanspruchst du im Claims-Menü (oder mit Xaero direkt auf der Weltkarte per Rechtsklick).',
         'Dein Team darf in deinen Chunks bauen, andere nicht.',
     ], nach=['team'], haupt=True),
     Q('backups', 'Backups', 'check',

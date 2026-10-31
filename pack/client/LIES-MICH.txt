@@ -13,13 +13,17 @@ ANDERE LAUNCHER (Prism, CurseForge-App, ATLauncher ...)
 
 PERFORMANCE
 - RAM: 12 GB (Modrinth App: Profil -> Einstellungen -> Java und Speicher).
-- Distant Horizons frisst am meisten. Bei Rucklern im DH-Menue (Knopf im Optionsmenue)
-  die Qualitaet auf "Low" oder die LOD-Distanz runter und die CPU-Last auf "Low Impact" stellen.
 - Dynamic FPS drosselt das Spiel automatisch, wenn das Fenster im Hintergrund ist.
 
 Shader: Iris (Beta fuer Sodium 0.8) ist dabei. Shader-Pakete selbst nicht, die laedst du dir z. B. ueber die Modrinth App
 (Shader-Pack in den Ordner shaderpacks). Aendere die Aufloesung/Render-Skalierung nicht im Spiel, sonst werden Bloecke
 unsichtbar (Shader neu laden hilft). Ist das Shader-Menue leer: Optionen -> Barrierefreiheit -> Hintergrund-Blur aus.
+
+EXTRAS (optional)
+Im Release liegt Chronicle-@VERSION@-Extras.zip mit Komfort-Mods fuer den Client: Xaero's Minimap und Weltkarte,
+Distant Horizons, Inventory Profiles Next, Mouse Tweaks, Controlling, Better Advancements, Sound Physics,
+Oracle Index und Create: Train Perspective. Wer will, kopiert die JARs aus der ZIP in den mods-Ordner
+(Modrinth App: Profil -> Mods -> Hinzufuegen -> Aus Datei). Nichts davon ist fuers Spiel noetig.
 
 TASTENBELEGUNG
 Keybind Overview: Optionen -> Steuerung -> Tastenbelegung.

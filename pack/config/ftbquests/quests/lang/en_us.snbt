@@ -4157,9 +4157,9 @@
 	]
 	quest.5C410D2DC94C9FAE.title: "Mächtige Glyphen"
 	quest.5C4315C3F11112E1.quest_desc: [
-		"Inventory Profiles Next fügt Sortier-Knöpfe an Inventar und Kisten hinzu."
+		"Optional (Extras-Paket): Inventory Profiles Next fügt Sortier-Knöpfe an Inventar und Kisten hinzu."
 		""
-		"Mouse Tweaks: Mit gedrückter Maustaste über Slots ziehen verteilt Items, Shift + Ziehen verschiebt viele Stacks auf einmal, das Mausrad schiebt einzelne Items."
+		"Optional (Extras-Paket): Mouse Tweaks: Mit gedrückter Maustaste über Slots ziehen verteilt Items, Shift + Ziehen verschiebt viele Stacks auf einmal, das Mausrad schiebt einzelne Items."
 	]
 	quest.5C4315C3F11112E1.title: "Inventar sortieren"
 	quest.5C4AB9C5E8DCE064.quest_desc: [
@@ -4775,7 +4775,7 @@
 	]
 	quest.730D944F7151992D.title: "Namenloser Stab"
 	quest.731D6E87C7D21E20.quest_desc: [
-		"Open Parties and Claims schützt deine Chunks vor Fremden und Mobs-Griefing. Chunks beanspruchst du direkt auf der Xaero-Weltkarte (Rechtsklick) oder im Claims-Menü."
+		"Open Parties and Claims schützt deine Chunks vor Fremden und Mobs-Griefing. Chunks beanspruchst du im Claims-Menü (oder mit Xaero direkt auf der Weltkarte per Rechtsklick)."
 		""
 		"Dein Team darf in deinen Chunks bauen, andere nicht."
 	]
@@ -4967,9 +4967,9 @@
 	]
 	quest.74DE9DAA189ED502.title: "Flüssigkeitstank"
 	quest.74DFFEBA3439E943.quest_desc: [
-		"Oben rechts ist die Xaero-Minimap. Mit &eM&r öffnest du die große Weltkarte, mit &eB&r setzt du einen Wegpunkt."
+		"Optional (Extras-Paket): Mit der Xaero-Minimap siehst du oben rechts die Karte. Mit &eM&r öffnest du die große Weltkarte, mit &eB&r setzt du einen Wegpunkt."
 		""
-		"Wenn du stirbst, wird automatisch ein Todes-Wegpunkt gesetzt."
+		"Ohne Karte merk dir die Koordinaten (&eF3&r) deines Hauses. Mit Xaero wird bei deinem Tod automatisch ein Todes-Wegpunkt gesetzt."
 	]
 	quest.74DFFEBA3439E943.title: "Minimap und Weltkarte"
 	quest.74F47EBA9AFFC99A.quest_desc: [

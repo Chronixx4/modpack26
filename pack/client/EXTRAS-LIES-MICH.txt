@@ -1,0 +1,15 @@
+Chronicle @VERSION@ - Extras (optional)
+Minecraft @MC@, NeoForge @NEOFORGE@
+
+Diese Mods sind NICHT im Pack, weil sie reine Komfort-Mods fuer den Client sind. Wer eine will,
+kopiert die JAR aus dem Ordner "mods" in den mods-Ordner seiner Instanz
+(Modrinth App: Profil -> Mods -> Hinzufuegen -> Aus Datei). Nur auf dem Client, nicht auf den Server.
+
+- Xaero's Minimap + Xaero's World Map: Karte, Wegpunkte (Quest "Minimap und Weltkarte").
+- Distant Horizons: weit entfernte Gelaende-Vorschau, braucht viel Leistung.
+- Inventory Profiles Next (+ libIPN): Inventar sortieren. Mouse Tweaks: Items ziehen/verteilen.
+- Controlling (+ Searchables): Suche in den Tasteneinstellungen. Better Advancements: bessere Fortschrittsseite.
+- Sound Physics Remastered: Hall und Daempfung. Oracle Index: Suchfenster fuer Mods/Items.
+- Create: Train Perspective: Kamera im Zug.
+
+Bei Problemen die JAR wieder entfernen.

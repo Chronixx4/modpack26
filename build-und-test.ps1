@@ -9,7 +9,7 @@ $ProgressPreference = 'SilentlyContinue'
 $MC      = '1.21.1'
 $LOADER  = 'neoforge'
 $PACK    = 'Chronicle'
-$PACKVER = '0.9.37'
+$PACKVER = '0.9.38'
 $RAM     = '8G'
 $TIMEOUT_MIN = 20
 
@@ -112,7 +112,6 @@ ferrite-core|FerriteCore
 lithium|Lithium
 immediatelyfast|ImmediatelyFast
 entityculling|Entity Culling
-distanthorizons|Distant Horizons
 clumps|Clumps
 chunky|Chunky
 neruina|Neruina
@@ -129,15 +128,9 @@ jei|Just Enough Items (JEI)
 almostunified|Almost Unified
 jade|Jade
 effortless-building|Effortless Building
-xaeros-minimap|Xaero's Minimap
-xaeros-world-map|Xaero's World Map
 appleskin|AppleSkin
-mouse-tweaks|Mouse Tweaks
-controlling|Controlling
-better-advancements|Better Advancements
 default-options|Default Options
 polymorph|Polymorph
-sound-physics-remastered|Sound Physics Remastered
 visual-workbench|Visual Workbench
 easy-anvils|Easy Anvils
 grind-enchantments|Grind Enchantments
@@ -147,10 +140,8 @@ comforts|Comforts
 torchmaster|Torchmaster
 explorers-compass|Explorer's Compass
 natures-compass|Nature's Compass
-oracle-index|Oracle Index
 spark|Spark
 trash-cans|Trash Cans
-inventory-profiles-next|Inventory Profiles Next
 just-enough-resources-jer|Just Enough Resources (JER)
 easy-villagers|Easy Villagers
 trade-cycling|Trade Cycling
@@ -233,7 +224,6 @@ create-ironworks|Create: Ironworks
 create-mechanical-extruder|Create Mechanical Extruder
 create-ultimate-factory|Create: Ultimate Factory
 create-factory|Create: Factory
-create-train-perspective|Create: Train Perspective
 create-wizardry|Create: Wizardry
 # AE2 und Technik
 buddy-drones|Buddy Drones|^1\.1\.0$

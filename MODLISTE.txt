@@ -1,12 +1,11 @@
-﻿Chronicle 0.9.37 - Modliste
-Minecraft 1.21.1, NeoForge 21.1.256   |   342 Mods inkl. Bibliotheken und eigener Arena   |   Stand 2026-10-17
+﻿Chronicle 0.9.38 - Modliste
+Minecraft 1.21.1, NeoForge 21.1.256   |   330 Mods inkl. Bibliotheken und eigener Arena   |   Stand 2026-10-31
 
-== Performance und Grafik (20) ==
+== Performance und Grafik (19) ==
   All The Leaks                                  1.1.13+1.21.1-neoforge  (CurseForge)
   BadOptimizations                               2.4.1  (nur Client)
   Chunky                                         1.4.23  (nur Server)
   Clumps                                         19.0.0.1
-  Distant Horizons                               3.3.3-1.21.1  (nur Client)
   Dynamic FPS                                    3.11.4  (nur Client)
   Entity Culling                                 1.11.2  (nur Client)
   FastFurnace                                    1.21.1-9.0.1
@@ -23,13 +22,11 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   342 Mods inkl. Bibliotheken und eigene
   Packet Fixer                                   3.3.1
   Sodium                                         mc1.21.1-0.8.13-neoforge  (nur Client)
 
-== Komfort und Oberflaeche (30) ==
+== Komfort und Oberflaeche (22) ==
   Almost Unified                                 1.21.1-1.4.2+neoforge
   AppleSkin                                      3.0.9+mc1.21
-  Better Advancements                            0.4.3.21  (nur Client)
   Carry On                                       2.2.6
   Comforts                                       9.0.5+1.21.1
-  Controlling                                    19.0.5  (nur Client)
   Corpse                                         neoforge-1.21.1-1.1.13
   Default Options                                21.1.8+neoforge-1.21.1  (nur Client)
   Easy Anvils                                    v21.1.0-1.21.1-NeoForge
@@ -37,23 +34,17 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   342 Mods inkl. Bibliotheken und eigene
   Effortless Building                            4.2
   Explorer's Compass                             1.21.1-3.4.0-neoforge
   Grind enchantments                             4.0.1+neoforge-1.21.1
-  Inventory Profiles Next                        neoforge-1.21.1-2.2.5  (nur Client)
   Jade 🔍                                        15.10.6+neoforge
   Just Enough Items (JEI)                        19.64.0.455
   Just Enough Resources (JER)                    1.6.0.17  (nur Client)
   Keybind Overview                               1.1.0  (nur Client)
-  Mouse Tweaks                                   1.21-2.26.1-neoforge  (nur Client)
   Nature's Compass                               1.21.1-3.4.0-neoforge
-  Oracle Index                                   1.4.0  (nur Client)
   Polymorph                                      1.1.0+1.21.1
-  Sound Physics Remastered                       neoforge-1.21.1-1.5.1  (nur Client)
   spark                                          1.10.124-neoforge-1.21.1
   TorchMaster                                    21.1.13-release
   Trade Cycling                                  neoforge-1.21.1-1.0.22
   Trash Cans                                     1.1.1-neoforge-mc1.21
   Visual Workbench                               21.1.2
-  Xaero's Minimap                                neoforge-1.21.1-26.6.0  (nur Client)
-  Xaero's World Map                              neoforge-1.21.1-1.47.0  (nur Client)
 
 == Multiplayer, Quests und Verwaltung (11) ==
   FTB Backups 2                                  1.0.28  (CurseForge)
@@ -96,7 +87,7 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   342 Mods inkl. Bibliotheken und eigene
   Not Enough Glyphs                              4.6.2
   Occultism                                      1.21.1-neoforge-1.224.4
 
-== Create und Addons (47) ==
+== Create und Addons (46) ==
   Create                                         6.0.10+mc1.21.1
   Create Aeronautics                             1.3.2+mc1.21.1
   Create Big Cannons                             5.11.7
@@ -137,7 +128,6 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   342 Mods inkl. Bibliotheken und eigene
   Create: Power Loader                           2.0.5-mc1.21.1
   Create: Teleporters                            3.0.0
   Create: TFMG Community Edition                 1.3.2a
-  Create: Train Perspective                      1.1.1+neoforge-1.21.1  (nur Client)
   Create: Transmission!                          1.2.2+neoforge-create6-1.21.1
   Create: Ultimate Factory                       2.2.4
   Create: Wizardry                               1.21.1-0.5.0
@@ -289,7 +279,7 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   342 Mods inkl. Bibliotheken und eigene
   Quark                                          4.1-487
   Supplementaries                                1.21.1-3.9.9
 
-== Bibliotheken (werden automatisch gebraucht) (84) ==
+== Bibliotheken (werden automatisch gebraucht) (82) ==
   Ace's Spell Utils                              1.2.7.3-1.21.1
   Apothic-Enchanting                             1.21.1-1.6.3
   Apothic-Spawners                               1.21.1-1.4.0
@@ -331,7 +321,6 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   342 Mods inkl. Bibliotheken und eigene
   Kotlin for Forge                               5.12.0
   L2 Complements                                 3.1.3
   L2 Library                                     3.0.8
-  libIPN                                         neoforge-1.21.1-6.6.3  (nur Client)
   Lionfish-API                                   3.1
   Lithostitched                                  1.8.0-neoforge-21.1
   Mechanicals Lib                                1.21.1-1.1.6
@@ -351,7 +340,6 @@ Minecraft 1.21.1, NeoForge 21.1.256   |   342 Mods inkl. Bibliotheken und eigene
   Ritchie's Projectile Library                   2.1.2
   Runes                                          1.3.2+1.21.1-neoforge
   RunicLib                                       5.0.7
-  Searchables                                    1.0.2  (nur Client)
   Shield API                                     2.2.0-neoforge
   Simply Tooltips                                0.1.5  (nur Client)
   SmartBrainLib                                  1.16.11
