@@ -39,11 +39,10 @@ def main():
     args = parser.parse_args()
     index = json.loads((ROOT / 'pack/modrinth.index.json').read_text())
     version = index['versionId']
-    properties = dict(line.split('=', 1) for line in
-                      (ROOT / 'mod/chronicle-arena/gradle.properties').read_text().splitlines()
-                      if '=' in line)
-    arena_version = properties['mod_version']
-    arena_name = f'chronicle-arena-{arena_version}.jar'
+    arena_jars = sorted((ROOT / 'pack/local-mods').glob('chronicle-arena-*.jar'))
+    assert len(arena_jars) == 1, 'Genau eine Arena-JAR in pack/local-mods erwartet'
+    arena_name = arena_jars[0].name
+    arena_version = arena_name[len('chronicle-arena-'):-len('.jar')]
     local = ROOT / 'pack/local-mods' / arena_name
     sums = (ROOT / 'pack/local-mods/SHA256SUMS.txt').read_text().splitlines()
     expected = next(line.split()[0] for line in sums if line.split()[-1] == arena_name)

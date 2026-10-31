@@ -534,21 +534,14 @@ if ($cfJars.Count -gt 0) {
 }
 # Eigene Mods: gepinnte Release-JAR passend zur Quellversion in beide Seiten aufnehmen.
 $ownJars = @()
-foreach ($project in (Get-ChildItem -LiteralPath (Join-Path $Root 'mod') -Directory)) {
-  $propsPath = Join-Path $project.FullName 'gradle.properties'
-  if (-not (Test-Path -LiteralPath $propsPath)) { continue }
-  $props = [IO.File]::ReadAllText($propsPath)
-  if ($props -notmatch '(?m)^mod_version=(.+)$') { throw "mod_version fehlt: $propsPath" }
-  $ownVersion = $Matches[1].Trim()
-  $ownJar = Join-Path $Root ("pack/local-mods/" + $project.Name + "-" + $ownVersion + ".jar")
-  if (-not (Test-Path -LiteralPath $ownJar)) { throw "Eigene Release-JAR fehlt: $ownJar" }
-  $sums = [IO.File]::ReadAllLines((Join-Path $Root 'pack/local-mods/SHA256SUMS.txt'))
-  $ownName = [IO.Path]::GetFileName($ownJar)
+$sums = [IO.File]::ReadAllLines((Join-Path $Root 'pack/local-mods/SHA256SUMS.txt'))
+foreach ($ownJar in (Get-ChildItem -LiteralPath (Join-Path $Root 'pack/local-mods') -Filter *.jar)) {
+  $ownName = $ownJar.Name
   $sumLine = @($sums | Where-Object { $_ -match ('^[0-9a-fA-F]{64}  ' + [regex]::Escape($ownName) + '$') })
   if ($sumLine.Count -ne 1) { throw "Pruefsumme fehlt: $ownName" }
   $expectedHash = $sumLine[0].Substring(0, 64)
-  if ((Get-FileHash -LiteralPath $ownJar -Algorithm SHA256).Hash -ne $expectedHash) { throw "Pruefsumme falsch: $ownName" }
-  $ownJars += Get-Item -LiteralPath $ownJar
+  if ((Get-FileHash -LiteralPath $ownJar.FullName -Algorithm SHA256).Hash -ne $expectedHash) { throw "Pruefsumme falsch: $ownName" }
+  $ownJars += $ownJar
 }
 if ($ownJars.Count -gt 0) {
   $ov = Join-Path $packDir 'overrides\mods'

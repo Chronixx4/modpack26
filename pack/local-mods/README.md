@@ -1,15 +1,11 @@
-# Eigene Mods fuer den Windows-Builder
+# Eigene Mods (fertige JARs)
 
-`chronicle-arena-0.4.2.jar` ist der Build des Arena-Quellstands auf diesem
-Arbeitsbranch (Fluch-Karten, Haendler-Weg, Boss-Phasen, Bestzeiten, Trainingsdummy, neue Begegnungen; noch nicht veroeffentlicht). Die passende SHA-256-Pruefsumme
-steht in `SHA256SUMS.txt`. Build- und Teststatus: `mod/chronicle-arena/RELEASE-0.4.2.md`.
+Die Chronicle Arena wird nicht mehr in diesem Repo entwickelt, sondern in einem eigenen
+GitHub-Projekt. Hier liegt nur die fertige JAR (aktuell `chronicle-arena-0.6.3.jar`, aus Marvins Profil)
+mit ihrer SHA-256-Pruefsumme in `SHA256SUMS.txt`.
 
-Der PowerShell-Builder liest `mod_version` aus `mod/chronicle-arena/gradle.properties`,
-prueft die passende JAR per SHA-256 und kopiert sie in Client und Server.
-Fehlt die passende Version, bricht er ab statt eine alte Arena einzupacken.
-Der Linux-/GitHub-Builder baut denselben Quellstand mit Gradle und fuehrt
-auch die automatisierten Tests aus. Ein Clean-Build verhindert doppelte alte JARs.
+Alle JARs in diesem Ordner kommen in Client und Server (.mrpack, Client-ZIP, Server-ZIP). Beide Builder
+(PowerShell und `pakete-bauen.sh`) pruefen die Pruefsumme und brechen ab, wenn sie fehlt oder falsch ist.
 
-Bei einem kuenftigen Arena-Update den freigegebenen Quellstand, die lokale
-Build-JAR und ihre Pruefsumme gemeinsam aktualisieren. Alte lokale Arena-JARs
-entfernen; auf Server und allen Clients muss dieselbe Arena-Version laufen.
+Arena-Update: alte JAR loeschen, neue JAR hineinlegen, `SHA256SUMS.txt` neu schreiben
+(`sha256sum *.jar > SHA256SUMS.txt`). Auf Server und allen Clients muss dieselbe Arena-Version laufen.

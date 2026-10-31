@@ -24,13 +24,13 @@ fill() {  # Platzhalter in Vorlagen ersetzen
 
 echo "== $NAME (Minecraft $MC, NeoForge $NF)"
 
-# 0) Eigene Mods aus mod/* bauen (Chronicle Arena); die Jars landen wie die CurseForge-Jars in mods/
+# 0) Eigene Mods: fertige JARs aus pack/local-mods (Chronicle Arena), Pruefsumme muss stimmen
 OWN="$OUT/eigene-mods" && rm -rf "$OWN" && mkdir -p "$OWN"
-for d in "$ROOT"/mod/*/; do
-  [ -f "$d/build.gradle" ] || continue
-  echo "  baue eigene Mod $(basename "$d") ..."
-  gradle --no-daemon -q -p "$d" clean build >&2
-  cp "$d"/build/libs/*.jar "$OWN/"
+for j in "$ROOT"/pack/local-mods/*.jar; do
+  n="$(basename "$j")"
+  grep -q "^$(sha256sum "$j" | cut -d' ' -f1)  $n\$" "$ROOT/pack/local-mods/SHA256SUMS.txt" \
+    || { echo "FEHLER: Pruefsumme fehlt oder falsch: $n" >&2; exit 1; }
+  cp "$j" "$OWN/"
 done
 
 # 1) .mrpack
