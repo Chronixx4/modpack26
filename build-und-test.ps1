@@ -369,7 +369,6 @@ another-furniture|Another Furniture
 decocraft|Decocraft
 # Bibliotheken (fehlen auf Modrinth als Abhaengigkeit)
 edivadlib|EdivadLib
-toadlib|ToadLib
 fusion-connected-textures|Fusion (Connected Textures)
 deimos|Deimos|^1\.21\.1-neoforge-2\.7$
 irons-lib|Iron's Lib|^1\.21\.1-2
