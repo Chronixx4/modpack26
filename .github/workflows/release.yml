@@ -104,7 +104,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           VER="${{ steps.ver.outputs.ver }}"
-          (cd dist && sha256sum "Chronicle-$VER.mrpack" "Chronicle-$VER-Client.zip" "Chronicle-$VER-Server.zip") > dist/SHA256SUMS.txt
+          (cd dist && sha256sum "Chronicle-$VER.mrpack" "Chronicle-$VER-Client.zip" "Chronicle-$VER-Server.zip" "Chronicle-$VER-Extras.zip") > dist/SHA256SUMS.txt
           {
             echo "Minecraft 1.21.1 / NeoForge. Nur fuer uns, bitte nicht oeffentlich weitergeben (Mod-Lizenzen)."
             echo
@@ -116,6 +116,7 @@ jobs:
             echo "|---|---|"
             echo "| \`Chronicle-$VER.mrpack\` | **Modrinth App**: \"+\" -> \"Aus Datei importieren\" |"
             echo "| \`Chronicle-$VER-Client.zip\` | andere Launcher (Prism, CurseForge ...): mods-Ordner in die Instanz kopieren |"
+            echo "| \`Chronicle-$VER-Extras.zip\` | optional: Komfort-Mods fuer den Client (Minimap, Distant Horizons, Inventar-Tools ...), JARs in den mods-Ordner kopieren |"
             echo "| \`Chronicle-$VER-Server.zip\` | Server: entpacken, eula.txt bestaetigen, start.sh / start.bat (Java 21, 12 GB RAM) |"
             echo
             echo "Servertest im Workflow: bestanden."
@@ -128,6 +129,7 @@ jobs:
             "dist/Chronicle-$VER.mrpack" \
             "dist/Chronicle-$VER-Client.zip" \
             "dist/Chronicle-$VER-Server.zip" \
+            "dist/Chronicle-$VER-Extras.zip" \
             dist/SHA256SUMS.txt \
             MODLISTE.txt \
             --target "$GITHUB_SHA" \

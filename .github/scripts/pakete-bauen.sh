@@ -3,6 +3,7 @@
 #   Chronicle-<ver>.mrpack        (Modrinth App)
 #   Chronicle-<ver>-Client.zip    (mods-Ordner fuer andere Launcher)
 #   Chronicle-<ver>-Server.zip    (Server-Mods, NeoForge-Installer, Startdateien)
+#   Chronicle-<ver>-Extras.zip    (optionale Client-Mods aus pack/extras.json, nicht im Pack)
 # Aufruf: pakete-bauen.sh [Ausgabeordner]   (Standard: dist/)
 # Braucht: jq, curl, sha512sum, zip
 set -euo pipefail
@@ -23,13 +24,13 @@ fill() {  # Platzhalter in Vorlagen ersetzen
 
 echo "== $NAME (Minecraft $MC, NeoForge $NF)"
 
-# 0) Eigene Mods aus mod/* bauen (Chronicle Arena); die Jars landen wie die CurseForge-Jars in mods/
+# 0) Eigene Mods: fertige JARs aus pack/local-mods (Chronicle Arena), Pruefsumme muss stimmen
 OWN="$OUT/eigene-mods" && rm -rf "$OWN" && mkdir -p "$OWN"
-for d in "$ROOT"/mod/*/; do
-  [ -f "$d/build.gradle" ] || continue
-  echo "  baue eigene Mod $(basename "$d") ..."
-  gradle --no-daemon -q -p "$d" clean build >&2
-  cp "$d"/build/libs/*.jar "$OWN/"
+for j in "$ROOT"/pack/local-mods/*.jar; do
+  n="$(basename "$j")"
+  grep -q "^$(sha256sum "$j" | cut -d' ' -f1)  $n\$" "$ROOT/pack/local-mods/SHA256SUMS.txt" \
+    || { echo "FEHLER: Pruefsumme fehlt oder falsch: $n" >&2; exit 1; }
+  cp "$j" "$OWN/"
 done
 
 # 1) .mrpack
@@ -105,5 +106,21 @@ cp "$ROOT/MODLISTE.txt" "$S/"
 rm -f "$OUT/$NAME-Server.zip"
 (cd "$S" && zip -q -r -D "$OUT/$NAME-Server.zip" .)
 echo "  $NAME-Server.zip ($(ls "$S/mods" | wc -l) Mods)"
+
+# 5) Extras-ZIP: optionale Client-Mods (pack/extras.json), liegen nicht im Pack
+X="$OUT/extras" && rm -rf "$X" && mkdir -p "$X/mods"
+jq -r '.files[] | [.path, .hashes.sha512, .downloads[0]] | @tsv' "$ROOT/pack/extras.json" |
+while IFS=$'\t' read -r path sha url; do
+  f="$CACHE/$(basename "$path")"
+  if ! { [ -f "$f" ] && echo "$sha  $f" | sha512sum -c --status; }; then
+    curl -fsSL --retry 3 -o "$f" "$url"
+    echo "$sha  $f" | sha512sum -c --status || { echo "FEHLER: Pruefsumme falsch: $path" >&2; exit 1; }
+  fi
+  cp "$f" "$X/mods/"
+done
+fill "$ROOT/pack/client/EXTRAS-LIES-MICH.txt" "$X/LIES-MICH.txt"
+rm -f "$OUT/$NAME-Extras.zip"
+(cd "$X" && zip -q -r -D "$OUT/$NAME-Extras.zip" .)
+echo "  $NAME-Extras.zip ($(ls "$X/mods" | wc -l) Mods)"
 
 ls -la "$OUT"/*.mrpack "$OUT"/*.zip

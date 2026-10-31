@@ -9,7 +9,7 @@ $ProgressPreference = 'SilentlyContinue'
 $MC      = '1.21.1'
 $LOADER  = 'neoforge'
 $PACK    = 'Chronicle'
-$PACKVER = '0.9.37'
+$PACKVER = '0.9.38'
 $RAM     = '8G'
 $TIMEOUT_MIN = 20
 
@@ -25,7 +25,7 @@ New-Item -ItemType Directory -Force -Path $Work, $Cache, $CfDir | Out-Null
 # CurseForge-Mods automatisch aus dem Download-Ordner holen (falls dort vorhanden)
 $dl = Join-Path $env:USERPROFILE 'Downloads'
 $cfPatterns = @('*twilightforest*1.21.1*.jar','ExtendedAE-1.21-*neoforge*.jar','ars_elemental-1.21.1-*.jar','ars_technica-1.21.1-*.jar',
-                '*ftb*quests*2101*.jar','*ftb*library*2101*.jar','*ftb*teams*2101*.jar','*ftbbackups2*neoforge*.jar','AE2NetworkAnalyzer-1.21-*neoforge*.jar','allthemodium-*_mc_1.21.1.jar','alltheleaks-*neoforge*.jar','minebohrer-*neoforge*.jar','buildinggadgets2-*.jar','xycraft_core-*.jar','xycraft_world-*.jar','xycraft_machines-*.jar','bytebuddies-0.9.2.jar','*ftb*chunks*2101*.jar','*ftb*ultimine*2101*.jar','*ftb*xmod*compat*neoforge*.jar','aeroportals-1.21.1-*.jar')
+                '*ftb*quests*2101*.jar','*ftb*library*2101*.jar','*ftb*teams*2101*.jar','*ftbbackups2*neoforge*.jar','AE2NetworkAnalyzer-1.21-*neoforge*.jar','allthemodium-*_mc_1.21.1.jar','alltheleaks-*neoforge*.jar','minebohrer-*neoforge*.jar','buildinggadgets2-*.jar','xycraft_core-*.jar','xycraft_world-*.jar','xycraft_machines-*.jar','bytebuddies-0.9.2.jar','*ftb*chunks*2101*.jar','*ftb*ultimine*2101*.jar','*ftb*xmod*compat*neoforge*.jar','aeroportals-1.21.1-*.jar','FluxNetworks-*.jar','ae2jeiintegration-*.jar','ae_universal_press-*.jar','aerowarptics-*.jar','allthearcanistgear-*.jar','alltheores-*.jar','ars_elemancy-*.jar','disenchantanvil-*.jar','dragonrework-*.jar','framework-neoforge-*.jar','refurbished_furniture-*.jar','sbw-optimized-*.jar','set-home-waypoints-*.jar','shrink-*.jar','trashslot-*.jar')
 if (Test-Path $dl) {
   foreach ($pat in $cfPatterns) {
     $hit = Get-ChildItem -Path $dl -Filter $pat -ErrorAction SilentlyContinue | Where-Object { $_.Name -notmatch 'fabric' } | Sort-Object LastWriteTime | Select-Object -Last 1
@@ -105,6 +105,7 @@ $out = New-Object System.Collections.Generic.List[string]
 # ---------------------------------------------------------------------------
 $ModListRaw = @'
 # Performance und Grafik
+lightspeedre|LightSpeedRe
 sodium|Sodium
 iris|Iris Shaders|^1\.8\.14
 modernfix|ModernFix
@@ -112,7 +113,6 @@ ferrite-core|FerriteCore
 lithium|Lithium
 immediatelyfast|ImmediatelyFast
 entityculling|Entity Culling
-distanthorizons|Distant Horizons
 clumps|Clumps
 chunky|Chunky
 neruina|Neruina
@@ -125,19 +125,16 @@ moreculling|More Culling
 packet-fixer|Packet Fixer
 notimeout|NoTimeOut
 # Komfort und Oberflaeche
+pylons|Pylons
+simple-magnets|Simple Magnets
+tempad|Tempad
 jei|Just Enough Items (JEI)
 almostunified|Almost Unified
 jade|Jade
 effortless-building|Effortless Building
-xaeros-minimap|Xaero's Minimap
-xaeros-world-map|Xaero's World Map
 appleskin|AppleSkin
-mouse-tweaks|Mouse Tweaks
-controlling|Controlling
-better-advancements|Better Advancements
 default-options|Default Options
 polymorph|Polymorph
-sound-physics-remastered|Sound Physics Remastered
 visual-workbench|Visual Workbench
 easy-anvils|Easy Anvils
 grind-enchantments|Grind Enchantments
@@ -147,10 +144,8 @@ comforts|Comforts
 torchmaster|Torchmaster
 explorers-compass|Explorer's Compass
 natures-compass|Nature's Compass
-oracle-index|Oracle Index
 spark|Spark
 trash-cans|Trash Cans
-inventory-profiles-next|Inventory Profiles Next
 just-enough-resources-jer|Just Enough Resources (JER)
 easy-villagers|Easy Villagers
 trade-cycling|Trade Cycling
@@ -163,6 +158,7 @@ simple-voice-chat|Simple Voice Chat
 kubejs|KubeJS
 skills|Pufferfish's Skills
 # Lagerung und Rucksaecke
+dimstorage|DimStorage
 toms-storage|Tom's Simple Storage Mod|^1\.21-2\.4\.2$
 sophisticated-backpacks|Sophisticated Backpacks
 sophisticated-storage|Sophisticated Storage
@@ -170,6 +166,7 @@ storagedrawers|Storage Drawers
 travelersbackpack|Traveler's Backpack
 sophisticated-storage-create-integration|Sophisticated Storage Create Integration
 # Magie
+ars-controle|Ars Controle
 mahou-tsukai|Mahou Tsukai|^1\.36\.27$
 ars-nouveau|Ars Nouveau
 ars-additions|Ars Additions
@@ -233,9 +230,9 @@ create-ironworks|Create: Ironworks
 create-mechanical-extruder|Create Mechanical Extruder
 create-ultimate-factory|Create: Ultimate Factory
 create-factory|Create: Factory
-create-train-perspective|Create: Train Perspective
 create-wizardry|Create: Wizardry
 # AE2 und Technik
+aeinfinitybooster|AEInfinityBooster
 buddy-drones|Buddy Drones|^1\.1\.0$
 ae2|Applied Energistics 2
 applied-energistics-2-wireless-terminals|AE2 Wireless Terminals
@@ -263,6 +260,8 @@ integrated-dynamics|Integrated Dynamics
 pipez|Pipez
 refined-storage|Refined Storage
 # Ressourcen und Landwirtschaft
+farming-for-blockheads|Farming for Blockheads
+iron-furnaces|Iron Furnaces
 gensokyo-delight-youkais-feasts|Gensokyo Delight ~ Youkais' Feasts|^1\.1\.1$
 mystical-agriculture|Mystical Agriculture
 productivebees|Productive Bees
@@ -310,6 +309,7 @@ towns-and-towers|Towns and Towers
 idas|Integrated Dungeons and Structures
 lootr|Lootr
 # Mobs und Bosse
+hostile-neural-networks|Hostile Neural Networks
 l_enders-cataclysm|L_Ender's Cataclysm
 mowzies-mobs|Mowzie's Mobs
 integrated-mowzies-mobs|Integrated Mowzie's Mobs
@@ -349,6 +349,10 @@ waystones|Waystones
 elevatormod|Elevator Mod
 immersive-aircraft|Immersive Aircraft
 # Deko und Bauen
+connected-glass|Connected Glass
+furnitury|Furnitury
+luminax|Luminax
+night-lights|Night Lights
 supplementaries|Supplementaries
 amendments|Amendments
 quark|Quark
@@ -364,6 +368,8 @@ framedblocks|FramedBlocks
 another-furniture|Another Furniture
 decocraft|Decocraft
 # Bibliotheken (fehlen auf Modrinth als Abhaengigkeit)
+edivadlib|EdivadLib
+fusion-connected-textures|Fusion (Connected Textures)
 deimos|Deimos|^1\.21\.1-neoforge-2\.7$
 irons-lib|Iron's Lib|^1\.21\.1-2
 bundle-api|Bundle API
@@ -384,6 +390,7 @@ foreach ($l in ($ModListRaw -split "`r?`n")) {
 }
 # Kategorien der CurseForge-Jars (Dateiname -> Kategorie)
 $cfCat = [ordered]@{
+  'FluxNetworks' = 'AE2 und Technik'; 'ae2jeiintegration' = 'AE2 und Technik'; 'ae_universal_press' = 'AE2 und Technik'; 'aerowarptics' = 'Create und Addons'; 'allthearcanistgear' = 'Waffen, Ruestung und Ausruestung'; 'alltheores' = 'Ressourcen und Landwirtschaft'; 'disenchantanvil' = 'Komfort und Oberflaeche'; 'dragonrework' = 'Mobs und Bosse'; 'framework' = 'Bibliotheken (werden automatisch gebraucht)'; 'refurbished_furniture' = 'Deko und Bauen'; 'sbw-optimized' = 'Performance und Grafik'; 'set-home-waypoints' = 'Komfort und Oberflaeche'; 'shrink' = 'Komfort und Oberflaeche'; 'trashslot' = 'Komfort und Oberflaeche'
   'twilightforest' = 'Dimensionen'; 'ExtendedAE' = 'AE2 und Technik'; 'AE2NetworkAnalyzer' = 'AE2 und Technik'
   'ars_' = 'Magie'; 'ftb' = 'Multiplayer, Quests und Verwaltung'; 'allthemodium' = 'Dimensionen'; 'alltheleaks' = 'Performance und Grafik'; 'minebohrer' = 'Ressourcen und Landwirtschaft'; 'buildinggadgets2' = 'Deko und Bauen'; 'xycraft_machines' = 'AE2 und Technik'; 'xycraft_world' = 'Ressourcen und Landwirtschaft'; 'xycraft_core' = 'Bibliotheken (werden automatisch gebraucht)'; 'bytebuddies' = 'AE2 und Technik'; 'aeroportals' = 'Create und Addons'
 }
@@ -526,21 +533,14 @@ if ($cfJars.Count -gt 0) {
 }
 # Eigene Mods: gepinnte Release-JAR passend zur Quellversion in beide Seiten aufnehmen.
 $ownJars = @()
-foreach ($project in (Get-ChildItem -LiteralPath (Join-Path $Root 'mod') -Directory)) {
-  $propsPath = Join-Path $project.FullName 'gradle.properties'
-  if (-not (Test-Path -LiteralPath $propsPath)) { continue }
-  $props = [IO.File]::ReadAllText($propsPath)
-  if ($props -notmatch '(?m)^mod_version=(.+)$') { throw "mod_version fehlt: $propsPath" }
-  $ownVersion = $Matches[1].Trim()
-  $ownJar = Join-Path $Root ("pack/local-mods/" + $project.Name + "-" + $ownVersion + ".jar")
-  if (-not (Test-Path -LiteralPath $ownJar)) { throw "Eigene Release-JAR fehlt: $ownJar" }
-  $sums = [IO.File]::ReadAllLines((Join-Path $Root 'pack/local-mods/SHA256SUMS.txt'))
-  $ownName = [IO.Path]::GetFileName($ownJar)
+$sums = [IO.File]::ReadAllLines((Join-Path $Root 'pack/local-mods/SHA256SUMS.txt'))
+foreach ($ownJar in (Get-ChildItem -LiteralPath (Join-Path $Root 'pack/local-mods') -Filter *.jar)) {
+  $ownName = $ownJar.Name
   $sumLine = @($sums | Where-Object { $_ -match ('^[0-9a-fA-F]{64}  ' + [regex]::Escape($ownName) + '$') })
   if ($sumLine.Count -ne 1) { throw "Pruefsumme fehlt: $ownName" }
   $expectedHash = $sumLine[0].Substring(0, 64)
-  if ((Get-FileHash -LiteralPath $ownJar -Algorithm SHA256).Hash -ne $expectedHash) { throw "Pruefsumme falsch: $ownName" }
-  $ownJars += Get-Item -LiteralPath $ownJar
+  if ((Get-FileHash -LiteralPath $ownJar.FullName -Algorithm SHA256).Hash -ne $expectedHash) { throw "Pruefsumme falsch: $ownName" }
+  $ownJars += $ownJar
 }
 if ($ownJars.Count -gt 0) {
   $ov = Join-Path $packDir 'overrides\mods'
